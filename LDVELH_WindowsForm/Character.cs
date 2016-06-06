@@ -29,5 +29,16 @@ namespace LDVELH_WindowsForm
             return baseAgility;
         }
 
+        public void kill()
+        {
+            this.actualHitPoint = 0;
+        }
+        public void takeDamage(int damage)
+        {
+            this.actualHitPoint -= damage;
+            if (actualHitPoint <= 0)
+                actualHitPoint = 0;
+        }
+
     }
 }

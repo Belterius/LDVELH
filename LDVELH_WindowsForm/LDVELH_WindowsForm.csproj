@@ -48,6 +48,7 @@
     <Compile Include="Capacity.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CreateConsummable.cs" />
+    <Compile Include="DamageTable.cs" />
     <Compile Include="DiceRoll.cs" />
     <Compile Include="Ennemy.cs" />
     <Compile Include="Form1.cs">

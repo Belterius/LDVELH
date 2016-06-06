@@ -111,9 +111,20 @@ namespace LDVELH_WindowsForm
             return false;
         }
 
-        public void Fight(Ennemy ennemy)
+        public bool Fight(Ennemy ennemy)
         {
             int strenghtDifference = findStrenghtDifference(ennemy);
+            bool battleOver = false;
+            try
+            {
+                battleOver = resolveDamage(strenghtDifference, ennemy);
+            }
+            catch (YouAreDeadException)
+            {
+                throw;
+            }
+
+            return battleOver;
         }
 
         public int findStrenghtDifference(Ennemy ennemy)
@@ -179,6 +190,27 @@ namespace LDVELH_WindowsForm
             }
             return bonusAgility;
         }
+
+        private bool resolveDamage(int strenghDifference, Ennemy ennemy)
+        {
+            int randomD10 = DiceRoll.D10Roll();
+            ennemy.takeDamage(DamageTable.ennemyDamageTaken(strenghDifference, randomD10));
+            this.takeDamage(DamageTable.heroDamageTaken(strenghDifference, randomD10));
+
+            if (this.getActualHitPoint() <= 0)
+            {
+                throw new YouAreDeadException("You are dead.");
+            }
+
+            if (ennemy.getActualHitPoint() <= 0)
+            {
+                return true;
+            }
+            return false;
+
+        }
+
+        
     }
 
     [Serializable]
@@ -196,6 +228,26 @@ namespace LDVELH_WindowsForm
         { }
 
         protected NotEnoughtGoldException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        { }
+
+    }
+
+    [Serializable]
+    public class YouAreDeadException : Exception
+    {
+        public YouAreDeadException()
+        { }
+
+        public YouAreDeadException(string message)
+            : base(message)
+        { }
+
+        public YouAreDeadException(string message, Exception innerException)
+            : base(message, innerException)
+        { }
+
+        protected YouAreDeadException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         { }
 
