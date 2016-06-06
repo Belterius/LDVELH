@@ -25,7 +25,20 @@ namespace LDVELH_Tests
         {
             Hero Belterius = new Hero("Belterius");
             Capacity hidingCapacity = new Capacity(CapacityType.Hiding);
-            
+
+            Belterius.AddCapacity(hidingCapacity);
+
+            Assert.AreEqual(true, Belterius.PossesCapacity(CapacityType.Hiding));
+        }
+
+        public void HeroDoesntPossesCapacity()
+        {
+            Hero Belterius = new Hero("Belterius");
+            Capacity hidingCapacity = new Capacity(CapacityType.Hiding);
+
+            Belterius.AddCapacity(hidingCapacity);
+
+            Assert.AreEqual(false, Belterius.PossesCapacity(CapacityType.PsychicPower));
         }
     }
 }

@@ -61,6 +61,18 @@ namespace LDVELH_WindowsForm
             capacities.Add(capacity);
         }
 
+        public bool PossesCapacity(CapacityType capacity)
+        {
+            foreach (Capacity capa in this.capacities)
+            {
+                if (capa.GetCapacityType() == capacity)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 
     [Serializable]
