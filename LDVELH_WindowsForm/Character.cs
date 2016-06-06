@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LDVELH_WindowsForm
 {
@@ -12,6 +13,8 @@ namespace LDVELH_WindowsForm
         protected int maxHitPoint;
         protected int actualHitPoint;
         protected int baseAgility;
+        public event HitPointHandler HitPointChanged;
+        public delegate void HitPointHandler(Hero m, int damage);
 
         public string getName(){
             return name;
@@ -33,11 +36,28 @@ namespace LDVELH_WindowsForm
         {
             this.actualHitPoint = 0;
         }
+
         public void takeDamage(int damage)
         {
             this.actualHitPoint -= damage;
             if (actualHitPoint <= 0)
+            {
                 actualHitPoint = 0;
+                if (this is Hero)
+                {
+                    throw new YouAreDeadException("You are dead");
+                }
+            }
+
+            if (this is Hero)
+            {
+                HitPointHandler handler = HitPointChanged;
+                if (handler != null)
+                {
+                    handler((Hero)this, damage);
+                }
+            }
+            
         }
 
     }

@@ -10,17 +10,21 @@ namespace LDVELH_WindowsForm
     public class Hero : Character
     {
         private int gold;
+        public event GoldHandler GoldChanged;
+        public delegate void GoldHandler(Hero m, int goldChange);
         private List<Capacity> capacities;
         public BackPack backPack;
         public WeaponHolder weaponHolder;
         private List<SpecialItem> specialItems;
         private WeaponTypes weaponMastery = WeaponTypes.None;
 
+
         public Hero(string name){
             this.name = name;
             this.maxHitPoint = randMaxHitPoint();
             this.actualHitPoint = this.maxHitPoint;
             this.baseAgility = randBaseAgility();
+            this.gold = 0;
 
             capacities = new List<Capacity>();
             backPack = new BackPack();
@@ -41,25 +45,45 @@ namespace LDVELH_WindowsForm
             return minimumValue + DiceRoll.D10Roll();
         }
 
+        
         public int getGold()
         {
             return this.gold;
         }
+        
         public void addGold(int gold)
         {
             this.gold += gold;
+            GoldHandler handler = GoldChanged;
+            if (handler != null)
+            {
+                handler((Hero)this, gold);
+            }
         }
         public void removeGold(int gold)
         {
-            if ((this.gold - gold) >= 0)
+            if ((this.gold - gold) >= 0){
+
                 this.gold -= gold;
+                GoldHandler handler = GoldChanged;
+                if (handler != null)
+                {
+                    handler((Hero)this, -gold);
+                }
+            }
             else
                 throw new NotEnoughtGoldException("You don't have enough gold !");
 
         }
         public void emptyGold()
         {
+            int tempoGold = this.gold;
             this.gold = 0;
+            GoldHandler handler = GoldChanged;
+            if (handler != null)
+            {
+                handler((Hero)this, -tempoGold);
+            }
         }
 
         public void addCapacity(Capacity capacity)
@@ -195,12 +219,15 @@ namespace LDVELH_WindowsForm
         {
             int randomD10 = DiceRoll.D10Roll();
             ennemy.takeDamage(DamageTable.ennemyDamageTaken(strenghDifference, randomD10));
-            this.takeDamage(DamageTable.heroDamageTaken(strenghDifference, randomD10));
-
-            if (this.getActualHitPoint() <= 0)
+            try
             {
-                throw new YouAreDeadException("You are dead.");
+                this.takeDamage(DamageTable.heroDamageTaken(strenghDifference, randomD10));
             }
+            catch (YouAreDeadException)
+            {
+                throw;
+            }
+
 
             if (ennemy.getActualHitPoint() <= 0)
             {
