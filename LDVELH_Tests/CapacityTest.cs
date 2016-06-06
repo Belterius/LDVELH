@@ -16,29 +16,11 @@ namespace LDVELH_Tests
             hidingCapacity = new Capacity(CapacityType.Hiding);
             phychicCapacity = new Capacity(CapacityType.PsychicPower);
 
-            Assert.AreEqual(true, hidingCapacity.GetCapacityType() == CapacityType.Hiding);
-            Assert.AreEqual(true, phychicCapacity.GetCapacityType() == CapacityType.PsychicPower);
-            Assert.AreEqual(false, hidingCapacity.GetCapacityType() == CapacityType.PsychicPower);
+            Assert.AreEqual(true, hidingCapacity.getCapacityType == CapacityType.Hiding);
+            Assert.AreEqual(true, phychicCapacity.getCapacityType == CapacityType.PsychicPower);
+            Assert.AreEqual(false, hidingCapacity.getCapacityType == CapacityType.PsychicPower);
         }
 
-        public void HeroPossesCapacity()
-        {
-            Hero Belterius = new Hero("Belterius");
-            Capacity hidingCapacity = new Capacity(CapacityType.Hiding);
-
-            Belterius.AddCapacity(hidingCapacity);
-
-            Assert.AreEqual(true, Belterius.PossesCapacity(CapacityType.Hiding));
-        }
-
-        public void HeroDoesntPossesCapacity()
-        {
-            Hero Belterius = new Hero("Belterius");
-            Capacity hidingCapacity = new Capacity(CapacityType.Hiding);
-
-            Belterius.AddCapacity(hidingCapacity);
-
-            Assert.AreEqual(false, Belterius.PossesCapacity(CapacityType.PsychicPower));
-        }
+        
     }
 }

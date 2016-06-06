@@ -34,6 +34,18 @@ namespace LDVELH_WindowsForm
             }
         }
 
+        public bool Contains(WeaponTypes weaponType)
+        {
+            foreach (Weapon weapon in this)
+            {
+                if (weapon.getWeaponType == weaponType)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 
     [Serializable]

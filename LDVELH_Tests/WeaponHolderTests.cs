@@ -62,5 +62,21 @@ namespace LDVELH_Tests
             }
 
         }
+
+        [TestMethod]
+        public void WeaponHolder_ContainsWeaponType_Tests()
+        {
+
+            Weapon advancedSword = new Weapon("advanced sword", WeaponTypes.Sword);
+            Weapon basicSpear = new Weapon("basic spear", WeaponTypes.Spear);
+            WeaponHolder basicWeaponHolder = new WeaponHolder();
+            basicWeaponHolder.Add(basicSpear);
+            basicWeaponHolder.Add(advancedSword);
+
+            Assert.AreEqual(true, basicWeaponHolder.Contains(WeaponTypes.Sword));
+            Assert.AreEqual(true, basicWeaponHolder.Contains(WeaponTypes.Spear));
+            Assert.AreEqual(false, basicWeaponHolder.Contains(WeaponTypes.Hammer));
+
+        }
     }
 }

@@ -30,11 +30,17 @@ namespace LDVELH_WindowsForm
 
             return true;
         }
+
+        public WeaponTypes getWeaponType
+        {
+            get { return weaponType; }
+        }
     }
     public enum WeaponTypes
     {
         Sword,
         Spear,
-        Hammer
+        Hammer,
+        None
     }
 }

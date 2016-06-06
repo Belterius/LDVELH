@@ -53,6 +53,8 @@
     <Compile Include="BackPackTests.cs" />
     <Compile Include="CapacityTest.cs" />
     <Compile Include="ItemTests.cs" />
+    <Compile Include="EnnemyTests.cs" />
+    <Compile Include="HeroTests.cs" />
     <Compile Include="WeaponHolderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
