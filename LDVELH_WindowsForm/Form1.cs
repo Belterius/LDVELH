@@ -12,6 +12,8 @@ namespace LDVELH_WindowsForm
 {
     public partial class Form1 : Form
     {
+        Story story;
+        StoryObserver storyObserver;
         Hero hero;
         HeroObserver heroObserver;
         public Form1()
@@ -23,13 +25,16 @@ namespace LDVELH_WindowsForm
         {
 
             initHero(ShowMyDialogBox());
+            initStory();
             this.Text = hero.getName();
+            story.start();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
 
         }
+
         private void initHero(String name)
         {
             hero = new Hero(name);
@@ -88,6 +93,16 @@ namespace LDVELH_WindowsForm
             hero.weaponHolderChanged += heroObserver.weaponHolderChanged;
         }
 
+        private void initStory()
+        {
+            story = new Story("first adventure", hero);
+            story.addParagraph(CreateParagraph.CreateAParagraph(1));
+            story.addParagraph(CreateParagraph.CreateAParagraph(2));
+            story.addParagraph(CreateParagraph.CreateAParagraph(3));
+            storyObserver = new StoryObserver(story, richTextBoxMainContent);
+            story.ParagraphChanged += storyObserver.ActualParagraphChanged;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -141,16 +156,16 @@ namespace LDVELH_WindowsForm
         {
             SpecialItem spItem = new SpecialItemCombat("light shield", 3, 0);
             SpecialItem spItem2 = new SpecialItemAlways(" heavy plate mail", 2, 4);
-            hero.addSpecialItem(spItem);
-            hero.addSpecialItem(spItem2);
+            hero.addLoot(spItem);
+            hero.addLoot(spItem2);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             SpecialItem spItem = new SpecialItemCombat("shield", 3, 0);
             SpecialItem spItem2 = new SpecialItemAlways(" heavy plate mail", 2, 4);
-            hero.removeSpecialItem(spItem);
-            hero.removeSpecialItem(spItem2);
+            hero.removeLoot(spItem);
+            hero.removeLoot(spItem2);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -175,14 +190,14 @@ namespace LDVELH_WindowsForm
 
         private void button7_Click_1(object sender, EventArgs e)
         {
-            Item food = new Food("ration", 4);
-            Item healthPotion = CreateConsummable.minorHealthPotion();
-            Item cord = new Miscellaneous("cord");
+            Loot food = new Food("ration", 4);
+            Loot healthPotion = CreateLoot.CreateConsummable.minorHealthPotion();
+            Loot cord = new Miscellaneous("cord");
             try
             {
-                hero.addBackPackItem(food);
-                hero.addBackPackItem(healthPotion);
-                hero.addBackPackItem(cord);
+                hero.addLoot(food);
+                hero.addLoot(healthPotion);
+                hero.addLoot(cord);
             }
             catch (BackPackFullException ex)
             {
@@ -193,9 +208,9 @@ namespace LDVELH_WindowsForm
         private void button8_Click(object sender, EventArgs e)
         {
             Item food = new Food("ration", 4);
-            Item healthPotion = CreateConsummable.minorHealthPotion();
-            hero.removeBackPackItem(food);
-            hero.removeBackPackItem(healthPotion);
+            Item healthPotion = CreateLoot.CreateConsummable.minorHealthPotion();
+            hero.removeLoot(food);
+            hero.removeLoot(healthPotion);
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -203,7 +218,7 @@ namespace LDVELH_WindowsForm
             try
             {
                 Weapon sword = new Weapon("Sword", WeaponTypes.Sword);
-                hero.addWeapon(sword);
+                hero.addLoot(sword);
             }
             catch (WeaponHolderFullException ex)
             {
@@ -214,17 +229,17 @@ namespace LDVELH_WindowsForm
         private void button9_Click(object sender, EventArgs e)
         {
             Weapon sword = new Weapon("Sword", WeaponTypes.Sword);
-            hero.removeWeapon(sword);
+            hero.removeLoot(sword);
         }
 
         private void buttonThrowBackPackItem_Click(object sender, EventArgs e)
         {
-            hero.removeBackPackItem((Item)listBoxBackPack.SelectedItem);
+            hero.removeLoot((Item)listBoxBackPack.SelectedItem);
         }
 
         private void buttonThrowWeapon_Click(object sender, EventArgs e)
         {
-            hero.removeWeapon((Weapon)listBoxWeapon.SelectedItem);
+            hero.removeLoot((Weapon)listBoxWeapon.SelectedItem);
         }
 
         private void buttonUseItem_Click(object sender, EventArgs e)

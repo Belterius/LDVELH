@@ -90,4 +90,37 @@ namespace LDVELH_WindowsForm
             listBoxSpecialItem.DataSource = listSpecialItemSave;
         }
     }
+    class StoryObserver
+    {
+        ListBox possibleDecision;
+        RichTextBox contentText;
+        Story story;
+
+        public StoryObserver(Story story, ListBox possibleDecision, RichTextBox contentText)
+        {
+            this.story = story;
+            this.contentText = contentText;
+            this.possibleDecision = possibleDecision;
+        }
+        public StoryObserver(Story story, RichTextBox contentText)
+        {
+            this.story = story;
+            this.contentText = contentText;
+        }
+
+        public void ActualParagraphChanged(Story story, Paragraph actualParagraph)
+        {
+            //Several step :
+
+            //First : the text content
+            contentText.Text = actualParagraph.getContent;
+
+            //Second : the main event (that WILL happen, no choice)
+            story.resolveActualParagraph();
+
+            //Third, the decisions open to the player
+            //TODO
+        }
+
+    }
 }

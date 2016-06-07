@@ -7,7 +7,23 @@ using System.Threading.Tasks;
 
 namespace LDVELH_WindowsForm
 {
-    public abstract class Item
+    public abstract class Loot
+    {
+
+    }
+    public class Gold : Loot
+    {
+        int goldAmount;
+        public Gold(int amount)
+        {
+            this.goldAmount = amount;
+        }
+        public int getGoldAmount
+        {
+            get { return this.goldAmount; }
+        }
+    }
+    public abstract class Item : Loot
     {
         protected string name;
 

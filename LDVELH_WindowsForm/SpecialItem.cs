@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LDVELH_WindowsForm
 {
-    public abstract class SpecialItem
+    public abstract class SpecialItem : Loot
     {
         protected string name;
 

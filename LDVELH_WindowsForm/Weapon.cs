@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LDVELH_WindowsForm
 {
-    public class Weapon
+    public class Weapon : Loot
     {
         string name;
         WeaponTypes weaponType;

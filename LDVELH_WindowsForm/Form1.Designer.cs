@@ -34,6 +34,7 @@
             this.labelHitPointDescription = new System.Windows.Forms.Label();
             this.labelHitPoint = new System.Windows.Forms.Label();
             this.groupBoxInventory = new System.Windows.Forms.GroupBox();
+            this.buttonUseItem = new System.Windows.Forms.Button();
             this.buttonThrowWeapon = new System.Windows.Forms.Button();
             this.buttonThrowBackPackItem = new System.Windows.Forms.Button();
             this.labelBackPack = new System.Windows.Forms.Label();
@@ -44,7 +45,7 @@
             this.listBoxSpecialItem = new System.Windows.Forms.ListBox();
             this.listBoxBackPack = new System.Windows.Forms.ListBox();
             this.listBoxWeapon = new System.Windows.Forms.ListBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxMainContent = new System.Windows.Forms.RichTextBox();
             this.groupBoxChoices = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -56,7 +57,6 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.buttonUseItem = new System.Windows.Forms.Button();
             this.groupBoxStats.SuspendLayout();
             this.groupBoxInventory.SuspendLayout();
             this.SuspendLayout();
@@ -129,6 +129,17 @@
             this.groupBoxInventory.TabIndex = 0;
             this.groupBoxInventory.TabStop = false;
             this.groupBoxInventory.Text = "Inventory";
+            // 
+            // buttonUseItem
+            // 
+            this.buttonUseItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUseItem.Location = new System.Drawing.Point(6, 322);
+            this.buttonUseItem.Name = "buttonUseItem";
+            this.buttonUseItem.Size = new System.Drawing.Size(75, 23);
+            this.buttonUseItem.TabIndex = 9;
+            this.buttonUseItem.Text = "Use Item";
+            this.buttonUseItem.UseVisualStyleBackColor = true;
+            this.buttonUseItem.Click += new System.EventHandler(this.buttonUseItem_Click);
             // 
             // buttonThrowWeapon
             // 
@@ -221,13 +232,14 @@
             this.listBoxWeapon.Size = new System.Drawing.Size(150, 43);
             this.listBoxWeapon.TabIndex = 0;
             // 
-            // richTextBox1
+            // richTextBoxMainContent
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(37, 68);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(452, 268);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.richTextBoxMainContent.Enabled = false;
+            this.richTextBoxMainContent.Location = new System.Drawing.Point(37, 68);
+            this.richTextBoxMainContent.Name = "richTextBoxMainContent";
+            this.richTextBoxMainContent.Size = new System.Drawing.Size(452, 268);
+            this.richTextBoxMainContent.TabIndex = 1;
+            this.richTextBoxMainContent.Text = "";
             // 
             // groupBoxChoices
             // 
@@ -338,17 +350,6 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // buttonUseItem
-            // 
-            this.buttonUseItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUseItem.Location = new System.Drawing.Point(6, 322);
-            this.buttonUseItem.Name = "buttonUseItem";
-            this.buttonUseItem.Size = new System.Drawing.Size(75, 23);
-            this.buttonUseItem.TabIndex = 9;
-            this.buttonUseItem.Text = "Use Item";
-            this.buttonUseItem.UseVisualStyleBackColor = true;
-            this.buttonUseItem.Click += new System.EventHandler(this.buttonUseItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -365,7 +366,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBoxChoices);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.richTextBoxMainContent);
             this.Controls.Add(this.groupBoxInventory);
             this.Controls.Add(this.groupBoxStats);
             this.Name = "Form1";
@@ -383,7 +384,7 @@
 
         private System.Windows.Forms.GroupBox groupBoxStats;
         private System.Windows.Forms.GroupBox groupBoxInventory;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxMainContent;
         private System.Windows.Forms.GroupBox groupBoxChoices;
         private System.Windows.Forms.Label labelHitPointDescription;
         private System.Windows.Forms.Label labelHitPoint;

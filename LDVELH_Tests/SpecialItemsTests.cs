@@ -14,7 +14,7 @@ namespace LDVELH_Tests
             SpecialItem specialItemSame = new SpecialItemCombat("useless item", 1, 0);
             Hero hero = new Hero("hero");
 
-            hero.addSpecialItem(specialItem);
+            hero.addLoot(specialItem);
 
             Assert.AreEqual(true, hero.getSpecialItems.Contains(specialItem));
             Assert.AreEqual(true, hero.getSpecialItems.Contains(specialItemSame));
@@ -26,12 +26,12 @@ namespace LDVELH_Tests
         {
             SpecialItem specialItem = new SpecialItemCombat("useless item", 1, 0);
             Hero hero = new Hero("hero");
-            hero.addSpecialItem(specialItem);
+            hero.addLoot(specialItem);
 
             Assert.AreEqual(true, hero.getSpecialItems.Contains(specialItem));
 
             SpecialItem specialItemRemoval = new SpecialItemCombat("useless item", 1, 0);
-            hero.removeSpecialItem(specialItemRemoval);
+            hero.removeLoot(specialItemRemoval);
 
             Assert.AreEqual(false, hero.getSpecialItems.Contains(specialItem));
 

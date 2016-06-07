@@ -200,7 +200,7 @@ namespace LDVELH_WindowsForm
             }
             return null;
         }
-        public void addSpecialItem(SpecialItem item)
+        private void addSpecialItem(SpecialItem item)
         {
             this.specialItems.Add(item);
             specialItemHasChanged(item, true);
@@ -224,7 +224,7 @@ namespace LDVELH_WindowsForm
                     this.increaseAgility(item.getAgilityBonus);
                 }
         }
-        public void removeSpecialItem(SpecialItem item)
+        private void removeSpecialItem(SpecialItem item)
         {
             if (this.specialItems.Remove(item))
             {
@@ -257,12 +257,12 @@ namespace LDVELH_WindowsForm
             }
         }
 
-        public void addWeapon(Weapon weapon)
+        private void addWeapon(Weapon weapon)
         {
             this.weaponHolder.Add(weapon);
             weaponHolderHasChanged(weapon, true);
         }
-        public void removeWeapon(Weapon weapon)
+        private void removeWeapon(Weapon weapon)
         {
             this.weaponHolder.Remove(weapon);
             weaponHolderHasChanged(weapon, false);
@@ -276,12 +276,12 @@ namespace LDVELH_WindowsForm
             }
         }
 
-        public void addBackPackItem(Item item)
+        private void addBackPackItem(Item item)
         {
             this.backPack.Add(item);
             backPackItemHasChanged(item, true);
         }
-        public bool removeBackPackItem(Item item)
+        private bool removeBackPackItem(Item item)
         {
             if (this.backPack.Remove(item))
             {
@@ -318,6 +318,52 @@ namespace LDVELH_WindowsForm
             
         }
 
+        public void addLoot(Loot loot)
+        {
+            if (loot is Weapon)
+            {
+                this.addWeapon((Weapon)loot);
+                return;
+            }
+            if (loot is Item)
+            {
+                this.addBackPackItem((Item)loot);
+                return;
+            }
+            if (loot is SpecialItem)
+            {
+                this.addSpecialItem((SpecialItem)loot);
+                return;
+            }
+            if (loot is Gold)
+            {
+                this.addGold(((Gold)loot).getGoldAmount);
+            }
+        }
+
+        public void removeLoot(Loot loot)
+        {
+            if (loot is Weapon)
+            {
+                this.removeWeapon((Weapon)loot);
+                return;
+            }
+            if (loot is Item)
+            {
+                this.removeBackPackItem((Item)loot);
+                return;
+            }
+            if (loot is SpecialItem)
+            {
+                this.removeSpecialItem((SpecialItem)loot);
+            }
+            if (loot is Gold)
+            {
+                this.removeGold(((Gold)loot).getGoldAmount);
+            }
+        }
+
+        
         public void eat()
         {
             //TODO !!!

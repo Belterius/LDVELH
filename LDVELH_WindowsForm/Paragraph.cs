@@ -6,16 +6,43 @@ using System.Threading.Tasks;
 
 namespace LDVELH_WindowsForm
 {
-    class Paragraph
+    public class Paragraph
     {
-        String contentText{get;}
-        List<Event> destinations{get;set;}
-        int paragraphNumber{get;}
-        List<Event> mainEvents{get;set;}
+        String contentText;
+        List<Event> decision;
+        int paragraphNumber;
+        List<Event> mainEvents;
 
-        public void Paragraph()
+        public Paragraph(string contentText, int paragraphNumber)
         {
+            this.contentText = contentText;
+            this.paragraphNumber = paragraphNumber;
+            decision = new List<Event>();
+            mainEvents = new List<Event>();
+        }
 
+        public void addDecision(Event decision){
+            this.decision.Add(decision);
+        }
+        public void addMainEvent(Event mainEvent)
+        {
+            this.mainEvents.Add(mainEvent);
+        }
+        public int getParagraphNumber
+        {
+            get { return paragraphNumber; }
+        }
+        public string getContent
+        {
+            get { return contentText; }
+        }
+
+        public void resolve(Story story)
+        {
+            foreach (Event mainEvent in mainEvents)
+            {
+                mainEvent.resolveEvent(story);
+            }
         }
     }
 }

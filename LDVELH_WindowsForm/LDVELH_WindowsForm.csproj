@@ -47,7 +47,8 @@
     <Compile Include="BackPack.cs" />
     <Compile Include="Capacity.cs" />
     <Compile Include="Character.cs" />
-    <Compile Include="CreateConsummable.cs" />
+    <Compile Include="CreateLoot.cs" />
+    <Compile Include="CreateParagraph.cs" />
     <Compile Include="DamageTable.cs" />
     <Compile Include="DiceRoll.cs" />
     <Compile Include="Ennemy.cs" />

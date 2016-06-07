@@ -57,7 +57,7 @@ namespace LDVELH_Tests
 
             //Item test
             SpecialItem shield = new SpecialItemCombat("iron shield", 4, 0);
-            Belterius.addSpecialItem(shield);
+            Belterius.addLoot(shield);
             expectedStrenghtDifference = (heroBaseAgility + 4) - 10;
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
@@ -83,7 +83,7 @@ namespace LDVELH_Tests
             //Multiples Items, Weapon Mastery, and psychic immune
             //WARNING TEST WILL FAIL IF ORC IS NOT IMMUN TO PSYCHIC ANYMORE, can check in Ennemy isWeakToPsychic
             SpecialItem ring = new SpecialItemCombat("magic ring", 6, 0);
-            Belterius.addSpecialItem(ring);
+            Belterius.addLoot(ring);
             Ennemy evilOrc = new Ennemy("Common Orc", 15, 10, EnnemyTypes.Orc);
             expectedStrenghtDifference = (heroBaseAgility + 4 + 6 + Capacity.weaponMasteryStrenght) - 15;
 
