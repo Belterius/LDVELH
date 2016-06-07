@@ -9,6 +9,11 @@ namespace LDVELH_WindowsForm
     public abstract class Item
     {
         protected string name;
+
+        public string getName
+        {
+            get { return name; }
+        }
     }
 
     public class Consummable : Item
@@ -20,7 +25,7 @@ namespace LDVELH_WindowsForm
         {
             this.healingPower = healingPower;
             this.name = name;
-            this.chargesLeft = chargesLeft;
+            this.chargesLeft = charges;
         }
 
         public override bool Equals(object obj)

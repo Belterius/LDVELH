@@ -9,6 +9,11 @@ namespace LDVELH_WindowsForm
     public abstract class SpecialItem
     {
         protected string name;
+
+        public string getName
+        {
+            get { return name; }
+        }
     }
 
     public class SpecialItemCombat : SpecialItem
@@ -28,6 +33,25 @@ namespace LDVELH_WindowsForm
         {
             get { return agilityBonus; }
         }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is SpecialItemCombat))
+                return false;
+
+
+            SpecialItemCombat specialItemCombat = (SpecialItemCombat)obj;
+            if (this.name != specialItemCombat.name)
+                return false;
+            if (this.agilityBonus != specialItemCombat.agilityBonus)
+                return false;
+            if (this.hitPointBonus != specialItemCombat.hitPointBonus)
+                return false;
+
+            return true;
+        }
+
+        
     }
 
     public class SpecialItemAlways : SpecialItem

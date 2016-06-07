@@ -12,10 +12,23 @@ namespace LDVELH_WindowsForm
         private int gold;
         public event GoldHandler GoldChanged;
         public delegate void GoldHandler(Hero m, int goldChange);
+
         private List<Capacity> capacities;
+        public event capacitiesHandler capacitiesChanged;
+        public delegate void capacitiesHandler(Hero m, Capacity capacity);
+
         public BackPack backPack;
+        public event backPackHandler backPackChanged;
+        public delegate void backPackHandler(Hero m, Item item, bool add);
+
         public WeaponHolder weaponHolder;
+        public event weaponHolderHandler weaponHolderChanged;
+        public delegate void weaponHolderHandler(Hero m, Weapon weapon, bool add);
+
         private List<SpecialItem> specialItems;
+        public event specialItemsHandler specialItemsChanged;
+        public delegate void specialItemsHandler(Hero m, SpecialItem specialItem, bool add);
+
         private WeaponTypes weaponMastery = WeaponTypes.None;
 
 
@@ -54,22 +67,14 @@ namespace LDVELH_WindowsForm
         public void addGold(int gold)
         {
             this.gold += gold;
-            GoldHandler handler = GoldChanged;
-            if (handler != null)
-            {
-                handler((Hero)this, gold);
-            }
+            GoldHasChanged(gold);
         }
         public void removeGold(int gold)
         {
             if ((this.gold - gold) >= 0){
 
                 this.gold -= gold;
-                GoldHandler handler = GoldChanged;
-                if (handler != null)
-                {
-                    handler((Hero)this, -gold);
-                }
+                GoldHasChanged(-gold);
             }
             else
                 throw new NotEnoughtGoldException("You don't have enough gold !");
@@ -79,17 +84,22 @@ namespace LDVELH_WindowsForm
         {
             int tempoGold = this.gold;
             this.gold = 0;
+            GoldHasChanged(-tempoGold);
+        }
+        public void GoldHasChanged(int gold)
+        {
             GoldHandler handler = GoldChanged;
             if (handler != null)
             {
-                handler((Hero)this, -tempoGold);
+                handler((Hero)this, gold);
             }
         }
+
 
         public void addCapacity(Capacity capacity)
         {
             capacities.Add(capacity);
-
+            capacitiesHasChanged(capacity);
             if (capacity.getCapacityType == CapacityType.WeaponMastery)
             {
                 while (this.weaponMastery == WeaponTypes.None)
@@ -98,11 +108,11 @@ namespace LDVELH_WindowsForm
                 }
             }
         }
-
         public void addCapacity(CapacityType capacityType)
         {
             Capacity capacity = new Capacity(capacityType);
             capacities.Add(capacity);
+            capacitiesHasChanged(capacity);
 
             if (capacityType == CapacityType.WeaponMastery)
             {
@@ -112,10 +122,46 @@ namespace LDVELH_WindowsForm
                 }
             }
         }
+        public void capacitiesHasChanged(Capacity capacity)
+        {
+            capacitiesHandler handler = capacitiesChanged;
+            if (handler != null)
+            {
+                handler((Hero)this, capacity);
+            }
+        }
 
+        public List<SpecialItem> getSpecialItems
+        {
+            get { return specialItems; }
+        }
+        public SpecialItem getSpecialItem(SpecialItem specialItem)
+        {
+            foreach(SpecialItem spItem in specialItems){
+                if (spItem == specialItem)
+                {
+                    return spItem;
+                }
+            }
+            return null;
+        }
         public void addSpecialItem(SpecialItem item)
         {
             this.specialItems.Add(item);
+            specialItemHasChanged(item, true);
+        }
+        public void removeSpecialItem(SpecialItem item)
+        {
+            this.specialItems.Remove(item);
+            specialItemHasChanged(item, false);
+        }
+        public void specialItemHasChanged(SpecialItem item, bool add)
+        {
+            specialItemsHandler handler = specialItemsChanged;
+            if (handler != null)
+            {
+                handler((Hero)this, item, add);
+            }
         }
 
         public WeaponTypes getWeaponMastery
