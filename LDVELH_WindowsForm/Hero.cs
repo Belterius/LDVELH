@@ -58,6 +58,15 @@ namespace LDVELH_WindowsForm
             return minimumValue + DiceRoll.D10Roll();
         }
 
+        public void heal(int healAmount)
+        {
+            this.actualHitPoint += healAmount;
+            if (this.actualHitPoint > this.maxHitPoint)
+            {
+                this.actualHitPoint = this.maxHitPoint;
+            }
+            lifePointHasChanged(this, healAmount);
+        }
         
         public int getGold()
         {
@@ -158,6 +167,43 @@ namespace LDVELH_WindowsForm
         public void specialItemHasChanged(SpecialItem item, bool add)
         {
             specialItemsHandler handler = specialItemsChanged;
+            if (handler != null)
+            {
+                handler((Hero)this, item, add);
+            }
+        }
+
+        public void addWeapon(Weapon weapon)
+        {
+            this.weaponHolder.Add(weapon);
+            weaponHolderHasChanged(weapon, true);
+        }
+        public void removeWeapon(Weapon weapon)
+        {
+            this.weaponHolder.Remove(weapon);
+            weaponHolderHasChanged(weapon, false);
+        }
+        public void weaponHolderHasChanged(Weapon weapon, bool add)
+        {
+            weaponHolderHandler handler = weaponHolderChanged;
+            if (handler != null)
+            {
+                handler((Hero)this, weapon, add);
+            }
+        }
+
+        public void addBackPackItem(Item item)
+        {
+            this.backPack.Add(item);
+            backPackItemHasChanged(item, true);
+        }
+        public void removeBackPackItem(Item item)
+        {
+            this.backPack.Remove(item);
+            backPackItemHasChanged(item, false);
+        }
+        public void backPackItemHasChanged(Item item, bool add){
+            backPackHandler handler = backPackChanged;
             if (handler != null)
             {
                 handler((Hero)this, item, add);

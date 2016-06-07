@@ -16,7 +16,7 @@ namespace LDVELH_Tests
 
             basicBackPack.Add(consummable);
 
-            Assert.AreEqual(true, basicBackPack.Contains(consummable));
+            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable));
 
         }
 
@@ -32,9 +32,9 @@ namespace LDVELH_Tests
             basicBackPack.Add(consummable);
             basicBackPack.Add(consummable2);
 
-            Assert.AreEqual(true, basicBackPack.Contains(consummable));
-            Assert.AreEqual(true, basicBackPack.Contains(consummable4));
-            Assert.AreEqual(false, basicBackPack.Contains(consummable3));
+            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable));
+            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable4));
+            Assert.AreEqual(false, basicBackPack.getItems.Contains(consummable3));
 
         }
 
@@ -58,9 +58,9 @@ namespace LDVELH_Tests
             }
             catch (BackPackFullException)
             {
-                Assert.AreEqual(true, smallBackPack.Contains(consummable));
-                Assert.AreEqual(true, smallBackPack.Contains(consummable2));
-                Assert.AreEqual(true, smallBackPack.Contains(consummable3));
+                Assert.AreEqual(true, smallBackPack.getItems.Contains(consummable));
+                Assert.AreEqual(true, smallBackPack.getItems.Contains(consummable2));
+                Assert.AreEqual(true, smallBackPack.getItems.Contains(consummable3));
             }
 
         }
@@ -75,13 +75,13 @@ namespace LDVELH_Tests
             basicBackPack.Add(consummable);
             basicBackPack.Add(consummable2);
 
-            Assert.AreEqual(true, basicBackPack.Contains(consummable));
-            Assert.AreEqual(true, basicBackPack.Contains(consummable2));
+            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable));
+            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable2));
 
             basicBackPack.Remove(consummable2);
 
-            Assert.AreEqual(true, basicBackPack.Contains(consummable));
-            Assert.AreEqual(false, basicBackPack.Contains(consummable2));
+            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable));
+            Assert.AreEqual(false, basicBackPack.getItems.Contains(consummable2));
 
         }
 
@@ -93,7 +93,7 @@ namespace LDVELH_Tests
 
             basicBackPack.Remove(consummable);
 
-            Assert.AreEqual(false, basicBackPack.Contains(consummable));
+            Assert.AreEqual(false, basicBackPack.getItems.Contains(consummable));
 
         }
 
@@ -107,8 +107,8 @@ namespace LDVELH_Tests
             basicBackPack.Add(consummable);
             basicBackPack.Add(food);
 
-            Assert.AreEqual(true, basicBackPack.Contains(consummable));
-            Assert.AreEqual(true, basicBackPack.Contains(food));
+            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable));
+            Assert.AreEqual(true, basicBackPack.getItems.Contains(food));
 
         }
     }

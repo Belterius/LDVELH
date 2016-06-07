@@ -51,13 +51,17 @@ namespace LDVELH_WindowsForm
 
             if (this is Hero)
             {
-                HitPointHandler handler = HitPointChanged;
-                if (handler != null)
-                {
-                    handler((Hero)this, damage);
-                }
+                lifePointHasChanged((Hero)this, damage);
             }
             
+        }
+
+        public void lifePointHasChanged(Hero hero, int damage){
+            HitPointHandler handler = HitPointChanged;
+            if (handler != null)
+            {
+                handler(hero, damage);
+            }
         }
 
     }

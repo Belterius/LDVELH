@@ -14,6 +14,10 @@ namespace LDVELH_WindowsForm
         {
             get { return name; }
         }
+        public virtual string getDisplayName
+        {
+            get { return name; }
+        }
     }
 
     public class Consummable : Item
@@ -44,6 +48,20 @@ namespace LDVELH_WindowsForm
 
             return true;
         }
+        public override string getDisplayName
+        {
+            get
+            {
+                if (chargesLeft > 1)
+                {
+                    return name + "(+" + healingPower + " life " + chargesLeft + " charges)";
+                }
+                else
+                {
+                    return name + "(+" + healingPower + " life " + chargesLeft + " charge)";
+                }
+            }
+        }
 
     }
 
@@ -68,6 +86,21 @@ namespace LDVELH_WindowsForm
             if (this.chargesLeft != food.chargesLeft)
                 return false;
             return true;
+        }
+
+        public override string getDisplayName
+        {
+            get
+            {
+                if (chargesLeft > 1)
+                {
+                    return name + "( food, " + chargesLeft + " charges)";
+                }
+                else
+                {
+                    return name + "( food" + chargesLeft + " charge)";
+                }
+            }
         }
 
     }

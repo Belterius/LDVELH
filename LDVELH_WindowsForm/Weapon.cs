@@ -39,6 +39,10 @@ namespace LDVELH_WindowsForm
         {
             get { return name; }
         }
+        public string getDisplayName
+        {
+            get { return name + "(" + weaponType.ToString() + ")"; }
+        }
     }
     public enum WeaponTypes
     {

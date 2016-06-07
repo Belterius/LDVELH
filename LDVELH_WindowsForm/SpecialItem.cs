@@ -14,6 +14,11 @@ namespace LDVELH_WindowsForm
         {
             get { return name; }
         }
+
+        public virtual string getDisplayName
+        {
+            get { return name; }
+        }
     }
 
     public class SpecialItemCombat : SpecialItem
@@ -21,6 +26,26 @@ namespace LDVELH_WindowsForm
         //Has an effect during combat (Example : +2 agility shield)
         int agilityBonus;
         int hitPointBonus;
+
+        public override string getDisplayName
+        {
+            get
+            {
+                if (agilityBonus > 0 && hitPointBonus > 0)
+                {
+                    return name + " (+" + agilityBonus + " agi" + " +" + hitPointBonus +" life)";
+                }
+                if (agilityBonus > 0 )
+                {
+                    return name + " (+" + agilityBonus + " agi)";
+                }
+                if (hitPointBonus > 0)
+                {
+                    return name + " (+" + hitPointBonus + " life)";
+                }
+                return name;
+            }
+        }
 
         public SpecialItemCombat(String name, int agilityBonus, int hitPointBonus)
         {
