@@ -347,6 +347,7 @@
             this.buttonUseItem.TabIndex = 9;
             this.buttonUseItem.Text = "Use Item";
             this.buttonUseItem.UseVisualStyleBackColor = true;
+            this.buttonUseItem.Click += new System.EventHandler(this.buttonUseItem_Click);
             // 
             // Form1
             // 

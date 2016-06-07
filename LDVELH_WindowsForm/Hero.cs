@@ -197,10 +197,15 @@ namespace LDVELH_WindowsForm
             this.backPack.Add(item);
             backPackItemHasChanged(item, true);
         }
-        public void removeBackPackItem(Item item)
+        public bool removeBackPackItem(Item item)
         {
-            this.backPack.Remove(item);
-            backPackItemHasChanged(item, false);
+            if (this.backPack.Remove(item))
+            {
+                backPackItemHasChanged(item, false);
+                return true;
+            }
+            else
+                return false;
         }
         public void backPackItemHasChanged(Item item, bool add){
             backPackHandler handler = backPackChanged;
@@ -208,6 +213,30 @@ namespace LDVELH_WindowsForm
             {
                 handler((Hero)this, item, add);
             }
+        }
+
+        public void useItem(Item item)
+        {
+                    try
+                    {
+                        item.use(this);
+                        backPackItemHasChanged(item, false);
+                    }
+                    catch (ItemDestroyedException)
+                    {
+                        this.removeBackPackItem(item);
+                        backPackItemHasChanged(item, false);
+                    }
+                    catch (CannotUseItemException)
+                    {
+                        throw;
+                    }
+            
+        }
+
+        public void eat()
+        {
+            //TODO !!!
         }
 
         public WeaponTypes getWeaponMastery
@@ -319,17 +348,12 @@ namespace LDVELH_WindowsForm
             {
                 throw;
             }
-
-
             if (ennemy.getActualHitPoint() <= 0)
             {
                 return true;
             }
             return false;
-
         }
-
-        
     }
 
     [Serializable]
@@ -371,4 +395,5 @@ namespace LDVELH_WindowsForm
         { }
 
     }
+
 }

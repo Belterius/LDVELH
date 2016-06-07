@@ -36,15 +36,17 @@ namespace LDVELH_WindowsForm
             }
         }
 
-        public void Remove(Item backPackItem)
+        public bool Remove(Item backPackItem)
         {
-            this.Items.Remove(backPackItem);
+            return this.Items.Remove(backPackItem);
         }
 
         public List<Item> getItems
         {
             get { return Items; }
         }
+
+        
 
     }
     [Serializable]

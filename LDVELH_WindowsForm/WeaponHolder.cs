@@ -7,36 +7,44 @@ using System.Threading.Tasks;
 
 namespace LDVELH_WindowsForm
 {
-    public class WeaponHolder : List<Weapon>
+    public class WeaponHolder
     {
         private int basicWeaponHolderSize = 2;
         private int weaponHolderSize;
+        List<Weapon> weapons;
 
         public WeaponHolder()
         {
             this.weaponHolderSize = basicWeaponHolderSize;
+            weapons = new List<Weapon>();
         }
 
         public WeaponHolder(int maxWeapon)
         {
             this.weaponHolderSize = maxWeapon;
+            weapons = new List<Weapon>();
+
         }
 
-        public new void Add(Weapon weapon)
+        public void Add(Weapon weapon)
         {
-            if (this.Count >= this.weaponHolderSize)
+            if (this.weapons.Count >= this.weaponHolderSize)
             {
                 throw new WeaponHolderFullException("Your weapon holder is full, throw a weapon to add a new one !");
             }
             else
             {
-                base.Add(weapon);
+                this.weapons.Add(weapon);
             }
+        }
+        public void Remove(Weapon weapon)
+        {
+            this.weapons.Remove(weapon);
         }
 
         public bool Contains(WeaponTypes weaponType)
         {
-            foreach (Weapon weapon in this)
+            foreach (Weapon weapon in this.weapons)
             {
                 if (weapon.getWeaponType == weaponType)
                 {
@@ -44,6 +52,11 @@ namespace LDVELH_WindowsForm
                 }
             }
             return false;
+        }
+
+        public List<Weapon> getWeapons
+        {
+            get { return weapons;}
         }
 
     }

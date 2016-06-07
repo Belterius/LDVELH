@@ -202,5 +202,17 @@ namespace LDVELH_WindowsForm
             hero.removeWeapon((Weapon)listBoxWeapon.SelectedItem);
         }
 
+        private void buttonUseItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                hero.useItem((Item)listBoxBackPack.SelectedItem);
+            }
+            catch (CannotUseItemException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }

@@ -66,44 +66,19 @@ namespace LDVELH_WindowsForm
         }
         public void backPackChanged(Hero hero, Item item, bool add)
         {
-            if(add)
-            {
-                listItemSave.Add(item);
-                System.Diagnostics.Debug.WriteLine("Something happened to " + hero.getName() + " he got " + item.getName );
-            }
-            else
-            {
-                listItemSave.Remove(item);
-                System.Diagnostics.Debug.WriteLine("Something happened to " + hero.getName() + " he lost " + item.getName);
-            }
+            listItemSave = new BindingList<Item>(hero.backPack.getItems);
+            listBoxBackPackItem.DataSource = listItemSave;
 
         }
         public void weaponHolderChanged(Hero hero, Weapon weapon, bool add)
         {
-            if (add)
-            {
-                listWeaponSave.Add(weapon);
-                System.Diagnostics.Debug.WriteLine("Something happened to " + hero.getName() + " he got " + weapon.getName);
-            }
-            else
-            {
-                listWeaponSave.Remove(weapon);
-                System.Diagnostics.Debug.WriteLine("Something happened to " + hero.getName() + " he lost " + weapon.getName);
-            }
+            listWeaponSave = new BindingList<Weapon>(hero.weaponHolder.getWeapons);
+            listBoxWeapon.DataSource = listWeaponSave;
         }
         public void specialItemsChanged(Hero hero, SpecialItem specialItem, bool add)
         {
-            
-            if (add)
-            {
-                listSpecialItemSave.Add(specialItem);
-                System.Diagnostics.Debug.WriteLine("Something happened to " + hero.getName() + " he got " + specialItem.getName);
-            }
-            else
-            {
-                listSpecialItemSave.Remove(specialItem);
-                System.Diagnostics.Debug.WriteLine("Something happened to " + hero.getName() + " he lost " + specialItem.getName);
-            }
+            listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
+            listBoxSpecialItem.DataSource = listSpecialItemSave;
         }
     }
 }
