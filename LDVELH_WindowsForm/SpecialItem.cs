@@ -33,15 +33,15 @@ namespace LDVELH_WindowsForm
             {
                 if (agilityBonus > 0 && hitPointBonus > 0)
                 {
-                    return name + " (+" + agilityBonus + " agi" + " +" + hitPointBonus +" life)";
+                    return name + " (+" + agilityBonus + " agi" + " +" + hitPointBonus +" life during battle)";
                 }
                 if (agilityBonus > 0 )
                 {
-                    return name + " (+" + agilityBonus + " agi)";
+                    return name + " (+" + agilityBonus + " agi during battle)";
                 }
                 if (hitPointBonus > 0)
                 {
-                    return name + " (+" + hitPointBonus + " life)";
+                    return name + " (+" + hitPointBonus + " life during battle)";
                 }
                 return name;
             }
@@ -75,6 +75,10 @@ namespace LDVELH_WindowsForm
 
             return true;
         }
+        public override int GetHashCode()
+        {
+            return new { name, agilityBonus, hitPointBonus }.GetHashCode();
+        }
 
         
     }
@@ -82,6 +86,65 @@ namespace LDVELH_WindowsForm
     public class SpecialItemAlways : SpecialItem
     {
         //Has a permanent effect (Example : +4 HitPoint chain mail)
+        int agilityBonus;
+        int LifePointBonus;
+
+        public SpecialItemAlways(String name, int agilityBonus, int hitPointBonus)
+        {
+            this.agilityBonus = agilityBonus;
+            this.LifePointBonus = hitPointBonus;
+            this.name = name;
+        }
+
+        public int getAgilityBonus
+        {
+            get { return agilityBonus; }
+        }
+        public int getLifeBonus
+        {
+            get { return LifePointBonus; }
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is SpecialItemAlways))
+                return false;
+
+
+            SpecialItemAlways specialItemCombat = (SpecialItemAlways)obj;
+            if (this.name != specialItemCombat.name)
+                return false;
+            if (this.agilityBonus != specialItemCombat.agilityBonus)
+                return false;
+            if (this.LifePointBonus != specialItemCombat.LifePointBonus)
+                return false;
+
+            return true;
+        }
+        public override int GetHashCode()
+        {
+            return new { name, agilityBonus, LifePointBonus }.GetHashCode();
+        }
+        public override string getDisplayName
+        {
+            get
+            {
+                if (agilityBonus > 0 && LifePointBonus > 0)
+                {
+                    return name + " (+" + agilityBonus + " agi" + " +" + LifePointBonus + " life permanent)";
+                }
+                if (agilityBonus > 0)
+                {
+                    return name + " (+" + agilityBonus + " agi permanent)";
+                }
+                if (LifePointBonus > 0)
+                {
+                    return name + " (+" + LifePointBonus + " life permanent)";
+                }
+                return name;
+            }
+        }
+
     }
 
     public class SpecialItemUsage : SpecialItem

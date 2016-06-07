@@ -16,6 +16,7 @@ namespace LDVELH_WindowsForm
     {
         Label labelHP;
         Label labelGold;
+        Label labelAgility;
         ListBox listBoxWeapon;
         private BindingList<Weapon> listWeaponSave;
         ListBox listBoxBackPackItem;
@@ -23,13 +24,14 @@ namespace LDVELH_WindowsForm
         ListBox listBoxSpecialItem;
         private BindingList<SpecialItem> listSpecialItemSave;
 
-        public HeroObserver(Hero hero,Label labelHP, Label labelGold, ListBox listWeapon, ListBox listItem, ListBox listSpecialItem)
+        public HeroObserver(Hero hero,Label labelHP,Label labelAgility, Label labelGold, ListBox listWeapon, ListBox listItem, ListBox listSpecialItem)
         {
             this.labelGold = labelGold;
             this.listBoxWeapon = listWeapon;
             this.listBoxBackPackItem = listItem;
             this.listBoxSpecialItem = listSpecialItem;
             this.labelHP = labelHP;
+            this.labelAgility = labelAgility;
 
             listWeaponSave = new BindingList<Weapon>();
             listItemSave = new BindingList<Item>();
@@ -46,8 +48,15 @@ namespace LDVELH_WindowsForm
 
         public void HitPointChanged(Hero hero, int damage)
         {
-            System.Diagnostics.Debug.WriteLine("Something happened to " + hero.getName() + " he took " + damage + " damage");
             labelHP.Text = hero.getActualHitPoint().ToString() + "/" + hero.getMaxHitPoint().ToString();
+        }
+        public void MaxHitPointChanged(Hero hero, int damage)
+        {
+            labelHP.Text = hero.getActualHitPoint().ToString() + "/" + hero.getMaxHitPoint().ToString();
+        }
+        public void AgilityChanged(Hero hero, int damage)
+        {
+            labelAgility.Text = hero.getBaseAgility().ToString();
         }
 
         public void GoldChanged(Hero hero, int goldChange)

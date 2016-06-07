@@ -9,6 +9,12 @@ namespace LDVELH_WindowsForm
 {
     public class Hero : Character
     {
+        public event MaxLifeHandler MaxLifeChanged;
+        public delegate void MaxLifeHandler(Hero m, int lifeChange);
+
+        public event AgilityHandler AgilityChanged;
+        public delegate void AgilityHandler(Hero m, int agilityChange);
+
         private int gold;
         public event GoldHandler GoldChanged;
         public delegate void GoldHandler(Hero m, int goldChange);
@@ -56,6 +62,46 @@ namespace LDVELH_WindowsForm
             int minimumValue = 10;
             Random random = new Random();
             return minimumValue + DiceRoll.D10Roll();
+        }
+        internal void increaseAgility(int bonusAgility)
+        {
+            this.baseAgility += bonusAgility;
+            AgilityHasChanged(bonusAgility);
+        }
+        internal void decreaseAgility(int bonusAgility)
+        {
+            this.baseAgility -= bonusAgility;
+            AgilityHasChanged(bonusAgility);
+        }
+        public void AgilityHasChanged(int bonusAgility)
+        {
+            AgilityHandler handler = AgilityChanged;
+            if (handler != null)
+            {
+                handler((Hero)this, bonusAgility);
+            }
+        }
+        private void increaseMaxLife(int bonusLife)
+        {
+            this.maxHitPoint += bonusLife;
+            MaxLifeHasChanged(bonusLife);
+        }
+        private void decreaseMaxLife(int bonusLife)
+        {
+            this.maxHitPoint -= bonusLife;
+            if (this.actualHitPoint > this.maxHitPoint)
+            {
+                this.actualHitPoint = this.maxHitPoint;
+            }
+            MaxLifeHasChanged(bonusLife);
+        }
+        public void MaxLifeHasChanged(int bonusLife)
+        {
+            MaxLifeHandler handler = MaxLifeChanged;
+            if (handler != null)
+            {
+                handler((Hero)this, bonusLife);
+            }
         }
 
         public void heal(int healAmount)
@@ -158,11 +204,49 @@ namespace LDVELH_WindowsForm
         {
             this.specialItems.Add(item);
             specialItemHasChanged(item, true);
+
+            if (item is SpecialItemAlways)
+            {
+                addPermanentItemEffect((SpecialItemAlways)item);
+            }
+
+            
+        }
+        private void addPermanentItemEffect(SpecialItemAlways item)
+        {
+            
+                if (item.getLifeBonus > 0)
+                {
+                    this.increaseMaxLife(item.getLifeBonus);
+                }
+                if (item.getAgilityBonus > 0)
+                {
+                    this.increaseAgility(item.getAgilityBonus);
+                }
         }
         public void removeSpecialItem(SpecialItem item)
         {
-            this.specialItems.Remove(item);
-            specialItemHasChanged(item, false);
+            if (this.specialItems.Remove(item))
+            {
+                specialItemHasChanged(item, false);
+                if (item is SpecialItemAlways)
+                {
+                    removePermanentItemEffect((SpecialItemAlways)item);
+                }
+            }
+            
+        }
+        private void removePermanentItemEffect(SpecialItemAlways item)
+        {
+
+            if (item.getLifeBonus > 0)
+            {
+                this.decreaseMaxLife(item.getLifeBonus);
+            }
+            if (item.getAgilityBonus > 0)
+            {
+                this.decreaseAgility(item.getAgilityBonus);
+            }
         }
         public void specialItemHasChanged(SpecialItem item, bool add)
         {

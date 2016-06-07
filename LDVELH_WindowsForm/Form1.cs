@@ -40,12 +40,14 @@ namespace LDVELH_WindowsForm
         }
         private void heroCharacterObserver()
         {
-            heroObserver = new HeroObserver(hero, labelHitPoint, labelGoldAmount, listBoxWeapon, listBoxBackPack, listBoxSpecialItem);
+            heroObserver = new HeroObserver(hero, labelHitPoint,labelAgility, labelGoldAmount, listBoxWeapon, listBoxBackPack, listBoxSpecialItem);
 
         }
         private void heroListeners()
         {
             heroHPListener();
+            heroMaxLifeListener();
+            heroAgilityListener();
             heroGoldListener();
             heroSpecialItemListener();
             heroBackPackItemListener();
@@ -60,6 +62,14 @@ namespace LDVELH_WindowsForm
         private void heroHPListener()
         {
             hero.HitPointChanged += heroObserver.HitPointChanged;
+        }
+        private void heroMaxLifeListener()
+        {
+            hero.MaxLifeChanged += heroObserver.MaxHitPointChanged;
+        }
+        private void heroAgilityListener()
+        {
+            hero.AgilityChanged += heroObserver.AgilityChanged;
         }
         private void heroGoldListener()
         {
@@ -129,14 +139,18 @@ namespace LDVELH_WindowsForm
 
         private void button3_Click(object sender, EventArgs e)
         {
-            SpecialItem spItem = new SpecialItemCombat("shield", 3, 0);
+            SpecialItem spItem = new SpecialItemCombat("light shield", 3, 0);
+            SpecialItem spItem2 = new SpecialItemAlways(" heavy plate mail", 2, 4);
             hero.addSpecialItem(spItem);
+            hero.addSpecialItem(spItem2);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             SpecialItem spItem = new SpecialItemCombat("shield", 3, 0);
+            SpecialItem spItem2 = new SpecialItemAlways(" heavy plate mail", 2, 4);
             hero.removeSpecialItem(spItem);
+            hero.removeSpecialItem(spItem2);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -146,7 +160,16 @@ namespace LDVELH_WindowsForm
 
         private void button6_Click(object sender, EventArgs e)
         {
-            hero.takeDamage(2);
+            try
+            {
+                hero.takeDamage(2);
+            }
+            catch (YouAreDeadException)
+            {
+                MessageBox.Show("You died !");
+                initHero(hero.getName());
+
+            }
         }
 
 
@@ -154,10 +177,12 @@ namespace LDVELH_WindowsForm
         {
             Item food = new Food("ration", 4);
             Item healthPotion = CreateConsummable.minorHealthPotion();
+            Item cord = new Miscellaneous("cord");
             try
             {
                 hero.addBackPackItem(food);
                 hero.addBackPackItem(healthPotion);
+                hero.addBackPackItem(cord);
             }
             catch (BackPackFullException ex)
             {

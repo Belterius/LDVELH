@@ -30,6 +30,10 @@ namespace LDVELH_WindowsForm
 
             return true;
         }
+        public override int GetHashCode()
+        {
+            return new { name, weaponType}.GetHashCode();
+        }
 
         public WeaponTypes getWeaponType
         {

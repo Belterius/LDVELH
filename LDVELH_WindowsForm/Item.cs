@@ -50,6 +50,10 @@ namespace LDVELH_WindowsForm
 
             return true;
         }
+        public override int GetHashCode()
+        {
+           return new { name, healingPower, chargesLeft }.GetHashCode();
+        }
         public override string getDisplayName
         {
             get
@@ -99,6 +103,10 @@ namespace LDVELH_WindowsForm
                 return false;
             return true;
         }
+        public override int GetHashCode()
+        {
+            return new { name, chargesLeft }.GetHashCode();
+        }
 
         public override string getDisplayName
         {
@@ -130,6 +138,12 @@ namespace LDVELH_WindowsForm
 
     public class Miscellaneous : Item
     {
+
+        public Miscellaneous(string name)
+        {
+            this.name = name;
+        }
+
         public override bool Equals(object obj)
         {
             if (!(obj is Miscellaneous))
@@ -139,6 +153,10 @@ namespace LDVELH_WindowsForm
             if (this.name != food.name)
                 return false;
             return true;
+        }
+        public override int GetHashCode()
+        {
+            return new {name}.GetHashCode();
         }
 
         public override void use(Hero hero)

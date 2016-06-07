@@ -8,9 +8,14 @@ namespace LDVELH_WindowsForm
 {
     class Paragraph
     {
-        String contentText;
-        List<Event> destinations;
-        int paragraphNumber;
-        List<Event> mainEvents;
+        String contentText{get;}
+        List<Event> destinations{get;set;}
+        int paragraphNumber{get;}
+        List<Event> mainEvents{get;set;}
+
+        public void Paragraph()
+        {
+
+        }
     }
 }
