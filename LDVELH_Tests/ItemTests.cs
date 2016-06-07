@@ -14,7 +14,7 @@ namespace LDVELH_Tests
             Consummable consummableActual;
             Consummable consummableExpected;
 
-            consummableActual = CreateLoot.minorHealthPotion();
+            consummableActual = CreateLoot.CreateConsummable.minorHealthPotion();
             consummableExpected = new Consummable("minor health potion", 4, 3);
 
             Assert.AreEqual(true, consummableActual.Equals(consummableExpected));
@@ -26,7 +26,7 @@ namespace LDVELH_Tests
             Consummable minorHealthPotionActual;
             Consummable minorHealthPotionExpected;
 
-            minorHealthPotionActual = CreateLoot.minorHealthPotion();
+            minorHealthPotionActual = CreateLoot.CreateConsummable.minorHealthPotion();
             minorHealthPotionExpected = new Consummable("minor health potion", 4, 3);
 
             Assert.AreEqual(minorHealthPotionExpected, minorHealthPotionActual);

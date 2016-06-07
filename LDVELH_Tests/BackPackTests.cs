@@ -11,7 +11,7 @@ namespace LDVELH_Tests
         [TestMethod]
         public void BackPack_AddOnEmpty()
         {
-            Consummable consummable = CreateLoot.minorHealthPotion();
+            Consummable consummable = CreateLoot.CreateConsummable.minorHealthPotion();
             BackPack basicBackPack = new BackPack();
 
             basicBackPack.Add(consummable);
@@ -23,7 +23,7 @@ namespace LDVELH_Tests
         [TestMethod]
         public void BackPack_AddOnNonEmpty_Tests()
         {
-            Consummable consummable = CreateLoot.minorHealthPotion();
+            Consummable consummable = CreateLoot.CreateConsummable.minorHealthPotion();
             Consummable consummable2 = new Consummable("Random Consumable", 12, 1);
             Consummable consummable4 = new Consummable("Random Consumable", 12, 1);//Allow to check if the override Equal works on Contains()
             Consummable consummable3 = new Consummable("Random Consumable FALSE", 12, 1);
@@ -41,7 +41,7 @@ namespace LDVELH_Tests
         [TestMethod]
         public void BackPack_AddOnFull_Tests()
         {
-            Consummable consummable = CreateLoot.minorHealthPotion();
+            Consummable consummable = CreateLoot.CreateConsummable.minorHealthPotion();
             Consummable consummable2 = new Consummable("Random Consumable one", 12, 1);
             Consummable consummable3 = new Consummable("Random Consumable two", 12, 1);
             Consummable consummable4 = new Consummable("Random Consumable three", 12, 1);
@@ -68,7 +68,7 @@ namespace LDVELH_Tests
         [TestMethod]
         public void BackPack_RemoveOnNonEmpty_Tests()
         {
-            Consummable consummable = CreateLoot.minorHealthPotion();
+            Consummable consummable = CreateLoot.CreateConsummable.minorHealthPotion();
             Consummable consummable2 = new Consummable("Random Consumable", 12, 1);
             Consummable consummable3 = new Consummable("Random Consumable FALSE", 12, 1);
             BackPack basicBackPack = new BackPack();
@@ -88,7 +88,7 @@ namespace LDVELH_Tests
         [TestMethod]
         public void BackPack_RemoveOnEmpty_Tests()
         {
-            Consummable consummable = CreateLoot.minorHealthPotion();
+            Consummable consummable = CreateLoot.CreateConsummable.minorHealthPotion();
             BackPack basicBackPack = new BackPack();
 
             basicBackPack.Remove(consummable);
@@ -100,7 +100,7 @@ namespace LDVELH_Tests
         [TestMethod]
         public void BackPack_AddDifferentKindItem_Tests()
         {
-            Consummable consummable = CreateLoot.minorHealthPotion();
+            Consummable consummable = CreateLoot.CreateConsummable.minorHealthPotion();
             Food food = new Food("Meal", 1);
             BackPack basicBackPack = new BackPack();
 
