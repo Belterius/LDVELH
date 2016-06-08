@@ -56,6 +56,7 @@
     <Compile Include="EnnemyTests.cs" />
     <Compile Include="HeroTests.cs" />
     <Compile Include="SpecialItemsTests.cs" />
+    <Compile Include="RollsTests.cs" />
     <Compile Include="WeaponHolderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

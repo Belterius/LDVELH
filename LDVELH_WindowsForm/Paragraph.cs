@@ -36,7 +36,10 @@ namespace LDVELH_WindowsForm
         {
             get { return contentText; }
         }
-
+        public List<Event> getListDecision
+        {
+            get { return decision; }
+        }
         public void resolve(Story story)
         {
             foreach (Event mainEvent in mainEvents)

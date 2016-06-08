@@ -16,6 +16,7 @@ namespace LDVELH_WindowsForm
         StoryObserver storyObserver;
         Hero hero;
         HeroObserver heroObserver;
+
         public Form1()
         {
             InitializeComponent();
@@ -99,7 +100,13 @@ namespace LDVELH_WindowsForm
             story.addParagraph(CreateParagraph.CreateAParagraph(1));
             story.addParagraph(CreateParagraph.CreateAParagraph(2));
             story.addParagraph(CreateParagraph.CreateAParagraph(3));
-            storyObserver = new StoryObserver(story, richTextBoxMainContent);
+
+            initStoryObserver();
+            
+        }
+        private void initStoryObserver()
+        {
+            storyObserver = new StoryObserver(story, richTextBoxMainContent, groupBoxChoices);
             story.ParagraphChanged += storyObserver.ActualParagraphChanged;
         }
 

@@ -54,13 +54,11 @@ namespace LDVELH_WindowsForm
         private int randMaxHitPoint()
         {
             int minimumValue = 20;
-            Random random = new Random();
             return minimumValue + DiceRoll.D10Roll();
         }
         private int randBaseAgility()
         {
             int minimumValue = 10;
-            Random random = new Random();
             return minimumValue + DiceRoll.D10Roll();
         }
         internal void increaseAgility(int bonusAgility)
@@ -218,6 +216,7 @@ namespace LDVELH_WindowsForm
                 if (item.getLifeBonus > 0)
                 {
                     this.increaseMaxLife(item.getLifeBonus);
+                    this.heal(item.getLifeBonus);
                 }
                 if (item.getAgilityBonus > 0)
                 {

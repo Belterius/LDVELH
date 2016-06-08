@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,13 +95,14 @@ namespace LDVELH_WindowsForm
     {
         ListBox possibleDecision;
         RichTextBox contentText;
+        GroupBox groupBoxDecision;
         Story story;
 
-        public StoryObserver(Story story, ListBox possibleDecision, RichTextBox contentText)
+        public StoryObserver(Story story, RichTextBox contentText, GroupBox groupBoxDecision)
         {
             this.story = story;
             this.contentText = contentText;
-            this.possibleDecision = possibleDecision;
+            this.groupBoxDecision = groupBoxDecision;
         }
         public StoryObserver(Story story, RichTextBox contentText)
         {
@@ -120,6 +122,62 @@ namespace LDVELH_WindowsForm
 
             //Third, the decisions open to the player
             //TODO
+
+            groupBoxDecision.Controls.Clear();
+            foreach(Event possibleEvent in story.getActualParagraph.getListDecision){
+                Button buttonDecision = new Button();
+                buttonDecision.Text = possibleEvent.getTriggerMessage;
+                buttonDecision.Click += delegate { possibleEvent.resolveEvent(story); };
+                groupBoxDecision.Controls.Add(buttonDecision);
+                buttonDecision.Location = new Point(setXPosition(buttonDecision, groupBoxDecision), 0);
+            }
+            placeButton(groupBoxDecision);
+
+        }
+
+        public int setXPosition(Button button, GroupBox groupBox)
+        {
+            int totalX = groupBox.Width;
+            int mySize = button.Width;
+            return (totalX - mySize) / 2;
+        }
+
+        int marginBetweenButton = 6;
+        public int calculateYPosition(int totalHeightButton, int numberButton, GroupBox groupBox)
+        {
+            int availableY = groupBox.Height;
+
+            return (availableY - totalHeightButton - marginBetweenButton * numberButton - 1)/2;
+        }
+        public int totalHeightButton(GroupBox groupBox)
+        {
+            int totalHeight = 0;
+            foreach (Button button in groupBox.Controls)
+            {
+                totalHeight += button.Height;
+            }
+            return totalHeight;
+        }
+        public int totalNumberButton(GroupBox groupBox)
+        {
+            int totalNumberButton = 0;
+            foreach (Button button in groupBox.Controls)
+            {
+                totalNumberButton++;
+            }
+            return totalNumberButton;
+        }
+        public void placeButton(GroupBox groupBox)
+        {
+            int topMargin = calculateYPosition(totalHeightButton(groupBox), totalNumberButton(groupBox), groupBox);
+            int previousButtonY = topMargin - marginBetweenButton; //we don't need the margin for the first button
+            int previousButtonHeight = 0;
+            foreach (Button button in groupBox.Controls)
+            {
+                button.Location = new Point(setXPosition(button, groupBox), (previousButtonY + previousButtonHeight + marginBetweenButton));
+                previousButtonHeight = button.Height;
+                previousButtonY = button.Location.Y;
+            }
         }
 
     }

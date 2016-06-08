@@ -8,15 +8,15 @@ namespace LDVELH_WindowsForm
 {
     public static class DiceRoll
     {
+        static Random random = new Random();
+
         public static int D6Roll()
         {
-            Random random = new Random();
             return random.Next(1, 7);
         }
 
         public static int D10Roll()
         {
-            Random random = new Random();
             return random.Next(1, 11);
         }
     }
