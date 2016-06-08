@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -11,7 +12,7 @@ namespace LDVELH_WindowsForm
     public class Hero : Character
     {
         [Key]
-        int HeroID { get; set; }
+        public int HeroID { get; set; }
 
         public event MaxLifeHandler MaxLifeChanged;
         public delegate void MaxLifeHandler(Hero m, int lifeChange);
@@ -19,11 +20,12 @@ namespace LDVELH_WindowsForm
         public event AgilityHandler AgilityChanged;
         public delegate void AgilityHandler(Hero m, int agilityChange);
 
+        [Column("Gold")]
         private int gold;
         public event GoldHandler GoldChanged;
         public delegate void GoldHandler(Hero m, int goldChange);
 
-        private List<Capacity> capacities;
+        public List<Capacity> capacities;
         public event capacitiesHandler capacitiesChanged;
         public delegate void capacitiesHandler(Hero m, Capacity capacity);
 
@@ -35,7 +37,7 @@ namespace LDVELH_WindowsForm
         public event weaponHolderHandler weaponHolderChanged;
         public delegate void weaponHolderHandler(Hero m, Weapon weapon, bool add);
 
-        private List<SpecialItem> specialItems;
+        public List<SpecialItem> specialItems;
         public event specialItemsHandler specialItemsChanged;
         public delegate void specialItemsHandler(Hero m, SpecialItem specialItem, bool add);
 

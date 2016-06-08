@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,10 @@ namespace LDVELH_WindowsForm
     public class Weapon : Loot
     {
         [Key]
-        int WeaponID { get; set; }
+        public int WeaponID { get; set; }
+        [Column("name")]
         string name;
+        [Column("WeaponType")]
         WeaponTypes weaponType;
 
         public Weapon(string name, WeaponTypes weaponType){

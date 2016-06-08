@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -11,10 +12,12 @@ namespace LDVELH_WindowsForm
     public class WeaponHolder
     {
         [Key]
-        int WeaponHolderID { get; set; }
-        private int basicWeaponHolderSize = 2;
+        public int WeaponHolderID { get; set; }
+        [Column("weaponHolderSize")]
         private int weaponHolderSize;
         List<Weapon> weapons;
+
+        private int basicWeaponHolderSize = 2;
 
         public WeaponHolder()
         {

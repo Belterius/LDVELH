@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,8 @@ namespace LDVELH_WindowsForm
     public class Ennemy : Character
     {
         [Key]
-        int EnnemyID { get; set; }
-
+        public int EnnemyID { get; set; }
+        [Column("Type")]
         private EnnemyTypes ClassType;
 
         public Ennemy(String name, int agility, int hitPoint,EnnemyTypes ennemyType)

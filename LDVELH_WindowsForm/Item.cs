@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -10,6 +11,8 @@ namespace LDVELH_WindowsForm
 {
     public abstract class Loot
     {
+        [Key]
+        public int LootID { get; set; }
 
     }
     public class Gold : Loot
@@ -26,15 +29,17 @@ namespace LDVELH_WindowsForm
     }
     public abstract class Item : Loot
     {
-        [Key]
-        int ItemID { get; set; }
+        
 
+        [Column("name")]
         protected string name;
 
         public string getName
         {
             get { return name; }
         }
+
+        [Column("DisplayName")]
         public virtual string getDisplayName
         {
             get { return name; }
@@ -44,7 +49,11 @@ namespace LDVELH_WindowsForm
 
     public class Consummable : Item
     {
+
+        [Column("healingPower")]
         int healingPower;
+
+        [Column("chargesLeft")]
         int chargesLeft;
         
         public Consummable(string name, int healingPower, int charges)
@@ -103,6 +112,8 @@ namespace LDVELH_WindowsForm
 
     public class Food : Item
     {
+
+        [Column("chargesLeft")]
         int chargesLeft;
 
         public Food(string name, int charges)

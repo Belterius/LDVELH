@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,10 +12,14 @@ namespace LDVELH_WindowsForm
     public class Character
     {
         [Key]
-        int CharacterID { get; set; }
+        public int CharacterID { get; set; }
+        [Column("name")]
         protected string name;
+        [Column("maxLife")]
         protected int maxHitPoint;
+        [Column("actualLife")]
         protected int actualHitPoint;
+        [Column("baseAgility")]
         protected int baseAgility;
         public event HitPointHandler HitPointChanged;
         public delegate void HitPointHandler(Hero m, int damage);

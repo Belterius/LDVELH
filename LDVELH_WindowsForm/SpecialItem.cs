@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,8 @@ namespace LDVELH_WindowsForm
     public abstract class SpecialItem : Loot
     {
         [Key]
-        int SpecialItemID { get; set; }
+        public int SpecialItemID { get; set; }
+        [Column("name")]
         protected string name;
 
         public string getName
@@ -27,7 +29,9 @@ namespace LDVELH_WindowsForm
     public class SpecialItemCombat : SpecialItem
     {
         //Has an effect during combat (Example : +2 agility shield)
+        [Column("agilityBonus")]
         int agilityBonus;
+        [Column("hitPointBonus")]
         int hitPointBonus;
 
         public override string getDisplayName
@@ -89,7 +93,9 @@ namespace LDVELH_WindowsForm
     public class SpecialItemAlways : SpecialItem
     {
         //Has a permanent effect (Example : +4 HitPoint chain mail)
+        [Column("agilityBonus")]
         int agilityBonus;
+        [Column("lifePointBonus")]
         int LifePointBonus;
 
         public SpecialItemAlways(String name, int agilityBonus, int hitPointBonus)

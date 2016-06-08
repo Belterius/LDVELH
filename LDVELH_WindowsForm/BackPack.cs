@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -11,10 +12,12 @@ namespace LDVELH_WindowsForm
     public class BackPack
     {
         [Key]
-        int BackPackID { get; set; }
-        private int basicBackPackSize = 8;
+        public int BackPackID { get; set; }
+        [Column("BackPackSize")]
         private int backPackSize;
-        List<Item> Items;
+        public List<Item> Items;
+
+        private int basicBackPackSize = 8;
 
         public BackPack()
         {
