@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,8 @@ namespace LDVELH_WindowsForm
 {
     public class Paragraph
     {
+        [Key]
+        int ParagraphID { get; set; }
         String contentText;
         List<Event> decision;
         int paragraphNumber;

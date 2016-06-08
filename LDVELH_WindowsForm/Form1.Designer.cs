@@ -57,12 +57,16 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.buttonDatabase = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.groupBoxStats.SuspendLayout();
             this.groupBoxInventory.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxStats
             // 
+            this.groupBoxStats.Controls.Add(this.button11);
+            this.groupBoxStats.Controls.Add(this.buttonDatabase);
             this.groupBoxStats.Controls.Add(this.labelAgilityDescription);
             this.groupBoxStats.Controls.Add(this.labelAgility);
             this.groupBoxStats.Controls.Add(this.labelHitPointDescription);
@@ -350,6 +354,26 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // buttonDatabase
+            // 
+            this.buttonDatabase.Location = new System.Drawing.Point(345, 12);
+            this.buttonDatabase.Name = "buttonDatabase";
+            this.buttonDatabase.Size = new System.Drawing.Size(144, 23);
+            this.buttonDatabase.TabIndex = 12;
+            this.buttonDatabase.Text = "DATABASEGENERATOR";
+            this.buttonDatabase.UseVisualStyleBackColor = true;
+            this.buttonDatabase.Click += new System.EventHandler(this.buttonDatabase_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(264, 12);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 13;
+            this.button11.Text = "button11";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,6 +435,8 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button buttonUseItem;
+        private System.Windows.Forms.Button buttonDatabase;
+        private System.Windows.Forms.Button button11;
     }
 }
 

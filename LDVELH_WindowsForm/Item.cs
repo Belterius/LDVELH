@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -25,6 +26,9 @@ namespace LDVELH_WindowsForm
     }
     public abstract class Item : Loot
     {
+        [Key]
+        int ItemID { get; set; }
+
         protected string name;
 
         public string getName

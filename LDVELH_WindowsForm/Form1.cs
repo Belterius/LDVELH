@@ -261,5 +261,24 @@ namespace LDVELH_WindowsForm
             }
         }
 
+        private void buttonDatabase_Click(object sender, EventArgs e)
+        {
+            using (StoryContext db = new StoryContext())
+            {
+                Weapon Sword = CreateLoot.CreateWeapon.sword();
+                db.MyWeapons.Add(Sword);
+                db.SaveChanges();
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            using (StoryContext db = new StoryContext())
+            {
+                Weapon weapon = db.MyWeapons.FirstOrDefault(x => x.getWeaponType == WeaponTypes.Sword);
+                System.Diagnostics.Debug.WriteLine(weapon.ToString());
+            }
+        }
+
     }
 }

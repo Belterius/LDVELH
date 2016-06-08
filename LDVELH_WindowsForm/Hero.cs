@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -9,6 +10,9 @@ namespace LDVELH_WindowsForm
 {
     public class Hero : Character
     {
+        [Key]
+        int HeroID { get; set; }
+
         public event MaxLifeHandler MaxLifeChanged;
         public delegate void MaxLifeHandler(Hero m, int lifeChange);
 

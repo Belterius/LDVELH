@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace LDVELH_WindowsForm
 {
     public class Character
     {
+        [Key]
+        int CharacterID { get; set; }
         protected string name;
         protected int maxHitPoint;
         protected int actualHitPoint;
