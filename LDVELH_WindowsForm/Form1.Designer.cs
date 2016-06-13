@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBoxStats = new System.Windows.Forms.GroupBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.buttonDatabase = new System.Windows.Forms.Button();
             this.labelAgilityDescription = new System.Windows.Forms.Label();
             this.labelAgility = new System.Windows.Forms.Label();
             this.labelHitPointDescription = new System.Windows.Forms.Label();
@@ -57,8 +59,6 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.buttonDatabase = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
             this.groupBoxStats.SuspendLayout();
             this.groupBoxInventory.SuspendLayout();
             this.SuspendLayout();
@@ -77,6 +77,26 @@
             this.groupBoxStats.TabIndex = 0;
             this.groupBoxStats.TabStop = false;
             this.groupBoxStats.Text = "Hero Stats";
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(264, 12);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 13;
+            this.button11.Text = "button11";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // buttonDatabase
+            // 
+            this.buttonDatabase.Location = new System.Drawing.Point(345, 12);
+            this.buttonDatabase.Name = "buttonDatabase";
+            this.buttonDatabase.Size = new System.Drawing.Size(144, 23);
+            this.buttonDatabase.TabIndex = 12;
+            this.buttonDatabase.Text = "DATABASEGENERATOR";
+            this.buttonDatabase.UseVisualStyleBackColor = true;
+            this.buttonDatabase.Click += new System.EventHandler(this.buttonDatabase_Click);
             // 
             // labelAgilityDescription
             // 
@@ -353,26 +373,6 @@
             this.button10.Text = "AddWeapon";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // buttonDatabase
-            // 
-            this.buttonDatabase.Location = new System.Drawing.Point(345, 12);
-            this.buttonDatabase.Name = "buttonDatabase";
-            this.buttonDatabase.Size = new System.Drawing.Size(144, 23);
-            this.buttonDatabase.TabIndex = 12;
-            this.buttonDatabase.Text = "DATABASEGENERATOR";
-            this.buttonDatabase.UseVisualStyleBackColor = true;
-            this.buttonDatabase.Click += new System.EventHandler(this.buttonDatabase_Click);
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(264, 12);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 13;
-            this.button11.Text = "button11";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // Form1
             // 

@@ -61,9 +61,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LDVELH_WindowsForm\LDVELH_WindowsForm.csproj">
-      <Project>{64e428e7-f6a6-4a95-89b3-cc72e0a9b76c}</Project>
-      <Name>LDVELH_WindowsForm</Name>
+    <ProjectReference Include="..\LDVELH_WPF\LDVELH_WPF.csproj">
+      <Project>{c55a1c6e-1882-4bd3-a621-92a57cd719bc}</Project>
+      <Name>LDVELH_WPF</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -1,0 +1,40 @@
+﻿<Window x:Class="LDVELH_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="714" Width="767" Loaded="Window_Loaded">
+    <Grid>
+        <GroupBox x:Name="groupBoxHeroStat" Header="Hero Stats" HorizontalAlignment="Left" VerticalAlignment="Top" Height="74" Width="550" Margin="10,0,0,0">
+            <Grid HorizontalAlignment="Left" Height="61" VerticalAlignment="Top" Width="530" Margin="10,-6,-2,-3">
+                <Label x:Name="labelDescriptionHitPoint" Content="Hit Points :" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelAgility" Content="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="221,25,0,0"/>
+                <Label x:Name="labelDescriptionAgility" Content="Agility :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="167,25,0,0"/>
+                <Label x:Name="labelHitPoint" Content="20/20" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.053,1.423" Margin="82,25,0,0"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupBoxInventory" Header="Inventory" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="556,0,0,0" Height="671" Width="195">
+            <Grid HorizontalAlignment="Left" Height="652" VerticalAlignment="Top" Width="185" Margin="0,0,-2,-3">
+                <Grid HorizontalAlignment="Left" Height="652" VerticalAlignment="Top" Width="185">
+                    <Label x:Name="labelGoldAmount" Content="goldAmount" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,36,0,0" RenderTransformOrigin="0.39,0.538"/>
+                    <Label Content="BackPack :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,237,0,0"/>
+                    <Label Content="Special Items :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,419,0,0"/>
+                    <Label Content="Weapon :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,95,0,0"/>
+                    <Label x:Name="labelDescriptionGold" Content="Gold :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                    <ListBox x:Name="listBoxWeapons" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="162" Margin="13,121,0,0"/>
+                    <ListBox x:Name="listBoxBackPack" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="162" Margin="13,263,0,0"/>
+                    <ListBox x:Name="listBoxSpecialItems" HorizontalAlignment="Left" Height="197" VerticalAlignment="Top" Width="162" Margin="13,445,0,0"/>
+                    <Button x:Name="buttonThrowItem" Content="Throw Item" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="97,368,0,0" FontSize="9" Click="buttonThrowItem_Click"/>
+                    <Button x:Name="buttonUseItem" Content="Use Item" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="17,368,0,0" FontSize="9" Click="buttonUseItem_Click"/>
+                    <Button x:Name="buttonThrowWeapon" Content="Throw Weapon" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="40,180,0,0" FontSize="9" Click="buttonThrowWeapon_Click"/>
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupBoxChoices" Header="Choices" Margin="10,509,208,13">
+            <Grid HorizontalAlignment="Left" Height="143" VerticalAlignment="Top" Width="541" Margin="0,0,-12,-3">
+            </Grid>
+        </GroupBox>
+        <RichTextBox x:Name="richTextBoxMainContent" HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="541" Margin="10,74,0,0">
+            <FlowDocument/>
+        </RichTextBox>
+
+    </Grid>
+</Window>

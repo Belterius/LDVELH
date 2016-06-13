@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LDVELH_WindowsForm;
+using LDVELH_WPF;
 using System.Diagnostics;
 
 namespace LDVELH_Tests

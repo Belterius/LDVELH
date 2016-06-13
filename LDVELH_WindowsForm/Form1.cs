@@ -31,10 +31,7 @@ namespace LDVELH_WindowsForm
             story.start();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void initHero(String name)
         {
@@ -110,19 +107,7 @@ namespace LDVELH_WindowsForm
             story.ParagraphChanged += storyObserver.ActualParagraphChanged;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                hero.takeDamage(2);
-            }
-            catch (YouAreDeadException)
-            {
-                MessageBox.Show("You died !");
-                initHero(hero.getName());
-                
-            }
-        }
+        
         public string ShowMyDialogBox()
         {
             MessageBoxInput testDialog = new MessageBoxInput();
@@ -148,7 +133,23 @@ namespace LDVELH_WindowsForm
             }
             
         }
+        private void label3_Click(object sender, EventArgs e)
+        {
 
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                hero.takeDamage(2);
+            }
+            catch (YouAreDeadException)
+            {
+                MessageBox.Show("You died !");
+                initHero(hero.getName());
+
+            }
+        }
         private void button1_Click_1(object sender, EventArgs e)
         {
             hero.addGold(3);
