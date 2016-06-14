@@ -181,7 +181,6 @@ namespace LDVELH_WPF
             double previousButtonHeight = 0;
             foreach (Button button in ((Grid)(groupBoxDecision.Content)).Children)
             {
-                System.Diagnostics.Debug.WriteLine("Height : " + button.ActualHeight);
                 button.Margin = new Thickness(setXPosition(button, groupBox), previousButtonY, setXPosition(button, groupBox), (((Grid)(groupBox.Content)).ActualHeight - button.ActualHeight - previousButtonY));
                 previousButtonHeight = button.ActualHeight;
                 previousButtonY = (previousButtonY + previousButtonHeight + marginBetweenButton);

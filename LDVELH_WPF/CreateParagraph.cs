@@ -36,11 +36,23 @@ namespace LDVELH_WPF
                 case 2:
                     {
                         paragraph = new StoryParagraph("le contenu du second paragraph qui s'affichera \n retour a la ligne peut etre", paragraphNumber);
+                        Event moveToParagraph3 = new MoveEvent(3, "Go to South-West");
+                        paragraph.addDecision(moveToParagraph3);
                         return paragraph;
                     }
                 case 3:
                     {
-                        paragraph = new StoryParagraph("le contenu du troisieme paragraph qui s'affichera \n retour a la ligne peut etre", paragraphNumber);
+                        paragraph = new StoryParagraph("You encounter a Bear and fight for your life !", paragraphNumber);
+                        //Event encounterBear = new FightEvent(CreateMonster.Bear());                        
+                        Event encounterBear = new FightEvent(new Ennemy("bigBear", 12,55,EnnemyTypes.Beast));
+                        paragraph.addMainEvent(encounterBear);
+                        Event backToTown = new MoveEvent(4, "Go to the nearest town to rest");
+                        paragraph.addDecision(backToTown);
+                        return paragraph;
+                    }
+                case 4:
+                    {
+                        paragraph = new StoryParagraph("The town, you are safe !", paragraphNumber);
                         return paragraph;
                     }
                 default :

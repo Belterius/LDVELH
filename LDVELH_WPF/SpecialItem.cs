@@ -10,8 +10,6 @@ namespace LDVELH_WPF
 {
     public abstract class SpecialItem : Loot
     {
-        [Key]
-        public int SpecialItemID { get; set; }
         [Column("name")]
         protected string name;
 

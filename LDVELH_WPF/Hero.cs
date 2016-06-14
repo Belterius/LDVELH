@@ -11,9 +11,7 @@ namespace LDVELH_WPF
 {
     public class Hero : Character
     {
-        [Key]
-        public int HeroID { get; set; }
-
+       
         public event MaxLifeHandler MaxLifeChanged;
         public delegate void MaxLifeHandler(Hero m, int lifeChange);
 
@@ -414,26 +412,9 @@ namespace LDVELH_WPF
             return (heroAgility - ennemyAgility);
         }
 
-        private int getBonusAgility()
-        {
-            int bonusAgility = 0;
-            foreach (SpecialItemCombat combatItem in specialItems)
-            {
-                bonusAgility += combatItem.getAgilityBonus;
-            }
+        
 
-            if (this.possesCapacity(CapacityType.WeaponMastery))
-            {
-                if (this.weaponHolder.Contains(weaponMastery))
-                {
-                    bonusAgility += 2;
-                }
-            }
-            return bonusAgility;
-
-        }
-
-        private int getBonusAgility(Ennemy ennemy)
+        public int getBonusAgility(Ennemy ennemy)
         {
             int bonusAgility = 0;
             bonusAgility += getBonusItemAgility();
@@ -444,9 +425,10 @@ namespace LDVELH_WPF
         private int getBonusItemAgility()
         {
             int bonusAgility = 0;
-            foreach (SpecialItemCombat combatItem in specialItems)
+            foreach (SpecialItem combatItem in specialItems)
             {
-                bonusAgility += combatItem.getAgilityBonus;
+                if(combatItem is SpecialItemCombat)
+                    bonusAgility += ((SpecialItemCombat)combatItem).getAgilityBonus;
             }
             return bonusAgility;
         }

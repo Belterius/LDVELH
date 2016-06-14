@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace LDVELH_WPF
 {
@@ -75,7 +76,30 @@ namespace LDVELH_WPF
         }
         public override void resolveEvent(Story story)
         {
-            throw new NotImplementedException();
+            try
+            {
+                while (!ShowMyDialogBox(story, ennemy)) ;
+            }
+            catch (YouAreDeadException)
+            {
+                throw;
+            }
+        }
+        private bool ShowMyDialogBox(Story story, Ennemy ennemy)
+        {
+            MessageBoxFight testDialog = new MessageBoxFight(story.getHero, ennemy);
+
+            if (testDialog.ShowDialog() == true)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("You can't escape a fight like that !");
+                return false;
+            }
+            
+
         }
     }
     public class MoveEvent : Event

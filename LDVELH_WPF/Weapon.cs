@@ -10,7 +10,6 @@ namespace LDVELH_WPF
 {
     public class Weapon : Loot
     {
-        [Key]
         public int WeaponID { get; set; }
         [Column("name")]
         string name;

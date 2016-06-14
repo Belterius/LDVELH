@@ -24,6 +24,7 @@ namespace LDVELH_WPF
         StoryObserver storyObserver;
         Hero hero;
         HeroObserver heroObserver;
+        HeroContext heroContext;
 
         public MainWindow()
         {
@@ -32,6 +33,7 @@ namespace LDVELH_WPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            
             initHero(ShowMyDialogBox());
             initStory();
             this.Title = hero.getName();
@@ -39,6 +41,7 @@ namespace LDVELH_WPF
         }
         private void initHero(String name)
         {
+            heroContext = new HeroContext();
             hero = new Hero(name);
             heroCharacterObserver();
             heroBaseStat();
@@ -100,6 +103,7 @@ namespace LDVELH_WPF
             story.addParagraph(CreateParagraph.CreateAParagraph(1));
             story.addParagraph(CreateParagraph.CreateAParagraph(2));
             story.addParagraph(CreateParagraph.CreateAParagraph(3));
+            story.addParagraph(CreateParagraph.CreateAParagraph(4));
 
             initStoryObserver();
 
@@ -152,6 +156,12 @@ namespace LDVELH_WPF
         private void buttonThrowItem_Click(object sender, RoutedEventArgs e)
         {
             hero.removeLoot((Item)listBoxBackPack.SelectedItem);
+        }
+
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
+        {
+            heroContext.MyHeroes.Add(hero);
+            heroContext.SaveChanges();
         }
     }
 }

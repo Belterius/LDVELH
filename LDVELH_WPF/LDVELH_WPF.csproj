@@ -45,6 +45,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,6 +68,7 @@
     <Compile Include="Capacity.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CreateLoot.cs" />
+    <Compile Include="CreateMonster.cs" />
     <Compile Include="CreateParagraph.cs" />
     <Compile Include="DamageTable.cs" />
     <Compile Include="DiceRoll.cs" />
@@ -75,9 +78,18 @@
     <Compile Include="GlobalFunction.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="MessageBoxFight.xaml.cs">
+      <DependentUpon>MessageBoxFight.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MessageBoxInput.xaml.cs">
       <DependentUpon>MessageBoxInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HeroContext.cs" />
+    <Compile Include="Migrations\201606140831276_simplier keys.cs" />
+    <Compile Include="Migrations\201606140831276_simplier keys.Designer.cs">
+      <DependentUpon>201606140831276_simplier keys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NonPublicColumnAttributeConvention.cs" />
     <Compile Include="StoryParagraph.cs" />
     <Compile Include="SpecialItem.cs" />
@@ -97,6 +109,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MessageBoxFight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MessageBoxInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +132,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201606140831276_simplier keys.resx">
+      <DependentUpon>201606140831276_simplier keys.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
