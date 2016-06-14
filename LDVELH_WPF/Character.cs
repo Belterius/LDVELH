@@ -13,13 +13,13 @@ namespace LDVELH_WPF
         [Key]
         public int CharacterID { get; set; }
         [Column("name")]
-        protected string name;
+        protected string name { get; set; }
         [Column("maxLife")]
-        protected int maxHitPoint;
+        protected int maxHitPoint{ get; set; }
         [Column("actualLife")]
-        protected int actualHitPoint;
+        protected int actualHitPoint{ get; set; }
         [Column("baseAgility")]
-        protected int baseAgility;
+        protected int baseAgility{ get; set; }
         public event HitPointHandler HitPointChanged;
         public delegate void HitPointHandler(Hero m, int damage);
 

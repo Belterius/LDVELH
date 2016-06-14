@@ -11,6 +11,11 @@ namespace LDVELH_WPF
 {
     public class Hero : Character
     {
+        [ForeignKey("weaponHolder")]
+        public int WeaponHolderID { get; set; }
+
+        [ForeignKey("backPack")]
+        public int BackPackID { get; set; }
        
         public event MaxLifeHandler MaxLifeChanged;
         public delegate void MaxLifeHandler(Hero m, int lifeChange);
@@ -19,7 +24,7 @@ namespace LDVELH_WPF
         public delegate void AgilityHandler(Hero m, int agilityChange);
 
         [Column("Gold")]
-        private int gold;
+        private int gold{ get; set; }
         public event GoldHandler GoldChanged;
         public delegate void GoldHandler(Hero m, int goldChange);
 
@@ -27,11 +32,11 @@ namespace LDVELH_WPF
         public event capacitiesHandler capacitiesChanged;
         public delegate void capacitiesHandler(Hero m, Capacity capacity);
 
-        public BackPack backPack;
+        public BackPack backPack { get; set; }
         public event backPackHandler backPackChanged;
         public delegate void backPackHandler(Hero m, Item item, bool add);
 
-        public WeaponHolder weaponHolder;
+        public WeaponHolder weaponHolder { get; set; }
         public event weaponHolderHandler weaponHolderChanged;
         public delegate void weaponHolderHandler(Hero m, Weapon weapon, bool add);
 
@@ -39,8 +44,15 @@ namespace LDVELH_WPF
         public event specialItemsHandler specialItemsChanged;
         public delegate void specialItemsHandler(Hero m, SpecialItem specialItem, bool add);
 
+        [Column]
+        private int saveActualParagraph { get; set; }
+
         private WeaponTypes weaponMastery = WeaponTypes.None;
 
+        private Hero()
+        {
+            specialItems = new List<SpecialItem>();
+        }
 
         public Hero(string name){
             this.name = name;
@@ -470,6 +482,11 @@ namespace LDVELH_WPF
                 return true;
             }
             return false;
+        }
+
+        public void setActualParagraph(int actualParagraph)
+        {
+            this.saveActualParagraph = actualParagraph;
         }
     }
 

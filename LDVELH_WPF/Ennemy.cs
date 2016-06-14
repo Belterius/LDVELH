@@ -10,8 +10,6 @@ namespace LDVELH_WPF
 {
     public class Ennemy : Character
     {
-        [Key]
-        public int EnnemyID { get; set; }
         [Column("Type")]
         private EnnemyTypes ClassType;
 

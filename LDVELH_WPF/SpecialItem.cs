@@ -10,8 +10,8 @@ namespace LDVELH_WPF
 {
     public abstract class SpecialItem : Loot
     {
-        [Column("name")]
-        protected string name;
+        [Column]
+        protected string name{get;set;}
 
         public string getName
         {
@@ -27,10 +27,10 @@ namespace LDVELH_WPF
     public class SpecialItemCombat : SpecialItem
     {
         //Has an effect during combat (Example : +2 agility shield)
-        [Column("agilityBonus")]
-        int agilityBonus;
-        [Column("hitPointBonus")]
-        int hitPointBonus;
+        [Column]
+        int agilityBonus{get;set;}
+        [Column]
+        int hitPointBonus { get; set; }
 
         public override string getDisplayName
         {
@@ -51,7 +51,10 @@ namespace LDVELH_WPF
                 return name;
             }
         }
+        private SpecialItemCombat()
+        {
 
+        }
         public SpecialItemCombat(String name, int agilityBonus, int hitPointBonus)
         {
             this.agilityBonus = agilityBonus;
@@ -91,11 +94,14 @@ namespace LDVELH_WPF
     public class SpecialItemAlways : SpecialItem
     {
         //Has a permanent effect (Example : +4 HitPoint chain mail)
-        [Column("agilityBonus")]
-        int agilityBonus;
-        [Column("lifePointBonus")]
-        int LifePointBonus;
+        [Column]
+        int agilityBonus { get; set; }
+        [Column]
+        int LifePointBonus { get; set; }
+        private SpecialItemAlways()
+        {
 
+        }
         public SpecialItemAlways(String name, int agilityBonus, int hitPointBonus)
         {
             this.agilityBonus = agilityBonus;

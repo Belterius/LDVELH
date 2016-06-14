@@ -18,6 +18,10 @@ namespace LDVELH_WPF
     public class Gold : Loot
     {
         int goldAmount;
+        private Gold()
+        {
+
+        }
         public Gold(int amount)
         {
             this.goldAmount = amount;
@@ -31,15 +35,15 @@ namespace LDVELH_WPF
     {
         
 
-        [Column("name")]
-        protected string name;
+        [Column]
+        protected string name{get;set;}
 
         public string getName
         {
             get { return name; }
         }
 
-        [Column("DisplayName")]
+        
         public virtual string getDisplayName
         {
             get { return name; }
@@ -50,12 +54,16 @@ namespace LDVELH_WPF
     public class Consummable : Item
     {
 
-        [Column("healingPower")]
-        int healingPower;
+        [Column]
+        int healingPower{get;set;}
 
-        [Column("chargesLeft")]
-        int chargesLeft;
-        
+        [Column]
+        int chargesLeft { get; set; }
+
+        private Consummable()
+        {
+
+        }
         public Consummable(string name, int healingPower, int charges)
         {
             this.healingPower = healingPower;
@@ -113,9 +121,12 @@ namespace LDVELH_WPF
     public class Food : Item
     {
 
-        [Column("chargesLeft")]
-        int chargesLeft;
+        [Column]
+        int chargesLeft { get; set; }
+        private Food()
+        {
 
+        }
         public Food(string name, int charges)
         {
             this.name = name;
@@ -170,6 +181,10 @@ namespace LDVELH_WPF
     public class Miscellaneous : Item
     {
 
+        private Miscellaneous()
+        {
+
+        }
         public Miscellaneous(string name)
         {
             this.name = name;

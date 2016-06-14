@@ -10,12 +10,16 @@ namespace LDVELH_WPF
 {
     public class Weapon : Loot
     {
-        public int WeaponID { get; set; }
-        [Column("name")]
-        string name;
-        [Column("WeaponType")]
-        WeaponTypes weaponType;
 
+        [Column]
+        private string name{get;set;}
+        [Column]
+        private WeaponTypes weaponType;
+
+        private Weapon()
+        {
+
+        }
         public Weapon(string name, WeaponTypes weaponType){
             this.name = name;
             this.weaponType = weaponType;
@@ -44,10 +48,12 @@ namespace LDVELH_WPF
         {
             get { return weaponType; }
         }
+
         public string getName
         {
             get { return name; }
         }
+
         public string getDisplayName
         {
             get { return name + "(" + weaponType.ToString() + ")"; }

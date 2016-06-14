@@ -7,13 +7,13 @@ namespace LDVELH_WPF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class simplierkeys : IMigrationMetadata
+    public sealed partial class FixHeroFK : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(simplierkeys));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FixHeroFK));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606140831276_simplier keys"; }
+            get { return "201606141500582_FixHeroFK"; }
         }
         
         string IMigrationMetadata.Source

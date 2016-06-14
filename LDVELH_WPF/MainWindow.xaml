@@ -36,6 +36,7 @@
             <FlowDocument/>
         </RichTextBox>
         <Button x:Name="buttonSave" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="450,30,0,0" Click="buttonSave_Click"/>
+        <Button x:Name="buttonTestLoad" Content="loadTest" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="358,30,0,0" Click="buttonTestLoad_Click"/>
 
     </Grid>
 </Window>

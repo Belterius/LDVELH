@@ -5,14 +5,14 @@ namespace LDVELH_WPF.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<LDVELH_WPF.HeroContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<LDVELH_WPF.HeroSaveContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(LDVELH_WPF.HeroContext context)
+        protected override void Seed(LDVELH_WPF.HeroSaveContext context)
         {
             //  This method will be called after migrating to the latest version.
 

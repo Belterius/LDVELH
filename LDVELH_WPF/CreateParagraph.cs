@@ -23,6 +23,7 @@ namespace LDVELH_WPF
                         startingItems.Add(CreateLoot.CreateSpecialItem.chainMail());
                         startingItems.Add(CreateLoot.CreateFood.ration());
                         startingItems.Add(CreateLoot.CreateConsummable.minorHealthPotion());
+                        startingItems.Add(new Gold(20));
                         paragraph = new StoryParagraph("le contenu du premier paragraph qui s'affichera \n retour a la ligne peut etre", paragraphNumber);
                         Event startingItemsLoot = new LootEvent(startingItems);
                         paragraph.addMainEvent(startingItemsLoot);

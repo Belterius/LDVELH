@@ -1,10 +1,11 @@
-namespace LDVELH_WPF
+﻿namespace LDVELH_WPF
 {
     using System;
     using System.Data.Entity;
     using System.Linq;
+    using System.Reflection;
 
-    public class StoryContext : DbContext
+    public class HeroSaveContext : DbContext
     {
         // Your context has been configured to use a 'StoryContext' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
@@ -12,7 +13,8 @@ namespace LDVELH_WPF
         // 
         // If you wish to target a different database and/or database provider, modify the 'StoryContext' 
         // connection string in the application configuration file.
-        public StoryContext() : base("name=StoryContext")
+        public HeroSaveContext()
+            : base("name=HeroSaveContext")
         {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -22,24 +24,11 @@ namespace LDVELH_WPF
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
-
-        // public virtual DbSet<MyEntity> MyEntities { get; set; }
-        public DbSet<Story> MyStories { get; set; } //done
-        public DbSet<BackPack> MyBackPacks { get; set; }//done
-        public DbSet<Character> MyCharacters { get; set; }//done
-        public DbSet<Ennemy> MyEnnemies { get; set; }//done
-        public DbSet<Event> MyEvents { get; set; }
-        public DbSet<Hero> MyHeroes { get; set; }//done
-        public DbSet<Item> MyItems { get; set; }
-        public DbSet<StoryParagraph> MyParagraphs { get; set; }
-        public DbSet<SpecialItem> SpecialItems { get; set; }
         public DbSet<Weapon> MyWeapons { get; set; }
         public DbSet<WeaponHolder> MyWeaponHolders { get; set; }
+        public DbSet<Item> MyItems { get; set; }
+        public DbSet<BackPack> MyBackPack { get; set; }
+        public DbSet<SpecialItem> MySpecialItem { get; set; }
+        public DbSet<Hero> MyHero { get; set; }
     }
-
-    //public class MyEntity
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //}
 }

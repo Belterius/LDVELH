@@ -13,8 +13,11 @@ namespace LDVELH_WPF
     {
         [Key]
         public int BackPackID { get; set; }
-        [Column("BackPackSize")]
-        private int backPackSize;
+
+
+        [Column]
+        private int backPackSize{get;set;}
+
         public List<Item> Items;
 
         private int basicBackPackSize = 8;

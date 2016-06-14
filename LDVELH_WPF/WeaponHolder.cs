@@ -13,8 +13,8 @@ namespace LDVELH_WPF
     {
         [Key]
         public int WeaponHolderID { get; set; }
-        [Column("weaponHolderSize")]
-        private int weaponHolderSize;
+        [Column]
+        private int weaponHolderSize{get;set;}
         List<Weapon> weapons;
 
         private int basicWeaponHolderSize = 2;

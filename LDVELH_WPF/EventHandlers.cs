@@ -126,9 +126,6 @@ namespace LDVELH_WPF
             story.resolveActualParagraph();
 
             //Third, the decisions open to the player
-            //TODO
-
-
             ((Grid)(groupBoxDecision.Content)).Children.Clear();
             foreach(Event possibleEvent in story.getActualParagraph.getListDecision){
                 Button buttonDecision = new Button();
@@ -140,6 +137,9 @@ namespace LDVELH_WPF
             }
             window.UpdateLayout();
             placeButton(groupBoxDecision);
+
+            //Fourth, update the hero actualParagraph in case of exit
+            story.getHero.setActualParagraph(actualParagraph.ParagraphID);
 
         }
 
