@@ -57,10 +57,17 @@ namespace LDVELH_WPF
         {
             
             hero = new Hero(name);
+            heroChoseCapacities();
             heroCharacterObserver();
             heroBaseStat();
             heroListeners();
 
+        }
+        private void heroChoseCapacities()
+        {
+            MenuCapacities menuCapacities = new MenuCapacities(this.hero, this);
+            menuCapacities.Show();
+            this.Hide();
         }
         private void initHero(Hero savedHero)
         {
@@ -103,6 +110,9 @@ namespace LDVELH_WPF
             labelHitPoint.Content = hero.getActualHitPoint().ToString() + "/" + hero.getMaxHitPoint().ToString();
             labelAgility.Content = hero.getBaseAgility().ToString();
             labelGoldAmount.Content = hero.getGold().ToString();
+            labelWeaponMastery.Content = hero.getWeaponMastery.ToString();
+            listBoxCapacities.ItemsSource = hero.capacities;
+            listBoxCapacities.DisplayMemberPath = "getCapacityType";
         }
         private void heroHPListener()
         {
@@ -220,7 +230,7 @@ namespace LDVELH_WPF
             }
             else
             {
-                LoadMenu loadMenu = new LoadMenu();
+                MenuLoad loadMenu = new MenuLoad();
                 loadMenu.Show();
                 this.Close();
             }

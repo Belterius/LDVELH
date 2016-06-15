@@ -14,7 +14,7 @@ namespace LDVELH_WPF
         [Column]
         private string name{get;set;}
         [Column]
-        private WeaponTypes weaponType;
+        private WeaponTypes weaponType { get; set; }
 
         private Weapon()
         {

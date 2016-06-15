@@ -18,10 +18,10 @@ namespace LDVELH_WPF
     /// <summary>
     /// Interaction logic for LoadMenu.xaml
     /// </summary>
-    public partial class LoadMenu : Window
+    public partial class MenuLoad : Window
     {
         List<Hero> listHeroes;
-        public LoadMenu()
+        public MenuLoad()
         {
             InitializeComponent();
         }
@@ -42,7 +42,6 @@ namespace LDVELH_WPF
         private void buttonNew_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
             this.Close();
         }
 
@@ -57,6 +56,7 @@ namespace LDVELH_WPF
                     heroSaveContext.MySpecialItem.Load();
                     heroSaveContext.MyWeaponHolders.Load();
                     heroSaveContext.MyWeapons.Load();
+                    heroSaveContext.MyCapacities.Load();
                     Hero heroSelected = heroSaveContext.MyHero.Where(x => x.CharacterID.ToString() == listBoxHeroes.SelectedValue.ToString()).First();
                     MainWindow mainWindow = new MainWindow(heroSelected);
                     mainWindow.Show();

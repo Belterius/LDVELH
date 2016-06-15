@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Data.Entity;
 
 namespace LDVELH_WPF
 {
@@ -140,7 +141,7 @@ namespace LDVELH_WPF
             }
             catch (YouAreDeadException)
             {
-                handleDeath();
+                handleDeath(story);
                 return;
             }
 
@@ -239,19 +240,28 @@ namespace LDVELH_WPF
                 previousButtonY = (previousButtonY + previousButtonHeight + marginBetweenButton);
             }
         }
-        private void handleDeath()
+        private void handleDeath(Story story)
         {
             MessageBox.Show("You died ! \n Better luck next time.");
             using (HeroSaveContext heroSaveContext = new HeroSaveContext())
             {
+                heroSaveContext.MyItems.Load();
+                heroSaveContext.MySpecialItem.Load();
+                heroSaveContext.MyWeapons.Load();
+                heroSaveContext.MyWeaponHolders.Load();
+                heroSaveContext.MyBackPack.Load();
+                heroSaveContext.MyHero.Load();
+                heroSaveContext.MyCapacities.Load();
                 Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == story.getHero.CharacterID).FirstOrDefault();
                 if (savedHero != null)
                 {
+                    heroSaveContext.MySpecialItem.RemoveRange(savedHero.getSpecialItems);
+                    heroSaveContext.MyCapacities.RemoveRange(savedHero.capacities);
                     heroSaveContext.MyHero.Remove(savedHero);
                     heroSaveContext.SaveChanges();
                 }
             }
-            LoadMenu loadMenu = new LoadMenu();
+            MenuLoad loadMenu = new MenuLoad();
             loadMenu.Show();
             window.Close();
         }

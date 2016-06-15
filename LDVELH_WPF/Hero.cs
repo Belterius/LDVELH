@@ -40,14 +40,15 @@ namespace LDVELH_WPF
         public event weaponHolderHandler weaponHolderChanged;
         public delegate void weaponHolderHandler(Hero m, Weapon weapon, bool add);
 
-        public List<SpecialItem> specialItems;
+        public List<SpecialItem> specialItems{ get; set; }
         public event specialItemsHandler specialItemsChanged;
         public delegate void specialItemsHandler(Hero m, SpecialItem specialItem, bool add);
 
-        [Column]
+        [Column("Paragraph")]
         private int saveActualParagraph { get; set; }
 
-        private WeaponTypes weaponMastery = WeaponTypes.None;
+        [Column("WeaponMastery")]
+        private WeaponTypes weaponMastery{ get; set; }
 
         private Hero()
         {
@@ -60,7 +61,7 @@ namespace LDVELH_WPF
             this.actualHitPoint = this.maxHitPoint;
             this.baseAgility = randBaseAgility();
             this.gold = 0;
-
+            weaponMastery = WeaponTypes.None;
             capacities = new List<Capacity>();
             backPack = new BackPack();
             weaponHolder = new WeaponHolder();

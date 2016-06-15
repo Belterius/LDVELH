@@ -1,0 +1,12 @@
+﻿<Window x:Class="LDVELH_WPF.MenuCapacities"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MenuCapacities" Height="336" Width="351" Loaded="Window_Loaded">
+    <Grid>
+        <GroupBox  x:Name="groupBoxCapacities" Header="GroupBox" HorizontalAlignment="Left" VerticalAlignment="Top" Height="260" Width="282" Margin="31,10,0,0">
+            <Grid HorizontalAlignment="Left" Height="260" VerticalAlignment="Top" Width="282" Margin="0,0,0,0"/>
+        </GroupBox>
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="134,275,0,0" Click="Button_Click"/>
+
+    </Grid>
+</Window>

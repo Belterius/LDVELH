@@ -1,4 +1,4 @@
-﻿<Window x:Class="LDVELH_WPF.LoadMenu"
+﻿<Window x:Class="LDVELH_WPF.MenuLoad"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="LoadMenu" Height="300" Width="300" Loaded="Window_Loaded">

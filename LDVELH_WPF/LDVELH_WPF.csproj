@@ -79,8 +79,11 @@
     <Compile Include="Hero.cs" />
     <Compile Include="HeroSaveContext.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="LoadMenu.xaml.cs">
-      <DependentUpon>LoadMenu.xaml</DependentUpon>
+    <Compile Include="MenuLoad.xaml.cs">
+      <DependentUpon>MenuLoad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuCapacities.xaml.cs">
+      <DependentUpon>MenuCapacities.xaml</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxFight.xaml.cs">
       <DependentUpon>MessageBoxFight.xaml</DependentUpon>
@@ -148,6 +151,34 @@
     <Compile Include="Migrations\201606150926503_addCapacities.Designer.cs">
       <DependentUpon>201606150926503_addCapacities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606151038087_AddCascadeDeleteBackPackWeaponHolder.cs" />
+    <Compile Include="Migrations\201606151038087_AddCascadeDeleteBackPackWeaponHolder.Designer.cs">
+      <DependentUpon>201606151038087_AddCascadeDeleteBackPackWeaponHolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606151050016_AddCascadeSpecialItemCapacities.cs" />
+    <Compile Include="Migrations\201606151050016_AddCascadeSpecialItemCapacities.Designer.cs">
+      <DependentUpon>201606151050016_AddCascadeSpecialItemCapacities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606151101075_CascadeFix.cs" />
+    <Compile Include="Migrations\201606151101075_CascadeFix.Designer.cs">
+      <DependentUpon>201606151101075_CascadeFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606151342065_AddCapacitiesTypeAndWPMastery.cs" />
+    <Compile Include="Migrations\201606151342065_AddCapacitiesTypeAndWPMastery.Designer.cs">
+      <DependentUpon>201606151342065_AddCapacitiesTypeAndWPMastery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606151346062_fixCpacities.cs" />
+    <Compile Include="Migrations\201606151346062_fixCpacities.Designer.cs">
+      <DependentUpon>201606151346062_fixCpacities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606151401343_bugMigration.cs" />
+    <Compile Include="Migrations\201606151401343_bugMigration.Designer.cs">
+      <DependentUpon>201606151401343_bugMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606151408334_fixWeaponType.cs" />
+    <Compile Include="Migrations\201606151408334_fixWeaponType.Designer.cs">
+      <DependentUpon>201606151408334_fixWeaponType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NonPublicColumnAttributeConvention.cs" />
     <Compile Include="StoryParagraph.cs" />
@@ -155,7 +186,7 @@
     <Compile Include="Story.cs" />
     <Compile Include="Weapon.cs" />
     <Compile Include="WeaponHolder.cs" />
-    <Page Include="LoadMenu.xaml">
+    <Page Include="MenuLoad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,6 +202,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MenuCapacities.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MessageBoxFight.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -238,6 +273,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606150926503_addCapacities.resx">
       <DependentUpon>201606150926503_addCapacities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606151038087_AddCascadeDeleteBackPackWeaponHolder.resx">
+      <DependentUpon>201606151038087_AddCascadeDeleteBackPackWeaponHolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606151050016_AddCascadeSpecialItemCapacities.resx">
+      <DependentUpon>201606151050016_AddCascadeSpecialItemCapacities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606151101075_CascadeFix.resx">
+      <DependentUpon>201606151101075_CascadeFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606151342065_AddCapacitiesTypeAndWPMastery.resx">
+      <DependentUpon>201606151342065_AddCapacitiesTypeAndWPMastery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606151346062_fixCpacities.resx">
+      <DependentUpon>201606151346062_fixCpacities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606151401343_bugMigration.resx">
+      <DependentUpon>201606151401343_bugMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606151408334_fixWeaponType.resx">
+      <DependentUpon>201606151408334_fixWeaponType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
