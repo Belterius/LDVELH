@@ -26,6 +26,7 @@ namespace LDVELH_WPF
         private BindingList<Item> listItemSave;
         ListBox listBoxSpecialItem;
         private BindingList<SpecialItem> listSpecialItemSave;
+        
 
         public HeroObserver(Hero hero,Label labelHP,Label labelAgility, Label labelGold, ListBox listWeapon, ListBox listItem, ListBox listSpecialItem)
         {
@@ -64,10 +65,6 @@ namespace LDVELH_WPF
 
         public void GoldChanged(Hero hero, int goldChange)
         {
-            if(goldChange > 0)
-                System.Diagnostics.Debug.WriteLine("Something happened to " + hero.getName() + " he won " + goldChange + " gold");
-            else
-                System.Diagnostics.Debug.WriteLine("Something happened to " + hero.getName() + " he lost " + goldChange + " gold");
             labelGold.Content = hero.getGold().ToString();
         }
 
@@ -76,16 +73,30 @@ namespace LDVELH_WPF
             System.Diagnostics.Debug.WriteLine("Something happened to " + hero.getName() + " he learned " + capacity.getCapacityType.ToString());
 
         }
+        public void backPackChanged(Hero hero)
+        {
+            listItemSave = new BindingList<Item>(hero.backPack.getItems);
+            listBoxBackPackItem.ItemsSource = listItemSave;
+        }
         public void backPackChanged(Hero hero, Item item, bool add)
         {
             listItemSave = new BindingList<Item>(hero.backPack.getItems);
             listBoxBackPackItem.ItemsSource = listItemSave;
-
+        }
+        public void weaponHolderChanged(Hero hero)
+        {
+            listWeaponSave = new BindingList<Weapon>(hero.weaponHolder.getWeapons);
+            listBoxWeapon.ItemsSource = listWeaponSave;
         }
         public void weaponHolderChanged(Hero hero, Weapon weapon, bool add)
         {
             listWeaponSave = new BindingList<Weapon>(hero.weaponHolder.getWeapons);
             listBoxWeapon.ItemsSource = listWeaponSave;
+        }
+        public void specialItemsChanged(Hero hero)
+        {
+            listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
+            listBoxSpecialItem.ItemsSource = listSpecialItemSave;
         }
         public void specialItemsChanged(Hero hero, SpecialItem specialItem, bool add)
         {
@@ -95,11 +106,11 @@ namespace LDVELH_WPF
     }
     class StoryObserver
     {
-        ListBox possibleDecision;
         RichTextBox contentText;
         GroupBox groupBoxDecision;
         Story story;
         Window window;
+        public bool loadingHero = false;
 
         public StoryObserver(Story story, RichTextBox contentText, GroupBox groupBoxDecision, Window window)
         {
@@ -120,14 +131,62 @@ namespace LDVELH_WPF
             //Several step :
 
             //First : the text content
-            contentText.Document.Blocks.Clear();
-            contentText.Document.Blocks.Add(new Paragraph(new Run(actualParagraph.getContent)));
-            //Second : the main event (that WILL happen, no choice)
-            story.resolveActualParagraph();
+            setMainTextContent(actualParagraph);
+
+            //Second : the main event (that WILL happen, no choice, unless we're loading a Hero (so he already resolved the mains event))
+            try
+            {
+                resolveMainEvents(story);
+            }
+            catch (YouAreDeadException)
+            {
+                handleDeath();
+                return;
+            }
 
             //Third, the decisions open to the player
+            generatePlayerPossibleDecision();
+
+            //Fourth, update the hero actualParagraph in case of exit
+            story.getHero.setActualParagraph(actualParagraph.getParagraphNumber);
+
+        }
+        private void setMainTextContent(StoryParagraph actualParagraph)
+        {
+            contentText.Document.Blocks.Clear();
+            contentText.Document.Blocks.Add(new Paragraph(new Run(actualParagraph.getContent)));
+        }
+        private void resolveMainEvents(Story story)
+        {
+            if (!this.loadingHero)
+            {
+                try
+                {
+                    story.resolveActualParagraph();
+                }
+                catch(YouAreDeadException)
+                {
+                    throw;
+                }
+                
+            }
+            else
+                this.loadingHero = false;
+        }
+        private void generatePlayerPossibleDecision()
+        {
+            clearOldPossibleDecision();
+            generateButtonPossibleDecision();
+            placeButtonPossibleDecision(groupBoxDecision);
+        }
+        private void clearOldPossibleDecision()
+        {
             ((Grid)(groupBoxDecision.Content)).Children.Clear();
-            foreach(Event possibleEvent in story.getActualParagraph.getListDecision){
+        }
+        private void generateButtonPossibleDecision()
+        {
+            foreach (Event possibleEvent in story.getActualParagraph.getListDecision)
+            {
                 Button buttonDecision = new Button();
                 buttonDecision.Content = possibleEvent.getTriggerMessage;
                 buttonDecision.Click += delegate { possibleEvent.resolveEvent(story); };
@@ -136,13 +195,7 @@ namespace LDVELH_WPF
                 buttonDecision.VerticalAlignment = VerticalAlignment.Center;
             }
             window.UpdateLayout();
-            placeButton(groupBoxDecision);
-
-            //Fourth, update the hero actualParagraph in case of exit
-            story.getHero.setActualParagraph(actualParagraph.ParagraphID);
-
         }
-
         public double setXPosition(Button button, GroupBox groupBox)
         {
             double totalX = ((Grid)(groupBox.Content)).ActualWidth;
@@ -174,7 +227,7 @@ namespace LDVELH_WPF
             }
             return totalNumberButton;
         }
-        public void placeButton(GroupBox groupBox)
+        public void placeButtonPossibleDecision(GroupBox groupBox)
         {
             double topMargin = calculateYPosition(totalHeightButton(groupBox), totalNumberButton(groupBox), groupBox);
             double previousButtonY = topMargin - marginBetweenButton; //we don't need the margin for the first button
@@ -186,6 +239,21 @@ namespace LDVELH_WPF
                 previousButtonY = (previousButtonY + previousButtonHeight + marginBetweenButton);
             }
         }
-
+        private void handleDeath()
+        {
+            MessageBox.Show("You died ! \n Better luck next time.");
+            using (HeroSaveContext heroSaveContext = new HeroSaveContext())
+            {
+                Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == story.getHero.CharacterID).FirstOrDefault();
+                if (savedHero != null)
+                {
+                    heroSaveContext.MyHero.Remove(savedHero);
+                    heroSaveContext.SaveChanges();
+                }
+            }
+            LoadMenu loadMenu = new LoadMenu();
+            loadMenu.Show();
+            window.Close();
+        }
     }
 }

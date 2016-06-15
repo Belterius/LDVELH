@@ -21,22 +21,37 @@ namespace LDVELH_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         Story story;
         StoryObserver storyObserver;
         Hero hero;
         HeroObserver heroObserver;
+        bool loadingHero = false;
 
         public MainWindow()
         {
             InitializeComponent();
+            initHero(ShowMyDialogBox());
+        }
+        public MainWindow(Hero savedHero)
+        {
+            InitializeComponent();
+            loadingHero = true;
+            initHero(savedHero);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            initHero(ShowMyDialogBox());
+            
             initStory();
             this.Title = hero.getName();
-            story.start();
+            if (!loadingHero)
+                story.start();
+            else
+            {
+                storyObserver.loadingHero = true;
+                story.start(hero.getActualParagraph());
+            }
         }
         private void initHero(String name)
         {
@@ -46,6 +61,27 @@ namespace LDVELH_WPF
             heroBaseStat();
             heroListeners();
 
+        }
+        private void initHero(Hero savedHero)
+        {
+            hero = savedHero;
+            noNullInHero(); //secure our hero identity
+            heroCharacterObserver();
+            heroBaseStat();
+            heroListeners();
+            heroSavedItems();
+        }
+        private void noNullInHero()
+        {
+            //When loading a Hero from our database, if he had no item/backpack/weapon/weaponHolder/capacity then those will be null instead of empty.
+            //we fix the possible problem immediately
+            hero.noNullInHero();
+        }
+        private void heroSavedItems()
+        {
+            heroObserver.weaponHolderChanged(hero);
+            heroObserver.specialItemsChanged(hero);
+            heroObserver.backPackChanged(hero);
         }
         private void heroCharacterObserver()
         {
@@ -161,75 +197,33 @@ namespace LDVELH_WPF
         {
             using (HeroSaveContext heroContext = new HeroSaveContext())
             {
-                //foreach(Weapon weapon in hero.weaponHolder.getWeapons)
-                //{
-                //    heroContext.MyWeapons.Add(weapon);
-                //}
-                //heroContext.SaveChanges();
-
-                //heroContext.MyWeaponHolders.Add(hero.weaponHolder);
-
-                //foreach (Item item in hero.backPack.getItems)
-                //{
-                //    heroContext.MyItems.Add(item);
-                //}
-
-                //heroContext.MyBackPack.Add(hero.backPack);
-
-                //foreach (SpecialItem specialItem in hero.getSpecialItems)
-                //{
-                //    heroContext.MySpecialItem.Add(specialItem);
-                //}
-
-                heroContext.MyHero.Add(hero);
-
+                    Hero savedHero =  heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+                    if (savedHero == null)
+                    {
+                        heroContext.MyHero.Add(hero);
+                    }
+                    else
+                    {
+                        heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
+                    }
                 heroContext.SaveChanges();
+                MessageBox.Show("Hero successfully saved !");
             }
             
         }
 
         private void buttonTestLoad_Click(object sender, RoutedEventArgs e)
         {
-            using (HeroSaveContext heroContext = new HeroSaveContext())
+            if (MessageBox.Show("All unsaved progress will be lost, are you sure ?", "Go to loading menu ?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
-                heroContext.MyWeapons.Load();
-                var query = from hero in heroContext.MyWeapons
-                            select hero;
-                List<Weapon> myHeroes = query.ToList();
-                heroContext.MyWeaponHolders.Load();
-                var queryWH = from hero in heroContext.MyWeaponHolders
-                            select hero;
-                List<WeaponHolder> myWH = queryWH.ToList();
-                heroContext.MyItems.Load();
-                var queryItems = from hero in heroContext.MyItems
-                              select hero;
-                List<Item> myItems = queryItems.ToList();
-                heroContext.MyBackPack.Load();
-                var queryBP = from hero in heroContext.MyBackPack
-                                 select hero;
-                List<BackPack> myBP = queryBP.ToList();
-                heroContext.MySpecialItem.Load();
-                var querySI = from hero in heroContext.MySpecialItem
-                              select hero;
-                List<SpecialItem> mySI = querySI.ToList();
-
-                heroContext.MyHero.Load();
-                var queryHero = from hero in heroContext.MyHero
-                              select hero;
-                List<Hero> myHero = queryHero.ToList();
+                
             }
-            //    heroContext.MyBackPacks.Load();
-            //    heroContext.MyHeroes.Load();
-            //    heroContext.MyWeaponHolders.Load();
-            //    heroContext.MyWeapons.Load();
-            //    heroContext.SpecialItems.Load();
-            //    var query = from hero in heroContext.MyHeroes
-            //                select hero;
-            //    List<Hero> myHeroes = query.ToList();
-            //    var query2 = from hero in heroContext.MyItems
-            //                select hero;
-            //    List<Item> myItems = query2.ToList();
-            //}
+            else
+            {
+                LoadMenu loadMenu = new LoadMenu();
+                loadMenu.Show();
+                this.Close();
+            }
         }
     }
 }

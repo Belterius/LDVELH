@@ -6,16 +6,14 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace LDVELH_WPF
 {
     public class Story 
     {
-        [Key]
-        public int storyID { get; set; }
-        [Column("Hero")]
+        
         Hero playerHero;
-        [Column("Title")]
         public string title{get;set;}
         public List<StoryParagraph> content;
         StoryParagraph actualParagraph;
@@ -32,7 +30,21 @@ namespace LDVELH_WPF
 
         public void resolveActualParagraph()
         {
-            this.actualParagraph.resolve(this);
+            try
+            {
+                this.actualParagraph.resolve(this);
+            }
+            catch(YouAreDeadException){
+                throw;
+            }
+            catch (WeaponHolderFullException)
+            {
+                throw;
+            }
+            catch (BackPackFullException)
+            {
+                throw;
+            }
         }
 
         public void addParagraph(StoryParagraph paragraph)
@@ -43,6 +55,10 @@ namespace LDVELH_WPF
         public void start()
         {
            setActualParagraph(1);
+        }
+        public void start(int paragraph)
+        {
+            setActualParagraph(paragraph);
         }
         private void setActualParagraph(int paragraphNumber)
         {

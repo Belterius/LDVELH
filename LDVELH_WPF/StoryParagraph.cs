@@ -10,12 +10,8 @@ namespace LDVELH_WPF
 {
     public class StoryParagraph
     {
-        [Key]
-        public int ParagraphID { get; set; }
-        [Column("contentText")]
         String contentText;
         List<Event> decision;
-        [Column("paragraphNumber")]
         int paragraphNumber;
         List<Event> mainEvents;
 
@@ -50,7 +46,24 @@ namespace LDVELH_WPF
         {
             foreach (Event mainEvent in mainEvents)
             {
-                mainEvent.resolveEvent(story);
+                try
+                {
+                    mainEvent.resolveEvent(story);
+                }
+                catch(YouAreDeadException)
+                {
+                    throw;
+                }
+                catch (WeaponHolderFullException)
+                {
+                    //TODO
+                    throw;
+                }
+                catch(BackPackFullException)
+                {
+                    //TODO
+                    throw;
+                }
             }
         }
     }

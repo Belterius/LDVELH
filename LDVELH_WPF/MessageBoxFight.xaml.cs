@@ -33,6 +33,7 @@ namespace LDVELH_WPF
 
         Hero hero;
         Ennemy ennemy;
+        bool fightOver = false;
         int roundNumber = 0;
         int previousLifeHero, previousLifeEnnemy;
         public MessageBoxFight()
@@ -55,7 +56,16 @@ namespace LDVELH_WPF
             buttonNextRound.Content = "Next Round";
             previousLifeHero = hero.getActualHitPoint();
             previousLifeEnnemy = ennemy.getActualHitPoint();
-            if (hero.Fight(ennemy)){
+            try
+            {
+                fightOver = hero.Fight(ennemy);
+            }
+            catch(YouAreDeadException){
+                DialogResult = true;
+                throw;
+            }
+            if (fightOver)
+            {
                 buttonNextRound.Content = "Victory !";
                 labelRoundNumber.Content = "VICTORY";
                 setLife();

@@ -87,6 +87,7 @@ namespace LDVELH_WPF
         }
         private bool ShowMyDialogBox(Story story, Ennemy ennemy)
         {
+
             MessageBoxFight testDialog = new MessageBoxFight(story.getHero, ennemy);
 
             if (testDialog.ShowDialog() == true)

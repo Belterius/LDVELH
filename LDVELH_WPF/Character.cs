@@ -13,7 +13,7 @@ namespace LDVELH_WPF
         [Key]
         public int CharacterID { get; set; }
         [Column("name")]
-        protected string name { get; set; }
+        public string name { get; set; }
         [Column("maxLife")]
         protected int maxHitPoint{ get; set; }
         [Column("actualLife")]

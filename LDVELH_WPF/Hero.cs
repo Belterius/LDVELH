@@ -28,7 +28,7 @@ namespace LDVELH_WPF
         public event GoldHandler GoldChanged;
         public delegate void GoldHandler(Hero m, int goldChange);
 
-        public List<Capacity> capacities;
+        public List<Capacity> capacities { get; set; }
         public event capacitiesHandler capacitiesChanged;
         public delegate void capacitiesHandler(Hero m, Capacity capacity);
 
@@ -484,9 +484,29 @@ namespace LDVELH_WPF
             return false;
         }
 
+        public void noNullInHero()
+        {
+            if (this.specialItems == null)
+                this.specialItems = new List<SpecialItem>();
+            if (this.capacities == null)
+                this.capacities = new List<Capacity>();
+            if (this.backPack == null)
+                this.backPack = new BackPack();
+            if (this.weaponHolder == null)
+                this.weaponHolder = new WeaponHolder();
+        }
+
         public void setActualParagraph(int actualParagraph)
         {
             this.saveActualParagraph = actualParagraph;
+        }
+        public int getActualParagraph()
+        {
+            return this.saveActualParagraph;
+        }
+
+        public string getResume{
+            get { return this.name + " ( Paragraph : " + this.saveActualParagraph + " )" ; }
         }
     }
 

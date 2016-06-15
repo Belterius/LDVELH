@@ -79,6 +79,9 @@
     <Compile Include="Hero.cs" />
     <Compile Include="HeroSaveContext.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="LoadMenu.xaml.cs">
+      <DependentUpon>LoadMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MessageBoxFight.xaml.cs">
       <DependentUpon>MessageBoxFight.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
     <Compile Include="Migrations\201606141512290_DatabaseWorking.Designer.cs">
       <DependentUpon>201606141512290_DatabaseWorking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606150926503_addCapacities.cs" />
+    <Compile Include="Migrations\201606150926503_addCapacities.Designer.cs">
+      <DependentUpon>201606150926503_addCapacities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NonPublicColumnAttributeConvention.cs" />
     <Compile Include="StoryParagraph.cs" />
@@ -148,6 +155,10 @@
     <Compile Include="Story.cs" />
     <Compile Include="Weapon.cs" />
     <Compile Include="WeaponHolder.cs" />
+    <Page Include="LoadMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -224,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606141512290_DatabaseWorking.resx">
       <DependentUpon>201606141512290_DatabaseWorking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606150926503_addCapacities.resx">
+      <DependentUpon>201606150926503_addCapacities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

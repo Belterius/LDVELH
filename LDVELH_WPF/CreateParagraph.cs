@@ -45,7 +45,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph("You encounter a Bear and fight for your life !", paragraphNumber);
                         //Event encounterBear = new FightEvent(CreateMonster.Bear());                        
-                        Event encounterBear = new FightEvent(new Ennemy("bigBear", 12,55,EnnemyTypes.Beast));
+                        Event encounterBear = new FightEvent(new Ennemy("bigBear", 22,55,EnnemyTypes.Beast));
                         paragraph.addMainEvent(encounterBear);
                         Event backToTown = new MoveEvent(4, "Go to the nearest town to rest");
                         paragraph.addDecision(backToTown);
