@@ -45,6 +45,11 @@ namespace LDVELH_WPF
         {
             public static Weapon sword(){
                 return new Weapon("Sword", WeaponTypes.Epee);
+
+            }
+            public static Weapon Sabre()
+            {
+                return new Weapon("Sabre", WeaponTypes.Sabre);
             }
             public static Weapon MarteauDeGuerre()
             {

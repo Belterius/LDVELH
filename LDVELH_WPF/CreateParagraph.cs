@@ -1515,52 +1515,126 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph("Le garde du corps dégaine un long cimeterre et s'apprête à vous attaquer. ", paragraphNumber);
                         paragraph.addMainEvent(new FightEvent(new Ennemy("Garde du corps",11,21,EnnemyTypes.Human)));
-                        paragraph.addDecision(new MoveEvent(, ""));
+                        paragraph.addDecision(new MoveEvent(24, "continuer"));
                         return paragraph;
                     }
                 case 192:
                     {
-                        paragraph = new StoryParagraph("", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(, ""));
+                        paragraph = new StoryParagraph("Vous distinguez la gueule hérissée de dents pointues d'un Loup Maudit et vous entendez les cris monstrueux des Gloks. Deux d'entre eux viennent droit sur vous, mais votre cheval vous sauve d'une mort certaine en sautant sur les Loups Maudits qu'il projette à terre à grands coups de sabot. Vous frappez un Glok à toute volée et votre arme lui ouvre la tête. Alors, soudain, comme par miracle, vous vous retrouvez galopant sur la grand-route : vous avez réussi à traverser la meute hurlante qui se trouve à présent derrière vous. Vous sentez, cependant, une présence menaçante au-dessus de votre tête : c'est celle d'un Kraan qui vient de prendre son envol.", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(171, "quitter la grandroute pour vous réfugier à l'abri des arbres de la forêt"));
+                        paragraph.addDecision(new MoveEvent(120, "galoper à bride abattue sans vous occuper du Kraan"));
                         return paragraph;
                     }
                 case 193:
                     {
-                        paragraph = new StoryParagraph("", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(, ""));
+                        paragraph = new StoryParagraph("La bête sauvage et son cavalier sont étendus raides morts à vos pieds. Vous remarquez alors un rouleau de Parchemin glissé dans la ceinture du Glok. ", paragraphNumber);
+                        paragraph.addDecision(new LootEvent(new SpecialItemUsage ("ParcheminGlok"), "Prendre le parchemin"));
+                        paragraph.addDecision(new MoveEvent(253, "les combattre"));
+                        paragraph.addDecision(new MoveEvent(126, "vous enfuir dans la forêt"));
                         return paragraph;
                     }
                 case 194:
                     {
-                        paragraph = new StoryParagraph("", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(, ""));
+                        paragraph = new StoryParagraph("Vous courez à toutes jambes en direction du chariot. La panique s'est répandue parmi la foule, tandis que les Kraan attaquent et emportent leurs malheureuses victimes dans un ciel obscurci par leurs immenses ailes noires. Un Kraan, plus grand encore que les autres, vole au-dessus du chariot et trois Gloks hurlants sautent de son dos pour atterrir à califourchon sur les chevaux de l'attelage. Il vous faut combattre les trois créatures ou quitter le chariot pour aller vous réfugier dans une ferme proche.", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(208, "combattre les Gloks"));
+                        paragraph.addDecision(new MoveEvent(148, "vous réfugier dans la ferme"));
                         return paragraph;
                     }
                 case 195:
                     {
-                        paragraph = new StoryParagraph("", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(, ""));
+                        paragraph = new StoryParagraph("Vous essuyez votre arme qui ruisselle du sang de l'ours et vous remarquez l'entrée d'une grotte cachée derrière les rochers d'où a surgi la bête sauvage. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(59, "explorer cette grotte"));
+                        paragraph.addDecision(new MoveEvent(106, "poursuivre votre chemin"));
                         return paragraph;
                     }
                 case 196:
                     {
-                        paragraph = new StoryParagraph("", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(, ""));
+                        paragraph = new StoryParagraph("Vous suivez l'homme dans une petite bibliothèque contiguë. Il pousse alors l'un des nombreux livres alignés sur les étagères et vous entendez un déclic. Aussitôt, tout un pan d'étagères glisse sur lui-même, découvrant un passage secret. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(332, "suivre cet homme dans le passage"));
+                        paragraph.addDecision(new MoveEvent(144, "quittez les lieux et vous retournez dans la rue"));
                         return paragraph;
                     }
                 case 197:
                     {
-                        paragraph = new StoryParagraph("", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(, ""));
+                        paragraph = new StoryParagraph("Le Drakkarim est étendu raide mort au fond de l'embarcation. Il est porteur d'un sabre et de 6 Pièces d'Or que vous pouvez vous approprier si tel est votre désir. Vous jetez ensuite le corps de votre adversaire dans l'eau du lac et vous le regardez disparaître dans ses profondeurs glacées. Vous ramassez ensuite la perche et vous poussez le bateau sur l'autre rive où vous l'abandonnez.", paragraphNumber);
+                        paragraph.addDecision(new LootEvent(new Gold(6), "Prendre les golds"));
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Sabre(), "Prendre le sabre"));
+                        paragraph.addDecision(new MoveEvent(172, "continuer"));
                         return paragraph;
                     }
                 case 198:
+                    {
+                        paragraph = new StoryParagraph("Vous sentez qu'il y a quelqu'un d'autre derrière le paravent et que toute cette boutique baigne dans une aura maléfique. Soyez sur vos gardes, il se passe ici quelque chose de louche. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(7, "retourner dans la rue"));
+                        paragraph.addDecision(new MoveEvent(152, "examiner les articles exposés dans la vitrine du comptoir"));
+                        return paragraph;
+                    }
+                case 199:
+                    {
+                        paragraph = new StoryParagraph("La plupart des placards et des tiroirs sont vides. Les habitants de cette maison ont presque tout emporté avec eux ; vous parvenez cependant à trouver dans la cave suffisamment de fruits pour vous faire un Repas.", paragraphNumber);
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateFood.ration(1), "Prendre le repas"));
+                        paragraph.addDecision(new MoveEvent(81, "continuer"));
+                        return paragraph;
+                    }
+                case 200:
+                    {
+                        paragraph = new StoryParagraph("La nuit tombe et les ombres de la forêt s'étirent. Vous vous apprêtez à faire halte pour vous reposer lorsque vous apercevez à travers les arbres une foule qui avance sur une large route orientée au sud. En vous approchant, vous distinguez une roulotte tirée par six grands chevaux ; le véhicule occupe le milieu de la chaussée et se déplace à grande vitesse parmi les piétons et les autres voitures à chevaux. C'est peut-être là votre chance d'atteindre la capitale plus vite que prévu. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(78, "sauter sur la roulotte"));
+                        paragraph.addDecision(new CapacityEvent(168, CapacityType.Camouflage, "vous dissimuler parmi les bagages (Capacité Camouflage) "));
+                        return paragraph;
+                    }
+                case 201:
+                    {
+                        paragraph = new StoryParagraph("Vous suivez le sentier pendant une heure environ, puis vous découvrez un autre chemin plus large qui part en direction du sud. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(238, "suivre ce chemin orienté au sud"));
+                        paragraph.addDecision(new MoveEvent(215, "aller à l'est"));
+                        paragraph.addDecision(new MoveEvent(130, "aller vers l'ouest"));
+                        return paragraph;
+                    }
+                case 202:
+                    {
+                        paragraph = new StoryParagraph("Vous galopez le long de la grand-route qui mène à la capitale lorsque votre cheval ralentit soudain l'allure, se met à boiter, puis s'arrête. Vous mettez pied à terre pour examiner sa jambe avant droite qu'il tient levée : il a perdu un fer et s'est blessé au sabot. En maudissant votre mauvaise fortune, vous l'abandonnez donc sur le bas-côté et vous poursuivez à pied votre chemin.", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(58, "continuer"));
+                        return paragraph;
+                    }
+                case 203:
+                    {
+                        paragraph = new StoryParagraph("Une douleur fulgurante vous traverse la poitrine alors que quelque chose vient d'exploser tout contre vous dans une gerbe d'étincelles rouges. Vous perdez 10 points d'ENDURANCE et, si vous n'êtes pas déjà mort, vous voyez à travers la fumée le Sage s'apprêter à vous lancer une nouvelle charge explosive. ", paragraphNumber);
+                        paragraph.addMainEvent(new DammageEvent(10));
+                        paragraph.addDecision(new MoveEvent(80, "continuer"));
+                        return paragraph;
+                    }
+                case 204:
                     {
                         paragraph = new StoryParagraph("", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(, ""));
                         return paragraph;
                     }
-                case 199:
+                case 205:
+                    {
+                        paragraph = new StoryParagraph("", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(, ""));
+                        return paragraph;
+                    }
+                case 206:
+                    {
+                        paragraph = new StoryParagraph("", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(, ""));
+                        return paragraph;
+                    }
+                case 207:
+                    {
+                        paragraph = new StoryParagraph("", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(, ""));
+                        return paragraph;
+                    }
+                case 208:
+                    {
+                        paragraph = new StoryParagraph("", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(, ""));
+                        return paragraph;
+                    }
+                case 209:
                     {
                         paragraph = new StoryParagraph("", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(, ""));
