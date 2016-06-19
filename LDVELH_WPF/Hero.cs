@@ -49,6 +49,8 @@ namespace LDVELH_WPF
 
         [Column("WeaponMastery")]
         private WeaponTypes weaponMastery{ get; set; }
+        public event WeaponMasteryHandler weaponMasteryChanged;
+        public delegate void WeaponMasteryHandler(Hero m);
 
         private Hero()
         {
@@ -170,11 +172,12 @@ namespace LDVELH_WPF
         {
             capacities.Add(capacity);
             capacitiesHasChanged(capacity);
-            if (capacity.getCapacityType == CapacityType.WeaponMastery)
+            if (capacity.getCapacityType == CapacityType.MaitriseDesArmes)
             {
                 while (this.weaponMastery == WeaponTypes.None)
                 {
                     this.weaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
+                    WeaponMasteryHasChanged(this.weaponMastery);
                 }
             }
         }
@@ -184,13 +187,21 @@ namespace LDVELH_WPF
             capacities.Add(capacity);
             capacitiesHasChanged(capacity);
 
-            if (capacityType == CapacityType.WeaponMastery)
+            if (capacityType == CapacityType.MaitriseDesArmes)
             {
                 while (this.weaponMastery == WeaponTypes.None)
                 {
                     this.weaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
+                    WeaponMasteryHasChanged(this.weaponMastery);
                 }
             }
+        }
+        private void WeaponMasteryHasChanged(WeaponTypes WeaponType){
+            WeaponMasteryHandler handler = weaponMasteryChanged;
+                    if (handler != null)
+                    {
+                        handler((Hero)this);
+                    }
         }
         public void capacitiesHasChanged(Capacity capacity)
         {
@@ -378,8 +389,24 @@ namespace LDVELH_WPF
                 this.removeGold(((Gold)loot).getGoldAmount);
             }
         }
+        public void removeBackPack()
+        {
+            foreach(Item loot in this.backPack.getItems)
+            {
+                    this.removeBackPackItem(loot);
+            }
+            
+        }
+        public void removeWeaponHolder()
+        {
+            foreach (Weapon loot in this.weaponHolder.getWeapons)
+            {
+                this.removeWeapon(loot);
+            }
 
-        
+        }
+
+
         public void eat()
         {
             //TODO !!!
@@ -395,6 +422,31 @@ namespace LDVELH_WPF
             foreach (Capacity capa in this.capacities)
             {
                 if (capa.getCapacityType == capacity)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool possesItem(String itemName)
+        {
+            foreach (Weapon weapon in this.weaponHolder.getWeapons)
+            {
+                if (weapon.getName == itemName)
+                {
+                    return true;
+                }
+            }
+            foreach(Item item in this.backPack.getItems)
+            {
+                if (item.getName == itemName)
+                {
+                    return true;
+                }
+            }
+            foreach(SpecialItem specialItem in this.getSpecialItems)
+            {
+                if (specialItem.getName == itemName)
                 {
                     return true;
                 }
@@ -449,14 +501,14 @@ namespace LDVELH_WPF
         private int getBonusCapacityAgility(Ennemy ennemy)
         {
             int bonusAgility = 0;
-            if (this.possesCapacity(CapacityType.WeaponMastery))
+            if (this.possesCapacity(CapacityType.MaitriseDesArmes))
             {
                 if (this.weaponHolder.Contains(this.weaponMastery))
                 {
                     bonusAgility += Capacity.weaponMasteryStrenght;
                 }
             }
-            if (this.possesCapacity(CapacityType.PsychicPower))
+            if (this.possesCapacity(CapacityType.PuissancePsychique))
             {
                 if (ennemy.isWeakToPhychic())
                 {

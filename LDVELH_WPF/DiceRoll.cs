@@ -19,5 +19,9 @@ namespace LDVELH_WPF
         {
             return random.Next(1, 11);
         }
+        public static int D10Roll0()
+        {
+            return random.Next(0, 10);
+        }
     }
 }

@@ -36,8 +36,16 @@ namespace LDVELH_WPF
 
     public enum CapacityType
     {
-        Hiding,
-        WeaponMastery,
-        PsychicPower,
+        Camouflage,
+        MaitriseDesArmes,
+        PuissancePsychique,
+        Chasse,
+        SixiemeSens,
+        Orientation,
+        Guerison,
+        BouclierPsychique,
+        CommunicationAnimale,
+        MaitriseDeLaMatiere,
+
     }
 }

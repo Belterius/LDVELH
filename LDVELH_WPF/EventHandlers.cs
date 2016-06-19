@@ -21,15 +21,16 @@ namespace LDVELH_WPF
         Label labelHP;
         Label labelGold;
         Label labelAgility;
+        Label labelWeaponMastery;
         ListBox listBoxWeapon;
         private BindingList<Weapon> listWeaponSave;
         ListBox listBoxBackPackItem;
         private BindingList<Item> listItemSave;
         ListBox listBoxSpecialItem;
         private BindingList<SpecialItem> listSpecialItemSave;
-        
 
-        public HeroObserver(Hero hero,Label labelHP,Label labelAgility, Label labelGold, ListBox listWeapon, ListBox listItem, ListBox listSpecialItem)
+
+        public HeroObserver(Hero hero, Label labelHP, Label labelAgility, Label labelWeaponMastery, Label labelGold, ListBox listWeapon, ListBox listItem, ListBox listSpecialItem)
         {
             this.labelGold = labelGold;
             this.listBoxWeapon = listWeapon;
@@ -37,6 +38,7 @@ namespace LDVELH_WPF
             this.listBoxSpecialItem = listSpecialItem;
             this.labelHP = labelHP;
             this.labelAgility = labelAgility;
+            this.labelWeaponMastery = labelWeaponMastery;
 
             listWeaponSave = new BindingList<Weapon>();
             listItemSave = new BindingList<Item>();
@@ -62,6 +64,10 @@ namespace LDVELH_WPF
         public void AgilityChanged(Hero hero, int damage)
         {
             labelAgility.Content = hero.getBaseAgility().ToString();
+        }
+        public void WeaponMasteryChanged(Hero hero)
+        {
+            labelWeaponMastery.Content = hero.getWeaponMastery.ToString();
         }
 
         public void GoldChanged(Hero hero, int goldChange)
@@ -146,7 +152,7 @@ namespace LDVELH_WPF
             }
 
             //Third, the decisions open to the player
-            generatePlayerPossibleDecision();
+            generatePlayerPossibleDecision(story);
 
             //Fourth, update the hero actualParagraph in case of exit
             story.getHero.setActualParagraph(actualParagraph.getParagraphNumber);
@@ -174,28 +180,49 @@ namespace LDVELH_WPF
             else
                 this.loadingHero = false;
         }
-        private void generatePlayerPossibleDecision()
+        private void generatePlayerPossibleDecision(Story story)
         {
             clearOldPossibleDecision();
-            generateButtonPossibleDecision();
+            generateButtonPossibleDecision(story);
             placeButtonPossibleDecision(groupBoxDecision);
         }
         private void clearOldPossibleDecision()
         {
             ((Grid)(groupBoxDecision.Content)).Children.Clear();
         }
-        private void generateButtonPossibleDecision()
+        private void generateButtonPossibleDecision(Story story)
         {
             foreach (Event possibleEvent in story.getActualParagraph.getListDecision)
             {
-                Button buttonDecision = new Button();
-                buttonDecision.Content = possibleEvent.getTriggerMessage;
-                buttonDecision.Click += delegate { possibleEvent.resolveEvent(story); };
-                ((Grid)(groupBoxDecision.Content)).Children.Add(buttonDecision);
-                buttonDecision.HorizontalAlignment = HorizontalAlignment.Center;
-                buttonDecision.VerticalAlignment = VerticalAlignment.Center;
+                if (ShouldGenerateButton(possibleEvent, story))
+                {
+                    Button buttonDecision = new Button();
+                    buttonDecision.Content = possibleEvent.getTriggerMessage;
+                    buttonDecision.Click += delegate { possibleEvent.resolveEvent(story); };
+                    ((Grid)(groupBoxDecision.Content)).Children.Add(buttonDecision);
+                    buttonDecision.HorizontalAlignment = HorizontalAlignment.Center;
+                    buttonDecision.VerticalAlignment = VerticalAlignment.Center;
+                }
             }
             window.UpdateLayout();
+        }
+        private bool ShouldGenerateButton(Event possibleEvent, Story story)
+        {
+            if (possibleEvent is CapacityEvent)
+            {
+                if (!story.getHero.possesCapacity(((CapacityEvent)possibleEvent).CapacityRequiered))
+                {
+                    return false;
+                }
+            }
+            if (possibleEvent is ItemRequieredEvent)
+            {
+                if (!story.getHero.possesItem(((ItemRequieredEvent)possibleEvent).itemRequiered))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         public double setXPosition(Button button, GroupBox groupBox)
         {

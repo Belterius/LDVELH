@@ -35,6 +35,7 @@ namespace LDVELH_WPF
     {
         Human,
         Beast,
-        Orc
+        Orc,
+        Hero
     }
 }

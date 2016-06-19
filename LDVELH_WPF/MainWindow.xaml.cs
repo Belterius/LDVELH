@@ -92,7 +92,7 @@ namespace LDVELH_WPF
         }
         private void heroCharacterObserver()
         {
-            heroObserver = new HeroObserver(hero, labelHitPoint, labelAgility, labelGoldAmount, listBoxWeapons, listBoxBackPack, listBoxSpecialItems);
+            heroObserver = new HeroObserver(hero, labelHitPoint, labelAgility, labelWeaponMastery, labelGoldAmount, listBoxWeapons, listBoxBackPack, listBoxSpecialItems);
 
         }
         private void heroListeners()
@@ -100,6 +100,7 @@ namespace LDVELH_WPF
             heroHPListener();
             heroMaxLifeListener();
             heroAgilityListener();
+            heroWeaponMasteryListener();
             heroGoldListener();
             heroSpecialItemListener();
             heroBackPackItemListener();
@@ -125,6 +126,10 @@ namespace LDVELH_WPF
         private void heroAgilityListener()
         {
             hero.AgilityChanged += heroObserver.AgilityChanged;
+        }
+        private void heroWeaponMasteryListener()
+        {
+            hero.weaponMasteryChanged += heroObserver.WeaponMasteryChanged;
         }
         private void heroGoldListener()
         {

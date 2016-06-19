@@ -10,7 +10,7 @@
                 <Label x:Name="labelDescriptionAgility" Content="Agility :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="167,10,0,0"/>
                 <Label x:Name="labelHitPoint" Content="20/20" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.053,1.423" Margin="82,10,0,0"/>
                 <ListBox x:Name="listBoxCapacities" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="209" Margin="309,21,0,0"/>
-                <Label Content="Weapon Mastery :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,36,0,-1"/>
+                <Label Content="Maitrise des Armes :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,36,0,-1"/>
                 <Label x:Name="labelWeaponMastery" Content="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="121,36,0,-1"/>
                 <Label Content="Label" HorizontalAlignment="Left" Margin="269,47,0,0" VerticalAlignment="Top"/>
                 <Label Content="Capacities :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="309,0,0,0"/>

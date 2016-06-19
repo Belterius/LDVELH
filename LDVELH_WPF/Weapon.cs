@@ -61,9 +61,15 @@ namespace LDVELH_WPF
     }
     public enum WeaponTypes
     {
-        Sword,
-        Spear,
-        Hammer,
+        Epee,
+        Lance,
+        MasseDArmes,
+        Poignard,
+        Sabre,
+        MarteauDeGuerre,
+        Hache,
+        Baton,
+        Glaive,
         None
     }
 }

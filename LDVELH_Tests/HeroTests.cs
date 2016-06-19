@@ -11,9 +11,9 @@ namespace LDVELH_Tests
         public void HeroWeaponMastery()
         {
             Hero heroWeaponMastery = new Hero("Belterius");
-            Capacity weaponMasteryCapacity = new Capacity(CapacityType.WeaponMastery);
+            Capacity weaponMasteryCapacity = new Capacity(CapacityType.MaitriseDesArmes);
             Hero heroNoWeaponMastery = new Hero("Belterius");
-            Capacity hidingCapacity = new Capacity(CapacityType.Hiding);
+            Capacity hidingCapacity = new Capacity(CapacityType.Camouflage);
 
             heroWeaponMastery.addCapacity(weaponMasteryCapacity);
             heroNoWeaponMastery.addCapacity(hidingCapacity);
@@ -26,22 +26,22 @@ namespace LDVELH_Tests
         public void HeroPossesCapacity()
         {
             Hero Belterius = new Hero("Belterius");
-            Capacity hidingCapacity = new Capacity(CapacityType.Hiding);
+            Capacity hidingCapacity = new Capacity(CapacityType.Camouflage);
 
             Belterius.addCapacity(hidingCapacity);
 
-           Assert.AreEqual(true, Belterius.possesCapacity(CapacityType.Hiding));
+           Assert.AreEqual(true, Belterius.possesCapacity(CapacityType.Camouflage));
         }
 
         [TestMethod]
         public void HeroDoesntPossesCapacity()
         {
             Hero Belterius = new Hero("Belterius");
-            Capacity hidingCapacity = new Capacity(CapacityType.Hiding);
+            Capacity hidingCapacity = new Capacity(CapacityType.Camouflage);
 
             Belterius.addCapacity(hidingCapacity);
 
-            Assert.AreEqual(false, Belterius.possesCapacity(CapacityType.PsychicPower));
+            Assert.AreEqual(false, Belterius.possesCapacity(CapacityType.PuissancePsychique));
         }
 
         [TestMethod]
@@ -63,13 +63,13 @@ namespace LDVELH_Tests
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
             //PsychicPower test
-            Belterius.addCapacity(CapacityType.PsychicPower);
+            Belterius.addCapacity(CapacityType.PuissancePsychique);
             expectedStrenghtDifference = (heroBaseAgility + 4 + Capacity.phychicPowerStrenght) - 10;
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
             //Weapon Mastery (with and without weapon) test
-            Belterius.addCapacity(CapacityType.WeaponMastery);
+            Belterius.addCapacity(CapacityType.MaitriseDesArmes);
             expectedStrenghtDifference = (heroBaseAgility + 4 + Capacity.phychicPowerStrenght) - 10; //No weapon related to the Weapon mastery so no bonus
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));

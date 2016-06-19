@@ -26,6 +26,13 @@ namespace LDVELH_WPF
         public void addDecision(Event decision){
             this.decision.Add(decision);
         }
+        public void addDecision(List<Event> decision)
+        {
+            foreach (Event eventDecision in decision)
+            {
+                this.decision.Add(eventDecision);
+            }
+        }
         public void addMainEvent(Event mainEvent)
         {
             this.mainEvents.Add(mainEvent);

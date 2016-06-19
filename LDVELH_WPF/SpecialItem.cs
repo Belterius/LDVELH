@@ -163,6 +163,37 @@ namespace LDVELH_WPF
     public class SpecialItemUsage : SpecialItem
     {
         //Has an effect on usage (Example : a key that you can use to unlock a cell)
+        private SpecialItemUsage()
+        {
+
+        }
+        public SpecialItemUsage(String name)
+        {
+            this.name = name;
+        }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is SpecialItemUsage))
+                return false;
+
+
+            SpecialItemUsage specialItemCombat = (SpecialItemUsage)obj;
+            if (this.name != specialItemCombat.name)
+                return false;
+
+            return true;
+        }
+        public override int GetHashCode()
+        {
+            return new { name }.GetHashCode();
+        }
+        public override string getDisplayName
+        {
+            get
+            {
+               return name;
+            }
+        }
     }
 
 }

@@ -27,7 +27,7 @@ namespace LDVELH_WindowsForm
     public enum CapacityType
     {
         Hiding,
-        WeaponMastery,
-        PsychicPower,
+        MaitriseDesArmes,
+        PuissancePsychique,
     }
 }
