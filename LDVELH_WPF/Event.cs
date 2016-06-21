@@ -259,6 +259,32 @@ namespace LDVELH_WPF
             story.getHero.takeDamage(damageAmount);
         }
     }
+    public class DammageAgilityEvent : Event
+    {
+        string specialMessage = "";
+        int damageAmount;
+        public DammageAgilityEvent(int damageAmount)
+        {
+            this.damageAmount = damageAmount;
+        }
+        public DammageAgilityEvent(string triggerMessage, int damageAmount)
+        {
+            this.damageAmount = damageAmount;
+            this.triggerMessage = triggerMessage;
+        }
+        public DammageAgilityEvent(string triggerMessage, string specialMessage, int damageAmount)
+        {
+            this.damageAmount = damageAmount;
+            this.triggerMessage = triggerMessage;
+            this.specialMessage = specialMessage;
+        }
+        public override void resolveEvent(Story story)
+        {
+            if (this.specialMessage != "")
+                MessageBox.Show("Votre agilité est réduite : " + specialMessage);
+            story.getHero.decreaseAgility(damageAmount);
+        }
+    }
     public class LinkedEvent : Event
     {
         List<Event> linkedEvent;
