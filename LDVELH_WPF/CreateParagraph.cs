@@ -2450,17 +2450,229 @@ namespace LDVELH_WPF
                         paragraph.addDecision(new MoveEvent(157, "continuer"));
                         return paragraph;
                     }
+                case 320:
+                    {
+                        paragraph = new StoryParagraph("Tandis que vous courez à terrain découvert en direction de la forêt, un Kraan fond sur vous et vous agrippe le bras. Avant même que vous ayez pu esquisser un geste pour vous défendre, il s'envole à nouveau et s'éloigne à tire-d'aile en lançant un cri à vous glacer le sang. Vous parvenez à pénétrer dans la forêt, mais vous avez perdu 2 points d'ENDURANCE. ", paragraphNumber);
+                        paragraph.addMainEvent(new DammageEvent(2));
+                        paragraph.addDecision(new MoveEvent(264, "continuer"));
+                        return paragraph;
+                    }
+                case 321:
+                    {
+                        paragraph = new StoryParagraph("Vous marchez pendant presque une heure le long de la berge. La rivière est sinueuse, et vous tournez sans cesse d'un côté et d'autre. Enfin, au détour d'un méandre, vous entendez les faibles échos d'une bataille et vous escaladez avec précaution un monticule rocailleux afin de pouvoir mieux observer les alentours. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(273, "continuer"));
+                        return paragraph;
+                    }
+                case 322:
+                    {
+                        paragraph = new StoryParagraph("Au bout de ce qui vous semble une éternité, vous parvenez enfin au sommet de la colline escarpée. Derrière vous, les ruines du monastère sont encore visibles. Au nord, une colonne de fumée d'un noir de jais s'élève haut dans le ciel et de petites flammes orange dansent à sa base : c'est le port de Toran qui est en feu, et ce spectacle vous déchire le cœur. Soudain, un cri perçant audessus de votre tête vous avertit qu'un Kraan se prépare à vous attaquer. Il est à une trentaine de mètres de distance et il fond sur vous, prêt à tuer. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(17, "l'attendre pour le combattre"));
+                        paragraph.addDecision(new MoveEvent(89, "prendre la fuite en vous précipitant au bas de la colline"));
+                        return paragraph;
+                    }
+                case 323:
+                    {
+                        paragraph = new StoryParagraph("Au sommet de la tour, vous pouvez voir loin autour de vous, dans toutes les directions. Au nord, à bonne distance, une colonne de fumée d'un noir de jais s'élève haut dans le ciel et de petites flammes orange dansent à sa base : c'est la ville de Toran qui est en feu et ce spectacle vous déchire le cœur. En provenance du sud-ouest, le vent apporte les échos d'une bataille : les combats se déroulent à une dizaine de kilomètres tout au plus de l'endroit où vous vous trouvez. Sur le plancher de la Tour de Guet, une boîte oblongue est posée dans un coin. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(290, "ouvrir cette boîte"));
+                        paragraph.addDecision(new MoveEvent(140, "quitter la tour en descendant l'échelle "));
+                        return paragraph;
+                    }
+                case 324:
+                    {
+                        paragraph = new StoryParagraph("Vous rabattez votre capuchon sur votre tête et vous vous laissez tomber derrière les monticules de pierre qui s'entassent devant l'entrée de la grotte. Retenant votre souffle, vous vous roulez en boule en vous recouvrant entièrement de votre cape verte de Seigneur Kaï. Quelques minutes plus tard, les Gloks grimpent sur l'amas de pierres et scrutent de leurs petits yeux jaunes chaque crevasse qui s'ouvre au flanc de la colline. Puis, lançant force jurons dans leur étrange dialecte, ils redescendent du tas de pierres et poursuivent leur ascension en direction du sommet de la colline. Vous remerciez alors silencieusement vos Maîtres Kaï de vous avoir enseigné la Science du Camouflage, car la mise en pratique de cette discipline vient probablement de vous sauver la vie.", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(33, "explorer la grotte"));
+                        paragraph.addDecision(new MoveEvent(248, "quitter les lieux et redescendre le flanc de la colline "));
+                        return paragraph;
+                    }
+                case 325:
+                    {
+                        paragraph = new StoryParagraph("En vous voyant apparaître, le chef des Gloks se met à hurler : « Groh Gaï oh ! Groh gaï oh !» à l'adresse de ses compagnons qui s'enfuient des ruines et courent se réfugier dans la forêt. L'officier Glok, vêtu de noir, se tourne alors vers vous en brandissant le poing. « Rob Gaï ohrringh âârh oho key ! Pamark hélbutt ! » s'écrie-t-il avec fureur avant de prendre la fuite à son tour. Vous jetez ensuite un coup d'oeil sur le champ de bataille : plus de quinze cadavres de Gloks sont étendus parmi les ruines du temple de Raumas. Le jeune sorcier essuie son front ruisselant de sueur et s'avance vers vous, la main tendue en signe d'amitié. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(349, "continuer"));
+                        return paragraph;
+                    }
+                case 326:
+                    {
+                        paragraph = new StoryParagraph("Vous introduisez avec précaution la Clé d'Or dans la serrure et vous la tournez dans le sens des aiguilles d'une montre. Vous entendez alors un faible déclic : le mécanisme a fonctionné. Vous retirez ensuite la broche et la lourde porte de granité pivote bientôt sur ses gonds, s'ouvrant vers vous. La lumière grise du cimetière se diffuse dans le caveau et vous parvenez à sortir. L'ouverture est, cependant, envahie de ronces et vous vous écorchez le visage et les mains en vous hissant au-dehors. Lorsque, enfin, vous vous retrouvez à l'air libre, la porte du caveau se referme lentement derrière vous et un rire cruel, inhumain, semble aussitôt s'élever des profondeurs de la terre, juste sous vos pieds. Saisi de terreur, vous prenez vos jambes à votre cou et vous vous précipitez vers la porte sud de la ville, en traversant aussi vite que possible cette sinistre nécropole.", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(61, "continuer"));
+                        return paragraph;
+                    }
+                case 327:
+                    {
+                        paragraph = new StoryParagraph("Quelques minutes plus tard, vous voyez les Kraans apparaître audessus d'une petite colline située derrière vous. Vous en dénombrez au moins seize qui sont chacun montés par deux Gloks.Ces derniers sont armés de lances et coiffés de casques de bronze.Vous les entendez aussitôt pousser des grognements satisfaits: ils vous ont repéré...Vous bondissez alors en direction de l'entrée du tunnel quelque huit mètres plus bas, mais votre botte se prend dans un buisson et vous tombez de tout votre long. Dans votre chute, vous avez lâché votre Arme et vous êtes désormais à la merci de vos adversaires. Fort heureusement, votre fin est rapide: le premier Glok qui s'approche de vous enfonce sa lance dans votre poitrine et vous transperce le cœur.Vous mourez sur le coup.Votre mission s'achève ici, en même temps que votre vie.", paragraphNumber);
+                        paragraph.addDecision(new DeathEvent("continuer"));
+                        return paragraph;
+                    }
+                case 328:
+                    {
+                        paragraph = new StoryParagraph("Tandis que la créature meurt, son corps se dissout lentement en un liquide verdâtre et pestilentiel. Vous remarquez alors que les herbes et les plantes parmi lesquelles se répand cette substance se fanent et meurent aussitôt. Quelques instants plus tard, une grosse Pierre Précieuse apparaît sur le sol, près du cadavre décomposé : apparemment sa valeur doit être considérable. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(76, "prendre cette Pierre"));
+                        paragraph.addDecision(new MoveEvent(118, "quitter les lieux aussi vite que possible"));
+                        return paragraph;
+                    }
+                case 329:
+                    {
+                        paragraph = new StoryParagraph("En descendant vers le Cimetière des Anciens, vous remarquez une étrange brume qui baigne les lieux. Des nuages tourbillonnent sur cette étendue grise, empêchant le soleil de passer et maintenant la nécropole dans une obscurité permanente. Vous sentez un frisson vous parcourir le corps tandis que la température fraîchit peu à peu. Votre cheval se met à regimber et vous avez beau l'éperonner, il refuse de s'approcher de cet endroit sinistre. Il ne vous reste donc plus qu'à abandonner votre monture pour continuer à pied. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(284, "continuer"));
+                        return paragraph;
+                    }
+                case 330:
+                    {
+                        paragraph = new StoryParagraph("Vaincu par la fatigue, vous vous arrêtez bientôt devant un arbre mort sur lequel vous vous asseyez pour prendre quelque repos. Vous remarquez alors, coincé sous le tronc, un gros paquet ficelé comme un baluchon.", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(315, "examiner le contenu de ce paquet"));
+                        paragraph.addDecision(new MoveEvent(213, "le laisser où il est et poursuivre votre chemin"));
+                        return paragraph;
+                    }
+                case 331:
+                    {
+                        paragraph = new StoryParagraph("Vous venez d'apercevoir l'entrée d'un tunnel qui disparaît dans les profondeurs de la colline. L'ouverture du boyau est entourée de ronces et de racines. Elle fait environ deux mètres de haut et trois de large. En vous approchant, vous sentez une légère brise souffler de ce vide d'un noir d'encre. Si l'autre extrémité du tunnel aboutit au flanc opposé de la colline, vous pourriez vous épargner de longues heures d'escalade en l'empruntant. Mais vous prendriez alors le risque de vous exposer à quelque danger inconnu", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(170, "entrer dans ce tunnel"));
+                        paragraph.addDecision(new MoveEvent(280, "continuer à grimper vers le sommet de la colline"));
+                        return paragraph;
+                    }
+                case 332:
+                    {
+                        paragraph = new StoryParagraph("Vous marchez pendant presque dix minutes le long d'un couloir sombre et sinueux puis vous grimpez les marches d'un escalier raide qui mène à une petite porte de bois. L'homme actionne alors un loquet dissimulé aux regards et la porte s'ouvre. Vous entrez peu après dans une grande pièce richement décorée : c'est une chambre à coucher dont l'un des coins est occupé par une immense baignoire de marbre. L'homme vous suggère de vous rafraîchir pendant qu'il demande audience au Roi.  \n Vous prenez un bain rapide et vous revêtez une toge blanche laissée là à votre intention sur une table de marbre.Quelques minutes plus tard, l'homme revient et vous conduit le long d'un couloir aux murs recouverts de luxueuses tapisseries.Vous arrivez enfin devant une haute porte gardée par deux soldats vêtus d'armures en argent. Dans quelques instants, vous serez devant le Roi.", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(350, "continuer"));
+                        return paragraph;
+                    }
+                case 333:
+                    {
+                        paragraph = new StoryParagraph("Il y a presque une demi-heure que vous vous frayez un chemin parmi les épaisses broussailles lorsque vous entendez un battement d'ailes au-dessus des arbres. Vous levez les yeux et vous distinguez la silhouette d'un Kraan qui vole dans le ciel en provenance du nord. C'est l'un des monstres qui ont attaqué le monastère ; sur son dos sont assises deux créatures à la peau grise, armées de lances. Ce sont des Gloks, les cruels serviteurs des maîtres des Ténèbres, animés de haine et dévoués à la cause du mal. Il y a de cela plusieurs siècles, les ancêtres de ces monstres servaient d'esclaves aux Maîtres des Ténèbres qui leur firent bâtir la cité infernale d'Helgedad, située dans les déserts volcaniques qui s'étendent au-delà des monts Durncrag. La construction de cette ville représenta une longue et douloureuse épreuve pour ces créatures, dont seules les plus fortes survécurent aux vapeurs empoisonnées qui baignent l'atmosphère surchauffée d'Helgedad. \n Caché par les arbres, vous vous figez sur place en restant parfaitement immobile tandis que le Kraan passe au - dessus de votre tête, puis disparaît en direction du sud.Lorsque vous êtes certain qu'il s'est suffisamment éloigné, vous reprenez votre chemin parmi les arbres de la forêt.", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(131, "continuer"));
+                        return paragraph;
+                    }
+                case 334:
+                    {
+                        paragraph = new StoryParagraph("Le cours d'eau prend sa source dans le flanc rocheux d'une colline et, en levant les yeux, vous apercevez sur un chemin qui longe la pente escarpée quatre soldats et leur officier. Ils portent des uniformes de l'Armée Royale.", paragraphNumber);
+                        paragraph.addDecision(new CapacityEvent(73, CapacityType.Camouflage));
+                        paragraph.addDecision(new CapacityEvent(48, CapacityType.SixiemeSens));
+                        paragraph.addDecision(new MoveEvent(162, "vous approcher d'eux"));
+                        return paragraph;
+                    }
+                case 335:
+                    {
+                        paragraph = new StoryParagraph("Lorsque vous vous approchez, l'oiseau noir s'envole au-dessus des arbres et disparaît bientôt. Vous examinez l'arbre sur lequel il était perché, mais vous ne remarquez rien d'anormal. Vous poursuivez donc votre chemin sans perdre davantage de temps.", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(121, "continuer"));
+                        return paragraph;
+                    }
+                case 336:
+                    {
+                        paragraph = new StoryParagraph("Vous vous ruez dans la clairière en prenant les Gloks au dépourvu. Sans la moindre seconde d'hésitation, vous frappez celui qui se trouve le plus proche de vous et vous le tuez avant même que son corps se soit écroulé sur le sol. Les autres Gloks dégainent leurs épées à la lame recourbée et vous attaquent, il vous faut les combattre", paragraphNumber);
+                        paragraph.addMainEvent(new FightEvent(new Ennemy("Glok",14,11,EnnemyTypes.Orc)));
+                        paragraph.addMainEvent(new FightEvent(new Ennemy("Glok",13,11,EnnemyTypes.Orc)));
+                        paragraph.addDecision(new MoveEvent(117, "libérer le soldat"));
+                        return paragraph;
+                    }
+                case 337:
+                    {
+                        paragraph = new StoryParagraph("Au moment où vous ôtez la broche, un craquement assourdissant retentit. ", paragraphNumber);
+                        int rand = DiceRoll.D10Roll0();
+                        if (rand < 5)
+                        {
+                            paragraph.addDecision(new MoveEvent(219, "Tentez votre chance"));
+                        }
+                        else
+                        {
+                            paragraph.addDecision(new MoveEvent(317, "Tentez votre chance"));
+                        }
+                        return paragraph;
+                    }
+                case 338:
+                    {
+                        paragraph = new StoryParagraph("Lorsque vous reprenez conscience, vous êtes étendu au pied d'une pente escarpée, sur un tapis de hautes herbes. Vous ne voyez plus ni votre Sac à Dos ni votre Arme, et votre tête vous fait très mal. Vous ne sauriez dire combien de temps vous êtes resté sans connaissance, mais quoi qu'il en soit, le temps presse, et il vous faut au plus vite poursuivre votre route. Vous vous relevez donc aussitôt et vous apercevez votre Sac à Dos et votre Arme un peu plus haut sur la pente. Ils ont dû se détacher au cours de votre chute. Vous vous hâtez de les récupérer et vous repartez dans la forêt. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(113, "continuer"));
+                        return paragraph;
+                    }
+                case 339:
+                    {
+                        paragraph = new StoryParagraph("Vous faites aussitôt un pas de côté, au moment où un Poignard vient fracasser la vitre du comptoir. Un jeune homme vous attaque et il vous faut le combattre.", paragraphNumber);
+                        paragraph.addMainEvent(new FightEvent(new Ennemy("Voleur", 13,20,EnnemyTypes.Human)));
+                        paragraph.addDecision(new MoveEvent(94, "continuer"));
+                        return paragraph;
+                    }
+                case 340:
+                    {
+                        paragraph = new StoryParagraph("Vous galopez à la rencontre du Loup Maudit et de son cavalier, vore arme prête à frapper. Le Glok vous voit et dégaine aussitôt son cimeterre. Vous combattez le Loup Maudit et le Glok en les considérant comme un seul et même adversaire. ", paragraphNumber);
+                        paragraph.addMainEvent(new FightEvent(new Ennemy("Glok monté", 14,24,EnnemyTypes.Orc)));
+                        paragraph.addDecision(new MoveEvent(193, "continuer"));
+                        return paragraph;
+                    }
+                case 341:
+                    {
+                        paragraph = new StoryParagraph("Les soldats ne croient pas votre histoire et refusent de vous laisser entrer. L'homme qui vous escortait disparaît alors dans la foule, et vous vous retrouvez seul dans la ville. Démoralisé par cet échec, vous vous laissez emporter par la foule qui envahit les rues et vous arrivez bientôt devant l'entrée du Temple de la Guilde. Le bâtiment s'élève à l'une des extrémités du Pont de la Guilde qui traverse le fleuve Eledil, près de son embouchure où il se jette dans le golfe de Holm.", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(210, "entrer dans le Temple de la Guilde"));
+                        paragraph.addDecision(new MoveEvent(37, "chercher un autre moyen d'atteindre la citadelle"));
+                        paragraph.addDecision(new CapacityEvent(310, CapacityType.Orientation));
+                        return paragraph;
+                    }
+                case 342:
+                    {
+                        paragraph = new StoryParagraph("Tandis que votre voix se répercute en écho parmi les arbres, l'étranger se tourne lentement vers vous. Votre cœur se met alors à battre à tout rompre et votre sang se glace, car l'être qui vous fait face n'est pas un homme : il s'agit d'un Vordak, l'un des plus redoutables lieutenants des Maîtres des Ténèbres. C'est une créature de l'Au-Delà, un mort vivant. Le monstre pousse un cri perçant puis brandit une énorme Masse d'Armes et se rue sur vous. Paralysé par la terreur, vous sentez également que le Vordak vous attaque avec toute la force de sa Puissance Psychique.Si vous ne maîtrisez pas la Discipline Kaï du Bouclier Psychique, vous devrez réduire de 2 points votre total d'HABILETÉ au cours de ce combat. Il vous faut affronter cette créature qui est elle-même invulnérable à votre propre Puissance Psychique. ", paragraphNumber);
+                        paragraph.addMainEvent(new FightEvent( new Ennemy("Vordak", 18, 26, EnnemyTypes.Hero)));
+                        paragraph.addDecision(new MoveEvent(123, "continuer"));
+                        return paragraph;
+                    }
+                case 343:
+                    {
+                        paragraph = new StoryParagraph("Vous êtes prisonnier des branches et des racines, mais vous parvenez finalement à dégager votre main droite, à empoigner votre Hache et à vous tailler un chemin à travers l'épaisse végétation. Un peu plus loin, la forêt s'éclaircit et vous avancez dans cette direction. Votre cape est déchirée en plusieurs endroits et votre bras gauche écorché au-dessus du coude. Vous perdez 2 points d'ENDURANCE ", paragraphNumber);
+                        paragraph.addMainEvent(new DammageEvent(2));
+                        paragraph.addDecision(new MoveEvent(213, "continuer"));
+                        return paragraph;
+                    }
+                case 344:
+                    {
+                        paragraph = new StoryParagraph("Vous vous sentez faible et vous avez le tournis. Vos jambes deviennent insensibles et se refusent à porter votre poids. Vous essayez d'atteindre la porte, mais le voleur se rue sur vous et vous plaque au sol. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(60, "continuer"));
+                        return paragraph;
+                    }
+                case 345:
+                    {
+                        paragraph = new StoryParagraph("Vous rabattez sur votre tête le capuchon de votre cape de Seigneur Kaï et vous retenez votre souffle tandis que le Kraan tournoie au-dessus de vous. Quelques minutes plus tard, vous entendez les Gloks pousser des jurons furieux et les battements d'ailes des Kraans s'évanouissent bientôt: ils sont partis vers l'ouest. La promptitude de vos réflexes vous a sauvé d'une capture certaine et d'une mort probable. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(272, "revenir sur le sentier"));
+                        paragraph.addDecision(new MoveEvent(19, "poursuivre votre chemin parmi les arbres de la forêt"));
+                        return paragraph;
+                    }
+                case 346:
+                    {
+                        paragraph = new StoryParagraph("Une lance est profondément enfoncée dans la cage thoracique du squelette.", paragraphNumber);
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Lance(), "Prendre la lance"));
+                        paragraph.addDecision(new MoveEvent(14, "quitter  la clairière"));
+                        return paragraph;
+                    }
+                case 347:
+                    {
+                        paragraph = new StoryParagraph("La forêt s'éclaircit bientôt et vous apercevez un peu plus loin une vieille cabane en rondins, construite sous un chêne. La cabane semble avoir été abandonnée et il n'y reste apparemment rien de très intéressant. En ouvrant un petit coffre posé près de la porte, vous découvrez des fagots de branches liées ensemble avec de la ficelle. Les fagots ont été enduits de poix à l'une de leurs extrémités : ils peuvent ainsi faire office de Torches. Près du coffre, vous trouvez également un Sabre et un Briquet à Amadou. Vous pouvez les prendre ainsi qu'une des Torches", paragraphNumber);
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Sabre(), "Prendre le sabre"));
+                        paragraph.addDecision(new LootEvent(new Miscellaneous("briquet"), "Prendre le briquet"));
+                        paragraph.addDecision(new LootEvent(new Miscellaneous("Torche"), "Prendre le briquet"));
+                        paragraph.addDecision(new MoveEvent(103, "poursuivre votre chemin le long du sentier orienté au nord-est"));
+                        return paragraph;
+                    }
+                case 348:
+                    {
+                        paragraph = new StoryParagraph("D'un coup de pied, vous jetez au loin le corps du serpent et vous êtes alors saisi d'une terreur rétrospective, car cette Vipère des Marais était une vipère rouge et aucun remède n'existe contre la puissance de son venin ! Vous estimez qu'il serait suicidaire de continuer plus avant dans cette direction et vous revenez donc sur vos pas jusqu'à ce que vous retrouviez un terrain plus ferme. ", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(95, "continuer"));
+                        return paragraph;
+                    }
+                case 349:
+                    {
+                        paragraph = new StoryParagraph("C'est un jeune homme aux cheveux blonds et au regard pénétrant. Son visage est marqué par la fatigue et souillé par la poussière des combats. Ses amples vêtements bleu ciel, déchirés par endroits, montrent à l'évidence que le magicien a passé de longs jours dans la forêt. Il vous serre la main et s'incline. « Soyez assuré de mon éternelle gratitude, Seigneur Kaï, dit-il, mes pouvoirs magiques étaient presque épuisés et, si vous n'étiez pas venu à mon secours, je crois bien que j'aurais fini mes jours au bout de la lance d'un Glok. » Il semble affaibli et ses jambes ont du mal à le porter. Vous le prenez alors par le bras et vous le faites asseoir sur une des colonnes renversées du Temple, puis vous écoutez ce qu'il a à vous dire. «Je m'appelle Banedon, poursuit-il, je suis compagnon de la Confrérie de l'Étoile de Cristal, c'est-à-dire la Guilde des Magiciens de Toran. Mon maître m'a envoyé à votre monastère pour porter ce message urgent. » En prononçant ces mots, il sort d'une poche de ses vêtements une enveloppe de vélin qu'il vous tend. « Comme vous pouvez le voir, reprend-il, j'ai ouvert la lettre et j'en ai lu le contenu. Lorsque la guerre a commencé, je me trouvais sur la grand-route, cheminant avec deux compagnons de voyage. Des Kraans nous ont attaqués et nous nous sommes enfuis dans la forêt, mais nous n'avons pas pu nous retrouver par la suite. » La lettre avertit les Seigneurs Kaï que les Maîtres des Ténèbres ont rassemblé une immense armée au-delà des monts Durncrag. Les Maîtres de la Guilde conjurent les Seigneurs Kaï d'annuler les cérémonies organisées pour la fête de Fehmarn et de se préparer à la guerre. « Hélas ! je crois bien que nous avons été trahis, dit Banedon en penchant la tête d'un air consterné. L'un des compagnons de mon ordre, en effet, un frère du nom de Vonotar, s'est initié aux mystères interdits de la Magie Noire. Il y a dix jours, il a renié la Confrérie et tué l'un de nos Anciens. Depuis, il a disparu et il semble bien qu'il se soit mis au service des Maîtres des Ténèbres. » Vous révélez alors à Banedon ce qu'il est advenu du monastère et vous l'informez de la mission que vous vous êtes fixée auprès du Roi. Lorsque vous avez terminé votre récit, il ôte de son cou une Chaîne d'Or et vous la donne. Une petite Étoile de Cristal est attachée à la chaîne. « C'est le symbole de ma Confrérie, explique le magicien, et, en ces heures sombres, nous sommes frères tous deux. Aussi, prenez ce talisman qui vous portera bonheur. Puisse-t-il vous protéger au long de votre route ! » Vous le remerciez, vous passez la Chaîne autour de votre cou et vous glissez l'Étoile de Cristal dans votre chemise, tout contre votre poitrine. Banedon ensuite vous dit adieu. \n « Il nous faut quitter ces lieux, assure - t - il, de peur que les Gloks ne reviennent accompagnés de renforts.Ces répugnantes créatures auraient alors raison de nous.Je dois à présent retourner à la Guilde.Au revoir, mon frère, que la chance des Dieux vous accompagne. »", paragraphNumber);
+                        paragraph.addMainEvent(new LootEvent(new Miscellaneous("EtoileDeCrystal")));
+                        paragraph.addDecision(new MoveEvent(293, "continuer"));
+                        return paragraph;
+                    }
+                case 350:
+                    {
+                        paragraph = new StoryParagraph("Vous entrez dans la grande Salle du Conseil, une pièce immense magnifiquement décorée de tentures blanc et or. Le Roi et ses plus proches conseillers sont en train d'examiner une grande carte étalée sur une table de marbre, au centre de la salle. Leurs visages expriment l'inquiétude et la concentration. Lorsque vous faites le récit de la mort de vos compagnons et des périls que vous avez dû affronter pour atteindre la citadelle, tout le monde vous écoute en silence sans jamais vous interrompre. Enfin, quand vous en avez terminé, le Roi s'approche de vous et prend votre main droite dans la sienne. « Loup Solitaire, tu as fait  preuve de courage et d'abnégation : ce sont là les qualités d'un véritable Seigneur Kaï.Ton voyage a été semé de dangers et bien que tu nous apportes des nouvelles qui nous plongent dans le chagrin, ta détermination illumine ces heures sombres d'un rayon d'espoir.Tu as grandement honoré la mémoire de tes Maîtres et nous t'en portons louange. » Toutes les personnes rassemblées dans la salle se joignent à cet hommage et vous expriment leur profonde gratitude. Devant tant d'honneur, vous ne pouvez vous empêcher de rougir.Le Roi alors lève la main et tout le monde fait silence. « Tu as fait tout ce que le Royaume du Sommerlund pouvait attendre d'un de ses fidèles sujets, reprend le monarque, mais notre patrie a encore grand besoin de toi. Les Maîtres des Ténèbres ont, en effet, retrouvé leur puissance, et leur ambition ne connaît plus de bornes. Notre seul espoir de les repousser se trouve désormais au royaume de Durenor. C'est là que repose l'instrument de la puissance qui les a vaincus autrefois. Loup Solitaire, tu es le dernier des Seigneurs Kaï et tu possèdes la science que t'ont enseignée tes maîtres.Iras - tu à Durenor pour y chercher le Glaive de Sommer, l'Épée du Soleil ? Seul ce don des Dieux nous permettra d'écraser l'ennemi et de sauver le royaume. » Si vous acceptez de partir en quête du Glaive de Sommer, vous pourrez le faire en vivant l'aventure que vous propose le deuxième volume de la série du Loup Solitaire :", paragraphNumber);
+                        paragraph.addDecision(new MoveEvent(1, "FELICITATION VOUS POUVEZ QUITTER"));
+                        return paragraph;
+                    }
                 default :
                     paragraph = new StoryParagraph("", paragraphNumber);
                     MoveEvent event1 = new MoveEvent(111, "Marcher");
                     paragraph.addDecision(event1);
                     return paragraph;
-                case 6:
-                    {
-                        paragraph = new StoryParagraph("", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(, ""));
-                        return paragraph;
-                    }
+                
             }
         }
     }
