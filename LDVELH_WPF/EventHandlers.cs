@@ -198,7 +198,7 @@ namespace LDVELH_WPF
                 {
                     Button buttonDecision = new Button();
                     buttonDecision.Content = possibleEvent.getTriggerMessage;
-                    buttonDecision.Click += delegate { possibleEvent.resolveEvent(story); };
+                    buttonDecision.Click += delegate { try { possibleEvent.resolveEvent(story); } catch(YouAreDeadException ex) { MessageBox.Show(ex.Message); } };
                     ((Grid)(groupBoxDecision.Content)).Children.Add(buttonDecision);
                     buttonDecision.HorizontalAlignment = HorizontalAlignment.Center;
                     buttonDecision.VerticalAlignment = VerticalAlignment.Center;

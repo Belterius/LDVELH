@@ -33,6 +33,8 @@ namespace LDVELH_WPF
 
         Hero hero;
         Ennemy ennemy;
+        bool ranAway = false;
+        int roundRunAway=999;
         bool fightOver = false;
         int roundNumber = 0;
         int previousLifeHero, previousLifeEnnemy;
@@ -45,6 +47,19 @@ namespace LDVELH_WPF
             InitializeComponent();
             this.hero = hero;
             this.ennemy = ennemy;
+            buttonRun.Visibility = Visibility.Hidden;
+            setLife();
+            setAgility();
+            labelDammageTakenEnnemy.Content = "none";
+            labelDammageTakenHero.Content = "none";
+        }
+        public MessageBoxFight(Hero hero, Ennemy ennemy, int ranTurn)
+        {
+            InitializeComponent();
+            this.hero = hero;
+            this.ennemy = ennemy;
+            this.roundRunAway = ranTurn;
+            buttonRun.Visibility = Visibility.Hidden;
             setLife();
             setAgility();
             labelDammageTakenEnnemy.Content = "none";
@@ -80,6 +95,10 @@ namespace LDVELH_WPF
                 setLife();
                 setDamageTaken();
             }
+            if(roundNumber >= roundRunAway)
+            {
+                buttonRun.Visibility = Visibility.Visible;
+            }
         }
         private void buttonVictory_Click(object sender, RoutedEventArgs e)
         {
@@ -100,12 +119,21 @@ namespace LDVELH_WPF
             labelDammageTakenEnnemy.Content = previousLifeEnnemy - ennemy.getActualHitPoint();
             labelDammageTakenHero.Content = previousLifeHero - hero.getActualHitPoint();
         }
-        
+
+        private void buttonRun_Click(object sender, RoutedEventArgs e)
+        {
+            ranAway = true;
+            DialogResult = true;
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var hwnd = new WindowInteropHelper(this).Handle;
             SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
+        }
+        public bool DidRanAway
+        {
+            get { return ranAway; }
         }
     }
 }

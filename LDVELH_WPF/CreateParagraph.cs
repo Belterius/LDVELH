@@ -433,7 +433,7 @@ namespace LDVELH_WPF
                 case 43:
                     {
                         paragraph = new StoryParagraph("Un énorme ours noir apparaît derrière le rocher et s'avance lentement vers vous, la gueule ouverte. Vous remarquez aussitôt qu'il a l'air d'avoir mal et que sa douleur le rend furieux. Il est gravement blessé, en effet, et du sang coule sur son cou et dans son dos. Il vous faut le combattre. ", paragraphNumber);
-                        paragraph.addMainEvent(new FightEvent(new Ennemy("Ours Noir", 16, 10, EnnemyTypes.Beast)));
+                        paragraph.addMainEvent(new RunEvent(new Ennemy("Ours Noir", 16, 10, EnnemyTypes.Beast),3, new MoveEvent(106, "vous enfuir en courant au bas de la colline")));
                         paragraph.addDecision(new MoveEvent(195, "Continuer"));
                         return paragraph;
                     }
@@ -1310,6 +1310,7 @@ namespace LDVELH_WPF
                 case 163:
                     {
                         paragraph = new StoryParagraph("Au bout d'une demi-heure environ, vous sentez que le courant devient plus fort. Un peu plus loin, le cours de la rivière forme un méandre et ses eaux s'agitent en un puissant tourbillon qui vous emportera au fond si vous vous laissez entraîner. Vous décidez donc de nager vers la rive droite et de poursuivre votre chemin à pied. Votre équipement est au complet, vous n'avez rien perdu dans les eaux de la rivière. ", paragraphNumber);
+
                         paragraph.addDecision(new MoveEvent(321, "Continuer"));
                         return paragraph;
                     }
@@ -1350,7 +1351,7 @@ namespace LDVELH_WPF
                 case 169:
                     {
                         paragraph = new StoryParagraph("Lorsque vous passez devant les crânes, chacun d'eux pivote lentement sur lui-même comme pour suivre le moindre de vos mouvements. Vous vous trouvez à présent au milieu de cette chambre mortuaire et, soudain, vous entendez un bruit d'os qui se brise. Des formes monstrueuses éclosent alors des crânes en déployant des ailes semblables à celles des chauves-souris. Dix de ces créatures à la peau gluante vous attaquent aussitôt", paragraphNumber);
-                        paragraph.addMainEvent(new FightEvent(new Ennemy("Monstres des cryptes", 16,16,EnnemyTypes.Beast)));
+                        paragraph.addMainEvent(new RunEvent(new Ennemy("Monstres des cryptes", 16,16,EnnemyTypes.Beast), 1, new MoveEvent(23, "s'enfuir")));
                         paragraph.addDecision(new MoveEvent(137, "Continuer"));
                         return paragraph;
                     }
@@ -1428,9 +1429,9 @@ namespace LDVELH_WPF
                 case 180:
                     {
                         paragraph = new StoryParagraph("Ils vous voient lever votre arme et vous attaquent aussitôt.", paragraphNumber);
-                        paragraph.addMainEvent(new FightEvent(new Ennemy("Chef des soldats",15,22, EnnemyTypes.Human)));
-                        paragraph.addMainEvent(new FightEvent(new Ennemy("soldat",13,20, EnnemyTypes.Human)));
-                        paragraph.addMainEvent(new FightEvent(new Ennemy("soldat", 13,20, EnnemyTypes.Human)));
+                        paragraph.addMainEvent(new RunEvent(new Ennemy("Chef des soldats",15,22, EnnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
+                        paragraph.addMainEvent(new RunEvent(new Ennemy("soldat",13,20, EnnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
+                        paragraph.addMainEvent(new RunEvent(new Ennemy("soldat", 13,20, EnnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
                         paragraph.addDecision(new MoveEvent(62, "continuer"));
                         return paragraph;
                     }
@@ -1513,8 +1514,8 @@ namespace LDVELH_WPF
                     }
                 case 191:
                     {
-                        paragraph = new StoryParagraph("Le garde du corps dégaine un long cimeterre et s'apprête à vous attaquer. ", paragraphNumber);
-                        paragraph.addMainEvent(new FightEvent(new Ennemy("Garde du corps",11,21,EnnemyTypes.Human)));
+                        paragraph = new StoryParagraph("Le garde du corps dégaine un long cimeterre et s'apprête à vous attaquer. Si vous souhaitez prendre la fuite au cours du combat, vous pourrez sauter de la roulotte ", paragraphNumber);
+                        paragraph.addMainEvent(new RunEvent(new Ennemy("Garde du corps",11,21,EnnemyTypes.Human), 1, new MoveEvent(234, "Sauter de la roulotte")));
                         paragraph.addDecision(new MoveEvent(24, "continuer"));
                         return paragraph;
                     }
@@ -1717,8 +1718,8 @@ namespace LDVELH_WPF
                     }
                 case 220:
                     {
-                        paragraph = new StoryParagraph("Le Garde du Corps dégaine un long cimeterre et s'apprête à vous en enfoncer la lame dans la poitrine. ", paragraphNumber);
-                        paragraph.addMainEvent(new FightEvent(new Ennemy("Garde Du corps",11,20, EnnemyTypes.Human)));
+                        paragraph = new StoryParagraph("Le Garde du Corps dégaine un long cimeterre et s'apprête à vous en enfoncer la lame dans la poitrine. Si vous souhaitez prendre la fuite au cours du combat, vous pouvez sauter de la roulotte ", paragraphNumber);
+                        paragraph.addMainEvent(new RunEvent(new Ennemy("Garde du corps",11,20,EnnemyTypes.Human), 1, new MoveEvent(234, "Sauter de la roulotte")));
                         paragraph.addDecision(new MoveEvent(24, "continuer"));
                         return paragraph;
                     }
@@ -2644,7 +2645,7 @@ namespace LDVELH_WPF
                         paragraph = new StoryParagraph("La forêt s'éclaircit bientôt et vous apercevez un peu plus loin une vieille cabane en rondins, construite sous un chêne. La cabane semble avoir été abandonnée et il n'y reste apparemment rien de très intéressant. En ouvrant un petit coffre posé près de la porte, vous découvrez des fagots de branches liées ensemble avec de la ficelle. Les fagots ont été enduits de poix à l'une de leurs extrémités : ils peuvent ainsi faire office de Torches. Près du coffre, vous trouvez également un Sabre et un Briquet à Amadou. Vous pouvez les prendre ainsi qu'une des Torches", paragraphNumber);
                         paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Sabre(), "Prendre le sabre"));
                         paragraph.addDecision(new LootEvent(new Miscellaneous("briquet"), "Prendre le briquet"));
-                        paragraph.addDecision(new LootEvent(new Miscellaneous("Torche"), "Prendre le briquet"));
+                        paragraph.addDecision(new LootEvent(new Miscellaneous("Torche"), "Prendre la toche"));
                         paragraph.addDecision(new MoveEvent(103, "poursuivre votre chemin le long du sentier orienté au nord-est"));
                         return paragraph;
                     }

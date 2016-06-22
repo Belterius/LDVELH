@@ -15,6 +15,7 @@ namespace LDVELH_WPF
 
         protected string triggerMessage;
         protected int destinationNumber;
+        protected bool done = false;
         public abstract void resolveEvent(Story story);
         public string getTriggerMessage
         {
@@ -42,6 +43,7 @@ namespace LDVELH_WPF
         }
         public override void resolveEvent(Story story)
         {
+            story.addParagraph(CreateParagraph.CreateAParagraph(this.destinationNumber));
             story.Move(this.destinationNumber);
         }
         public CapacityType CapacityRequiered{
@@ -70,23 +72,30 @@ namespace LDVELH_WPF
         }
         public override void resolveEvent(Story story)
         {
-            foreach (Loot lootItem in loot)
+            if (!done)
             {
-                try
+                foreach (Loot lootItem in loot)
                 {
-                    story.getHero.addLoot(lootItem);
-                }
-                catch (BackPackFullException)
-                {
-                    //TODO
-                    System.Diagnostics.Debug.WriteLine("LootEvent full backpack, propose choice");
-                }
-                catch (WeaponHolderFullException)
-                {
-                    //TODO
-                    System.Diagnostics.Debug.WriteLine("LootEvent full weapon holder, propose choice");
+                    try
+                    {
+                        story.getHero.addLoot(lootItem);
+                        done = true;
+                    }
+                    catch (BackPackFullException)
+                    {
+                        //TODO
+                        System.Diagnostics.Debug.WriteLine("LootEvent full backpack, propose choice");
+                        MessageBox.Show("Votre inventaire est plein ! vous devez vider un objet de votre sac avant de pouvoir récupérer un nouvel item");
+                    }
+                    catch (WeaponHolderFullException)
+                    {
+                        //TODO
+                        MessageBox.Show("Votre baudrier est plein ! vous devez jeter une arme avant de pouvoir en récupérer une nouvelle");
+                        System.Diagnostics.Debug.WriteLine("LootEvent full weapon holder, propose choice");
+                    }
                 }
             }
+            
         }
 
     }
@@ -133,8 +142,10 @@ namespace LDVELH_WPF
     }
     public class FightEvent : Event
     {
-        Ennemy ennemy;
-
+        protected Ennemy ennemy;
+        public FightEvent()
+        {
+        }
         public FightEvent(Ennemy ennemy)
         {
             this.ennemy = ennemy;
@@ -173,6 +184,56 @@ namespace LDVELH_WPF
 
         }
     }
+    public class RunEvent : FightEvent
+    {
+        int ranTurn;
+        Event runEvent;
+
+        public RunEvent(Ennemy ennemy, int ranTurn, Event runEvent)
+        {
+            this.ennemy = ennemy;
+            this.runEvent = runEvent;
+        }
+        public RunEvent(int destinationNumber, Ennemy ennemy, int ranTurn, Event runEvent)
+        {
+            this.ennemy = ennemy;
+            this.runEvent = runEvent;
+            this.destinationNumber = destinationNumber;
+        }
+        public override void resolveEvent(Story story)
+        {
+            try
+            {
+                while (!ShowMyDialogBox(story, ennemy, ranTurn, runEvent)) ;
+            }
+            catch (YouAreDeadException)
+            {
+                throw;
+            }
+        }
+        private bool ShowMyDialogBox(Story story, Ennemy ennemy, int ranTurn, Event runEvent)
+        {
+
+            MessageBoxFight testDialog = new MessageBoxFight(story.getHero, ennemy, ranTurn);
+
+            if (testDialog.ShowDialog() == true)
+            {
+                if (testDialog.DidRanAway)
+                {
+                    story.getActualParagraph.getListDecision.Clear();
+                    story.getActualParagraph.getListDecision.Add(runEvent);
+                }
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("You can't escape a fight like that !");
+                return false;
+            }
+
+
+        }
+    }
     public class MoveEvent : Event
     {
         public MoveEvent(int destinationNumber)
@@ -186,6 +247,7 @@ namespace LDVELH_WPF
         }
         public override void resolveEvent(Story story)
         {
+            story.addParagraph(CreateParagraph.CreateAParagraph(this.destinationNumber));
             story.Move(this.destinationNumber);
         }
     }
@@ -204,6 +266,7 @@ namespace LDVELH_WPF
         }
         public override void resolveEvent(Story story)
         {
+            story.addParagraph(CreateParagraph.CreateAParagraph(this.destinationNumber));
             story.Move(this.destinationNumber);
         }
         public string itemRequiered
@@ -228,9 +291,8 @@ namespace LDVELH_WPF
         }
         public override void resolveEvent(Story story)
         {
-            if(this.specialMessage != "")
-                MessageBox.Show("Vous êtes mort : " + specialMessage);
             story.getHero.kill();
+            throw new YouAreDeadException("Vous êtes mort: " + specialMessage);
         }
     }
     public class DammageEvent : Event
@@ -309,6 +371,7 @@ namespace LDVELH_WPF
             {
                 linkEvent.resolveEvent(story);
             }
+            story.addParagraph(CreateParagraph.CreateAParagraph(this.destinationNumber));
             story.Move(this.destinationNumber);
         }
     }

@@ -19,7 +19,7 @@ namespace LDVELH_WPF
     /// </summary>
     public partial class MenuCapacities : Window
     {
-        int allowedNumberCapacities = 2;
+        int allowedNumberCapacities = 5;
         Hero hero;
         MainWindow mainWindow;
 

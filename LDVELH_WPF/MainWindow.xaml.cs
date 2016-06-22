@@ -151,9 +151,6 @@ namespace LDVELH_WPF
         {
             story = new Story("first adventure", hero);
             story.addParagraph(CreateParagraph.CreateAParagraph(1));
-            story.addParagraph(CreateParagraph.CreateAParagraph(2));
-            story.addParagraph(CreateParagraph.CreateAParagraph(3));
-            story.addParagraph(CreateParagraph.CreateAParagraph(4));
 
             initStoryObserver();
 
