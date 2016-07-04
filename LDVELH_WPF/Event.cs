@@ -251,6 +251,24 @@ namespace LDVELH_WPF
             story.Move(this.destinationNumber);
         }
     }
+    public class MealEvent : Event
+    {
+        public MealEvent(int destinationNumber)
+        {
+            this.destinationNumber = destinationNumber;
+        }
+        public MealEvent(int destinationNumber, string triggerMessage)
+        {
+            this.destinationNumber = destinationNumber;
+            this.triggerMessage = triggerMessage;
+        }
+        public override void resolveEvent(Story story)
+        {
+            story.getHero.mealTime();
+            story.addParagraph(CreateParagraph.CreateAParagraph(this.destinationNumber));
+            story.Move(this.destinationNumber);
+        }
+    }
     public class ItemRequieredEvent : Event
     {
         string itemName;

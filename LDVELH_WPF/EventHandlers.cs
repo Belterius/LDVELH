@@ -22,6 +22,7 @@ namespace LDVELH_WPF
         Label labelGold;
         Label labelAgility;
         Label labelWeaponMastery;
+        Label labelBellyState;
         ListBox listBoxWeapon;
         private BindingList<Weapon> listWeaponSave;
         ListBox listBoxBackPackItem;
@@ -30,7 +31,7 @@ namespace LDVELH_WPF
         private BindingList<SpecialItem> listSpecialItemSave;
 
 
-        public HeroObserver(Hero hero, Label labelHP, Label labelAgility, Label labelWeaponMastery, Label labelGold, ListBox listWeapon, ListBox listItem, ListBox listSpecialItem)
+        public HeroObserver(Hero hero, Label labelHP, Label labelAgility, Label labelWeaponMastery, Label labelGold, Label labelBellyState, ListBox listWeapon, ListBox listItem, ListBox listSpecialItem)
         {
             this.labelGold = labelGold;
             this.listBoxWeapon = listWeapon;
@@ -39,6 +40,7 @@ namespace LDVELH_WPF
             this.labelHP = labelHP;
             this.labelAgility = labelAgility;
             this.labelWeaponMastery = labelWeaponMastery;
+            this.labelBellyState = labelBellyState;
 
             listWeaponSave = new BindingList<Weapon>();
             listItemSave = new BindingList<Item>();
@@ -60,6 +62,10 @@ namespace LDVELH_WPF
         public void MaxHitPointChanged(Hero hero, int damage)
         {
             labelHP.Content = hero.getActualHitPoint().ToString() + "/" + hero.getMaxHitPoint().ToString();
+        }
+        public void HungryStateChanged(Hero hero)
+        {
+            labelBellyState.Content = hero.getHungryState.ToString();
         }
         public void AgilityChanged(Hero hero, int damage)
         {
@@ -137,8 +143,9 @@ namespace LDVELH_WPF
         {
             //Several step :
 
-            //First : the text content
+            //First : the text content and change title
             setMainTextContent(actualParagraph);
+            SetTitleParagraph(actualParagraph);
 
             //Second : the main event (that WILL happen, no choice, unless we're loading a Hero (so he already resolved the mains event))
             try
@@ -162,6 +169,10 @@ namespace LDVELH_WPF
         {
             contentText.Document.Blocks.Clear();
             contentText.Document.Blocks.Add(new Paragraph(new Run(actualParagraph.getContent)));
+        }
+        private void SetTitleParagraph(StoryParagraph actualParagraph)
+        {
+            window.Title = story.getHero.getName() + " : paraph n°" + actualParagraph.getParagraphNumber;
         }
         private void resolveMainEvents(Story story)
         {

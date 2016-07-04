@@ -11,6 +11,8 @@ namespace LDVELH_WPF
 {
     public class Hero : Character
     {
+        private static int skipMealDamage = 3;
+
         [ForeignKey("weaponHolder")]
         public int WeaponHolderID { get; set; }
 
@@ -44,6 +46,10 @@ namespace LDVELH_WPF
         public event specialItemsHandler specialItemsChanged;
         public delegate void specialItemsHandler(Hero m, SpecialItem specialItem, bool add);
 
+        private HungryState hungryStatus;
+        public event HungryStateHandler hungryStateChanged;
+        public delegate void HungryStateHandler(Hero m);
+
         [Column("Paragraph")]
         private int saveActualParagraph { get; set; }
 
@@ -55,6 +61,7 @@ namespace LDVELH_WPF
         private Hero()
         {
             specialItems = new List<SpecialItem>();
+            hungryStatus = HungryState.Hungry;
         }
 
         public Hero(string name){
@@ -68,6 +75,7 @@ namespace LDVELH_WPF
             backPack = new BackPack();
             weaponHolder = new WeaponHolder();
             specialItems = new List<SpecialItem>();
+            hungryStatus = HungryState.Hungry;
         }
 
         private int randMaxHitPoint()
@@ -409,8 +417,35 @@ namespace LDVELH_WPF
 
         public void eat()
         {
-            //TODO !!!
+            this.hungryStatus = HungryState.Full;
+            HungryStateHasChanged();
         }
+
+        public void mealTime()
+        {
+            if(this.getHungryState == HungryState.Hungry)
+            {
+                this.takeDamage(skipMealDamage);
+            }
+            this.hungryStatus = HungryState.Hungry;
+            HungryStateHasChanged();
+        }
+        public HungryState getHungryState {
+            get
+            {
+                return this.hungryStatus;
+            }
+        }
+        public void HungryStateHasChanged()
+        {
+            HungryStateHandler handler = hungryStateChanged;
+            if (handler != null)
+            {
+                handler(this);
+            }
+        }
+
+
 
         public WeaponTypes getWeaponMastery
         {
@@ -560,6 +595,12 @@ namespace LDVELH_WPF
 
         public string getResume{
             get { return this.name + " ( Paragraph : " + this.saveActualParagraph + " )" ; }
+        }
+
+        public enum HungryState
+        {
+            Full,
+            Hungry
         }
     }
 

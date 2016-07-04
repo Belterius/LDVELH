@@ -14,6 +14,8 @@
                 <Label x:Name="labelWeaponMastery" Content="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="121,36,0,-1"/>
                 <Label Content="Label" HorizontalAlignment="Left" Margin="269,47,0,0" VerticalAlignment="Top"/>
                 <Label Content="Capacities :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="309,0,0,0"/>
+                <Label x:Name="label" Content="Faim :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="167,35,0,0"/>
+                <Label x:Name="labelHungryState" Content="Hungry" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="216,35,0,0"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBoxInventory" Header="Inventory" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="556,0,0,0" Height="671" Width="195">

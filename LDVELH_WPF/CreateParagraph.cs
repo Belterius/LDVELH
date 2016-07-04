@@ -21,6 +21,7 @@ namespace LDVELH_WPF
                         //D10 Gold + Axe
                         paragraph.addMainEvent(new LootEvent(new Gold(DiceRoll.D10Roll())));
                         paragraph.addMainEvent(new LootEvent(CreateLoot.CreateWeapon.Hache()));
+                        paragraph.addMainEvent(new LootEvent(CreateLoot.CreateFood.ration(3)));
                         //Random loot
                         switch (DiceRoll.D10Roll())
                         {
@@ -1064,8 +1065,8 @@ namespace LDVELH_WPF
                 case 130:
                     {
                         paragraph = new StoryParagraph("Vous parvenez bientôt à une petite clairière. En son centre, vous trouvez un banc taillé dans le tronc d'un arbre. \nVous avez faim, et il vous faut prendre un Repas, sinon, vous perdrez 3 points d'ENDURANCE.", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(28, "quitter la clairière par le sud "));
-                        paragraph.addDecision(new MoveEvent(201, "s'enfonçer dans la forêt a l'est"));
+                        paragraph.addDecision(new MealEvent(28, "quitter la clairière par le sud "));
+                        paragraph.addDecision(new MealEvent(201, "s'enfonçer dans la forêt a l'est"));
                         return paragraph;
                     }
                 case 131:
@@ -1187,8 +1188,8 @@ namespace LDVELH_WPF
                 case 147:
                     {
                         paragraph = new StoryParagraph("Après avoir marché pendant quelques minutes, vous passez devant une petite hutte couverte de mousse qui a été bâtie à l'écart du chemin. Vous avez faim et il vous faut prendre un Repas, sinon, vous perdez 3 points d'ENDURANCE. Vous constatez bientôt que le chemin tourne vers l'est. ", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(42, "continuer à le suivre"));
-                        paragraph.addDecision(new MoveEvent(28, "revenir sur vos pas"));
+                        paragraph.addDecision(new MealEvent(42, "continuer à le suivre"));
+                        paragraph.addDecision(new MealEvent(28, "revenir sur vos pas"));
                         return paragraph;
                     }
                 case 148:
@@ -1345,7 +1346,7 @@ namespace LDVELH_WPF
                 case 168:
                     {
                         paragraph = new StoryParagraph("Vous vous hissez au sommet de la luxueuse roulotte et vous vous installez au milieu des malles et des valises. La nuit bientôt tombera sur la grand-route. Un vent frais souffle de l'ouest, qui vous oblige à bien serrer votre cape autour de vous pour n'avoir pas trop froid. Au-dessous, à l'intérieur de la roulotte, vous entendez des gens parler et une délicieuse odeur de viande rôtie vous monte aux narines. Elle vient vous rappeler que vous avez très faim et qu'il vous faut prendre un Repas, sinon, vous perdrez 3 points d'ENDURANCE. La fatigue a tôt fait d'avoir raison de vous et vous finissez par sombrer dans un sommeil agité.", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(64, "Continuer"));
+                        paragraph.addDecision(new MealEvent(64, "Continuer"));
                         return paragraph;
                     }
                 case 169:
@@ -1828,8 +1829,8 @@ namespace LDVELH_WPF
                 case 235:
                     {
                         paragraph = new StoryParagraph("Le cheval du Prince est un magnifique animal, rapide et au pied sûr. Il galope le long du sentier sinueux comme s'il s'agissait d'une route large et droite et, bientôt, les échos de la bataille se dissipent derrière vous. Vous avez faim, et il vous faut prendre un Repas tandis que vous chevauchez l'étalon blanc, sinon, vous perdrez 3 points d'ENDURANCE. Quelques kilomètres plus loin, le sentier aboutit à un croisement en forme de T. Il y a là un panneau indicateur, mais il est illisible.", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(32, "prendre à gauche"));
-                        paragraph.addDecision(new MoveEvent(146, "tourner à droite"));
+                        paragraph.addDecision(new MealEvent(32, "prendre à gauche"));
+                        paragraph.addDecision(new MealEvent(146, "tourner à droite"));
                         paragraph.addDecision(new CapacityEvent(254, CapacityType.Orientation));
                         return paragraph;
                     }
@@ -2304,7 +2305,7 @@ namespace LDVELH_WPF
                 case 300:
                     {
                         paragraph = new StoryParagraph("Vous avez marché pendant plus d'une heure en surveillant le ciel de peur de voir apparaître des Kraans. Par deux fois, vous avez aperçu leurs silhouettes caractéristiques qui se dessinaient au loin, mais la promptitude de vos réflexes vous a gardé d'être repéré. Cette longue marche vous a affamé cependant et il vous faut prendre un Repas, sinon vous perdrez 3 points d'ENDURANCE. ", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(13, "continuer"));
+                        paragraph.addDecision(new MealEvent(13, "continuer"));
                         return paragraph;
                     }
                 case 301:
