@@ -270,24 +270,24 @@ namespace LDVELH_WPF
         private void handleDeath(Story story)
         {
             MessageBox.Show("You died ! \n Better luck next time.");
-            using (HeroSaveContext heroSaveContext = new HeroSaveContext())
-            {
-                heroSaveContext.MyItems.Load();
-                heroSaveContext.MySpecialItem.Load();
-                heroSaveContext.MyWeapons.Load();
-                heroSaveContext.MyWeaponHolders.Load();
-                heroSaveContext.MyBackPack.Load();
-                heroSaveContext.MyHero.Load();
-                heroSaveContext.MyCapacities.Load();
-                Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == story.getHero.CharacterID).FirstOrDefault();
-                if (savedHero != null)
-                {
-                    heroSaveContext.MySpecialItem.RemoveRange(savedHero.getSpecialItems);
-                    heroSaveContext.MyCapacities.RemoveRange(savedHero.capacities);
-                    heroSaveContext.MyHero.Remove(savedHero);
-                    heroSaveContext.SaveChanges();
-                }
-            }
+            //using (HeroSaveContext heroSaveContext = new HeroSaveContext())
+            //{
+            //    heroSaveContext.MyItems.Load();
+            //    heroSaveContext.MySpecialItem.Load();
+            //    heroSaveContext.MyWeapons.Load();
+            //    heroSaveContext.MyWeaponHolders.Load();
+            //    heroSaveContext.MyBackPack.Load();
+            //    heroSaveContext.MyHero.Load();
+            //    heroSaveContext.MyCapacities.Load();
+            //    Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == story.getHero.CharacterID).FirstOrDefault();
+            //    if (savedHero != null)
+            //    {
+            //        heroSaveContext.MySpecialItem.RemoveRange(savedHero.getSpecialItems);
+            //        heroSaveContext.MyCapacities.RemoveRange(savedHero.capacities);
+            //        heroSaveContext.MyHero.Remove(savedHero);
+            //        heroSaveContext.SaveChanges();
+            //    }
+            //}
             MenuLoad loadMenu = new MenuLoad();
             loadMenu.Show();
             window.Close();

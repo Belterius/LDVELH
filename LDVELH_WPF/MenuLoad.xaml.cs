@@ -28,15 +28,23 @@ namespace LDVELH_WPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            using(HeroSaveContext heroSaveContext = new HeroSaveContext()){
+            try
+            {
+                //using (HeroSaveContext heroSaveContext = new HeroSaveContext())
+                //{
 
-                var query = from hero in heroSaveContext.MyHero
-                            select hero;
-                listHeroes = query.ToList();
-                listBoxHeroes.ItemsSource = listHeroes;
-                listBoxHeroes.DisplayMemberPath = "getResume";
-                listBoxHeroes.SelectedValuePath = "CharacterID";
+                //    var query = from hero in heroSaveContext.MyHero
+                //                select hero;
+                //    listHeroes = query.ToList();
+                //    listBoxHeroes.ItemsSource = listHeroes;
+                //    listBoxHeroes.DisplayMemberPath = "getResume";
+                //    listBoxHeroes.SelectedValuePath = "CharacterID";
+                //}
+            }catch(Exception ex)
+            {
+                buttonLoad.Visibility = Visibility.Hidden;
             }
+            
         }
 
         private void buttonNew_Click(object sender, RoutedEventArgs e)
@@ -47,26 +55,26 @@ namespace LDVELH_WPF
 
         private void buttonLoad_Click(object sender, RoutedEventArgs e)
         {
-            using(HeroSaveContext heroSaveContext = new HeroSaveContext()){
-                try
-                {
-                    heroSaveContext.MyBackPack.Load();
-                    heroSaveContext.MyHero.Load();
-                    heroSaveContext.MyItems.Load();
-                    heroSaveContext.MySpecialItem.Load();
-                    heroSaveContext.MyWeaponHolders.Load();
-                    heroSaveContext.MyWeapons.Load();
-                    heroSaveContext.MyCapacities.Load();
-                    Hero heroSelected = heroSaveContext.MyHero.Where(x => x.CharacterID.ToString() == listBoxHeroes.SelectedValue.ToString()).First();
-                    MainWindow mainWindow = new MainWindow(heroSelected);
-                    mainWindow.Show();
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine("Error loading the Hero : " + ex);
-                }
-            }
+            //using(HeroSaveContext heroSaveContext = new HeroSaveContext()){
+            //    try
+            //    {
+            //        heroSaveContext.MyBackPack.Load();
+            //        heroSaveContext.MyHero.Load();
+            //        heroSaveContext.MyItems.Load();
+            //        heroSaveContext.MySpecialItem.Load();
+            //        heroSaveContext.MyWeaponHolders.Load();
+            //        heroSaveContext.MyWeapons.Load();
+            //        heroSaveContext.MyCapacities.Load();
+            //        Hero heroSelected = heroSaveContext.MyHero.Where(x => x.CharacterID.ToString() == listBoxHeroes.SelectedValue.ToString()).First();
+            //        MainWindow mainWindow = new MainWindow(heroSelected);
+            //        mainWindow.Show();
+            //        this.Close();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        System.Diagnostics.Debug.WriteLine("Error loading the Hero : " + ex);
+            //    }
+            //}
 
         }
     }

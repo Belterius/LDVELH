@@ -207,20 +207,20 @@ namespace LDVELH_WPF
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            using (HeroSaveContext heroContext = new HeroSaveContext())
-            {
-                    Hero savedHero =  heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
-                    if (savedHero == null)
-                    {
-                        heroContext.MyHero.Add(hero);
-                    }
-                    else
-                    {
-                        heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
-                    }
-                heroContext.SaveChanges();
-                MessageBox.Show("Hero successfully saved !");
-            }
+            //using (HeroSaveContext heroContext = new HeroSaveContext())
+            //{
+            //        Hero savedHero =  heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+            //        if (savedHero == null)
+            //        {
+            //            heroContext.MyHero.Add(hero);
+            //        }
+            //        else
+            //        {
+            //            heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
+            //        }
+            //    heroContext.SaveChanges();
+            //    MessageBox.Show("Hero successfully saved !");
+            //}
             
         }
 
