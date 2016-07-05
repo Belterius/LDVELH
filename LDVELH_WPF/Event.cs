@@ -140,10 +140,56 @@ namespace LDVELH_WPF
         }
 
     }
+    public class DebuffEvent : Event
+    {
+        int debuff;
+        bool alwaysHappen = false;
+        Item requieredItem = null;
+        bool capacityRequiered = false;
+        CapacityType requieredCapacity;
+        public DebuffEvent(int debuff)
+        {
+            alwaysHappen = true;
+        }
+        public DebuffEvent(Item requieredItem, int debuff)
+        {
+            this.requieredItem = requieredItem;
+            this.debuff = debuff;
+        }
+        public DebuffEvent(CapacityType requieredCapacity, int debuff)
+        {
+            this.requieredCapacity = requieredCapacity;
+            this.capacityRequiered = true;
+            this.debuff = debuff;
+        }
+        public override void resolveEvent(Story story)
+        {
+            if(capacityRequiered)
+            {
+                if (!story.getHero.possesCapacity(requieredCapacity))
+                {
+                    story.getHero.addTempDebuff(debuff);
+                    return;
+                }
+            }
+            if (requieredItem != null)
+            {
+                if (!story.getHero.possesItem(requieredItem.getName))
+                {
+                    story.getHero.addTempDebuff(debuff);
+                    return;
+                }
+            }
+            if (alwaysHappen)
+            {
+                story.getHero.addTempDebuff(debuff);
+                return;
+            }
+        }
+    }
     public class FightEvent : Event
     {
         protected Ennemy ennemy;
-        int debuff = 0;
 
         public FightEvent()
         {
@@ -152,16 +198,10 @@ namespace LDVELH_WPF
         {
             this.ennemy = ennemy;
         }
-        public FightEvent(Ennemy ennemy, int debuff)
-        {
-            this.ennemy = ennemy;
-            this.debuff = debuff;
-        }
         public override void resolveEvent(Story story)
         {
             try
             {
-                story.getHero.addTempDebuff(debuff);
                 while (!ShowMyDialogBox(story, ennemy));
                 story.getHero.removeTempDebuff();
             }

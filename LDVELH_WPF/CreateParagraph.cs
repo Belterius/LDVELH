@@ -329,6 +329,7 @@ namespace LDVELH_WPF
                 case 29:
                     {
                         paragraph = new StoryParagraph("Vous vous approchez de la rive du lac en vous préparant à combattre. Le Kraan et la créature qui le chevauche vous aperçoivent aussitôt et foncent vers vous en volant à ras de l'eau. C'est alors que le maître du Kraan lance un cri qui vous glace le sang. Cette créature est un Vordak, un féroce lieutenant des Maîtres des Ténèbres. Il se rue sur vous, et il vous faut le combattre. Votre adversaire vous attaque à l'aide d'une grosse Masse d'Armes, mais il est également doué d'une redoutable Puissance Psychique dont il va faire usage au cours de l'affrontement. Si vous ne maîtrisez pas la Discipline Kaï du Bouclier Psychique, sa force mentale vous fera perdre 2 points d'HABILETÉ pendant toute la durée du combat. ", paragraphNumber);
+                        paragraph.addMainEvent(new DebuffEvent(CapacityType.BouclierPsychique, 2));
                         paragraph.addMainEvent(new FightEvent( new Ennemy("Vordak", 17, 25, EnnemyTypes.Hero)));
                         paragraph.addDecision(new MoveEvent(270, "Continuer"));
                         return paragraph;
@@ -363,6 +364,7 @@ namespace LDVELH_WPF
                 case 34:
                     {
                         paragraph = new StoryParagraph("Sans crier gare, une terrifiante apparition fond sur vous. C'est une créature vêtue de longs vêtements rouges et montée sur le dos d'un Kraan. Votre assaillant pousse un cri à vous glacer le sang : il s'agit d'un Vordak, un féroce lieutenant des Maîtres des Ténèbres. Il est juste au-dessus de vous et il vous faut le combattre. Le monstre vous attaque à l'aide d'une grosse Masse d'Armes et il est également doué d'une redoutable Puissance Psychique, dont il va faire usage au cours de l'affrontement. Si vous ne maîtrisez pas la Discipline Kaï du Bouclier Psychique, vous devrez réduire de 2 points votre total d'HABILETÉ pendant toute la durée du combat. ", paragraphNumber);
+                        paragraph.addMainEvent(new DebuffEvent(CapacityType.BouclierPsychique, 2));
                         paragraph.addMainEvent(new FightEvent(new Ennemy("Vordak", 17, 25, EnnemyTypes.Hero)));
                         paragraph.addDecision(new MoveEvent(328, "Continuer"));
                         return paragraph;
@@ -533,6 +535,7 @@ namespace LDVELH_WPF
                 case 55:
                     {
                         paragraph = new StoryParagraph("Au moment où le Glok bondit, vous vous ruez sur lui et vous le frappez de votre arme, l'empêchant ainsi d'atterrir sur le dos du jeune sorcier. Vous profitez de votre avantage pour frapper à nouveau la créature qui se débat et l'effet de surprise de votre attaque vous permet d'ajouter 4 points à votre total d'HABILETÉ pendant toute la durée de ce combat. ", paragraphNumber);
+                        paragraph.addMainEvent(new DebuffEvent(-4));
                         paragraph.addMainEvent(new FightEvent(new Ennemy("Glok",9,9,EnnemyTypes.Orc)));
                         paragraph.addDecision(new MoveEvent(325, "Continuer"));
                         return paragraph;
@@ -1108,7 +1111,9 @@ namespace LDVELH_WPF
                 case 136:
                     {
                         paragraph = new StoryParagraph("Les Gloks se rapprochent puis s'accroupissent, prêts à bondir. Vous apercevez les pointes dentelées de leurs lances et vous entendez les sons gutturaux qu'ils produisent en parlant. « Rob Gaye Oring Ahrr oho key ! Pamark élbhûtt ! » s'écrie la plus grande des deux créatures qui vous attaque aussitôt. Il vous faut combattre les deux Gloks à tour de rôle. Vous ajouterez un point d'HABILETÉ à votre total en raison de l'avantage que vous donne votre position plus élevée sur le terrain. ", paragraphNumber);
+                        paragraph.addMainEvent(new DebuffEvent( -1));
                         paragraph.addMainEvent(new FightEvent(new Ennemy("Glok",13,10, EnnemyTypes.Orc)));
+                        paragraph.addMainEvent(new DebuffEvent( -1));
                         paragraph.addMainEvent(new FightEvent(new Ennemy("Glok",12,10, EnnemyTypes.Orc)));
                         paragraph.addDecision(new MoveEvent(313, "Continuer"));
                         return paragraph;
@@ -1360,6 +1365,7 @@ namespace LDVELH_WPF
                 case 170:
                     {
                         paragraph = new StoryParagraph("Le tunnel est sombre et il y fait beaucoup plus froid qu'audehors. Vous avancez prudemment en tâtonnant la paroi et au bout de trois minutes passées dans une obscurité totale, vous sentez soudain une odeur répugnante de viande pourrie. Si vous disposez d'une Torche et d'un Briquet d'Amadou, vous pourrez vous en servir pour vous éclairer. Soudain, une lourde masse tombe du plafond du tunnel et atterrit sur votre dos. Sous le choc, vos jambes fléchissent et vous vous retrouvez à genoux. C'est un Gluâtre des Profondeurs qui vient de vous attaquer en essayant de vous étrangler de ses longs tentacules visqueux. Si vous n'avez pas de Torche pour vous éclairer, vous devrez réduire de 3 points votre total d'HABILETÉ pendant toute la durée du combat. Le Gluâtre est insensible aux Disciplines Kaï de la Puissance Psychique et de la Communication Animale. ", paragraphNumber);
+                        paragraph.addMainEvent(new DebuffEvent(new Miscellaneous("Torche"), 3));
                         paragraph.addMainEvent(new FightEvent(new Ennemy("Gluatre des profondeurs", 17,7, EnnemyTypes.Hero)));
                         paragraph.addDecision(new MoveEvent(319, "Continuer"));
                         return paragraph;
@@ -1790,6 +1796,7 @@ namespace LDVELH_WPF
                 case 229:
                     {
                         paragraph = new StoryParagraph("Le Kraan vole au-dessus de votre tête en soulevant des nuages de poussière par le seul battement de ses ailes immenses. Bientôt, vous avez le nez et les yeux pleins de poussière et vous vous mettez à tousser et à cligner les paupières. Puis, soudain, le monstre vous attaque", paragraphNumber);
+                        paragraph.addMainEvent(new DebuffEvent(-1));
                         paragraph.addMainEvent(new FightEvent(new Ennemy("Kraan",16,25,EnnemyTypes.Human)));
                         paragraph.addDecision(new MoveEvent(267, "fouiller la créature"));
                         paragraph.addDecision(new MoveEvent(125, "poursuivre votre chemin le long du sentier "));
@@ -2180,6 +2187,7 @@ namespace LDVELH_WPF
                 case 283:
                     {
                         paragraph = new StoryParagraph("Vous êtes à trois mètres environ de l'étranger lorsque son corbeau se met à croasser pour l'avertir de votre approche. L'homme fait aussitôt volte-face et vous vous immobilisez saisi de terreur : car en fait ce n'est pas un homme que vous avez devant vous, mais un Vordak, l'un des plus redoutables lieutenants des Maîtres des Ténèbres. Cette créature appartient au monde des morts vivants et vous allez devoir la combattre dans un affrontement sans merci. La surprise de votre attaque vous permet d'ajouter 2 points à votre total d'HABILETÉ lors du premier assaut. Dès le deuxième assaut, en revanche, et au cours des suivants, vous devrez réduire de 2 points ce même total d'HABILETÉ à moins que vous ne maîtrisiez la Discipline Kaï du Bouclier Psychique. Le Vordak vous attaque, en effet, en utilisant simultanément deux armes redoutables : une énorme Masse d'Armes et sa formidable Puissance Psychique.", paragraphNumber);
+                        paragraph.addMainEvent(new DebuffEvent(CapacityType.BouclierPsychique, 2));
                         paragraph.addMainEvent(new FightEvent(new Ennemy("Vordak", 17,25, EnnemyTypes.Hero)));
                         paragraph.addDecision(new MoveEvent(123, "continuer"));
                         return paragraph;
