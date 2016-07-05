@@ -1140,6 +1140,7 @@ namespace LDVELH_WPF
                         paragraph.addDecision(new MoveEvent(14, "prendre le sentier qui mène au sud"));
                         paragraph.addDecision(new MoveEvent(252, "prendre celui qui mène à l'est"));
                         paragraph.addDecision(new MoveEvent(215, "prendre celui orienté au sud-ouest"));
+
                         paragraph.addDecision(new MoveEvent(36, "monter dans la tour"));
                         return paragraph;
                     }

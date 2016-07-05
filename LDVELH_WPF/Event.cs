@@ -143,6 +143,8 @@ namespace LDVELH_WPF
     public class FightEvent : Event
     {
         protected Ennemy ennemy;
+        int debuff = 0;
+
         public FightEvent()
         {
         }
@@ -150,16 +152,18 @@ namespace LDVELH_WPF
         {
             this.ennemy = ennemy;
         }
-        public FightEvent(int destinationNumber, Ennemy ennemy)
+        public FightEvent(Ennemy ennemy, int debuff)
         {
             this.ennemy = ennemy;
-            this.destinationNumber = destinationNumber;
+            this.debuff = debuff;
         }
         public override void resolveEvent(Story story)
         {
             try
             {
-                while (!ShowMyDialogBox(story, ennemy)) ;
+                story.getHero.addTempDebuff(debuff);
+                while (!ShowMyDialogBox(story, ennemy));
+                story.getHero.removeTempDebuff();
             }
             catch (YouAreDeadException)
             {

@@ -11,7 +11,8 @@ namespace LDVELH_WPF
 {
     public class Hero : Character
     {
-        private static int skipMealDamage = 3;
+        public static readonly int skipMealDamage = 3;
+        public static readonly int unharmedCombatDebuff = 4;
 
         [ForeignKey("weaponHolder")]
         public int WeaponHolderID { get; set; }
@@ -50,6 +51,8 @@ namespace LDVELH_WPF
         public event HungryStateHandler hungryStateChanged;
         public delegate void HungryStateHandler(Hero m);
 
+        private int combatDebuff;
+
         [Column("Paragraph")]
         private int saveActualParagraph { get; set; }
 
@@ -60,8 +63,10 @@ namespace LDVELH_WPF
 
         private Hero()
         {
+            //Only time we can call that is if we load a Hero from the database AND he had no SpecialItems/backpack/weaponHolder during saving
+            backPack = new BackPack();
+            weaponHolder = new WeaponHolder();
             specialItems = new List<SpecialItem>();
-            hungryStatus = HungryState.Hungry;
         }
 
         public Hero(string name){
@@ -76,6 +81,7 @@ namespace LDVELH_WPF
             weaponHolder = new WeaponHolder();
             specialItems = new List<SpecialItem>();
             hungryStatus = HungryState.Hungry;
+            combatDebuff = 0;
         }
 
         private int randMaxHitPoint()
@@ -489,6 +495,15 @@ namespace LDVELH_WPF
             return false;
         }
 
+        public void addTempDebuff(int debuff)
+        {
+            this.combatDebuff += debuff;
+        }
+        public void removeTempDebuff()
+        {
+            this.combatDebuff = 0;
+        }
+
         public bool Fight(Ennemy ennemy)
         {
             int strenghtDifference = findStrenghtDifference(ennemy);
@@ -507,7 +522,7 @@ namespace LDVELH_WPF
 
         public int findStrenghtDifference(Ennemy ennemy)
         {
-            int heroAgility = this.getBaseAgility() + getBonusAgility(ennemy);
+            int heroAgility = this.getBaseAgility() + getBonusAgility(ennemy) - getMalusAgility();
             int ennemyAgility = ennemy.getBaseAgility();
             return (heroAgility - ennemyAgility);
         }
@@ -551,6 +566,17 @@ namespace LDVELH_WPF
                 }
             }
             return bonusAgility;
+        }
+
+        private int getMalusAgility()
+        {
+            int malusAgility = 0;
+            if (this.weaponHolder.isEmpty())
+            {
+                malusAgility += unharmedCombatDebuff;
+            }
+            malusAgility += combatDebuff;
+            return malusAgility;
         }
 
         private bool resolveDamage(int strenghDifference, Ennemy ennemy)

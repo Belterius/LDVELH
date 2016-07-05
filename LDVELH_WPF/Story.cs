@@ -49,6 +49,10 @@ namespace LDVELH_WPF
 
         public void addParagraph(StoryParagraph paragraph)
         {
+            ////acting as in the book where it's possible to exploit loophole, TODO : maybe decide that it's better not to recreate a paragraph
+            //StoryParagraph existingParagraph = this.content.Where(s => s.getParagraphNumber == paragraph.getParagraphNumber).FirstOrDefault();
+            //this.content.Remove(existingParagraph);
+
             this.content.Add(paragraph);
         }
 

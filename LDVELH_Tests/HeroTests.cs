@@ -52,31 +52,31 @@ namespace LDVELH_Tests
             int heroBaseAgility = Belterius.getBaseAgility();
 
             //Base test
-            int expectedStrenghtDifference = heroBaseAgility - 10;
+            int expectedStrenghtDifference = heroBaseAgility - LDVELH_WPF.Hero.unharmedCombatDebuff - evilHuman.getBaseAgility();
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
             //Item test
             SpecialItem shield = new SpecialItemCombat("iron shield", 4, 0);
             Belterius.addLoot(shield);
-            expectedStrenghtDifference = (heroBaseAgility + 4) - 10;
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus - LDVELH_WPF.Hero.unharmedCombatDebuff) - evilHuman.getBaseAgility();
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
             //PsychicPower test
             Belterius.addCapacity(CapacityType.PuissancePsychique);
-            expectedStrenghtDifference = (heroBaseAgility + 4 + Capacity.phychicPowerStrenght) - 10;
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + Capacity.phychicPowerStrenght - LDVELH_WPF.Hero.unharmedCombatDebuff) - evilHuman.getBaseAgility();
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
             //Weapon Mastery (with and without weapon) test
             Belterius.addCapacity(CapacityType.MaitriseDesArmes);
-            expectedStrenghtDifference = (heroBaseAgility + 4 + Capacity.phychicPowerStrenght) - 10; //No weapon related to the Weapon mastery so no bonus
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + Capacity.phychicPowerStrenght - LDVELH_WPF.Hero.unharmedCombatDebuff) - evilHuman.getBaseAgility(); //No weapon related to the Weapon mastery so no bonus
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
             Weapon wmWeapon = new Weapon("perfect weapon", Belterius.getWeaponMastery);
             Belterius.weaponHolder.Add(wmWeapon);
-            expectedStrenghtDifference = (heroBaseAgility + 4 + Capacity.phychicPowerStrenght + Capacity.weaponMasteryStrenght) - 10;
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + Capacity.phychicPowerStrenght + Capacity.weaponMasteryStrenght) - evilHuman.getBaseAgility();
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
@@ -85,7 +85,7 @@ namespace LDVELH_Tests
             SpecialItem ring = new SpecialItemCombat("magic ring", 6, 0);
             Belterius.addLoot(ring);
             Ennemy evilOrc = new Ennemy("Common Orc", 15, 10, EnnemyTypes.Orc);
-            expectedStrenghtDifference = (heroBaseAgility + 4 + 6 + Capacity.weaponMasteryStrenght) - 15;
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + ((SpecialItemCombat)ring).getAgilityBonus + Capacity.weaponMasteryStrenght) - evilOrc.getBaseAgility();
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilOrc));
 

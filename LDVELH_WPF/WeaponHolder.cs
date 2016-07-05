@@ -60,6 +60,14 @@ namespace LDVELH_WPF
             return false;
         }
 
+        public bool isEmpty()
+        {
+            if (this.weapons.Count == 0)
+                return true;
+            else
+                return false;
+        }
+
         public List<Weapon> getWeapons
         {
             get { return weapons;}

@@ -106,10 +106,6 @@
     <Compile Include="MessageBoxInput.xaml.cs">
       <DependentUpon>MessageBoxInput.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606141324475_AddWeapon.cs" />
-    <Compile Include="Migrations\201606141324475_AddWeapon.Designer.cs">
-      <DependentUpon>201606141324475_AddWeapon.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201606141333082_AddWeaponColumn.cs" />
     <Compile Include="Migrations\201606141333082_AddWeaponColumn.Designer.cs">
       <DependentUpon>201606141333082_AddWeaponColumn.cs</DependentUpon>
@@ -256,9 +252,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201606141324475_AddWeapon.resx">
-      <DependentUpon>201606141324475_AddWeapon.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606141333082_AddWeaponColumn.resx">
       <DependentUpon>201606141333082_AddWeaponColumn.cs</DependentUpon>
     </EmbeddedResource>
