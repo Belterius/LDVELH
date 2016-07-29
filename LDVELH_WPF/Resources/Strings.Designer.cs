@@ -61,7 +61,7 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Agilité.
+        ///   Looks up a localized string similar to Agilité :.
         /// </summary>
         internal static string Agility {
             get {
@@ -70,11 +70,29 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Capacités.
+        ///   Looks up a localized string similar to Sac à Dos :.
+        /// </summary>
+        internal static string BackPack {
+            get {
+                return ResourceManager.GetString("BackPack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capacités :.
         /// </summary>
         internal static string Capacities {
             get {
                 return ResourceManager.GetString("Capacities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Décisions.
+        /// </summary>
+        internal static string Choices {
+            get {
+                return ResourceManager.GetString("Choices", resourceCulture);
             }
         }
         
@@ -88,6 +106,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Caractéristiques Héro.
+        /// </summary>
+        internal static string HeroStats {
+            get {
+                return ResourceManager.GetString("HeroStats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Point de Vie :.
         /// </summary>
         internal static string HitPoints {
@@ -97,7 +124,7 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Satiété.
+        ///   Looks up a localized string similar to Satiété :.
         /// </summary>
         internal static string Hunger {
             get {
@@ -111,6 +138,60 @@ namespace LDVELH_WPF.Resources {
         internal static string Inventory {
             get {
                 return ResourceManager.GetString("Inventory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charger.
+        /// </summary>
+        internal static string Load {
+            get {
+                return ResourceManager.GetString("Load", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sauvegarder.
+        /// </summary>
+        internal static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Objets Spéciaux :.
+        /// </summary>
+        internal static string SpecialItems {
+            get {
+                return ResourceManager.GetString("SpecialItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jet l&apos;objet.
+        /// </summary>
+        internal static string ThrowItem {
+            get {
+                return ResourceManager.GetString("ThrowItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jeter l&apos;arme.
+        /// </summary>
+        internal static string ThrowWeapon {
+            get {
+                return ResourceManager.GetString("ThrowWeapon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Utiliser l&apos;objet.
+        /// </summary>
+        internal static string UseItem {
+            get {
+                return ResourceManager.GetString("UseItem", resourceCulture);
             }
         }
         

@@ -118,22 +118,49 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Agility" xml:space="preserve">
-    <value>Agilité</value>
+    <value>Agilité :</value>
+  </data>
+  <data name="BackPack" xml:space="preserve">
+    <value>Sac à Dos :</value>
   </data>
   <data name="Capacities" xml:space="preserve">
-    <value>Capacités</value>
+    <value>Capacités :</value>
+  </data>
+  <data name="Choices" xml:space="preserve">
+    <value>Décisions</value>
   </data>
   <data name="Gold" xml:space="preserve">
     <value>Pièces d'Or :</value>
+  </data>
+  <data name="HeroStats" xml:space="preserve">
+    <value>Caractéristiques Héro</value>
   </data>
   <data name="HitPoints" xml:space="preserve">
     <value>Point de Vie :</value>
   </data>
   <data name="Hunger" xml:space="preserve">
-    <value>Satiété</value>
+    <value>Satiété :</value>
   </data>
   <data name="Inventory" xml:space="preserve">
     <value>Inventaire</value>
+  </data>
+  <data name="Load" xml:space="preserve">
+    <value>Charger</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="SpecialItems" xml:space="preserve">
+    <value>Objets Spéciaux :</value>
+  </data>
+  <data name="ThrowItem" xml:space="preserve">
+    <value>Jet l'objet</value>
+  </data>
+  <data name="ThrowWeapon" xml:space="preserve">
+    <value>Jeter l'arme</value>
+  </data>
+  <data name="UseItem" xml:space="preserve">
+    <value>Utiliser l'objet</value>
   </data>
   <data name="Weapon" xml:space="preserve">
     <value>Armes :</value>
