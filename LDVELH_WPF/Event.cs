@@ -33,7 +33,7 @@ namespace LDVELH_WPF
         {
             this.destinationNumber = destinationNumber;
             this.capacityType = capacityType;
-            this.triggerMessage = "Utiliser votre capacité " + capacityType.ToString();
+            this.triggerMessage = "Utiliser votre capacité " + capacityType.GetTranslation();
         }
         public CapacityEvent(int destinationNumber, CapacityType capacityType, string triggerMessage)
         {

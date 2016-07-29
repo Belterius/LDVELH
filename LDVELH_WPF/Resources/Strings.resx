@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="agi" xml:space="preserve">
+    <value>agi</value>
+  </data>
   <data name="Agility" xml:space="preserve">
     <value>Agilité :</value>
   </data>
@@ -139,7 +142,13 @@
     <value>Communication Animale</value>
   </data>
   <data name="Capacities" xml:space="preserve">
-    <value>Capacités :</value>
+    <value>capacités</value>
+  </data>
+  <data name="charge" xml:space="preserve">
+    <value>charge</value>
+  </data>
+  <data name="charges" xml:space="preserve">
+    <value>charges</value>
   </data>
   <data name="Choices" xml:space="preserve">
     <value>Décisions</value>
@@ -153,8 +162,14 @@
   <data name="DamageTaken" xml:space="preserve">
     <value>Dommages Subi :</value>
   </data>
+  <data name="DuringBattle" xml:space="preserve">
+    <value>lors un combat</value>
+  </data>
   <data name="Escape" xml:space="preserve">
     <value>S'enfuir</value>
+  </data>
+  <data name="food" xml:space="preserve">
+    <value>nourriture</value>
   </data>
   <data name="Full" xml:space="preserve">
     <value>Rassasié</value>
@@ -176,6 +191,9 @@
   </data>
   <data name="HitPoints" xml:space="preserve">
     <value>Points de Vie :</value>
+  </data>
+  <data name="HP" xml:space="preserve">
+    <value>PdV</value>
   </data>
   <data name="Human" xml:space="preserve">
     <value>Humain</value>
@@ -222,6 +240,9 @@
   <data name="Orientation" xml:space="preserve">
     <value>Orientation</value>
   </data>
+  <data name="permanent" xml:space="preserve">
+    <value>permanent</value>
+  </data>
   <data name="PsychicPower" xml:space="preserve">
     <value>Puissance Psychique</value>
   </data>
@@ -235,7 +256,7 @@
     <value>Sauvegarder</value>
   </data>
   <data name="SixthSense" xml:space="preserve">
-    <value>Sixième Sense</value>
+    <value>Sixième Sens</value>
   </data>
   <data name="Spear" xml:space="preserve">
     <value>Lance</value>
@@ -245,9 +266,6 @@
   </data>
   <data name="StartFight" xml:space="preserve">
     <value>Débuter le combat</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value />
   </data>
   <data name="Sword" xml:space="preserve">
     <value>Épée</value>
@@ -287,5 +305,29 @@
   </data>
   <data name="YourHero" xml:space="preserve">
     <value>Votre Héro :</value>
+  </data>
+  <data name="NextRound" xml:space="preserve">
+    <value>Prochain Round</value>
+  </data>
+  <data name="RoundNumber" xml:space="preserve">
+    <value>Round numéro</value>
+  </data>
+  <data name="Victory" xml:space="preserve">
+    <value>Victoire</value>
+  </data>
+  <data name="CapacitiesLabel" xml:space="preserve">
+    <value>Capacités :</value>
+  </data>
+  <data name="ConfirmExit" xml:space="preserve">
+    <value>Tout progrès depuis la dernière sauvegarde sera perdu, êtes vous sûr ?</value>
+  </data>
+  <data name="GoToLoadingMenu" xml:space="preserve">
+    <value>Aller au Menu de Chargement ?</value>
+  </data>
+  <data name="NoName" xml:space="preserve">
+    <value>SansNom</value>
+  </data>
+  <data name="YouMustSelect" xml:space="preserve">
+    <value>Vous devez selectionner</value>
   </data>
 </root>

@@ -21,7 +21,7 @@ namespace LDVELH_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        Translator translator = new Translator();
         Story story;
         StoryObserver storyObserver;
         Hero hero;
@@ -177,13 +177,13 @@ namespace LDVELH_WPF
                 }
                 else
                 {
-                    return "NoName";
+                    return translator.ProvideValue("NoName");
                 }
 
             }
             else
             {
-                return "NoName";
+                return translator.ProvideValue("NoName");
             }
 
         }
@@ -231,7 +231,7 @@ namespace LDVELH_WPF
 
         private void buttonTestLoad_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("All unsaved progress will be lost, are you sure ?", "Go to loading menu ?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            if (MessageBox.Show(translator.ProvideValue("ConfirmExit"), translator.ProvideValue("GoToLoadingMenu"), MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
                 
             }

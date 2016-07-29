@@ -61,6 +61,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to agi.
+        /// </summary>
+        internal static string agi {
+            get {
+                return ResourceManager.GetString("agi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Agilité :.
         /// </summary>
         internal static string Agility {
@@ -124,11 +133,38 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Capacités :.
+        ///   Looks up a localized string similar to capacités.
         /// </summary>
         internal static string Capacities {
             get {
                 return ResourceManager.GetString("Capacities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capacités :.
+        /// </summary>
+        internal static string CapacitiesLabel {
+            get {
+                return ResourceManager.GetString("CapacitiesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to charge.
+        /// </summary>
+        internal static string charge {
+            get {
+                return ResourceManager.GetString("charge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to charges.
+        /// </summary>
+        internal static string charges {
+            get {
+                return ResourceManager.GetString("charges", resourceCulture);
             }
         }
         
@@ -151,6 +187,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tout progrès depuis la dernière sauvegarde sera perdu, êtes vous sûr ?.
+        /// </summary>
+        internal static string ConfirmExit {
+            get {
+                return ResourceManager.GetString("ConfirmExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Poignard.
         /// </summary>
         internal static string Dagger {
@@ -169,11 +214,29 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to lors un combat.
+        /// </summary>
+        internal static string DuringBattle {
+            get {
+                return ResourceManager.GetString("DuringBattle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to S&apos;enfuir.
         /// </summary>
         internal static string Escape {
             get {
                 return ResourceManager.GetString("Escape", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nourriture.
+        /// </summary>
+        internal static string food {
+            get {
+                return ResourceManager.GetString("food", resourceCulture);
             }
         }
         
@@ -192,6 +255,15 @@ namespace LDVELH_WPF.Resources {
         internal static string Gold {
             get {
                 return ResourceManager.GetString("Gold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aller au Menu de Chargement ?.
+        /// </summary>
+        internal static string GoToLoadingMenu {
+            get {
+                return ResourceManager.GetString("GoToLoadingMenu", resourceCulture);
             }
         }
         
@@ -237,6 +309,15 @@ namespace LDVELH_WPF.Resources {
         internal static string HitPoints {
             get {
                 return ResourceManager.GetString("HitPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PdV.
+        /// </summary>
+        internal static string HP {
+            get {
+                return ResourceManager.GetString("HP", resourceCulture);
             }
         }
         
@@ -349,6 +430,24 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Prochain Round.
+        /// </summary>
+        internal static string NextRound {
+            get {
+                return ResourceManager.GetString("NextRound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SansNom.
+        /// </summary>
+        internal static string NoName {
+            get {
+                return ResourceManager.GetString("NoName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aucune.
         /// </summary>
         internal static string None {
@@ -376,6 +475,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to permanent.
+        /// </summary>
+        internal static string permanent {
+            get {
+                return ResourceManager.GetString("permanent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Puissance Psychique.
         /// </summary>
         internal static string PsychicPower {
@@ -390,6 +498,15 @@ namespace LDVELH_WPF.Resources {
         internal static string PsychicShield {
             get {
                 return ResourceManager.GetString("PsychicShield", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Round numéro.
+        /// </summary>
+        internal static string RoundNumber {
+            get {
+                return ResourceManager.GetString("RoundNumber", resourceCulture);
             }
         }
         
@@ -412,7 +529,7 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sixième Sense.
+        ///   Looks up a localized string similar to Sixième Sens.
         /// </summary>
         internal static string SixthSense {
             get {
@@ -444,15 +561,6 @@ namespace LDVELH_WPF.Resources {
         internal static string StartFight {
             get {
                 return ResourceManager.GetString("StartFight", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         
@@ -511,6 +619,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Victoire.
+        /// </summary>
+        internal static string Victory {
+            get {
+                return ResourceManager.GetString("Victory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Marteau de Guerre.
         /// </summary>
         internal static string WarHammer {
@@ -552,6 +669,15 @@ namespace LDVELH_WPF.Resources {
         internal static string YouMustFight {
             get {
                 return ResourceManager.GetString("YouMustFight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous devez selectionner.
+        /// </summary>
+        internal static string YouMustSelect {
+            get {
+                return ResourceManager.GetString("YouMustSelect", resourceCulture);
             }
         }
         

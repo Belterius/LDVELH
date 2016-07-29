@@ -56,4 +56,13 @@ namespace LDVELH_WPF
         Telekinesis,
 
     }
+    static class CapacityTypeMethods
+    {
+
+        public static String GetTranslation(this CapacityType capacity)
+        {
+            Translator translator = new Translator();
+            return translator.ProvideValue(capacity.ToString());
+        }
+    }
 }

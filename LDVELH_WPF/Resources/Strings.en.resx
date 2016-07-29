@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="agi" xml:space="preserve">
+    <value>agi</value>
+  </data>
   <data name="Agility" xml:space="preserve">
     <value>Agility :</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="BeastWhisperer" xml:space="preserve">
     <value>Beast Whisperer</value>
   </data>
-  <data name="Capacities" xml:space="preserve">
+  <data name="CapacitiesLabel" xml:space="preserve">
     <value>Capacities :</value>
+  </data>
+  <data name="charge" xml:space="preserve">
+    <value>charge</value>
+  </data>
+  <data name="charges" xml:space="preserve">
+    <value>charges</value>
   </data>
   <data name="Choices" xml:space="preserve">
     <value>Choices</value>
@@ -153,8 +162,14 @@
   <data name="DamageTaken" xml:space="preserve">
     <value>Damage Taken :</value>
   </data>
+  <data name="DuringBattle" xml:space="preserve">
+    <value>during battle</value>
+  </data>
   <data name="Escape" xml:space="preserve">
     <value>Escape</value>
+  </data>
+  <data name="food" xml:space="preserve">
+    <value>food</value>
   </data>
   <data name="Full" xml:space="preserve">
     <value>Full</value>
@@ -176,6 +191,9 @@
   </data>
   <data name="HitPoints" xml:space="preserve">
     <value>Hit Points :</value>
+  </data>
+  <data name="HP" xml:space="preserve">
+    <value>HP</value>
   </data>
   <data name="Human" xml:space="preserve">
     <value>Human</value>
@@ -221,6 +239,9 @@
   </data>
   <data name="Orientation" xml:space="preserve">
     <value>Orientation</value>
+  </data>
+  <data name="permanent" xml:space="preserve">
+    <value>permanent</value>
   </data>
   <data name="PsychicPower" xml:space="preserve">
     <value>Psychic Power</value>
@@ -284,5 +305,29 @@
   </data>
   <data name="YourHero" xml:space="preserve">
     <value>Your Hero :</value>
+  </data>
+  <data name="NextRound" xml:space="preserve">
+    <value>Next Round</value>
+  </data>
+  <data name="RoundNumber" xml:space="preserve">
+    <value>Round number</value>
+  </data>
+  <data name="Victory" xml:space="preserve">
+    <value>Victory</value>
+  </data>
+  <data name="Capacities" xml:space="preserve">
+    <value>capacities</value>
+  </data>
+  <data name="ConfirmExit" xml:space="preserve">
+    <value>All unsaved progress will be lost, are you sure ?</value>
+  </data>
+  <data name="GoToLoadingMenu" xml:space="preserve">
+    <value>Go to loading menu ?</value>
+  </data>
+  <data name="NoName" xml:space="preserve">
+    <value>NoName</value>
+  </data>
+  <data name="YouMustSelect" xml:space="preserve">
+    <value>You must select</value>
   </data>
 </root>

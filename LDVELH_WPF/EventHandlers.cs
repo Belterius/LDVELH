@@ -74,7 +74,8 @@ namespace LDVELH_WPF
         }
         public void WeaponMasteryChanged(Hero hero)
         {
-            labelWeaponMastery.Content = hero.getWeaponMastery.ToString();
+            Translator translator = new Translator();
+            labelWeaponMastery.Content = translator.ProvideValue(hero.getWeaponMastery.ToString());
         }
 
         public void GoldChanged(Hero hero, int goldChange)

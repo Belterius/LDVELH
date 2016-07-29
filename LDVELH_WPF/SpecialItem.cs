@@ -36,17 +36,18 @@ namespace LDVELH_WPF
         {
             get
             {
+                Translator translator = new Translator();
                 if (agilityBonus > 0 && hitPointBonus > 0)
                 {
-                    return name + " (+" + agilityBonus + " agi" + " +" + hitPointBonus +" life during battle)";
+                    return name + " (+" + agilityBonus + " " + translator.ProvideValue("agi") + " +" + hitPointBonus + " " + translator.ProvideValue("HP") + " " + translator.ProvideValue("DuringBattle") + ")";
                 }
                 if (agilityBonus > 0 )
                 {
-                    return name + " (+" + agilityBonus + " agi during battle)";
+                    return name + " (+" + agilityBonus + " " + translator.ProvideValue("agi") + " " + translator.ProvideValue("DuringBattle") + ")";
                 }
                 if (hitPointBonus > 0)
                 {
-                    return name + " (+" + hitPointBonus + " life during battle)";
+                    return name + " (+" + hitPointBonus + " " + translator.ProvideValue("HP") + " " + translator.ProvideValue("DuringBattle") + ")";
                 }
                 return name;
             }
@@ -142,17 +143,18 @@ namespace LDVELH_WPF
         {
             get
             {
+                Translator translator = new Translator();
                 if (agilityBonus > 0 && LifePointBonus > 0)
                 {
-                    return name + " (+" + agilityBonus + " agi" + " +" + LifePointBonus + " life permanent)";
+                    return name + " (+" + agilityBonus + " " + translator.ProvideValue("agi") + " +" + LifePointBonus + " " + translator.ProvideValue("HP") + " " + translator.ProvideValue("permanent")+ ")";
                 }
                 if (agilityBonus > 0)
                 {
-                    return name + " (+" + agilityBonus + " agi permanent)";
+                    return name + " (+" + agilityBonus + " " + translator.ProvideValue("agi") + " " + translator.ProvideValue("permanent") + ")";
                 }
                 if (LifePointBonus > 0)
                 {
-                    return name + " (+" + LifePointBonus + " life permanent)";
+                    return name + " (+" + LifePointBonus + " " + translator.ProvideValue("HP") +" " + translator.ProvideValue("permanent") + ")";
                 }
                 return name;
             }

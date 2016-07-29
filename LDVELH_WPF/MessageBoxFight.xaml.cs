@@ -23,6 +23,9 @@ namespace LDVELH_WPF
     /// </summary>
     public partial class MessageBoxFight : Window
     {
+        //DO NOT TOUTCH, IT'S BLACK MAGIC
+        //It allows to make the exit button disappear from our window (as our user should NOT be able to escape a fight by closing the window ...)
+        //cf http://stackoverflow.com/questions/743906/how-to-hide-close-button-in-wpf-window/867080 for more details
         private const int GWL_STYLE = -16;
         private const int WS_SYSMENU = 0x80000;
         [DllImport("user32.dll", SetLastError = true)]
@@ -33,6 +36,7 @@ namespace LDVELH_WPF
 
         Hero hero;
         Ennemy ennemy;
+        Translator translator;
         bool ranAway = false;
         int roundRunAway=999;
         bool fightOver = false;
@@ -47,28 +51,30 @@ namespace LDVELH_WPF
             InitializeComponent();
             this.hero = hero;
             this.ennemy = ennemy;
+            this.translator = new Translator();
             buttonRun.Visibility = Visibility.Hidden;
             setLife();
             setAgility();
-            labelDammageTakenEnnemy.Content = "none";
-            labelDammageTakenHero.Content = "none";
+            labelDammageTakenEnnemy.Content = "0";
+            labelDammageTakenHero.Content = "0";
         }
         public MessageBoxFight(Hero hero, Ennemy ennemy, int ranTurn)
         {
             InitializeComponent();
             this.hero = hero;
             this.ennemy = ennemy;
+            this.translator = new Translator();
             this.roundRunAway = ranTurn;
             buttonRun.Visibility = Visibility.Hidden;
             setLife();
             setAgility();
-            labelDammageTakenEnnemy.Content = "none";
-            labelDammageTakenHero.Content = "none";
+            labelDammageTakenEnnemy.Content = "0";
+            labelDammageTakenHero.Content = "0";
         }
 
         private void buttonNextRound_Click(object sender, RoutedEventArgs e)
         {
-            buttonNextRound.Content = "Next Round";
+            buttonNextRound.Content = translator.ProvideValue("NextRound");
             previousLifeHero = hero.getActualHitPoint();
             previousLifeEnnemy = ennemy.getActualHitPoint();
             try
@@ -81,8 +87,8 @@ namespace LDVELH_WPF
             }
             if (fightOver)
             {
-                buttonNextRound.Content = "Victory !";
-                labelRoundNumber.Content = "VICTORY";
+                buttonNextRound.Content = translator.ProvideValue("Victory") +" !";
+                labelRoundNumber.Content = translator.ProvideValue("Victory").ToUpper() + "!";
                 setLife();
                 setDamageTaken();
                 buttonNextRound.Click -= buttonNextRound_Click;
@@ -91,7 +97,7 @@ namespace LDVELH_WPF
             else
             {
                 roundNumber++;
-                labelRoundNumber.Content = "Round number " + roundNumber;
+                labelRoundNumber.Content = translator.ProvideValue("RoundNumber") + " " +roundNumber;
                 setLife();
                 setDamageTaken();
             }

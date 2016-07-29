@@ -95,13 +95,14 @@ namespace LDVELH_WPF
         {
             get
             {
+                Translator translator = new Translator();
                 if (chargesLeft > 1)
                 {
-                    return name + "(+" + healingPower + " life " + chargesLeft + " charges)";
+                    return name + "(+" + healingPower + " " + translator.ProvideValue("HP") + chargesLeft + " " + translator.ProvideValue("charges")+" )";
                 }
                 else
                 {
-                    return name + "(+" + healingPower + " life " + chargesLeft + " charge)";
+                    return name + "(+" + healingPower + " " + translator.ProvideValue("HP") + chargesLeft + " " + translator.ProvideValue("charges")+ " )";
                 }
             }
         }
@@ -154,13 +155,14 @@ namespace LDVELH_WPF
         {
             get
             {
+                Translator translator = new Translator();
                 if (chargesLeft > 1)
                 {
-                    return name + "( food, " + chargesLeft + " charges)";
+                    return name + "(" + translator.ProvideValue("food") + ", " + chargesLeft + " " + translator.ProvideValue("charges") + " )";
                 }
                 else
                 {
-                    return name + "( food" + chargesLeft + " charge)";
+                    return name + "(" + translator.ProvideValue("food") + ", " + chargesLeft + " " + translator.ProvideValue("charges") + " )";
                 }
             }
         }
