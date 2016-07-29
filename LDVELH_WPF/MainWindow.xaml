@@ -6,16 +6,21 @@
     <Grid>
         <GroupBox x:Name="groupBoxHeroStat" Header="Hero Stats" HorizontalAlignment="Left" VerticalAlignment="Top" Height="74" Width="541" Margin="10,0,0,0">
             <Grid HorizontalAlignment="Left" Height="61" VerticalAlignment="Top" Width="521" Margin="10,-6,0,-3">
-                <Label x:Name="labelDescriptionHitPoint" Content="{Core:Translator Text=HitPoints}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.06,0.038"/>
+                <!--<Label x:Name="labelDescriptionHitPoint" Content="{Core:Translator Text=HitPoints}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.06,0.038"/>-->
+                <Label x:Name="labelDescriptionHitPoint" Content="HitPoints" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.06,0.038"/>
                 <Label x:Name="labelAgility" Content="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="221,10,0,0"/>
-                <Label x:Name="labelDescriptionAgility" Content="{Core:Translator Text=Agility}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="167,10,0,0"/>
+                <!--<Label x:Name="labelDescriptionAgility" Content="{Core:Translator Text=Agility}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="167,10,0,0"/>-->
+                <Label x:Name="labelDescriptionAgility" Content="Agility" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="167,10,0,0"/>
                 <Label x:Name="labelHitPoint" Content="20/20" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.053,1.423" Margin="82,10,0,0"/>
                 <ListBox x:Name="listBoxCapacities" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="209" Margin="309,21,0,0"/>
-                <Label Content="{Core:Translator Text=WeaponMastery}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,36,0,-1"/>
+                <!--<Label Content="{Core:Translator Text=WeaponMastery}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,36,0,-1"/>-->
+                <Label Content="WeaponMastery" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,36,0,-1"/>
                 <Label x:Name="labelWeaponMastery" Content="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="121,36,0,-1"/>
                 <Label Content="Label" HorizontalAlignment="Left" Margin="269,47,0,0" VerticalAlignment="Top"/>
-                <Label Content="{Core:Translator Text=Capacities}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="309,0,0,0"/>
-                <Label x:Name="label" Content="{Core:Translator Text=Hunger}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="167,35,0,0"/>
+                <!--<Label Content="{Core:Translator Text=Capacities}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="309,0,0,0"/>-->
+                <Label Content="Capacities" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="309,0,0,0"/>
+                <!--<Label x:Name="label" Content="{Core:Translator Text=Hunger}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="167,35,0,0"/>-->
+                <Label x:Name="label" Content="Hunger" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="167,35,0,0"/>
                 <Label x:Name="labelHungryState" Content="Hungry" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="216,35,0,0"/>
             </Grid>
         </GroupBox>

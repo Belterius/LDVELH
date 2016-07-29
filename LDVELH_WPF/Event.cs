@@ -237,12 +237,14 @@ namespace LDVELH_WPF
         {
             this.ennemy = ennemy;
             this.runEvent = runEvent;
+            this.ranTurn = ranTurn;
         }
         public RunEvent(int destinationNumber, Ennemy ennemy, int ranTurn, Event runEvent)
         {
             this.ennemy = ennemy;
             this.runEvent = runEvent;
             this.destinationNumber = destinationNumber;
+            this.ranTurn = ranTurn;
         }
         public override void resolveEvent(Story story)
         {

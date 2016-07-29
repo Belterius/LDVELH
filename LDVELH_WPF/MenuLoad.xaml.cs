@@ -40,7 +40,7 @@ namespace LDVELH_WPF
                 //    listBoxHeroes.DisplayMemberPath = "getResume";
                 //    listBoxHeroes.SelectedValuePath = "CharacterID";
                 //}
-            }catch(Exception ex)
+            }catch(Exception)
             {
                 buttonLoad.Visibility = Visibility.Hidden;
             }
