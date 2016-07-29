@@ -1,0 +1,17 @@
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using LDVELH_WPF;
+
+namespace LDVELH_Tests
+{
+    [TestClass]
+    public class DamageTableTests
+    {
+        [TestMethod]
+        public void DamageTableDiverseTests()
+        {
+            //Impossible to test, fixed value, cf LDVELH original damage table
+            Assert.IsTrue(true);
+        }
+    }
+}

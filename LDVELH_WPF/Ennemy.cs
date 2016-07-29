@@ -10,10 +10,13 @@ namespace LDVELH_WPF
 {
     public class Ennemy : Character
     {
-        [Column("Type")]
-        private EnnemyTypes ClassType;
+        public static readonly List<EnnemyTypes> ennemiesWeakToPhychic = new List<EnnemyTypes> { EnnemyTypes.Human, EnnemyTypes.Beast };
 
-        public Ennemy(String name, int agility, int hitPoint,EnnemyTypes ennemyType)
+
+        [Column("Type")]
+        public EnnemyTypes ClassType;
+
+        public Ennemy(String name, int agility, int hitPoint, EnnemyTypes ennemyType)
         {
             this.name = name;
             this.baseAgility = agility;
@@ -22,8 +25,9 @@ namespace LDVELH_WPF
             this.ClassType = ennemyType;
         }
 
-        public bool isWeakToPhychic(){
-            if (ClassType == EnnemyTypes.Human || ClassType == EnnemyTypes.Beast)
+        public bool isWeakToPhychic()
+        {
+            if (ennemiesWeakToPhychic.Contains(ClassType))
             {
                 return true;
             }
@@ -38,4 +42,5 @@ namespace LDVELH_WPF
         Orc,
         Hero
     }
+
 }

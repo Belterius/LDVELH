@@ -10,7 +10,7 @@ namespace LDVELH_Tests
         [TestMethod]
         public void SpecialItem_Add()
         {
-            SpecialItem specialItem = new SpecialItemCombat("useless item", 1,0);
+            SpecialItem specialItem = new SpecialItemCombat("useless item", 1, 0);
             SpecialItem specialItemSame = new SpecialItemCombat("useless item", 1, 0);
             Hero hero = new Hero("hero");
 

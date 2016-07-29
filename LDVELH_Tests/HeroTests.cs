@@ -30,7 +30,7 @@ namespace LDVELH_Tests
 
             Belterius.addCapacity(hidingCapacity);
 
-           Assert.AreEqual(true, Belterius.possesCapacity(CapacityType.Camouflage));
+            Assert.AreEqual(true, Belterius.possesCapacity(CapacityType.Camouflage));
         }
 
         [TestMethod]
@@ -99,14 +99,19 @@ namespace LDVELH_Tests
             bool battleOver = false;
             try
             {
-                do { 
+                do
+                {
                     battleOver = hero.Fight(beast);
                 } while (!battleOver);
                 Assert.AreEqual(0, beast.getActualHitPoint()); //The beast is dead
-            }catch(YouAreDeadException){
+            }
+            catch (YouAreDeadException)
+            {
                 Assert.AreEqual(0, hero.getActualHitPoint());//The hero is dead
             }
         }
+
+
 
     }
 }

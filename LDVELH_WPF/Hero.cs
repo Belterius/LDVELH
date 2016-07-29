@@ -19,7 +19,7 @@ namespace LDVELH_WPF
 
         [ForeignKey("backPack")]
         public int BackPackID { get; set; }
-       
+
         public event MaxLifeHandler MaxLifeChanged;
         public delegate void MaxLifeHandler(Hero m, int lifeChange);
 
@@ -27,7 +27,7 @@ namespace LDVELH_WPF
         public delegate void AgilityHandler(Hero m, int agilityChange);
 
         [Column("Gold")]
-        private int gold{ get; set; }
+        private int gold { get; set; }
         public event GoldHandler GoldChanged;
         public delegate void GoldHandler(Hero m, int goldChange);
 
@@ -43,7 +43,7 @@ namespace LDVELH_WPF
         public event weaponHolderHandler weaponHolderChanged;
         public delegate void weaponHolderHandler(Hero m, Weapon weapon, bool add);
 
-        public List<SpecialItem> specialItems{ get; set; }
+        public List<SpecialItem> specialItems { get; set; }
         public event specialItemsHandler specialItemsChanged;
         public delegate void specialItemsHandler(Hero m, SpecialItem specialItem, bool add);
 
@@ -57,7 +57,7 @@ namespace LDVELH_WPF
         private int saveActualParagraph { get; set; }
 
         [Column("WeaponMastery")]
-        private WeaponTypes weaponMastery{ get; set; }
+        private WeaponTypes weaponMastery { get; set; }
         public event WeaponMasteryHandler weaponMasteryChanged;
         public delegate void WeaponMasteryHandler(Hero m);
 
@@ -69,7 +69,8 @@ namespace LDVELH_WPF
             specialItems = new List<SpecialItem>();
         }
 
-        public Hero(string name){
+        public Hero(string name)
+        {
             this.name = name;
             this.maxHitPoint = randMaxHitPoint();
             this.actualHitPoint = this.maxHitPoint;
@@ -144,12 +145,12 @@ namespace LDVELH_WPF
             }
             lifePointHasChanged(this, healAmount);
         }
-        
+
         public int getGold()
         {
             return this.gold;
         }
-        
+
         public void addGold(int gold)
         {
             this.gold += gold;
@@ -157,7 +158,8 @@ namespace LDVELH_WPF
         }
         public void removeGold(int gold)
         {
-            if ((this.gold - gold) >= 0){
+            if ((this.gold - gold) >= 0)
+            {
 
                 this.gold -= gold;
                 GoldHasChanged(-gold);
@@ -210,12 +212,13 @@ namespace LDVELH_WPF
                 }
             }
         }
-        private void WeaponMasteryHasChanged(WeaponTypes WeaponType){
+        private void WeaponMasteryHasChanged(WeaponTypes WeaponType)
+        {
             WeaponMasteryHandler handler = weaponMasteryChanged;
-                    if (handler != null)
-                    {
-                        handler((Hero)this);
-                    }
+            if (handler != null)
+            {
+                handler((Hero)this);
+            }
         }
         public void capacitiesHasChanged(Capacity capacity)
         {
@@ -232,7 +235,8 @@ namespace LDVELH_WPF
         }
         public SpecialItem getSpecialItem(SpecialItem specialItem)
         {
-            foreach(SpecialItem spItem in specialItems){
+            foreach (SpecialItem spItem in specialItems)
+            {
                 if (spItem == specialItem)
                 {
                     return spItem;
@@ -250,20 +254,20 @@ namespace LDVELH_WPF
                 addPermanentItemEffect((SpecialItemAlways)item);
             }
 
-            
+
         }
         private void addPermanentItemEffect(SpecialItemAlways item)
         {
-            
-                if (item.getLifeBonus > 0)
-                {
-                    this.increaseMaxLife(item.getLifeBonus);
-                    this.heal(item.getLifeBonus);
-                }
-                if (item.getAgilityBonus > 0)
-                {
-                    this.increaseAgility(item.getAgilityBonus);
-                }
+
+            if (item.getLifeBonus > 0)
+            {
+                this.increaseMaxLife(item.getLifeBonus);
+                this.heal(item.getLifeBonus);
+            }
+            if (item.getAgilityBonus > 0)
+            {
+                this.increaseAgility(item.getAgilityBonus);
+            }
         }
         private void removeSpecialItem(SpecialItem item)
         {
@@ -275,7 +279,7 @@ namespace LDVELH_WPF
                     removePermanentItemEffect((SpecialItemAlways)item);
                 }
             }
-            
+
         }
         private void removePermanentItemEffect(SpecialItemAlways item)
         {
@@ -332,7 +336,8 @@ namespace LDVELH_WPF
             else
                 return false;
         }
-        public void backPackItemHasChanged(Item item, bool add){
+        public void backPackItemHasChanged(Item item, bool add)
+        {
             backPackHandler handler = backPackChanged;
             if (handler != null)
             {
@@ -342,21 +347,21 @@ namespace LDVELH_WPF
 
         public void useItem(Item item)
         {
-                    try
-                    {
-                        item.use(this);
-                        backPackItemHasChanged(item, false);
-                    }
-                    catch (ItemDestroyedException)
-                    {
-                        this.removeBackPackItem(item);
-                        backPackItemHasChanged(item, false);
-                    }
-                    catch (CannotUseItemException)
-                    {
-                        throw;
-                    }
-            
+            try
+            {
+                item.use(this);
+                backPackItemHasChanged(item, false);
+            }
+            catch (ItemDestroyedException)
+            {
+                this.removeBackPackItem(item);
+                backPackItemHasChanged(item, false);
+            }
+            catch (CannotUseItemException)
+            {
+                throw;
+            }
+
         }
 
         public void addLoot(Loot loot)
@@ -405,11 +410,11 @@ namespace LDVELH_WPF
         }
         public void removeBackPack()
         {
-            foreach(Item loot in this.backPack.getItems)
+            foreach (Item loot in this.backPack.getItems)
             {
-                    this.removeBackPackItem(loot);
+                this.removeBackPackItem(loot);
             }
-            
+
         }
         public void removeWeaponHolder()
         {
@@ -429,14 +434,15 @@ namespace LDVELH_WPF
 
         public void mealTime()
         {
-            if(this.getHungryState == HungryState.Hungry)
+            if (this.getHungryState == HungryState.Hungry)
             {
                 this.takeDamage(skipMealDamage);
             }
             this.hungryStatus = HungryState.Hungry;
             HungryStateHasChanged();
         }
-        public HungryState getHungryState {
+        public HungryState getHungryState
+        {
             get
             {
                 return this.hungryStatus;
@@ -455,7 +461,7 @@ namespace LDVELH_WPF
 
         public WeaponTypes getWeaponMastery
         {
-            get {return this.weaponMastery;}
+            get { return this.weaponMastery; }
         }
 
         public bool possesCapacity(CapacityType capacity)
@@ -478,14 +484,14 @@ namespace LDVELH_WPF
                     return true;
                 }
             }
-            foreach(Item item in this.backPack.getItems)
+            foreach (Item item in this.backPack.getItems)
             {
                 if (item.getName == itemName)
                 {
                     return true;
                 }
             }
-            foreach(SpecialItem specialItem in this.getSpecialItems)
+            foreach (SpecialItem specialItem in this.getSpecialItems)
             {
                 if (specialItem.getName == itemName)
                 {
@@ -527,7 +533,7 @@ namespace LDVELH_WPF
             return (heroAgility - ennemyAgility);
         }
 
-        
+
 
         public int getBonusAgility(Ennemy ennemy)
         {
@@ -542,7 +548,7 @@ namespace LDVELH_WPF
             int bonusAgility = 0;
             foreach (SpecialItem combatItem in specialItems)
             {
-                if(combatItem is SpecialItemCombat)
+                if (combatItem is SpecialItemCombat)
                     bonusAgility += ((SpecialItemCombat)combatItem).getAgilityBonus;
             }
             return bonusAgility;
@@ -619,8 +625,9 @@ namespace LDVELH_WPF
             return this.saveActualParagraph;
         }
 
-        public string getResume{
-            get { return this.name + " ( Paragraph : " + this.saveActualParagraph + " )" ; }
+        public string getResume
+        {
+            get { return this.name + " ( Paragraph : " + this.saveActualParagraph + " )"; }
         }
 
         public enum HungryState

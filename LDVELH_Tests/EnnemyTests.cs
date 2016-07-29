@@ -14,9 +14,9 @@ namespace LDVELH_Tests
             Ennemy evilOrc = new Ennemy("GroDur", 10, 20, EnnemyTypes.Orc);
             Ennemy Beast = new Ennemy("BigBear", 16, 20, EnnemyTypes.Beast);
 
-            Assert.AreEqual(true, evilHuman.isWeakToPhychic());
-            Assert.AreEqual(true, Beast.isWeakToPhychic());
-            Assert.AreEqual(false, evilOrc.isWeakToPhychic());
+            Assert.AreEqual(Ennemy.ennemiesWeakToPhychic.Contains(evilHuman.ClassType), evilHuman.isWeakToPhychic());
+            Assert.AreEqual(Ennemy.ennemiesWeakToPhychic.Contains(Beast.ClassType), Beast.isWeakToPhychic());
+            Assert.AreEqual(Ennemy.ennemiesWeakToPhychic.Contains(evilOrc.ClassType), evilOrc.isWeakToPhychic());
         }
     }
 }

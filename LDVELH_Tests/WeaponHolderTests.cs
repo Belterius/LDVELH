@@ -12,7 +12,7 @@ namespace LDVELH_Tests
         {
             Weapon basicSword1 = new Weapon("basic sword", WeaponTypes.Epee);
             //Weapon basicSpear = new Weapon("basic spear", WeaponTypes.Spear);
-            
+
             WeaponHolder basicWeaponHolder = new WeaponHolder();
 
             basicWeaponHolder.Add(basicSword1);

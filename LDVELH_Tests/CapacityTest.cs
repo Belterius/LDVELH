@@ -21,6 +21,6 @@ namespace LDVELH_Tests
             Assert.AreEqual(false, hidingCapacity.getCapacityType == CapacityType.PuissancePsychique);
         }
 
-        
+
     }
 }

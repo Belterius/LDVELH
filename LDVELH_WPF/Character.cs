@@ -15,15 +15,16 @@ namespace LDVELH_WPF
         [Column("name")]
         public string name { get; set; }
         [Column("maxLife")]
-        protected int maxHitPoint{ get; set; }
+        protected int maxHitPoint { get; set; }
         [Column("actualLife")]
-        protected int actualHitPoint{ get; set; }
+        protected int actualHitPoint { get; set; }
         [Column("baseAgility")]
-        protected int baseAgility{ get; set; }
+        protected int baseAgility { get; set; }
         public event HitPointHandler HitPointChanged;
         public delegate void HitPointHandler(Hero m, int damage);
 
-        public string getName(){
+        public string getName()
+        {
             return name;
         }
         public int getMaxHitPoint()
@@ -41,7 +42,7 @@ namespace LDVELH_WPF
 
         public void kill()
         {
-            this.actualHitPoint = 0;
+            this.takeDamage(this.actualHitPoint);
         }
 
         public void takeDamage(int damage)
@@ -60,10 +61,11 @@ namespace LDVELH_WPF
             {
                 lifePointHasChanged((Hero)this, damage);
             }
-            
+
         }
 
-        public void lifePointHasChanged(Hero hero, int damage){
+        public void lifePointHasChanged(Hero hero, int damage)
+        {
             HitPointHandler handler = HitPointChanged;
             if (handler != null)
             {
