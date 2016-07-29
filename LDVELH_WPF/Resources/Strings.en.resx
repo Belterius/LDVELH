@@ -321,11 +321,20 @@
   <data name="ConfirmExit" xml:space="preserve">
     <value>All unsaved progress will be lost, are you sure ?</value>
   </data>
+  <data name="EnterCharacterName" xml:space="preserve">
+    <value>Enter a Name :</value>
+  </data>
   <data name="GoToLoadingMenu" xml:space="preserve">
     <value>Go to loading menu ?</value>
   </data>
   <data name="NoName" xml:space="preserve">
     <value>NoName</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="SelectCharacterName" xml:space="preserve">
+    <value>Chose a Character Name</value>
   </data>
   <data name="YouMustSelect" xml:space="preserve">
     <value>You must select</value>

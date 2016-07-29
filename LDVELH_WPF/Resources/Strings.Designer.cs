@@ -223,6 +223,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Saisir un Nom :.
+        /// </summary>
+        internal static string EnterCharacterName {
+            get {
+                return ResourceManager.GetString("EnterCharacterName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to S&apos;enfuir.
         /// </summary>
         internal static string Escape {
@@ -457,6 +466,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Orc.
         /// </summary>
         internal static string Orc {
@@ -525,6 +543,15 @@ namespace LDVELH_WPF.Resources {
         internal static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choisir un Nom de Personnage.
+        /// </summary>
+        internal static string SelectCharacterName {
+            get {
+                return ResourceManager.GetString("SelectCharacterName", resourceCulture);
             }
         }
         

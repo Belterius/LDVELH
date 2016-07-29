@@ -321,11 +321,20 @@
   <data name="ConfirmExit" xml:space="preserve">
     <value>Tout progrès depuis la dernière sauvegarde sera perdu, êtes vous sûr ?</value>
   </data>
+  <data name="EnterCharacterName" xml:space="preserve">
+    <value>Saisir un Nom :</value>
+  </data>
   <data name="GoToLoadingMenu" xml:space="preserve">
     <value>Aller au Menu de Chargement ?</value>
   </data>
   <data name="NoName" xml:space="preserve">
     <value>SansNom</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="SelectCharacterName" xml:space="preserve">
+    <value>Choisir un Nom de Personnage</value>
   </data>
   <data name="YouMustSelect" xml:space="preserve">
     <value>Vous devez selectionner</value>

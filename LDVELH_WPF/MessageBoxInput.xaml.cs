@@ -22,7 +22,6 @@ namespace LDVELH_WPF
         public MessageBoxInput()
         {
             InitializeComponent();
-            this.Title = "Select a character name";
         }
         public MessageBoxInput(string title, string content)
         {
