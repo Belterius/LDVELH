@@ -123,11 +123,23 @@
   <data name="BackPack" xml:space="preserve">
     <value>Sac à Dos :</value>
   </data>
+  <data name="Battling" xml:space="preserve">
+    <value>En Combat</value>
+  </data>
   <data name="Capacities" xml:space="preserve">
     <value>Capacités :</value>
   </data>
   <data name="Choices" xml:space="preserve">
     <value>Décisions</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="DamageTaken" xml:space="preserve">
+    <value>Dommages Subi :</value>
+  </data>
+  <data name="Escape" xml:space="preserve">
+    <value>S'enfuir</value>
   </data>
   <data name="Gold" xml:space="preserve">
     <value>Pièces d'Or :</value>
@@ -136,7 +148,7 @@
     <value>Caractéristiques Héro</value>
   </data>
   <data name="HitPoints" xml:space="preserve">
-    <value>Point de Vie :</value>
+    <value>Points de Vie :</value>
   </data>
   <data name="Hunger" xml:space="preserve">
     <value>Satiété :</value>
@@ -144,14 +156,32 @@
   <data name="Inventory" xml:space="preserve">
     <value>Inventaire</value>
   </data>
+  <data name="Life" xml:space="preserve">
+    <value>Points de Vie :</value>
+  </data>
+  <data name="ListCapacities" xml:space="preserve">
+    <value>Liste des Capacités</value>
+  </data>
   <data name="Load" xml:space="preserve">
     <value>Charger</value>
+  </data>
+  <data name="LoadMenu" xml:space="preserve">
+    <value>Menu de Chargement</value>
+  </data>
+  <data name="MenuCapacities" xml:space="preserve">
+    <value>Menu des Capacitiés</value>
+  </data>
+  <data name="NewGame" xml:space="preserve">
+    <value>Nouvelle Partie</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Sauvegarder</value>
   </data>
   <data name="SpecialItems" xml:space="preserve">
     <value>Objets Spéciaux :</value>
+  </data>
+  <data name="StartFight" xml:space="preserve">
+    <value>Débuter le combat</value>
   </data>
   <data name="ThrowItem" xml:space="preserve">
     <value>Jet l'objet</value>
@@ -167,5 +197,14 @@
   </data>
   <data name="WeaponMastery" xml:space="preserve">
     <value>Maitrise des Armes :</value>
+  </data>
+  <data name="YouMustFight" xml:space="preserve">
+    <value>Vous Devez Combattre !</value>
+  </data>
+  <data name="YourEnemy" xml:space="preserve">
+    <value>Votre Adversaire :</value>
+  </data>
+  <data name="YourHero" xml:space="preserve">
+    <value>Votre Héro :</value>
   </data>
 </root>

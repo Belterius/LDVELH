@@ -79,6 +79,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to En Combat.
+        /// </summary>
+        internal static string Battling {
+            get {
+                return ResourceManager.GetString("Battling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Capacités :.
         /// </summary>
         internal static string Capacities {
@@ -93,6 +102,33 @@ namespace LDVELH_WPF.Resources {
         internal static string Choices {
             get {
                 return ResourceManager.GetString("Choices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valider.
+        /// </summary>
+        internal static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dommages Subi :.
+        /// </summary>
+        internal static string DamageTaken {
+            get {
+                return ResourceManager.GetString("DamageTaken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S&apos;enfuir.
+        /// </summary>
+        internal static string Escape {
+            get {
+                return ResourceManager.GetString("Escape", resourceCulture);
             }
         }
         
@@ -115,7 +151,7 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Point de Vie :.
+        ///   Looks up a localized string similar to Points de Vie :.
         /// </summary>
         internal static string HitPoints {
             get {
@@ -142,11 +178,56 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Points de Vie :.
+        /// </summary>
+        internal static string Life {
+            get {
+                return ResourceManager.GetString("Life", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Liste des Capacités.
+        /// </summary>
+        internal static string ListCapacities {
+            get {
+                return ResourceManager.GetString("ListCapacities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Charger.
         /// </summary>
         internal static string Load {
             get {
                 return ResourceManager.GetString("Load", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menu de Chargement.
+        /// </summary>
+        internal static string LoadMenu {
+            get {
+                return ResourceManager.GetString("LoadMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menu des Capacitiés.
+        /// </summary>
+        internal static string MenuCapacities {
+            get {
+                return ResourceManager.GetString("MenuCapacities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nouvelle Partie.
+        /// </summary>
+        internal static string NewGame {
+            get {
+                return ResourceManager.GetString("NewGame", resourceCulture);
             }
         }
         
@@ -165,6 +246,15 @@ namespace LDVELH_WPF.Resources {
         internal static string SpecialItems {
             get {
                 return ResourceManager.GetString("SpecialItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Débuter le combat.
+        /// </summary>
+        internal static string StartFight {
+            get {
+                return ResourceManager.GetString("StartFight", resourceCulture);
             }
         }
         
@@ -210,6 +300,33 @@ namespace LDVELH_WPF.Resources {
         internal static string WeaponMastery {
             get {
                 return ResourceManager.GetString("WeaponMastery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous Devez Combattre !.
+        /// </summary>
+        internal static string YouMustFight {
+            get {
+                return ResourceManager.GetString("YouMustFight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre Adversaire :.
+        /// </summary>
+        internal static string YourEnemy {
+            get {
+                return ResourceManager.GetString("YourEnemy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre Héro :.
+        /// </summary>
+        internal static string YourHero {
+            get {
+                return ResourceManager.GetString("YourHero", resourceCulture);
             }
         }
     }
