@@ -79,12 +79,13 @@ namespace LDVELH_WPF
             int right = 0;
             foreach (CapacityType capaType in Enum.GetValues(typeof(CapacityType)))
             {
+                Capacity myCapacity = new Capacity(capaType);
                 CapacityCheckBox checkbox = new CapacityCheckBox();
                 checkbox.Name = capaType.ToString();
-                checkbox.myCapacity = new Capacity(capaType);
+                checkbox.myCapacity = myCapacity;
                 checkbox.Margin = new Thickness(left, top, right, bottom);
                 Label label = new Label();
-                label.Content = capaType.ToString();
+                label.Content = myCapacity.getCapacityDisplayName; 
                 label.Margin = new Thickness(left+20, top - 5, 0, 0);
                 ((Grid)(groupBoxCapacities.Content)).Children.Add(checkbox);
                 ((Grid)(groupBoxCapacities.Content)).Children.Add(label);

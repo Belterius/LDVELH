@@ -10,7 +10,7 @@ namespace LDVELH_Tests
         [TestMethod]
         public void WeaponHolder_AddOnEmpty_Tests()
         {
-            Weapon basicSword1 = new Weapon("basic sword", WeaponTypes.Epee);
+            Weapon basicSword1 = new Weapon("basic sword", WeaponTypes.Sword);
             //Weapon basicSpear = new Weapon("basic spear", WeaponTypes.Spear);
 
             WeaponHolder basicWeaponHolder = new WeaponHolder();
@@ -24,8 +24,8 @@ namespace LDVELH_Tests
         [TestMethod]
         public void WeaponHolder_AddOnNonEmpty_Tests()
         {
-            Weapon basicSword1 = new Weapon("basic sword", WeaponTypes.Epee);
-            Weapon advancedSword = new Weapon("advanced sword", WeaponTypes.Epee);
+            Weapon basicSword1 = new Weapon("basic sword", WeaponTypes.Sword);
+            Weapon advancedSword = new Weapon("advanced sword", WeaponTypes.Sword);
             //Weapon basicSpear = new Weapon("basic spear", WeaponTypes.Spear);
 
             WeaponHolder basicWeaponHolder = new WeaponHolder();
@@ -41,9 +41,9 @@ namespace LDVELH_Tests
         [TestMethod]
         public void WeaponHolder_AddOnFull_Tests()
         {
-            Weapon basicSword1 = new Weapon("basic sword", WeaponTypes.Epee);
-            Weapon advancedSword = new Weapon("advanced sword", WeaponTypes.Epee);
-            Weapon basicSpear = new Weapon("basic spear", WeaponTypes.Lance);
+            Weapon basicSword1 = new Weapon("basic sword", WeaponTypes.Sword);
+            Weapon advancedSword = new Weapon("advanced sword", WeaponTypes.Sword);
+            Weapon basicSpear = new Weapon("basic spear", WeaponTypes.Spear);
 
             WeaponHolder basicWeaponHolder = new WeaponHolder();
 
@@ -67,15 +67,15 @@ namespace LDVELH_Tests
         public void WeaponHolder_ContainsWeaponType_Tests()
         {
 
-            Weapon advancedSword = new Weapon("advanced sword", WeaponTypes.Epee);
-            Weapon basicSpear = new Weapon("basic spear", WeaponTypes.Lance);
+            Weapon advancedSword = new Weapon("advanced sword", WeaponTypes.Sword);
+            Weapon basicSpear = new Weapon("basic spear", WeaponTypes.Spear);
             WeaponHolder basicWeaponHolder = new WeaponHolder();
             basicWeaponHolder.Add(basicSpear);
             basicWeaponHolder.Add(advancedSword);
 
-            Assert.AreEqual(true, basicWeaponHolder.Contains(WeaponTypes.Epee));
-            Assert.AreEqual(true, basicWeaponHolder.Contains(WeaponTypes.Lance));
-            Assert.AreEqual(false, basicWeaponHolder.Contains(WeaponTypes.MasseDArmes));
+            Assert.AreEqual(true, basicWeaponHolder.Contains(WeaponTypes.Sword));
+            Assert.AreEqual(true, basicWeaponHolder.Contains(WeaponTypes.Spear));
+            Assert.AreEqual(false, basicWeaponHolder.Contains(WeaponTypes.Mace));
 
         }
     }

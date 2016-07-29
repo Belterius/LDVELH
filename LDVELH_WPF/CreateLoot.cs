@@ -44,7 +44,7 @@ namespace LDVELH_WPF
         public static class CreateWeapon
         {
             public static Weapon sword(){
-                return new Weapon("Sword", WeaponTypes.Epee);
+                return new Weapon("Sword", WeaponTypes.Sword);
 
             }
             public static Weapon Sabre()
@@ -53,15 +53,15 @@ namespace LDVELH_WPF
             }
             public static Weapon MarteauDeGuerre()
             {
-                return new Weapon("MarteauDeGuerre", WeaponTypes.MarteauDeGuerre);
+                return new Weapon("WarHammer", WeaponTypes.WarHammer);
             }
             public static Weapon spear()
             {
-                return new Weapon("Spear", WeaponTypes.Lance);
+                return new Weapon("Spear", WeaponTypes.Spear);
             }
             public static Weapon masseDArme()
             {
-                return new Weapon("MasseDArmes", WeaponTypes.MasseDArmes);
+                return new Weapon("Mace", WeaponTypes.Mace);
             }
             public static Weapon Baton()
             {
@@ -69,19 +69,19 @@ namespace LDVELH_WPF
             }
             public static Weapon Lance()
             {
-                return new Weapon("Lance", WeaponTypes.Lance);
+                return new Weapon("Spear", WeaponTypes.Spear);
             }
             public static Weapon Glaive()
             {
-                return new Weapon("Glaive", WeaponTypes.Glaive);
+                return new Weapon("TwoEdgedSword", WeaponTypes.TwoEdgedSword);
             }
             public static Weapon Hache()
             {
-                return new Weapon("Hache", WeaponTypes.Hache);
+                return new Weapon("Axe", WeaponTypes.Axe);
             }
             public static Weapon Poignard()
             {
-                return new Weapon("Poignard", WeaponTypes.Poignard);
+                return new Weapon("Dagger", WeaponTypes.Dagger);
             }
         }
         public static class CreateSpecialItem

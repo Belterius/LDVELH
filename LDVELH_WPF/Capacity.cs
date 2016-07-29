@@ -30,22 +30,30 @@ namespace LDVELH_WPF
         public CapacityType getCapacityType{
             get { return capacity; }
         }
+
+        public string getCapacityDisplayName
+        {
+            get {
+                Translator translator = new Translator();
+                return translator.ProvideValue(capacity.ToString());
+            }
+        }
         
 
     }
 
     public enum CapacityType
     {
-        Camouflage,
-        MaitriseDesArmes,
-        PuissancePsychique,
-        Chasse,
-        SixiemeSens,
+        Hiding,
+        WeaponMastery,
+        PsychicPower,
+        Hunting,
+        SixthSense,
         Orientation,
-        Guerison,
-        BouclierPsychique,
-        CommunicationAnimale,
-        MaitriseDeLaMatiere,
+        Healing,
+        PsychicShield,
+        BeastWhisperer,
+        Telekinesis,
 
     }
 }

@@ -56,20 +56,23 @@ namespace LDVELH_WPF
 
         public string getDisplayName
         {
-            get { return name + "(" + weaponType.ToString() + ")"; }
+            get {
+                Translator translator = new Translator();
+                return name + "(" + translator.ProvideValue(weaponType.ToString()) + ")";
+            }
         }
     }
     public enum WeaponTypes
     {
-        Epee,
-        Lance,
-        MasseDArmes,
-        Poignard,
+        Sword,
+        Spear,
+        Mace,
+        Dagger,
         Sabre,
-        MarteauDeGuerre,
-        Hache,
+        WarHammer,
+        Axe,
         Baton,
-        Glaive,
+        TwoEdgedSword,
         None
     }
 }

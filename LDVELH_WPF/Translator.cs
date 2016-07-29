@@ -4,6 +4,7 @@ using System.Resources;
 using System.Globalization;
 using System.Reflection;
 using System.Windows.Markup;
+using System.Threading;
 
 namespace LDVELH_WPF
 {
@@ -19,17 +20,18 @@ namespace LDVELH_WPF
 
         public Translator()
         {
+            //ci = Thread.CurrentThread.CurrentCulture;
             ci = new CultureInfo("fr-FR");
         }
         public Translator(string language)
         {
             switch (language.ToLower())
             {
-                case "francais":
+                case "french":
                     ci = new CultureInfo("fr-FR");
                     break;
                 case "english":
-                    ci = new CultureInfo("en-EN");
+                    ci = new CultureInfo("en-GB");
                     break;
                 default:
                     ci = new CultureInfo("fr-FR");
@@ -62,7 +64,7 @@ namespace LDVELH_WPF
             return translation;
         }
 
-        public object ProvideValue(string stringToTranslate)
+        public string ProvideValue(string stringToTranslate)
         {
             Text = stringToTranslate;
             if (Text == null)

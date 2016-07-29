@@ -114,7 +114,7 @@ namespace LDVELH_WPF
             labelGoldAmount.Content = hero.getGold().ToString();
             labelWeaponMastery.Content = hero.getWeaponMastery.ToString();
             listBoxCapacities.ItemsSource = hero.capacities;
-            listBoxCapacities.DisplayMemberPath = "getCapacityType";
+            listBoxCapacities.DisplayMemberPath = "getCapacityDisplayName";
         }
         private void heroHPListener()
         {

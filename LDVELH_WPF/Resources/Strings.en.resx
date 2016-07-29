@@ -118,103 +118,103 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Agility" xml:space="preserve">
-    <value>Agilité :</value>
+    <value>Agility :</value>
   </data>
   <data name="Axe" xml:space="preserve">
-    <value>Hache</value>
+    <value>Axe</value>
   </data>
   <data name="BackPack" xml:space="preserve">
-    <value>Sac à Dos :</value>
+    <value>Backpack :</value>
   </data>
   <data name="Baton" xml:space="preserve">
-    <value>Bâton</value>
+    <value>Baton</value>
   </data>
   <data name="Battling" xml:space="preserve">
-    <value>En Combat</value>
+    <value>Battling</value>
   </data>
   <data name="Beast" xml:space="preserve">
-    <value>Monstre</value>
+    <value>Beast</value>
   </data>
   <data name="BeastWhisperer" xml:space="preserve">
-    <value>Communication Animale</value>
+    <value>Beast Whisperer</value>
   </data>
   <data name="Capacities" xml:space="preserve">
-    <value>Capacités :</value>
+    <value>Capacities :</value>
   </data>
   <data name="Choices" xml:space="preserve">
-    <value>Décisions</value>
+    <value>Choices</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Valider</value>
+    <value>Confirm</value>
   </data>
   <data name="Dagger" xml:space="preserve">
-    <value>Poignard</value>
+    <value>Dagger</value>
   </data>
   <data name="DamageTaken" xml:space="preserve">
-    <value>Dommages Subi :</value>
+    <value>Damage Taken :</value>
   </data>
   <data name="Escape" xml:space="preserve">
-    <value>S'enfuir</value>
+    <value>Escape</value>
   </data>
   <data name="Full" xml:space="preserve">
-    <value>Rassasié</value>
+    <value>Full</value>
   </data>
   <data name="Gold" xml:space="preserve">
-    <value>Pièces d'Or :</value>
+    <value>Golds :</value>
   </data>
   <data name="Healing" xml:space="preserve">
-    <value>Guérison</value>
+    <value>Healing</value>
   </data>
   <data name="Hero" xml:space="preserve">
-    <value>Champion</value>
+    <value>Hero</value>
   </data>
   <data name="HeroStats" xml:space="preserve">
-    <value>Caractéristiques Héro</value>
+    <value>Hero Stats</value>
   </data>
   <data name="Hiding" xml:space="preserve">
-    <value>Camouflage</value>
+    <value>Hiding</value>
   </data>
   <data name="HitPoints" xml:space="preserve">
-    <value>Points de Vie :</value>
+    <value>Hit Points :</value>
   </data>
   <data name="Human" xml:space="preserve">
-    <value>Humain</value>
+    <value>Human</value>
   </data>
   <data name="Hunger" xml:space="preserve">
-    <value>Satiété :</value>
+    <value>Hunger :</value>
   </data>
   <data name="Hungry" xml:space="preserve">
-    <value>Affamé</value>
+    <value>Hungry</value>
   </data>
   <data name="Hunting" xml:space="preserve">
-    <value>Maitrise de la Chasse</value>
+    <value>Hunting</value>
   </data>
   <data name="Inventory" xml:space="preserve">
-    <value>Inventaire</value>
+    <value>Inventory :</value>
   </data>
   <data name="Life" xml:space="preserve">
-    <value>Points de Vie :</value>
+    <value>Hit Points :</value>
   </data>
   <data name="ListCapacities" xml:space="preserve">
-    <value>Liste des Capacités</value>
+    <value>List Capacities</value>
   </data>
   <data name="Load" xml:space="preserve">
-    <value>Charger</value>
+    <value>Load</value>
   </data>
   <data name="LoadMenu" xml:space="preserve">
-    <value>Menu de Chargement</value>
+    <value>Load Menu</value>
   </data>
   <data name="Mace" xml:space="preserve">
-    <value>Masse</value>
+    <value>Mace</value>
   </data>
   <data name="MenuCapacities" xml:space="preserve">
-    <value>Menu des Capacitiés</value>
+    <value>Capacities Menu </value>
   </data>
   <data name="NewGame" xml:space="preserve">
-    <value>Nouvelle Partie</value>
+    <value>New Game</value>
   </data>
   <data name="None" xml:space="preserve">
-    <value>Aucune</value>
+    <value>None</value>
   </data>
   <data name="Orc" xml:space="preserve">
     <value>Orc</value>
@@ -223,69 +223,66 @@
     <value>Orientation</value>
   </data>
   <data name="PsychicPower" xml:space="preserve">
-    <value>Puissance Psychique</value>
+    <value>Psychic Power</value>
   </data>
   <data name="PsychicShield" xml:space="preserve">
-    <value>Bouclier Psychique</value>
+    <value>Psychic Shield</value>
   </data>
   <data name="Sabre" xml:space="preserve">
     <value>Sabre</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Sauvegarder</value>
+    <value>Save</value>
   </data>
   <data name="SixthSense" xml:space="preserve">
-    <value>Sixième Sense</value>
+    <value>Sixth Sense</value>
   </data>
   <data name="Spear" xml:space="preserve">
-    <value>Lance</value>
+    <value>Spear</value>
   </data>
   <data name="SpecialItems" xml:space="preserve">
-    <value>Objets Spéciaux :</value>
+    <value>Special Items :</value>
   </data>
   <data name="StartFight" xml:space="preserve">
-    <value>Débuter le combat</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value />
+    <value>Start the Fight</value>
   </data>
   <data name="Sword" xml:space="preserve">
-    <value>Épée</value>
+    <value>Sword</value>
   </data>
   <data name="Telekinesis" xml:space="preserve">
-    <value>Maitrise de la matière</value>
+    <value>Telekinesis</value>
   </data>
   <data name="ThrowItem" xml:space="preserve">
-    <value>Jeter l'objet</value>
+    <value>Throw Item</value>
   </data>
   <data name="ThrowWeapon" xml:space="preserve">
-    <value>Jeter l'arme</value>
+    <value>Throw Weapon</value>
   </data>
   <data name="TwoEdgedSword" xml:space="preserve">
-    <value>Glaive</value>
+    <value>Two-Edged Sword</value>
   </data>
   <data name="UseItem" xml:space="preserve">
-    <value>Utiliser l'objet</value>
+    <value>Use Item</value>
   </data>
   <data name="WarHammer" xml:space="preserve">
-    <value>Marteau de Guerre</value>
+    <value>War Hammer</value>
   </data>
   <data name="Weapon" xml:space="preserve">
-    <value>Armes :</value>
+    <value>Weapons :</value>
   </data>
   <data name="WeaponMastery" xml:space="preserve">
-    <value>Maitrise des Armes</value>
+    <value>Weapon Mastery</value>
   </data>
   <data name="WeaponMasteryLabel" xml:space="preserve">
-    <value>Maitrise des Armes :</value>
+    <value>Weapon Mastery :</value>
   </data>
   <data name="YouMustFight" xml:space="preserve">
-    <value>Vous Devez Combattre !</value>
+    <value>You Must Fight !</value>
   </data>
   <data name="YourEnemy" xml:space="preserve">
-    <value>Votre Adversaire :</value>
+    <value>Your Enemy :</value>
   </data>
   <data name="YourHero" xml:space="preserve">
-    <value>Votre Héro :</value>
+    <value>Your Hero :</value>
   </data>
 </root>

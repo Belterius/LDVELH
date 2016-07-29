@@ -65,7 +65,8 @@ namespace LDVELH_WPF
         }
         public void HungryStateChanged(Hero hero)
         {
-            labelBellyState.Content = hero.getHungryState.ToString();
+            Translator translator = new Translator();
+            labelBellyState.Content = translator.ProvideValue(hero.getHungryState.ToString());
         }
         public void AgilityChanged(Hero hero, int damage)
         {

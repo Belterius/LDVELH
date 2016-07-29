@@ -188,7 +188,7 @@ namespace LDVELH_WPF
         {
             capacities.Add(capacity);
             capacitiesHasChanged(capacity);
-            if (capacity.getCapacityType == CapacityType.MaitriseDesArmes)
+            if (capacity.getCapacityType == CapacityType.WeaponMastery)
             {
                 while (this.weaponMastery == WeaponTypes.None)
                 {
@@ -203,7 +203,7 @@ namespace LDVELH_WPF
             capacities.Add(capacity);
             capacitiesHasChanged(capacity);
 
-            if (capacityType == CapacityType.MaitriseDesArmes)
+            if (capacityType == CapacityType.WeaponMastery)
             {
                 while (this.weaponMastery == WeaponTypes.None)
                 {
@@ -557,14 +557,14 @@ namespace LDVELH_WPF
         private int getBonusCapacityAgility(Ennemy ennemy)
         {
             int bonusAgility = 0;
-            if (this.possesCapacity(CapacityType.MaitriseDesArmes))
+            if (this.possesCapacity(CapacityType.WeaponMastery))
             {
                 if (this.weaponHolder.Contains(this.weaponMastery))
                 {
                     bonusAgility += Capacity.weaponMasteryStrenght;
                 }
             }
-            if (this.possesCapacity(CapacityType.PuissancePsychique))
+            if (this.possesCapacity(CapacityType.PsychicPower))
             {
                 if (ennemy.isWeakToPhychic())
                 {

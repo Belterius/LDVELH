@@ -68,7 +68,7 @@ namespace LDVELH_WPF
                         }
                         MoveEvent goRight = new MoveEvent(85, "Prendre le sentier de droite");
                         MoveEvent goLeft = new MoveEvent(275, "Prendre le sentier de gauche");
-                        CapacityEvent sixiemeSensEvent = new CapacityEvent(141, CapacityType.SixiemeSens);
+                        CapacityEvent sixiemeSensEvent = new CapacityEvent(141, CapacityType.SixthSense);
                         paragraph.addDecision(goRight);
                         paragraph.addDecision(goLeft);
                         paragraph.addDecision(sixiemeSensEvent);
@@ -102,7 +102,7 @@ namespace LDVELH_WPF
                         paragraph = new StoryParagraph("C'est un petit canoë à une place, en très mauvais état. Des pièces de bois disjointes laissent apparaître des trous en plusieurs endroits de la coque et il vous faut les boucher à la hâte avec de l'argile. Vous videz ensuite l'embarcation de son eau et il vous semble alors qu'elle est en état de flotter. Vous rangez votre équipement à l'avant du canoë, puis vous descendez le cours de la rivière en pagayant à l'aide d'un débris de bois ramassé à la surface de l'eau. Un instant plus tard, vous entendez des chevaux galoper dans votre direction, le long de la rive gauche", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(75, "se cacher au fond du canoë"));
                         paragraph.addDecision(new MoveEvent(175, "attirer l'attention des cavaliers"));
-                        paragraph.addDecision(new CapacityEvent(218, CapacityType.SixiemeSens));
+                        paragraph.addDecision(new CapacityEvent(218, CapacityType.SixthSense));
                         return paragraph;
                     }
                 case 5:
@@ -184,7 +184,7 @@ namespace LDVELH_WPF
                 case 15:
                     {
                         paragraph = new StoryParagraph("Vous longez un long tunnel sombre formé par des branches d'arbres qui s'entrecroisent au-dessus de votre tête et vous arrivez enfin dans une vaste clairière. En son centre se dresse un socle de pierre sur lequel est posée une épée, rangée dans un fourreau de cuir noir. Un mot manuscrit est attaché à la garde de l'épée, mais il est écrit dans une langue qui vous est étrangère. \n Trois chemins permettent de quitter la clairière ", paragraphNumber);
-                        paragraph.addDecision(new LootEvent(new Weapon("Epee(paragraph 15)", WeaponTypes.Epee)));
+                        paragraph.addDecision(new LootEvent(new Weapon("Sword(paragraph 15)", WeaponTypes.Sword)));
                         paragraph.addDecision(new MoveEvent(207, "voulez aller à l'est"));
                         paragraph.addDecision(new MoveEvent(201, "voulez aller à l'ouest"));
                         paragraph.addDecision(new MoveEvent(35, "voulez aller au sud"));
@@ -222,7 +222,7 @@ namespace LDVELH_WPF
                         
                         paragraph.addDecision(new MoveEvent(239, "vous enfoncer plus profondément dans la forêt"));
                         paragraph.addDecision(new MoveEvent(29, "combattre la créature"));
-                        paragraph.addDecision(new CapacityEvent(114, CapacityType.Camouflage));
+                        paragraph.addDecision(new CapacityEvent(114, CapacityType.Hiding));
                         return paragraph;
                     }
                 case 19:
@@ -235,7 +235,7 @@ namespace LDVELH_WPF
                     }
                 case 20:
                     {
-                        paragraph = new StoryParagraph("Il semble que le ou les occupants de la péniche soient partis en toute hâte il y a peu de temps. Les restes d'un repas à moitié mangé traînent sur la table ainsi qu'une tasse de Jala encore chaud. En fouillant un coffre et un petit placard, vous trouvez un Sac à Dos, de la Nourriture (l'équivalent de 2 Repas) et un Poignard.", paragraphNumber);
+                        paragraph = new StoryParagraph("Il semble que le ou les occupants de la péniche soient partis en toute hâte il y a peu de temps. Les restes d'un repas à moitié mangé traînent sur la table ainsi qu'une tasse de Jala encore chaud. En fouillant un coffre et un petit placard, vous trouvez un Sac à Dos, de la Nourriture (l'équivalent de 2 Repas) et un Dagger.", paragraphNumber);
                         paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre le poignard"));
                         paragraph.addDecision(new LootEvent(CreateLoot.CreateFood.ration(2), "Prendre les rations"));
                         return paragraph;
@@ -289,7 +289,7 @@ namespace LDVELH_WPF
                         paragraph = new StoryParagraph("Le couloir aboutit bientôt à une vaste chambre mortuaire dont les murs sont gravés de motifs anciens. Dans le coin opposé, un escalier de pierre mène à une porte immense. De chaque côté des marches, deux chandelles noires diffusent une faible clarté. Vous remarquez alors qu'aucune cire ne coule le long des chandelles, et tandis que vous vous approchez, vous constatez que leurs flammes ne diffusent aucune chaleur. Soucieux de quitter au plus vite cet endroit sinistre, vous examinez la serrure de la porte. Une broche sculptée semble fermer le panneau, mais un trou de serrure apparaît également. ", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(337, "Retirer la broche"));
                         paragraph.addDecision(new ItemRequieredEvent(337, "CleDOr"));
-                        paragraph.addDecision(new CapacityEvent(151, CapacityType.MaitriseDeLaMatiere));
+                        paragraph.addDecision(new CapacityEvent(151, CapacityType.Telekinesis));
                         return paragraph;
                     }
                 case 24:
@@ -329,7 +329,7 @@ namespace LDVELH_WPF
                 case 29:
                     {
                         paragraph = new StoryParagraph("Vous vous approchez de la rive du lac en vous préparant à combattre. Le Kraan et la créature qui le chevauche vous aperçoivent aussitôt et foncent vers vous en volant à ras de l'eau. C'est alors que le maître du Kraan lance un cri qui vous glace le sang. Cette créature est un Vordak, un féroce lieutenant des Maîtres des Ténèbres. Il se rue sur vous, et il vous faut le combattre. Votre adversaire vous attaque à l'aide d'une grosse Masse d'Armes, mais il est également doué d'une redoutable Puissance Psychique dont il va faire usage au cours de l'affrontement. Si vous ne maîtrisez pas la Discipline Kaï du Bouclier Psychique, sa force mentale vous fera perdre 2 points d'HABILETÉ pendant toute la durée du combat. ", paragraphNumber);
-                        paragraph.addMainEvent(new DebuffEvent(CapacityType.BouclierPsychique, 2));
+                        paragraph.addMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
                         paragraph.addMainEvent(new FightEvent( new Ennemy("Vordak", 17, 25, EnnemyTypes.Hero)));
                         paragraph.addDecision(new MoveEvent(270, "Continuer"));
                         return paragraph;
@@ -364,7 +364,7 @@ namespace LDVELH_WPF
                 case 34:
                     {
                         paragraph = new StoryParagraph("Sans crier gare, une terrifiante apparition fond sur vous. C'est une créature vêtue de longs vêtements rouges et montée sur le dos d'un Kraan. Votre assaillant pousse un cri à vous glacer le sang : il s'agit d'un Vordak, un féroce lieutenant des Maîtres des Ténèbres. Il est juste au-dessus de vous et il vous faut le combattre. Le monstre vous attaque à l'aide d'une grosse Masse d'Armes et il est également doué d'une redoutable Puissance Psychique, dont il va faire usage au cours de l'affrontement. Si vous ne maîtrisez pas la Discipline Kaï du Bouclier Psychique, vous devrez réduire de 2 points votre total d'HABILETÉ pendant toute la durée du combat. ", paragraphNumber);
-                        paragraph.addMainEvent(new DebuffEvent(CapacityType.BouclierPsychique, 2));
+                        paragraph.addMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
                         paragraph.addMainEvent(new FightEvent(new Ennemy("Vordak", 17, 25, EnnemyTypes.Hero)));
                         paragraph.addDecision(new MoveEvent(328, "Continuer"));
                         return paragraph;
@@ -395,7 +395,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph("Vous vous sentez fatigué et affamé, et il vous faut faire une halte pour prendre un Repas. Après avoir mangé, vous rebroussez chemin jusqu'à la citadelle et vous marchez le long de ses hautes murailles de pierre. Vous découvrez une autre entrée dans le mur est, gardée, elle aussi, par deux soldats en armes.", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(289, "vous approcher d'eux et leur raconter votre histoire"));
-                        paragraph.addDecision(new CapacityEvent(282, CapacityType.Camouflage));
+                        paragraph.addDecision(new CapacityEvent(282, CapacityType.Hiding));
                         return paragraph;
                     }
                 case 38:
@@ -465,7 +465,7 @@ namespace LDVELH_WPF
                 case 46:
                     {
                         paragraph = new StoryParagraph("Vous avez parcouru trois kilomètres environ, et le feuillage des arbres commence à s'éclaircir. Vous apercevez alors, au bord d'un lac, une petite cabane de bois. Un homme vêtu d'une cape s'approche bientôt de vous et vous offre de vous faire traverser le lac sur son bateau, vous et votre cheval, pour la somme de 2 Couronnes.", paragraphNumber);
-                        paragraph.addDecision(new CapacityEvent(296,CapacityType.SixiemeSens));
+                        paragraph.addDecision(new CapacityEvent(296,CapacityType.SixthSense));
                         paragraph.addDecision(new MoveEvent(90, "refuser et contourner le lac à cheval"));
                         paragraph.addDecision(new BuyEvent(new MoveEvent(246), 2, "accepter son offre"));
                         return paragraph;
@@ -517,7 +517,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph("A présent que vous vous êtes approché, vous vous apercevez qu'il ne s'agit pas là de voix humaines. On dirait plutôt des grognements et des cris d'animaux. ", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(250, "montez sur le tronc de l'arbre pour aller voir qui se cache derrière. "));
-                        paragraph.addDecision(new CapacityEvent(225, CapacityType.CommunicationAnimale));
+                        paragraph.addDecision(new CapacityEvent(225, CapacityType.BeastWhisperer));
                         return paragraph;
                     }
                 case 53:
@@ -640,14 +640,14 @@ namespace LDVELH_WPF
                         paragraph = new StoryParagraph("Vous arrivez à un petit pont. Un chemin longe le cours d'eau en direction de l'est, et un autre sentier beaucoup plus étroit s'enfonce dans une forêt touffue menant vers le sud. ", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(28, "aller à l'est"));
                         paragraph.addDecision(new MoveEvent(157, "prendre la direction du sud"));
-                        paragraph.addDecision(new CapacityEvent(8, CapacityType.SixiemeSens));
+                        paragraph.addDecision(new CapacityEvent(8, CapacityType.SixthSense));
                         return paragraph;
                     }
                 case 71:
                     {
                         paragraph = new StoryParagraph("Vous êtes étourdi, mais indemne. Vous avez fait une chute de cinq mètres en passant à travers le plafond d'un caveau souterrain. Les murs en sont parfaitement lisses, et il vous est impossible d'y grimper. Un tunnel voûté part du caveau en direction de l'est. A l'entrée de ce tunnel se trouve le sarcophage de quelque ancien seigneur.", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(104, "quitter le tombeau et suivre le tunnel"));
-                        paragraph.addDecision(new CapacityEvent(65, CapacityType.SixiemeSens));
+                        paragraph.addDecision(new CapacityEvent(65, CapacityType.SixthSense));
                         paragraph.addDecision(new MoveEvent(242, "ouvrir ce sarcophage "));
                         return paragraph;
                     }
@@ -730,7 +730,7 @@ namespace LDVELH_WPF
                         paragraph.addDecision(new MoveEvent(205, "leur obéir"));
                         paragraph.addDecision(new MoveEvent(180, "les combattre"));
                         paragraph.addDecision(new MoveEvent(232, "leur demander ce qu'ils veulent"));
-                        paragraph.addDecision(new CapacityEvent(45, CapacityType.SixiemeSens));
+                        paragraph.addDecision(new CapacityEvent(45, CapacityType.SixthSense));
                         return paragraph;
                     }
                 case 84:
@@ -764,7 +764,7 @@ namespace LDVELH_WPF
                 case 88:
                     {
                         paragraph = new StoryParagraph("Vous jetez un regard prudent derrière le rocher et vous apercevez un soldat étendu sur le dos, son épée et son bouclier à ses côtés. Le bouclier porte l'image d'un Pégase blanc : c'est l'emblème du Prince du Sommer-lund. Ce soldat appartient à la garde du Prince ; son uniforme est déchiré et vous constatez qu'il porte au bras une profonde blessure. Lorsque vous vous approchez de lui, il bat des paupières. « Soignez-moi, supplie-t-il, je ne sens plus mon bras. »", paragraphNumber);
-                        paragraph.addDecision(new CapacityEvent(216, CapacityType.Guerison));
+                        paragraph.addDecision(new CapacityEvent(216, CapacityType.Healing));
                         paragraph.addDecision(new MoveEvent(31, "le laisser à son sort"));
                         return paragraph;
                     }
@@ -800,7 +800,7 @@ namespace LDVELH_WPF
                         paragraph = new StoryParagraph("La petite boutique est sombre et humide. Les murs sont couverts d'étagères, remplies de livres et de bouteilles de toutes les tailles et de toutes les couleurs. Lorsque vous refermez la porte, un petit chien noir se met à aboyer et un homme chauve apparaît en sortant de derrière un grand paravent. L'homme vous souhaite le bonjour et vous demande poliment s'il peut vous être utile, vous proposant notamment un choix d'herbes et de potions rangées dans les cases d'un comptoir de verre.", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(152, "jeter un coup d'œil à ces produits"));
                         paragraph.addDecision(new MoveEvent(7, "décliner son offre et ressortir"));
-                        paragraph.addDecision(new CapacityEvent(198, CapacityType.SixiemeSens));
+                        paragraph.addDecision(new CapacityEvent(198, CapacityType.SixthSense));
                         return paragraph;
                     }
                 case 92:
@@ -892,7 +892,7 @@ namespace LDVELH_WPF
                 case 105:
                     {
                         paragraph = new StoryParagraph("Un peu plus loin, vous apercevez un Corbeau, d'un noir de jais, perché sur la branche d'un vieux chêne.", paragraphNumber);
-                        paragraph.addDecision(new CapacityEvent(298, CapacityType.CommunicationAnimale));
+                        paragraph.addDecision(new CapacityEvent(298, CapacityType.BeastWhisperer));
                         paragraph.addDecision(new MoveEvent(335, "Continuer"));
                         return paragraph;
                     }
@@ -1054,7 +1054,7 @@ namespace LDVELH_WPF
                 case 128:
                     {
                         paragraph = new StoryParagraph("Vous écartez prudemment le feuillage, et une vision d'horreur s'offre aussitôt à vous : un peu plus loin, dans une petite clairière, trois Gloks ont attaché un homme à un poteau et sont en train de mettre le feu à un tas de broussailles disposé à ses pieds. Sa tunique est celle d'un Garde-Frontière, il appartient au régiment chargé de surveiller les frontières occidentales du royaume, en bordure des monts Durncrag. L'homme a reçu une sévère correction et il est à demi inconscient. Si vous maîtrisez la ", paragraphNumber);
-                        paragraph.addDecision(new CapacityEvent(297, CapacityType.Chasse));
+                        paragraph.addDecision(new CapacityEvent(297, CapacityType.Hunting));
                         paragraph.addDecision(new MoveEvent(336, "attaquer les Gloks pour sauver la vie du soldat"));
                         return paragraph;
                     }
@@ -1310,7 +1310,7 @@ namespace LDVELH_WPF
                 case 162:
                     {
                         paragraph = new StoryParagraph("Vous vous approchez de ces hommes et vous les appelez. Mais lorsqu'ils se tournent vers vous, votre sang se glace et vous sentez votre cœur battre à tout rompre, car ce sont des Drakkarims déguisés. En vous voyant, ils se précipitent sur vous, vous ligotent pieds et poignets et vous traînent derrière eux le long d'un sentier. Ils vous prennent votre Sac à Dos et vos Armes, mais ils ne fouillent pas les poches de votre cape et ne trouvent pas vos Pièces d'Or. Vous les entendez jacasser d'un air menaçant tandis qu'ils vous emportent ainsi vers leur repaire : de toute évidence, ils sont en train de décider du sort qu'ils vous réservent, et vos perspectives d'avenir ne semblent pas des plus réjouissantes. ", paragraphNumber);
-                        paragraph.addDecision(new CapacityEvent(258,CapacityType.MaitriseDeLaMatiere));
+                        paragraph.addDecision(new CapacityEvent(258,CapacityType.Telekinesis));
                         paragraph.addDecision(new MoveEvent(127, "Continuer"));
                         return paragraph;
                     }
@@ -1346,7 +1346,7 @@ namespace LDVELH_WPF
                         paragraph = new StoryParagraph("Vous avez parcouru environ deux kilomètres lorsque vous apercevez deux jambes qui dépassent de derrière un gros rocher.", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(88, "vous approcher pour voir de quoi il retourne"));
                         paragraph.addDecision(new MoveEvent(264, "passer votre chemin et continuer droit devant"));
-                        paragraph.addDecision(new CapacityEvent(178, CapacityType.SixiemeSens));
+                        paragraph.addDecision(new CapacityEvent(178, CapacityType.SixthSense));
                         return paragraph;
                     }
                 case 168:
@@ -1381,7 +1381,7 @@ namespace LDVELH_WPF
                         paragraph = new StoryParagraph("La nuit tombe et l'obscurité bientôt vous engloutit. Il serait vain de poursuivre votre route car vous vous perdriez à coup sûr. Vous attachez donc votre cheval à un arbre, vous vous étendez sur le sol en vous emmitouflant dans votre cape de Seigneur Kaï et vous sombrez dans un sommeil sans rêves. Au matin vous êtes réveillé par des bruits de galops lointains. De l'autre côté du lac, vous distinguez des silhouettes noires de Drakkarims et une meute de Loups Maudits. Un Kraan apparaît également au-dessus des arbres et se pose sur le toit de la petite cabane. Il est monté par une créature vêtue de rouge. Un instant plus tard, le monstre redoutable reprend son vol et traverse le lac en se dirigeant vers l'endroit où vous êtes caché.", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(239, "vous enfoncer plus profondément dans la forêt afin d'échapper au Kraan"));
                         paragraph.addDecision(new MoveEvent(29, "vous préparer à combattre "));
-                        paragraph.addDecision(new CapacityEvent(114, CapacityType.Camouflage));
+                        paragraph.addDecision(new CapacityEvent(114, CapacityType.Hiding));
                         return paragraph;
                     }
                 case 173:
@@ -1404,7 +1404,7 @@ namespace LDVELH_WPF
                         paragraph = new StoryParagraph("De la main, vous faites signe aux cavaliers en qui vous reconnaissez des Gardes-Frontières de l'armée du Roi. Ils font partie du régiment chargé de surveiller les frontières occidentales du Royaume, souvent menacées. Mais le soulagement que vous éprouvez à rencontrer des alliés est de courte durée, car vous vous apercevez bientôt que ces soldats sont, en fait, poursuivis par des Gloks hurlants qui chevauchent des Loups Maudits. Des flèches noires tombent en pluie tout autour des GardesFrontières tandis que leurs terribles poursuivants gagnent du terrain. ", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(41, "essayer de vous cacher là où vous êtes"));
                         paragraph.addDecision(new MoveEvent(116, "traverser la rivière à la nage pour vous réfugier sur l'autre berge"));
-                        paragraph.addDecision(new CapacityEvent(182, CapacityType.Camouflage));
+                        paragraph.addDecision(new CapacityEvent(182, CapacityType.Hiding));
                         return paragraph;
                     }
                 case 176:
@@ -1589,7 +1589,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph("La nuit tombe et les ombres de la forêt s'étirent. Vous vous apprêtez à faire halte pour vous reposer lorsque vous apercevez à travers les arbres une foule qui avance sur une large route orientée au sud. En vous approchant, vous distinguez une roulotte tirée par six grands chevaux ; le véhicule occupe le milieu de la chaussée et se déplace à grande vitesse parmi les piétons et les autres voitures à chevaux. C'est peut-être là votre chance d'atteindre la capitale plus vite que prévu. ", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(78, "sauter sur la roulotte"));
-                        paragraph.addDecision(new CapacityEvent(168, CapacityType.Camouflage, "vous dissimuler parmi les bagages (Capacité Camouflage) "));
+                        paragraph.addDecision(new CapacityEvent(168, CapacityType.Hiding, "vous dissimuler parmi les bagages (Capacité Hiding) "));
                         return paragraph;
                     }
                 case 201:
@@ -1671,7 +1671,7 @@ namespace LDVELH_WPF
                         paragraph = new StoryParagraph("Vous marchez le long d'un couloir plongé dans la pénombre et vous arrivez bientôt dans une grande pièce carrée. Une porte de chêne est aménagée dans le mur d'en face.", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(173, "vous diriger vers cette porte"));
                         paragraph.addDecision(new MoveEvent(106, "retourner à l'air libre et poursuivre votre route"));
-                        paragraph.addDecision(new CapacityEvent(106, CapacityType.SixiemeSens));
+                        paragraph.addDecision(new CapacityEvent(106, CapacityType.SixthSense));
                         return paragraph;
                     }
                 case 212:
@@ -1893,7 +1893,7 @@ namespace LDVELH_WPF
                 case 242:
                     {
                         paragraph = new StoryParagraph("Le couvercle du sarcophage glisse à terre avec un bruit sourd. Vous contemplez alors les restes d'un ancien roi qui repose parmi ses richesses. Une couronne ciselée coiffe son crâne et les mâchoires grandes ouvertes de son squelette ressemblent à l'orifice d'un puits sans fond. Un lointain grondement s'élève bientôt des profondeurs de la terre. ", paragraphNumber);
-                        paragraph.addDecision(new CapacityEvent(166, CapacityType.BouclierPsychique));
+                        paragraph.addDecision(new CapacityEvent(166, CapacityType.PsychicShield));
                         paragraph.addDecision(new MoveEvent(9, "continuer"));
                         return paragraph;
                     }
@@ -2065,8 +2065,8 @@ namespace LDVELH_WPF
                     }
                 case 267:
                     {
-                        paragraph = new StoryParagraph("En vous couvrant le nez d'un pan de votre cape, vous vous approchez avec précaution du Kraan mort. L'odeur infecte qui se dégage de son sang noir vous retourne l'estomac, mais vous êtes décidé malgré tout à examiner son cadavre. Vous remarquez alors un sac attaché au corps du monstre par une sangle. A l'intérieur du sac, vous trouvez un Message écrit sur une peau d'animal. Tout au fond du sac, il y a également un Poignard.", paragraphNumber);
-                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre le Poignard"));
+                        paragraph = new StoryParagraph("En vous couvrant le nez d'un pan de votre cape, vous vous approchez avec précaution du Kraan mort. L'odeur infecte qui se dégage de son sang noir vous retourne l'estomac, mais vous êtes décidé malgré tout à examiner son cadavre. Vous remarquez alors un sac attaché au corps du monstre par une sangle. A l'intérieur du sac, vous trouvez un Message écrit sur une peau d'animal. Tout au fond du sac, il y a également un Dagger.", paragraphNumber);
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre le Dagger"));
                         paragraph.addDecision(new LootEvent(new Miscellaneous("Message"), "Prendre le message"));
                         paragraph.addDecision(new MoveEvent(125, "continuer"));
                         return paragraph;
@@ -2187,7 +2187,7 @@ namespace LDVELH_WPF
                 case 283:
                     {
                         paragraph = new StoryParagraph("Vous êtes à trois mètres environ de l'étranger lorsque son corbeau se met à croasser pour l'avertir de votre approche. L'homme fait aussitôt volte-face et vous vous immobilisez saisi de terreur : car en fait ce n'est pas un homme que vous avez devant vous, mais un Vordak, l'un des plus redoutables lieutenants des Maîtres des Ténèbres. Cette créature appartient au monde des morts vivants et vous allez devoir la combattre dans un affrontement sans merci. La surprise de votre attaque vous permet d'ajouter 2 points à votre total d'HABILETÉ lors du premier assaut. Dès le deuxième assaut, en revanche, et au cours des suivants, vous devrez réduire de 2 points ce même total d'HABILETÉ à moins que vous ne maîtrisiez la Discipline Kaï du Bouclier Psychique. Le Vordak vous attaque, en effet, en utilisant simultanément deux armes redoutables : une énorme Masse d'Armes et sa formidable Puissance Psychique.", paragraphNumber);
-                        paragraph.addMainEvent(new DebuffEvent(CapacityType.BouclierPsychique, 2));
+                        paragraph.addMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
                         paragraph.addMainEvent(new FightEvent(new Ennemy("Vordak", 17,25, EnnemyTypes.Hero)));
                         paragraph.addDecision(new MoveEvent(123, "continuer"));
                         return paragraph;
@@ -2238,7 +2238,7 @@ namespace LDVELH_WPF
                     }
                 case 291:
                     {
-                        paragraph = new StoryParagraph("Les cadavres recroquevillés des deux Gloks reposent à vos pieds. Vous les fouillez rapidement et vous découvrez dans leurs vêtements 6 Couronnes, 1 Lances et 1 Poignard. Le Kraan s'est enfui pendant le combat, et le sentier est à présent désert. ", paragraphNumber);
+                        paragraph = new StoryParagraph("Les cadavres recroquevillés des deux Gloks reposent à vos pieds. Vous les fouillez rapidement et vous découvrez dans leurs vêtements 6 Couronnes, 1 Lances et 1 Dagger. Le Kraan s'est enfui pendant le combat, et le sentier est à présent désert. ", paragraphNumber);
                         paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre le poignard"));
                         paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Lance(), "Prendre la lance"));
                         paragraph.addMainEvent(new LootEvent(new Gold(6)));
@@ -2340,7 +2340,7 @@ namespace LDVELH_WPF
                 case 303:
                     {
                         paragraph = new StoryParagraph("La forêt en cet endroit est clairsemée et le terrain vallonné. Aussi n'avez-vous guère de possibilité de vous mettre à couvert en cas d'attaque aérienne. Vous avancez donc aussi vite que possible d'arbre en arbre pour éviter d'être repéré par des Kraans mais vous entendez bientôt derrière vous des grognements caractéristiques: ce sont des Loups Maudits qui galopent à quelque distance. ", paragraphNumber);
-                        paragraph.addDecision(new CapacityEvent(237, CapacityType.Camouflage));
+                        paragraph.addDecision(new CapacityEvent(237, CapacityType.Hiding));
                         paragraph.addDecision(new MoveEvent(72, "continuer"));
                         return paragraph;
                     }
@@ -2376,7 +2376,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph("La porte de l'écurie est ouverte et vous entendez à l'intérieur la respiration d'un cheval. Or, soudain, le cheval sent votre présence et, pris de peur, se précipite au-dehors en vous projetant à terre au passage. Vous perdez 1 point d'ENDURANCE", paragraphNumber);
                         paragraph.addMainEvent(new DammageEvent(1));
-                        paragraph.addDecision(new CapacityEvent(122, CapacityType.CommunicationAnimale));
+                        paragraph.addDecision(new CapacityEvent(122, CapacityType.BeastWhisperer));
                         paragraph.addDecision(new MoveEvent(233, "vous lancer à la poursuite du cheval "));
                         return paragraph;
                     }
@@ -2395,7 +2395,7 @@ namespace LDVELH_WPF
                 case 311:
                     {
                         paragraph = new StoryParagraph("Le flanc de la colline est escarpé et le sol, meuble et glissant. Vous jetez un coup d'œil par-dessus votre épaule et vous apercevez deux Gloks qui surgissent de la forêt. Ils entreprennent aussitôt d'escalader la colline pour tenter de vous rattraper. Arrivé à mi-chemin, vous repérez une grotte à votre droite. L'entrée en est presque entièrement cachée par un glissement de terrain qui a formé comme un mur de rocailles. ", paragraphNumber);
-                        paragraph.addDecision(new CapacityEvent(324, CapacityType.Camouflage));
+                        paragraph.addDecision(new CapacityEvent(324, CapacityType.Hiding));
                         paragraph.addDecision(new MoveEvent(279, "vous cacher dans cette grotte"));
                         paragraph.addDecision(new MoveEvent(47, "continuer à grimper le flanc de la colline"));
                         return paragraph;
@@ -2455,8 +2455,8 @@ namespace LDVELH_WPF
                     }
                 case 319:
                     {
-                        paragraph = new StoryParagraph("La gluante créature laisse échapper un long cri d'agonie et s'écroule sur le sol. Vous êtes proche de la panique et vous vous hâtez de vous relever en arrachant des mâchoires du monstre ce que vous pensez être votre ceinture. Vous apercevez une lumière au loin et vous courez à toutes jambes dans cette direction. Lorsque, enfin, vous vous retrouvez à l'air libre, vous vous laissez tomber à terre parmi les feuilles mortes et vous essayez de reprendre votre souffle en haletant désespérément. Dès que vous pouvez à nouveau respirer normalement, vous vous asseyez et vous remarquez alors que votre ceinture est toujours nouée autour de votre taille : finalement, vous ne l'aviez pas perdue dans la bagarre. Ce que vous avez arraché aux mâchoires de la créature est, en fait, une lanière de cuir à laquelle sont attachés une Bourse et un Poignard dans son fourreau. En ouvrant la Bourse, vous trouvez 20 Pièces d'Or. Vous pouvez prendre ces Pièces et le Poignard si vous le désirez. Vous vous sentez mieux à présent : vous ramassez donc vos affaires et vous poursuivez votre route vers l'est en vous enfonçant dans la forêt. ", paragraphNumber);
-                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre Poignard"));
+                        paragraph = new StoryParagraph("La gluante créature laisse échapper un long cri d'agonie et s'écroule sur le sol. Vous êtes proche de la panique et vous vous hâtez de vous relever en arrachant des mâchoires du monstre ce que vous pensez être votre ceinture. Vous apercevez une lumière au loin et vous courez à toutes jambes dans cette direction. Lorsque, enfin, vous vous retrouvez à l'air libre, vous vous laissez tomber à terre parmi les feuilles mortes et vous essayez de reprendre votre souffle en haletant désespérément. Dès que vous pouvez à nouveau respirer normalement, vous vous asseyez et vous remarquez alors que votre ceinture est toujours nouée autour de votre taille : finalement, vous ne l'aviez pas perdue dans la bagarre. Ce que vous avez arraché aux mâchoires de la créature est, en fait, une lanière de cuir à laquelle sont attachés une Bourse et un Dagger dans son fourreau. En ouvrant la Bourse, vous trouvez 20 Pièces d'Or. Vous pouvez prendre ces Pièces et le Dagger si vous le désirez. Vous vous sentez mieux à présent : vous ramassez donc vos affaires et vous poursuivez votre route vers l'est en vous enfonçant dans la forêt. ", paragraphNumber);
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre Dagger"));
                         paragraph.addMainEvent(new LootEvent(CreateLoot.CreateGold.Gold(20)));
                         paragraph.addDecision(new MoveEvent(157, "continuer"));
                         return paragraph;
@@ -2555,8 +2555,8 @@ namespace LDVELH_WPF
                 case 334:
                     {
                         paragraph = new StoryParagraph("Le cours d'eau prend sa source dans le flanc rocheux d'une colline et, en levant les yeux, vous apercevez sur un chemin qui longe la pente escarpée quatre soldats et leur officier. Ils portent des uniformes de l'Armée Royale.", paragraphNumber);
-                        paragraph.addDecision(new CapacityEvent(73, CapacityType.Camouflage));
-                        paragraph.addDecision(new CapacityEvent(48, CapacityType.SixiemeSens));
+                        paragraph.addDecision(new CapacityEvent(73, CapacityType.Hiding));
+                        paragraph.addDecision(new CapacityEvent(48, CapacityType.SixthSense));
                         paragraph.addDecision(new MoveEvent(162, "vous approcher d'eux"));
                         return paragraph;
                     }
@@ -2596,7 +2596,7 @@ namespace LDVELH_WPF
                     }
                 case 339:
                     {
-                        paragraph = new StoryParagraph("Vous faites aussitôt un pas de côté, au moment où un Poignard vient fracasser la vitre du comptoir. Un jeune homme vous attaque et il vous faut le combattre.", paragraphNumber);
+                        paragraph = new StoryParagraph("Vous faites aussitôt un pas de côté, au moment où un Dagger vient fracasser la vitre du comptoir. Un jeune homme vous attaque et il vous faut le combattre.", paragraphNumber);
                         paragraph.addMainEvent(new FightEvent(new Ennemy("Voleur", 13,20,EnnemyTypes.Human)));
                         paragraph.addDecision(new MoveEvent(94, "continuer"));
                         return paragraph;
