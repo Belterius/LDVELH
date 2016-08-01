@@ -40,7 +40,20 @@ namespace LDVELH_WPF
                 //    listBoxHeroes.DisplayMemberPath = "getResume";
                 //    listBoxHeroes.SelectedValuePath = "CharacterID";
                 //}
-            }catch(Exception)
+                //using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
+                //{
+
+                //    var query = from hero in heroSaveContext.MyHero
+                //                select hero;
+                //    listHeroes = query.ToList();
+                //    listBoxHeroes.ItemsSource = listHeroes;
+                //    listBoxHeroes.DisplayMemberPath = "getResume";
+                //    listBoxHeroes.SelectedValuePath = "CharacterID";
+                //}
+                
+
+            }
+            catch (Exception)
             {
                 buttonLoad.Visibility = Visibility.Hidden;
             }
@@ -55,7 +68,8 @@ namespace LDVELH_WPF
 
         private void buttonLoad_Click(object sender, RoutedEventArgs e)
         {
-            //using(HeroSaveContext heroSaveContext = new HeroSaveContext()){
+            //using (HeroSaveContext heroSaveContext = new HeroSaveContext())
+            //{
             //    try
             //    {
             //        heroSaveContext.MyBackPack.Load();

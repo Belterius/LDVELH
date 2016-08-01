@@ -57,6 +57,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SQLite.CodeFirst, Version=1.2.4.16, Culture=neutral, PublicKeyToken=eb96ba0a78d831a7, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLite.CodeFirst.1.2.4.16\lib\net45\SQLite.CodeFirst.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -106,103 +110,8 @@
     <Compile Include="MessageBoxInput.xaml.cs">
       <DependentUpon>MessageBoxInput.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606141333082_AddWeaponColumn.cs" />
-    <Compile Include="Migrations\201606141333082_AddWeaponColumn.Designer.cs">
-      <DependentUpon>201606141333082_AddWeaponColumn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606141338456_AddWeaponColumn1.cs" />
-    <Compile Include="Migrations\201606141338456_AddWeaponColumn1.Designer.cs">
-      <DependentUpon>201606141338456_AddWeaponColumn1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606141349162_AddWeaponColumn2.cs" />
-    <Compile Include="Migrations\201606141349162_AddWeaponColumn2.Designer.cs">
-      <DependentUpon>201606141349162_AddWeaponColumn2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606141354390_AddWeaponHolder.cs" />
-    <Compile Include="Migrations\201606141354390_AddWeaponHolder.Designer.cs">
-      <DependentUpon>201606141354390_AddWeaponHolder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606141356099_AddWeaponHolder1.cs" />
-    <Compile Include="Migrations\201606141356099_AddWeaponHolder1.Designer.cs">
-      <DependentUpon>201606141356099_AddWeaponHolder1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606141358213_AddWeaponHolderMinusHero.cs" />
-    <Compile Include="Migrations\201606141358213_AddWeaponHolderMinusHero.Designer.cs">
-      <DependentUpon>201606141358213_AddWeaponHolderMinusHero.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606141406426_AddItems.cs" />
-    <Compile Include="Migrations\201606141406426_AddItems.Designer.cs">
-      <DependentUpon>201606141406426_AddItems.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606141416423_AddBackPack.cs" />
-    <Compile Include="Migrations\201606141416423_AddBackPack.Designer.cs">
-      <DependentUpon>201606141416423_AddBackPack.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606141424191_FixWeaponHolderSize.cs" />
-    <Compile Include="Migrations\201606141424191_FixWeaponHolderSize.Designer.cs">
-      <DependentUpon>201606141424191_FixWeaponHolderSize.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606141427484_AddSpecialItem.cs" />
-    <Compile Include="Migrations\201606141427484_AddSpecialItem.Designer.cs">
-      <DependentUpon>201606141427484_AddSpecialItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606141437511_AddHero.cs" />
-    <Compile Include="Migrations\201606141437511_AddHero.Designer.cs">
-      <DependentUpon>201606141437511_AddHero.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606141500582_FixHeroFK.cs" />
-    <Compile Include="Migrations\201606141500582_FixHeroFK.Designer.cs">
-      <DependentUpon>201606141500582_FixHeroFK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606141512290_DatabaseWorking.cs" />
-    <Compile Include="Migrations\201606141512290_DatabaseWorking.Designer.cs">
-      <DependentUpon>201606141512290_DatabaseWorking.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606150926503_addCapacities.cs" />
-    <Compile Include="Migrations\201606150926503_addCapacities.Designer.cs">
-      <DependentUpon>201606150926503_addCapacities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606151038087_AddCascadeDeleteBackPackWeaponHolder.cs" />
-    <Compile Include="Migrations\201606151038087_AddCascadeDeleteBackPackWeaponHolder.Designer.cs">
-      <DependentUpon>201606151038087_AddCascadeDeleteBackPackWeaponHolder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606151050016_AddCascadeSpecialItemCapacities.cs" />
-    <Compile Include="Migrations\201606151050016_AddCascadeSpecialItemCapacities.Designer.cs">
-      <DependentUpon>201606151050016_AddCascadeSpecialItemCapacities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606151101075_CascadeFix.cs" />
-    <Compile Include="Migrations\201606151101075_CascadeFix.Designer.cs">
-      <DependentUpon>201606151101075_CascadeFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606151342065_AddCapacitiesTypeAndWPMastery.cs" />
-    <Compile Include="Migrations\201606151342065_AddCapacitiesTypeAndWPMastery.Designer.cs">
-      <DependentUpon>201606151342065_AddCapacitiesTypeAndWPMastery.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606151346062_fixCpacities.cs" />
-    <Compile Include="Migrations\201606151346062_fixCpacities.Designer.cs">
-      <DependentUpon>201606151346062_fixCpacities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606151401343_bugMigration.cs" />
-    <Compile Include="Migrations\201606151401343_bugMigration.Designer.cs">
-      <DependentUpon>201606151401343_bugMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606151408334_fixWeaponType.cs" />
-    <Compile Include="Migrations\201606151408334_fixWeaponType.Designer.cs">
-      <DependentUpon>201606151408334_fixWeaponType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606171727036_completeDataBase.cs" />
-    <Compile Include="Migrations\201606171727036_completeDataBase.Designer.cs">
-      <DependentUpon>201606171727036_completeDataBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606171733033_problemName.cs" />
-    <Compile Include="Migrations\201606171733033_problemName.Designer.cs">
-      <DependentUpon>201606171733033_problemName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606171735065_FixNameProblem.cs" />
-    <Compile Include="Migrations\201606171735065_FixNameProblem.Designer.cs">
-      <DependentUpon>201606171735065_FixNameProblem.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MySQliteDbContext.cs" />
     <Compile Include="NonPublicColumnAttributeConvention.cs" />
     <Compile Include="Resources\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -258,78 +167,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201606141333082_AddWeaponColumn.resx">
-      <DependentUpon>201606141333082_AddWeaponColumn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606141338456_AddWeaponColumn1.resx">
-      <DependentUpon>201606141338456_AddWeaponColumn1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606141349162_AddWeaponColumn2.resx">
-      <DependentUpon>201606141349162_AddWeaponColumn2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606141354390_AddWeaponHolder.resx">
-      <DependentUpon>201606141354390_AddWeaponHolder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606141356099_AddWeaponHolder1.resx">
-      <DependentUpon>201606141356099_AddWeaponHolder1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606141358213_AddWeaponHolderMinusHero.resx">
-      <DependentUpon>201606141358213_AddWeaponHolderMinusHero.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606141406426_AddItems.resx">
-      <DependentUpon>201606141406426_AddItems.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606141416423_AddBackPack.resx">
-      <DependentUpon>201606141416423_AddBackPack.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606141424191_FixWeaponHolderSize.resx">
-      <DependentUpon>201606141424191_FixWeaponHolderSize.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606141427484_AddSpecialItem.resx">
-      <DependentUpon>201606141427484_AddSpecialItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606141437511_AddHero.resx">
-      <DependentUpon>201606141437511_AddHero.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606141500582_FixHeroFK.resx">
-      <DependentUpon>201606141500582_FixHeroFK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606141512290_DatabaseWorking.resx">
-      <DependentUpon>201606141512290_DatabaseWorking.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606150926503_addCapacities.resx">
-      <DependentUpon>201606150926503_addCapacities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606151038087_AddCascadeDeleteBackPackWeaponHolder.resx">
-      <DependentUpon>201606151038087_AddCascadeDeleteBackPackWeaponHolder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606151050016_AddCascadeSpecialItemCapacities.resx">
-      <DependentUpon>201606151050016_AddCascadeSpecialItemCapacities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606151101075_CascadeFix.resx">
-      <DependentUpon>201606151101075_CascadeFix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606151342065_AddCapacitiesTypeAndWPMastery.resx">
-      <DependentUpon>201606151342065_AddCapacitiesTypeAndWPMastery.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606151346062_fixCpacities.resx">
-      <DependentUpon>201606151346062_fixCpacities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606151401343_bugMigration.resx">
-      <DependentUpon>201606151401343_bugMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606151408334_fixWeaponType.resx">
-      <DependentUpon>201606151408334_fixWeaponType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606171727036_completeDataBase.resx">
-      <DependentUpon>201606171727036_completeDataBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606171733033_problemName.resx">
-      <DependentUpon>201606171733033_problemName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606171735065_FixNameProblem.resx">
-      <DependentUpon>201606171735065_FixNameProblem.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

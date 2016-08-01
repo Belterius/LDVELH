@@ -43,7 +43,7 @@
         <RichTextBox x:Name="richTextBoxMainContent" HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="541" Margin="10,74,0,0" Focusable="False">
             <FlowDocument/>
         </RichTextBox>
-        <Button x:Name="buttonSave" Content="{Core:Translator Text=Save}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="676,687,0,0" Click="buttonSave_Click" IsEnabled="False"/>
+        <Button x:Name="buttonSave" Content="{Core:Translator Text=Save}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="676,687,0,0" Click="buttonSave_Click" IsEnabled="True"/>
         <Button x:Name="buttonTestLoad" Content="{Core:Translator Text=Load}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="581,687,0,0" Click="buttonTestLoad_Click" IsEnabled="False"/>
 
     </Grid>

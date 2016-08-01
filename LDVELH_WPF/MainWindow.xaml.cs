@@ -212,21 +212,44 @@ namespace LDVELH_WPF
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            //using (HeroSaveContext heroContext = new HeroSaveContext())
-            //{
-            //        Hero savedHero =  heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
-            //        if (savedHero == null)
-            //        {
-            //            heroContext.MyHero.Add(hero);
-            //        }
-            //        else
-            //        {
-            //            heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
-            //        }
-            //    heroContext.SaveChanges();
-            //    MessageBox.Show("Hero successfully saved !");
-            //}
+            try
+            {
+                //using (HeroSaveContext heroContext = new HeroSaveContext())
+                //{
+                //    Hero savedHero = heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+                //    if (savedHero == null)
+                //    {
+                //        heroContext.MyHero.Add(hero);
+                //    }
+                //    else
+                //    {
+                //        heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
+                //    }
+                //    heroContext.SaveChanges();
+                //    MessageBox.Show("Hero successfully saved !");
+                //}
+                using (MySQLiteDBContext heroContext = new MySQLiteDBContext())
+                {
+                   // Hero savedHero = heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+                    if (true)
+                    {
+                        heroContext.MyHero.Add(hero);
+                    }
+                    else
+                    {
+                     //   heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
+                    }
+                    heroContext.SaveChanges();
+                    MessageBox.Show("Hero successfully saved !");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error, couldn't save the Hero !");
+                System.Diagnostics.Debug.WriteLine(ex);
+            }
             
+
         }
 
         private void buttonTestLoad_Click(object sender, RoutedEventArgs e)

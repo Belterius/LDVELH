@@ -1,11 +1,12 @@
 ﻿namespace LDVELH_WPF
 {
+    using SQLite.CodeFirst;
     using System;
     using System.Data.Entity;
     using System.Linq;
     using System.Reflection;
 
-    public class HeroSaveContext : DbContext
+    public class MySQLiteDBContext : DbContext
     {
         // Your context has been configured to use a 'StoryContext' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
@@ -13,11 +14,7 @@
         // 
         // If you wish to target a different database and/or database provider, modify the 'StoryContext' 
         // connection string in the application configuration file.
-        //public HeroSaveContext()
-        //    : base("name=HeroSaveContext")
-        //{
-        //}
-        public HeroSaveContext()
+        public MySQLiteDBContext()
             : base()
         {
         }
@@ -27,6 +24,9 @@
 
             modelBuilder.Entity<Hero>().HasOptional(p => p.weaponHolder).WithOptionalDependent().WillCascadeOnDelete(true);
             modelBuilder.Entity<Hero>().HasOptional(p => p.backPack).WithOptionalDependent().WillCascadeOnDelete(true);
+
+            var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<MySQLiteDBContext>(modelBuilder);
+            Database.SetInitializer(sqliteConnectionInitializer);
 
 
         }
