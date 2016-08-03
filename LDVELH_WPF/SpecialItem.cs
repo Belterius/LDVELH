@@ -162,24 +162,24 @@ namespace LDVELH_WPF
 
     }
 
-    public class SpecialItemUsage : SpecialItem
+    public class QuestItem : SpecialItem
     {
         //Has an effect on usage (Example : a key that you can use to unlock a cell)
-        private SpecialItemUsage()
+        private QuestItem()
         {
 
         }
-        public SpecialItemUsage(String name)
+        public QuestItem(String name)
         {
             this.name = name;
         }
         public override bool Equals(object obj)
         {
-            if (!(obj is SpecialItemUsage))
+            if (!(obj is QuestItem))
                 return false;
 
 
-            SpecialItemUsage specialItemCombat = (SpecialItemUsage)obj;
+            QuestItem specialItemCombat = (QuestItem)obj;
             if (this.name != specialItemCombat.name)
                 return false;
 

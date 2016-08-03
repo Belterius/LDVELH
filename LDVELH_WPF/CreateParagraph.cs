@@ -184,7 +184,7 @@ namespace LDVELH_WPF
                 case 15:
                     {
                         paragraph = new StoryParagraph("Vous longez un long tunnel sombre formé par des branches d'arbres qui s'entrecroisent au-dessus de votre tête et vous arrivez enfin dans une vaste clairière. En son centre se dresse un socle de pierre sur lequel est posée une épée, rangée dans un fourreau de cuir noir. Un mot manuscrit est attaché à la garde de l'épée, mais il est écrit dans une langue qui vous est étrangère. \n Trois chemins permettent de quitter la clairière ", paragraphNumber);
-                        paragraph.addDecision(new LootEvent(new Weapon("Sword(paragraph 15)", WeaponTypes.Sword)));
+                        paragraph.addDecision(new LootEvent(new Weapon("Sword(paragraph 15)", WeaponTypes.Sword), "prendre l'étrange épée"));
                         paragraph.addDecision(new MoveEvent(207, "voulez aller à l'est"));
                         paragraph.addDecision(new MoveEvent(201, "voulez aller à l'ouest"));
                         paragraph.addDecision(new MoveEvent(35, "voulez aller au sud"));
@@ -585,8 +585,8 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph("Les « soldats » sont étendus raides morts à vos pieds. C'étaient des brigands qui détroussaient les réfugiés de Toran et pillaient les maisons et les fermes abandonnées de la région. \nEn fouillant leurs cadavres, vous trouvez 28 Pièces d'Or et deux Sacs à Dos qui contiennent des provisions équivalant à trois Repas. Ils étaient armés d'une Arbalète et de Trois Epées.L'Arbalète a été endommagée au cours du combat, mais les trois Epées sont intactes, et vous pouvez en emporter une si vous le souhaitez. Vous modifiez, en conséquence, votre Feuille d'Aventure, vous rangez soigneusement vos nouvelles acquisitions et vous jetez un coup d'œil en direction de l'ouest pour voir si la voie est libre.Enfin, vous vous remettez en route vers le camp fortifié, dressé à l'extérieur de la ville.", paragraphNumber);
                         paragraph.addMainEvent(new LootEvent(new Gold(28)));
-                        paragraph.addMainEvent(new LootEvent(CreateLoot.CreateFood.ration(3)));
-                        paragraph.addMainEvent(new LootEvent(CreateLoot.CreateWeapon.sword()));
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateFood.ration(3), "prendre les rations"));
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.sword(), "prendre une épée"));
                         paragraph.addDecision(new MoveEvent(288, "Continuer"));
                         return paragraph;
                     }
@@ -1025,7 +1025,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph("Dans la boîte, vous trouvez 15 Pièces d'Or et une Clé d'Argent.", paragraphNumber);
                         paragraph.addMainEvent(new LootEvent(new Gold(15)));
-                        paragraph.addMainEvent(new LootEvent(new SpecialItemUsage("CleDArgent")));
+                        paragraph.addMainEvent(new LootEvent(new QuestItem("CleDArgent")));
                         paragraph.addDecision(new MoveEvent(211, "explorer le tunnel "));
                         paragraph.addDecision(new MoveEvent(106, "descendre le flanc de la colline "));
                         return paragraph;
@@ -1121,7 +1121,7 @@ namespace LDVELH_WPF
                 case 137:
                     {
                         paragraph = new StoryParagraph("Lorsque la dernière de ces répugnantes créatures meurt enfin, la lumière verdâtre commence à diminuer. Vous constatez alors que dans chacun des crânes fracassés se trouve une Pierre Précieuse. Vous ramassez ces vingt Pierres juste avant que la lueur s'éteigne, plongeant la chambre mortuaire dans une totale obscurité.\n Vous vous hâtez de quitter la Crypte et vous poursuivez votre chemin", paragraphNumber);
-                        paragraph.addMainEvent(new LootEvent(new SpecialItemUsage("20PierresPrecieuses")));
+                        paragraph.addMainEvent(new LootEvent(new QuestItem("20PierresPrecieuses")));
                         paragraph.addDecision(new MoveEvent(23, "Continuer"));
                         return paragraph;
                     }
@@ -1325,7 +1325,7 @@ namespace LDVELH_WPF
                 case 164:
                     {
                         paragraph = new StoryParagraph("Vous débouchez prudemment chacune des bouteilles et vous reniflez son contenu. Il semble s'agir là de différentes sortes de vin. Mais soudain, une autre bouteille, plus petite, coincée parmi les autres, attire votre attention. Elle est remplie d'un liquide de couleur orange dont l'odeur vous est familière : c'est de l'Essence d'Alether, une puissante potion qui a la propriété d'accroître votre force. Vous pouvez conserver cette fiole et en boire le contenu au début d'un combat : votre total d'HABILETÉ augmentera alors de 2 points pendant toute la durée de l'affrontement. Cette quantité d'essence d'Alether ne représente qu'une seule dose, vous ne pourrez donc en faire usage qu'une fois. Vous décidez à présent d'inspecter l'écurie.", paragraphNumber);
-                        paragraph.addMainEvent(new LootEvent(new SpecialItemUsage("EssenceDAlether")));
+                        paragraph.addMainEvent(new LootEvent(new QuestItem("EssenceDAlether")));
                         paragraph.addDecision(new MoveEvent(308, "Continuer"));
                         return paragraph;
                     }
@@ -1538,7 +1538,7 @@ namespace LDVELH_WPF
                 case 193:
                     {
                         paragraph = new StoryParagraph("La bête sauvage et son cavalier sont étendus raides morts à vos pieds. Vous remarquez alors un rouleau de Parchemin glissé dans la ceinture du Glok. ", paragraphNumber);
-                        paragraph.addDecision(new LootEvent(new SpecialItemUsage ("ParcheminGlok"), "Prendre le parchemin"));
+                        paragraph.addDecision(new LootEvent(new QuestItem ("ParcheminGlok"), "Prendre le parchemin"));
                         paragraph.addDecision(new MoveEvent(253, "les combattre"));
                         paragraph.addDecision(new MoveEvent(126, "vous enfuir dans la forêt"));
                         return paragraph;
@@ -2068,7 +2068,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph("En vous couvrant le nez d'un pan de votre cape, vous vous approchez avec précaution du Kraan mort. L'odeur infecte qui se dégage de son sang noir vous retourne l'estomac, mais vous êtes décidé malgré tout à examiner son cadavre. Vous remarquez alors un sac attaché au corps du monstre par une sangle. A l'intérieur du sac, vous trouvez un Message écrit sur une peau d'animal. Tout au fond du sac, il y a également un poignard.", paragraphNumber);
                         paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre le poignard"));
-                        paragraph.addDecision(new LootEvent(new Miscellaneous("Message"), "Prendre le message"));
+                        paragraph.addDecision(new LootEvent(new QuestItem("Message"), "Prendre le message"));
                         paragraph.addDecision(new MoveEvent(125, "continuer"));
                         return paragraph;
                     }
@@ -2348,7 +2348,7 @@ namespace LDVELH_WPF
                 case 304:
                     {
                         paragraph = new StoryParagraph("La Pierre dégage une intense chaleur et vous brûle la main. Vous perdez aussitôt 2 points d'ENDURANCE. Vous ramassez la Pierre Précieuse en enveloppant votre main dans un pan de votre cape de Seigneur Kaï et vous la glissez dans votre Sac à Dos. Une Pierre de cette taille doit valoir une bonne centaine de Couronnes. Entre-temps, les Gloks se sont rapprochés et, bientôt, leurs flèches sifflent à vos oreilles alors que vous courez vous réfugier à l'abri de la forêt.", paragraphNumber);
-                        paragraph.addMainEvent(new LootEvent(new Miscellaneous("PierreBrulante")));
+                        paragraph.addMainEvent(new LootEvent(new QuestItem("PierreBrulante")));
                         paragraph.addDecision(new MoveEvent(2, "continuer"));
                         return paragraph;
                     }
@@ -2669,14 +2669,14 @@ namespace LDVELH_WPF
                 case 349:
                     {
                         paragraph = new StoryParagraph("C'est un jeune homme aux cheveux blonds et au regard pénétrant. Son visage est marqué par la fatigue et souillé par la poussière des combats. Ses amples vêtements bleu ciel, déchirés par endroits, montrent à l'évidence que le magicien a passé de longs jours dans la forêt. Il vous serre la main et s'incline. « Soyez assuré de mon éternelle gratitude, Seigneur Kaï, dit-il, mes pouvoirs magiques étaient presque épuisés et, si vous n'étiez pas venu à mon secours, je crois bien que j'aurais fini mes jours au bout de la lance d'un Glok. » Il semble affaibli et ses jambes ont du mal à le porter. Vous le prenez alors par le bras et vous le faites asseoir sur une des colonnes renversées du Temple, puis vous écoutez ce qu'il a à vous dire. «Je m'appelle Banedon, poursuit-il, je suis compagnon de la Confrérie de l'Étoile de Cristal, c'est-à-dire la Guilde des Magiciens de Toran. Mon maître m'a envoyé à votre monastère pour porter ce message urgent. » En prononçant ces mots, il sort d'une poche de ses vêtements une enveloppe de vélin qu'il vous tend. « Comme vous pouvez le voir, reprend-il, j'ai ouvert la lettre et j'en ai lu le contenu. Lorsque la guerre a commencé, je me trouvais sur la grand-route, cheminant avec deux compagnons de voyage. Des Kraans nous ont attaqués et nous nous sommes enfuis dans la forêt, mais nous n'avons pas pu nous retrouver par la suite. » La lettre avertit les Seigneurs Kaï que les Maîtres des Ténèbres ont rassemblé une immense armée au-delà des monts Durncrag. Les Maîtres de la Guilde conjurent les Seigneurs Kaï d'annuler les cérémonies organisées pour la fête de Fehmarn et de se préparer à la guerre. « Hélas ! je crois bien que nous avons été trahis, dit Banedon en penchant la tête d'un air consterné. L'un des compagnons de mon ordre, en effet, un frère du nom de Vonotar, s'est initié aux mystères interdits de la Magie Noire. Il y a dix jours, il a renié la Confrérie et tué l'un de nos Anciens. Depuis, il a disparu et il semble bien qu'il se soit mis au service des Maîtres des Ténèbres. » Vous révélez alors à Banedon ce qu'il est advenu du monastère et vous l'informez de la mission que vous vous êtes fixée auprès du Roi. Lorsque vous avez terminé votre récit, il ôte de son cou une Chaîne d'Or et vous la donne. Une petite Étoile de Cristal est attachée à la chaîne. « C'est le symbole de ma Confrérie, explique le magicien, et, en ces heures sombres, nous sommes frères tous deux. Aussi, prenez ce talisman qui vous portera bonheur. Puisse-t-il vous protéger au long de votre route ! » Vous le remerciez, vous passez la Chaîne autour de votre cou et vous glissez l'Étoile de Cristal dans votre chemise, tout contre votre poitrine. Banedon ensuite vous dit adieu. \n « Il nous faut quitter ces lieux, assure - t - il, de peur que les Gloks ne reviennent accompagnés de renforts.Ces répugnantes créatures auraient alors raison de nous.Je dois à présent retourner à la Guilde.Au revoir, mon frère, que la chance des Dieux vous accompagne. »", paragraphNumber);
-                        paragraph.addMainEvent(new LootEvent(new Miscellaneous("EtoileDeCrystal")));
+                        paragraph.addMainEvent(new LootEvent(new QuestItem("EtoileDeCrystal")));
                         paragraph.addDecision(new MoveEvent(293, "continuer"));
                         return paragraph;
                     }
                 case 350:
                     {
                         paragraph = new StoryParagraph("Vous entrez dans la grande Salle du Conseil, une pièce immense magnifiquement décorée de tentures blanc et or. Le Roi et ses plus proches conseillers sont en train d'examiner une grande carte étalée sur une table de marbre, au centre de la salle. Leurs visages expriment l'inquiétude et la concentration. Lorsque vous faites le récit de la mort de vos compagnons et des périls que vous avez dû affronter pour atteindre la citadelle, tout le monde vous écoute en silence sans jamais vous interrompre. Enfin, quand vous en avez terminé, le Roi s'approche de vous et prend votre main droite dans la sienne. « Loup Solitaire, tu as fait  preuve de courage et d'abnégation : ce sont là les qualités d'un véritable Seigneur Kaï.Ton voyage a été semé de dangers et bien que tu nous apportes des nouvelles qui nous plongent dans le chagrin, ta détermination illumine ces heures sombres d'un rayon d'espoir.Tu as grandement honoré la mémoire de tes Maîtres et nous t'en portons louange. » Toutes les personnes rassemblées dans la salle se joignent à cet hommage et vous expriment leur profonde gratitude. Devant tant d'honneur, vous ne pouvez vous empêcher de rougir.Le Roi alors lève la main et tout le monde fait silence. « Tu as fait tout ce que le Royaume du Sommerlund pouvait attendre d'un de ses fidèles sujets, reprend le monarque, mais notre patrie a encore grand besoin de toi. Les Maîtres des Ténèbres ont, en effet, retrouvé leur puissance, et leur ambition ne connaît plus de bornes. Notre seul espoir de les repousser se trouve désormais au royaume de Durenor. C'est là que repose l'instrument de la puissance qui les a vaincus autrefois. Loup Solitaire, tu es le dernier des Seigneurs Kaï et tu possèdes la science que t'ont enseignée tes maîtres.Iras - tu à Durenor pour y chercher le Glaive de Sommer, l'Épée du Soleil ? Seul ce don des Dieux nous permettra d'écraser l'ennemi et de sauver le royaume. » Si vous acceptez de partir en quête du Glaive de Sommer, vous pourrez le faire en vivant l'aventure que vous propose le deuxième volume de la série du Loup Solitaire :", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(1, "FELICITATION VOUS POUVEZ QUITTER"));
+                        paragraph.addDecision(new LootEvent(new QuestItem("PreuveDeVictoire"), "FELICITATION VOUS POUVEZ QUITTER"));
                         return paragraph;
                     }
                 default :
