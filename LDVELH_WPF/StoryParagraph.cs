@@ -72,6 +72,10 @@ namespace LDVELH_WPF
                     throw;
                 }
             }
+            if(!mainEvents.OfType<FightEvent>().Any())
+            {
+                story.getHero.rest();
+            }
         }
     }
 }

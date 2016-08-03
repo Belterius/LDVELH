@@ -13,12 +13,7 @@ namespace LDVELH_WPF
     {
         public static readonly int skipMealDamage = 3;
         public static readonly int unharmedCombatDebuff = 4;
-
-        //[ForeignKey("weaponHolder")]
-        public int WeaponHolderID { get; set; }
-
-        //[ForeignKey("backPack")]
-        public int BackPackID { get; set; }
+        public static readonly int healingCapacityRegen = 1;
 
         public event MaxLifeHandler MaxLifeChanged;
         public delegate void MaxLifeHandler(Hero m, int lifeChange);
@@ -418,7 +413,13 @@ namespace LDVELH_WPF
             this.weaponHolder.getWeapons.Clear();
         }
 
-
+        public void rest()
+        {
+            if (!this.possesCapacity(CapacityType.Healing))//Healing capacity allow you to regen when not fighting, see resolve of StoryParagraph
+            {
+                this.heal(healingCapacityRegen);
+            }
+        }
         public void eat()
         {
             this.hungryStatus = HungryState.Full;
@@ -427,12 +428,16 @@ namespace LDVELH_WPF
 
         public void mealTime()
         {
-            if (this.getHungryState == HungryState.Hungry)
+            if (!this.possesCapacity(CapacityType.Hunting))//Hunting capacity allow you to never have to eat when required.
             {
-                this.takeDamage(skipMealDamage);
+                if (this.getHungryState == HungryState.Hungry)
+                {
+                    this.takeDamage(skipMealDamage);
+                }
+                this.hungryStatus = HungryState.Hungry;
+                HungryStateHasChanged();
             }
-            this.hungryStatus = HungryState.Hungry;
-            HungryStateHasChanged();
+            
         }
         public HungryState getHungryState
         {
