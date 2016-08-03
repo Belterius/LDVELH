@@ -526,12 +526,15 @@ namespace LDVELH_WPF
 
         public int findStrenghtDifference(Ennemy ennemy)
         {
-            int heroAgility = this.getBaseAgility() + getBonusAgility(ennemy) - getMalusAgility();
+            int heroAgility = getHeroAgilityInBattle(ennemy);
             int ennemyAgility = ennemy.getBaseAgility();
             return (heroAgility - ennemyAgility);
         }
 
-
+        public int getHeroAgilityInBattle(Ennemy ennemy)
+        {
+           return this.getBaseAgility() + getBonusAgility(ennemy) - getMalusAgility();
+        }
 
         public int getBonusAgility(Ennemy ennemy)
         {

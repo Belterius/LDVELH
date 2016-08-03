@@ -118,7 +118,7 @@ namespace LDVELH_WPF
         private void setAgility()
         {
             labelAgilityEnnemy.Content = ennemy.getBaseAgility();
-            labelAgilityHero.Content = hero.getBonusAgility(ennemy) + hero.getBaseAgility();
+            labelAgilityHero.Content = hero.getHeroAgilityInBattle(ennemy);
         }
         private void setDamageTaken()
         {
