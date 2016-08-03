@@ -235,7 +235,7 @@ namespace LDVELH_WPF
                     }
                 case 20:
                     {
-                        paragraph = new StoryParagraph("Il semble que le ou les occupants de la péniche soient partis en toute hâte il y a peu de temps. Les restes d'un repas à moitié mangé traînent sur la table ainsi qu'une tasse de Jala encore chaud. En fouillant un coffre et un petit placard, vous trouvez un Sac à Dos, de la Nourriture (l'équivalent de 2 Repas) et un Dagger.", paragraphNumber);
+                        paragraph = new StoryParagraph("Il semble que le ou les occupants de la péniche soient partis en toute hâte il y a peu de temps. Les restes d'un repas à moitié mangé traînent sur la table ainsi qu'une tasse de Jala encore chaud. En fouillant un coffre et un petit placard, vous trouvez un Sac à Dos, de la Nourriture (l'équivalent de 2 Repas) et un poignard.", paragraphNumber);
                         paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre le poignard"));
                         paragraph.addDecision(new LootEvent(CreateLoot.CreateFood.ration(2), "Prendre les rations"));
                         return paragraph;
@@ -2065,8 +2065,8 @@ namespace LDVELH_WPF
                     }
                 case 267:
                     {
-                        paragraph = new StoryParagraph("En vous couvrant le nez d'un pan de votre cape, vous vous approchez avec précaution du Kraan mort. L'odeur infecte qui se dégage de son sang noir vous retourne l'estomac, mais vous êtes décidé malgré tout à examiner son cadavre. Vous remarquez alors un sac attaché au corps du monstre par une sangle. A l'intérieur du sac, vous trouvez un Message écrit sur une peau d'animal. Tout au fond du sac, il y a également un Dagger.", paragraphNumber);
-                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre le Dagger"));
+                        paragraph = new StoryParagraph("En vous couvrant le nez d'un pan de votre cape, vous vous approchez avec précaution du Kraan mort. L'odeur infecte qui se dégage de son sang noir vous retourne l'estomac, mais vous êtes décidé malgré tout à examiner son cadavre. Vous remarquez alors un sac attaché au corps du monstre par une sangle. A l'intérieur du sac, vous trouvez un Message écrit sur une peau d'animal. Tout au fond du sac, il y a également un poignard.", paragraphNumber);
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre le poignard"));
                         paragraph.addDecision(new LootEvent(new Miscellaneous("Message"), "Prendre le message"));
                         paragraph.addDecision(new MoveEvent(125, "continuer"));
                         return paragraph;
@@ -2238,7 +2238,7 @@ namespace LDVELH_WPF
                     }
                 case 291:
                     {
-                        paragraph = new StoryParagraph("Les cadavres recroquevillés des deux Gloks reposent à vos pieds. Vous les fouillez rapidement et vous découvrez dans leurs vêtements 6 Couronnes, 1 Lances et 1 Dagger. Le Kraan s'est enfui pendant le combat, et le sentier est à présent désert. ", paragraphNumber);
+                        paragraph = new StoryParagraph("Les cadavres recroquevillés des deux Gloks reposent à vos pieds. Vous les fouillez rapidement et vous découvrez dans leurs vêtements 6 Couronnes, 1 Lances et 1 poignard. Le Kraan s'est enfui pendant le combat, et le sentier est à présent désert. ", paragraphNumber);
                         paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre le poignard"));
                         paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Lance(), "Prendre la lance"));
                         paragraph.addMainEvent(new LootEvent(new Gold(6)));
@@ -2455,8 +2455,8 @@ namespace LDVELH_WPF
                     }
                 case 319:
                     {
-                        paragraph = new StoryParagraph("La gluante créature laisse échapper un long cri d'agonie et s'écroule sur le sol. Vous êtes proche de la panique et vous vous hâtez de vous relever en arrachant des mâchoires du monstre ce que vous pensez être votre ceinture. Vous apercevez une lumière au loin et vous courez à toutes jambes dans cette direction. Lorsque, enfin, vous vous retrouvez à l'air libre, vous vous laissez tomber à terre parmi les feuilles mortes et vous essayez de reprendre votre souffle en haletant désespérément. Dès que vous pouvez à nouveau respirer normalement, vous vous asseyez et vous remarquez alors que votre ceinture est toujours nouée autour de votre taille : finalement, vous ne l'aviez pas perdue dans la bagarre. Ce que vous avez arraché aux mâchoires de la créature est, en fait, une lanière de cuir à laquelle sont attachés une Bourse et un Dagger dans son fourreau. En ouvrant la Bourse, vous trouvez 20 Pièces d'Or. Vous pouvez prendre ces Pièces et le Dagger si vous le désirez. Vous vous sentez mieux à présent : vous ramassez donc vos affaires et vous poursuivez votre route vers l'est en vous enfonçant dans la forêt. ", paragraphNumber);
-                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre Dagger"));
+                        paragraph = new StoryParagraph("La gluante créature laisse échapper un long cri d'agonie et s'écroule sur le sol. Vous êtes proche de la panique et vous vous hâtez de vous relever en arrachant des mâchoires du monstre ce que vous pensez être votre ceinture. Vous apercevez une lumière au loin et vous courez à toutes jambes dans cette direction. Lorsque, enfin, vous vous retrouvez à l'air libre, vous vous laissez tomber à terre parmi les feuilles mortes et vous essayez de reprendre votre souffle en haletant désespérément. Dès que vous pouvez à nouveau respirer normalement, vous vous asseyez et vous remarquez alors que votre ceinture est toujours nouée autour de votre taille : finalement, vous ne l'aviez pas perdue dans la bagarre. Ce que vous avez arraché aux mâchoires de la créature est, en fait, une lanière de cuir à laquelle sont attachés une Bourse et un poignard dans son fourreau. En ouvrant la Bourse, vous trouvez 20 Pièces d'Or. Vous pouvez prendre ces Pièces et le poignard si vous le désirez. Vous vous sentez mieux à présent : vous ramassez donc vos affaires et vous poursuivez votre route vers l'est en vous enfonçant dans la forêt. ", paragraphNumber);
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre poignard"));
                         paragraph.addMainEvent(new LootEvent(CreateLoot.CreateGold.Gold(20)));
                         paragraph.addDecision(new MoveEvent(157, "continuer"));
                         return paragraph;
@@ -2596,7 +2596,7 @@ namespace LDVELH_WPF
                     }
                 case 339:
                     {
-                        paragraph = new StoryParagraph("Vous faites aussitôt un pas de côté, au moment où un Dagger vient fracasser la vitre du comptoir. Un jeune homme vous attaque et il vous faut le combattre.", paragraphNumber);
+                        paragraph = new StoryParagraph("Vous faites aussitôt un pas de côté, au moment où un poignard vient fracasser la vitre du comptoir. Un jeune homme vous attaque et il vous faut le combattre.", paragraphNumber);
                         paragraph.addMainEvent(new FightEvent(new Ennemy("Voleur", 13,20,EnnemyTypes.Human)));
                         paragraph.addDecision(new MoveEvent(94, "continuer"));
                         return paragraph;
