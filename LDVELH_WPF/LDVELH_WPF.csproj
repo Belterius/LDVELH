@@ -128,6 +128,10 @@
     <Compile Include="Migrations\201608031609359_BaseDatabase.Designer.cs">
       <DependentUpon>201608031609359_BaseDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608031746300_DeletedDuplicateForeignKey.cs" />
+    <Compile Include="Migrations\201608031746300_DeletedDuplicateForeignKey.Designer.cs">
+      <DependentUpon>201608031746300_DeletedDuplicateForeignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySQliteDbContext.cs" />
     <Compile Include="NonPublicColumnAttributeConvention.cs" />
@@ -187,6 +191,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201608031609359_BaseDatabase.resx">
       <DependentUpon>201608031609359_BaseDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608031746300_DeletedDuplicateForeignKey.resx">
+      <DependentUpon>201608031746300_DeletedDuplicateForeignKey.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

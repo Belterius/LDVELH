@@ -291,25 +291,7 @@ namespace LDVELH_WPF
         {
             Translator translator = new Translator();
             MessageBox.Show(translator.ProvideValue("YouDied"));
-            //using (HeroSaveContext heroSaveContext = new HeroSaveContext())
-            //{
-            //    heroSaveContext.MyItems.Load();
-            //    heroSaveContext.MySpecialItem.Load();
-            //    heroSaveContext.MyWeapons.Load();
-            //    heroSaveContext.MyWeaponHolders.Load();
-            //    heroSaveContext.MyBackPack.Load();
-            //    heroSaveContext.MyHero.Load();
-            //    heroSaveContext.MyCapacities.Load();
-            //    Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == story.getHero.CharacterID).FirstOrDefault();
-            //    if (savedHero != null)
-            //    {
-            //        heroSaveContext.MySpecialItem.RemoveRange(savedHero.getSpecialItems);
-            //        heroSaveContext.MyCapacities.RemoveRange(savedHero.capacities);
-            //        heroSaveContext.MyHero.Remove(savedHero);
-            //        heroSaveContext.SaveChanges();
-            //    }
-            //}
-            using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
+            using (HeroSaveContext heroSaveContext = new HeroSaveContext())
             {
                 heroSaveContext.MyItems.Load();
                 heroSaveContext.MySpecialItem.Load();
@@ -327,6 +309,24 @@ namespace LDVELH_WPF
                     heroSaveContext.SaveChanges();
                 }
             }
+            //using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
+            //{
+            //    heroSaveContext.MyItems.Load();
+            //    heroSaveContext.MySpecialItem.Load();
+            //    heroSaveContext.MyWeapons.Load();
+            //    heroSaveContext.MyWeaponHolders.Load();
+            //    heroSaveContext.MyBackPack.Load();
+            //    heroSaveContext.MyHero.Load();
+            //    heroSaveContext.MyCapacities.Load();
+            //    Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == story.getHero.CharacterID).FirstOrDefault();
+            //    if (savedHero != null)
+            //    {
+            //        heroSaveContext.MySpecialItem.RemoveRange(savedHero.getSpecialItems);
+            //        heroSaveContext.MyCapacities.RemoveRange(savedHero.capacities);
+            //        heroSaveContext.MyHero.Remove(savedHero);
+            //        heroSaveContext.SaveChanges();
+            //    }
+            //}
             MenuLoad loadMenu = new MenuLoad();
             loadMenu.Show();
             window.Close();

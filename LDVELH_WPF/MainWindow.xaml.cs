@@ -212,50 +212,20 @@ namespace LDVELH_WPF
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    using (HeroSaveContext heroContext = new HeroSaveContext())
-            //    {
-            //        Hero savedHero = heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
-            //        if (savedHero == null)
-            //        {
-            //            heroContext.MyHero.Add(hero);
-            //        }
-            //        else
-            //        {
-            //            heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
-            //        }
-            //        heroContext.SaveChanges();
-            //        MessageBox.Show("Hero successfully saved !");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error, couldn't save the Hero !");
-            //    System.Diagnostics.Debug.WriteLine(ex);
-            //}
-
             try
             {
-                using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
+                using (HeroSaveContext heroContext = new HeroSaveContext())
                 {
-                    heroSaveContext.MyBackPack.Load();
-                    heroSaveContext.MyHero.Load();
-                    heroSaveContext.MyItems.Load();
-                    heroSaveContext.MySpecialItem.Load();
-                    heroSaveContext.MyWeaponHolders.Load();
-                    heroSaveContext.MyWeapons.Load();
-                    heroSaveContext.MyCapacities.Load();
-                    Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+                    Hero savedHero = heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
                     if (savedHero == null)
                     {
-                        heroSaveContext.MyHero.Add(hero);
+                        heroContext.MyHero.Add(hero);
                     }
                     else
                     {
-                        heroSaveContext.Entry(savedHero).CurrentValues.SetValues(hero);
+                        heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
                     }
-                    heroSaveContext.SaveChanges();
+                    heroContext.SaveChanges();
                     MessageBox.Show("Hero successfully saved !");
                 }
             }
@@ -264,6 +234,36 @@ namespace LDVELH_WPF
                 MessageBox.Show("Error, couldn't save the Hero !");
                 System.Diagnostics.Debug.WriteLine(ex);
             }
+
+            //try
+            //{
+            //    using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
+            //    {
+            //        heroSaveContext.MyBackPack.Load();
+            //        heroSaveContext.MyHero.Load();
+            //        heroSaveContext.MyItems.Load();
+            //        heroSaveContext.MySpecialItem.Load();
+            //        heroSaveContext.MyWeaponHolders.Load();
+            //        heroSaveContext.MyWeapons.Load();
+            //        heroSaveContext.MyCapacities.Load();
+            //        Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+            //        if (savedHero == null)
+            //        {
+            //            heroSaveContext.MyHero.Add(hero);
+            //        }
+            //        else
+            //        {
+            //            heroSaveContext.Entry(savedHero).CurrentValues.SetValues(hero);
+            //        }
+            //        heroSaveContext.SaveChanges();
+            //        MessageBox.Show("Hero successfully saved !");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error, couldn't save the Hero !");
+            //    System.Diagnostics.Debug.WriteLine(ex);
+            //}
 
 
         }
