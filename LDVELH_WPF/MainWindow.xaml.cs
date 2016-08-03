@@ -109,10 +109,11 @@ namespace LDVELH_WPF
         }
         private void heroBaseStat()
         {
+            Translator translator = new Translator();
             labelHitPoint.Content = hero.getActualHitPoint().ToString() + "/" + hero.getMaxHitPoint().ToString();
             labelAgility.Content = hero.getBaseAgility().ToString();
             labelGoldAmount.Content = hero.getGold().ToString();
-            labelWeaponMastery.Content = hero.getWeaponMastery.ToString();
+            labelWeaponMastery.Content = translator.ProvideValue(hero.getWeaponMastery.ToString());
             listBoxCapacities.ItemsSource = hero.capacities;
             listBoxCapacities.DisplayMemberPath = "getCapacityDisplayName";
         }
@@ -212,20 +213,28 @@ namespace LDVELH_WPF
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
+           
             try
             {
-                using (HeroSaveContext heroContext = new HeroSaveContext())
+                using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
                 {
-                    Hero savedHero = heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+                    heroSaveContext.MyBackPack.Load();
+                    heroSaveContext.MyHero.Load();
+                    heroSaveContext.MyItems.Load();
+                    heroSaveContext.MySpecialItem.Load();
+                    heroSaveContext.MyWeaponHolders.Load();
+                    heroSaveContext.MyWeapons.Load();
+                    heroSaveContext.MyCapacities.Load();
+                    Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
                     if (savedHero == null)
                     {
-                        heroContext.MyHero.Add(hero);
+                        heroSaveContext.MyHero.Add(hero);
                     }
                     else
                     {
-                        heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
+                        heroSaveContext.Entry(savedHero).CurrentValues.SetValues(hero);
                     }
-                    heroContext.SaveChanges();
+                    heroSaveContext.SaveChanges();
                     MessageBox.Show("Hero successfully saved !");
                 }
             }
@@ -235,10 +244,12 @@ namespace LDVELH_WPF
                 System.Diagnostics.Debug.WriteLine(ex);
             }
 
+            /* LEGACY CODE TO SAVE ON LOCALDB INSTEAD OF SQLite*/
             //try
             //{
-            //    using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
+            //    using (HeroSaveContext heroSaveContext = new HeroSaveContext())
             //    {
+
             //        heroSaveContext.MyBackPack.Load();
             //        heroSaveContext.MyHero.Load();
             //        heroSaveContext.MyItems.Load();

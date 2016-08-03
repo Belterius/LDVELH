@@ -215,7 +215,7 @@ namespace LDVELH_WPF
                         try {
                             possibleEvent.resolveEvent(story);
                         }
-                        catch (YouAreDeadException ex) {
+                        catch (YouAreDeadException) {
                             handleDeath(story);
                         }
                     };
@@ -291,7 +291,7 @@ namespace LDVELH_WPF
         {
             Translator translator = new Translator();
             MessageBox.Show(translator.ProvideValue("YouDied"));
-            using (HeroSaveContext heroSaveContext = new HeroSaveContext())
+            using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
             {
                 heroSaveContext.MyItems.Load();
                 heroSaveContext.MySpecialItem.Load();
@@ -309,7 +309,9 @@ namespace LDVELH_WPF
                     heroSaveContext.SaveChanges();
                 }
             }
-            //using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
+
+            /* LEGACY CODE TO SAVE ON LOCALDB INSTEAD OF SQLite*/
+            //using (HeroSaveContext heroSaveContext = new HeroSaveContext())
             //{
             //    heroSaveContext.MyItems.Load();
             //    heroSaveContext.MySpecialItem.Load();

@@ -30,7 +30,7 @@ namespace LDVELH_WPF
         {
             try
             {
-                using (HeroSaveContext heroSaveContext = new HeroSaveContext())
+                using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
                 {
                     var query = from hero in heroSaveContext.MyHero select hero;
                     listHeroes = query.ToList();
@@ -43,9 +43,10 @@ namespace LDVELH_WPF
             {
                 buttonLoad.Visibility = Visibility.Hidden;
             }
+            /* LEGACY CODE TO SAVE ON LOCALDB INSTEAD OF SQLite*/
             //try
             //{
-            //    using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
+            //    using (HeroSaveContext heroSaveContext = new HeroSaveContext())
             //    {
             //        var query = from hero in heroSaveContext.MyHero select hero;
             //        listHeroes = query.ToList();
@@ -58,7 +59,6 @@ namespace LDVELH_WPF
             //{
             //    buttonLoad.Visibility = Visibility.Hidden;
             //}
-
         }
 
         private void buttonNew_Click(object sender, RoutedEventArgs e)
@@ -69,7 +69,7 @@ namespace LDVELH_WPF
 
         private void buttonLoad_Click(object sender, RoutedEventArgs e)
         {
-            using (HeroSaveContext heroSaveContext = new HeroSaveContext())
+            using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
             {
                 try
                 {
@@ -90,7 +90,8 @@ namespace LDVELH_WPF
                     System.Diagnostics.Debug.WriteLine("Error loading the Hero : " + ex);
                 }
             }
-            //using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
+            /* LEGACY CODE TO SAVE ON LOCALDB INSTEAD OF SQLite*/
+            //using (HeroSaveContext heroSaveContext = new HeroSaveContext())
             //{
             //    try
             //    {
@@ -111,7 +112,6 @@ namespace LDVELH_WPF
             //        System.Diagnostics.Debug.WriteLine("Error loading the Hero : " + ex);
             //    }
             //}
-
         }
     }
 }

@@ -4,7 +4,7 @@
         xmlns:Core="clr-namespace:LDVELH_WPF;assembly=" 
         Title="{Core:Translator Text=LoadMenu}" Height="300" Width="300" Loaded="Window_Loaded">
     <Grid>
-        <ListBox x:Name="listBoxHeroes" HorizontalAlignment="Left" Height="177" VerticalAlignment="Top" Width="142" Margin="78,33,0,0"/>
+        <ListBox x:Name="listBoxHeroes" HorizontalAlignment="Left" Height="177" VerticalAlignment="Top" Width="168" Margin="63,33,0,0"/>
         <Button x:Name="buttonLoad" Content="{Core:Translator Text=Load}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="109,215,0,0" Click="buttonLoad_Click"/>
         <Button x:Name="buttonNew" Content="{Core:Translator Text=NewGame}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,240,0,0" Click="buttonNew_Click"/>
 
