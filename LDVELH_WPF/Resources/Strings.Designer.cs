@@ -691,6 +691,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous êtes mort ! Bonne chance pour la prochaine fois..
+        /// </summary>
+        internal static string YouDied {
+            get {
+                return ResourceManager.GetString("YouDied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vous Devez Combattre !.
         /// </summary>
         internal static string YouMustFight {

@@ -339,4 +339,7 @@
   <data name="YouMustSelect" xml:space="preserve">
     <value>You must select</value>
   </data>
+  <data name="YouDied" xml:space="preserve">
+    <value>You died ! Better luck next time.</value>
+  </data>
 </root>

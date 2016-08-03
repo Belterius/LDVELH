@@ -52,7 +52,7 @@ namespace LDVELH_WPF
             if (numberOfCapacities != allowedNumberCapacities)
             {
                 Translator translator = new Translator();
-                MessageBox.Show(translator.ProvideValue("YouMustSelect")+" " + allowedNumberCapacities +" " + translator.ProvideValue("capacities")+" !");
+                MessageBox.Show(translator.ProvideValue("YouMustSelect")+" " + allowedNumberCapacities +" " + translator.ProvideValue("Capacities")+" !");
                 return;
             }
             foreach (var item in ((Grid)(groupBoxCapacities.Content)).Children)
