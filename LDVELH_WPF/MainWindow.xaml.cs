@@ -212,20 +212,50 @@ namespace LDVELH_WPF
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
+            //try
+            //{
+            //    using (HeroSaveContext heroContext = new HeroSaveContext())
+            //    {
+            //        Hero savedHero = heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+            //        if (savedHero == null)
+            //        {
+            //            heroContext.MyHero.Add(hero);
+            //        }
+            //        else
+            //        {
+            //            heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
+            //        }
+            //        heroContext.SaveChanges();
+            //        MessageBox.Show("Hero successfully saved !");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error, couldn't save the Hero !");
+            //    System.Diagnostics.Debug.WriteLine(ex);
+            //}
+
             try
             {
-                using (HeroSaveContext heroContext = new HeroSaveContext())
+                using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
                 {
-                    Hero savedHero = heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+                    heroSaveContext.MyBackPack.Load();
+                    heroSaveContext.MyHero.Load();
+                    heroSaveContext.MyItems.Load();
+                    heroSaveContext.MySpecialItem.Load();
+                    heroSaveContext.MyWeaponHolders.Load();
+                    heroSaveContext.MyWeapons.Load();
+                    heroSaveContext.MyCapacities.Load();
+                    Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
                     if (savedHero == null)
                     {
-                        heroContext.MyHero.Add(hero);
+                        heroSaveContext.MyHero.Add(hero);
                     }
                     else
                     {
-                        heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
+                        heroSaveContext.Entry(savedHero).CurrentValues.SetValues(hero);
                     }
-                    heroContext.SaveChanges();
+                    heroSaveContext.SaveChanges();
                     MessageBox.Show("Hero successfully saved !");
                 }
             }
@@ -234,7 +264,7 @@ namespace LDVELH_WPF
                 MessageBox.Show("Error, couldn't save the Hero !");
                 System.Diagnostics.Debug.WriteLine(ex);
             }
-            
+
 
         }
 

@@ -14,10 +14,10 @@ namespace LDVELH_WPF
         public static readonly int skipMealDamage = 3;
         public static readonly int unharmedCombatDebuff = 4;
 
-        [ForeignKey("weaponHolder")]
+        //[ForeignKey("weaponHolder")]
         public int WeaponHolderID { get; set; }
 
-        [ForeignKey("backPack")]
+        //[ForeignKey("backPack")]
         public int BackPackID { get; set; }
 
         public event MaxLifeHandler MaxLifeChanged;
@@ -411,19 +411,11 @@ namespace LDVELH_WPF
         }
         public void removeBackPack()
         {
-            foreach (Item loot in this.backPack.getItems)
-            {
-                this.removeBackPackItem(loot);
-            }
-
+            this.backPack.getItems.Clear();
         }
         public void removeWeaponHolder()
         {
-            foreach (Weapon loot in this.weaponHolder.getWeapons)
-            {
-                this.removeWeapon(loot);
-            }
-
+            this.weaponHolder.getWeapons.Clear();
         }
 
 

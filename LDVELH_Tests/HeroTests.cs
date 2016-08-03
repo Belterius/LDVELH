@@ -112,6 +112,40 @@ namespace LDVELH_Tests
         }
 
 
+        [TestMethod]
+        public void Hero_RemoveAllItems_Tests()
+        {
+            Hero myHero = new Hero("Belterius");
+            Consummable consummable = CreateLoot.CreateConsummable.minorHealthPotion();
+            Consummable consummable2 = new Consummable("Random Consumable", 12, 1);
+            Consummable consummable4 = new Consummable("Random Consumable", 12, 1);//Allow to check if the override Equal works on Contains()
+            Consummable consummable3 = new Consummable("Random Consumable FALSE", 12, 1);
+            myHero.addLoot(consummable);
+            myHero.addLoot(consummable2);
+            myHero.addLoot(consummable4);
+            myHero.addLoot(consummable3);
+
+            myHero.removeBackPack();
+
+            Assert.AreEqual(0, myHero.backPack.getItems.Count);
+
+        }
+
+        [TestMethod]
+        public void WeaponHolder_ContainsWeaponType_Tests()
+        {
+
+            Hero myHero = new Hero("Belterius");
+            Weapon advancedSword = new Weapon("advanced sword", WeaponTypes.Sword);
+            Weapon basicSpear = new Weapon("basic spear", WeaponTypes.Spear);
+            myHero.addLoot(advancedSword);
+            myHero.addLoot(basicSpear);
+
+            myHero.removeWeaponHolder();
+
+            Assert.AreEqual(0, myHero.weaponHolder.getWeapons.Count);
+
+        }
 
     }
 }
