@@ -13,14 +13,13 @@
         // 
         // If you wish to target a different database and/or database provider, modify the 'StoryContext' 
         // connection string in the application configuration file.
-        //public HeroSaveContext()
-        //    : base("name=HeroSaveContext")
-        //{
-        //}
-        public HeroSaveContext()
-            : base()
+        public HeroSaveContext() : base("name=HeroSaveContext")
         {
         }
+        //public HeroSaveContext()
+        //    : base()
+        //{
+        //}
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Add(new NonPublicColumnAttributeConvention());

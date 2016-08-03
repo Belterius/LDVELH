@@ -155,7 +155,7 @@ namespace LDVELH_WPF
         private void initStory()
         {
             story = new Story("first adventure", hero);
-            story.addParagraph(CreateParagraph.CreateAParagraph(1));
+            story.addParagraph(CreateParagraph.CreateAParagraph(hero.getActualParagraph()));
 
             initStoryObserver();
 
@@ -214,30 +214,16 @@ namespace LDVELH_WPF
         {
             try
             {
-                //using (HeroSaveContext heroContext = new HeroSaveContext())
-                //{
-                //    Hero savedHero = heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
-                //    if (savedHero == null)
-                //    {
-                //        heroContext.MyHero.Add(hero);
-                //    }
-                //    else
-                //    {
-                //        heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
-                //    }
-                //    heroContext.SaveChanges();
-                //    MessageBox.Show("Hero successfully saved !");
-                //}
-                using (MySQLiteDBContext heroContext = new MySQLiteDBContext())
+                using (HeroSaveContext heroContext = new HeroSaveContext())
                 {
-                   // Hero savedHero = heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
-                    if (true)
+                    Hero savedHero = heroContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+                    if (savedHero == null)
                     {
                         heroContext.MyHero.Add(hero);
                     }
                     else
                     {
-                     //   heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
+                        heroContext.Entry(savedHero).CurrentValues.SetValues(hero);
                     }
                     heroContext.SaveChanges();
                     MessageBox.Show("Hero successfully saved !");

@@ -76,6 +76,7 @@ namespace LDVELH_WPF
             this.actualHitPoint = this.maxHitPoint;
             this.baseAgility = randBaseAgility();
             this.gold = 0;
+            this.saveActualParagraph = 1;
             weaponMastery = WeaponTypes.None;
             capacities = new List<Capacity>();
             backPack = new BackPack();
