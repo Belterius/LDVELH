@@ -342,4 +342,10 @@
   <data name="YouDied" xml:space="preserve">
     <value>You died ! Better luck next time.</value>
   </data>
+  <data name="ErrorSaving" xml:space="preserve">
+    <value>Error, couldn't save the Hero !</value>
+  </data>
+  <data name="SuccesSaving" xml:space="preserve">
+    <value>Hero successfully saved !</value>
+  </data>
 </root>

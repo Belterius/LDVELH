@@ -109,7 +109,6 @@ namespace LDVELH_WPF
         }
         private void heroBaseStat()
         {
-            Translator translator = new Translator();
             labelHitPoint.Content = hero.getActualHitPoint().ToString() + "/" + hero.getMaxHitPoint().ToString();
             labelAgility.Content = hero.getBaseAgility().ToString();
             labelGoldAmount.Content = hero.getGold().ToString();
@@ -216,11 +215,11 @@ namespace LDVELH_WPF
             try
             {
                 SQLiteDatabaseFunction.SaveHero(hero);
-                MessageBox.Show("Hero successfully saved !");
+                MessageBox.Show(translator.ProvideValue("SuccesSaving"));
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error, couldn't save the Hero !");
+                MessageBox.Show(translator.ProvideValue("ErrorSaving"));
                 System.Diagnostics.Debug.WriteLine("Error saving Hero : " + ex);
             }
         }
