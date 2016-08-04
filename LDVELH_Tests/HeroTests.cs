@@ -132,7 +132,7 @@ namespace LDVELH_Tests
         }
 
         [TestMethod]
-        public void WeaponHolder_ContainsWeaponType_Tests()
+        public void Hero_RemoveAllWeapons_Tests()
         {
 
             Hero myHero = new Hero("Belterius");

@@ -415,7 +415,7 @@ namespace LDVELH_WPF
 
         public void rest()
         {
-            if (!this.possesCapacity(CapacityType.Healing))//Healing capacity allow you to regen when not fighting, see resolve of StoryParagraph
+            if (this.possesCapacity(CapacityType.Healing))//Healing capacity allow you to regen when not fighting, see resolve of StoryParagraph
             {
                 this.heal(healingCapacityRegen);
             }
@@ -475,6 +475,17 @@ namespace LDVELH_WPF
         }
         public bool possesItem(String itemName)
         {
+            if (possesBackPackItem(itemName) || possesSpecialItem(itemName) || possesWeapon(itemName))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private bool possesWeapon(String itemName)
+        {
             foreach (Weapon weapon in this.weaponHolder.getWeapons)
             {
                 if (weapon.getName == itemName)
@@ -482,6 +493,10 @@ namespace LDVELH_WPF
                     return true;
                 }
             }
+            return false;
+        }
+        private bool possesBackPackItem(String itemName)
+        {
             foreach (Item item in this.backPack.getItems)
             {
                 if (item.getName == itemName)
@@ -489,6 +504,10 @@ namespace LDVELH_WPF
                     return true;
                 }
             }
+            return false;
+        }
+        private bool possesSpecialItem(String itemName)
+        {
             foreach (SpecialItem specialItem in this.getSpecialItems)
             {
                 if (specialItem.getName == itemName)
