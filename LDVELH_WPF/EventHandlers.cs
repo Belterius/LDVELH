@@ -291,25 +291,13 @@ namespace LDVELH_WPF
         {
             Translator translator = new Translator();
             MessageBox.Show(translator.ProvideValue("YouDied"));
-            using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
-            {
-                heroSaveContext.MyItems.Load();
-                heroSaveContext.MySpecialItem.Load();
-                heroSaveContext.MyWeapons.Load();
-                heroSaveContext.MyWeaponHolders.Load();
-                heroSaveContext.MyBackPack.Load();
-                heroSaveContext.MyHero.Load();
-                heroSaveContext.MyCapacities.Load();
-                Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == story.getHero.CharacterID).FirstOrDefault();
-                if (savedHero != null)
+                try
                 {
-                    heroSaveContext.MySpecialItem.RemoveRange(savedHero.getSpecialItems);
-                    heroSaveContext.MyCapacities.RemoveRange(savedHero.capacities);
-                    heroSaveContext.MyHero.Remove(savedHero);
-                    heroSaveContext.SaveChanges();
+                    Hero savedHero = SQLiteDatabaseFunction.SelectHeroFromID(story.getHero.CharacterID.ToString());
+                    SQLiteDatabaseFunction.DeleteHero(savedHero);
+                }catch(Exception ex){
+                    System.Diagnostics.Debug.WriteLine("Error when deleting hero data : " + ex);
                 }
-            }
-
             /* LEGACY CODE TO SAVE ON LOCALDB INSTEAD OF SQLite*/
             //using (HeroSaveContext heroSaveContext = new HeroSaveContext())
             //{

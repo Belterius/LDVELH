@@ -144,6 +144,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="SQLiteDatabaseFunction.cs" />
     <Compile Include="StoryParagraph.cs" />
     <Compile Include="SpecialItem.cs" />
     <Compile Include="Story.cs" />

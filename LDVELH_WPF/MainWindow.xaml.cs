@@ -213,36 +213,17 @@ namespace LDVELH_WPF
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-           
             try
             {
-                using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
-                {
-                    heroSaveContext.MyBackPack.Load();
-                    heroSaveContext.MyHero.Load();
-                    heroSaveContext.MyItems.Load();
-                    heroSaveContext.MySpecialItem.Load();
-                    heroSaveContext.MyWeaponHolders.Load();
-                    heroSaveContext.MyWeapons.Load();
-                    heroSaveContext.MyCapacities.Load();
-                    Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
-                    if (savedHero == null)
-                    {
-                        heroSaveContext.MyHero.Add(hero);
-                    }
-                    else
-                    {
-                        heroSaveContext.Entry(savedHero).CurrentValues.SetValues(hero);
-                    }
-                    heroSaveContext.SaveChanges();
-                    MessageBox.Show("Hero successfully saved !");
-                }
+                SQLiteDatabaseFunction.SaveHero(hero);
+                MessageBox.Show("Hero successfully saved !");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error, couldn't save the Hero !");
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Debug.WriteLine("Error saving Hero : " + ex);
             }
+            
 
             /* LEGACY CODE TO SAVE ON LOCALDB INSTEAD OF SQLite*/
             //try

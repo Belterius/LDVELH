@@ -15,6 +15,12 @@ namespace LDVELH_WPF
         public static readonly int unharmedCombatDebuff = 4;
         public static readonly int healingCapacityRegen = 1;
 
+        [ForeignKey("backPack")]
+        public int BackPack_ID{get;set;}
+
+        [ForeignKey("weaponHolder")]
+        public int WeaponHolder_ID { get; set; }
+
         public event MaxLifeHandler MaxLifeChanged;
         public delegate void MaxLifeHandler(Hero m, int lifeChange);
 
@@ -42,6 +48,7 @@ namespace LDVELH_WPF
         public event specialItemsHandler specialItemsChanged;
         public delegate void specialItemsHandler(Hero m, SpecialItem specialItem, bool add);
 
+        [Column("HungryState")]
         private HungryState hungryStatus;
         public event HungryStateHandler hungryStateChanged;
         public delegate void HungryStateHandler(Hero m);
@@ -58,10 +65,7 @@ namespace LDVELH_WPF
 
         private Hero()
         {
-            //Only time we can call that is if we load a Hero from the database AND he had no SpecialItems/backpack/weaponHolder during saving
-            backPack = new BackPack();
-            weaponHolder = new WeaponHolder();
-            specialItems = new List<SpecialItem>();
+            
         }
 
         public Hero(string name)

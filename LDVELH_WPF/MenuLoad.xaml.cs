@@ -69,27 +69,18 @@ namespace LDVELH_WPF
 
         private void buttonLoad_Click(object sender, RoutedEventArgs e)
         {
-            using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
+            try
             {
-                try
-                {
-                    heroSaveContext.MyBackPack.Load();
-                    heroSaveContext.MyHero.Load();
-                    heroSaveContext.MyItems.Load();
-                    heroSaveContext.MySpecialItem.Load();
-                    heroSaveContext.MyWeaponHolders.Load();
-                    heroSaveContext.MyWeapons.Load();
-                    heroSaveContext.MyCapacities.Load();
-                    Hero heroSelected = heroSaveContext.MyHero.Where(x => x.CharacterID.ToString() == listBoxHeroes.SelectedValue.ToString()).First();
-                    MainWindow mainWindow = new MainWindow(heroSelected);
-                    mainWindow.Show();
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine("Error loading the Hero : " + ex);
-                }
+                Hero heroSelected = SQLiteDatabaseFunction.SelectHeroFromID(listBoxHeroes.SelectedValue.ToString());
+                MainWindow mainWindow = new MainWindow(heroSelected);
+                mainWindow.Show();
+                this.Close();
             }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error when loading hero data : " + ex);
+            }
+            
             /* LEGACY CODE TO SAVE ON LOCALDB INSTEAD OF SQLite*/
             //using (HeroSaveContext heroSaveContext = new HeroSaveContext())
             //{
