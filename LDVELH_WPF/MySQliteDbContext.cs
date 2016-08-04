@@ -21,10 +21,6 @@
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Add(new NonPublicColumnAttributeConvention());
-
-            //modelBuilder.Entity<Hero>().HasOptional(p => p.weaponHolder).WithOptionalDependent().WillCascadeOnDelete(true);
-            //modelBuilder.Entity<Hero>().HasOptional(p => p.backPack).WithOptionalDependent().WillCascadeOnDelete(true);
-
             var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<MySQLiteDBContext>(modelBuilder);
             Database.SetInitializer(sqliteConnectionInitializer);
 

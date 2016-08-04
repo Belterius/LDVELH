@@ -190,24 +190,37 @@ namespace LDVELH_WPF
 
         private void buttonThrowWeapon_Click(object sender, RoutedEventArgs e)
         {
-            hero.removeLoot((Weapon)listBoxWeapons.SelectedItem);
+            Weapon weaponToThrow = (Weapon)listBoxWeapons.SelectedItem;
+            if (weaponToThrow != null)
+            {
+                hero.removeLoot(weaponToThrow);
+            }
         }
 
         private void buttonUseItem_Click(object sender, RoutedEventArgs e)
         {
-            try
+            Item itemToUse = (Item)listBoxBackPack.SelectedItem;
+            if (itemToUse != null)
             {
-                hero.useItem((Item)listBoxBackPack.SelectedItem);
+                try
+                {
+                    hero.useItem(itemToUse);
+                }
+                catch (CannotUseItemException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (CannotUseItemException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         }
 
         private void buttonThrowItem_Click(object sender, RoutedEventArgs e)
         {
-            hero.removeLoot((Item)listBoxBackPack.SelectedItem);
+            Item itemToThrow = (Item)listBoxBackPack.SelectedItem;
+            if (itemToThrow != null)
+            {
+                hero.removeLoot(itemToThrow);
+            }
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
