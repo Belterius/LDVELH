@@ -30,35 +30,17 @@ namespace LDVELH_WPF
         {
             try
             {
-                using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
-                {
-                    var query = from hero in heroSaveContext.MyHero select hero;
-                    listHeroes = query.ToList();
-                    listBoxHeroes.ItemsSource = listHeroes;
-                    listBoxHeroes.DisplayMemberPath = "getResume";
-                    listBoxHeroes.SelectedValuePath = "CharacterID";
-                }
+                listHeroes = SQLiteDatabaseFunction.GetAllHeroes();
+                listBoxHeroes.ItemsSource = listHeroes;
+                listBoxHeroes.DisplayMemberPath = "getResume";
+                listBoxHeroes.SelectedValuePath = "CharacterID";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine("Error when loading all heroes data : " + ex);
                 buttonLoad.Visibility = Visibility.Hidden;
             }
-            /* LEGACY CODE TO SAVE ON LOCALDB INSTEAD OF SQLite*/
-            //try
-            //{
-            //    using (HeroSaveContext heroSaveContext = new HeroSaveContext())
-            //    {
-            //        var query = from hero in heroSaveContext.MyHero select hero;
-            //        listHeroes = query.ToList();
-            //        listBoxHeroes.ItemsSource = listHeroes;
-            //        listBoxHeroes.DisplayMemberPath = "getResume";
-            //        listBoxHeroes.SelectedValuePath = "CharacterID";
-            //    }
-            //}
-            //catch (Exception)
-            //{
-            //    buttonLoad.Visibility = Visibility.Hidden;
-            //}
+           
         }
 
         private void buttonNew_Click(object sender, RoutedEventArgs e)
@@ -81,28 +63,6 @@ namespace LDVELH_WPF
                 System.Diagnostics.Debug.WriteLine("Error when loading hero data : " + ex);
             }
             
-            /* LEGACY CODE TO SAVE ON LOCALDB INSTEAD OF SQLite*/
-            //using (HeroSaveContext heroSaveContext = new HeroSaveContext())
-            //{
-            //    try
-            //    {
-            //        heroSaveContext.MyBackPack.Load();
-            //        heroSaveContext.MyHero.Load();
-            //        heroSaveContext.MyItems.Load();
-            //        heroSaveContext.MySpecialItem.Load();
-            //        heroSaveContext.MyWeaponHolders.Load();
-            //        heroSaveContext.MyWeapons.Load();
-            //        heroSaveContext.MyCapacities.Load();
-            //        Hero heroSelected = heroSaveContext.MyHero.Where(x => x.CharacterID.ToString() == listBoxHeroes.SelectedValue.ToString()).First();
-            //        MainWindow mainWindow = new MainWindow(heroSelected);
-            //        mainWindow.Show();
-            //        this.Close();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        System.Diagnostics.Debug.WriteLine("Error loading the Hero : " + ex);
-            //    }
-            //}
         }
     }
 }

@@ -112,6 +112,7 @@
     <Compile Include="Hero.cs" />
     <Compile Include="HeroSaveContext.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="LocalDatabaseFunction.cs" />
     <Compile Include="MenuLoad.xaml.cs">
       <DependentUpon>MenuLoad.xaml</DependentUpon>
     </Compile>

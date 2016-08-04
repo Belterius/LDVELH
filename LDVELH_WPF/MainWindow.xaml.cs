@@ -223,41 +223,6 @@ namespace LDVELH_WPF
                 MessageBox.Show("Error, couldn't save the Hero !");
                 System.Diagnostics.Debug.WriteLine("Error saving Hero : " + ex);
             }
-            
-
-            /* LEGACY CODE TO SAVE ON LOCALDB INSTEAD OF SQLite*/
-            //try
-            //{
-            //    using (HeroSaveContext heroSaveContext = new HeroSaveContext())
-            //    {
-
-            //        heroSaveContext.MyBackPack.Load();
-            //        heroSaveContext.MyHero.Load();
-            //        heroSaveContext.MyItems.Load();
-            //        heroSaveContext.MySpecialItem.Load();
-            //        heroSaveContext.MyWeaponHolders.Load();
-            //        heroSaveContext.MyWeapons.Load();
-            //        heroSaveContext.MyCapacities.Load();
-            //        Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
-            //        if (savedHero == null)
-            //        {
-            //            heroSaveContext.MyHero.Add(hero);
-            //        }
-            //        else
-            //        {
-            //            heroSaveContext.Entry(savedHero).CurrentValues.SetValues(hero);
-            //        }
-            //        heroSaveContext.SaveChanges();
-            //        MessageBox.Show("Hero successfully saved !");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error, couldn't save the Hero !");
-            //    System.Diagnostics.Debug.WriteLine(ex);
-            //}
-
-
         }
 
         private void buttonTestLoad_Click(object sender, RoutedEventArgs e)
