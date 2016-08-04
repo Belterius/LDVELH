@@ -24,7 +24,7 @@ namespace LDVELH_WPF
                     heroSaveContext.MyWeaponHolders.Load();
                     heroSaveContext.MyBackPack.Load();
                     heroSaveContext.MyHero.Load();
-                    return heroSaveContext.MyHero.Where(x => x.CharacterID.ToString() == HeroID).First();
+                    return heroSaveContext.MyHero.Where(x => x.CharacterID.ToString() == HeroID).FirstOrDefault();
                 }
                 catch (Exception)
                 {
