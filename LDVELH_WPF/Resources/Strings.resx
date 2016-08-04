@@ -342,6 +342,9 @@
   <data name="YouDied" xml:space="preserve">
     <value>Vous êtes mort ! Bonne chance pour la prochaine fois.</value>
   </data>
+  <data name="ErrorEscape" xml:space="preserve">
+    <value>Vous ne pouvez pas vous enfuir ainsi !</value>
+  </data>
   <data name="ErrorSaving" xml:space="preserve">
     <value>Erreur, impossible de sauvegarder le héro !</value>
   </data>

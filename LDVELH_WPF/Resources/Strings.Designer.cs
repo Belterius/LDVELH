@@ -232,6 +232,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous ne pouvez pas vous enfuir ainsi !.
+        /// </summary>
+        internal static string ErrorEscape {
+            get {
+                return ResourceManager.GetString("ErrorEscape", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erreur, impossible de sauvegarder le héro !.
         /// </summary>
         internal static string ErrorSaving {

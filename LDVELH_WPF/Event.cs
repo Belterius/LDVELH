@@ -221,7 +221,8 @@ namespace LDVELH_WPF
             }
             else
             {
-                MessageBox.Show("You can't escape a fight like that !");
+                Translator translator = new Translator();
+                MessageBox.Show(translator.ProvideValue("ErrorEscape"));
                 return false;
             }
             
