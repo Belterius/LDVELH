@@ -289,8 +289,11 @@ namespace LDVELH_WPF
             MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("YouDied"));
             try
             {
-                Hero savedHero = SQLiteDatabaseFunction.SelectHeroFromID(story.getHero.CharacterID.ToString());
-                SQLiteDatabaseFunction.DeleteHero(savedHero);
+                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
+                {
+                    databaseRequest.DeleteHero(story.getHero);
+                }
+                
             }catch(Exception ex){
                 System.Diagnostics.Debug.WriteLine("Error when deleting hero data : " + ex);
             }

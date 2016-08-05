@@ -114,6 +114,7 @@ namespace LDVELH_WPF
             labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getWeaponMastery.ToString());
             listBoxCapacities.ItemsSource = hero.capacities;
             listBoxCapacities.DisplayMemberPath = "getCapacityDisplayName";
+            labelHungryState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getHungryState.ToString());
         }
         private void heroHPListener()
         {
@@ -205,6 +206,11 @@ namespace LDVELH_WPF
                 {
                     hero.useItem(itemToUse);
                 }
+                catch(CantEatException)
+                {
+                    MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("CantEat"));
+
+                }
                 catch (CannotUseItemException ex)
                 {
                     MessageBox.Show(ex.Message);
@@ -226,7 +232,10 @@ namespace LDVELH_WPF
         {
             try
             {
-                SQLiteDatabaseFunction.SaveHero(hero);
+                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
+                {
+                    databaseRequest.SaveHero(hero);
+                }
                 MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("SuccesSaving"));
             }
             catch (Exception ex)

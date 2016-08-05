@@ -165,7 +165,9 @@ namespace LDVELH_WPF
                 GoldHasChanged(-gold);
             }
             else
+            {
                 throw new NotEnoughtGoldException("You don't have enough gold !");
+            }
 
         }
         public void emptyGold()
@@ -426,8 +428,16 @@ namespace LDVELH_WPF
         }
         public void eat()
         {
-            this.hungryStatus = HungryState.Full;
-            HungryStateHasChanged();
+            if (this.hungryStatus != HungryState.Full)
+            {
+                this.hungryStatus = HungryState.Full;
+                HungryStateHasChanged();
+            }
+            else
+            {
+                throw new CantEatException();
+            }
+            
         }
 
         public void mealTime()
@@ -678,6 +688,26 @@ namespace LDVELH_WPF
         { }
 
         protected NotEnoughtGoldException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        { }
+
+    }
+
+    [Serializable]
+    public class CantEatException : Exception
+    {
+        public CantEatException()
+        { }
+
+        public CantEatException(string message)
+            : base(message)
+        { }
+
+        public CantEatException(string message, Exception innerException)
+            : base(message, innerException)
+        { }
+
+        protected CantEatException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         { }
 

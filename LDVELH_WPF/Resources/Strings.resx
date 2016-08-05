@@ -174,7 +174,7 @@
   <data name="Full" xml:space="preserve">
     <value>Rassasié</value>
   </data>
-  <data name="Gold" xml:space="preserve">
+  <data name="LabelGold" xml:space="preserve">
     <value>Pièces d'Or :</value>
   </data>
   <data name="Healing" xml:space="preserve">
@@ -350,5 +350,29 @@
   </data>
   <data name="SuccesSaving" xml:space="preserve">
     <value>Héro sauvegardé avec succès !</value>
+  </data>
+  <data name="CantEat" xml:space="preserve">
+    <value>Vous ne pouvez pas manger plus, vous êtes déjà rassasié !</value>
+  </data>
+  <data name="DebuffAgility" xml:space="preserve">
+    <value>Votre agilité est réduite !</value>
+  </data>
+  <data name="ErrorInventoryFull" xml:space="preserve">
+    <value>Votre inventaire est plein ! vous devez vider un objet de votre sac avant de pouvoir récupérer un nouvel item</value>
+  </data>
+  <data name="ErrorNotEnoughtGold" xml:space="preserve">
+    <value>Vous n'avez pas assez de pièces d'or !</value>
+  </data>
+  <data name="ErrorWeaponHolderFull" xml:space="preserve">
+    <value>Votre baudrier est plein ! vous devez jeter une arme avant de pouvoir en récupérer une nouvelle</value>
+  </data>
+  <data name="Gold" xml:space="preserve">
+    <value>Pièces d'or</value>
+  </data>
+  <data name="TakeDamage" xml:space="preserve">
+    <value>Vous subissez des dégats !</value>
+  </data>
+  <data name="UseCapacity" xml:space="preserve">
+    <value>Utiliser votre capacité </value>
   </data>
 </root>

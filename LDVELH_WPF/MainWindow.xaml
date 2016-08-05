@@ -26,7 +26,7 @@
                     <Label Content="{Core:Translator Text=BackPack}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,237,0,0"/>
                     <Label Content="{Core:Translator Text=SpecialItems}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,419,0,0"/>
                     <Label Content="{Core:Translator Text=Weapon}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,95,0,0"/>
-                    <Label x:Name="labelDescriptionGold" Content="{Core:Translator Text=Gold}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                    <Label x:Name="labelDescriptionGold" Content="{Core:Translator Text=LabelGold}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
                     <ListBox x:Name="listBoxWeapons" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="162" Margin="13,121,0,0"/>
                     <ListBox x:Name="listBoxBackPack" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="162" Margin="13,263,0,0"/>
                     <ListBox x:Name="listBoxSpecialItems" HorizontalAlignment="Left" Height="197" VerticalAlignment="Top" Width="162" Margin="13,445,0,0"/>
