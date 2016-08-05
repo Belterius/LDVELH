@@ -21,7 +21,6 @@ namespace LDVELH_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        Translator translator = new Translator();
         Story story;
         StoryObserver storyObserver;
         Hero hero;
@@ -112,7 +111,7 @@ namespace LDVELH_WPF
             labelHitPoint.Content = hero.getActualHitPoint().ToString() + "/" + hero.getMaxHitPoint().ToString();
             labelAgility.Content = hero.getBaseAgility().ToString();
             labelGoldAmount.Content = hero.getGold().ToString();
-            labelWeaponMastery.Content = translator.ProvideValue(hero.getWeaponMastery.ToString());
+            labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getWeaponMastery.ToString());
             listBoxCapacities.ItemsSource = hero.capacities;
             listBoxCapacities.DisplayMemberPath = "getCapacityDisplayName";
         }
@@ -177,13 +176,13 @@ namespace LDVELH_WPF
                 }
                 else
                 {
-                    return translator.ProvideValue("NoName");
+                    return GlobalTranslator.Instance.translator.ProvideValue("NoName");
                 }
 
             }
             else
             {
-                return translator.ProvideValue("NoName");
+                return GlobalTranslator.Instance.translator.ProvideValue("NoName");
             }
 
         }
@@ -228,18 +227,18 @@ namespace LDVELH_WPF
             try
             {
                 SQLiteDatabaseFunction.SaveHero(hero);
-                MessageBox.Show(translator.ProvideValue("SuccesSaving"));
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("SuccesSaving"));
             }
             catch (Exception ex)
             {
-                MessageBox.Show(translator.ProvideValue("ErrorSaving"));
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorSaving"));
                 System.Diagnostics.Debug.WriteLine("Error saving Hero : " + ex);
             }
         }
 
         private void buttonTestLoad_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show(translator.ProvideValue("ConfirmExit"), translator.ProvideValue("GoToLoadingMenu"), MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            if (MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ConfirmExit"), GlobalTranslator.Instance.translator.ProvideValue("GoToLoadingMenu"), MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
                 
             }

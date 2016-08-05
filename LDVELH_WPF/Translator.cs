@@ -13,6 +13,26 @@ namespace LDVELH_WPF
         CultureInfo GetCurrentCultureInfo();
     }
 
+    public sealed class GlobalTranslator
+    {
+        public Translator translator = new Translator();
+
+        static readonly GlobalTranslator INSTANCE = new GlobalTranslator();
+
+        private GlobalTranslator()
+        {
+
+        }
+
+        public static GlobalTranslator Instance
+        {
+            get
+            {
+                return INSTANCE;
+            }
+        }
+    }
+
     public class Translator : MarkupExtension
     {
         readonly CultureInfo ci;

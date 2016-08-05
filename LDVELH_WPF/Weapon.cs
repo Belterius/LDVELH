@@ -57,8 +57,7 @@ namespace LDVELH_WPF
         public string getDisplayName
         {
             get {
-                Translator translator = new Translator();
-                return name + "(" + translator.ProvideValue(weaponType.ToString()) + ")";
+                return name + "(" + GlobalTranslator.Instance.translator.ProvideValue(weaponType.ToString()) + ")";
             }
         }
     }

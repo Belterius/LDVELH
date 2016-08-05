@@ -95,14 +95,13 @@ namespace LDVELH_WPF
         {
             get
             {
-                Translator translator = new Translator();
                 if (chargesLeft > 1)
                 {
-                    return name + "(+" + healingPower + " " + translator.ProvideValue("HP") + chargesLeft + " " + translator.ProvideValue("charges")+" )";
+                    return name + "(+" + healingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
                 else
                 {
-                    return name + "(+" + healingPower + " " + translator.ProvideValue("HP") + chargesLeft + " " + translator.ProvideValue("charges")+ " )";
+                    return name + "(+" + healingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
             }
         }
@@ -155,14 +154,13 @@ namespace LDVELH_WPF
         {
             get
             {
-                Translator translator = new Translator();
                 if (chargesLeft > 1)
                 {
-                    return name + "(" + translator.ProvideValue("food") + ", " + chargesLeft + " " + translator.ProvideValue("charges") + " )";
+                    return name + "(" + GlobalTranslator.Instance.translator.ProvideValue("food") + ", " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
                 else
                 {
-                    return name + "(" + translator.ProvideValue("food") + ", " + chargesLeft + " " + translator.ProvideValue("charges") + " )";
+                    return name + "(" + GlobalTranslator.Instance.translator.ProvideValue("food") + ", " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
             }
         }

@@ -36,7 +36,6 @@ namespace LDVELH_WPF
 
         Hero hero;
         Ennemy ennemy;
-        Translator translator;
         bool ranAway = false;
         int roundRunAway=999;
         bool fightOver = false;
@@ -51,7 +50,6 @@ namespace LDVELH_WPF
             InitializeComponent();
             this.hero = hero;
             this.ennemy = ennemy;
-            this.translator = new Translator();
             buttonRun.Visibility = Visibility.Hidden;
             setLife();
             setAgility();
@@ -63,7 +61,6 @@ namespace LDVELH_WPF
             InitializeComponent();
             this.hero = hero;
             this.ennemy = ennemy;
-            this.translator = new Translator();
             this.roundRunAway = ranTurn;
             buttonRun.Visibility = Visibility.Hidden;
             setLife();
@@ -74,7 +71,7 @@ namespace LDVELH_WPF
 
         private void buttonNextRound_Click(object sender, RoutedEventArgs e)
         {
-            buttonNextRound.Content = translator.ProvideValue("NextRound");
+            buttonNextRound.Content = GlobalTranslator.Instance.translator.ProvideValue("NextRound");
             previousLifeHero = hero.getActualHitPoint();
             previousLifeEnnemy = ennemy.getActualHitPoint();
             try
@@ -87,8 +84,8 @@ namespace LDVELH_WPF
             }
             if (fightOver)
             {
-                buttonNextRound.Content = translator.ProvideValue("Victory") +" !";
-                labelRoundNumber.Content = translator.ProvideValue("Victory").ToUpper() + "!";
+                buttonNextRound.Content = GlobalTranslator.Instance.translator.ProvideValue("Victory") + " !";
+                labelRoundNumber.Content = GlobalTranslator.Instance.translator.ProvideValue("Victory").ToUpper() + "!";
                 setLife();
                 setDamageTaken();
                 buttonNextRound.Click -= buttonNextRound_Click;
@@ -97,7 +94,7 @@ namespace LDVELH_WPF
             else
             {
                 roundNumber++;
-                labelRoundNumber.Content = translator.ProvideValue("RoundNumber") + " " +roundNumber;
+                labelRoundNumber.Content = GlobalTranslator.Instance.translator.ProvideValue("RoundNumber") + " " + roundNumber;
                 setLife();
                 setDamageTaken();
             }

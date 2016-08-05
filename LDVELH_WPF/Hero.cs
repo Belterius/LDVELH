@@ -630,6 +630,8 @@ namespace LDVELH_WPF
 
         public void noNullInHero()
         {
+            //This function must ONLY be called when loading a hero from the database, if a hero is saved while his BackPack/WeaponHolder/SpecialItems is empty, then when loading it then be equal to null instead of empty
+            //So in order to make sure we don't have any null element, we check for null and incase create a new empty element.
             if (this.specialItems == null)
                 this.specialItems = new List<SpecialItem>();
             if (this.capacities == null)

@@ -65,8 +65,7 @@ namespace LDVELH_WPF
         }
         public void HungryStateChanged(Hero hero)
         {
-            Translator translator = new Translator();
-            labelBellyState.Content = translator.ProvideValue(hero.getHungryState.ToString());
+            labelBellyState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getHungryState.ToString());
         }
         public void AgilityChanged(Hero hero, int damage)
         {
@@ -74,8 +73,7 @@ namespace LDVELH_WPF
         }
         public void WeaponMasteryChanged(Hero hero)
         {
-            Translator translator = new Translator();
-            labelWeaponMastery.Content = translator.ProvideValue(hero.getWeaponMastery.ToString());
+            labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getWeaponMastery.ToString());
         }
 
         public void GoldChanged(Hero hero, int goldChange)
@@ -288,8 +286,7 @@ namespace LDVELH_WPF
         }
         private void handleDeath(Story story)
         {
-            Translator translator = new Translator();
-            MessageBox.Show(translator.ProvideValue("YouDied"));
+            MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("YouDied"));
             try
             {
                 Hero savedHero = SQLiteDatabaseFunction.SelectHeroFromID(story.getHero.CharacterID.ToString());

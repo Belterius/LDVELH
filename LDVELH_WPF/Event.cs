@@ -221,8 +221,7 @@ namespace LDVELH_WPF
             }
             else
             {
-                Translator translator = new Translator();
-                MessageBox.Show(translator.ProvideValue("ErrorEscape"));
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorEscape"));
                 return false;
             }
             

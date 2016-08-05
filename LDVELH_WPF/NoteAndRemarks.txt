@@ -1,0 +1,2 @@
+﻿The singleton pattern for the translator works well, but it is not working for the text modified inside the xaml straight.
+Look if possible to resolve the problem, else just set in the code the text.
