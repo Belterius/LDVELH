@@ -33,7 +33,7 @@ namespace LDVELH_WPF
         {
             this.destinationNumber = destinationNumber;
             this.capacityType = capacityType;
-            this.triggerMessage = "Utiliser votre capacité " + capacityType.GetTranslation();
+            this.triggerMessage = GlobalTranslator.Instance.translator.ProvideValue("UseCapacity") + capacityType.GetTranslation();
         }
         public CapacityEvent(int destinationNumber, CapacityType capacityType, string triggerMessage)
         {
@@ -85,12 +85,12 @@ namespace LDVELH_WPF
                     {
                         //TODO
                         System.Diagnostics.Debug.WriteLine("LootEvent full backpack, propose choice");
-                        MessageBox.Show("Votre inventaire est plein ! vous devez vider un objet de votre sac avant de pouvoir récupérer un nouvel item");
+                        MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorInventoryFull"));
                     }
                     catch (WeaponHolderFullException)
                     {
                         //TODO
-                        MessageBox.Show("Votre baudrier est plein ! vous devez jeter une arme avant de pouvoir en récupérer une nouvelle");
+                        MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorWeaponHolderFull"));
                         System.Diagnostics.Debug.WriteLine("LootEvent full weapon holder, propose choice");
                     }
                 }
@@ -112,13 +112,13 @@ namespace LDVELH_WPF
             this.payableEvent = new List<Event>();
             this.payableEvent.Add(anEvent);
             this.price = price;
-            this.triggerMessage = triggerMessage + " (" + price + " golds )";
+            this.triggerMessage = triggerMessage + " (" + price + " "+ GlobalTranslator.Instance.translator.ProvideValue("Gold")+" )";
         }
         public BuyEvent(List<Event> listEvent, int price, string triggerMessage)
         {
             this.price = price;
             this.payableEvent = listEvent;
-            this.triggerMessage = triggerMessage + " (" + price + " golds )";
+            this.triggerMessage = triggerMessage + " (" + price + " " + GlobalTranslator.Instance.translator.ProvideValue("Gold") + " )";
         }
         public override void resolveEvent(Story story)
         {
@@ -132,10 +132,10 @@ namespace LDVELH_WPF
 
             }
             catch(NotEnoughtGoldException){
-                MessageBox.Show("You don't have enought gold to do that !");
+                MessageBox.Show( GlobalTranslator.Instance.translator.ProvideValue("ErrorNotEnoughtGold"));
             }
             catch(Exception){
-
+                throw;
             }
         }
 
@@ -189,12 +189,12 @@ namespace LDVELH_WPF
     }
     public class FightEvent : Event
     {
-        protected Ennemy ennemy;
+        protected Enemy ennemy;
 
         public FightEvent()
         {
         }
-        public FightEvent(Ennemy ennemy)
+        public FightEvent(Enemy ennemy)
         {
             this.ennemy = ennemy;
         }
@@ -210,7 +210,7 @@ namespace LDVELH_WPF
                 throw;
             }
         }
-        private bool ShowMyDialogBox(Story story, Ennemy ennemy)
+        private bool ShowMyDialogBox(Story story, Enemy ennemy)
         {
 
             MessageBoxFight testDialog = new MessageBoxFight(story.getHero, ennemy);
@@ -221,8 +221,7 @@ namespace LDVELH_WPF
             }
             else
             {
-                Translator translator = new Translator();
-                MessageBox.Show(translator.ProvideValue("ErrorEscape"));
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorEscape"));
                 return false;
             }
             
@@ -234,13 +233,13 @@ namespace LDVELH_WPF
         int ranTurn;
         Event runEvent;
 
-        public RunEvent(Ennemy ennemy, int ranTurn, Event runEvent)
+        public RunEvent(Enemy ennemy, int ranTurn, Event runEvent)
         {
             this.ennemy = ennemy;
             this.runEvent = runEvent;
             this.ranTurn = ranTurn;
         }
-        public RunEvent(int destinationNumber, Ennemy ennemy, int ranTurn, Event runEvent)
+        public RunEvent(int destinationNumber, Enemy ennemy, int ranTurn, Event runEvent)
         {
             this.ennemy = ennemy;
             this.runEvent = runEvent;
@@ -258,7 +257,7 @@ namespace LDVELH_WPF
                 throw;
             }
         }
-        private bool ShowMyDialogBox(Story story, Ennemy ennemy, int ranTurn, Event runEvent)
+        private bool ShowMyDialogBox(Story story, Enemy ennemy, int ranTurn, Event runEvent)
         {
 
             MessageBoxFight testDialog = new MessageBoxFight(story.getHero, ennemy, ranTurn);
@@ -274,7 +273,7 @@ namespace LDVELH_WPF
             }
             else
             {
-                MessageBox.Show("You can't escape a fight like that !");
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorEscape"));
                 return false;
             }
 
@@ -357,7 +356,7 @@ namespace LDVELH_WPF
         public override void resolveEvent(Story story)
         {
             story.getHero.kill();
-            throw new YouAreDeadException("Vous êtes mort: " + specialMessage);
+            throw new YouAreDeadException(specialMessage + GlobalTranslator.Instance.translator.ProvideValue("YouDied"));
         }
     }
     public class DammageEvent : Event
@@ -382,7 +381,7 @@ namespace LDVELH_WPF
         public override void resolveEvent(Story story)
         {
             if (this.specialMessage != "")
-                MessageBox.Show("Vous subissez des dégats : " + specialMessage);
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("TakeDamage")+ " " + specialMessage);
             story.getHero.takeDamage(damageAmount);
         }
     }
@@ -408,7 +407,7 @@ namespace LDVELH_WPF
         public override void resolveEvent(Story story)
         {
             if (this.specialMessage != "")
-                MessageBox.Show("Votre agilité est réduite : " + specialMessage);
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("DebuffAgility") +" " + specialMessage);
             story.getHero.decreaseAgility(damageAmount);
         }
     }

@@ -36,18 +36,17 @@ namespace LDVELH_WPF
         {
             get
             {
-                Translator translator = new Translator();
                 if (agilityBonus > 0 && hitPointBonus > 0)
                 {
-                    return name + " (+" + agilityBonus + " " + translator.ProvideValue("agi") + " +" + hitPointBonus + " " + translator.ProvideValue("HP") + " " + translator.ProvideValue("DuringBattle") + ")";
+                    return name + " (+" + agilityBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("agi") + " +" + hitPointBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + GlobalTranslator.Instance.translator.ProvideValue("DuringBattle") + ")";
                 }
                 if (agilityBonus > 0 )
                 {
-                    return name + " (+" + agilityBonus + " " + translator.ProvideValue("agi") + " " + translator.ProvideValue("DuringBattle") + ")";
+                    return name + " (+" + agilityBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("agi") + " " + GlobalTranslator.Instance.translator.ProvideValue("DuringBattle") + ")";
                 }
                 if (hitPointBonus > 0)
                 {
-                    return name + " (+" + hitPointBonus + " " + translator.ProvideValue("HP") + " " + translator.ProvideValue("DuringBattle") + ")";
+                    return name + " (+" + hitPointBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + GlobalTranslator.Instance.translator.ProvideValue("DuringBattle") + ")";
                 }
                 return name;
             }
@@ -143,18 +142,17 @@ namespace LDVELH_WPF
         {
             get
             {
-                Translator translator = new Translator();
                 if (agilityBonus > 0 && LifePointBonus > 0)
                 {
-                    return name + " (+" + agilityBonus + " " + translator.ProvideValue("agi") + " +" + LifePointBonus + " " + translator.ProvideValue("HP") + " " + translator.ProvideValue("permanent")+ ")";
+                    return name + " (+" + agilityBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("agi") + " +" + LifePointBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + GlobalTranslator.Instance.translator.ProvideValue("permanent") + ")";
                 }
                 if (agilityBonus > 0)
                 {
-                    return name + " (+" + agilityBonus + " " + translator.ProvideValue("agi") + " " + translator.ProvideValue("permanent") + ")";
+                    return name + " (+" + agilityBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("agi") + " " + GlobalTranslator.Instance.translator.ProvideValue("permanent") + ")";
                 }
                 if (LifePointBonus > 0)
                 {
-                    return name + " (+" + LifePointBonus + " " + translator.ProvideValue("HP") +" " + translator.ProvideValue("permanent") + ")";
+                    return name + " (+" + LifePointBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + GlobalTranslator.Instance.translator.ProvideValue("permanent") + ")";
                 }
                 return name;
             }

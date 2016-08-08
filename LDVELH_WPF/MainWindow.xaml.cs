@@ -21,7 +21,6 @@ namespace LDVELH_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        Translator translator = new Translator();
         Story story;
         StoryObserver storyObserver;
         Hero hero;
@@ -36,6 +35,7 @@ namespace LDVELH_WPF
         public MainWindow(Hero savedHero)
         {
             InitializeComponent();
+            TranslateLabel();
             loadingHero = true;
             initHero(savedHero);
         }
@@ -52,6 +52,27 @@ namespace LDVELH_WPF
                 storyObserver.loadingHero = true;
                 story.start(hero.getActualParagraph());
             }
+        }
+        private void TranslateLabel()
+        {
+            groupBoxHeroStat.Header = GlobalTranslator.Instance.translator.ProvideValue("HeroStats");
+            labelDescriptionHitPoint.Content = GlobalTranslator.Instance.translator.ProvideValue("HitPoints");
+            labelDescriptionAgility.Content = GlobalTranslator.Instance.translator.ProvideValue("Agility");
+            LabelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue("WeaponMasteryLabel");
+            LabelCapacities.Content = GlobalTranslator.Instance.translator.ProvideValue("CapacitiesLabel");
+            LabelHunger.Content = GlobalTranslator.Instance.translator.ProvideValue("Hunger");
+            labelHungryState.Content = GlobalTranslator.Instance.translator.ProvideValue("Hungry");
+            groupBoxInventory.Header = GlobalTranslator.Instance.translator.ProvideValue("Inventory");
+            LabelBackPack.Content = GlobalTranslator.Instance.translator.ProvideValue("BackPack");
+            LabelSpecialItems.Content = GlobalTranslator.Instance.translator.ProvideValue("SpecialItems");
+            LabelWeapons.Content = GlobalTranslator.Instance.translator.ProvideValue("Weapon");
+            labelDescriptionGold.Content = GlobalTranslator.Instance.translator.ProvideValue("LabelGold");
+            buttonThrowItem.Content = GlobalTranslator.Instance.translator.ProvideValue("ThrowItem");
+            buttonUseItem.Content = GlobalTranslator.Instance.translator.ProvideValue("UseItem");
+            buttonThrowWeapon.Content = GlobalTranslator.Instance.translator.ProvideValue("ThrowWeapon");
+            groupBoxChoices.Header = GlobalTranslator.Instance.translator.ProvideValue("Choices");
+            buttonSave.Content = GlobalTranslator.Instance.translator.ProvideValue("Save");
+            buttonLoad.Content = GlobalTranslator.Instance.translator.ProvideValue("Load");
         }
         private void initHero(String name)
         {
@@ -112,9 +133,10 @@ namespace LDVELH_WPF
             labelHitPoint.Content = hero.getActualHitPoint().ToString() + "/" + hero.getMaxHitPoint().ToString();
             labelAgility.Content = hero.getBaseAgility().ToString();
             labelGoldAmount.Content = hero.getGold().ToString();
-            labelWeaponMastery.Content = translator.ProvideValue(hero.getWeaponMastery.ToString());
+            labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getWeaponMastery.ToString());
             listBoxCapacities.ItemsSource = hero.capacities;
             listBoxCapacities.DisplayMemberPath = "getCapacityDisplayName";
+            labelHungryState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getHungryState.ToString());
         }
         private void heroHPListener()
         {
@@ -177,13 +199,13 @@ namespace LDVELH_WPF
                 }
                 else
                 {
-                    return translator.ProvideValue("NoName");
+                    return GlobalTranslator.Instance.translator.ProvideValue("NoName");
                 }
 
             }
             else
             {
-                return translator.ProvideValue("NoName");
+                return GlobalTranslator.Instance.translator.ProvideValue("NoName");
             }
 
         }
@@ -206,6 +228,11 @@ namespace LDVELH_WPF
                 {
                     hero.useItem(itemToUse);
                 }
+                catch(CantEatException)
+                {
+                    MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("CantEat"));
+
+                }
                 catch (CannotUseItemException ex)
                 {
                     MessageBox.Show(ex.Message);
@@ -227,19 +254,22 @@ namespace LDVELH_WPF
         {
             try
             {
-                SQLiteDatabaseFunction.SaveHero(hero);
-                MessageBox.Show(translator.ProvideValue("SuccesSaving"));
+                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
+                {
+                    databaseRequest.SaveHero(hero);
+                }
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("SuccesSaving"));
             }
             catch (Exception ex)
             {
-                MessageBox.Show(translator.ProvideValue("ErrorSaving"));
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorSaving"));
                 System.Diagnostics.Debug.WriteLine("Error saving Hero : " + ex);
             }
         }
 
         private void buttonTestLoad_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show(translator.ProvideValue("ConfirmExit"), translator.ProvideValue("GoToLoadingMenu"), MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            if (MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ConfirmExit"), GlobalTranslator.Instance.translator.ProvideValue("GoToLoadingMenu"), MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
                 
             }

@@ -165,7 +165,9 @@ namespace LDVELH_WPF
                 GoldHasChanged(-gold);
             }
             else
+            {
                 throw new NotEnoughtGoldException("You don't have enough gold !");
+            }
 
         }
         public void emptyGold()
@@ -426,8 +428,16 @@ namespace LDVELH_WPF
         }
         public void eat()
         {
-            this.hungryStatus = HungryState.Full;
-            HungryStateHasChanged();
+            if (this.hungryStatus != HungryState.Full)
+            {
+                this.hungryStatus = HungryState.Full;
+                HungryStateHasChanged();
+            }
+            else
+            {
+                throw new CantEatException();
+            }
+            
         }
 
         public void mealTime()
@@ -531,7 +541,7 @@ namespace LDVELH_WPF
             this.combatDebuff = 0;
         }
 
-        public bool Fight(Ennemy ennemy)
+        public bool Fight(Enemy ennemy)
         {
             int strenghtDifference = findStrenghtDifference(ennemy);
             bool battleOver = false;
@@ -547,19 +557,19 @@ namespace LDVELH_WPF
             return battleOver;
         }
 
-        public int findStrenghtDifference(Ennemy ennemy)
+        public int findStrenghtDifference(Enemy ennemy)
         {
             int heroAgility = getHeroAgilityInBattle(ennemy);
             int ennemyAgility = ennemy.getBaseAgility();
             return (heroAgility - ennemyAgility);
         }
 
-        public int getHeroAgilityInBattle(Ennemy ennemy)
+        public int getHeroAgilityInBattle(Enemy ennemy)
         {
            return this.getBaseAgility() + getBonusAgility(ennemy) - getMalusAgility();
         }
 
-        public int getBonusAgility(Ennemy ennemy)
+        public int getBonusAgility(Enemy ennemy)
         {
             int bonusAgility = 0;
             bonusAgility += getBonusItemAgility();
@@ -578,7 +588,7 @@ namespace LDVELH_WPF
             return bonusAgility;
         }
 
-        private int getBonusCapacityAgility(Ennemy ennemy)
+        private int getBonusCapacityAgility(Enemy ennemy)
         {
             int bonusAgility = 0;
             if (this.possesCapacity(CapacityType.WeaponMastery))
@@ -609,7 +619,7 @@ namespace LDVELH_WPF
             return malusAgility;
         }
 
-        private bool resolveDamage(int strenghDifference, Ennemy ennemy)
+        private bool resolveDamage(int strenghDifference, Enemy ennemy)
         {
             int randomD10 = DiceRoll.D10Roll();
             ennemy.takeDamage(DamageTable.ennemyDamageTaken(strenghDifference, randomD10));
@@ -630,6 +640,8 @@ namespace LDVELH_WPF
 
         public void noNullInHero()
         {
+            //This function must ONLY be called when loading a hero from the database, if a hero is saved while his BackPack/WeaponHolder/SpecialItems is empty, then when loading it then be equal to null instead of empty
+            //So in order to make sure we don't have any null element, we check for null and incase create a new empty element.
             if (this.specialItems == null)
                 this.specialItems = new List<SpecialItem>();
             if (this.capacities == null)
@@ -676,6 +688,26 @@ namespace LDVELH_WPF
         { }
 
         protected NotEnoughtGoldException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        { }
+
+    }
+
+    [Serializable]
+    public class CantEatException : Exception
+    {
+        public CantEatException()
+        { }
+
+        public CantEatException(string message)
+            : base(message)
+        { }
+
+        public CantEatException(string message, Exception innerException)
+            : base(message, innerException)
+        { }
+
+        protected CantEatException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         { }
 

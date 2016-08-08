@@ -7,40 +7,33 @@ using System.Data.Entity;
 
 namespace LDVELH_WPF
 {
-    public static class SQLiteDatabaseFunction
+    public class SQLiteDatabaseFunction : IDisposable
     {
-        public static void SaveHero(Hero hero)
+        static MySQLiteDBContext heroSaveContext;
+
+        public SQLiteDatabaseFunction()
+        {
+            heroSaveContext = new MySQLiteDBContext();
+            heroSaveContext.MyBackPack.Load();
+            heroSaveContext.MyItems.Load();
+            heroSaveContext.MySpecialItem.Load();
+            heroSaveContext.MyWeaponHolders.Load();
+            heroSaveContext.MyWeapons.Load();
+            heroSaveContext.MyCapacities.Load();
+            heroSaveContext.MyHero.Load();
+        }
+
+        public void SaveHero(Hero hero)
         {
             try
             {
-                using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
-                {
-                    heroSaveContext.MyBackPack.Load();
-                    heroSaveContext.MyItems.Load();
-                    heroSaveContext.MySpecialItem.Load();
-                    heroSaveContext.MyWeaponHolders.Load();
-                    heroSaveContext.MyWeapons.Load();
-                    heroSaveContext.MyCapacities.Load();
-                    heroSaveContext.MyHero.Load();
-                    Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+                Hero savedHero = SelectHeroFromID(hero.CharacterID);
 
-                    if (savedHero != null)
-                    {
-                        if (savedHero.getSpecialItems != null)
-                        {
-                            heroSaveContext.MySpecialItem.RemoveRange(savedHero.getSpecialItems);
-                        }
-                        if (savedHero.capacities != null)
-                        {
-                            heroSaveContext.MyCapacities.RemoveRange(savedHero.capacities);
-                        }
-                        heroSaveContext.MyHero.Remove(savedHero);
-                        heroSaveContext.SaveChanges();
-                    }
-                    heroSaveContext.MyHero.Add(hero);
-                    heroSaveContext.SaveChanges();
-                    
+                if (savedHero != null)
+                {
+                    DeleteHero(savedHero);
                 }
+                heroSaveContext.MyHero.Add(hero);
             }
             catch (Exception)
             {
@@ -48,32 +41,21 @@ namespace LDVELH_WPF
             }
 
         }
-        public static void DeleteHero(Hero hero)
+        public void DeleteHero(Hero hero)
         {
             try
             {
-                using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
-                {
-                    heroSaveContext.MyBackPack.Load();
-                    heroSaveContext.MyItems.Load();
-                    heroSaveContext.MySpecialItem.Load();
-                    heroSaveContext.MyWeaponHolders.Load();
-                    heroSaveContext.MyWeapons.Load();
-                    heroSaveContext.MyCapacities.Load();
-                    heroSaveContext.MyHero.Load();
-                    Hero savedHero = heroSaveContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+                Hero savedHero = SelectHeroFromID(hero.CharacterID);
 
-                    if (savedHero.getSpecialItems != null)
-                    {
-                        heroSaveContext.MySpecialItem.RemoveRange(savedHero.getSpecialItems);
-                    }
-                    if (savedHero.capacities != null)
-                    {
-                        heroSaveContext.MyCapacities.RemoveRange(savedHero.capacities);
-                    }
-                    heroSaveContext.MyHero.Remove(savedHero);
-                    heroSaveContext.SaveChanges();
+                if (savedHero.getSpecialItems != null)
+                {
+                    heroSaveContext.MySpecialItem.RemoveRange(savedHero.getSpecialItems);
                 }
+                if (savedHero.capacities != null)
+                {
+                    heroSaveContext.MyCapacities.RemoveRange(savedHero.capacities);
+                }
+                heroSaveContext.MyHero.Remove(savedHero);
             }
             catch (Exception)
             {
@@ -82,42 +64,62 @@ namespace LDVELH_WPF
             
         }
 
-        public static Hero SelectHeroFromID(String HeroID)
+        public Hero SelectHeroFromID(int HeroID)
         {
-            using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
-            {
                 try
                 {
-                    heroSaveContext.MyBackPack.Load();
-                    heroSaveContext.MyItems.Load();
-                    heroSaveContext.MySpecialItem.Load();
-                    heroSaveContext.MyWeaponHolders.Load();
-                    heroSaveContext.MyWeapons.Load();
-                    heroSaveContext.MyCapacities.Load();
-                    heroSaveContext.MyHero.Load();
-                    return heroSaveContext.MyHero.Where(x => x.CharacterID.ToString() == HeroID).FirstOrDefault();
+                    return heroSaveContext.MyHero.Where(x => x.CharacterID == HeroID).FirstOrDefault();
                 }
                 catch (Exception)
                 {
                     throw;
                 }
-            }
         }
 
-        public static List<Hero> GetAllHeroes()
+        public List<Hero> GetAllHeroes()
         {
             try
             {
-                using (MySQLiteDBContext heroSaveContext = new MySQLiteDBContext())
-                {
-                    var query = from hero in heroSaveContext.MyHero select hero;
-                    return query.ToList();
-                }
+                var query = from hero in heroSaveContext.MyHero select hero;
+                return query.ToList();
             }
             catch (Exception)
             {
                 throw;
             }
+        }
+
+        public void SaveChanges()
+        {
+            try
+            {
+                heroSaveContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    SaveChanges();
+                    heroSaveContext.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
         
     }

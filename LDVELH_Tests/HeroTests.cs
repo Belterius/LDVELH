@@ -48,7 +48,7 @@ namespace LDVELH_Tests
         public void HeroStrenghtDifference()
         {
             Hero Belterius = new Hero("Belterius");
-            Ennemy evilHuman = new Ennemy("Common Human", 10, 10, EnnemyTypes.Human);
+            Enemy evilHuman = new Enemy("Common Human", 10, 10, EnnemyTypes.Human);
             int heroBaseAgility = Belterius.getBaseAgility();
 
             //Base test
@@ -84,7 +84,7 @@ namespace LDVELH_Tests
             //WARNING TEST WILL FAIL IF ORC IS NOT IMMUN TO PSYCHIC ANYMORE, can check in Ennemy isWeakToPsychic
             SpecialItem ring = new SpecialItemCombat("magic ring", 6, 0);
             Belterius.addLoot(ring);
-            Ennemy evilOrc = new Ennemy("Common Orc", 15, 10, EnnemyTypes.Orc);
+            Enemy evilOrc = new Enemy("Common Orc", 15, 10, EnnemyTypes.Orc);
             expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + ((SpecialItemCombat)ring).getAgilityBonus + Capacity.weaponMasteryStrenght) - evilOrc.getBaseAgility();
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilOrc));
@@ -95,7 +95,7 @@ namespace LDVELH_Tests
         public void HeroFight()
         {
             Hero hero = new Hero("hero");
-            Ennemy beast = new Ennemy("beast", 22, 20, EnnemyTypes.Beast);
+            Enemy beast = new Enemy("beast", 22, 20, EnnemyTypes.Beast);
             bool battleOver = false;
             try
             {

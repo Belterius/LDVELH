@@ -34,8 +34,7 @@ namespace LDVELH_WPF
         public string getCapacityDisplayName
         {
             get {
-                Translator translator = new Translator();
-                return translator.ProvideValue(capacity.ToString());
+                return GlobalTranslator.Instance.translator.ProvideValue(capacity.ToString());
             }
         }
         
@@ -61,8 +60,7 @@ namespace LDVELH_WPF
 
         public static String GetTranslation(this CapacityType capacity)
         {
-            Translator translator = new Translator();
-            return translator.ProvideValue(capacity.ToString());
+            return GlobalTranslator.Instance.translator.ProvideValue(capacity.ToString());
         }
     }
 }

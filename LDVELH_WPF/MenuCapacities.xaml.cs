@@ -26,12 +26,21 @@ namespace LDVELH_WPF
         public MenuCapacities()
         {
             InitializeComponent();
+            TranslateLabel();
         }
         public MenuCapacities(Hero hero, MainWindow mainWindow)
         {
             InitializeComponent();
+            TranslateLabel();
             this.hero = hero;
             this.mainWindow = mainWindow;
+        }
+
+        private void TranslateLabel()
+        {
+            this.Title = GlobalTranslator.Instance.translator.ProvideValue("MenuCapacities");
+            groupBoxCapacities.Header = GlobalTranslator.Instance.translator.ProvideValue("ListCapacities");
+            ButtonConfirm.Content = GlobalTranslator.Instance.translator.ProvideValue("Confirm");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -51,8 +60,7 @@ namespace LDVELH_WPF
             }
             if (numberOfCapacities != allowedNumberCapacities)
             {
-                Translator translator = new Translator();
-                MessageBox.Show(translator.ProvideValue("YouMustSelect")+" " + allowedNumberCapacities +" " + translator.ProvideValue("Capacities")+" !");
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("YouMustSelect") + " " + allowedNumberCapacities + " " + GlobalTranslator.Instance.translator.ProvideValue("Capacities") + " !");
                 return;
             }
             foreach (var item in ((Grid)(groupBoxCapacities.Content)).Children)

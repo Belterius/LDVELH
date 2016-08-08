@@ -35,8 +35,7 @@ namespace LDVELH_WPF
 
 
         Hero hero;
-        Ennemy ennemy;
-        Translator translator;
+        Enemy ennemy;
         bool ranAway = false;
         int roundRunAway=999;
         bool fightOver = false;
@@ -45,25 +44,39 @@ namespace LDVELH_WPF
         public MessageBoxFight()
         {
             InitializeComponent();
+            TranslateLabel();
         }
-        public MessageBoxFight(Hero hero, Ennemy ennemy)
+        private void TranslateLabel()
+        {
+            this.Title = GlobalTranslator.Instance.translator.ProvideValue("Battling");
+            buttonNextRound.Content = GlobalTranslator.Instance.translator.ProvideValue("StartFight");
+            groupBoxYourHero.Header = GlobalTranslator.Instance.translator.ProvideValue("YourHero");
+            labelHeroHP.Content = GlobalTranslator.Instance.translator.ProvideValue("Life");
+            labelHeroAgility.Content = GlobalTranslator.Instance.translator.ProvideValue("Agility");
+            labelHeroDamageTaken.Content = GlobalTranslator.Instance.translator.ProvideValue("DamageTaken");
+            GroupBoxYourEnemy.Header = GlobalTranslator.Instance.translator.ProvideValue("YourEnemy");
+            labelEnemyAgility.Content = GlobalTranslator.Instance.translator.ProvideValue("Agility");
+            labelEnemyLife.Content = GlobalTranslator.Instance.translator.ProvideValue("Life");
+            labelEnemyDamageTaken.Content = GlobalTranslator.Instance.translator.ProvideValue("DamageTaken");
+            labelRoundNumber.Content = GlobalTranslator.Instance.translator.ProvideValue("YouMustFight");
+            buttonRun.Content = GlobalTranslator.Instance.translator.ProvideValue("Escape");
+        }
+        public MessageBoxFight(Hero hero, Enemy ennemy)
         {
             InitializeComponent();
             this.hero = hero;
             this.ennemy = ennemy;
-            this.translator = new Translator();
             buttonRun.Visibility = Visibility.Hidden;
             setLife();
             setAgility();
             labelDammageTakenEnnemy.Content = "0";
             labelDammageTakenHero.Content = "0";
         }
-        public MessageBoxFight(Hero hero, Ennemy ennemy, int ranTurn)
+        public MessageBoxFight(Hero hero, Enemy ennemy, int ranTurn)
         {
             InitializeComponent();
             this.hero = hero;
             this.ennemy = ennemy;
-            this.translator = new Translator();
             this.roundRunAway = ranTurn;
             buttonRun.Visibility = Visibility.Hidden;
             setLife();
@@ -74,7 +87,7 @@ namespace LDVELH_WPF
 
         private void buttonNextRound_Click(object sender, RoutedEventArgs e)
         {
-            buttonNextRound.Content = translator.ProvideValue("NextRound");
+            buttonNextRound.Content = GlobalTranslator.Instance.translator.ProvideValue("NextRound");
             previousLifeHero = hero.getActualHitPoint();
             previousLifeEnnemy = ennemy.getActualHitPoint();
             try
@@ -87,8 +100,8 @@ namespace LDVELH_WPF
             }
             if (fightOver)
             {
-                buttonNextRound.Content = translator.ProvideValue("Victory") +" !";
-                labelRoundNumber.Content = translator.ProvideValue("Victory").ToUpper() + "!";
+                buttonNextRound.Content = GlobalTranslator.Instance.translator.ProvideValue("Victory") + " !";
+                labelRoundNumber.Content = GlobalTranslator.Instance.translator.ProvideValue("Victory").ToUpper() + "!";
                 setLife();
                 setDamageTaken();
                 buttonNextRound.Click -= buttonNextRound_Click;
@@ -97,7 +110,7 @@ namespace LDVELH_WPF
             else
             {
                 roundNumber++;
-                labelRoundNumber.Content = translator.ProvideValue("RoundNumber") + " " +roundNumber;
+                labelRoundNumber.Content = GlobalTranslator.Instance.translator.ProvideValue("RoundNumber") + " " + roundNumber;
                 setLife();
                 setDamageTaken();
             }

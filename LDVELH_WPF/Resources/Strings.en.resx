@@ -174,7 +174,7 @@
   <data name="Full" xml:space="preserve">
     <value>Full</value>
   </data>
-  <data name="Gold" xml:space="preserve">
+  <data name="LabelGold" xml:space="preserve">
     <value>Golds :</value>
   </data>
   <data name="Healing" xml:space="preserve">
@@ -350,5 +350,32 @@
   </data>
   <data name="SuccesSaving" xml:space="preserve">
     <value>Hero successfully saved !</value>
+  </data>
+  <data name="CantEat" xml:space="preserve">
+    <value>You cannot eat anymore, you are already full !</value>
+  </data>
+  <data name="DebuffAgility" xml:space="preserve">
+    <value>Your agility is decreased !</value>
+  </data>
+  <data name="ErrorInventoryFull" xml:space="preserve">
+    <value>Your inventory is full ! You have to throw an item before you can pick up a new one.</value>
+  </data>
+  <data name="ErrorNotEnoughtGold" xml:space="preserve">
+    <value>You don't have enought gold !</value>
+  </data>
+  <data name="ErrorWeaponHolderFull" xml:space="preserve">
+    <value>Your Weapon Holder is full ! You have to throw a weapon before you can pick up a new one.</value>
+  </data>
+  <data name="Gold" xml:space="preserve">
+    <value>gold</value>
+  </data>
+  <data name="TakeDamage" xml:space="preserve">
+    <value>You take some damage !</value>
+  </data>
+  <data name="UseCapacity" xml:space="preserve">
+    <value>Use your capacity </value>
+  </data>
+  <data name="SelectLanguage" xml:space="preserve">
+    <value>Please select the language setting</value>
   </data>
 </root>

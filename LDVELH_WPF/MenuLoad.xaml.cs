@@ -24,13 +24,22 @@ namespace LDVELH_WPF
         public MenuLoad()
         {
             InitializeComponent();
+            TranslateLabel();
         }
-
+        private void TranslateLabel()
+        {
+            this.Title = GlobalTranslator.Instance.translator.ProvideValue("LoadMenu");
+            buttonLoad.Content = GlobalTranslator.Instance.translator.ProvideValue("Load");
+            buttonNew.Content = GlobalTranslator.Instance.translator.ProvideValue("NewGame");
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                listHeroes = SQLiteDatabaseFunction.GetAllHeroes();
+                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
+                {
+                    listHeroes = databaseRequest.GetAllHeroes();
+                }
                 listBoxHeroes.ItemsSource = listHeroes;
                 listBoxHeroes.DisplayMemberPath = "getResume";
                 listBoxHeroes.SelectedValuePath = "CharacterID";
@@ -53,7 +62,11 @@ namespace LDVELH_WPF
         {
             try
             {
-                Hero heroSelected = SQLiteDatabaseFunction.SelectHeroFromID(listBoxHeroes.SelectedValue.ToString());
+                Hero heroSelected;
+                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
+                {
+                    heroSelected = databaseRequest.SelectHeroFromID((int)listBoxHeroes.SelectedValue);
+                }
                 MainWindow mainWindow = new MainWindow(heroSelected);
                 mainWindow.Show();
                 this.Close();

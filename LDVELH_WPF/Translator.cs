@@ -13,6 +13,32 @@ namespace LDVELH_WPF
         CultureInfo GetCurrentCultureInfo();
     }
 
+    public sealed class GlobalTranslator
+    {
+        public Translator translator = new Translator();
+
+        static readonly GlobalTranslator INSTANCE = new GlobalTranslator();
+
+        private GlobalTranslator()
+        {
+
+        }
+
+        public static GlobalTranslator Instance
+        {
+            get
+            {
+                return INSTANCE;
+            }
+        }
+    }
+
+    public enum SupportedLanguage
+    {
+        French,
+        English
+    }
+
     public class Translator : MarkupExtension
     {
         readonly CultureInfo ci;
@@ -21,16 +47,18 @@ namespace LDVELH_WPF
         public Translator()
         {
             ci = Thread.CurrentThread.CurrentCulture;
+
             //ci = new CultureInfo("fr-FR");
+
         }
-        public Translator(string language)
+        public Translator(SupportedLanguage language)
         {
-            switch (language.ToLower())
+            switch (language)
             {
-                case "french":
+                case SupportedLanguage.French:
                     ci = new CultureInfo("fr-FR");
                     break;
-                case "english":
+                case SupportedLanguage.English:
                     ci = new CultureInfo("en-GB");
                     break;
                 default:

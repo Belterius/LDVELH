@@ -133,6 +133,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous ne pouvez pas manger plus, vous êtes déjà rassasié !.
+        /// </summary>
+        internal static string CantEat {
+            get {
+                return ResourceManager.GetString("CantEat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to capacités.
         /// </summary>
         internal static string Capacities {
@@ -214,6 +223,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Votre agilité est réduite !.
+        /// </summary>
+        internal static string DebuffAgility {
+            get {
+                return ResourceManager.GetString("DebuffAgility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to lors un combat.
         /// </summary>
         internal static string DuringBattle {
@@ -241,11 +259,38 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Votre inventaire est plein ! vous devez vider un objet de votre sac avant de pouvoir récupérer un nouvel item.
+        /// </summary>
+        internal static string ErrorInventoryFull {
+            get {
+                return ResourceManager.GetString("ErrorInventoryFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous n&apos;avez pas assez de pièces d&apos;or !.
+        /// </summary>
+        internal static string ErrorNotEnoughtGold {
+            get {
+                return ResourceManager.GetString("ErrorNotEnoughtGold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erreur, impossible de sauvegarder le héro !.
         /// </summary>
         internal static string ErrorSaving {
             get {
                 return ResourceManager.GetString("ErrorSaving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre baudrier est plein ! vous devez jeter une arme avant de pouvoir en récupérer une nouvelle.
+        /// </summary>
+        internal static string ErrorWeaponHolderFull {
+            get {
+                return ResourceManager.GetString("ErrorWeaponHolderFull", resourceCulture);
             }
         }
         
@@ -277,7 +322,7 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pièces d&apos;Or :.
+        ///   Looks up a localized string similar to Pièces d&apos;or.
         /// </summary>
         internal static string Gold {
             get {
@@ -390,6 +435,15 @@ namespace LDVELH_WPF.Resources {
         internal static string Inventory {
             get {
                 return ResourceManager.GetString("Inventory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pièces d&apos;Or :.
+        /// </summary>
+        internal static string LabelGold {
+            get {
+                return ResourceManager.GetString("LabelGold", resourceCulture);
             }
         }
         
@@ -574,6 +628,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Veuillez choisir la langue d&apos;éxécution du programme.
+        /// </summary>
+        internal static string SelectLanguage {
+            get {
+                return ResourceManager.GetString("SelectLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sixième Sens.
         /// </summary>
         internal static string SixthSense {
@@ -628,6 +691,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous subissez des dégats !.
+        /// </summary>
+        internal static string TakeDamage {
+            get {
+                return ResourceManager.GetString("TakeDamage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maitrise de la matière.
         /// </summary>
         internal static string Telekinesis {
@@ -660,6 +732,15 @@ namespace LDVELH_WPF.Resources {
         internal static string TwoEdgedSword {
             get {
                 return ResourceManager.GetString("TwoEdgedSword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Utiliser votre capacité .
+        /// </summary>
+        internal static string UseCapacity {
+            get {
+                return ResourceManager.GetString("UseCapacity", resourceCulture);
             }
         }
         
