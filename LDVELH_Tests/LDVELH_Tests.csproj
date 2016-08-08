@@ -69,7 +69,7 @@
     <Compile Include="BackPackTests.cs" />
     <Compile Include="CapacityTest.cs" />
     <Compile Include="ItemTests.cs" />
-    <Compile Include="EnnemyTests.cs" />
+    <Compile Include="EnemyTests.cs" />
     <Compile Include="HeroTests.cs" />
     <Compile Include="SpecialItemsTests.cs" />
     <Compile Include="RollsTests.cs" />

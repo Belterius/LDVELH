@@ -26,12 +26,21 @@ namespace LDVELH_WPF
         public MenuCapacities()
         {
             InitializeComponent();
+            TranslateLabel();
         }
         public MenuCapacities(Hero hero, MainWindow mainWindow)
         {
             InitializeComponent();
+            TranslateLabel();
             this.hero = hero;
             this.mainWindow = mainWindow;
+        }
+
+        private void TranslateLabel()
+        {
+            this.Title = GlobalTranslator.Instance.translator.ProvideValue("MenuCapacities");
+            groupBoxCapacities.Header = GlobalTranslator.Instance.translator.ProvideValue("ListCapacities");
+            ButtonConfirm.Content = GlobalTranslator.Instance.translator.ProvideValue("Confirm");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

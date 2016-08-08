@@ -189,12 +189,12 @@ namespace LDVELH_WPF
     }
     public class FightEvent : Event
     {
-        protected Ennemy ennemy;
+        protected Enemy ennemy;
 
         public FightEvent()
         {
         }
-        public FightEvent(Ennemy ennemy)
+        public FightEvent(Enemy ennemy)
         {
             this.ennemy = ennemy;
         }
@@ -210,7 +210,7 @@ namespace LDVELH_WPF
                 throw;
             }
         }
-        private bool ShowMyDialogBox(Story story, Ennemy ennemy)
+        private bool ShowMyDialogBox(Story story, Enemy ennemy)
         {
 
             MessageBoxFight testDialog = new MessageBoxFight(story.getHero, ennemy);
@@ -233,13 +233,13 @@ namespace LDVELH_WPF
         int ranTurn;
         Event runEvent;
 
-        public RunEvent(Ennemy ennemy, int ranTurn, Event runEvent)
+        public RunEvent(Enemy ennemy, int ranTurn, Event runEvent)
         {
             this.ennemy = ennemy;
             this.runEvent = runEvent;
             this.ranTurn = ranTurn;
         }
-        public RunEvent(int destinationNumber, Ennemy ennemy, int ranTurn, Event runEvent)
+        public RunEvent(int destinationNumber, Enemy ennemy, int ranTurn, Event runEvent)
         {
             this.ennemy = ennemy;
             this.runEvent = runEvent;
@@ -257,7 +257,7 @@ namespace LDVELH_WPF
                 throw;
             }
         }
-        private bool ShowMyDialogBox(Story story, Ennemy ennemy, int ranTurn, Event runEvent)
+        private bool ShowMyDialogBox(Story story, Enemy ennemy, int ranTurn, Event runEvent)
         {
 
             MessageBoxFight testDialog = new MessageBoxFight(story.getHero, ennemy, ranTurn);

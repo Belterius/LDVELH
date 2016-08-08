@@ -11,11 +11,11 @@
                 <Label x:Name="labelDescriptionAgility" Content="{Core:Translator Text=Agility}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,10,0,0"/>
                 <Label x:Name="labelHitPoint" Content="20/20" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.053,1.423" Margin="73,10,0,0"/>
                 <ListBox x:Name="listBoxCapacities" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="209" Margin="309,21,0,0"/>
-                <Label Content="{Core:Translator Text=WeaponMasteryLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-2,36,0,-1"/>
+                <Label x:Name="LabelWeaponMastery" Content="{Core:Translator Text=WeaponMasteryLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-2,36,0,-1"/>
                 <Label x:Name="labelWeaponMastery" Content="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="112,36,0,-1"/>
                 <Label Content="Label" HorizontalAlignment="Left" Margin="269,47,0,0" VerticalAlignment="Top"/>
-                <Label Content="{Core:Translator Text=CapacitiesLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="309,0,0,0"/>
-                <Label x:Name="label" Content="{Core:Translator Text=Hunger}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,10,0,0"/>
+                <Label x:Name="LabelCapacities" Content="{Core:Translator Text=CapacitiesLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="309,0,0,0"/>
+                <Label x:Name="LabelHunger" Content="{Core:Translator Text=Hunger}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,10,0,0"/>
                 <Label x:Name="labelHungryState" Content="{Core:Translator Text=Hungry}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="227,10,0,0"/>
             </Grid>
         </GroupBox>
@@ -23,9 +23,9 @@
             <Grid HorizontalAlignment="Left" Height="652" VerticalAlignment="Top" Width="185" Margin="0,0,-2,-3">
                 <Grid HorizontalAlignment="Left" Height="652" VerticalAlignment="Top" Width="185">
                     <Label x:Name="labelGoldAmount" Content="goldAmount" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,36,0,0" RenderTransformOrigin="0.39,0.538"/>
-                    <Label Content="{Core:Translator Text=BackPack}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,237,0,0"/>
-                    <Label Content="{Core:Translator Text=SpecialItems}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,419,0,0"/>
-                    <Label Content="{Core:Translator Text=Weapon}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,95,0,0"/>
+                    <Label x:Name="LabelBackPack" Content="{Core:Translator Text=BackPack}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,237,0,0"/>
+                    <Label x:Name="LabelSpecialItems" Content="{Core:Translator Text=SpecialItems}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,419,0,0"/>
+                    <Label x:Name="LabelWeapons" Content="{Core:Translator Text=Weapon}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,95,0,0"/>
                     <Label x:Name="labelDescriptionGold" Content="{Core:Translator Text=LabelGold}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
                     <ListBox x:Name="listBoxWeapons" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="162" Margin="13,121,0,0"/>
                     <ListBox x:Name="listBoxBackPack" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="162" Margin="13,263,0,0"/>

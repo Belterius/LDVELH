@@ -35,7 +35,7 @@ namespace LDVELH_WPF
 
 
         Hero hero;
-        Ennemy ennemy;
+        Enemy ennemy;
         bool ranAway = false;
         int roundRunAway=999;
         bool fightOver = false;
@@ -44,8 +44,24 @@ namespace LDVELH_WPF
         public MessageBoxFight()
         {
             InitializeComponent();
+            TranslateLabel();
         }
-        public MessageBoxFight(Hero hero, Ennemy ennemy)
+        private void TranslateLabel()
+        {
+            this.Title = GlobalTranslator.Instance.translator.ProvideValue("Battling");
+            buttonNextRound.Content = GlobalTranslator.Instance.translator.ProvideValue("StartFight");
+            groupBoxYourHero.Header = GlobalTranslator.Instance.translator.ProvideValue("YourHero");
+            labelHeroHP.Content = GlobalTranslator.Instance.translator.ProvideValue("Life");
+            labelHeroAgility.Content = GlobalTranslator.Instance.translator.ProvideValue("Agility");
+            labelHeroDamageTaken.Content = GlobalTranslator.Instance.translator.ProvideValue("DamageTaken");
+            GroupBoxYourEnemy.Header = GlobalTranslator.Instance.translator.ProvideValue("YourEnemy");
+            labelEnemyAgility.Content = GlobalTranslator.Instance.translator.ProvideValue("Agility");
+            labelEnemyLife.Content = GlobalTranslator.Instance.translator.ProvideValue("Life");
+            labelEnemyDamageTaken.Content = GlobalTranslator.Instance.translator.ProvideValue("DamageTaken");
+            labelRoundNumber.Content = GlobalTranslator.Instance.translator.ProvideValue("YouMustFight");
+            buttonRun.Content = GlobalTranslator.Instance.translator.ProvideValue("Escape");
+        }
+        public MessageBoxFight(Hero hero, Enemy ennemy)
         {
             InitializeComponent();
             this.hero = hero;
@@ -56,7 +72,7 @@ namespace LDVELH_WPF
             labelDammageTakenEnnemy.Content = "0";
             labelDammageTakenHero.Content = "0";
         }
-        public MessageBoxFight(Hero hero, Ennemy ennemy, int ranTurn)
+        public MessageBoxFight(Hero hero, Enemy ennemy, int ranTurn)
         {
             InitializeComponent();
             this.hero = hero;

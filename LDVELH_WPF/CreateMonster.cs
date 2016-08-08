@@ -8,9 +8,9 @@ namespace LDVELH_WPF
 {
     public static class CreateMonster
     {
-        public static Ennemy Bear()
+        public static Enemy Bear()
         {
-            return new Ennemy("Bear", 12, 12, EnnemyTypes.Beast);
+            return new Enemy("Bear", 12, 12, EnnemyTypes.Beast);
         }
         
     }

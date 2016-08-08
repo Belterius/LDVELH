@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace LDVELH_WPF
 {
-    public class Ennemy : Character
+    public class Enemy : Character
     {
-        public static readonly List<EnnemyTypes> ennemiesWeakToPhychic = new List<EnnemyTypes> { EnnemyTypes.Human, EnnemyTypes.Beast };
+        public static readonly List<EnnemyTypes> enemiesWeakToPhychic = new List<EnnemyTypes> { EnnemyTypes.Human, EnnemyTypes.Beast };
 
 
         [Column("Type")]
         public EnnemyTypes ClassType;
 
-        public Ennemy(String name, int agility, int hitPoint, EnnemyTypes ennemyType)
+        public Enemy(String name, int agility, int hitPoint, EnnemyTypes ennemyType)
         {
             this.name = name;
             this.baseAgility = agility;
@@ -27,7 +27,7 @@ namespace LDVELH_WPF
 
         public bool isWeakToPhychic()
         {
-            if (ennemiesWeakToPhychic.Contains(ClassType))
+            if (enemiesWeakToPhychic.Contains(ClassType))
             {
                 return true;
             }

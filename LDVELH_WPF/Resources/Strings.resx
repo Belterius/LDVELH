@@ -375,4 +375,7 @@
   <data name="UseCapacity" xml:space="preserve">
     <value>Utiliser votre capacité </value>
   </data>
+  <data name="SelectLanguage" xml:space="preserve">
+    <value>Veuillez choisir la langue d'éxécution du programme</value>
+  </data>
 </root>

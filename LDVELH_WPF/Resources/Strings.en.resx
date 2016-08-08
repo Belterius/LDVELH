@@ -375,4 +375,7 @@
   <data name="UseCapacity" xml:space="preserve">
     <value>Use your capacity </value>
   </data>
+  <data name="SelectLanguage" xml:space="preserve">
+    <value>Please select the language setting</value>
+  </data>
 </root>

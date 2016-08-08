@@ -35,6 +35,7 @@ namespace LDVELH_WPF
         public MainWindow(Hero savedHero)
         {
             InitializeComponent();
+            TranslateLabel();
             loadingHero = true;
             initHero(savedHero);
         }
@@ -51,6 +52,27 @@ namespace LDVELH_WPF
                 storyObserver.loadingHero = true;
                 story.start(hero.getActualParagraph());
             }
+        }
+        private void TranslateLabel()
+        {
+            groupBoxHeroStat.Header = GlobalTranslator.Instance.translator.ProvideValue("HeroStats");
+            labelDescriptionHitPoint.Content = GlobalTranslator.Instance.translator.ProvideValue("HitPoints");
+            labelDescriptionAgility.Content = GlobalTranslator.Instance.translator.ProvideValue("Agility");
+            LabelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue("WeaponMasteryLabel");
+            LabelCapacities.Content = GlobalTranslator.Instance.translator.ProvideValue("CapacitiesLabel");
+            LabelHunger.Content = GlobalTranslator.Instance.translator.ProvideValue("Hunger");
+            labelHungryState.Content = GlobalTranslator.Instance.translator.ProvideValue("Hungry");
+            groupBoxInventory.Header = GlobalTranslator.Instance.translator.ProvideValue("Inventory");
+            LabelBackPack.Content = GlobalTranslator.Instance.translator.ProvideValue("BackPack");
+            LabelSpecialItems.Content = GlobalTranslator.Instance.translator.ProvideValue("SpecialItems");
+            LabelWeapons.Content = GlobalTranslator.Instance.translator.ProvideValue("Weapon");
+            labelDescriptionGold.Content = GlobalTranslator.Instance.translator.ProvideValue("LabelGold");
+            buttonThrowItem.Content = GlobalTranslator.Instance.translator.ProvideValue("ThrowItem");
+            buttonUseItem.Content = GlobalTranslator.Instance.translator.ProvideValue("UseItem");
+            buttonThrowWeapon.Content = GlobalTranslator.Instance.translator.ProvideValue("ThrowWeapon");
+            groupBoxChoices.Header = GlobalTranslator.Instance.translator.ProvideValue("Choices");
+            buttonSave.Content = GlobalTranslator.Instance.translator.ProvideValue("Save");
+            buttonLoad.Content = GlobalTranslator.Instance.translator.ProvideValue("Load");
         }
         private void initHero(String name)
         {

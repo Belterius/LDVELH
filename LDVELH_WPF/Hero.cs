@@ -541,7 +541,7 @@ namespace LDVELH_WPF
             this.combatDebuff = 0;
         }
 
-        public bool Fight(Ennemy ennemy)
+        public bool Fight(Enemy ennemy)
         {
             int strenghtDifference = findStrenghtDifference(ennemy);
             bool battleOver = false;
@@ -557,19 +557,19 @@ namespace LDVELH_WPF
             return battleOver;
         }
 
-        public int findStrenghtDifference(Ennemy ennemy)
+        public int findStrenghtDifference(Enemy ennemy)
         {
             int heroAgility = getHeroAgilityInBattle(ennemy);
             int ennemyAgility = ennemy.getBaseAgility();
             return (heroAgility - ennemyAgility);
         }
 
-        public int getHeroAgilityInBattle(Ennemy ennemy)
+        public int getHeroAgilityInBattle(Enemy ennemy)
         {
            return this.getBaseAgility() + getBonusAgility(ennemy) - getMalusAgility();
         }
 
-        public int getBonusAgility(Ennemy ennemy)
+        public int getBonusAgility(Enemy ennemy)
         {
             int bonusAgility = 0;
             bonusAgility += getBonusItemAgility();
@@ -588,7 +588,7 @@ namespace LDVELH_WPF
             return bonusAgility;
         }
 
-        private int getBonusCapacityAgility(Ennemy ennemy)
+        private int getBonusCapacityAgility(Enemy ennemy)
         {
             int bonusAgility = 0;
             if (this.possesCapacity(CapacityType.WeaponMastery))
@@ -619,7 +619,7 @@ namespace LDVELH_WPF
             return malusAgility;
         }
 
-        private bool resolveDamage(int strenghDifference, Ennemy ennemy)
+        private bool resolveDamage(int strenghDifference, Enemy ennemy)
         {
             int randomD10 = DiceRoll.D10Roll();
             ennemy.takeDamage(DamageTable.ennemyDamageTaken(strenghDifference, randomD10));
