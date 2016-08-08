@@ -20,8 +20,8 @@ namespace LDVELH_WPF
 
         public Translator()
         {
-            //ci = Thread.CurrentThread.CurrentCulture;
-            ci = new CultureInfo("fr-FR");
+            ci = Thread.CurrentThread.CurrentCulture;
+            //ci = new CultureInfo("fr-FR");
         }
         public Translator(string language)
         {
