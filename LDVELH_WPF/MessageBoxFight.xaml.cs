@@ -64,6 +64,7 @@ namespace LDVELH_WPF
         public MessageBoxFight(Hero hero, Enemy ennemy)
         {
             InitializeComponent();
+            TranslateLabel();
             this.hero = hero;
             this.ennemy = ennemy;
             buttonRun.Visibility = Visibility.Hidden;
