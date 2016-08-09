@@ -47,9 +47,21 @@ namespace LDVELH_WPF
         public Translator()
         {
             ci = Thread.CurrentThread.CurrentCulture;
-
-            //ci = new CultureInfo("fr-FR");
-
+        }
+        public Translator(String language)
+        {
+            switch (language.ToLower())
+            {
+                case "french":
+                    ci = new CultureInfo("fr-FR");
+                    break;
+                case "english":
+                    ci = new CultureInfo("en-GB");
+                    break;
+                default:
+                    ci = new CultureInfo("en-GB");
+                    break;
+            }
         }
         public Translator(SupportedLanguage language)
         {
@@ -62,7 +74,7 @@ namespace LDVELH_WPF
                     ci = new CultureInfo("en-GB");
                     break;
                 default:
-                    ci = new CultureInfo("fr-FR");
+                    ci = new CultureInfo("en-GB");
                     break;
             }
         }

@@ -637,6 +637,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        internal static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sixième Sens.
         /// </summary>
         internal static string SixthSense {

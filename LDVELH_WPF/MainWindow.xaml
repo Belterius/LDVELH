@@ -2,21 +2,20 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Core="clr-namespace:LDVELH_WPF;assembly=" 
-        Title="MainWindow" Height="747" Width="767" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="MainWindow" Height="764" Width="768" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
-        <GroupBox x:Name="groupBoxHeroStat" Header="{Core:Translator Text=HeroStats}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="74" Width="541" Margin="10,0,0,0">
-            <Grid HorizontalAlignment="Left" Height="61" VerticalAlignment="Top" Width="521" Margin="10,-6,0,-3">
+        <GroupBox x:Name="groupBoxHeroStat" Header="{Core:Translator Text=HeroStats}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="541" Margin="10,0,0,0">
+            <Grid HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="521" Margin="10,-6,-2,-22">
                 <Label x:Name="labelDescriptionHitPoint" Content="{Core:Translator Text=HitPoints}" HorizontalAlignment="Left" Margin="-3,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.06,0.038"/>
                 <Label x:Name="labelAgility" Content="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="159,10,0,0"/>
                 <Label x:Name="labelDescriptionAgility" Content="{Core:Translator Text=Agility}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,10,0,0"/>
-                <Label x:Name="labelHitPoint" Content="20/20" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.053,1.423" Margin="73,10,0,0"/>
-                <ListBox x:Name="listBoxCapacities" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="209" Margin="309,21,0,0"/>
-                <Label x:Name="LabelWeaponMastery" Content="{Core:Translator Text=WeaponMasteryLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-2,36,0,-1"/>
-                <Label x:Name="labelWeaponMastery" Content="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="112,36,0,-1"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="269,47,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelHitPoint" Content="20/20" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.053,1.423" Margin="75,10,0,0"/>
+                <ListBox x:Name="listBoxCapacities" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="209" Margin="309,21,0,0"/>
+                <Label x:Name="LabelWeaponMastery" Content="{Core:Translator Text=WeaponMasteryLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-3,48,0,0"/>
+                <Label x:Name="labelWeaponMastery" Content="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="112,48,0,0"/>
                 <Label x:Name="LabelCapacities" Content="{Core:Translator Text=CapacitiesLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="309,0,0,0"/>
-                <Label x:Name="LabelHunger" Content="{Core:Translator Text=Hunger}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,10,0,0"/>
-                <Label x:Name="labelHungryState" Content="{Core:Translator Text=Hungry}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="227,10,0,0"/>
+                <Label x:Name="LabelHunger" Content="{Core:Translator Text=Hunger}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-3,30,0,0"/>
+                <Label x:Name="labelHungryState" Content="{Core:Translator Text=Hungry}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="55,30,0,0" RenderTransformOrigin="0.163,0.577"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBoxInventory" Header="{Core:Translator Text=Inventory}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="556,0,0,0" Height="671" Width="195">
@@ -36,11 +35,11 @@
                 </Grid>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBoxChoices" Header="{Core:Translator Text=Choices}" Margin="10,509,205,13">
+        <GroupBox x:Name="groupBoxChoices" Header="{Core:Translator Text=Choices}" Margin="10,530,205,13">
             <Grid HorizontalAlignment="Left" Height="143" VerticalAlignment="Top" Width="541" Margin="0,0,-12,-3">
             </Grid>
         </GroupBox>
-        <RichTextBox x:Name="richTextBoxMainContent" HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="541" Margin="10,74,0,0" Focusable="False">
+        <RichTextBox x:Name="richTextBoxMainContent" HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="541" Margin="10,95,0,0" Focusable="False">
             <FlowDocument/>
         </RichTextBox>
         <Button x:Name="buttonSave" Content="{Core:Translator Text=Save}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="676,687,0,0" Click="buttonSave_Click" IsEnabled="True"/>

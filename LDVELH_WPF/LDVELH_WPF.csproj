@@ -112,8 +112,8 @@
     <Compile Include="Hero.cs" />
     <Compile Include="HeroSaveContext.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="MenuLanguageSetting.xaml.cs">
-      <DependentUpon>MenuLanguageSetting.xaml</DependentUpon>
+    <Compile Include="MenuSettings.xaml.cs">
+      <DependentUpon>MenuSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocalDatabaseFunction.cs" />
     <Compile Include="MenuLoad.xaml.cs">
@@ -155,7 +155,7 @@
     <Compile Include="Translator.cs" />
     <Compile Include="Weapon.cs" />
     <Compile Include="WeaponHolder.cs" />
-    <Page Include="MenuLanguageSetting.xaml">
+    <Page Include="MenuSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,6 +244,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="NoteAndRemarks.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\settings-gears.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.102.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.102.0\build\net45\System.Data.SQLite.Core.targets')" />

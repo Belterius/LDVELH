@@ -77,5 +77,12 @@ namespace LDVELH_WPF
             }
             
         }
+
+        private void ButtonSettings_Click(object sender, RoutedEventArgs e)
+        {
+            MenuSettings menuSetting = new MenuSettings();
+            menuSetting.Show();
+            this.Close();
+        }
     }
 }

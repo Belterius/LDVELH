@@ -378,4 +378,7 @@
   <data name="SelectLanguage" xml:space="preserve">
     <value>Please select the language setting</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
 </root>

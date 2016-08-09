@@ -378,4 +378,7 @@
   <data name="SelectLanguage" xml:space="preserve">
     <value>Veuillez choisir la langue d'éxécution du programme</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Options</value>
+  </data>
 </root>
