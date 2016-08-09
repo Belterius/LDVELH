@@ -127,6 +127,30 @@ namespace LDVELH_WPF
             }
             return translation;
         }
+        public string TranslateBook1(string stringToTranslate)
+        {
+            string StringLocation = "LDVELH_WPF.Resources.StringBook1";
+            Text = stringToTranslate;
+            if (Text == null)
+                return "";
+
+            ResourceManager resmgr = new ResourceManager(StringLocation
+                                , typeof(Translator).GetTypeInfo().Assembly);
+
+            var translation = resmgr.GetString(Text, ci);
+
+            if (translation == null)
+            {
+#if DEBUG
+                throw new ArgumentException(
+                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, StringLocation, ci.Name),
+                    "Text");
+#else
+                translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
+#endif
+            }
+            return translation;
+        }
     }
 
 

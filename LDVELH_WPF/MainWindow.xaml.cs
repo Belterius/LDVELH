@@ -30,6 +30,7 @@ namespace LDVELH_WPF
         public MainWindow()
         {
             InitializeComponent();
+            TranslateLabel();
             initHero(ShowMyDialogBox());
         }
         public MainWindow(Hero savedHero)

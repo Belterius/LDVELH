@@ -565,6 +565,17 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Votre aventure debute. 
+        ///TLDR : un objet random et c&apos;est parti 
+        ///Il faut vous hâter, car quelque chose vous dit qu&apos;il serait imprudent de vous attarder parmi les ruines fumantes du monastère détruit. Les monstres volants peuvent, en effet, reparaître à tout moment. Il n&apos;y a d&apos;ailleurs pas de temps à perdre : vous devez au plus vite prendre la route de Holmgard, la capitale du Sommerlund, pour aller annoncer au Roi cette terrible nouvelle : les Guerriers Kaï, l&apos;élite du pays, ont tous été massacrés, à l&apos;exce [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Paragraph1 {
+            get {
+                return ResourceManager.GetString("Paragraph1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to permanent.
         /// </summary>
         internal static string permanent {

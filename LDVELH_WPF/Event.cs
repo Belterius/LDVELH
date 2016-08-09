@@ -21,6 +21,15 @@ namespace LDVELH_WPF
         {
             get { return triggerMessage; }
         }
+
+        public string getDestination
+        {
+            get
+            {
+                return destinationNumber.ToString();
+            }
+        }
+
     }
     public class CapacityEvent : Event
     {
@@ -439,12 +448,12 @@ namespace LDVELH_WPF
             story.Move(this.destinationNumber);
         }
     }
-    public class LooseBackPack : Event
+    public class LoseBackPack : Event
     {
-        public LooseBackPack()
+        public LoseBackPack()
         {
         }
-        public LooseBackPack(int destinationNumber)
+        public LoseBackPack(int destinationNumber)
         {
             this.destinationNumber = destinationNumber;
         }
@@ -453,12 +462,12 @@ namespace LDVELH_WPF
             story.getHero.removeBackPack();
         }
     }
-    public class LooseWeaponHolder : Event
+    public class LoseWeaponHolder : Event
     {
-        public LooseWeaponHolder()
+        public LoseWeaponHolder()
         {
         }
-        public LooseWeaponHolder(int destinationNumber)
+        public LoseWeaponHolder(int destinationNumber)
         {
             this.destinationNumber = destinationNumber;
         }

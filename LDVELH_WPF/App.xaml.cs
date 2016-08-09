@@ -16,15 +16,16 @@ namespace LDVELH_WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            if(languageDefined)
-            {
-                GlobalTranslator.Instance.translator = new Translator(LDVELH_WPF.Properties.Settings.Default.Language);
-                this.StartupUri = new Uri("MenuLoad.xaml", UriKind.Relative);
-            }
-            else
-            {
-                this.StartupUri = new Uri("MenuSettings.xaml", UriKind.Relative);
-            }
+            this.StartupUri = new Uri("HackResx.xaml", UriKind.Relative);
+            //if (languageDefined)
+            //{
+            //    GlobalTranslator.Instance.translator = new Translator(LDVELH_WPF.Properties.Settings.Default.Language);
+            //    this.StartupUri = new Uri("MenuLoad.xaml", UriKind.Relative);
+            //}
+            //else
+            //{
+            //    this.StartupUri = new Uri("MenuSettings.xaml", UriKind.Relative);
+            //}
         }
 
         private bool languageDefined
