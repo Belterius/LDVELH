@@ -616,7 +616,7 @@ namespace LDVELH_WPF
                 case 67:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph67"), paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(140, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph67To140")));
+                        paragraph.addDecision(new MoveEvent(140, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph67To252")));
                         return paragraph;
                     }
                 case 68:

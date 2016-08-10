@@ -621,7 +621,7 @@ namespace LDVELH_WPF
                 case 67:
                     {
                         paragraph = new StoryParagraph("Votre Sens de l'Orientation vous permet de découvrir des traces fraîches laissées par les pattes d'un animal. Ces empreintes suivent le chemin orienté au sud. Vous reconnaissez là les traces d'un Ours Noir. C'est un animal connu pour sa férocité et vous estimez préférable d'emprunter le sentier qui mène vers l'est.", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(140, "Continuer"));
+                        paragraph.addDecision(new MoveEvent(252, "Continuer"));
                         return paragraph;
                     }
                 case 68:
