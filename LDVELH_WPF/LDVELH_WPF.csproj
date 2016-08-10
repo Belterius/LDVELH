@@ -233,6 +233,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\StringBook1.en.resx" />
     <EmbeddedResource Include="Resources\StringBook1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>StringBook1.Designer.cs</LastGenOutput>
@@ -242,7 +243,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\StringBook1.en.resx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

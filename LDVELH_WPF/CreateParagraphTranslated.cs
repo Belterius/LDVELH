@@ -207,7 +207,7 @@ namespace LDVELH_WPF
                             }
                             else
                             {
-                                paragraph.addDecision(new MoveEvent(331, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph17To331")));
+                                paragraph.addDecision(new MoveEvent(316, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph17To316")));
                             }
                         return paragraph;
                     }
@@ -554,7 +554,7 @@ namespace LDVELH_WPF
                 case 58:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph58"), paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(286, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph58To286")));
+                        paragraph.addDecision(new MoveEvent(251, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph58To251")));
                         paragraph.addDecision(new MoveEvent(160, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph58To160")));
                         return paragraph;
                     }
@@ -1219,7 +1219,7 @@ namespace LDVELH_WPF
                 case 151:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph151"), paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(81, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph151To81")));
+                        paragraph.addDecision(new MoveEvent(87, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph151To87")));
                         return paragraph;
                     }
                 case 152:
@@ -1508,7 +1508,7 @@ namespace LDVELH_WPF
                 case 189:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph189"), paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(119, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph189To119")));
+                        paragraph.addDecision(new MoveEvent(118, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph189To118")));
                         return paragraph;
                     }
                 case 190:
@@ -1594,7 +1594,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph201"), paragraphNumber);
                         paragraph.addDecision(new MoveEvent(238, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph201To238")));
-                        paragraph.addDecision(new MoveEvent(215, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph201To215")));
+                        paragraph.addDecision(new MoveEvent(15, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph201To15")));
                         paragraph.addDecision(new MoveEvent(130, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph201To130")));
                         return paragraph;
                     }
@@ -1634,7 +1634,7 @@ namespace LDVELH_WPF
                 case 206:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph206"), paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(244, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph206To244")));
+                        paragraph.addDecision(new MoveEvent(224, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph206To224")));
                         return paragraph;
                     }
                 case 207:
@@ -1769,7 +1769,7 @@ namespace LDVELH_WPF
                         int rand = DiceRoll.D10Roll0();
                         if (rand < 5)
                         {
-                            paragraph.addDecision(new MoveEvent(227, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph226To227")));
+                            paragraph.addDecision(new MoveEvent(277, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph226To277")));
                         }
                         else
                         {
@@ -1958,7 +1958,7 @@ namespace LDVELH_WPF
                 case 252:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph252"), paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(150, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph252To150")));
+                        paragraph.addDecision(new MoveEvent(155, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph252To155")));
                         paragraph.addDecision(new MoveEvent(70, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph252To70")));
                         return paragraph;
                     }
@@ -2134,7 +2134,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph276"), paragraphNumber);
                         paragraph.addMainEvent(new DammageEvent(1));
-                        paragraph.addDecision(new MoveEvent(231, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph276To231")));
+                        paragraph.addDecision(new MoveEvent(213, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph276To213")));
                         return paragraph;
                     }
                 case 277:

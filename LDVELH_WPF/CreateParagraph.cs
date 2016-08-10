@@ -212,7 +212,7 @@ namespace LDVELH_WPF
                             }
                             else
                             {
-                                paragraph.addDecision(new MoveEvent(331, "Tenter votre chance"));
+                                paragraph.addDecision(new MoveEvent(316, "Tenter votre chance"));
                             }
                         return paragraph;
                     }
@@ -559,7 +559,7 @@ namespace LDVELH_WPF
                 case 58:
                     {
                         paragraph = new StoryParagraph("Vous vous lancez sur la route au pas de course en maintenant une allure régulière. A l'ouest, l'armée des Maîtres des Ténèbres ressemble à une immense tache d'encre noire qui se serait répandue entre les montagnes. Vous courez depuis vingt minutes environ lorsque vous apercevez à votre droite une meute de Loups Maudits qui avancent en file indienne le long d'une corniche.", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(286, "vous plaquer contre les rochers qui bordent la route"));
+                        paragraph.addDecision(new MoveEvent(251, "vous plaquer contre les rochers qui bordent la route"));
                         paragraph.addDecision(new MoveEvent(160, "continuer à courir en tirant votre épée"));
                         return paragraph;
                     }
@@ -1225,7 +1225,7 @@ namespace LDVELH_WPF
                 case 151:
                     {
                         paragraph = new StoryParagraph("En vous concentrant sur le trou de la serrure, vous pourrez peutêtre actionner le mécanisme interne et repousser le pêne par votre seule force mentale. Vous ferez ensuite léviter la broche pour la libérer de ses attaches. En opérant ainsi à distance, vous resterez hors d'atteinte des pièges éventuels qui pourraient se déclencher lors de l'ouverture de la serrure. ", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(81, "Continuer"));
+                        paragraph.addDecision(new MoveEvent(87, "Continuer"));
                         return paragraph;
                     }
                 case 152:
@@ -1514,7 +1514,7 @@ namespace LDVELH_WPF
                 case 189:
                     {
                         paragraph = new StoryParagraph("Grâce à votre entraînement de Seigneur Kaï et à la promptitude de vos réflexes, vous avez échappé à ce marécage qui aurait pu se révéler tout aussi meurtrier qu'un Kraan ou un Drakkarim. Vous êtes contrarié d'avoir perdu du temps et vous vous hâtez de poursuivre votre chemin parmi les arbres, en direction du sud. Un peu plus loin devant vous, un large chemin mène également vers le sud.", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(119, "continuer"));
+                        paragraph.addDecision(new MoveEvent(118, "continuer"));
                         return paragraph;
                     }
                 case 190:
@@ -1600,7 +1600,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph("Vous suivez le sentier pendant une heure environ, puis vous découvrez un autre chemin plus large qui part en direction du sud. ", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(238, "suivre ce chemin orienté au sud"));
-                        paragraph.addDecision(new MoveEvent(215, "aller à l'est"));
+                        paragraph.addDecision(new MoveEvent(15, "aller à l'est"));
                         paragraph.addDecision(new MoveEvent(130, "aller vers l'ouest"));
                         return paragraph;
                     }
@@ -1640,7 +1640,7 @@ namespace LDVELH_WPF
                 case 206:
                     {
                         paragraph = new StoryParagraph("Le sentier débouche bientôt sur une grande route où un poteau de signalisation indique Toran au nord et Holmgard au sud. Vous prenez la direction du sud, vers la capitale. ", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(244, "continuer"));
+                        paragraph.addDecision(new MoveEvent(224, "continuer"));
                         return paragraph;
                     }
                 case 207:
@@ -1775,7 +1775,7 @@ namespace LDVELH_WPF
                         int rand = DiceRoll.D10Roll0();
                         if (rand < 5)
                         {
-                            paragraph.addDecision(new MoveEvent(227, "Tentez votre chance"));
+                            paragraph.addDecision(new MoveEvent(277, "Tentez votre chance"));
                         }
                         else
                         {
@@ -1963,7 +1963,7 @@ namespace LDVELH_WPF
                 case 252:
                     {
                         paragraph = new StoryParagraph("Au milieu d'une clairière, trois hommes, une femme et deux enfants parlent avec vivacité en faisant de grands gestes. Ils portent en bandoulière des sacs remplis d'objets et de vêtements. Leurs habits semblent de bonne coupe, mais ils sont sales et déchirés.", paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(150, "vous approcher d'eux et leur demander qui ils sont"));
+                        paragraph.addDecision(new MoveEvent(155, "vous approcher d'eux et leur demander qui ils sont"));
                         paragraph.addDecision(new MoveEvent(70, "les éviter et poursuivre votre route"));
                         return paragraph;
                     }
@@ -2139,7 +2139,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph("Vous empoignez votre Hache et vous vous frayez un chemin dans l'enchevêtrement de racines et de branches noueuses qui obstrue le chemin. Bientôt, votre cape est déchirée en plusieurs endroits et votre jambe droite douloureusement meurtrie, juste au-dessus du genou. Vous perdez 1 point d'ENDURANCE. ", paragraphNumber);
                         paragraph.addMainEvent(new DammageEvent(1));
-                        paragraph.addDecision(new MoveEvent(231, "continuer"));
+                        paragraph.addDecision(new MoveEvent(213, "continuer"));
                         return paragraph;
                     }
                 case 277:

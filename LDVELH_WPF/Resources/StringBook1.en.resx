@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Paragraph1To141" xml:space="preserve">
+    <value>use your Kai Discipline of Sixth Sense.</value>
+  </data>
+  <data name="Paragraph1To85" xml:space="preserve">
+    <value>take the right path into the wood.</value>
+  </data>
+  <data name="Paragraph1To275" xml:space="preserve">
+    <value>follow the left track.</value>
+  </data>
+  <data name="Paragraph1" xml:space="preserve">
+    <value>You must make haste for you sense it is not safe to linger by the smoking remains of the ruined monastery. The black-winged beasts could return at any moment. You must set out for the Sommlending capital of Holmgard and tell the King the terrible news of the massacre: that the whole Ã©lite of Kai warriors, save yourself, have been slaughtered. Without the Kai Lords to lead her armies, Sommerlund will be at the mercy of their ancient enemy, the Darklords.
+Fighting back tears, you bid farewell to your dead kinsmen. Silently, you promise that their deaths will be avenged. You turn away from the ruins and carefully descend the steep track.
+At the foot of the hill, the path splits into two directions, both leading into a large wood.
+</value>
+  </data>
   <data name="Paragraph2To343" xml:space="preserve">
     <value>Try your luck</value>
   </data>
@@ -308,8 +323,8 @@ It is ridden by a creature dressed in red. The Kraan takes off and begins to fly
   <data name="Paragraph19To272" xml:space="preserve">
     <value>You can avoid the Sleeptooth by returning to the track. .</value>
   </data>
-  <data name="Paragraph19Toturning to 119" xml:space="preserve">
-    <value>Or you can push on through the briars, deeper into the forest, by .</value>
+  <data name="Paragraph19To119" xml:space="preserve">
+    <value>Or you can push on through the briars, deeper into the forest, .</value>
   </data>
   <data name="Paragraph19" xml:space="preserve">
     <value>Just ahead through the tall trees you can see clumps of dark-red gallowbrush, a thorny briar with sharp crimson barbs. The common name for this forest weed is â€˜Sleeptoothâ€™, for the thorns are very sharp and can make you feel weak and sleepy if they scratch your skin.
@@ -779,7 +794,7 @@ You are about to meet the King.
 They are the prints of a black bear, an animal renowned for its ferocity. You decide the east path would be a much safer route.
 </value>
   </data>
-  <data name="Paragraph68Togo to 130" xml:space="preserve">
+  <data name="Paragraph68To130" xml:space="preserve">
     <value>turn west.</value>
   </data>
   <data name="Paragraph68To15" xml:space="preserve">
@@ -1131,7 +1146,7 @@ With a feeling of deep dread, you enter the eerie necropolis.
     <value>The overgrown path leads to a junction where another track branches off towards the east.
 </value>
   </data>
-  <data name="Paragraph104Togo to 26" xml:space="preserve">
+  <data name="Paragraph104To26" xml:space="preserve">
     <value>turn north.</value>
   </data>
   <data name="Paragraph104To100" xml:space="preserve">
@@ -1142,8 +1157,8 @@ With a feeling of deep dread, you enter the eerie necropolis.
 You reach a junction where the tunnel meets a corridor leading from north to south.
 </value>
   </data>
-  <data name="Paragraph105Toturning to 298" xml:space="preserve">
-    <value>If you have the Kai Discipline of Animal Kinship, you may call to this bird by .</value>
+  <data name="Paragraph105To298" xml:space="preserve">
+    <value>If you have the Kai Discipline of Animal Kinship, you may call to this bird .</value>
   </data>
   <data name="Paragraph105To335" xml:space="preserve">
     <value>If you do not possess this skill, or if you do not wish to use it.</value>
@@ -1174,11 +1189,11 @@ You reach a junction where the tunnel meets a corridor leading from north to sou
 Your mission and your life end here.
 </value>
   </data>
-  <data name="Paragraph109Toturning to 164" xml:space="preserve">
-    <value>You may take a closer look at the bottles by .</value>
+  <data name="Paragraph109To164" xml:space="preserve">
+    <value>You may take a closer look at the bottles .</value>
   </data>
-  <data name="Paragraph109Toturning to 308" xml:space="preserve">
-    <value>Or you can leave the room and investigate the stable by .</value>
+  <data name="Paragraph109To308" xml:space="preserve">
+    <value>Or you can leave the room and investigate the stable .</value>
   </data>
   <data name="Paragraph109" xml:space="preserve">
     <value>The only thing under the carpet is dirt!
@@ -1201,8 +1216,8 @@ Your mission and your life end here.
     <value>Only a few minutes after leaving the junction, you see in the distance a small log cabin and stable. On arrival you check the interior through a side window. The cabin looks deserted.
 </value>
   </data>
-  <data name="Paragraph112Toturning to 33" xml:space="preserve">
-    <value>If you win, you may explore the cave further by .</value>
+  <data name="Paragraph112To33" xml:space="preserve">
+    <value>If you win, you may explore the cave further .</value>
   </data>
   <data name="Paragraph112To248" xml:space="preserve">
     <value>Or you may leave and descend the hill. .</value>
@@ -1268,8 +1283,8 @@ You decide to leave now, in case it returns with some of its friends.
   <data name="Paragraph119To226" xml:space="preserve">
     <value>slide down the slope as carefully as you can.</value>
   </data>
-  <data name="Paragraph119Toturning to 38" xml:space="preserve">
-    <value>If you do not feel that you are up to the risk of this tricky descent in your present sleepy state, walk around the edge of the ridge by .</value>
+  <data name="Paragraph119To38" xml:space="preserve">
+    <value>If you do not feel that you are up to the risk of this tricky descent in your present sleepy state, walk around the edge of the ridge .</value>
   </data>
   <data name="Paragraph119" xml:space="preserve">
     <value>The gallowbrush tears your cloak and scratches deep into your arms and legs as you slowly force your way through. Fifteen minutes later you emerge from the briars and stagger onwards between the trees.
@@ -1321,11 +1336,11 @@ You feel a little dizzy as you push on, and your eyelids seem very heavy. You su
 Further along the track you can see a large war party of Giaks running towards you.
 </value>
   </data>
-  <data name="Paragraph124Toturning to 211" xml:space="preserve">
-    <value>You can continue to investigate the tunnel by .</value>
+  <data name="Paragraph124To211" xml:space="preserve">
+    <value>You can continue to investigate the tunnel .</value>
   </data>
-  <data name="Paragraph124Toturning to 106" xml:space="preserve">
-    <value>Or you may leave and descend the hill by .</value>
+  <data name="Paragraph124To106" xml:space="preserve">
+    <value>Or you may leave and descend the hill .</value>
   </data>
   <data name="Paragraph124" xml:space="preserve">
     <value />
@@ -1565,8 +1580,8 @@ As you pull yourself to your feet, you see a patrol of Drakkarim emerge from the
   <data name="Paragraph148To81" xml:space="preserve">
     <value>If you want to stay in the farmhouse.</value>
   </data>
-  <data name="Paragraph148Toturning to 320" xml:space="preserve">
-    <value>If you would feel safer in the forest, you can make a dash by .</value>
+  <data name="Paragraph148To320" xml:space="preserve">
+    <value>If you would feel safer in the forest, you can make a dash .</value>
   </data>
   <data name="Paragraph148To199" xml:space="preserve">
     <value>search the room further.</value>
@@ -1668,8 +1683,8 @@ If the number is 6â€“9, then you have been hit in the back and lose a furth
 If you survive, you stagger out into the daylight and curse your bad luck. It was only by an unlucky chance you discovered the secret temple of a sect of evil druids. You are very lucky to have escaped with your life. You quickly rejoin the path which now disappears over the hill.
 </value>
   </data>
-  <data name="Paragraph159Toturning to 191" xml:space="preserve">
-    <value>You must fight him by .</value>
+  <data name="Paragraph159To191" xml:space="preserve">
+    <value>You must fight him .</value>
   </data>
   <data name="Paragraph159To234" xml:space="preserve">
     <value>Or you must jump clear of the speeding caravan. .</value>
@@ -1712,8 +1727,8 @@ You take the Key and leave as quickly as possible.
     <value>After nearly half an hour you feel the current getting stronger. Looking out across the surface you can see that you are approaching a whirlpool in the middle of a large river bend. You will surely drown if caught in its current, so you quickly swim towards the right hand river bank and continue your mission on foot, carrying all your equipment.
 </value>
   </data>
-  <data name="Paragraph164Toturning to 308" xml:space="preserve">
-    <value>You now decide to investigate the stable by .</value>
+  <data name="Paragraph164To308" xml:space="preserve">
+    <value>You now decide to investigate the stable .</value>
   </data>
   <data name="Paragraph164" xml:space="preserve">
     <value>Carefully opening the seals on each of the bottles, you sniff at the contents. They all seem to be different types of wine. Suddenly a smaller bottle tucked behind the others catches your eye. Pulling out the glass stopper, you recognize the smell to be that of Alether, a Potion of Strength, which is orange in colour.
@@ -1754,8 +1769,8 @@ You take the Key and leave as quickly as possible.
 The fatigue of your ordeal finally catches up with you and you drift off into a restless sleep.
 </value>
   </data>
-  <data name="Paragraph169Toturning to 23" xml:space="preserve">
-    <value>You may evade more fighting after the first round of combat and run for the archway by .</value>
+  <data name="Paragraph169To23" xml:space="preserve">
+    <value>You may evade more fighting after the first round of combat and run for the archway .</value>
   </data>
   <data name="Paragraph169To137" xml:space="preserve">
     <value>If you win the combat.</value>
@@ -1797,8 +1812,8 @@ If you do not have a torch, deduct 3 points from your &lt;small&gt;COMBAT SKILL&
 You are awoken by the sound of troops in the distance. Across the lake you see the black shapes of Drakkarim and a pack of Doomwolves. A Kraan appears from above the trees and lands on the roof of the small wooden shack. It is being ridden by a creature dressed in red robes. The Kraan takes off and begins to fly across the lake to where you are hidden.
 </value>
   </data>
-  <data name="Paragraph173Toturning to 158" xml:space="preserve">
-    <value>If you have a Silver Key, you may try to open the door by .</value>
+  <data name="Paragraph173To158" xml:space="preserve">
+    <value>If you have a Silver Key, you may try to open the door .</value>
   </data>
   <data name="Paragraph173To259" xml:space="preserve">
     <value>If you do not possess a Silver Key.</value>
@@ -1965,8 +1980,8 @@ You are worried about losing time, and push on further into the trees towards th
   <data name="Paragraph191To24" xml:space="preserve">
     <value>If you win.</value>
   </data>
-  <data name="Paragraph191Toturning to 234" xml:space="preserve">
-    <value>evade more combat during the fight, you can jump from the speeding caravan by .</value>
+  <data name="Paragraph191To234" xml:space="preserve">
+    <value>evade more combat during the fight, you can jump from the speeding caravan .</value>
   </data>
   <data name="Paragraph191" xml:space="preserve">
     <value>The bodyguard unsheathes a large scimitar and strikes at your head.
@@ -2119,11 +2134,11 @@ You lose 10 &lt;small&gt;ENDURANCE&lt;/small&gt; points. Through the smoke, the 
     <value>The track soon reaches a larger road which crosses the stream via a stone bridge. A signpost at the bridge points north to Toran and south to Holmgard. The road itself is jammed with people moving south, some pushing their possessions along on handcarts. You join the refugee column and head towards the capital.
 </value>
   </data>
-  <data name="Paragraph208Toturning to 148" xml:space="preserve">
-    <value>If you win, you can run to the safety of the farmhouse by .</value>
+  <data name="Paragraph208To148" xml:space="preserve">
+    <value>If you win, you can run to the safety of the farmhouse .</value>
   </data>
-  <data name="Paragraph208Toturning to 320" xml:space="preserve">
-    <value>Or you can return to the woods by .</value>
+  <data name="Paragraph208To320" xml:space="preserve">
+    <value>Or you can return to the woods .</value>
   </data>
   <data name="Paragraph208" xml:space="preserve">
     <value>The ghoulish creatures thrust their spears at you and attack. Fight these creatures as a single enemy.
@@ -2231,8 +2246,8 @@ Your mission and your life end here.
   <data name="Paragraph220To24" xml:space="preserve">
     <value>If you win.</value>
   </data>
-  <data name="Paragraph220Toturning to 234" xml:space="preserve">
-    <value>evade combat at any time during the fight, you can jump from the speeding caravan by .</value>
+  <data name="Paragraph220To234" xml:space="preserve">
+    <value>evade combat at any time during the fight, you can jump from the speeding caravan .</value>
   </data>
   <data name="Paragraph220" xml:space="preserve">
     <value>The bodyguard unsheathes a scimitar and lunges for your head.
@@ -2319,10 +2334,10 @@ Marshviper: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 16 Â Â &lt;small&g
     <value>The path continues eastwards but soon disappears into thick undergrowth.
 </value>
   </data>
-  <data name="Paragraph229Toturning to 267" xml:space="preserve">
+  <data name="Paragraph229To267" xml:space="preserve">
     <value>Will you search the body by ?</value>
   </data>
-  <data name="Paragraph229Toturning to 125" xml:space="preserve">
+  <data name="Paragraph229To125" xml:space="preserve">
     <value>Or will you continue along the east path by ?</value>
   </data>
   <data name="Paragraph229" xml:space="preserve">
@@ -2382,10 +2397,10 @@ Your life and your mission end here.
   <data name="Paragraph235To254" xml:space="preserve">
     <value>use your Kai Discipline of Tracking.</value>
   </data>
-  <data name="Paragraph235Togo to 32" xml:space="preserve">
+  <data name="Paragraph235To32" xml:space="preserve">
     <value>turn left.</value>
   </data>
-  <data name="Paragraph235Togo to 146" xml:space="preserve">
+  <data name="Paragraph235To146" xml:space="preserve">
     <value>turn right.</value>
   </data>
   <data name="Paragraph235" xml:space="preserve">
@@ -2412,11 +2427,11 @@ You carefully get to your feet and stagger towards the tunnel.
     <value>You make full use of your Kai Discipline and quickly burrow deep into the loose earth of the wooded hillside. Covering yourself with your cloak, you pull a loose branch across your hastily dug shelter.
 </value>
   </data>
-  <data name="Paragraph238Toturning to 42" xml:space="preserve">
-    <value>You may leave by the south route by .</value>
+  <data name="Paragraph238To42" xml:space="preserve">
+    <value>You may leave by the south route .</value>
   </data>
-  <data name="Paragraph238Toturning to 68" xml:space="preserve">
-    <value>Or you may take the north track by .</value>
+  <data name="Paragraph238To68" xml:space="preserve">
+    <value>Or you may take the north track .</value>
   </data>
   <data name="Paragraph238" xml:space="preserve">
     <value>The path meanders between several small, wooded hills and eventually leads to a ruined log cabin. It seems that it had burnt down not so long ago, for the ashes are still warm and a haze of smoke still lingers. You sense possible danger here.
@@ -2457,8 +2472,8 @@ The young wizard wipes his brow, and walks towards you, his hand extended in gra
     <value>The lid of the sarcophagus slips to the floor with a dull crunch. You are looking at the remains of an ancient king, who lies still surrounded by his treasure. An ornate crown is still in position on his skull. The jaw of the skeleton is wide open and the darkness of the mouth seems strangely bottomless. A distant rumbling can now be heard from deep in the earth.
 </value>
   </data>
-  <data name="Paragraph243Toturning to 97" xml:space="preserve">
-    <value>Continue along the hidden path by .</value>
+  <data name="Paragraph243To97" xml:space="preserve">
+    <value>Continue along the hidden path .</value>
   </data>
   <data name="Paragraph243" xml:space="preserve">
     <value>Hurrying through the forest, you stumble and fall down a steep slope which drops you in a heap on a hidden path below. On the path is a dead body. It is a Giak, a spiteful and ghoulish servant of the Darklords. Many centuries ago, their ancestors were used by the Darklords to build for them the infernal city of Helgedad, which lies in the volcanic wastelands beyond the Durncrag range of mountains. The construction of the city was a long and torturous nightmare, and only the strongest of the Giaks survived the heat and poisonous atmospheres of Helgedad. This creature that lies before you is a descendant of these Giak slaves. It has been killed by a sword blow to its head, and by its side lies a Mace. You may take this Weapon if you wish.
@@ -2555,10 +2570,10 @@ Doomwolf 3: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 14 Â Â &lt;small&g
 Doomwolf 4: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 15 Â Â &lt;small&gt;ENDURANCE&lt;/small&gt;Â 21
 </value>
   </data>
-  <data name="Paragraph254Togo to 32" xml:space="preserve">
+  <data name="Paragraph254To32" xml:space="preserve">
     <value>turn left.</value>
   </data>
-  <data name="Paragraph254Togo to 146" xml:space="preserve">
+  <data name="Paragraph254To146" xml:space="preserve">
     <value>turn right.</value>
   </data>
   <data name="Paragraph254" xml:space="preserve">
@@ -2629,18 +2644,18 @@ Giak 2: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 12 Â Â &lt;small&gt;EN
   <data name="Paragraph262To191" xml:space="preserve">
     <value>fight.</value>
   </data>
-  <data name="Paragraph262Toturning to 234" xml:space="preserve">
-    <value>evade combat, jump clear of the speeding caravan by .</value>
+  <data name="Paragraph262To234" xml:space="preserve">
+    <value>evade combat, jump clear of the speeding caravan .</value>
   </data>
   <data name="Paragraph262" xml:space="preserve">
     <value>The merchant takes your Gold and clicks his fingers. His bodyguard attacks you with his scimitar.
 </value>
   </data>
-  <data name="Paragraph263Toturning to 70" xml:space="preserve">
-    <value>You may continue downstream, by .</value>
+  <data name="Paragraph263To70" xml:space="preserve">
+    <value>You may continue downstream, .</value>
   </data>
-  <data name="Paragraph263Toturning to 157" xml:space="preserve">
-    <value>Or you may leave the stream and make your way on foot through the wooded hills to the south by .</value>
+  <data name="Paragraph263To157" xml:space="preserve">
+    <value>Or you may leave the stream and make your way on foot through the wooded hills to the south .</value>
   </data>
   <data name="Paragraph263" xml:space="preserve">
     <value>Carefully, you follow the stream as it makes its way towards the east. Suddenly you notice something in the distance that brings you to a halt.
@@ -2953,8 +2968,8 @@ You wade out of the muddy water and continue your journey under cover of the tre
     <value>You soon realize that you are walking deeper into a wooded marsh. To continue in this direction will be slow and hazardous.
 </value>
   </data>
-  <data name="Paragraph300Toturning to 13" xml:space="preserve">
-    <value>You may now continue on your journey by .</value>
+  <data name="Paragraph300To13" xml:space="preserve">
+    <value>You may now continue on your journey .</value>
   </data>
   <data name="Paragraph300" xml:space="preserve">
     <value>You walk for over an hour, during which time you keep a constant vigil for any sign of Kraan in the sky above. You have twice spotted their tell-tale shadows in the sky and on both occasions your quick wits have saved you from capture. You are now very hungry and must eat a Meal.
@@ -3303,8 +3318,8 @@ Giak 2: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 13 Â Â &lt;small&gt;EN
   <data name="Paragraph339To203" xml:space="preserve">
     <value>If you are still fighting after 4 rounds of Combat.</value>
   </data>
-  <data name="Paragraph339Toturning to 7" xml:space="preserve">
-    <value>You may evade combat by escaping through the front door at any stage of the fight, by .</value>
+  <data name="Paragraph339To7" xml:space="preserve">
+    <value>You may evade combat by escaping through the front door at any stage of the fight, .</value>
   </data>
   <data name="Paragraph339" xml:space="preserve">
     <value>You quickly sidestep just as a long dagger shatters the glass top of the counter. A swarthy youth is attacking you and you must fight him.
@@ -3356,8 +3371,8 @@ Vordak: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 18 Â Â &lt;small&gt;EN
     <value>You are weak and dizzy. You can no longer feel your legs and they refuse to bear your weight. You try to crawl for the door but the robber jumps on you and pins you to the ground.
 </value>
   </data>
-  <data name="Paragraph345Toturning to 272" xml:space="preserve">
-    <value>You can now return to the track, by .</value>
+  <data name="Paragraph345To272" xml:space="preserve">
+    <value>You can now return to the track, .</value>
   </data>
   <data name="Paragraph345To19" xml:space="preserve">
     <value>Or push on under cover of the trees. .</value>
@@ -3409,8 +3424,5 @@ You receive the praise and heartfelt thanks of the entire hallâ€”an honour 
 â€˜You have done all that Sommerlund could have asked of a loyal son, but she is greatly in need of you still. The Darklords are powerful once more and their ambition knows no bounds. Our only hope lies within Durenor with the power that once defeated the Darklords an age ago. Lone Wolf, you are the last of the Kaiâ€”you have the skills. Will you journey to Durenor and return with the Sommerswerd, the sword of the sun? Only with that gift of the gods may we crush this evil and save our land.â€™
 If you wish to accept the quest of the Sommerswerd, begin your adventure with Book 2 of the &lt;cite&gt;Lone Wolf&lt;/cite&gt; adventures:
 </value>
-  </data>
-  <data name="Paragraph1" xml:space="preserve">
-    <value>t</value>
   </data>
 </root>
