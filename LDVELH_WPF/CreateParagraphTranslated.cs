@@ -285,7 +285,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph23"), paragraphNumber);
                         paragraph.addDecision(new MoveEvent(337, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph23To337")));
-                        paragraph.addDecision(new ItemRequieredEvent(326, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph23ItemRequieredEvent1")));
+                        paragraph.addDecision(new ItemRequieredEvent(326, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph23To326")));
                         paragraph.addDecision(new CapacityEvent(151, CapacityType.Telekinesis));
                         return paragraph;
                     }
@@ -1793,10 +1793,11 @@ namespace LDVELH_WPF
                     }
                 case 229:
                     {
+
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph229"), paragraphNumber);
                         paragraph.addMainEvent(new DebuffEvent(-1));
                         paragraph.addMainEvent(new FightEvent(new Enemy("Kraan", 16, 25, EnnemyTypes.Human)));
-                        paragraph.addDecision(new MoveEvent(267, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph229To167")));
+                        paragraph.addDecision(new MoveEvent(267, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph229To267")));
                         paragraph.addDecision(new MoveEvent(125, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph229To125")));
                         return paragraph;
                     }
@@ -1866,7 +1867,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph238"), paragraphNumber);
                         paragraph.addDecision(new MoveEvent(42, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph238To42")));
-                        paragraph.addDecision(new MoveEvent(68, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph238To62")));
+                        paragraph.addDecision(new MoveEvent(68, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph238To68")));
                         return paragraph;
                     }
                 case 239:
@@ -2365,8 +2366,8 @@ namespace LDVELH_WPF
                 case 307:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph307"), paragraphNumber);
-                        paragraph.addMainEvent(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre(), GlobalTranslator.Instance.translator.TranslateBook1("Paragraph307LootEvent1")));
-                        paragraph.addMainEvent(new LootEvent(CreateLoot.CreateFood.ration(1), GlobalTranslator.Instance.translator.TranslateBook1("Paragraph307LootEvent2")));
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre(), GlobalTranslator.Instance.translator.TranslateBook1("Paragraph307LootEvent1")));
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateFood.ration(1), GlobalTranslator.Instance.translator.TranslateBook1("Paragraph307LootEvent2")));
                         paragraph.addDecision(new MoveEvent(213, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph307To213")));
                         return paragraph;
                     }
@@ -2428,8 +2429,8 @@ namespace LDVELH_WPF
                 case 315:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph315"), paragraphNumber);
-                        paragraph.addMainEvent(new LootEvent(new Gold(6), GlobalTranslator.Instance.translator.TranslateBook1("Paragraph315LootEvent1")));
-                        paragraph.addDecision(new LootEvent(new Miscellaneous("Savon"), GlobalTranslator.Instance.translator.TranslateBook1("Paragraph315LootEvent2")));
+                        paragraph.addMainEvent(new LootEvent(new Gold(6)));
+                        paragraph.addDecision(new LootEvent(new Miscellaneous("Savon"), GlobalTranslator.Instance.translator.TranslateBook1("Paragraph315LootEvent1")));
                         paragraph.addDecision(new MoveEvent(213, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph315To213")));
                         return paragraph;
                     }

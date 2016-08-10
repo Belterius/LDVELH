@@ -238,6 +238,7 @@ namespace LDVELH_WPF
                         paragraph = new StoryParagraph("Il semble que le ou les occupants de la péniche soient partis en toute hâte il y a peu de temps. Les restes d'un repas à moitié mangé traînent sur la table ainsi qu'une tasse de Jala encore chaud. En fouillant un coffre et un petit placard, vous trouvez un Sac à Dos, de la Nourriture (l'équivalent de 2 Repas) et un poignard.", paragraphNumber);
                         paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre le poignard"));
                         paragraph.addDecision(new LootEvent(CreateLoot.CreateFood.ration(2), "Prendre les rations"));
+                        paragraph.addDecision(new MoveEvent(273, "Continuer"));
                         return paragraph;
                     }
                 case 21:
@@ -289,7 +290,7 @@ namespace LDVELH_WPF
                     {
                         paragraph = new StoryParagraph("Le couloir aboutit bientôt à une vaste chambre mortuaire dont les murs sont gravés de motifs anciens. Dans le coin opposé, un escalier de pierre mène à une porte immense. De chaque côté des marches, deux chandelles noires diffusent une faible clarté. Vous remarquez alors qu'aucune cire ne coule le long des chandelles, et tandis que vous vous approchez, vous constatez que leurs flammes ne diffusent aucune chaleur. Soucieux de quitter au plus vite cet endroit sinistre, vous examinez la serrure de la porte. Une broche sculptée semble fermer le panneau, mais un trou de serrure apparaît également. ", paragraphNumber);
                         paragraph.addDecision(new MoveEvent(337, "Retirer la broche"));
-                        paragraph.addDecision(new ItemRequieredEvent(337, "CleDOr"));
+                        paragraph.addDecision(new ItemRequieredEvent(326, "CleDOr"));
                         paragraph.addDecision(new CapacityEvent(151, CapacityType.Telekinesis));
                         return paragraph;
                     }
@@ -2370,8 +2371,8 @@ namespace LDVELH_WPF
                 case 307:
                     {
                         paragraph = new StoryParagraph("Vous n'avez aucune difficulté à atteindre la cabane et, tandis que vous escaladez l'arbre, des souvenirs d'enfance vous reviennent en mémoire : vous vous rappelez le temps où, tout jeune garçon, vous montiez également aux arbres, non loin de la ville de Toran, pour aller cueillir des fruits ou admirer la campagne environnante. Vous ouvrez la porte de la cabane et vous tombez nez à nez avec un vieil ermite recroquevillé dans un coin de la pièce. Une expression d'intense soulagement apparaît sur son visage lorsqu'il reconnaît votre cape de Seigneur Kaï. Il vous raconte alors que toute la région est envahie par des Gloks et qu'il a dénombré plus de quarante Kraans volant au-dessus de sa maison dans les trois heures qui ont précédé. Ils se dirigeaient tous vers l'est. Il s'approche ensuite d'un buffet et vous apporte une assiette de fruits.Vous le remerciez et vous rangez les fruits dans votre Sac à Dos.Ils représentent l'équivalent d'un Repas, notez - le sur votre Feuille d'Aventure. L'ermite vous montre également un magnifique Marteau de Guerre qu'il pose sur une table, près de la porte. « Vous en avez plus besoin que moi, Seigneur Kaï, dit-il. Prenez ce Marteau si vous le désirez, c'est une Arme à laquelle vous pourrez vous fier. » Vous n'aurez le droit de prendre ce Marteau de Guerre qu'à la condition de l'échanger contre une autre Arme que vous possédez déjà, car vous ne pouvez laisser l'ermite sans aucune défense contre l'ennemi.", paragraphNumber);
-                        paragraph.addMainEvent(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre(), "Prendre le marteau"));
-                        paragraph.addMainEvent(new LootEvent(CreateLoot.CreateFood.ration(1), "Prendre le repas"));
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre(), "Prendre le marteau"));
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateFood.ration(1), "Prendre le repas"));
                         paragraph.addDecision(new MoveEvent(213, "continuer"));
                         return paragraph;
                     }
@@ -2433,7 +2434,7 @@ namespace LDVELH_WPF
                 case 315:
                     {
                         paragraph = new StoryParagraph("Enveloppé dans des vêtements de femme, vous trouvez un petit Sac de Velours qui contient 6 Pièces d'Or et un morceau de Savon Parfumé. vous poursuivrez ensuite votre chemin.", paragraphNumber);
-                        paragraph.addMainEvent(new LootEvent(new Gold(6), "continuer"));
+                        paragraph.addMainEvent(new LootEvent(new Gold(6)));
                         paragraph.addDecision(new LootEvent(new Miscellaneous("Savon"), "Prendre le savon"));
                         paragraph.addDecision(new MoveEvent(213, "continuer"));
                         return paragraph;
