@@ -107,8 +107,8 @@
     <Compile Include="Character.cs" />
     <Compile Include="CreateLoot.cs" />
     <Compile Include="CreateMonster.cs" />
-    <Compile Include="CreateParagraph.cs" />
     <Compile Include="CreateParagraphTranslated.cs" />
+    <Compile Include="CreateParagraph.cs" />
     <Compile Include="DamageTable.cs" />
     <Compile Include="DiceRoll.cs" />
     <Compile Include="Ennemy.cs" />
