@@ -42,9 +42,9 @@ namespace LDVELH_WPF
             this.labelWeaponMastery = labelWeaponMastery;
             this.labelBellyState = labelBellyState;
 
-            listWeaponSave = new BindingList<Weapon>();
-            listItemSave = new BindingList<Item>();
-            listSpecialItemSave = new BindingList<SpecialItem>();
+            listWeaponSave =  new BindingList<Weapon>(hero.weaponHolder.getWeapons);
+            listItemSave = new BindingList<Item>(hero.backPack.getItems);
+            listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
 
 
             listBoxSpecialItem.ItemsSource = this.listSpecialItemSave;
@@ -87,33 +87,27 @@ namespace LDVELH_WPF
         }
         public void backPackChanged(Hero hero)
         {
-            listItemSave = new BindingList<Item>(hero.backPack.getItems);
-            listBoxBackPackItem.ItemsSource = listItemSave;
+            listBoxBackPackItem.Items.Refresh();
         }
         public void backPackChanged(Hero hero, Item item, bool add)
         {
-            listItemSave = new BindingList<Item>(hero.backPack.getItems);
-            listBoxBackPackItem.ItemsSource = listItemSave;
+            listBoxBackPackItem.Items.Refresh();
         }
         public void weaponHolderChanged(Hero hero)
         {
-            listWeaponSave = new BindingList<Weapon>(hero.weaponHolder.getWeapons);
-            listBoxWeapon.ItemsSource = listWeaponSave;
+            listBoxWeapon.Items.Refresh();
         }
         public void weaponHolderChanged(Hero hero, Weapon weapon, bool add)
         {
-            listWeaponSave = new BindingList<Weapon>(hero.weaponHolder.getWeapons);
-            listBoxWeapon.ItemsSource = listWeaponSave;
+            listBoxWeapon.Items.Refresh();
         }
         public void specialItemsChanged(Hero hero)
         {
-            listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
-            listBoxSpecialItem.ItemsSource = listSpecialItemSave;
+            listBoxSpecialItem.Items.Refresh();
         }
         public void specialItemsChanged(Hero hero, SpecialItem specialItem, bool add)
         {
-            listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
-            listBoxSpecialItem.ItemsSource = listSpecialItemSave;
+            listBoxSpecialItem.Items.Refresh();
         }
     }
     class StoryObserver

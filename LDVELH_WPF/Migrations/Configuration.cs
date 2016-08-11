@@ -9,7 +9,7 @@ namespace LDVELH_WPF.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(LDVELH_WPF.HeroSaveContext context)

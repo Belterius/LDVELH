@@ -49,7 +49,7 @@ namespace LDVELH_WPF
         public delegate void specialItemsHandler(Hero m, SpecialItem specialItem, bool add);
 
         [Column("HungryState")]
-        private HungryState hungryStatus;
+        private HungryState hungryStatus{get;set;}
         public event HungryStateHandler hungryStateChanged;
         public delegate void HungryStateHandler(Hero m);
 
@@ -65,7 +65,6 @@ namespace LDVELH_WPF
 
         private Hero()
         {
-            
         }
 
         public Hero(string name)
@@ -668,8 +667,8 @@ namespace LDVELH_WPF
 
         public enum HungryState
         {
-            Full,
-            Hungry
+            Hungry,
+            Full
         }
     }
 

@@ -62,12 +62,7 @@ namespace LDVELH_WPF
         {
             try
             {
-                Hero heroSelected;
-                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
-                {
-                    heroSelected = databaseRequest.SelectHeroFromID((int)listBoxHeroes.SelectedValue);
-                }
-                MainWindow mainWindow = new MainWindow(heroSelected);
+                MainWindow mainWindow = new MainWindow((Hero)listBoxHeroes.SelectedItem);
                 mainWindow.Show();
                 this.Close();
             }
@@ -83,6 +78,24 @@ namespace LDVELH_WPF
             MenuSettings menuSetting = new MenuSettings();
             menuSetting.Show();
             this.Close();
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
+                {
+                    databaseRequest.DeleteHero((Hero)listBoxHeroes.SelectedItem);
+                }
+                listHeroes.Remove((Hero)listBoxHeroes.SelectedItem);
+                listBoxHeroes.Items.Refresh();
+                
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error when loading hero data : " + ex);
+            }
         }
     }
 }

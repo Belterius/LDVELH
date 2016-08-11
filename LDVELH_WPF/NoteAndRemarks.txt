@@ -1,2 +1,8 @@
-﻿The singleton pattern for the translator works well, but it is not working for the text modified inside the xaml straight.
-Look if possible to resolve the problem, else just set in the code the text.
+﻿TODO :
+Look into SRP and OpenClosed breach for addloot and remove loot function.
+
+TOFIX :
+Extremely strange crash, to reproduce have a ration in first item slot, get a second item in second slot (Miscellaneous if possible, I had soap), then use the ration, select the second item, select the ration, when you try to select the second item again, the game will crash with "System.ArgumentException", "An item with the same key has already been added"
+I could not understand WHERE the App is trying to add an item, as I am ONLY selecting and un-selecting my items.
+The crash will ONLY occur if I use the first item, NOT if I use the second item.
+It does not matter if the use of the ration is successful or not (bellyFull/successfully eat) it will crash in BOTH case.

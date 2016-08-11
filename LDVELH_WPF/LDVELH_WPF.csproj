@@ -149,6 +149,14 @@
     <Compile Include="Migrations\201608031906231_RemovedUselessColumn.Designer.cs">
       <DependentUpon>201608031906231_RemovedUselessColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608111454013_HungryState.cs" />
+    <Compile Include="Migrations\201608111454013_HungryState.Designer.cs">
+      <DependentUpon>201608111454013_HungryState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608111501086_HungryStatePB.cs" />
+    <Compile Include="Migrations\201608111501086_HungryStatePB.Designer.cs">
+      <DependentUpon>201608111501086_HungryStatePB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySQliteDbContext.cs" />
     <Compile Include="NonPublicColumnAttributeConvention.cs" />
@@ -233,6 +241,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608031906231_RemovedUselessColumn.resx">
       <DependentUpon>201608031906231_RemovedUselessColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608111454013_HungryState.resx">
+      <DependentUpon>201608111454013_HungryState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608111501086_HungryStatePB.resx">
+      <DependentUpon>201608111501086_HungryStatePB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
