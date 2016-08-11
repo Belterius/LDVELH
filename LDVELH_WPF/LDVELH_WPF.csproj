@@ -152,6 +152,11 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySQliteDbContext.cs" />
     <Compile Include="NonPublicColumnAttributeConvention.cs" />
+    <Compile Include="Resources\SaveOfManualEnglish.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaveOfManualEnglish.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\StringBook1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -232,6 +237,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\SaveOfManualEnglish.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SaveOfManualEnglish.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\StringBook1.en.resx" />
     <EmbeddedResource Include="Resources\StringBook1.resx">

@@ -16,7 +16,6 @@ namespace LDVELH_WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            //this.StartupUri = new Uri("HackResx.xaml", UriKind.Relative);
             if (languageDefined)
             {
                 GlobalTranslator.Instance.translator = new Translator(LDVELH_WPF.Properties.Settings.Default.Language);

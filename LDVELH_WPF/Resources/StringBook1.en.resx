@@ -188,7 +188,7 @@ After a short while, you hear the sound of horses galloping towards you along th
     <value>Try your luck</value>
   </data>
   <data name="Paragraph7To25" xml:space="preserve">
-    <value>If the number is 3â€“9.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph7" xml:space="preserve">
     <value>For what seems an eternity, the rush of the crowd carries you along like a leaf on a fast-flowing stream. You desperately fight to stay on your feet, but you feel weak and dizzy from your ordeal, and your legs are as heavy as lead. Suddenly, you catch a glimpse of a long, narrow stone stairway that leads up to the roof of an inn.
@@ -206,7 +206,7 @@ The jump to the next row is much further than anything you have tried before, an
 </value>
   </data>
   <data name="Paragraph9To236" xml:space="preserve">
-    <value> possess a Vordak Gem.</value>
+    <value> possess a vordak gem.</value>
   </data>
   <data name="Paragraph9To292" xml:space="preserve">
     <value> do not.</value>
@@ -234,10 +234,10 @@ Without wasting a second, you set off towards the Great Hall on the other side o
 </value>
   </data>
   <data name="Paragraph12To262" xml:space="preserve">
-    <value> have 10 Gold Crowns and wish to pay him.</value>
+    <value> have 10 gold crowns and wish to pay him.</value>
   </data>
   <data name="Paragraph12To247" xml:space="preserve">
-    <value> do not have enough Gold Crowns or do not wish to pay him.</value>
+    <value> do not have enough gold crowns or do not wish to pay him.</value>
   </data>
   <data name="Paragraph12" xml:space="preserve">
     <value>The bodyguard looks at you with great suspicion and then slams the door shut. You can hear the sound of voices inside the caravan. Suddenly the door swings open and the face of a wealthy merchant appears.
@@ -318,7 +318,7 @@ It is ridden by a creature dressed in red. The Kraan takes off and begins to fly
 </value>
   </data>
   <data name="Paragraph19To69" xml:space="preserve">
-    <value> have the Kai Discipline of Tracking.</value>
+    <value> have the kai discipline of tracking.</value>
   </data>
   <data name="Paragraph19To272" xml:space="preserve">
     <value>You can avoid the Sleeptooth by returning to the track. .</value>
@@ -342,7 +342,7 @@ Searching a chest and small wardrobe, you find a Backpack, food (enough for two 
     <value>If it is below 5, your horse has suddenly plunged into thick mud up to its belly. If the number is 5 or above, you manage to steer clear of the morass and may now .</value>
   </data>
   <data name="Paragraph21Torandom number table" xml:space="preserve">
-    <value> are stuck, pick another number from the . If this time the number is 7 or less, the mud engulfs you up to your armpits. Your horse gives one last despairing scream as its muzzle disappears into the bubbling mud.  scored above 7, you drag yourself onto firm ground and &lt;a href="#sect189"&gt;turn to 189&lt;/a&gt;.</value>
+    <value> are stuck, pick another number from the . if this time the number is 7 or less, the mud engulfs you up to your armpits. your horse gives one last despairing scream as its muzzle disappears into the bubbling mud.  scored above 7, you drag yourself onto firm ground and &lt;a href="#sect189"&gt;turn to 189&lt;/a&gt;.</value>
   </data>
   <data name="Paragraph21To312" xml:space="preserve">
     <value>If not, then this is your last chance! If you pick any number except a 9, the foul-smelling bog sucks you under and claims another victim. Your life and your mission end here. But if you have picked a 9.</value>
@@ -362,10 +362,10 @@ Searching a chest and small wardrobe, you find a Backpack, food (enough for two 
 </value>
   </data>
   <data name="Paragraph23To326" xml:space="preserve">
-    <value> have a Golden Key and wish to use it.</value>
+    <value> have a golden key and wish to use it.</value>
   </data>
   <data name="Paragraph23To151" xml:space="preserve">
-    <value> have the Kai Discipline of Mind Over Matter.</value>
+    <value> have the kai discipline of mind over matter.</value>
   </data>
   <data name="Paragraph23To337" xml:space="preserve">
     <value>remove the pin.</value>
@@ -488,10 +488,10 @@ Vordak: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 17 Â Â &lt;small&gt;EN
 </value>
   </data>
   <data name="Paragraph36To140" xml:space="preserve">
-    <value>If the number is 4 or lower, you have fallen. Lose 2 &lt;small&gt;ENDURANCE&lt;/small&gt; points and .</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph36To323" xml:space="preserve">
-    <value>If the number is 5 or higher, you do not fall. .</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph36" xml:space="preserve">
     <value />
@@ -576,7 +576,7 @@ Black Bear: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 16 Â Â &lt;small&g
     <value>Try your luck</value>
   </data>
   <data name="Paragraph44To338" xml:space="preserve">
-    <value>If the number is 5â€“9.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph44" xml:space="preserve">
     <value>Without warning, the old track ends abruptly at the edge of a steep slope. The ground here is very loose and unstable. You lose your footing and fall headlong over the edge.
@@ -591,7 +591,7 @@ The leader has a crossbow slung over his pack. An attempt to run would be suicid
 </value>
   </data>
   <data name="Paragraph46To296" xml:space="preserve">
-    <value> have the Kai Discipline of Sixth Sense.</value>
+    <value> have the kai discipline of sixth sense.</value>
   </data>
   <data name="Paragraph46To246" xml:space="preserve">
     <value> accept the offer.</value>
@@ -624,7 +624,7 @@ The leader has a crossbow slung over his pack. An attempt to run would be suicid
     <value> have chosen a number that is 0â€“4.</value>
   </data>
   <data name="Paragraph49To60" xml:space="preserve">
-    <value>If the number is 5â€“9.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph49" xml:space="preserve">
     <value>As you begin to read the inscription, you notice a shadow moving towards you from behind the screen.
@@ -653,7 +653,7 @@ Most of the fieldworks ahead are unmanned, the soldiers having left to supply re
 </value>
   </data>
   <data name="Paragraph52To225" xml:space="preserve">
-    <value> have the Kai Discipline of Animal Kinship.</value>
+    <value> have the kai discipline of animal kinship.</value>
   </data>
   <data name="Paragraph52To250" xml:space="preserve">
     <value>If not, you must climb over the tree and face whatever lurks on the other side. .</value>
@@ -763,7 +763,7 @@ Madman: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 11 Â Â &lt;small&gt;EN
     <value> decide to gather your equipment and run for the cover of the trees.</value>
   </data>
   <data name="Paragraph64To16" xml:space="preserve">
-    <value> decide to cut free one of the horses and try to break through the attacking Doomwolves to the clear road beyond, then .</value>
+    <value> decide to cut free one of the horses and try to break through the attacking doomwolves to the clear road beyond, then .</value>
   </data>
   <data name="Paragraph64" xml:space="preserve">
     <value>You are awoken by the cries of a Kraan circling above the caravan. It is early morning and the sky is clear and bright. You can see a pack of Doomwolves less than a quarter of a mile away along the highway ahead. They are preparing to attack. You must act quickly.
@@ -891,10 +891,10 @@ When you are satisfied that they have given up the chase, you stop for a few min
 </value>
   </data>
   <data name="Paragraph78To132" xml:space="preserve">
-    <value> decide to inform him that you are a Kai Lord with an urgent message for the King.</value>
+    <value> decide to inform him that you are a kai lord with an urgent message for the king.</value>
   </data>
   <data name="Paragraph78To12" xml:space="preserve">
-    <value> decide to offer him Gold Crowns for safe passage to the capital.</value>
+    <value> decide to offer him gold crowns for safe passage to the capital.</value>
   </data>
   <data name="Paragraph78To220" xml:space="preserve">
     <value> decide to attack the guard with your weapon.</value>
@@ -938,7 +938,7 @@ You bid a sad farewell to the Prince, mount his white steed, and head south alon
 </value>
   </data>
   <data name="Paragraph83To45" xml:space="preserve">
-    <value> possess the Kai Discipline of Sixth Sense.</value>
+    <value> possess the kai discipline of sixth sense.</value>
   </data>
   <data name="Paragraph83To205" xml:space="preserve">
     <value>do as they say.</value>
@@ -982,7 +982,7 @@ You are uninjured, and you quickly scramble to your feet and make a dash for the
     <value> prefer to go south.</value>
   </data>
   <data name="Paragraph86To42" xml:space="preserve">
-    <value>Or if you wish to turn west.</value>
+    <value>turn west.</value>
   </data>
   <data name="Paragraph86" xml:space="preserve">
     <value>You soon reach another crossroads.
@@ -998,10 +998,10 @@ In blind panic, you race through the eerie necropolis towards the southern gate.
 </value>
   </data>
   <data name="Paragraph88To216" xml:space="preserve">
-    <value> possess and wish to use the Kai Discipline of Healing on this man.</value>
+    <value> possess and wish to use the kai discipline of healing on this man.</value>
   </data>
   <data name="Paragraph88To31" xml:space="preserve">
-    <value> do not possess the skill, or if you do not want to use it, then .</value>
+    <value> do not possess the skill, or  do not want to use it, then .</value>
   </data>
   <data name="Paragraph88" xml:space="preserve">
     <value>You cautiously peer around the rock to see a soldier lying on his back. By his side is a Spear and shield. On the shield is the painting of a white pegasusâ€”the Prince of Sommerlundâ€™s emblem. He is one of the Princeâ€™s soldiers, and he is only just conscious. His uniform is badly torn, and you can see that he has a deep wound in his left arm. As you move nearer, his eyes flicker open. â€˜Heal me, my Lord,â€™ he begs. â€˜I can barely feel my arm.â€™
@@ -1028,7 +1028,7 @@ In blind panic, you race through the eerie necropolis towards the southern gate.
 </value>
   </data>
   <data name="Paragraph91To198" xml:space="preserve">
-    <value> have the Kai Discipline of Sixth Sense.</value>
+    <value> have the kai discipline of sixth sense.</value>
   </data>
   <data name="Paragraph91To152" xml:space="preserve">
     <value>look at his wares.</value>
@@ -1158,10 +1158,10 @@ You reach a junction where the tunnel meets a corridor leading from north to sou
 </value>
   </data>
   <data name="Paragraph105To298" xml:space="preserve">
-    <value> have the Kai Discipline of Animal Kinship, you may call to this bird .</value>
+    <value> have the kai discipline of animal kinship, you may call to this bird .</value>
   </data>
   <data name="Paragraph105To335" xml:space="preserve">
-    <value> do not possess this skill, or if you do not wish to use it.</value>
+    <value> do not possess this skill, or  do not wish to use it.</value>
   </data>
   <data name="Paragraph105" xml:space="preserve">
     <value>In the distance, perched on the branch of an old oak tree is a jet-black raven.
@@ -1247,7 +1247,7 @@ You decide to leave now, in case it returns with some of its friends.
 </value>
   </data>
   <data name="Paragraph115To150" xml:space="preserve">
-    <value> decide to take a quick Meal.</value>
+    <value> decide to take a quick meal.</value>
   </data>
   <data name="Paragraph115To177" xml:space="preserve">
     <value> decide to search the building.</value>
@@ -1346,7 +1346,7 @@ Further along the track you can see a large war party of Giaks running towards y
     <value />
   </data>
   <data name="Paragraph125To301" xml:space="preserve">
-    <value> have the Kai Discipline of Tracking.</value>
+    <value> have the kai discipline of tracking.</value>
   </data>
   <data name="Paragraph125To27" xml:space="preserve">
     <value>take the south path.</value>
@@ -1375,10 +1375,10 @@ Your quest ends here.
 </value>
   </data>
   <data name="Paragraph128To297" xml:space="preserve">
-    <value> have the Kai Discipline of Hunting.</value>
+    <value> have the kai discipline of hunting.</value>
   </data>
   <data name="Paragraph128To336" xml:space="preserve">
-    <value> do not, you must attack the Giaks now in order to save the rangerâ€™s life. .</value>
+    <value> do not, you must attack the giaks now in order to save the rangerâ€™s life. .</value>
   </data>
   <data name="Paragraph128" xml:space="preserve">
     <value>Carefully parting the dense foliage, you are horrified by the sight that meets you. In a small clearing ahead, three Giaks have tied a man to a wooden stake and are setting fire to a mass of brushwood bundled at his feet. You recognize his tunic as that of a Border Ranger, one of the Kingâ€™s men who police the kingdom near the Durncrag Mountains of the west. He has been badly beaten and is nearly unconscious.
@@ -1388,7 +1388,7 @@ Your quest ends here.
     <value>continue following the officer.</value>
   </data>
   <data name="Paragraph129To144" xml:space="preserve">
-    <value> feel that you stand a better chance of making your way to the Kingâ€™s citadel on your own.</value>
+    <value> feel that you stand a better chance of making your way to the kingâ€™s citadel on your own.</value>
   </data>
   <data name="Paragraph129" xml:space="preserve">
     <value>You reach the main gates of the capital, and stare in awe at the height of the cityâ€™s walls. Two hundred feet high, the walls of Holmgard have withstood the ravages of both time and the Darklords. You and the officer race through the tunnel of the inner gatehouse, one hundred yards in length, and finally halt outside the doorway of the main watchtower. Great crowds of soldiers and civilians are running to and fro.
@@ -1414,7 +1414,7 @@ Your quest ends here.
     <value>pick up a chunk of temple marble and throw it at the Giakâ€™s head.</value>
   </data>
   <data name="Paragraph131To101" xml:space="preserve">
-    <value>Or if you would rather turn and leave the battle area and run back into the woods.</value>
+    <value>turn and leave the battle area and run back into the woods.</value>
   </data>
   <data name="Paragraph131" xml:space="preserve">
     <value>You have covered about a quarter of a mile when you hear shouting and a noise like thunderclaps ahead. Edging nearer, you soon make out a clearing that you recognize to be the site of the ruins of Raumas, an ancient forest temple.
@@ -1515,7 +1515,7 @@ You have taken less than a dozen steps across the courtyard when you hear a deep
     <value>head south.</value>
   </data>
   <data name="Paragraph141To333" xml:space="preserve">
-    <value>Or if you wish to cut through the heavier foliage towards the northeast.</value>
+    <value>cut through the heavier foliage towards the northeast.</value>
   </data>
   <data name="Paragraph141" xml:space="preserve">
     <value>Your Sixth Sense has warned you that some of the creatures that attacked the monastery are searching the two paths for any survivors of their raid, but you can avoid both tracks by making your way through the undergrowth of the woods.
@@ -1711,7 +1711,7 @@ You take the Key and leave as quickly as possible.
 </value>
   </data>
   <data name="Paragraph162To258" xml:space="preserve">
-    <value> have the Kai Discipline of Mind Over Matter.</value>
+    <value> have the kai discipline of mind over matter.</value>
   </data>
   <data name="Paragraph162To127" xml:space="preserve">
     <value> do not have this skill.</value>
@@ -1749,7 +1749,7 @@ You take the Key and leave as quickly as possible.
 </value>
   </data>
   <data name="Paragraph167To178" xml:space="preserve">
-    <value> possess and wish to use the Kai Discipline of Sixth Sense.</value>
+    <value> possess and wish to use the kai discipline of sixth sense.</value>
   </data>
   <data name="Paragraph167To88" xml:space="preserve">
     <value>take a closer look.</value>
@@ -1813,10 +1813,10 @@ You are awoken by the sound of troops in the distance. Across the lake you see t
 </value>
   </data>
   <data name="Paragraph173To158" xml:space="preserve">
-    <value> have a Silver Key, you may try to open the door .</value>
+    <value> have a silver key, you may try to open the door .</value>
   </data>
   <data name="Paragraph173To259" xml:space="preserve">
-    <value> do not possess a Silver Key.</value>
+    <value> do not possess a silver key.</value>
   </data>
   <data name="Paragraph173" xml:space="preserve">
     <value>As you reach the door you hear the crash of a giant stone slab as it falls from the ceiling. Turning around, you see that your exit is now blocked.
@@ -1830,7 +1830,7 @@ You are awoken by the sound of troops in the distance. Across the lake you see t
 </value>
   </data>
   <data name="Paragraph175To182" xml:space="preserve">
-    <value> possess the Kai Discipline of Camouflage.</value>
+    <value> possess the kai discipline of camouflage.</value>
   </data>
   <data name="Paragraph175To41" xml:space="preserve">
     <value>take cover and hide.</value>
@@ -1992,7 +1992,7 @@ Bodyguard: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 11 Â Â &lt;small&gt
     <value> veer off the highway towards the cover of the trees.</value>
   </data>
   <data name="Paragraph192To120" xml:space="preserve">
-    <value> press on regardless of the Kraan and gallop flat out down the highway.</value>
+    <value> press on regardless of the kraan and gallop flat out down the highway.</value>
   </data>
   <data name="Paragraph192" xml:space="preserve">
     <value>You see the razor-fanged mouth of a Doomwolf and hear the hideous cries of the Giaks. Two of them are coming straight for you. You are saved from certain death when your horse jumps at the approaching beasts, knocking them both to the ground. You lash out at the Giak and open a large wound in his headâ€¦and then suddenly, as if by a miracle, youâ€™re through and racing on down the highway, clear of the rest of the pack.
@@ -2079,7 +2079,7 @@ Grabbing the pole, you steer to the other side of the lake and abandon the ferry
     <value>But if you wish to head east.</value>
   </data>
   <data name="Paragraph201To130" xml:space="preserve">
-    <value>Or if you wish to go west.</value>
+    <value>go west.</value>
   </data>
   <data name="Paragraph201" xml:space="preserve">
     <value>You follow the rough track for nearly an hour when you notice ahead of you another wider path branching off towards the south.
@@ -2093,10 +2093,10 @@ Grabbing the pole, you steer to the other side of the lake and abandon the ferry
 </value>
   </data>
   <data name="Paragraph203To80" xml:space="preserve">
-    <value> have 10 or more &lt;small&gt;ENDURANCE&lt;/small&gt; points left.</value>
+    <value> have 10 or more &lt;small&gt;endurance&lt;/small&gt; points left.</value>
   </data>
   <data name="Paragraph203To344" xml:space="preserve">
-    <value> now have less than 10 &lt;small&gt;ENDURANCE&lt;/small&gt; points.</value>
+    <value> now have less than 10 &lt;small&gt;endurance&lt;/small&gt; points.</value>
   </data>
   <data name="Paragraph203" xml:space="preserve">
     <value>You suddenly feel a searing pain shoot through your chest as something explodes against you in a shower of red sparks.
@@ -2111,10 +2111,10 @@ You lose 10 &lt;small&gt;ENDURANCE&lt;/small&gt; points. Through the smoke, the 
 </value>
   </data>
   <data name="Paragraph205To181" xml:space="preserve">
-    <value>If the number you have picked is 0â€“4.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph205To145" xml:space="preserve">
-    <value>If the number is 5â€“9.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph205" xml:space="preserve">
     <value>Behind you, the ominous &lt;i&gt;click&lt;/i&gt; of a crossbow being primed sends a shiver down your spine.
@@ -2157,7 +2157,7 @@ You step through the opening which then quickly closes with a crunch.
     <value>follow him into the dark passage.</value>
   </data>
   <data name="Paragraph210To37" xml:space="preserve">
-    <value> are not completely happy about this man and wish to leave the Guildhall.</value>
+    <value> are not completely happy about this man and wish to leave the guildhall.</value>
   </data>
   <data name="Paragraph210" xml:space="preserve">
     <value>Just inside the door, you are stopped by a journeyman of the Guildhall and asked to explain your intrusion. You calmly inform him of your urgent message for the King, and he hurries you into the Guildmasterâ€™s chambers.
@@ -2165,7 +2165,7 @@ A distinguished old man in deep purple robes turns to greet you and listens to y
 </value>
   </data>
   <data name="Paragraph211To244" xml:space="preserve">
-    <value> possess the Kai Discipline of Sixth Sense .</value>
+    <value> possess the kai discipline of sixth sense .</value>
   </data>
   <data name="Paragraph211To173" xml:space="preserve">
     <value>walk across to the door.</value>
@@ -2294,30 +2294,30 @@ As you reach the peak, the sight that meets you on the far side is one of hopeâ
 </value>
   </data>
   <data name="Paragraph225To187" xml:space="preserve">
-    <value> say â€˜Do not be afraid, I am a friend,â€™ .</value>
+    <value> say â€˜do not be afraid, i am a friend,â€™ .</value>
   </data>
   <data name="Paragraph225To39" xml:space="preserve">
-    <value> say â€˜I am a Kai Lord. I wish you no harm. I must talk with you,â€™ .</value>
+    <value> say â€˜i am a kai lord. i wish you no harm. i must talk with you,â€™ .</value>
   </data>
   <data name="Paragraph225" xml:space="preserve">
     <value>You recognize the language to be that of the Kakarmi, an intelligent race of forest animals that live in, and care for the forests of Sommerlund. You have nothing to fear from these creatures as they are very timid and gentle in their behaviour. Using your skill of Animal Kinship, you call to them in their strange native tongue.
 </value>
   </data>
   <data name="Paragraph226To277" xml:space="preserve">
-    <value>If the number you have picked is 0â€“4.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph226To338" xml:space="preserve">
-    <value>If the number is 5â€“9.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph226" xml:space="preserve">
     <value>At first the descent is quite easy, but you soon find it difficult to see clearly and your legs feel very weak. The â€˜Sleeptoothâ€™ scratches are affecting you, and suddenly you pitch forward and slip head-first into darkness.
 </value>
   </data>
   <data name="Paragraph227To271" xml:space="preserve">
-    <value> lose any &lt;small&gt;ENDURANCE&lt;/small&gt; points in the combat.</value>
+    <value> lose any &lt;small&gt;endurance&lt;/small&gt; points in the combat.</value>
   </data>
   <data name="Paragraph227To348" xml:space="preserve">
-    <value> kill it without losing any &lt;small&gt;ENDURANCE&lt;/small&gt; points.</value>
+    <value> kill it without losing any &lt;small&gt;endurance&lt;/small&gt; points.</value>
   </data>
   <data name="Paragraph227" xml:space="preserve">
     <value>You are now up to your waist in slimy water. The air is thick with small insects that sting your face and clog your nose. Something wraps itself around your leg. It is a Marshviper and you must fight it.
@@ -2463,7 +2463,7 @@ The young wizard wipes his brow, and walks towards you, his hand extended in gra
 </value>
   </data>
   <data name="Paragraph242To166" xml:space="preserve">
-    <value> have the Kai Discipline of Mindshield.</value>
+    <value> have the kai discipline of mindshield.</value>
   </data>
   <data name="Paragraph242To9" xml:space="preserve">
     <value> do not.</value>
@@ -2503,7 +2503,7 @@ Drakkar: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 15 Â Â &lt;small&gt;E
 </value>
   </data>
   <data name="Paragraph247To159" xml:space="preserve">
-    <value> decide to offer him something of greater value that you have in your Backpack.</value>
+    <value> decide to offer him something of greater value that you have in your backpack.</value>
   </data>
   <data name="Paragraph247To220" xml:space="preserve">
     <value> prepare to fight the bodyguard.</value>
@@ -2726,7 +2726,7 @@ Your life ends here.
 </value>
   </data>
   <data name="Paragraph272To134" xml:space="preserve">
-    <value> have the Kai Discipline of Tracking, you may .</value>
+    <value> have the kai discipline of tracking, you may .</value>
   </data>
   <data name="Paragraph272To305" xml:space="preserve">
     <value> do not possess this skill, you prepare your weapon and stealthily approach the huts. .</value>
@@ -2753,10 +2753,10 @@ Your life ends here.
 </value>
   </data>
   <data name="Paragraph275To345" xml:space="preserve">
-    <value>If the number you have picked is 0â€“4.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph275To74" xml:space="preserve">
-    <value>If the number is 5â€“9.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph275" xml:space="preserve">
     <value>You have followed this twisting track for about twenty minutes when you hear the beating of wings high above the trees. Looking up you see a large Kraan approaching from the north, its huge black wings casting a gigantic shadow on the trees below.
@@ -2786,10 +2786,10 @@ Quickly you dive for the shelter of a large fern tree as the Kraan passes overhe
 </value>
   </data>
   <data name="Paragraph279To112" xml:space="preserve">
-    <value>If the number you have picked is 0â€“6.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph279To96" xml:space="preserve">
-    <value>If the number is 7â€“9.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph279" xml:space="preserve">
     <value>You clamber over the loose rocks and into the mouth of the cave, and then quickly turn to push a large rock over the entrance.
@@ -2797,7 +2797,7 @@ After a few minutes you see the Giaks on the rocky ledge outside, their evil yel
 </value>
   </data>
   <data name="Paragraph280To327" xml:space="preserve">
-    <value> decide to draw your weapon and remain completely still, in the hope that the Kraan will not spot you.</value>
+    <value> decide to draw your weapon and remain completely still, in the hope that the kraan will not spot you.</value>
   </data>
   <data name="Paragraph280To170" xml:space="preserve">
     <value> decide to quickly descend the hillside and take cover in the tunnel.</value>
@@ -2911,13 +2911,13 @@ Your adventure ends here.
 </value>
   </data>
   <data name="Paragraph294To230" xml:space="preserve">
-    <value>If the number you pick is 0â€“2.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph294To190" xml:space="preserve">
-    <value>If the number is 3â€“6.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph294To321" xml:space="preserve">
-    <value>If the number is 7â€“9.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph294" xml:space="preserve">
     <value>Staying underwater for as long as you can, you finally surface to see the Giaks far behind you. You have lost your Weapon(s) and Backpack but at least you are still alive.
@@ -2983,16 +2983,16 @@ You wade out of the muddy water and continue your journey under cover of the tre
 </value>
   </data>
   <data name="Paragraph302To110" xml:space="preserve">
-    <value>If the number you have picked is 0â€“2.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph302To285" xml:space="preserve">
-    <value>If the number is 3â€“9.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph302" xml:space="preserve">
     <value />
   </data>
   <data name="Paragraph303To237" xml:space="preserve">
-    <value> have the Kai Discipline of Camouflage.</value>
+    <value> have the kai discipline of camouflage.</value>
   </data>
   <data name="Paragraph303To72" xml:space="preserve">
     <value> do not.</value>
@@ -3060,7 +3060,7 @@ You remember that the royal court sessions are held within the citadel and you a
 </value>
   </data>
   <data name="Paragraph311To324" xml:space="preserve">
-    <value> have the Kai Discipline of Camouflage.</value>
+    <value> have the kai discipline of camouflage.</value>
   </data>
   <data name="Paragraph311To279" xml:space="preserve">
     <value>hide in the cave.</value>
@@ -3092,7 +3092,7 @@ Deduct 1 &lt;small&gt;ENDURANCE&lt;/small&gt; point for cuts and bruises to your
     <value>Try your luck</value>
   </data>
   <data name="Paragraph314To98" xml:space="preserve">
-    <value>If the number is 7â€“9.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph314" xml:space="preserve">
     <value>It takes you nearly an hour to reach the citadel. When you arrive you find that the citizens of Holmgard are in panic and confusion. Your escort approaches the armoured guards at the main entrance and tells them of your urgent message for the King.
@@ -3158,7 +3158,7 @@ You enter the wood, but you have lost 2 &lt;small&gt;ENDURANCE&lt;/small&gt; poi
     <value> are going to stand and fight it as it swoops down.</value>
   </data>
   <data name="Paragraph322To89" xml:space="preserve">
-    <value> are going to evade its attack and slide down the other side of the hill, away from the Kraan.</value>
+    <value> are going to evade its attack and slide down the other side of the hill, away from the kraan.</value>
   </data>
   <data name="Paragraph322" xml:space="preserve">
     <value>After what seems an eternity of struggling, you reach the peak of the steep hill. Behind you, above the canopy of trees, you can see the still smouldering remains of the monastery. To the north, a column of jet-black smoke rises high into the sky. Small orange tongues of flame flicker at its base. Your heart sinks as you realize that the port of Toran is ablaze.
@@ -3296,10 +3296,10 @@ Giak 2: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 13 Â Â &lt;small&gt;EN
 </value>
   </data>
   <data name="Paragraph337To219" xml:space="preserve">
-    <value>If the number picked is 0â€“4.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph337To317" xml:space="preserve">
-    <value>If the number is 5â€“9.</value>
+    <value>Try your luck</value>
   </data>
   <data name="Paragraph337" xml:space="preserve">
     <value>Just as you remove the ornate pin, a loud crack deafens you.
@@ -3313,10 +3313,10 @@ Giak 2: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 13 Â Â &lt;small&gt;EN
 </value>
   </data>
   <data name="Paragraph339To94" xml:space="preserve">
-    <value> kill him within 4 rounds of Combat.</value>
+    <value> kill him within 4 rounds of combat.</value>
   </data>
   <data name="Paragraph339To203" xml:space="preserve">
-    <value> are still fighting after 4 rounds of Combat.</value>
+    <value> are still fighting after 4 rounds of combat.</value>
   </data>
   <data name="Paragraph339To7" xml:space="preserve">
     <value>You may evade combat by escaping through the front door at any stage of the fight, .</value>
@@ -3424,5 +3424,98 @@ You receive the praise and heartfelt thanks of the entire hallâ€”an honour 
 â€˜You have done all that Sommerlund could have asked of a loyal son, but she is greatly in need of you still. The Darklords are powerful once more and their ambition knows no bounds. Our only hope lies within Durenor with the power that once defeated the Darklords an age ago. Lone Wolf, you are the last of the Kaiâ€”you have the skills. Will you journey to Durenor and return with the Sommerswerd, the sword of the sun? Only with that gift of the gods may we crush this evil and save our land.â€™
 If you wish to accept the quest of the Sommerswerd, begin your adventure with Book 2 of the &lt;cite&gt;Lone Wolf&lt;/cite&gt; adventures:
 </value>
+  </data>
+  <data name="Paragraph12BuyEvent1" xml:space="preserve">
+    <value>Pay the required sum (10 gold )</value>
+  </data>
+  <data name="Paragraph15LootEvent1" xml:space="preserve">
+    <value>Take the strange sword</value>
+  </data>
+  <data name="Paragraph184LootEvent1" xml:space="preserve">
+    <value>Take the gold</value>
+  </data>
+  <data name="Paragraph184LootEvent2" xml:space="preserve">
+    <value>Take the sword</value>
+  </data>
+  <data name="Paragraph184LootEvent3" xml:space="preserve">
+    <value>Take the food</value>
+  </data>
+  <data name="Paragraph193LootEvent1" xml:space="preserve">
+    <value>Take the letter</value>
+  </data>
+  <data name="Paragraph197LootEvent1" xml:space="preserve">
+    <value>Take the gold</value>
+  </data>
+  <data name="Paragraph197LootEvent2" xml:space="preserve">
+    <value>Take the sabre</value>
+  </data>
+  <data name="Paragraph199LootEvent1" xml:space="preserve">
+    <value>Take the food</value>
+  </data>
+  <data name="Paragraph20LootEvent1" xml:space="preserve">
+    <value>Take the dagger</value>
+  </data>
+  <data name="Paragraph20LootEvent2" xml:space="preserve">
+    <value>Take the food</value>
+  </data>
+  <data name="Paragraph243LootEvent1" xml:space="preserve">
+    <value>Take the mace</value>
+  </data>
+  <data name="Paragraph267LootEvent1" xml:space="preserve">
+    <value>Take the dagger</value>
+  </data>
+  <data name="Paragraph267LootEvent2" xml:space="preserve">
+    <value>Take the letter</value>
+  </data>
+  <data name="Paragraph269BuyEvent1" xml:space="preserve">
+    <value>Accet his offer (10 gold)</value>
+  </data>
+  <data name="Paragraph290LootEvent1" xml:space="preserve">
+    <value>Take the baton</value>
+  </data>
+  <data name="Paragraph291LootEvent1" xml:space="preserve">
+    <value>Take the dagger</value>
+  </data>
+  <data name="Paragraph291LootEvent2" xml:space="preserve">
+    <value>Take the spear</value>
+  </data>
+  <data name="Paragraph305LootEvent1" xml:space="preserve">
+    <value>Take the spear</value>
+  </data>
+  <data name="Paragraph307LootEvent1" xml:space="preserve">
+    <value>Take the hammer</value>
+  </data>
+  <data name="Paragraph307LootEvent2" xml:space="preserve">
+    <value>Take the food</value>
+  </data>
+  <data name="Paragraph315LootEvent1" xml:space="preserve">
+    <value>Take the soap</value>
+  </data>
+  <data name="Paragraph319LootEvent1" xml:space="preserve">
+    <value>Take the dagger</value>
+  </data>
+  <data name="Paragraph346LootEvent1" xml:space="preserve">
+    <value>Take the spear</value>
+  </data>
+  <data name="Paragraph347LootEvent1" xml:space="preserve">
+    <value>Take the sabre</value>
+  </data>
+  <data name="Paragraph347LootEvent2" xml:space="preserve">
+    <value>Take the lighter</value>
+  </data>
+  <data name="Paragraph347LootEvent3" xml:space="preserve">
+    <value>Take the torch</value>
+  </data>
+  <data name="Paragraph350LootEvent1" xml:space="preserve">
+    <value>Congratz, you can exit now</value>
+  </data>
+  <data name="Paragraph46BuyEvent1" xml:space="preserve">
+    <value>Accept his offer (2 gold)</value>
+  </data>
+  <data name="Paragraph62LootEvent2" xml:space="preserve">
+    <value>Take a sword</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
   </data>
 </root>

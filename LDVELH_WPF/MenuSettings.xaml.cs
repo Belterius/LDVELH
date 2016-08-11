@@ -88,7 +88,7 @@ namespace LDVELH_WPF
         {
             if (!Properties.Settings.Default.Language.Equals("French", StringComparison.InvariantCultureIgnoreCase))
             {
-                MessageBox.Show("Disclaimer : As much content as possible was translated, but sadly the story narration would require too much work (an entire book worth of translation) and still remain in french");
+                MessageBox.Show("Disclaimer : the content was translated as best as possible, but sadly there is still some formating problem, such as broken special characters, gameplay information still displayed, monster information in the main narration");
             }
         }
     }

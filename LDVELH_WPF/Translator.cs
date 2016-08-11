@@ -47,7 +47,6 @@ namespace LDVELH_WPF
         public Translator()
         {
             ci = Thread.CurrentThread.CurrentCulture;            
-            //ci = new CultureInfo("fr-FR");
         }
         public Translator(String language)
         {
@@ -146,7 +145,6 @@ namespace LDVELH_WPF
                 throw new ArgumentException(
                     String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, StringLocation, ci.Name),
                     "Text");
-                
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif
