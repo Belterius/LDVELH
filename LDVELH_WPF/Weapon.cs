@@ -63,6 +63,7 @@ namespace LDVELH_WPF
     }
     public enum WeaponTypes
     {
+        None,
         Sword,
         Spear,
         Mace,
@@ -71,7 +72,6 @@ namespace LDVELH_WPF
         WarHammer,
         Axe,
         Baton,
-        TwoEdgedSword,
-        None
+        TwoEdgedSword
     }
 }
