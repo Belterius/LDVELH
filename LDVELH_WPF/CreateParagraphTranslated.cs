@@ -1204,7 +1204,7 @@ namespace LDVELH_WPF
                 case 148:
                     {
                         paragraph = new StoryParagraph("Vous ouvrez la porte d'un coup de pied et vous vous ruez à l'intérieur de la ferme. Un Kraan s'élève dans les airs en poussant un cri de victoire : il tient une victime dans ses serres pointues. Vous reprenez votre équilibre et vous jetez un coup d'œil autour de vous : l'endroit est désert. En vous approchant de la cheminée, vous trouvez un Marteau de Guerre posé contre le mur. Vous pouvez le prendre si vous le désirez.", paragraphNumber);
-                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre()));
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre(), "Prendre le marteau de guerre"));
                         paragraph.addDecision(new MoveEvent(81, "rester dans cette ferme"));
                         paragraph.addDecision(new MoveEvent(320, "vous réfugier dans la forêt"));
                         paragraph.addDecision(new MoveEvent(199, "inspecter plus avant la pièce "));

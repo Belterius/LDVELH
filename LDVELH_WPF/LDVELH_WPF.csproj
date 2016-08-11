@@ -158,8 +158,8 @@
       <DependentUpon>SaveOfManualEnglish.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\StringBook1.Designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>StringBook1.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Strings.Designer.cs">

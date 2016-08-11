@@ -120,6 +120,9 @@
   <data name="Paragraph12BuyEvent1" xml:space="preserve">
     <value>Pay the required sum (10 gold )</value>
   </data>
+  <data name="Paragraph148LootEvent1" xml:space="preserve">
+    <value>Take the war hammer</value>
+  </data>
   <data name="Paragraph15LootEvent1" xml:space="preserve">
     <value>Take the strange sword</value>
   </data>

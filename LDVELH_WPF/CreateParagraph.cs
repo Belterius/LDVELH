@@ -1140,7 +1140,7 @@ namespace LDVELH_WPF
                 case 140:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph140"), paragraphNumber);
-                        paragraph.addDecision(new MoveEvent(14, "Paragraph140To14"));
+                        paragraph.addDecision(new MoveEvent(14, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph140To14")));
                         paragraph.addDecision(new MoveEvent(252, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph140To252")));
                         paragraph.addDecision(new MoveEvent(215, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph140To215")));
                         paragraph.addDecision(new MoveEvent(36, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph140To36")));
@@ -1198,7 +1198,7 @@ namespace LDVELH_WPF
                 case 148:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph148"), paragraphNumber);
-                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre()));
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre(), GlobalTranslator.Instance.translator.ProvideValue("Paragraph148LootEvent1")));
                         paragraph.addDecision(new MoveEvent(81, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph148To81")));
                         paragraph.addDecision(new MoveEvent(320, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph148To320")));
                         paragraph.addDecision(new MoveEvent(199, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph148To199")));

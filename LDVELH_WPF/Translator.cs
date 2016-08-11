@@ -46,7 +46,7 @@ namespace LDVELH_WPF
 
         public Translator()
         {
-            ci = Thread.CurrentThread.CurrentCulture;            
+            ci = Thread.CurrentThread.CurrentCulture;
         }
         public Translator(String language)
         {

@@ -3518,4 +3518,7 @@ If you wish to accept the quest of the Sommerswerd, begin your adventure with Bo
   <data name="String1" xml:space="preserve">
     <value />
   </data>
+  <data name="Paragraph148LootEvent1" xml:space="preserve">
+    <value>Take the war hammer</value>
+  </data>
 </root>
