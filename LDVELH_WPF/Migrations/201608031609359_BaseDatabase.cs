@@ -17,7 +17,7 @@ namespace LDVELH_WPF.Migrations
                 .PrimaryKey(t => t.BackPackID);
             
             CreateTable(
-                "dbo.Items",
+                "dbo.items",
                 c => new
                     {
                         LootID = c.Int(nullable: false, identity: true),
@@ -119,20 +119,20 @@ namespace LDVELH_WPF.Migrations
             DropForeignKey("dbo.SpecialItems", "Hero_CharacterID", "dbo.Heroes");
             DropForeignKey("dbo.Capacities", "Hero_CharacterID", "dbo.Heroes");
             DropForeignKey("dbo.Heroes", "backPack_BackPackID", "dbo.BackPacks");
-            DropForeignKey("dbo.Items", "BackPack_BackPackID", "dbo.BackPacks");
+            DropForeignKey("dbo.items", "BackPack_BackPackID", "dbo.BackPacks");
             DropIndex("dbo.Weapons", new[] { "WeaponHolder_WeaponHolderID" });
             DropIndex("dbo.SpecialItems", new[] { "Hero_CharacterID1" });
             DropIndex("dbo.SpecialItems", new[] { "Hero_CharacterID" });
             DropIndex("dbo.Heroes", new[] { "weaponHolder_WeaponHolderID" });
             DropIndex("dbo.Heroes", new[] { "backPack_BackPackID" });
             DropIndex("dbo.Capacities", new[] { "Hero_CharacterID" });
-            DropIndex("dbo.Items", new[] { "BackPack_BackPackID" });
+            DropIndex("dbo.items", new[] { "BackPack_BackPackID" });
             DropTable("dbo.Weapons");
             DropTable("dbo.WeaponHolders");
             DropTable("dbo.SpecialItems");
             DropTable("dbo.Heroes");
             DropTable("dbo.Capacities");
-            DropTable("dbo.Items");
+            DropTable("dbo.items");
             DropTable("dbo.BackPacks");
         }
     }
