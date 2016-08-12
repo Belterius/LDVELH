@@ -204,6 +204,9 @@
   <data name="Paragraph350LootEvent1" xml:space="preserve">
     <value>Congratz, you can exit now</value>
   </data>
+  <data name="Paragraph350LootEvent2" xml:space="preserve">
+    <value>You should have exited by now</value>
+  </data>
   <data name="Paragraph46BuyEvent1" xml:space="preserve">
     <value>Accept his offer (2 gold)</value>
   </data>

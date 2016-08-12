@@ -223,13 +223,14 @@ namespace LDVELH_WPF
         private void buttonUseItem_Click(object sender, RoutedEventArgs e)
         {
             Item itemToUse = (Item)listBoxBackPack.SelectedItem;
+            var itemToUsse = listBoxBackPack.SelectedIndex;
             if (itemToUse != null)
             {
                 try
                 {
                     hero.useItem(itemToUse);
                 }
-                catch(CantEatException)
+                catch (CantEatException)
                 {
                     MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("CantEat"));
 
