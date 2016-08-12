@@ -223,7 +223,6 @@ namespace LDVELH_WPF
         private void buttonUseItem_Click(object sender, RoutedEventArgs e)
         {
             Item itemToUse = (Item)listBoxBackPack.SelectedItem;
-            var itemToUsse = listBoxBackPack.SelectedIndex;
             if (itemToUse != null)
             {
                 try
@@ -240,7 +239,6 @@ namespace LDVELH_WPF
                     MessageBox.Show(ex.Message);
                 }
             }
-            
         }
 
         private void buttonThrowItem_Click(object sender, RoutedEventArgs e)

@@ -46,15 +46,6 @@ namespace LDVELH_WPF
             try
             {
                 Hero savedHero = SelectHeroFromID(hero.CharacterID);
-
-                if (savedHero.getSpecialItems != null)
-                {
-                    heroSaveContext.MySpecialItem.RemoveRange(savedHero.getSpecialItems);
-                }
-                if (savedHero.capacities != null)
-                {
-                    heroSaveContext.MyCapacities.RemoveRange(savedHero.capacities);
-                }
                 heroSaveContext.MyHero.Remove(savedHero);
             }
             catch (Exception)

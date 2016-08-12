@@ -36,5 +36,37 @@ namespace LDVELH_Tests
             Assert.AreEqual(false, hero.getSpecialItems.Contains(specialItem));
 
         }
+
+        [TestMethod]
+        public void SpecialItem_AddSpecialItemAlways()
+        {
+            int bonusAgi = 5;
+            int bonusHP = 3;
+            SpecialItem specialItem = new SpecialItemAlways("amazing item", bonusAgi, bonusHP);
+            Hero hero = new Hero("hero");
+            int heroAgility = hero.getBaseAgility();
+            int heroHP = hero.getMaxHitPoint();
+
+            hero.addLoot(specialItem);
+
+            Assert.AreEqual(heroAgility + bonusAgi, hero.getBaseAgility());
+            Assert.AreEqual(heroHP + bonusHP, hero.getMaxHitPoint());
+        }
+        [TestMethod]
+        public void SpecialItem_RemoveSpecialItemAlways()
+        {
+            int bonusAgi = 5;
+            int bonusHP = 3;
+            SpecialItem specialItem = new SpecialItemAlways("amazing item", bonusAgi, bonusHP);
+            Hero hero = new Hero("hero");
+            int heroAgility = hero.getBaseAgility();
+            int heroHP = hero.getMaxHitPoint();
+            hero.addLoot(specialItem);
+
+            hero.removeLoot(specialItem);
+
+            Assert.AreEqual(heroAgility, hero.getBaseAgility());
+            Assert.AreEqual(heroHP, hero.getMaxHitPoint());
+        }
     }
 }

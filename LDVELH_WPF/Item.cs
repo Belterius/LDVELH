@@ -13,6 +13,8 @@ namespace LDVELH_WPF
     {
         [Key]
         public int LootID { get; set; }
+        public abstract void add(Hero hero);
+        public abstract void remove(Hero hero);
 
     }
     public class Gold : Loot
@@ -29,6 +31,14 @@ namespace LDVELH_WPF
         public int getGoldAmount
         {
             get { return this.goldAmount; }
+        }
+        public override void add(Hero hero)
+        {
+            hero.addGold(this.getGoldAmount);
+        }
+        public override void remove(Hero hero)
+        {
+            hero.removeGold(this.getGoldAmount);
         }
     }
     public abstract class Item : Loot
@@ -49,6 +59,19 @@ namespace LDVELH_WPF
             get { return name; }
         }
         public abstract void use(Hero hero);
+
+        public override void add(Hero hero)
+        {
+            hero.backPack.Add(this);
+            hero.backPackItemHasChanged(this, true);
+        }
+        public override void remove(Hero hero)
+        {
+            if (hero.backPack.Remove(this))
+            {
+                hero.backPackItemHasChanged(this, false);
+            }
+        }
     }
 
     public class Consummable : Item

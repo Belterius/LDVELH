@@ -24,6 +24,16 @@ namespace LDVELH_WPF
             this.name = name;
             this.weaponType = weaponType;
         }
+        public override void remove(Hero hero)
+        {
+            hero.weaponHolder.Remove(this);
+            hero.weaponHolderHasChanged(this, false);
+        }
+        public override void add(Hero hero)
+        {
+            hero.weaponHolder.Add(this);
+            hero.weaponHolderHasChanged(this, true);
+        }
 
         public override bool Equals(object obj)
         {

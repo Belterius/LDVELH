@@ -112,12 +112,12 @@ namespace LDVELH_WPF
                 handler((Hero)this, bonusAgility);
             }
         }
-        private void increaseMaxLife(int bonusLife)
+        internal void increaseMaxLife(int bonusLife)
         {
             this.maxHitPoint += bonusLife;
             MaxLifeHasChanged(bonusLife);
         }
-        private void decreaseMaxLife(int bonusLife)
+        internal void decreaseMaxLife(int bonusLife)
         {
             this.maxHitPoint -= bonusLife;
             if (this.actualHitPoint > this.maxHitPoint)
@@ -245,55 +245,7 @@ namespace LDVELH_WPF
             }
             return null;
         }
-        private void addSpecialItem(SpecialItem item)
-        {
-            this.specialItems.Add(item);
-            specialItemHasChanged(item, true);
-
-            if (item is SpecialItemAlways)
-            {
-                addPermanentItemEffect((SpecialItemAlways)item);
-            }
-
-
-        }
-        private void addPermanentItemEffect(SpecialItemAlways item)
-        {
-
-            if (item.getLifeBonus > 0)
-            {
-                this.increaseMaxLife(item.getLifeBonus);
-                this.heal(item.getLifeBonus);
-            }
-            if (item.getAgilityBonus > 0)
-            {
-                this.increaseAgility(item.getAgilityBonus);
-            }
-        }
-        private void removeSpecialItem(SpecialItem item)
-        {
-            if (this.specialItems.Remove(item))
-            {
-                specialItemHasChanged(item, false);
-                if (item is SpecialItemAlways)
-                {
-                    removePermanentItemEffect((SpecialItemAlways)item);
-                }
-            }
-
-        }
-        private void removePermanentItemEffect(SpecialItemAlways item)
-        {
-
-            if (item.getLifeBonus > 0)
-            {
-                this.decreaseMaxLife(item.getLifeBonus);
-            }
-            if (item.getAgilityBonus > 0)
-            {
-                this.decreaseAgility(item.getAgilityBonus);
-            }
-        }
+        
         public void specialItemHasChanged(SpecialItem item, bool add)
         {
             specialItemsHandler handler = specialItemsChanged;
@@ -302,17 +254,6 @@ namespace LDVELH_WPF
                 handler((Hero)this, item, add);
             }
         }
-
-        private void addWeapon(Weapon weapon)
-        {
-            this.weaponHolder.Add(weapon);
-            weaponHolderHasChanged(weapon, true);
-        }
-        private void removeWeapon(Weapon weapon)
-        {
-            this.weaponHolder.Remove(weapon);
-            weaponHolderHasChanged(weapon, false);
-        }
         public void weaponHolderHasChanged(Weapon weapon, bool add)
         {
             weaponHolderHandler handler = weaponHolderChanged;
@@ -320,22 +261,6 @@ namespace LDVELH_WPF
             {
                 handler((Hero)this, weapon, add);
             }
-        }
-
-        private void addBackPackItem(Item item)
-        {
-            this.backPack.Add(item);
-            backPackItemHasChanged(item, true);
-        }
-        private bool removeBackPackItem(Item item)
-        {
-            if (this.backPack.Remove(item))
-            {
-                backPackItemHasChanged(item, false);
-                return true;
-            }
-            else
-                return false;
         }
         public void backPackItemHasChanged(Item item, bool add)
         {
@@ -355,7 +280,7 @@ namespace LDVELH_WPF
             }
             catch (ItemDestroyedException)
             {
-                this.removeBackPackItem(item);
+                item.remove(this);
                 backPackItemHasChanged(item, false);
             }
             catch (CannotUseItemException)
@@ -367,46 +292,25 @@ namespace LDVELH_WPF
 
         public void addLoot(Loot loot)
         {
-            if (loot is Weapon)
+            try
             {
-                this.addWeapon((Weapon)loot);
-                return;
+                loot.add(this);
             }
-            if (loot is Item)
+            catch (Exception)
             {
-                this.addBackPackItem((Item)loot);
-                return;
-            }
-            if (loot is SpecialItem)
-            {
-                this.addSpecialItem((SpecialItem)loot);
-                return;
-            }
-            if (loot is Gold)
-            {
-                this.addGold(((Gold)loot).getGoldAmount);
+                throw;
             }
         }
 
         public void removeLoot(Loot loot)
         {
-            if (loot is Weapon)
+            try
             {
-                this.removeWeapon((Weapon)loot);
-                return;
+                loot.remove(this);
             }
-            if (loot is Item)
+            catch (Exception)
             {
-                this.removeBackPackItem((Item)loot);
-                return;
-            }
-            if (loot is SpecialItem)
-            {
-                this.removeSpecialItem((SpecialItem)loot);
-            }
-            if (loot is Gold)
-            {
-                this.removeGold(((Gold)loot).getGoldAmount);
+                throw;
             }
         }
         public void removeBackPack()

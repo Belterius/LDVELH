@@ -22,6 +22,18 @@ namespace LDVELH_WPF
         {
             get { return name; }
         }
+        public override void add(Hero hero)
+        {
+            hero.specialItems.Add(this);
+            hero.specialItemHasChanged(this, true);
+        }
+        public override void remove(Hero hero)
+        {
+            if (hero.specialItems.Remove(this))
+            {
+                hero.specialItemHasChanged(this, false);
+            }
+        }
     }
 
     public class SpecialItemCombat : SpecialItem
@@ -108,7 +120,7 @@ namespace LDVELH_WPF
             this.LifePointBonus = hitPointBonus;
             this.name = name;
         }
-
+        
         public int getAgilityBonus
         {
             get { return agilityBonus; }
@@ -117,7 +129,34 @@ namespace LDVELH_WPF
         {
             get { return LifePointBonus; }
         }
+        public override void add(Hero hero)
+        {
+            base.add(hero);
 
+            if (this.getLifeBonus > 0)
+            {
+                hero.increaseMaxLife(this.getLifeBonus);
+                hero.heal(this.getLifeBonus);
+            }
+            if (this.getAgilityBonus > 0)
+            {
+                hero.increaseAgility(this.getAgilityBonus);
+            }
+        }
+        public override void remove(Hero hero)
+        {
+            base.remove(hero);
+
+            if (this.getLifeBonus > 0)
+            {
+                hero.decreaseMaxLife(this.getLifeBonus);
+            }
+            if (this.getAgilityBonus > 0)
+            {
+                hero.decreaseAgility(this.getAgilityBonus);
+            }
+        
+        }
         public override bool Equals(object obj)
         {
             if (!(obj is SpecialItemAlways))
