@@ -21,49 +21,40 @@ namespace LDVELH_WPF
                         //D10 Gold + Axe
                         paragraph.addMainEvent(new LootEvent(new Gold(DiceRoll.D10Roll())));
                         paragraph.addMainEvent(new LootEvent(CreateLoot.CreateWeapon.Hache()));
+                        paragraph.addMainEvent(new LootEvent(CreateLoot.CreateConsummable.potionDeLampsur()));
                         paragraph.addMainEvent(new LootEvent(CreateLoot.CreateFood.ration(3)));
                         //Random loot
                         switch (DiceRoll.D10Roll())
                         {
                             case 1:
-                                LootEvent lootEvent1 = new LootEvent(CreateLoot.CreateWeapon.sword());
-                                paragraph.addMainEvent(lootEvent1);
+                                paragraph.addMainEvent(new LootEvent(CreateLoot.CreateWeapon.sword()));
                                 break;
                             case 2:
-                                LootEvent lootEvent2 = new LootEvent(CreateLoot.CreateSpecialItem.helmet());
-                                paragraph.addMainEvent(lootEvent2);
+                                paragraph.addMainEvent(new LootEvent(CreateLoot.CreateSpecialItem.helmet()));
                                 break;
                             case 3:
-                                LootEvent lootEvent3 = new LootEvent(CreateLoot.CreateFood.ration(2));
-                                paragraph.addMainEvent(lootEvent3);
+                                paragraph.addMainEvent( new LootEvent(CreateLoot.CreateFood.ration(2)));
                                 break;
                             case 4:
-                                LootEvent lootEvent4 = new LootEvent(CreateLoot.CreateSpecialItem.chainMail());
-                                paragraph.addMainEvent(lootEvent4);
+                                paragraph.addMainEvent(new LootEvent(CreateLoot.CreateSpecialItem.chainMail()));
                                 break;
                             case 5:
-                                LootEvent lootEvent5 = new LootEvent(CreateLoot.CreateWeapon.masseDArme());
-                                paragraph.addMainEvent(lootEvent5);
+                                paragraph.addMainEvent(new LootEvent(CreateLoot.CreateWeapon.masseDArme()));
                                 break;
                             case 6:
-                                LootEvent lootEvent6 = new LootEvent(CreateLoot.CreateConsummable.potionDeGuerison());
-                                paragraph.addMainEvent(lootEvent6);
+                                paragraph.addMainEvent(new LootEvent(CreateLoot.CreateConsummable.potionDeGuerison()));
                                 break;
                             case 7:
-                                LootEvent lootEvent7 = new LootEvent(CreateLoot.CreateWeapon.Baton());
-                                paragraph.addMainEvent(lootEvent7);
+                                paragraph.addMainEvent(new LootEvent(CreateLoot.CreateWeapon.Baton()));
                                 break;
                             case 8:
-                                LootEvent lootEvent8 = new LootEvent(CreateLoot.CreateWeapon.Lance());
-                                paragraph.addMainEvent(lootEvent8);
+                                paragraph.addMainEvent(new LootEvent(CreateLoot.CreateWeapon.Lance()));
                                 break;
                             case 9:
-                                LootEvent lootEvent9 = new LootEvent(CreateLoot.CreateGold.Gold(12));
-                                paragraph.addMainEvent(lootEvent9);
+                                paragraph.addMainEvent(new LootEvent(CreateLoot.CreateGold.Gold(12)));
                                 break;
                             case 10:
-                                LootEvent lootEvent10 = new LootEvent(CreateLoot.CreateWeapon.Glaive());
-                                paragraph.addMainEvent(lootEvent10);
+                                paragraph.addMainEvent(new LootEvent(CreateLoot.CreateWeapon.Glaive()));
                                 break;
                         }
                         paragraph.addDecision(new MoveEvent(85, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph1To85")));
