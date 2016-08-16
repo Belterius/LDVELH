@@ -22,6 +22,7 @@ namespace LDVELH_WPF
                         paragraph.addMainEvent(new LootEvent(new Gold(DiceRoll.D10Roll())));
                         paragraph.addMainEvent(new LootEvent(CreateLoot.CreateWeapon.Hache()));
                         paragraph.addMainEvent(new LootEvent(CreateLoot.CreateConsummable.potionDeLampsur()));
+                        paragraph.addMainEvent(new LootEvent(CreateLoot.CreateConsummable.potionDeLampsur(5)));
                         paragraph.addMainEvent(new LootEvent(CreateLoot.CreateFood.ration(3)));
                         //Random loot
                         switch (DiceRoll.D10Roll())
