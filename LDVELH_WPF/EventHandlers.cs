@@ -46,7 +46,6 @@ namespace LDVELH_WPF
             listItemSave = new BindingList<Item>(hero.backPack.getItems);
             listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
 
-
             listBoxSpecialItem.ItemsSource = this.listSpecialItemSave;
             listBoxSpecialItem.DisplayMemberPath = "getDisplayName";
             listBoxBackPackItem.ItemsSource = this.listItemSave;
