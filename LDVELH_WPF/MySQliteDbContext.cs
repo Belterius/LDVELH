@@ -1,7 +1,10 @@
 ﻿namespace LDVELH_WPF
 {
     using SQLite.CodeFirst;
+    using System;
     using System.Data.Entity;
+    using System.Linq;
+    using System.Reflection;
 
     public class MySQLiteDBContext : DbContext
     {

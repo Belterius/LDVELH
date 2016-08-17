@@ -9,7 +9,7 @@
         <Button x:Name="buttonNew" Content="{Core:Translator Text=NewGame}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,226,0,0" Click="buttonNew_Click"/>
         <Button x:Name="ButtonSettings" HorizontalAlignment="Left" Margin="10,206,0,0" VerticalAlignment="Top" Width="33" Height="34" Click="ButtonSettings_Click">
             <StackPanel>
-                <Image Source="/LDVELH_WPF;component/Resources/settings-gears.png" RenderTransformOrigin="0.519,0.407" />
+                <Image Source="Resources/settings-gears.png" RenderTransformOrigin="0.519,0.407" />
             </StackPanel>
         </Button>
         <Button x:Name="ButtonDelete" Content="Delete" HorizontalAlignment="Left" Margin="209,199,0,0" VerticalAlignment="Top" Width="75" Click="ButtonDelete_Click"/>
