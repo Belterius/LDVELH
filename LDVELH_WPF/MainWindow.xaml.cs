@@ -201,7 +201,6 @@ namespace LDVELH_WPF
         private void buttonThrowWeapon_Click(object sender, RoutedEventArgs e)
         {
             Weapon weaponToThrow = (Weapon)listBoxWeapons.SelectedItem;
-            listBoxWeapons.SelectedValue = null;
             if (weaponToThrow != null)
             {
                 hero.removeLoot(weaponToThrow);
@@ -233,7 +232,6 @@ namespace LDVELH_WPF
         private void buttonThrowItem_Click(object sender, RoutedEventArgs e)
         {
             Item itemToThrow = (Item)listBoxBackPack.SelectedItem;
-            listBoxBackPack.SelectedValue = null;
             if (itemToThrow != null)
             {
                 hero.removeLoot(itemToThrow);
