@@ -4,6 +4,10 @@ namespace LDVELH_WPF
 {
     class DamageTable
     {
+        //Rule of the DamageTable are corresponding to the rule in the CYOA Book Lone Wolf.
+        //While it was possible to deduct some logic from the EnnemyDamageTaken table, it was not possible for the HeroDamageTaken table, hence why it's arbitrary and not determined by an arithmetical function.
+
+
         public static int ennemyDamageTaken(int strenghtDifference, int rollD10)
         {
             if (strenghtDifference > 0)
@@ -55,21 +59,15 @@ namespace LDVELH_WPF
                     case 1:
                         return 3;
                     case 2:
-                        return 2;
                     case 3:
-                        return 2;
                     case 4:
                         return 2;
                     case 5:
-                        return 1;
                     case 6:
                         return 1;
                     case 7:
-                        return 0;
                     case 8:
-                        return 0;
                     case 9:
-                        return 0;
                     case 10:
                         return 0;
                     default :
@@ -83,11 +81,9 @@ namespace LDVELH_WPF
                 switch (rollD10)
                 {
                     case 1:
-                        return 9999;//instant death
                     case 2:
                         return 9999;//instant death
                     case 3:
-                        return 8;
                     case 4:
                         return 8;
                     case 5:
@@ -112,31 +108,27 @@ namespace LDVELH_WPF
                 case 1 :
                     switch (strenghtDifference)
                     {
-                        case -10 : case -9:
+                        case -10 :
+                        case -9:
                             return 9999;//instant death
                         case -8:
                         case -7:
                             return 8;
                         case -6:
                         case -5:
-                            return 6;
                         case -4:
                         case -3:
                             return 6;
                         case -2:
                         case -1:
-                            return 5;
                         case 0:
-                            return 5;
                         case 1:
                         case 2:
                             return 5;
                         case 3:
                         case 4:
-                            return 4;
                         case 5:
                         case 6:
-                            return 4;
                         case 7:
                         case 8:
                             return 4;
@@ -160,24 +152,19 @@ namespace LDVELH_WPF
                             return 6;
                         case -4:
                         case -3:
-                            return 5;
                         case -2:
                         case -1:
                             return 5;
                         case 0:
-                            return 4;
                         case 1:
                         case 2:
                             return 4;
                         case 3:
                         case 4:
-                            return 3;
                         case 5:
                         case 6:
-                            return 3;
                         case 7:
                         case 8:
-                            return 3;
                         case 9:
                         case 10:
                             return 3;
@@ -195,27 +182,22 @@ namespace LDVELH_WPF
                             return 6;
                         case -6:
                         case -5:
-                            return 5;
                         case -4:
                         case -3:
                             return 5;
                         case -2:
                         case -1:
-                            return 4;
                         case 0:
                             return 4;
                         case 1:
                         case 2:
-                            return 3;
                         case 3:
                         case 4:
-                            return 3;
                         case 5:
                         case 6:
                             return 3;
                         case 7:
                         case 8:
-                            return 2;
                         case 9:
                         case 10:
                             return 2;
@@ -236,24 +218,19 @@ namespace LDVELH_WPF
                             return 5;
                         case -4:
                         case -3:
-                            return 4;
                         case -2:
                         case -1:
                             return 4;
                         case 0:
-                            return 3;
                         case 1:
                         case 2:
                             return 3;
                         case 3:
                         case 4:
-                            return 2;
                         case 5:
                         case 6:
-                            return 2;
                         case 7:
                         case 8:
-                            return 2;
                         case 9:
                         case 10:
                             return 2;
@@ -271,7 +248,6 @@ namespace LDVELH_WPF
                             return 5;
                         case -6:
                         case -5:
-                            return 4;
                         case -4:
                         case -3:
                             return 4;
@@ -279,19 +255,14 @@ namespace LDVELH_WPF
                         case -1:
                             return 3;
                         case 0:
-                            return 2;
                         case 1:
                         case 2:
-                            return 2;
                         case 3:
                         case 4:
-                            return 2;
                         case 5:
                         case 6:
-                            return 2;
                         case 7:
                         case 8:
-                            return 2;
                         case 9:
                         case 10:
                             return 2;
@@ -315,21 +286,16 @@ namespace LDVELH_WPF
                             return 3;
                         case -2:
                         case -1:
-                            return 2;
                         case 0:
-                            return 2;
                         case 1:
                         case 2:
-                            return 2;
                         case 3:
                         case 4:
                             return 2;
                         case 5:
                         case 6:
-                            return 1;
                         case 7:
                         case 8:
-                            return 1;
                         case 9:
                         case 10:
                             return 1;
@@ -350,24 +316,19 @@ namespace LDVELH_WPF
                             return 3;
                         case -4:
                         case -3:
-                            return 2;
                         case -2:
                         case -1:
                             return 2;
                         case 0:
-                            return 1;
                         case 1:
                         case 2:
-                            return 1;
                         case 3:
                         case 4:
                             return 1;
                         case 5:
                         case 6:
-                            return 0;
                         case 7:
                         case 8:
-                            return 0;
                         case 9:
                         case 10:
                             return 0;
@@ -388,24 +349,18 @@ namespace LDVELH_WPF
                             return 2;
                         case -4:
                         case -3:
-                            return 1;
                         case -2:
                         case -1:
                             return 1;
                         case 0:
-                            return 0;
                         case 1:
                         case 2:
-                            return 0;
                         case 3:
                         case 4:
-                            return 0;
                         case 5:
                         case 6:
-                            return 0;
                         case 7:
                         case 8:
-                            return 0;
                         case 9:
                         case 10:
                             return 0;
@@ -423,27 +378,19 @@ namespace LDVELH_WPF
                             return 2;
                         case -6:
                         case -5:
-                            return 0;
                         case -4:
                         case -3:
-                            return 0;
                         case -2:
                         case -1:
-                            return 0;
                         case 0:
-                            return 0;
                         case 1:
                         case 2:
-                            return 0;
                         case 3:
                         case 4:
-                            return 0;
                         case 5:
                         case 6:
-                            return 0;
                         case 7:
                         case 8:
-                            return 0;
                         case 9:
                         case 10:
                             return 0;
@@ -455,33 +402,23 @@ namespace LDVELH_WPF
                     {
                         case -10:
                         case -9:
-                            return 0;
                         case -8:
                         case -7:
-                            return 0;
                         case -6:
                         case -5:
-                            return 0;
                         case -4:
                         case -3:
-                            return 0;
                         case -2:
                         case -1:
-                            return 0;
                         case 0:
-                            return 0;
                         case 1:
                         case 2:
-                            return 0;
                         case 3:
                         case 4:
-                            return 0;
                         case 5:
                         case 6:
-                            return 0;
                         case 7:
                         case 8:
-                            return 0;
                         case 9:
                         case 10:
                             return 0;

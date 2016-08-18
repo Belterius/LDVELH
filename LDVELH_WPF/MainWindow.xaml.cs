@@ -201,6 +201,7 @@ namespace LDVELH_WPF
         private void buttonThrowWeapon_Click(object sender, RoutedEventArgs e)
         {
             Weapon weaponToThrow = (Weapon)listBoxWeapons.SelectedItem;
+            listBoxWeapons.SelectedValue = null;
             if (weaponToThrow != null)
             {
                 hero.removeLoot(weaponToThrow);
@@ -210,6 +211,7 @@ namespace LDVELH_WPF
         private void buttonUseItem_Click(object sender, RoutedEventArgs e)
         {
             Item itemToUse = (Item)listBoxBackPack.SelectedItem;
+            listBoxBackPack.SelectedValue = null;//We risk changing our HashCode when using the item, it is not a problem BUT we have to manually deselect our SelectedValue BEFORE, else as the HashCode changed, our ListBox cannot deselect our item anymore and it will soon crash.
             if (itemToUse != null)
             {
                 try
@@ -231,6 +233,7 @@ namespace LDVELH_WPF
         private void buttonThrowItem_Click(object sender, RoutedEventArgs e)
         {
             Item itemToThrow = (Item)listBoxBackPack.SelectedItem;
+            listBoxBackPack.SelectedValue = null;
             if (itemToThrow != null)
             {
                 hero.removeLoot(itemToThrow);

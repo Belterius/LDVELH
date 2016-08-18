@@ -106,7 +106,6 @@
     <Compile Include="Capacity.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CreateLoot.cs" />
-    <Compile Include="CreateMonster.cs" />
     <Compile Include="CreateParagraphTranslated.cs" />
     <Compile Include="CreateParagraph.cs" />
     <Compile Include="DamageTable.cs" />

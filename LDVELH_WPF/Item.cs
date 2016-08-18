@@ -108,7 +108,8 @@ namespace LDVELH_WPF
         }
         public override int GetHashCode()
         {
-           return new { name, healingPower, chargesLeft }.GetHashCode();
+            return new { name, healingPower, chargesLeft }.GetHashCode();
+            //return new { name, healingPower }.GetHashCode();
         }
         public override string getDisplayName
         {
@@ -116,19 +117,21 @@ namespace LDVELH_WPF
             {
                 if (chargesLeft > 1)
                 {
-                    return name + "(+" + healingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return name + "(+" + healingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
                 else
                 {
-                    return name + "(+" + healingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return name + "(+" + healingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
             }
         }
         public override void use(Hero hero)
         {
-            this.chargesLeft--;
-            hero.heal(healingPower);
-
+            if(this.chargesLeft >= 1)
+            {
+                this.chargesLeft--;
+                hero.heal(healingPower);
+            }
             if (chargesLeft <= 0)
             {
                 throw new ItemDestroyedException();
@@ -167,6 +170,7 @@ namespace LDVELH_WPF
         public override int GetHashCode()
         {
             return new { name, chargesLeft }.GetHashCode();
+            //return new { name }.GetHashCode();
         }
 
         public override string getDisplayName
@@ -186,9 +190,11 @@ namespace LDVELH_WPF
 
         public override void use(Hero hero)
         {
-            this.chargesLeft--;
-            hero.eat();
-
+            if(this.chargesLeft >= 1)
+            {
+                this.chargesLeft--;
+                hero.eat();
+            }
             if (chargesLeft <= 0)
             {
                 throw new ItemDestroyedException();

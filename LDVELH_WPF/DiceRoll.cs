@@ -2,8 +2,21 @@
 
 namespace LDVELH_WPF
 {
-    public static class DiceRoll
+
+    public sealed class DiceRoll
     {
+        static readonly DiceRoll INSTANCE = new DiceRoll();
+        private DiceRoll()
+        {
+
+        }
+        public static DiceRoll Instance
+        {
+            get
+            {
+                return INSTANCE;
+            }
+        }
         static Random random = new Random();
 
         public static int D6Roll()
