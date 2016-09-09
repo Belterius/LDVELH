@@ -33,15 +33,15 @@ namespace LDVELH_WPF
                         int j = 0;
                         foreach (Event Decision in newParag.getListDecision)
                         {
-                            if ((Decision is MoveEvent || Decision is CapacityEvent || Decision is RunEvent || Decision is MealEvent || Decision is ItemRequieredEvent || Decision is LinkedEvent || Decision is LoseBackPack || Decision is LoseWeaponHolder) && Decision.getDestination != null)
+                            if ((Decision is MoveEvent || Decision is CapacityEvent || Decision is RunEvent || Decision is MealEvent || Decision is ItemRequieredEvent || Decision is LinkedEvent || Decision is LoseBackPack || Decision is LoseWeaponHolder) && Decision.DestinationNumber.ToString() != null)
                             {
-                                resx.AddResource("Paragraph" + paragraph + "To" + Decision.getDestination, Decision.getTriggerMessage);
+                                resx.AddResource("Paragraph" + paragraph + "To" + Decision.DestinationNumber.ToString(), Decision.TriggerMessage);
 
                             }
                             else
                             {
                                 j++;
-                                resx.AddResource("Paragraph" + paragraph + Decision.GetType().Name + j, Decision.getTriggerMessage);
+                                resx.AddResource("Paragraph" + paragraph + Decision.GetType().Name + j, Decision.TriggerMessage);
                             }
                         }
 

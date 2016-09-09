@@ -194,7 +194,7 @@ namespace LDVELH_WPF
                 if (ShouldGenerateButton(possibleEvent, story))
                 {
                     Button buttonDecision = new Button();
-                    buttonDecision.Content = possibleEvent.getTriggerMessage;
+                    buttonDecision.Content = possibleEvent.TriggerMessage;
                     buttonDecision.Click += delegate {
                         try {
                             possibleEvent.resolveEvent(story);

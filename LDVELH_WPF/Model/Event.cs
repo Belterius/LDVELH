@@ -10,23 +10,40 @@ namespace LDVELH_WPF
         [Key]
         int EventID { get; set; }
 
-        protected string triggerMessage;
-        protected int destinationNumber;
-        protected bool done = false;
-        public abstract void resolveEvent(Story story);
-        public string getTriggerMessage
-        {
-            get { return triggerMessage; }
-        }
-
-        public string getDestination
+        protected string _TriggerMessage;
+        public string TriggerMessage
         {
             get
             {
-                return destinationNumber.ToString();
+                return _TriggerMessage;
+            }
+            protected set
+            {
+                if (_TriggerMessage != value)
+                {
+                    _TriggerMessage = value;
+                }
             }
         }
 
+        protected int _DestinationNumber;
+        public int DestinationNumber
+        {
+            get
+            {
+                return _DestinationNumber;
+            }
+            protected set
+            {
+                if (_DestinationNumber != value)
+                {
+                    _DestinationNumber = value;
+                }
+            }
+        }
+        protected bool done = false;
+        public abstract void resolveEvent(Story story);
+        
     }
     public class CapacityEvent : Event
     {
@@ -37,20 +54,20 @@ namespace LDVELH_WPF
         }
         public CapacityEvent(int destinationNumber, CapacityType capacityType)
         {
-            this.destinationNumber = destinationNumber;
+            this.DestinationNumber = destinationNumber;
             this.capacityType = capacityType;
-            this.triggerMessage = GlobalTranslator.Instance.translator.ProvideValue("UseCapacity") + capacityType.GetTranslation();
+            this.TriggerMessage = GlobalTranslator.Instance.translator.ProvideValue("UseCapacity") + capacityType.GetTranslation();
         }
         public CapacityEvent(int destinationNumber, CapacityType capacityType, string triggerMessage)
         {
-            this.destinationNumber = destinationNumber;
+            this.DestinationNumber = destinationNumber;
             this.capacityType = capacityType;
-            this.triggerMessage = triggerMessage;
+            this.TriggerMessage = triggerMessage;
         }
         public override void resolveEvent(Story story)
         {
-            story.addParagraph(CreateParagraph.CreateAParagraph(this.destinationNumber));
-            story.Move(this.destinationNumber);
+            story.addParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
+            story.Move(this.DestinationNumber);
         }
         public CapacityType CapacityRequiered{
             get { return capacityType; }
@@ -67,14 +84,14 @@ namespace LDVELH_WPF
         }
         public LootEvent(Loot item, string triggerMessage = "")
         {
-            this.triggerMessage = triggerMessage;
+            this.TriggerMessage = triggerMessage;
             this.loot = new List<Loot>();
             this.loot.Add(item);
         }
         public LootEvent(List<Loot> listItem, string triggerMessage = "")
         {
             this.loot = listItem;
-            this.triggerMessage = triggerMessage;
+            this.TriggerMessage = triggerMessage;
         }
         public override void resolveEvent(Story story)
         {
@@ -118,13 +135,13 @@ namespace LDVELH_WPF
             this.payableEvent = new List<Event>();
             this.payableEvent.Add(anEvent);
             this.price = price;
-            this.triggerMessage = triggerMessage + " (" + price + " "+ GlobalTranslator.Instance.translator.ProvideValue("Gold")+" )";
+            this.TriggerMessage = triggerMessage + " (" + price + " "+ GlobalTranslator.Instance.translator.ProvideValue("Gold")+" )";
         }
         public BuyEvent(List<Event> listEvent, int price, string triggerMessage)
         {
             this.price = price;
             this.payableEvent = listEvent;
-            this.triggerMessage = triggerMessage + " (" + price + " " + GlobalTranslator.Instance.translator.ProvideValue("Gold") + " )";
+            this.TriggerMessage = triggerMessage + " (" + price + " " + GlobalTranslator.Instance.translator.ProvideValue("Gold") + " )";
         }
         public override void resolveEvent(Story story)
         {
@@ -249,7 +266,7 @@ namespace LDVELH_WPF
         {
             this.ennemy = ennemy;
             this.runEvent = runEvent;
-            this.destinationNumber = destinationNumber;
+            this.DestinationNumber = destinationNumber;
             this.ranTurn = ranTurn;
         }
         public override void resolveEvent(Story story)
@@ -290,35 +307,35 @@ namespace LDVELH_WPF
     {
         public MoveEvent(int destinationNumber)
         {
-            this.destinationNumber = destinationNumber;
+            this.DestinationNumber = destinationNumber;
         }
         public MoveEvent(int destinationNumber, string triggerMessage)
         {
-            this.destinationNumber = destinationNumber;
-            this.triggerMessage = triggerMessage;
+            this.DestinationNumber = destinationNumber;
+            this.TriggerMessage = triggerMessage;
         }
         public override void resolveEvent(Story story)
         {
-            story.addParagraph(CreateParagraph.CreateAParagraph(this.destinationNumber));
-            story.Move(this.destinationNumber);
+            story.addParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
+            story.Move(this.DestinationNumber);
         }
     }
     public class MealEvent : Event
     {
         public MealEvent(int destinationNumber)
         {
-            this.destinationNumber = destinationNumber;
+            this.DestinationNumber = destinationNumber;
         }
         public MealEvent(int destinationNumber, string triggerMessage)
         {
-            this.destinationNumber = destinationNumber;
-            this.triggerMessage = triggerMessage;
+            this.DestinationNumber = destinationNumber;
+            this.TriggerMessage = triggerMessage;
         }
         public override void resolveEvent(Story story)
         {
             story.getHero.mealTime();
-            story.addParagraph(CreateParagraph.CreateAParagraph(this.destinationNumber));
-            story.Move(this.destinationNumber);
+            story.addParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
+            story.Move(this.DestinationNumber);
         }
     }
     public class ItemRequieredEvent : Event
@@ -330,14 +347,14 @@ namespace LDVELH_WPF
         }
         public ItemRequieredEvent(int destinationNumber, string itemName)
         {
-            this.destinationNumber = destinationNumber;
+            this.DestinationNumber = destinationNumber;
             this.itemName = itemName;
-            this.triggerMessage = "Utiliser votre item " + itemName;
+            this.TriggerMessage = GlobalTranslator.Instance.translator.ProvideValue("UseItem") + itemName;
         }
         public override void resolveEvent(Story story)
         {
-            story.addParagraph(CreateParagraph.CreateAParagraph(this.destinationNumber));
-            story.Move(this.destinationNumber);
+            story.addParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
+            story.Move(this.DestinationNumber);
         }
         public string itemRequiered
         {
@@ -352,11 +369,11 @@ namespace LDVELH_WPF
         }
         public DeathEvent(string triggerMessage)
         {
-            this.triggerMessage = triggerMessage;
+            this.TriggerMessage = triggerMessage;
         }
         public DeathEvent(string triggerMessage, string specialMessage)
         {
-            this.triggerMessage = triggerMessage;
+            this.TriggerMessage = triggerMessage;
             this.specialMessage = specialMessage;
         }
         public override void resolveEvent(Story story)
@@ -376,12 +393,12 @@ namespace LDVELH_WPF
         public DammageEvent(string triggerMessage, int damageAmount)
         {
             this.damageAmount = damageAmount;
-            this.triggerMessage = triggerMessage;
+            this.TriggerMessage = triggerMessage;
         }
         public DammageEvent(string triggerMessage, string specialMessage, int damageAmount)
         {
             this.damageAmount = damageAmount;
-            this.triggerMessage = triggerMessage;
+            this.TriggerMessage = triggerMessage;
             this.specialMessage = specialMessage;
         }
         public override void resolveEvent(Story story)
@@ -402,12 +419,12 @@ namespace LDVELH_WPF
         public DammageAgilityEvent(string triggerMessage, int damageAmount)
         {
             this.damageAmount = damageAmount;
-            this.triggerMessage = triggerMessage;
+            this.TriggerMessage = triggerMessage;
         }
         public DammageAgilityEvent(string triggerMessage, string specialMessage, int damageAmount)
         {
             this.damageAmount = damageAmount;
-            this.triggerMessage = triggerMessage;
+            this.TriggerMessage = triggerMessage;
             this.specialMessage = specialMessage;
         }
         public override void resolveEvent(Story story)
@@ -422,13 +439,13 @@ namespace LDVELH_WPF
         List<Event> linkedEvent;
         public LinkedEvent(int destinationNumber)
         {
-            this.destinationNumber = destinationNumber;
+            this.DestinationNumber = destinationNumber;
             linkedEvent = new List<Event>();
         }
         public LinkedEvent(int destinationNumber, string triggerMessage)
         {
-            this.destinationNumber = destinationNumber;
-            this.triggerMessage = triggerMessage;
+            this.DestinationNumber = destinationNumber;
+            this.TriggerMessage = triggerMessage;
             linkedEvent = new List<Event>();
         }
         public void addEvent(Event newEvent)
@@ -441,8 +458,8 @@ namespace LDVELH_WPF
             {
                 linkEvent.resolveEvent(story);
             }
-            story.addParagraph(CreateParagraph.CreateAParagraph(this.destinationNumber));
-            story.Move(this.destinationNumber);
+            story.addParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
+            story.Move(this.DestinationNumber);
         }
     }
     public class LoseBackPack : Event
@@ -452,7 +469,7 @@ namespace LDVELH_WPF
         }
         public LoseBackPack(int destinationNumber)
         {
-            this.destinationNumber = destinationNumber;
+            this.DestinationNumber = destinationNumber;
         }
         public override void resolveEvent(Story story)
         {
@@ -466,7 +483,7 @@ namespace LDVELH_WPF
         }
         public LoseWeaponHolder(int destinationNumber)
         {
-            this.destinationNumber = destinationNumber;
+            this.DestinationNumber = destinationNumber;
         }
         public override void resolveEvent(Story story)
         {

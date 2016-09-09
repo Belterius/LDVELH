@@ -84,7 +84,7 @@ namespace LDVELH_WPF
                 checkbox.myCapacity = myCapacity;
                 checkbox.Margin = new Thickness(left, top, right, bottom);
                 Label label = new Label();
-                label.Content = myCapacity.getCapacityDisplayName; 
+                label.Content = myCapacity.CapacityKind.GetTranslation(); 
                 label.Margin = new Thickness(left+20, top - 5, 0, 0);
                 ((Grid)(groupBoxCapacities.Content)).Children.Add(checkbox);
                 ((Grid)(groupBoxCapacities.Content)).Children.Add(label);
