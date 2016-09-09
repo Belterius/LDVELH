@@ -45,7 +45,7 @@ namespace LDVELH_WPF
             this.CapacityKind = capacityType;
         }
         
-        public string getCapacityDisplayName
+        public string DisplayName
         {
             get {
                 return GlobalTranslator.Instance.translator.ProvideValue(CapacityKind.ToString());

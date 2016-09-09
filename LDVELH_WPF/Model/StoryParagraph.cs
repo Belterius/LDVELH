@@ -6,15 +6,43 @@ namespace LDVELH_WPF
 {
     public class StoryParagraph
     {
-        String contentText;
+        String _ContentText;
+        public string ContentText
+        {
+            get
+            {
+                return _ContentText;
+            }
+            private set
+            {
+                if (_ContentText != value)
+                {
+                    _ContentText = value;
+                }
+            }
+        }
         List<Event> decision;
-        int paragraphNumber;
+        int _ParagraphNumber;
+        public int ParagraphNumber
+        {
+            get
+            {
+                return _ParagraphNumber;
+            }
+            private set
+            {
+                if (_ParagraphNumber != value)
+                {
+                    _ParagraphNumber = value;
+                }
+            }
+        }
         List<Event> mainEvents;
 
         public StoryParagraph(string contentText, int paragraphNumber)
         {
-            this.contentText = contentText;
-            this.paragraphNumber = paragraphNumber;
+            this.ContentText = contentText;
+            this.ParagraphNumber = paragraphNumber;
             decision = new List<Event>();
             mainEvents = new List<Event>();
         }
@@ -33,14 +61,7 @@ namespace LDVELH_WPF
         {
             this.mainEvents.Add(mainEvent);
         }
-        public int getParagraphNumber
-        {
-            get { return paragraphNumber; }
-        }
-        public string getContent
-        {
-            get { return contentText; }
-        }
+        
         public List<Event> getListDecision
         {
             get { return decision; }
@@ -59,12 +80,10 @@ namespace LDVELH_WPF
                 }
                 catch (WeaponHolderFullException)
                 {
-                    //TODO
                     throw;
                 }
                 catch(BackPackFullException)
                 {
-                    //TODO
                     throw;
                 }
             }

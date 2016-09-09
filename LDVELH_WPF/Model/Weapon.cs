@@ -5,18 +5,46 @@ namespace LDVELH_WPF
     public class Weapon : Loot
     {
 
-        [Column]
-        private string name{get;set;}
-        [Column]
-        private WeaponTypes weaponType { get; set; }
+        [Column("Name")]
+        private string _Name{get;set;}
+        public string Name
+        {
+            get
+            {
+                return _Name;
+            }
+            private set
+            {
+                if (_Name != value)
+                {
+                    _Name = value;
+                }
+            }
+        }
+        [Column("WeaponType")]
+        private WeaponTypes _WeaponType { get; set; }
+        public WeaponTypes WeaponType
+        {
+            get
+            {
+                return _WeaponType;
+            }
+            set
+            {
+                if (_WeaponType != value)
+                {
+                    _WeaponType = value;
+                }
+            }
+        }
 
         private Weapon()
         {
 
         }
         public Weapon(string name, WeaponTypes weaponType){
-            this.name = name;
-            this.weaponType = weaponType;
+            this.Name = name;
+            this.WeaponType = weaponType;
         }
         public override void remove(Hero hero)
         {
@@ -36,32 +64,26 @@ namespace LDVELH_WPF
 
 
             Weapon weapon = (Weapon)obj;
-            if (this.name != weapon.name)
+            if (this.Name != weapon.Name)
                 return false;
-            if (this.weaponType != weapon.weaponType)
+            if (this.WeaponType != weapon.WeaponType)
                 return false;
 
             return true;
         }
         public override int GetHashCode()
         {
-            return new { name, weaponType}.GetHashCode();
+            return new { Name, WeaponType}.GetHashCode();
         }
 
-        public WeaponTypes getWeaponType
-        {
-            get { return weaponType; }
-        }
+        
 
-        public string getName
-        {
-            get { return name; }
-        }
+        
 
-        public string getDisplayName
-        {
+        public string DisplayName
+        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
             get {
-                return name + "(" + GlobalTranslator.Instance.translator.ProvideValue(weaponType.ToString()) + ")";
+                return Name + "(" + GlobalTranslator.Instance.translator.ProvideValue(WeaponType.ToString()) + ")";
             }
         }
     }

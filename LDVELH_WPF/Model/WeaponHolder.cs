@@ -8,30 +8,45 @@ namespace LDVELH_WPF
 {
     public class WeaponHolder
     {
+        private int basicWeaponHolderSize = 2;
+
         [Key]
         public int WeaponHolderID { get; set; }
-        [Column]
-        private int weaponHolderSize{get;set;}
+        [Column("WeaponHolderSize")]
+        private int _WeaponHolderSize{get;set;}
+        public int WeaponHolderSize
+        {
+            get
+            {
+                return _WeaponHolderSize;
+            }
+            private set
+            {
+                if (_WeaponHolderSize != value)
+                {
+                    _WeaponHolderSize = value;
+                }
+            }
+        }
         List<Weapon> weapons;
 
-        private int basicWeaponHolderSize = 2;
 
         public WeaponHolder()
         {
-            this.weaponHolderSize = basicWeaponHolderSize;
+            this.WeaponHolderSize = basicWeaponHolderSize;
             weapons = new List<Weapon>();
         }
 
         public WeaponHolder(int maxWeapon)
         {
-            this.weaponHolderSize = maxWeapon;
+            this.WeaponHolderSize = maxWeapon;
             weapons = new List<Weapon>();
 
         }
 
         public void Add(Weapon weapon)
         {
-            if (this.weapons.Count >= this.weaponHolderSize)
+            if (this.weapons.Count >= this.WeaponHolderSize)
             {
                 throw new WeaponHolderFullException("Your weapon holder is full, throw a weapon to add a new one !");
             }
@@ -49,7 +64,7 @@ namespace LDVELH_WPF
         {
             foreach (Weapon weapon in this.weapons)
             {
-                if (weapon.getWeaponType == weaponType)
+                if (weapon.WeaponType == weaponType)
                 {
                     return true;
                 }

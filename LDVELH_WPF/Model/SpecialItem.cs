@@ -24,7 +24,7 @@ namespace LDVELH_WPF
         }
 
         public virtual string DisplayName
-        {
+        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
             get
             {
                 return Name;
@@ -53,7 +53,7 @@ namespace LDVELH_WPF
         int hitPointBonus { get; set; }
 
         public override string DisplayName
-        {
+        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
             get
             {
                 if (agilityBonus > 0 && hitPointBonus > 0)
@@ -186,7 +186,7 @@ namespace LDVELH_WPF
             return new { Name, agilityBonus, LifePointBonus }.GetHashCode();
         }
         public override string DisplayName
-        {
+        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
             get
             {
                 if (agilityBonus > 0 && LifePointBonus > 0)
@@ -235,7 +235,7 @@ namespace LDVELH_WPF
             return new { Name }.GetHashCode();
         }
         public override string DisplayName
-        {
+        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
             get
             {
                return Name;

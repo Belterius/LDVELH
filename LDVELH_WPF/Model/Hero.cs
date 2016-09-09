@@ -450,7 +450,7 @@ namespace LDVELH_WPF
         {
             foreach (Weapon weapon in this.weaponHolder.getWeapons)
             {
-                if (weapon.getName == itemName)
+                if (weapon.Name == itemName)
                 {
                     return true;
                 }

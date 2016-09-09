@@ -58,9 +58,10 @@ namespace LDVELH_WPF
                 }
             }
         }
+        
 
         public virtual string DisplayName
-        {
+        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
             get
             {
                 return Name;
@@ -123,8 +124,9 @@ namespace LDVELH_WPF
             return new { Name, healingPower, chargesLeft }.GetHashCode();
             //return new { name, healingPower }.GetHashCode();
         }
+
         public override string DisplayName
-        {
+        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
             get
             {
                 if (chargesLeft > 1)
@@ -186,7 +188,7 @@ namespace LDVELH_WPF
         }
 
         public override string DisplayName
-        {
+        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
             get
             {
                 if (chargesLeft > 1)

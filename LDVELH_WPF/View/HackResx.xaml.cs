@@ -29,7 +29,7 @@ namespace LDVELH_WPF
                     {
                         StoryParagraph newParag = CreateParagraphTranslated.CreateAParagraph(paragraph);
 
-                        resx.AddResource("Paragraph" + paragraph, newParag.getContent);
+                        resx.AddResource("Paragraph" + paragraph, newParag.ContentText);
                         int j = 0;
                         foreach (Event Decision in newParag.getListDecision)
                         {

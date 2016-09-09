@@ -96,7 +96,7 @@ namespace LDVELH_WPF
         {
             foreach (StoryParagraph paragraph in this.content)
             {
-                if (paragraph.getParagraphNumber == paragraphNumber)
+                if (paragraph.ParagraphNumber == paragraphNumber)
                 {
                     return paragraph;
                 }

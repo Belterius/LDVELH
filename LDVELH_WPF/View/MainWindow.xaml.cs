@@ -123,7 +123,7 @@ namespace LDVELH_WPF
             labelGoldAmount.Content = hero.Gold.ToString();
             labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.WeaponMastery.ToString());
             listBoxCapacities.ItemsSource = hero.capacities;
-            listBoxCapacities.DisplayMemberPath = "getCapacityDisplayName";
+            listBoxCapacities.DisplayMemberPath = "DisplayName";
             labelHungryState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.HungryStatus.ToString());
         }
         private void heroHPListener()

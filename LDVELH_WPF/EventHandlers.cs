@@ -41,11 +41,11 @@ namespace LDVELH_WPF
             listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
 
             listBoxSpecialItem.ItemsSource = this.listSpecialItemSave;
-            listBoxSpecialItem.DisplayMemberPath = "getDisplayName";
+            listBoxSpecialItem.DisplayMemberPath = "DisplayName";
             listBoxBackPackItem.ItemsSource = this.listItemSave;
-            listBoxBackPackItem.DisplayMemberPath = "getDisplayName";
+            listBoxBackPackItem.DisplayMemberPath = "DisplayName";
             listBoxWeapon.ItemsSource = this.listWeaponSave;
-            listBoxWeapon.DisplayMemberPath = "getDisplayName";
+            listBoxWeapon.DisplayMemberPath = "DisplayName";
         }
 
         public void HitPointChanged(Hero hero, int damage)
@@ -148,17 +148,17 @@ namespace LDVELH_WPF
             generatePlayerPossibleDecision(story);
 
             //Fourth, update the hero actualParagraph in case of exit
-            story.getHero.CurrentParagraph = actualParagraph.getParagraphNumber;
+            story.getHero.CurrentParagraph = actualParagraph.ParagraphNumber;
 
         }
         private void setMainTextContent(StoryParagraph actualParagraph)
         {
             contentText.Document.Blocks.Clear();
-            contentText.Document.Blocks.Add(new Paragraph(new Run(actualParagraph.getContent)));
+            contentText.Document.Blocks.Add(new Paragraph(new Run(actualParagraph.ContentText)));
         }
         private void SetTitleParagraph(StoryParagraph actualParagraph)
         {
-            window.Title = story.getHero.Name+ " : paraph n°" + actualParagraph.getParagraphNumber;
+            window.Title = story.getHero.Name+ " : paraph n°" + actualParagraph.ParagraphNumber;
         }
         private void resolveMainEvents(Story story)
         {
