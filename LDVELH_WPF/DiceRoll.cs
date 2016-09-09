@@ -1,27 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LDVELH_WPF
 {
-    public static class DiceRoll
+
+    public sealed class DiceRoll
     {
-        static Random random = new Random();
+        static readonly DiceRoll INSTANCE = new DiceRoll();
+        private DiceRoll()
+        {
+
+        }
+        public static DiceRoll Instance
+        {
+            get
+            {
+                return INSTANCE;
+            }
+        }
+        public Random random = new Random();
 
         public static int D6Roll()
         {
-            return random.Next(1, 7);
+            return Instance.random.Next(1, 7);
         }
 
         public static int D10Roll()
         {
-            return random.Next(1, 11);
+            return Instance.random.Next(1, 11);
         }
         public static int D10Roll0()
         {
-            return random.Next(0, 10);
+            return Instance.random.Next(0, 10);
         }
     }
 }

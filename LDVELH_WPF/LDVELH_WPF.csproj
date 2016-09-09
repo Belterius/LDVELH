@@ -102,39 +102,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BackPack.cs" />
-    <Compile Include="Capacity.cs" />
-    <Compile Include="Character.cs" />
+    <Compile Include="Model\BackPack.cs" />
+    <Compile Include="Model\Capacity.cs" />
+    <Compile Include="Model\Character.cs" />
     <Compile Include="CreateLoot.cs" />
-    <Compile Include="CreateMonster.cs" />
     <Compile Include="CreateParagraphTranslated.cs" />
     <Compile Include="CreateParagraph.cs" />
     <Compile Include="DamageTable.cs" />
     <Compile Include="DiceRoll.cs" />
-    <Compile Include="Ennemy.cs" />
-    <Compile Include="Event.cs" />
+    <Compile Include="Model\Ennemy.cs" />
+    <Compile Include="Model\Event.cs" />
     <Compile Include="EventHandlers.cs" />
     <Compile Include="GlobalFunction.cs" />
-    <Compile Include="HackResx.xaml.cs">
+    <Compile Include="View\HackResx.xaml.cs">
       <DependentUpon>HackResx.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Hero.cs" />
-    <Compile Include="HeroSaveContext.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="MenuSettings.xaml.cs">
+    <Compile Include="Model\Hero.cs" />
+    <Compile Include="Data\HeroSaveContext.cs" />
+    <Compile Include="Model\Item.cs" />
+    <Compile Include="View\MenuSettings.xaml.cs">
       <DependentUpon>MenuSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LocalDatabaseFunction.cs" />
-    <Compile Include="MenuLoad.xaml.cs">
+    <Compile Include="Data\LocalDatabaseFunction.cs" />
+    <Compile Include="View\MenuLoad.xaml.cs">
       <DependentUpon>MenuLoad.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MenuCapacities.xaml.cs">
+    <Compile Include="View\MenuCapacities.xaml.cs">
       <DependentUpon>MenuCapacities.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MessageBoxFight.xaml.cs">
+    <Compile Include="View\MessageBoxFight.xaml.cs">
       <DependentUpon>MessageBoxFight.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MessageBoxInput.xaml.cs">
+    <Compile Include="View\MessageBoxInput.xaml.cs">
       <DependentUpon>MessageBoxInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201608031609359_BaseDatabase.cs" />
@@ -158,8 +157,8 @@
       <DependentUpon>201608111501086_HungryStatePB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="MySQliteDbContext.cs" />
-    <Compile Include="NonPublicColumnAttributeConvention.cs" />
+    <Compile Include="Data\MySQliteDbContext.cs" />
+    <Compile Include="Data\NonPublicColumnAttributeConvention.cs" />
     <Compile Include="Resources\SaveOfManualEnglish.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -175,26 +174,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <Compile Include="SQLiteDatabaseFunction.cs" />
-    <Compile Include="StoryParagraph.cs" />
-    <Compile Include="SpecialItem.cs" />
-    <Compile Include="Story.cs" />
+    <Compile Include="Data\SQLiteDatabaseFunction.cs" />
+    <Compile Include="Model\StoryParagraph.cs" />
+    <Compile Include="Model\SpecialItem.cs" />
+    <Compile Include="Model\Story.cs" />
     <Compile Include="Translator.cs" />
-    <Compile Include="Weapon.cs" />
-    <Compile Include="WeaponHolder.cs" />
-    <Page Include="HackResx.xaml">
+    <Compile Include="Model\Weapon.cs" />
+    <Compile Include="Model\WeaponHolder.cs" />
+    <Page Include="View\HackResx.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MenuSettings.xaml">
+    <Page Include="View\MenuSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MenuLoad.xaml">
+    <Page Include="View\MenuLoad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -202,19 +201,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MenuCapacities.xaml">
+    <Page Include="View\MenuCapacities.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MessageBoxFight.xaml">
+    <Page Include="View\MessageBoxFight.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MessageBoxInput.xaml">
+    <Page Include="View\MessageBoxInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -274,7 +273,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

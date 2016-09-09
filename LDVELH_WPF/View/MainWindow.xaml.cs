@@ -1,18 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Data.Entity;
 
 namespace LDVELH_WPF
 {
@@ -223,6 +210,7 @@ namespace LDVELH_WPF
         private void buttonUseItem_Click(object sender, RoutedEventArgs e)
         {
             Item itemToUse = (Item)listBoxBackPack.SelectedItem;
+            listBoxBackPack.SelectedValue = null;//We risk changing our HashCode when using the item, it is not a problem BUT we have to manually deselect our SelectedValue BEFORE, else as the HashCode changed, our ListBox cannot deselect our item anymore and it will soon crash.
             if (itemToUse != null)
             {
                 try

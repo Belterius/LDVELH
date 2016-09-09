@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace LDVELH_WPF
@@ -19,11 +14,11 @@ namespace LDVELH_WPF
             if (languageDefined)
             {
                 GlobalTranslator.Instance.translator = new Translator(LDVELH_WPF.Properties.Settings.Default.Language);
-                this.StartupUri = new Uri("MenuLoad.xaml", UriKind.Relative);
+                this.StartupUri = new Uri("View/MenuLoad.xaml", UriKind.Relative);
             }
             else
             {
-                this.StartupUri = new Uri("MenuSettings.xaml", UriKind.Relative);
+                this.StartupUri = new Uri("View/MenuSettings.xaml", UriKind.Relative);
             }
         }
 

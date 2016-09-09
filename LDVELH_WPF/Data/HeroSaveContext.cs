@@ -1,25 +1,12 @@
 ﻿namespace LDVELH_WPF
 {
-    using System;
     using System.Data.Entity;
-    using System.Linq;
-    using System.Reflection;
 
     public class HeroSaveContext : DbContext
     {
-        // Your context has been configured to use a 'StoryContext' connection string from your application's 
-        // configuration file (App.config or Web.config). By default, this connection string targets the 
-        // 'LDVELH_WindowsForm.StoryContext' database on your LocalDb instance. 
-        // 
-        // If you wish to target a different database and/or database provider, modify the 'StoryContext' 
-        // connection string in the application configuration file.
         public HeroSaveContext() : base("name=HeroSaveContext")
         {
         }
-        //public HeroSaveContext()
-        //    : base()
-        //{
-        //}
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Add(new NonPublicColumnAttributeConvention());
