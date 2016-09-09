@@ -44,12 +44,12 @@ namespace LDVELH_Tests
             int bonusHP = 3;
             SpecialItem specialItem = new SpecialItemAlways("amazing item", bonusAgi, bonusHP);
             Hero hero = new Hero("hero");
-            int heroAgility = hero.getBaseAgility();
+            int heroAgility = hero.BaseAgility;
             int heroHP = hero.MaxHitPoint;
 
             hero.addLoot(specialItem);
 
-            Assert.AreEqual(heroAgility + bonusAgi, hero.getBaseAgility());
+            Assert.AreEqual(heroAgility + bonusAgi, hero.BaseAgility);
             Assert.AreEqual(heroHP + bonusHP, hero.MaxHitPoint);
         }
         [TestMethod]
@@ -59,13 +59,13 @@ namespace LDVELH_Tests
             int bonusHP = 3;
             SpecialItem specialItem = new SpecialItemAlways("amazing item", bonusAgi, bonusHP);
             Hero hero = new Hero("hero");
-            int heroAgility = hero.getBaseAgility();
+            int heroAgility = hero.BaseAgility;
             int heroHP = hero.MaxHitPoint;
             hero.addLoot(specialItem);
 
             hero.removeLoot(specialItem);
 
-            Assert.AreEqual(heroAgility, hero.getBaseAgility());
+            Assert.AreEqual(heroAgility, hero.BaseAgility);
             Assert.AreEqual(heroHP, hero.MaxHitPoint);
         }
     }

@@ -50,11 +50,11 @@ namespace LDVELH_WPF
 
         public void HitPointChanged(Hero hero, int damage)
         {
-            labelHP.Content = hero.getActualHitPoint().ToString() + "/" + hero.MaxHitPoint.ToString();
+            labelHP.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
         }
         public void MaxHitPointChanged(Hero hero, int damage)
         {
-            labelHP.Content = hero.getActualHitPoint().ToString() + "/" + hero.MaxHitPoint.ToString();
+            labelHP.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
         }
         public void HungryStateChanged(Hero hero)
         {
@@ -62,7 +62,7 @@ namespace LDVELH_WPF
         }
         public void AgilityChanged(Hero hero, int damage)
         {
-            labelAgility.Content = hero.getBaseAgility().ToString();
+            labelAgility.Content = hero.BaseAgility.ToString();
         }
         public void WeaponMasteryChanged(Hero hero)
         {

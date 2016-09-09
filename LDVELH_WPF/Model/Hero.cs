@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 
 namespace LDVELH_WPF
 {
-    public class Hero : Character
+    public class Hero : Character, INotifyPropertyChanged
     {
         public static readonly int skipMealDamage = 3;
         public static readonly int unharmedCombatDebuff = 4;
@@ -459,13 +460,13 @@ namespace LDVELH_WPF
         public int findStrenghtDifference(Enemy ennemy)
         {
             int heroAgility = getHeroAgilityInBattle(ennemy);
-            int ennemyAgility = ennemy.getBaseAgility();
+            int ennemyAgility = ennemy.BaseAgility;
             return (heroAgility - ennemyAgility);
         }
 
         public int getHeroAgilityInBattle(Enemy ennemy)
         {
-           return this.getBaseAgility() + getBonusAgility(ennemy) - getMalusAgility();
+           return this.BaseAgility+ getBonusAgility(ennemy) - getMalusAgility();
         }
 
         public int getBonusAgility(Enemy ennemy)
@@ -530,7 +531,7 @@ namespace LDVELH_WPF
             {
                 throw;
             }
-            if (ennemy.getActualHitPoint() <= 0)
+            if (ennemy.ActualHitPoint<= 0)
             {
                 return true;
             }

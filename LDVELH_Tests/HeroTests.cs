@@ -49,34 +49,34 @@ namespace LDVELH_Tests
         {
             Hero Belterius = new Hero("Belterius");
             Enemy evilHuman = new Enemy("Common Human", 10, 10, EnnemyTypes.Human);
-            int heroBaseAgility = Belterius.getBaseAgility();
+            int heroBaseAgility = Belterius.BaseAgility;
 
             //Base test
-            int expectedStrenghtDifference = heroBaseAgility - LDVELH_WPF.Hero.unharmedCombatDebuff - evilHuman.getBaseAgility();
+            int expectedStrenghtDifference = heroBaseAgility - LDVELH_WPF.Hero.unharmedCombatDebuff - evilHuman.BaseAgility;
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
             //Item test
             SpecialItem shield = new SpecialItemCombat("iron shield", 4, 0);
             Belterius.addLoot(shield);
-            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus - LDVELH_WPF.Hero.unharmedCombatDebuff) - evilHuman.getBaseAgility();
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus - LDVELH_WPF.Hero.unharmedCombatDebuff) - evilHuman.BaseAgility;
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
             //PsychicPower test
             Belterius.addCapacity(CapacityType.PsychicPower);
-            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + Capacity.phychicPowerStrenght - LDVELH_WPF.Hero.unharmedCombatDebuff) - evilHuman.getBaseAgility();
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + Capacity.phychicPowerStrenght - LDVELH_WPF.Hero.unharmedCombatDebuff) - evilHuman.BaseAgility;
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
             //Weapon Mastery (with and without weapon) test
             Belterius.addCapacity(CapacityType.WeaponMastery);
-            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + Capacity.phychicPowerStrenght - LDVELH_WPF.Hero.unharmedCombatDebuff) - evilHuman.getBaseAgility(); //No weapon related to the Weapon mastery so no bonus
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + Capacity.phychicPowerStrenght - LDVELH_WPF.Hero.unharmedCombatDebuff) - evilHuman.BaseAgility; //No weapon related to the Weapon mastery so no bonus
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
             Weapon wmWeapon = new Weapon("perfect weapon", Belterius.getWeaponMastery);
             Belterius.weaponHolder.Add(wmWeapon);
-            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + Capacity.phychicPowerStrenght + Capacity.weaponMasteryStrenght) - evilHuman.getBaseAgility();
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + Capacity.phychicPowerStrenght + Capacity.weaponMasteryStrenght) - evilHuman.BaseAgility;
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
@@ -85,7 +85,7 @@ namespace LDVELH_Tests
             SpecialItem ring = new SpecialItemCombat("magic ring", 6, 0);
             Belterius.addLoot(ring);
             Enemy evilOrc = new Enemy("Common Orc", 15, 10, EnnemyTypes.Orc);
-            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + ((SpecialItemCombat)ring).getAgilityBonus + Capacity.weaponMasteryStrenght) - evilOrc.getBaseAgility();
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + ((SpecialItemCombat)ring).getAgilityBonus + Capacity.weaponMasteryStrenght) - evilOrc.BaseAgility;
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilOrc));
 
@@ -103,11 +103,11 @@ namespace LDVELH_Tests
                 {
                     battleOver = hero.Fight(beast);
                 } while (!battleOver);
-                Assert.AreEqual(0, beast.getActualHitPoint()); //The beast is dead
+                Assert.AreEqual(0, beast.ActualHitPoint); //The beast is dead
             }
             catch (YouAreDeadException)
             {
-                Assert.AreEqual(0, hero.getActualHitPoint());//The hero is dead
+                Assert.AreEqual(0, hero.ActualHitPoint);//The hero is dead
             }
         }
 

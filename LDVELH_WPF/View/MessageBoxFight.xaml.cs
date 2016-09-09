@@ -77,8 +77,8 @@ namespace LDVELH_WPF
         private void buttonNextRound_Click(object sender, RoutedEventArgs e)
         {
             buttonNextRound.Content = GlobalTranslator.Instance.translator.ProvideValue("NextRound");
-            previousLifeHero = hero.getActualHitPoint();
-            previousLifeEnnemy = ennemy.getActualHitPoint();
+            previousLifeHero = hero.ActualHitPoint;
+            previousLifeEnnemy = ennemy.ActualHitPoint;
             try
             {
                 fightOver = hero.Fight(ennemy);
@@ -114,18 +114,18 @@ namespace LDVELH_WPF
         }
         private void setLife()
         {
-            labelLifeEnnemy.Content = ennemy.getActualHitPoint();
-            labelLifeHero.Content = hero.getActualHitPoint();
+            labelLifeEnnemy.Content = ennemy.ActualHitPoint;
+            labelLifeHero.Content = hero.ActualHitPoint;
         }
         private void setAgility()
         {
-            labelAgilityEnnemy.Content = ennemy.getBaseAgility();
+            labelAgilityEnnemy.Content = ennemy.BaseAgility;
             labelAgilityHero.Content = hero.getHeroAgilityInBattle(ennemy);
         }
         private void setDamageTaken()
         {
-            labelDammageTakenEnnemy.Content = previousLifeEnnemy - ennemy.getActualHitPoint();
-            labelDammageTakenHero.Content = previousLifeHero - hero.getActualHitPoint();
+            labelDammageTakenEnnemy.Content = previousLifeEnnemy - ennemy.ActualHitPoint;
+            labelDammageTakenHero.Content = previousLifeHero - hero.ActualHitPoint;
         }
 
         private void buttonRun_Click(object sender, RoutedEventArgs e)

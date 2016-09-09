@@ -118,8 +118,8 @@ namespace LDVELH_WPF
         }
         private void heroBaseStat()
         {
-            labelHitPoint.Content = hero.getActualHitPoint().ToString() + "/" + hero.MaxHitPoint.ToString();
-            labelAgility.Content = hero.getBaseAgility().ToString();
+            labelHitPoint.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
+            labelAgility.Content = hero.BaseAgility.ToString();
             labelGoldAmount.Content = hero.getGold().ToString();
             labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getWeaponMastery.ToString());
             listBoxCapacities.ItemsSource = hero.capacities;
