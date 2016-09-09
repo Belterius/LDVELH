@@ -1,19 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.ComponentModel;
 
 namespace LDVELH_WPF
 {
-    public class Story 
+    public class Story : INotifyPropertyChanged
     {
         
         Hero playerHero;
         public string title{get;set;}
         public List<StoryParagraph> content;
-        StoryParagraph actualParagraph;
+        StoryParagraph _ActualParagraph;
+        public StoryParagraph ActualParagraph
+        {
+            get
+            {
+                return _ActualParagraph;
+            }
+            set
+            {
+                if (_ActualParagraph != value)
+                {
+                    _ActualParagraph = value;
+                    RaisePropertyChanged("ActualParagraph");
+                }
+            }
+        }
+
 
         public event ActualParagraphHandler ParagraphChanged;
         public delegate void ActualParagraphHandler(Story story, StoryParagraph actualParagraph);
+        void RaisePropertyChanged(string prop)
+        {
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Story(string title, Hero hero)
         {
@@ -26,7 +48,7 @@ namespace LDVELH_WPF
         {
             try
             {
-                this.actualParagraph.resolve(this);
+                this.ActualParagraph.resolve(this);
             }
             catch(YouAreDeadException){
                 throw;
@@ -43,10 +65,6 @@ namespace LDVELH_WPF
 
         public void addParagraph(StoryParagraph paragraph)
         {
-            ////acting as in the book where it's possible to exploit loophole, TODO : maybe decide that it's better not to recreate a paragraph
-            //StoryParagraph existingParagraph = this.content.Where(s => s.getParagraphNumber == paragraph.getParagraphNumber).FirstOrDefault();
-            //this.content.Remove(existingParagraph);
-
             this.content.Add(paragraph);
         }
 
@@ -62,8 +80,8 @@ namespace LDVELH_WPF
         {
             try
             {
-                this.actualParagraph = getParagraph(paragraphNumber);
-                ActualParagraphHasChanged(this.actualParagraph);
+                this.ActualParagraph = getParagraph(paragraphNumber);
+                ActualParagraphHasChanged(this.ActualParagraph);
             }
             catch (ParagraphNotFoundException)
             {
@@ -88,7 +106,7 @@ namespace LDVELH_WPF
         }
         public StoryParagraph getActualParagraph
         {
-            get { return actualParagraph;}
+            get { return ActualParagraph;}
         }
         public void ActualParagraphHasChanged(StoryParagraph paragraph)
         {
