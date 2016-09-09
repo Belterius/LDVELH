@@ -2,18 +2,34 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 
 namespace LDVELH_WPF
 {
-    public class BackPack
+    public class BackPack : INotifyPropertyChanged
     {
         [Key]
         public int BackPackID { get; set; }
 
 
-        [Column]
-        private int backPackSize{get;set;}
+        [Column("BackPackSize")]
+        private int _BackPackSize{get;set;}
+        public int BackPackSize
+        {
+            get
+            {
+                return _BackPackSize;
+            }
+            private set
+            {
+                if (_BackPackSize != value)
+                {
+                    _BackPackSize = value;
+                    RaisePropertyChanged("BackPackSize");
+                }
+            }
+        }
 
         List<Item> Items;
         public List<Item> GetItems
@@ -21,24 +37,30 @@ namespace LDVELH_WPF
             get { return Items; }
         }
 
-        private int basicBackPackSize = 8;
+        private static int basicBackPackSize = 8;
+
+        void RaisePropertyChanged(string prop)
+        {
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public BackPack()
         {
-            this.backPackSize = basicBackPackSize;
+            this.BackPackSize = basicBackPackSize;
             this.Items = new List<Item>();
         }
         public BackPack(int backPackSize)
         {
-            this.backPackSize = backPackSize;
+            this.BackPackSize = backPackSize;
             this.Items = new List<Item>();
         }
 
         public void AddItem(Item backPackItem)
         {
-            if (this.Items.Count >= this.backPackSize)
+            if (this.Items.Count >= this.BackPackSize)
             {
-                throw new BackPackFullException("Your backpack is full, throw an item to add a new one !");
+                throw new BackPackFullException("Error BackBack Full !");
             }
             else
             {
