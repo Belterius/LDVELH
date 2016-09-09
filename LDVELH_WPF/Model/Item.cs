@@ -24,17 +24,17 @@ namespace LDVELH_WPF
         {
             this.goldAmount = amount;
         }
-        public int getGoldAmount
+        public int GoldAmount
         {
             get { return this.goldAmount; }
         }
         public override void add(Hero hero)
         {
-            hero.addGold(this.getGoldAmount);
+            hero.addGold(this.GoldAmount);
         }
         public override void remove(Hero hero)
         {
-            hero.removeGold(this.getGoldAmount);
+            hero.removeGold(this.GoldAmount);
         }
     }
     public abstract class Item : Loot
@@ -42,17 +42,29 @@ namespace LDVELH_WPF
         
 
         [Column]
-        protected string name{get;set;}
+        private string _Name{get;set;}
 
-        public string getName
+        public string Name
         {
-            get { return name; }
+            get
+            {
+                return _Name;
+            }
+            protected set
+            {
+                if (_Name != value)
+                {
+                    _Name = value;
+                }
+            }
         }
 
-        
-        public virtual string getDisplayName
+        public virtual string DisplayName
         {
-            get { return name; }
+            get
+            {
+                return Name;
+            }
         }
         public abstract void use(Hero hero);
 
@@ -86,7 +98,7 @@ namespace LDVELH_WPF
         public Consummable(string name, int healingPower, int charges)
         {
             this.healingPower = healingPower;
-            this.name = name;
+            this.Name = name;
             this.chargesLeft = charges;
         }
 
@@ -97,7 +109,7 @@ namespace LDVELH_WPF
 
 
             Consummable consummable = (Consummable)obj;
-            if (this.name != consummable.name)
+            if (this.Name != consummable.Name)
                 return false;
             if (this.chargesLeft != consummable.chargesLeft)
                 return false;
@@ -108,20 +120,20 @@ namespace LDVELH_WPF
         }
         public override int GetHashCode()
         {
-            return new { name, healingPower, chargesLeft }.GetHashCode();
+            return new { Name, healingPower, chargesLeft }.GetHashCode();
             //return new { name, healingPower }.GetHashCode();
         }
-        public override string getDisplayName
+        public override string DisplayName
         {
             get
             {
                 if (chargesLeft > 1)
                 {
-                    return name + "(+" + healingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return Name + "(+" + healingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
                 else
                 {
-                    return name + "(+" + healingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return Name + "(+" + healingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
             }
         }
@@ -151,7 +163,7 @@ namespace LDVELH_WPF
         }
         public Food(string name, int charges)
         {
-            this.name = name;
+            this.Name = name;
             this.chargesLeft = charges;
         }
 
@@ -161,7 +173,7 @@ namespace LDVELH_WPF
                 return false;
 
             Food food = (Food)obj;
-            if (this.name != food.name)
+            if (this.Name != food.Name)
                 return false;
             if (this.chargesLeft != food.chargesLeft)
                 return false;
@@ -169,21 +181,21 @@ namespace LDVELH_WPF
         }
         public override int GetHashCode()
         {
-            return new { name, chargesLeft }.GetHashCode();
+            return new { Name, chargesLeft }.GetHashCode();
             //return new { name }.GetHashCode();
         }
 
-        public override string getDisplayName
+        public override string DisplayName
         {
             get
             {
                 if (chargesLeft > 1)
                 {
-                    return name + "(" + GlobalTranslator.Instance.translator.ProvideValue("food") + ", " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return Name + "(" + GlobalTranslator.Instance.translator.ProvideValue("food") + ", " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
                 else
                 {
-                    return name + "(" + GlobalTranslator.Instance.translator.ProvideValue("food") + ", " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return Name + "(" + GlobalTranslator.Instance.translator.ProvideValue("food") + ", " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
             }
         }
@@ -212,7 +224,7 @@ namespace LDVELH_WPF
         }
         public Miscellaneous(string name)
         {
-            this.name = name;
+            this.Name = name;
         }
 
         public override bool Equals(object obj)
@@ -221,13 +233,13 @@ namespace LDVELH_WPF
                 return false;
 
             Miscellaneous food = (Miscellaneous)obj;
-            if (this.name != food.name)
+            if (this.Name != food.Name)
                 return false;
             return true;
         }
         public override int GetHashCode()
         {
-            return new {name}.GetHashCode();
+            return new {Name}.GetHashCode();
         }
 
         public override void use(Hero hero)

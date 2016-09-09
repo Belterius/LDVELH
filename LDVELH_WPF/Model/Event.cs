@@ -197,7 +197,7 @@ namespace LDVELH_WPF
             }
             if (requieredItem != null)
             {
-                if (!story.getHero.possesItem(requieredItem.getName))
+                if (!story.getHero.possesItem(requieredItem.Name))
                 {
                     story.getHero.addTempDebuff(debuff);
                     return;

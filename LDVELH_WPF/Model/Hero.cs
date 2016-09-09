@@ -461,7 +461,7 @@ namespace LDVELH_WPF
         {
             foreach (Item item in this.backPack.GetItems)
             {
-                if (item.getName == itemName)
+                if (item.Name == itemName)
                 {
                     return true;
                 }
@@ -472,7 +472,7 @@ namespace LDVELH_WPF
         {
             foreach (SpecialItem specialItem in this.getSpecialItems)
             {
-                if (specialItem.getName == itemName)
+                if (specialItem.Name == itemName)
                 {
                     return true;
                 }

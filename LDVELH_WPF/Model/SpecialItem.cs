@@ -6,16 +6,29 @@ namespace LDVELH_WPF
     public abstract class SpecialItem : Loot
     {
         [Column]
-        protected string name{get;set;}
+        private string _Name{get;set;}
 
-        public string getName
+        public string Name
         {
-            get { return name; }
+            get
+            {
+                return _Name;
+            }
+            protected set
+            {
+                if (_Name != value)
+                {
+                    _Name = value;
+                }
+            }
         }
 
-        public virtual string getDisplayName
+        public virtual string DisplayName
         {
-            get { return name; }
+            get
+            {
+                return Name;
+            }
         }
         public override void add(Hero hero)
         {
@@ -33,29 +46,29 @@ namespace LDVELH_WPF
 
     public class SpecialItemCombat : SpecialItem
     {
-        //Has an effect during combat (Example : +2 agility shield)
+        //Has an effect only during combat (Example : +2 agility shield)
         [Column]
         int agilityBonus{get;set;}
         [Column]
         int hitPointBonus { get; set; }
 
-        public override string getDisplayName
+        public override string DisplayName
         {
             get
             {
                 if (agilityBonus > 0 && hitPointBonus > 0)
                 {
-                    return name + " (+" + agilityBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("agi") + " +" + hitPointBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + GlobalTranslator.Instance.translator.ProvideValue("DuringBattle") + ")";
+                    return Name + " (+" + agilityBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("agi") + " +" + hitPointBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + GlobalTranslator.Instance.translator.ProvideValue("DuringBattle") + ")";
                 }
                 if (agilityBonus > 0 )
                 {
-                    return name + " (+" + agilityBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("agi") + " " + GlobalTranslator.Instance.translator.ProvideValue("DuringBattle") + ")";
+                    return Name + " (+" + agilityBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("agi") + " " + GlobalTranslator.Instance.translator.ProvideValue("DuringBattle") + ")";
                 }
                 if (hitPointBonus > 0)
                 {
-                    return name + " (+" + hitPointBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + GlobalTranslator.Instance.translator.ProvideValue("DuringBattle") + ")";
+                    return Name + " (+" + hitPointBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + GlobalTranslator.Instance.translator.ProvideValue("DuringBattle") + ")";
                 }
-                return name;
+                return Name;
             }
         }
         private SpecialItemCombat()
@@ -66,7 +79,7 @@ namespace LDVELH_WPF
         {
             this.agilityBonus = agilityBonus;
             this.hitPointBonus = hitPointBonus;
-            this.name = name;
+            this.Name = name;
         }
 
         public int getAgilityBonus
@@ -81,7 +94,7 @@ namespace LDVELH_WPF
 
 
             SpecialItemCombat specialItemCombat = (SpecialItemCombat)obj;
-            if (this.name != specialItemCombat.name)
+            if (this.Name != specialItemCombat.Name)
                 return false;
             if (this.agilityBonus != specialItemCombat.agilityBonus)
                 return false;
@@ -92,7 +105,7 @@ namespace LDVELH_WPF
         }
         public override int GetHashCode()
         {
-            return new { name, agilityBonus, hitPointBonus }.GetHashCode();
+            return new { Name, agilityBonus, hitPointBonus }.GetHashCode();
         }
 
         
@@ -113,7 +126,7 @@ namespace LDVELH_WPF
         {
             this.agilityBonus = agilityBonus;
             this.LifePointBonus = hitPointBonus;
-            this.name = name;
+            this.Name = name;
         }
         
         public int getAgilityBonus
@@ -159,7 +172,7 @@ namespace LDVELH_WPF
 
 
             SpecialItemAlways specialItemCombat = (SpecialItemAlways)obj;
-            if (this.name != specialItemCombat.name)
+            if (this.Name != specialItemCombat.Name)
                 return false;
             if (this.agilityBonus != specialItemCombat.agilityBonus)
                 return false;
@@ -170,25 +183,25 @@ namespace LDVELH_WPF
         }
         public override int GetHashCode()
         {
-            return new { name, agilityBonus, LifePointBonus }.GetHashCode();
+            return new { Name, agilityBonus, LifePointBonus }.GetHashCode();
         }
-        public override string getDisplayName
+        public override string DisplayName
         {
             get
             {
                 if (agilityBonus > 0 && LifePointBonus > 0)
                 {
-                    return name + " (+" + agilityBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("agi") + " +" + LifePointBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + GlobalTranslator.Instance.translator.ProvideValue("permanent") + ")";
+                    return Name + " (+" + agilityBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("agi") + " +" + LifePointBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + GlobalTranslator.Instance.translator.ProvideValue("permanent") + ")";
                 }
                 if (agilityBonus > 0)
                 {
-                    return name + " (+" + agilityBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("agi") + " " + GlobalTranslator.Instance.translator.ProvideValue("permanent") + ")";
+                    return Name + " (+" + agilityBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("agi") + " " + GlobalTranslator.Instance.translator.ProvideValue("permanent") + ")";
                 }
                 if (LifePointBonus > 0)
                 {
-                    return name + " (+" + LifePointBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + GlobalTranslator.Instance.translator.ProvideValue("permanent") + ")";
+                    return Name + " (+" + LifePointBonus + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + GlobalTranslator.Instance.translator.ProvideValue("permanent") + ")";
                 }
-                return name;
+                return Name;
             }
         }
 
@@ -203,7 +216,7 @@ namespace LDVELH_WPF
         }
         public QuestItem(String name)
         {
-            this.name = name;
+            this.Name = name;
         }
         public override bool Equals(object obj)
         {
@@ -212,20 +225,20 @@ namespace LDVELH_WPF
 
 
             QuestItem specialItemCombat = (QuestItem)obj;
-            if (this.name != specialItemCombat.name)
+            if (this.Name != specialItemCombat.Name)
                 return false;
 
             return true;
         }
         public override int GetHashCode()
         {
-            return new { name }.GetHashCode();
+            return new { Name }.GetHashCode();
         }
-        public override string getDisplayName
+        public override string DisplayName
         {
             get
             {
-               return name;
+               return Name;
             }
         }
     }
