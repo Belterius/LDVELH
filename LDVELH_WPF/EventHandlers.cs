@@ -37,7 +37,7 @@ namespace LDVELH_WPF
             this.labelBellyState = labelBellyState;
 
             listWeaponSave =  new BindingList<Weapon>(hero.weaponHolder.getWeapons);
-            listItemSave = new BindingList<Item>(hero.backPack.getItems);
+            listItemSave = new BindingList<Item>(hero.backPack.GetItems);
             listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
 
             listBoxSpecialItem.ItemsSource = this.listSpecialItemSave;
@@ -50,11 +50,11 @@ namespace LDVELH_WPF
 
         public void HitPointChanged(Hero hero, int damage)
         {
-            labelHP.Content = hero.getActualHitPoint().ToString() + "/" + hero.getMaxHitPoint().ToString();
+            labelHP.Content = hero.getActualHitPoint().ToString() + "/" + hero.MaxHitPoint.ToString();
         }
         public void MaxHitPointChanged(Hero hero, int damage)
         {
-            labelHP.Content = hero.getActualHitPoint().ToString() + "/" + hero.getMaxHitPoint().ToString();
+            labelHP.Content = hero.getActualHitPoint().ToString() + "/" + hero.MaxHitPoint.ToString();
         }
         public void HungryStateChanged(Hero hero)
         {
@@ -76,7 +76,7 @@ namespace LDVELH_WPF
 
         public void capacitiesChanged(Hero hero, Capacity capacity)
         {
-            System.Diagnostics.Debug.WriteLine("Something happened to " + hero.getName() + " he learned " + capacity.getCapacityType.ToString());
+            System.Diagnostics.Debug.WriteLine("Something happened to " + hero.Name+ " he learned " + capacity.getCapacityType.ToString());
         }
         public void backPackChanged(Hero hero)
         {
@@ -158,7 +158,7 @@ namespace LDVELH_WPF
         }
         private void SetTitleParagraph(StoryParagraph actualParagraph)
         {
-            window.Title = story.getHero.getName() + " : paraph n°" + actualParagraph.getParagraphNumber;
+            window.Title = story.getHero.Name+ " : paraph n°" + actualParagraph.getParagraphNumber;
         }
         private void resolveMainEvents(Story story)
         {

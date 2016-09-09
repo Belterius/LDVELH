@@ -32,7 +32,7 @@ namespace LDVELH_WPF
         {
             
             initStory();
-            this.Title = hero.getName();
+            this.Title = hero.Name;
             if (!loadingHero)
                 story.start();
             else
@@ -118,7 +118,7 @@ namespace LDVELH_WPF
         }
         private void heroBaseStat()
         {
-            labelHitPoint.Content = hero.getActualHitPoint().ToString() + "/" + hero.getMaxHitPoint().ToString();
+            labelHitPoint.Content = hero.getActualHitPoint().ToString() + "/" + hero.MaxHitPoint.ToString();
             labelAgility.Content = hero.getBaseAgility().ToString();
             labelGoldAmount.Content = hero.getGold().ToString();
             labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getWeaponMastery.ToString());

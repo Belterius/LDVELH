@@ -15,42 +15,43 @@ namespace LDVELH_WPF
         [Column]
         private int backPackSize{get;set;}
 
-        public List<Item> items;
+        List<Item> Items;
+        public List<Item> GetItems
+        {
+            get { return Items; }
+        }
 
         private int basicBackPackSize = 8;
 
         public BackPack()
         {
             this.backPackSize = basicBackPackSize;
-            this.items = new List<Item>();
+            this.Items = new List<Item>();
         }
         public BackPack(int backPackSize)
         {
             this.backPackSize = backPackSize;
-            this.items = new List<Item>();
+            this.Items = new List<Item>();
         }
 
-        public void Add(Item backPackItem)
+        public void AddItem(Item backPackItem)
         {
-            if (this.items.Count >= this.backPackSize)
+            if (this.Items.Count >= this.backPackSize)
             {
                 throw new BackPackFullException("Your backpack is full, throw an item to add a new one !");
             }
             else
             {
-                this.items.Add(backPackItem);
+                this.Items.Add(backPackItem);
             }
         }
 
-        public bool Remove(Item backPackItem)
+        public bool RemoveItem(Item backPackItem)
         {
-            return this.items.Remove(backPackItem);
+            return this.Items.Remove(backPackItem);
         }
 
-        public List<Item> getItems
-        {
-            get { return items; }
-        }
+        
 
         
 

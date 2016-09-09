@@ -14,10 +14,10 @@ namespace LDVELH_WPF
 
         public Enemy(String name, int agility, int hitPoint, EnnemyTypes ennemyType)
         {
-            this.name = name;
-            this.baseAgility = agility;
-            this.actualHitPoint = hitPoint;
-            this.maxHitPoint = hitPoint;
+            this.Name = name;
+            this.BaseAgility = agility;
+            this.ActualHitPoint = hitPoint;
+            this.MaxHitPoint = hitPoint;
             this.ClassType = ennemyType;
         }
 

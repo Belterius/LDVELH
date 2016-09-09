@@ -58,12 +58,12 @@ namespace LDVELH_WPF
 
         public override void add(Hero hero)
         {
-            hero.backPack.Add(this);
+            hero.backPack.AddItem(this);
             hero.backPackItemHasChanged(this, true);
         }
         public override void remove(Hero hero)
         {
-            if (hero.backPack.Remove(this))
+            if (hero.backPack.RemoveItem(this))
             {
                 hero.backPackItemHasChanged(this, false);
             }

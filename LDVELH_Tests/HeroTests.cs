@@ -127,7 +127,7 @@ namespace LDVELH_Tests
 
             myHero.removeBackPack();
 
-            Assert.AreEqual(0, myHero.backPack.getItems.Count);
+            Assert.AreEqual(0, myHero.backPack.GetItems.Count);
 
         }
 

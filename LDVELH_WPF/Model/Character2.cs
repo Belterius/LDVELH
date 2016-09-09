@@ -81,11 +81,8 @@ namespace LDVELH_WPF
         }
         public event HitPointHandler HitPointChanged;
         public delegate void HitPointHandler(Hero m, int damage);
+        
 
-        public string getName()
-        {
-            return Name;
-        }
         public int getActualHitPoint()
         {
             return ActualHitPoint;

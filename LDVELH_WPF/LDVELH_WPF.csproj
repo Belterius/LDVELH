@@ -102,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\Converters.cs" />
+    <Compile Include="Helpers\DialogCloser.cs" />
+    <Compile Include="Helpers\IClosableViewModel.cs" />
+    <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Model\BackPack.cs" />
     <Compile Include="Model\Capacity.cs" />
     <Compile Include="Model\Character.cs" />
@@ -114,6 +118,7 @@
     <Compile Include="Model\Event.cs" />
     <Compile Include="EventHandlers.cs" />
     <Compile Include="GlobalFunction.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\HackResx.xaml.cs">
       <DependentUpon>HackResx.xaml</DependentUpon>
     </Compile>

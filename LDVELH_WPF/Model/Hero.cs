@@ -65,10 +65,10 @@ namespace LDVELH_WPF
 
         public Hero(string name)
         {
-            this.name = name;
-            this.maxHitPoint = randMaxHitPoint();
-            this.actualHitPoint = this.maxHitPoint;
-            this.baseAgility = randBaseAgility();
+            this.Name = name;
+            this.MaxHitPoint = randMaxHitPoint();
+            this.ActualHitPoint = this.MaxHitPoint;
+            this.BaseAgility = randBaseAgility();
             this.gold = 0;
             this.saveActualParagraph = 1;
             weaponMastery = WeaponTypes.None;
@@ -92,12 +92,12 @@ namespace LDVELH_WPF
         }
         internal void increaseAgility(int bonusAgility)
         {
-            this.baseAgility += bonusAgility;
+            this.BaseAgility += bonusAgility;
             AgilityHasChanged(bonusAgility);
         }
         internal void decreaseAgility(int bonusAgility)
         {
-            this.baseAgility -= bonusAgility;
+            this.BaseAgility -= bonusAgility;
             AgilityHasChanged(bonusAgility);
         }
         public void AgilityHasChanged(int bonusAgility)
@@ -110,15 +110,15 @@ namespace LDVELH_WPF
         }
         internal void increaseMaxLife(int bonusLife)
         {
-            this.maxHitPoint += bonusLife;
+            this.MaxHitPoint += bonusLife;
             MaxLifeHasChanged(bonusLife);
         }
         internal void decreaseMaxLife(int bonusLife)
         {
-            this.maxHitPoint -= bonusLife;
-            if (this.actualHitPoint > this.maxHitPoint)
+            this.MaxHitPoint -= bonusLife;
+            if (this.ActualHitPoint > this.MaxHitPoint)
             {
-                this.actualHitPoint = this.maxHitPoint;
+                this.ActualHitPoint = this.MaxHitPoint;
             }
             MaxLifeHasChanged(bonusLife);
         }
@@ -133,10 +133,10 @@ namespace LDVELH_WPF
 
         public void heal(int healAmount)
         {
-            this.actualHitPoint += healAmount;
-            if (this.actualHitPoint > this.maxHitPoint)
+            this.ActualHitPoint += healAmount;
+            if (this.ActualHitPoint > this.MaxHitPoint)
             {
-                this.actualHitPoint = this.maxHitPoint;
+                this.ActualHitPoint = this.MaxHitPoint;
             }
             lifePointHasChanged(this, healAmount);
         }
@@ -311,7 +311,7 @@ namespace LDVELH_WPF
         }
         public void removeBackPack()
         {
-            this.backPack.getItems.Clear();
+            this.backPack.GetItems.Clear();
         }
         public void removeWeaponHolder()
         {
@@ -410,7 +410,7 @@ namespace LDVELH_WPF
         }
         private bool possesBackPackItem(String itemName)
         {
-            foreach (Item item in this.backPack.getItems)
+            foreach (Item item in this.backPack.GetItems)
             {
                 if (item.getName == itemName)
                 {
@@ -562,7 +562,7 @@ namespace LDVELH_WPF
 
         public string getResume
         {
-            get { return this.name + " ( Paragraph : " + this.saveActualParagraph + " )"; }
+            get { return this.Name + " ( Paragraph : " + this.saveActualParagraph + " )"; }
         }
 
         public enum HungryState
