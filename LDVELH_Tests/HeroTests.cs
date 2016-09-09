@@ -18,8 +18,8 @@ namespace LDVELH_Tests
             heroWeaponMastery.addCapacity(weaponMasteryCapacity);
             heroNoWeaponMastery.addCapacity(hidingCapacity);
 
-            Assert.AreEqual(true, (heroWeaponMastery.getWeaponMastery != WeaponTypes.None));
-            Assert.AreEqual(true, (heroNoWeaponMastery.getWeaponMastery == WeaponTypes.None));
+            Assert.AreEqual(true, (heroWeaponMastery.WeaponMastery != WeaponTypes.None));
+            Assert.AreEqual(true, (heroNoWeaponMastery.WeaponMastery == WeaponTypes.None));
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace LDVELH_Tests
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.findStrenghtDifference(evilHuman));
 
-            Weapon wmWeapon = new Weapon("perfect weapon", Belterius.getWeaponMastery);
+            Weapon wmWeapon = new Weapon("perfect weapon", Belterius.WeaponMastery);
             Belterius.weaponHolder.Add(wmWeapon);
             expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).getAgilityBonus + Capacity.phychicPowerStrenght + Capacity.weaponMasteryStrenght) - evilHuman.BaseAgility;
 

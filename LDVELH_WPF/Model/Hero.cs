@@ -25,7 +25,23 @@ namespace LDVELH_WPF
         public delegate void AgilityHandler(Hero m, int agilityChange);
 
         [Column("Gold")]
-        private int gold { get; set; }
+        private int _Gold { get; set; }
+        public int Gold
+        {
+            get
+            {
+                return _Gold;
+            }
+            private set
+            {
+                if (_Gold != value)
+                {
+                    _Gold = value;
+                    RaisePropertyChanged("Gold");
+                }
+            }
+        }
+
         public event GoldHandler GoldChanged;
         public delegate void GoldHandler(Hero m, int goldChange);
 
@@ -46,19 +62,70 @@ namespace LDVELH_WPF
         public delegate void specialItemsHandler(Hero m, SpecialItem specialItem, bool add);
 
         [Column("HungryState")]
-        private HungryState hungryStatus{get;set;}
+        private HungryState _HungryStatus{get;set;}
+        public HungryState HungryStatus
+        {
+            get
+            {
+                return _HungryStatus;
+            }
+            private set
+            {
+                if (_HungryStatus != value)
+                {
+                    _HungryStatus = value;
+                    RaisePropertyChanged("HungryStatus");
+                }
+            }
+        }
         public event HungryStateHandler hungryStateChanged;
         public delegate void HungryStateHandler(Hero m);
 
         private int combatDebuff;
 
         [Column("Paragraph")]
-        private int saveActualParagraph { get; set; }
+        private int _CurrentParagraph { get; set; }
+        public int CurrentParagraph
+        {
+            get
+            {
+                return _CurrentParagraph;
+            }
+            set
+            {
+                if (_CurrentParagraph != value)
+                {
+                    _CurrentParagraph = value;
+                    RaisePropertyChanged("CurrentParagraph");
+                }
+            }
+        }
 
         [Column("WeaponMastery")]
-        private WeaponTypes weaponMastery { get; set; }
+        private WeaponTypes _WeaponMastery { get; set; }
+        public WeaponTypes WeaponMastery
+        {
+            get
+            {
+                return _WeaponMastery;
+            }
+            private set
+            {
+                if (_WeaponMastery != value)
+                {
+                    _WeaponMastery = value;
+                    RaisePropertyChanged("WeaponMastery");
+                }
+            }
+        }
         public event WeaponMasteryHandler weaponMasteryChanged;
         public delegate void WeaponMasteryHandler(Hero m);
+
+        void RaisePropertyChanged(string prop)
+        {
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private Hero()
         {
@@ -70,14 +137,14 @@ namespace LDVELH_WPF
             this.MaxHitPoint = randMaxHitPoint();
             this.ActualHitPoint = this.MaxHitPoint;
             this.BaseAgility = randBaseAgility();
-            this.gold = 0;
-            this.saveActualParagraph = 1;
-            weaponMastery = WeaponTypes.None;
+            this.Gold = 0;
+            this.CurrentParagraph = 1;
+            WeaponMastery = WeaponTypes.None;
             capacities = new List<Capacity>();
             backPack = new BackPack();
             weaponHolder = new WeaponHolder();
             specialItems = new List<SpecialItem>();
-            hungryStatus = HungryState.Hungry;
+            HungryStatus = HungryState.Hungry;
             combatDebuff = 0;
         }
 
@@ -141,35 +208,30 @@ namespace LDVELH_WPF
             }
             lifePointHasChanged(this, healAmount);
         }
-
-        public int getGold()
-        {
-            return this.gold;
-        }
-
+        
         public void addGold(int gold)
         {
-            this.gold += gold;
+            this.Gold += gold;
             GoldHasChanged(gold);
         }
         public void removeGold(int gold)
         {
-            if ((this.gold - gold) >= 0)
+            if ((this.Gold - gold) >= 0)
             {
 
-                this.gold -= gold;
+                this.Gold -= gold;
                 GoldHasChanged(-gold);
             }
             else
             {
-                throw new NotEnoughtGoldException("You don't have enough gold !");
+                throw new NotEnoughtGoldException("Error Not Enought Gold");
             }
 
         }
         public void emptyGold()
         {
-            int tempoGold = this.gold;
-            this.gold = 0;
+            int tempoGold = this.Gold;
+            this.Gold = 0;
             GoldHasChanged(-tempoGold);
         }
         public void GoldHasChanged(int gold)
@@ -188,10 +250,10 @@ namespace LDVELH_WPF
             capacitiesHasChanged(capacity);
             if (capacity.getCapacityType == CapacityType.WeaponMastery)
             {
-                while (this.weaponMastery == WeaponTypes.None)
+                while (this.WeaponMastery == WeaponTypes.None)
                 {
-                    this.weaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
-                    WeaponMasteryHasChanged(this.weaponMastery);
+                    this.WeaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
+                    WeaponMasteryHasChanged(this.WeaponMastery);
                 }
             }
         }
@@ -203,10 +265,10 @@ namespace LDVELH_WPF
 
             if (capacityType == CapacityType.WeaponMastery)
             {
-                while (this.weaponMastery == WeaponTypes.None)
+                while (this.WeaponMastery == WeaponTypes.None)
                 {
-                    this.weaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
-                    WeaponMasteryHasChanged(this.weaponMastery);
+                    this.WeaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
+                    WeaponMasteryHasChanged(this.WeaponMastery);
                 }
             }
         }
@@ -328,9 +390,9 @@ namespace LDVELH_WPF
         }
         public void eat()
         {
-            if (this.hungryStatus != HungryState.Full)
+            if (this.HungryStatus != HungryState.Full)
             {
-                this.hungryStatus = HungryState.Full;
+                this.HungryStatus = HungryState.Full;
                 HungryStateHasChanged();
             }
             else
@@ -344,21 +406,14 @@ namespace LDVELH_WPF
         {
             if (!this.possesCapacity(CapacityType.Hunting))//Hunting capacity allow you to never have to eat when required.
             {
-                if (this.getHungryState == HungryState.Hungry)
+                if (this.HungryStatus == HungryState.Hungry)
                 {
                     this.takeDamage(skipMealDamage);
                 }
-                this.hungryStatus = HungryState.Hungry;
+                this.HungryStatus = HungryState.Hungry;
                 HungryStateHasChanged();
             }
             
-        }
-        public HungryState getHungryState
-        {
-            get
-            {
-                return this.hungryStatus;
-            }
         }
         public void HungryStateHasChanged()
         {
@@ -368,14 +423,7 @@ namespace LDVELH_WPF
                 handler(this);
             }
         }
-
-
-
-        public WeaponTypes getWeaponMastery
-        {
-            get { return this.weaponMastery; }
-        }
-
+        
         public bool possesCapacity(CapacityType capacity)
         {
             foreach (Capacity capa in this.capacities)
@@ -493,7 +541,7 @@ namespace LDVELH_WPF
             int bonusAgility = 0;
             if (this.possesCapacity(CapacityType.WeaponMastery))
             {
-                if (this.weaponHolder.Contains(this.weaponMastery))
+                if (this.weaponHolder.Contains(this.WeaponMastery))
                 {
                     bonusAgility += Capacity.weaponMasteryStrenght;
                 }
@@ -551,19 +599,10 @@ namespace LDVELH_WPF
             if (this.weaponHolder == null)
                 this.weaponHolder = new WeaponHolder();
         }
-
-        public void setActualParagraph(int actualParagraph)
-        {
-            this.saveActualParagraph = actualParagraph;
-        }
-        public int getActualParagraph()
-        {
-            return this.saveActualParagraph;
-        }
-
+        
         public string getResume
         {
-            get { return this.Name + " ( Paragraph : " + this.saveActualParagraph + " )"; }
+            get { return this.Name + " ( Paragraph : " + this.CurrentParagraph + " )"; }
         }
 
         public enum HungryState

@@ -58,7 +58,7 @@ namespace LDVELH_WPF
         }
         public void HungryStateChanged(Hero hero)
         {
-            labelBellyState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getHungryState.ToString());
+            labelBellyState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.HungryStatus.ToString());
         }
         public void AgilityChanged(Hero hero, int damage)
         {
@@ -66,12 +66,12 @@ namespace LDVELH_WPF
         }
         public void WeaponMasteryChanged(Hero hero)
         {
-            labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getWeaponMastery.ToString());
+            labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.WeaponMastery.ToString());
         }
 
         public void GoldChanged(Hero hero, int goldChange)
         {
-            labelGold.Content = hero.getGold().ToString();
+            labelGold.Content = hero.Gold.ToString();
         }
 
         public void capacitiesChanged(Hero hero, Capacity capacity)
@@ -148,7 +148,7 @@ namespace LDVELH_WPF
             generatePlayerPossibleDecision(story);
 
             //Fourth, update the hero actualParagraph in case of exit
-            story.getHero.setActualParagraph(actualParagraph.getParagraphNumber);
+            story.getHero.CurrentParagraph = actualParagraph.getParagraphNumber;
 
         }
         private void setMainTextContent(StoryParagraph actualParagraph)

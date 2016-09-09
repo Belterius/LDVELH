@@ -38,7 +38,7 @@ namespace LDVELH_WPF
             else
             {
                 storyObserver.loadingHero = true;
-                story.start(hero.getActualParagraph());
+                story.start(hero.CurrentParagraph);
             }
         }
         private void TranslateLabel()
@@ -120,11 +120,11 @@ namespace LDVELH_WPF
         {
             labelHitPoint.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
             labelAgility.Content = hero.BaseAgility.ToString();
-            labelGoldAmount.Content = hero.getGold().ToString();
-            labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getWeaponMastery.ToString());
+            labelGoldAmount.Content = hero.Gold.ToString();
+            labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.WeaponMastery.ToString());
             listBoxCapacities.ItemsSource = hero.capacities;
             listBoxCapacities.DisplayMemberPath = "getCapacityDisplayName";
-            labelHungryState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.getHungryState.ToString());
+            labelHungryState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.HungryStatus.ToString());
         }
         private void heroHPListener()
         {
@@ -165,7 +165,7 @@ namespace LDVELH_WPF
         private void initStory()
         {
             story = new Story("first adventure", hero);
-            story.addParagraph(CreateParagraph.CreateAParagraph(hero.getActualParagraph()));
+            story.addParagraph(CreateParagraph.CreateAParagraph(hero.CurrentParagraph));
 
             initStoryObserver();
 
