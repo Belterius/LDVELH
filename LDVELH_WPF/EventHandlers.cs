@@ -76,7 +76,7 @@ namespace LDVELH_WPF
 
         public void capacitiesChanged(Hero hero, Capacity capacity)
         {
-            System.Diagnostics.Debug.WriteLine("Something happened to " + hero.Name+ " he learned " + capacity.getCapacityType.ToString());
+            System.Diagnostics.Debug.WriteLine("Something happened to " + hero.Name+ " he learned " + capacity.CapacityKind.ToString());
         }
         public void backPackChanged(Hero hero)
         {

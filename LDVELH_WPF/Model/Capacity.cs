@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace LDVELH_WPF
 {
-    public class Capacity
+    public class Capacity : INotifyPropertyChanged
     {
         [Key]
         public int CapacityID { get; set; }
@@ -13,24 +14,41 @@ namespace LDVELH_WPF
         public static readonly int weaponMasteryStrenght = 2;
 
         [Column("Capacity")]
-        private CapacityType capacity{get;set;}
+        private CapacityType _CapacityKind{get;set;}
+        public CapacityType CapacityKind
+        {
+            get
+            {
+                return _CapacityKind;
+            }
+            private set
+            {
+                if (_CapacityKind != value)
+                {
+                    _CapacityKind = value;
+                    RaisePropertyChanged("CapacityKind");
+                }
+            }
+        }
+
+        void RaisePropertyChanged(string prop)
+        {
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Capacity()
         {
         }
         public Capacity(CapacityType capacityType)
         {
-            this.capacity = capacityType;
+            this.CapacityKind = capacityType;
         }
-
-        public CapacityType getCapacityType{
-            get { return capacity; }
-        }
-
+        
         public string getCapacityDisplayName
         {
             get {
-                return GlobalTranslator.Instance.translator.ProvideValue(capacity.ToString());
+                return GlobalTranslator.Instance.translator.ProvideValue(CapacityKind.ToString());
             }
         }
         

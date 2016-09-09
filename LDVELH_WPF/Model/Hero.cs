@@ -248,7 +248,7 @@ namespace LDVELH_WPF
         {
             capacities.Add(capacity);
             capacitiesHasChanged(capacity);
-            if (capacity.getCapacityType == CapacityType.WeaponMastery)
+            if (capacity.CapacityKind == CapacityType.WeaponMastery)
             {
                 while (this.WeaponMastery == WeaponTypes.None)
                 {
@@ -428,7 +428,7 @@ namespace LDVELH_WPF
         {
             foreach (Capacity capa in this.capacities)
             {
-                if (capa.getCapacityType == capacity)
+                if (capa.CapacityKind == capacity)
                 {
                     return true;
                 }
