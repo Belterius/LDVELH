@@ -118,6 +118,7 @@
     <Compile Include="Model\Event.cs" />
     <Compile Include="EventHandlers.cs" />
     <Compile Include="GlobalFunction.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\HackResx.xaml.cs">
       <DependentUpon>HackResx.xaml</DependentUpon>

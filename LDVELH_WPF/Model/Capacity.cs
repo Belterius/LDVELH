@@ -41,6 +41,7 @@ namespace LDVELH_WPF
         {
         }
         public Capacity(CapacityType capacityType)
+
         {
             this.CapacityKind = capacityType;
         }
