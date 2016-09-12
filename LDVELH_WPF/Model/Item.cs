@@ -121,8 +121,8 @@ namespace LDVELH_WPF
         }
         public override int GetHashCode()
         {
-            return new { Name, healingPower, chargesLeft }.GetHashCode();
-            //return new { name, healingPower }.GetHashCode();
+            //return new { Name, healingPower, chargesLeft }.GetHashCode();
+            return new { Name, healingPower }.GetHashCode();
         }
 
         public override string DisplayName
@@ -183,8 +183,8 @@ namespace LDVELH_WPF
         }
         public override int GetHashCode()
         {
-            return new { Name, chargesLeft }.GetHashCode();
-            //return new { name }.GetHashCode();
+            //return new { Name, chargesLeft }.GetHashCode();
+            return new { Name }.GetHashCode();
         }
 
         public override string DisplayName

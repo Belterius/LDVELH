@@ -121,12 +121,6 @@ namespace LDVELH_WPF
         public event WeaponMasteryHandler weaponMasteryChanged;
         public delegate void WeaponMasteryHandler(Hero m);
 
-        void RaisePropertyChanged(string prop)
-        {
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private Hero()
         {
         }
@@ -335,11 +329,13 @@ namespace LDVELH_WPF
             try
             {
                 item.use(this);
+                RaisePropertyChanged("GetItems");
                 backPackItemHasChanged(item, false);
             }
             catch (ItemDestroyedException)
             {
                 item.remove(this);
+                RaisePropertyChanged("GetItems");
                 backPackItemHasChanged(item, false);
             }
             catch (CannotUseItemException)

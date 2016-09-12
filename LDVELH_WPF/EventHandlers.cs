@@ -28,33 +28,33 @@ namespace LDVELH_WPF
         public HeroObserver(Hero hero, Label labelHP, Label labelAgility, Label labelWeaponMastery, Label labelGold, Label labelBellyState, ListBox listWeapon, ListBox listItem, ListBox listSpecialItem)
         {
             this.labelGold = labelGold;
-            this.listBoxWeapon = listWeapon;
-            this.listBoxBackPackItem = listItem;
+            //this.listBoxWeapon = listWeapon;
+            //this.listBoxBackPackItem = listItem;
             this.listBoxSpecialItem = listSpecialItem;
             this.labelHP = labelHP;
             this.labelAgility = labelAgility;
             this.labelWeaponMastery = labelWeaponMastery;
             this.labelBellyState = labelBellyState;
 
-            listWeaponSave =  new BindingList<Weapon>(hero.weaponHolder.getWeapons);
-            listItemSave = new BindingList<Item>(hero.backPack.GetItems);
+            //listWeaponSave =  new BindingList<Weapon>(hero.weaponHolder.getWeapons);
+            //listItemSave = new BindingList<Item>(hero.backPack.GetItems);
             listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
 
             listBoxSpecialItem.ItemsSource = this.listSpecialItemSave;
             listBoxSpecialItem.DisplayMemberPath = "DisplayName";
-            listBoxBackPackItem.ItemsSource = this.listItemSave;
-            listBoxBackPackItem.DisplayMemberPath = "DisplayName";
-            listBoxWeapon.ItemsSource = this.listWeaponSave;
-            listBoxWeapon.DisplayMemberPath = "DisplayName";
+            //listBoxBackPackItem.ItemsSource = this.listItemSave;
+            //listBoxBackPackItem.DisplayMemberPath = "DisplayName";
+            //listBoxWeapon.ItemsSource = this.listWeaponSave;
+            //listBoxWeapon.DisplayMemberPath = "DisplayName";
         }
 
         public void HitPointChanged(Hero hero, int damage)
         {
-            labelHP.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
+            //labelHP.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
         }
         public void MaxHitPointChanged(Hero hero, int damage)
         {
-            labelHP.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
+            //labelHP.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
         }
         public void HungryStateChanged(Hero hero)
         {
@@ -80,19 +80,19 @@ namespace LDVELH_WPF
         }
         public void backPackChanged(Hero hero)
         {
-            listBoxBackPackItem.Items.Refresh();
+            //listBoxBackPackItem.Items.Refresh();
         }
         public void backPackChanged(Hero hero, Item item, bool add)
         {
-            listBoxBackPackItem.Items.Refresh();
+            //listBoxBackPackItem.Items.Refresh();
         }
         public void weaponHolderChanged(Hero hero)
         {
-            listBoxWeapon.Items.Refresh();
+           // listBoxWeapon.Items.Refresh();
         }
         public void weaponHolderChanged(Hero hero, Weapon weapon, bool add)
         {
-            listBoxWeapon.Items.Refresh();
+           // listBoxWeapon.Items.Refresh();
         }
         public void specialItemsChanged(Hero hero)
         {

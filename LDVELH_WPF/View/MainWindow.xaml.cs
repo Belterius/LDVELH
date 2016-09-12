@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Data;
 
 namespace LDVELH_WPF
 {
@@ -118,7 +119,7 @@ namespace LDVELH_WPF
         }
         private void heroBaseStat()
         {
-            labelHitPoint.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
+            //labelHitPoint.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
             labelAgility.Content = hero.BaseAgility.ToString();
             labelGoldAmount.Content = hero.Gold.ToString();
             labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.WeaponMastery.ToString());

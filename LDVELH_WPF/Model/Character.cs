@@ -127,7 +127,7 @@ namespace LDVELH_WPF
                 handler(hero, damage);
             }
         }
-        void RaisePropertyChanged(string prop)
+        protected void RaisePropertyChanged(string prop)
         {
             if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
         }
