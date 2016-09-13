@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using System.Collections.ObjectModel;
 
 namespace LDVELH_WPF
 {
@@ -45,7 +46,7 @@ namespace LDVELH_WPF
         public event GoldHandler GoldChanged;
         public delegate void GoldHandler(Hero m, int goldChange);
 
-        public List<Capacity> capacities { get; set; }
+        public ObservableCollection<Capacity> capacities { get; set; }
         public event capacitiesHandler capacitiesChanged;
         public delegate void capacitiesHandler(Hero m, Capacity capacity);
 
@@ -134,7 +135,7 @@ namespace LDVELH_WPF
             this.Gold = 0;
             this.CurrentParagraph = 1;
             WeaponMastery = WeaponTypes.None;
-            capacities = new List<Capacity>();
+            capacities = new ObservableCollection<Capacity>();
             backPack = new BackPack();
             weaponHolder = new WeaponHolder();
             specialItems = new List<SpecialItem>();
@@ -329,13 +330,11 @@ namespace LDVELH_WPF
             try
             {
                 item.use(this);
-                RaisePropertyChanged("GetItems");
                 backPackItemHasChanged(item, false);
             }
             catch (ItemDestroyedException)
             {
                 item.remove(this);
-                RaisePropertyChanged("GetItems");
                 backPackItemHasChanged(item, false);
             }
             catch (CannotUseItemException)
@@ -589,7 +588,7 @@ namespace LDVELH_WPF
             if (this.specialItems == null)
                 this.specialItems = new List<SpecialItem>();
             if (this.capacities == null)
-                this.capacities = new List<Capacity>();
+                this.capacities = new ObservableCollection<Capacity>();
             if (this.backPack == null)
                 this.backPack = new BackPack();
             if (this.weaponHolder == null)

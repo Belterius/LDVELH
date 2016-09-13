@@ -122,9 +122,9 @@ namespace LDVELH_WPF
             //labelHitPoint.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
             labelAgility.Content = hero.BaseAgility.ToString();
             labelGoldAmount.Content = hero.Gold.ToString();
-            labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.WeaponMastery.ToString());
-            listBoxCapacities.ItemsSource = hero.capacities;
-            listBoxCapacities.DisplayMemberPath = "DisplayName";
+            labelWeaponMastery.Content = hero.WeaponMastery.GetTranslation();
+            //listBoxCapacities.ItemsSource = hero.capacities;
+            //listBoxCapacities.DisplayMemberPath = "DisplayName";
             labelHungryState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.HungryStatus.ToString());
         }
         private void heroHPListener()
@@ -232,11 +232,12 @@ namespace LDVELH_WPF
 
         private void buttonThrowItem_Click(object sender, RoutedEventArgs e)
         {
-            Item itemToThrow = (Item)listBoxBackPack.SelectedItem;
-            if (itemToThrow != null)
-            {
-                hero.removeLoot(itemToThrow);
-            }
+            //Item itemToThrow = (Item)listBoxBackPack.SelectedItem;
+            //if (itemToThrow != null)
+            //{
+            //    hero.removeLoot(itemToThrow);
+            //}
+            listBoxBackPack.Items.Refresh();
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)

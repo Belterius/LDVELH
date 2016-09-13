@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using System.Collections.ObjectModel;
 
 namespace LDVELH_WPF
 {
@@ -31,15 +32,15 @@ namespace LDVELH_WPF
             }
         }
 
-        List<Item> Items;
-        public List<Item> GetItems
+        ObservableCollection<Item> Items;
+        public ObservableCollection<Item> GetItems
         {
             get { return Items; }
         }
 
         public static readonly int basicBackPackSize = 8;
 
-        void RaisePropertyChanged(string prop)
+        protected void RaisePropertyChanged(string prop)
         {
             if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
         }
@@ -48,12 +49,12 @@ namespace LDVELH_WPF
         public BackPack()
         {
             this.BackPackSize = basicBackPackSize;
-            this.Items = new List<Item>();
+            this.Items = new ObservableCollection<Item>();
         }
         public BackPack(int backPackSize)
         {
             this.BackPackSize = backPackSize;
-            this.Items = new List<Item>();
+            this.Items = new ObservableCollection<Item>();
         }
 
         public void AddItem(Item backPackItem)

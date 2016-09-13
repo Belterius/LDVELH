@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
@@ -28,19 +29,22 @@ namespace LDVELH_WPF
                 }
             }
         }
-        List<Weapon> weapons;
+        //List<Weapon> weapons;
+        ObservableCollection<Weapon> weapons;
 
 
         public WeaponHolder()
         {
             this.WeaponHolderSize = basicWeaponHolderSize;
-            weapons = new List<Weapon>();
+            //weapons = new List<Weapon>();
+            weapons = new ObservableCollection<Weapon>();
         }
 
         public WeaponHolder(int maxWeapon)
         {
             this.WeaponHolderSize = maxWeapon;
-            weapons = new List<Weapon>();
+            //weapons = new List<Weapon>();
+            weapons = new ObservableCollection<Weapon>();
 
         }
 
@@ -80,7 +84,7 @@ namespace LDVELH_WPF
                 return false;
         }
 
-        public List<Weapon> getWeapons
+        public ObservableCollection<Weapon> getWeapons
         {
             get { return weapons;}
         }

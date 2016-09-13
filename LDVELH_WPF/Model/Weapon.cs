@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 namespace LDVELH_WPF
 {
     public class Weapon : Loot
@@ -99,5 +101,13 @@ namespace LDVELH_WPF
         Axe,
         Baton,
         TwoEdgedSword
+    }
+    static class WeaponTypesMethods
+    {
+
+        public static String GetTranslation(this WeaponTypes weapon)
+        {
+            return GlobalTranslator.Instance.translator.ProvideValue(weapon.ToString());
+        }
     }
 }

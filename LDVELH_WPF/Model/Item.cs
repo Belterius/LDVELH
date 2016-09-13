@@ -1,14 +1,17 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
 namespace LDVELH_WPF
 {
-    public abstract class Loot
+    public abstract class Loot 
     {
         [Key]
         public int LootID { get; set; }
+
+
         public abstract void add(Hero hero);
         public abstract void remove(Hero hero);
 
@@ -37,11 +40,11 @@ namespace LDVELH_WPF
             hero.removeGold(this.GoldAmount);
         }
     }
-    public abstract class Item : Loot
+    public abstract class Item : Loot, INotifyPropertyChanged
     {
         
 
-        [Column]
+        [Column("Name")]
         private string _Name{get;set;}
 
         public string Name
@@ -58,7 +61,11 @@ namespace LDVELH_WPF
                 }
             }
         }
-        
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void RaisePropertyChanged(string prop)
+        {
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+        }
 
         public virtual string DisplayName
         {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
@@ -86,21 +93,52 @@ namespace LDVELH_WPF
     public class Consummable : Item
     {
 
-        [Column]
-        int healingPower{get;set;}
+        [Column("HealingPower")]
+        int _HealingPower { get; set; }
+        public int HealingPower
+        {
+            get
+            {
+                return _HealingPower;
+            }
+            set
+            {
+                if (_HealingPower != value)
+                {
+                    _HealingPower = value;
+                    RaisePropertyChanged("HealingPower");
+                }
+            }
+        }
 
-        [Column]
-        int chargesLeft { get; set; }
+        [Column("ChargesLeft")]
+        int _ChargesLeft { get; set; }
+        public int ChargesLeft
+        {
+            get
+            {
+                return _ChargesLeft;
+            }
+            protected set
+            {
+                if (_ChargesLeft != value)
+                {
+                    _ChargesLeft = value;
+                    RaisePropertyChanged("ChargesLeft");
+                }
+            }
+        }
 
+        
         private Consummable()
         {
 
         }
         public Consummable(string name, int healingPower, int charges)
         {
-            this.healingPower = healingPower;
+            this.HealingPower = healingPower;
             this.Name = name;
-            this.chargesLeft = charges;
+            this.ChargesLeft = charges;
         }
 
         public override bool Equals(object obj)
@@ -112,9 +150,9 @@ namespace LDVELH_WPF
             Consummable consummable = (Consummable)obj;
             if (this.Name != consummable.Name)
                 return false;
-            if (this.chargesLeft != consummable.chargesLeft)
+            if (this.ChargesLeft != consummable.ChargesLeft)
                 return false;
-            if (this.healingPower != consummable.healingPower)
+            if (this.HealingPower != consummable.HealingPower)
                 return false;
 
             return true;
@@ -122,31 +160,31 @@ namespace LDVELH_WPF
         public override int GetHashCode()
         {
             //return new { Name, healingPower, chargesLeft }.GetHashCode();
-            return new { Name, healingPower }.GetHashCode();
+            return new { Name, HealingPower }.GetHashCode();
         }
 
         public override string DisplayName
         {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
             get
             {
-                if (chargesLeft > 1)
+                if (ChargesLeft > 1)
                 {
-                    return Name + "(+" + healingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return Name + "(+" + HealingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + ChargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
                 else
                 {
-                    return Name + "(+" + healingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return Name + "(+" + HealingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + ChargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
             }
         }
         public override void use(Hero hero)
         {
-            if(this.chargesLeft >= 1)
+            if(this.ChargesLeft >= 1)
             {
-                this.chargesLeft--;
-                hero.heal(healingPower);
+                this.ChargesLeft--;
+                hero.heal(HealingPower);
             }
-            if (chargesLeft <= 0)
+            if (ChargesLeft <= 0)
             {
                 throw new ItemDestroyedException();
             }
@@ -157,8 +195,23 @@ namespace LDVELH_WPF
     public class Food : Item
     {
 
-        [Column]
-        int chargesLeft { get; set; }
+        [Column("ChargesLeft")]
+        int _ChargesLeft { get; set; }
+        public int ChargesLeft
+        {
+            get
+            {
+                return _ChargesLeft;
+            }
+            protected set
+            {
+                if (_ChargesLeft != value)
+                {
+                    _ChargesLeft = value;
+                    RaisePropertyChanged("ChargesLeft");
+                }
+            }
+        }
         private Food()
         {
 
@@ -166,7 +219,7 @@ namespace LDVELH_WPF
         public Food(string name, int charges)
         {
             this.Name = name;
-            this.chargesLeft = charges;
+            this.ChargesLeft = charges;
         }
 
         public override bool Equals(object obj)
@@ -177,7 +230,7 @@ namespace LDVELH_WPF
             Food food = (Food)obj;
             if (this.Name != food.Name)
                 return false;
-            if (this.chargesLeft != food.chargesLeft)
+            if (this.ChargesLeft != food.ChargesLeft)
                 return false;
             return true;
         }
@@ -191,25 +244,25 @@ namespace LDVELH_WPF
         {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
             get
             {
-                if (chargesLeft > 1)
+                if (ChargesLeft > 1)
                 {
-                    return Name + "(" + GlobalTranslator.Instance.translator.ProvideValue("food") + ", " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return Name + "(" + GlobalTranslator.Instance.translator.ProvideValue("food") + ", " + ChargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
                 else
                 {
-                    return Name + "(" + GlobalTranslator.Instance.translator.ProvideValue("food") + ", " + chargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return Name + "(" + GlobalTranslator.Instance.translator.ProvideValue("food") + ", " + ChargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
                 }
             }
         }
 
         public override void use(Hero hero)
         {
-            if(this.chargesLeft >= 1)
+            if(this.ChargesLeft >= 1)
             {
-                this.chargesLeft--;
+                this.ChargesLeft--;
                 hero.eat();
             }
-            if (chargesLeft <= 0)
+            if (ChargesLeft <= 0)
             {
                 throw new ItemDestroyedException();
             }

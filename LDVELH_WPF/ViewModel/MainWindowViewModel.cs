@@ -1,6 +1,8 @@
 ﻿using LDVELH_WPF.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,14 +60,9 @@ namespace LDVELH_WPF.ViewModel
                 }
             }
         }
-
-        
-
-
         public MainWindowViewModel()
         {
             InitHero();
-            
             ThrowLootCommand = new RelayCommand(ThrowLoot);
             UseItemCommand = new RelayCommand(UseItem);
         }
@@ -76,6 +73,8 @@ namespace LDVELH_WPF.ViewModel
             Hero.addLoot(CreateLoot.CreateWeapon.Baton());
             Hero.addLoot(CreateLoot.CreateConsummable.potionDeLampsur());
             Hero.addLoot(CreateLoot.CreateConsummable.potionDeLampsur());
+            Hero.addCapacity(CapacityType.Healing);
+            Hero.addCapacity(CapacityType.Hiding);
             Hero.takeDamage(5);
         }
 
