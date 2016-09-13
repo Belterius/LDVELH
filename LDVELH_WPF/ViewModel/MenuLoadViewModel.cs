@@ -83,21 +83,15 @@ namespace LDVELH_WPF.ViewModel
         }
         private void LoadHero(object hero)
         {
-            try
-            {
-                MainWindow mainWindow = new MainWindow { DataContext = new MainWindowViewModel((Hero)hero) };
+                MainWindow mainWindow = new MainWindow(true) { DataContext = new MainWindowViewModel((Hero)hero) };
                 mainWindow.Show();
                 CloseWindow();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("Error when loading hero data : " + ex);
-            }
         }
 
         private void NewGame(object random)
         {
-            MainWindow mainWindow = new MainWindow { DataContext = new MainWindowViewModel() };
+            MenuCapacities MenuCapacities = new MenuCapacities { DataContext = new MenuCapacitiesViewModel( ShowMyDialogBox()) };
+            MenuCapacities.Show();
             CloseWindow();
         }
         private void Settings(object random)
@@ -105,6 +99,28 @@ namespace LDVELH_WPF.ViewModel
             MenuSettings menuSetting = new MenuSettings { DataContext = new MenuSettingsViewModel() };
             menuSetting.Show();
             CloseWindow();
+        }
+        private string ShowMyDialogBox()
+        {
+            MessageBoxInput testDialog = new MessageBoxInput();
+
+            if (testDialog.ShowDialog() == true)
+            {
+                if (testDialog.getCharacterName != "")
+                {
+                    return testDialog.getCharacterName;
+                }
+                else
+                {
+                    return GlobalTranslator.Instance.translator.ProvideValue("NoName");
+                }
+
+            }
+            else
+            {
+                return GlobalTranslator.Instance.translator.ProvideValue("NoName");
+            }
+
         }
     }
 }

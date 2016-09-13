@@ -119,6 +119,7 @@
     <Compile Include="EventHandlers.cs" />
     <Compile Include="GlobalFunction.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\MenuCapacitiesViewModel.cs" />
     <Compile Include="ViewModel\MenuLoadViewModel.cs" />
     <Compile Include="ViewModel\MenuSettingsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />

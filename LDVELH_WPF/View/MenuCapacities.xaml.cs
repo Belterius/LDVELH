@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LDVELH_WPF.ViewModel;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,21 +10,12 @@ namespace LDVELH_WPF
     /// </summary>
     public partial class MenuCapacities : Window
     {
-        int allowedNumberCapacities = 5;
-        Hero hero;
-        MainWindow mainWindow;
+        static readonly int allowedNumberCapacities = 5;
 
         public MenuCapacities()
         {
             InitializeComponent();
             TranslateLabel();
-        }
-        public MenuCapacities(Hero hero, MainWindow mainWindow)
-        {
-            InitializeComponent();
-            TranslateLabel();
-            this.hero = hero;
-            this.mainWindow = mainWindow;
         }
 
         private void TranslateLabel()
@@ -35,6 +27,7 @@ namespace LDVELH_WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Hero Hero = new Hero(labelHeroName.Content.ToString());
             int numberOfCapacities = 0;
             foreach (var item in ((Grid)(groupBoxCapacities.Content)).Children)
             {
@@ -60,12 +53,13 @@ namespace LDVELH_WPF
                     CapacityCheckBox checkbox = (CapacityCheckBox)item;
                     if ((bool)checkbox.IsChecked)
                     {
-                        hero.addCapacity(checkbox.myCapacity);
+                        Hero.addCapacity(checkbox.myCapacity);
                     }
 
                 }
             }
 
+            MainWindow mainWindow = new MainWindow(false) { DataContext = new MainWindowViewModel(Hero) };
             mainWindow.Show();
             this.Close();
         }

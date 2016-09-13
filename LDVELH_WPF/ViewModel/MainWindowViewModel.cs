@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace LDVELH_WPF.ViewModel
 {
@@ -86,6 +87,8 @@ namespace LDVELH_WPF.ViewModel
 
         public RelayCommand ThrowLootCommand { get; set; }
         public RelayCommand UseItemCommand { get; set; }
+        public RelayCommand SaveHeroCommand { get; set; }
+        public RelayCommand LoadHeroCommand { get; set; }
 
         private void ThrowLoot(object item)
         {
@@ -116,19 +119,65 @@ namespace LDVELH_WPF.ViewModel
                 }
             }
         }
+        private void SaveHero(object hero)
+        {
+            try
+            {
+                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
+                {
+                    databaseRequest.SaveHero((Hero)hero);
+                }
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("SuccesSaving"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorSaving"));
+                System.Diagnostics.Debug.WriteLine("Error saving Hero : " + ex);
+            }
+        }
+        private void LoadHero(object random)
+        {
+            if (MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ConfirmExit"), GlobalTranslator.Instance.translator.ProvideValue("GoToLoadingMenu"), MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+
+            }
+            else
+            {
+                MenuLoad loadMenu = new MenuLoad { DataContext = new MenuLoadViewModel() };
+                loadMenu.Show();
+                CloseWindow();
+            }
+        }
 
         public MainWindowViewModel(Hero hero)
         {
-            Hero = hero;
-            ThrowLootCommand = new RelayCommand(ThrowLoot);
-            UseItemCommand = new RelayCommand(UseItem);
+            InitHero(hero);
+            Initialize();
         }
-        public MainWindowViewModel()
+        //public MainWindowViewModel()
+        //{
+        //    InitHero();
+        //    Initialize();
+        //}
+        private void Initialize()
         {
-            InitHero();
             ThrowLootCommand = new RelayCommand(ThrowLoot);
             UseItemCommand = new RelayCommand(UseItem);
+            LoadHeroCommand = new RelayCommand(LoadHero);
+            SaveHeroCommand = new RelayCommand(SaveHero);
         }
-        
+        private void InitHero(Hero hero)
+        {
+            Hero = hero;
+            noNullInHero(hero);
+        }
+
+        private void noNullInHero(Hero hero)
+        {
+            //When loading a Hero from our database, if he had no item/backpack/weapon/weaponHolder/capacity then those will be null instead of empty.
+            //we fix the possible problem immediately
+            hero.noNullInHero();
+        }
+
     }
 }
