@@ -41,7 +41,14 @@ namespace LDVELH_WPF
                 }
             }
         }
-        protected bool done = false;
+        protected bool _Done = false;
+        public bool Done
+        {
+            get
+            {
+                return _Done;
+            }
+        }
         public abstract void resolveEvent(Story story);
         
     }
@@ -95,24 +102,22 @@ namespace LDVELH_WPF
         }
         public override void resolveEvent(Story story)
         {
-            if (!done)
+            if (!_Done)
             {
                 foreach (Loot lootItem in loot)
                 {
                     try
                     {
                         story.getHero.addLoot(lootItem);
-                        done = true;
+                        _Done = true;
                     }
                     catch (BackPackFullException)
                     {
-                        //TODO
                         System.Diagnostics.Debug.WriteLine("LootEvent full backpack, propose choice");
                         MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorInventoryFull"));
                     }
                     catch (WeaponHolderFullException)
                     {
-                        //TODO
                         MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorWeaponHolderFull"));
                         System.Diagnostics.Debug.WriteLine("LootEvent full weapon holder, propose choice");
                     }

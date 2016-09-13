@@ -28,79 +28,79 @@ namespace LDVELH_WPF
         public HeroObserver(Hero hero, Label labelHP, Label labelAgility, Label labelWeaponMastery, Label labelGold, Label labelBellyState, ListBox listWeapon, ListBox listItem, ListBox listSpecialItem)
         {
             this.labelGold = labelGold;
-            //this.listBoxWeapon = listWeapon;
-            //this.listBoxBackPackItem = listItem;
+            this.listBoxWeapon = listWeapon;
+            this.listBoxBackPackItem = listItem;
             this.listBoxSpecialItem = listSpecialItem;
             this.labelHP = labelHP;
             this.labelAgility = labelAgility;
             this.labelWeaponMastery = labelWeaponMastery;
             this.labelBellyState = labelBellyState;
 
-            //listWeaponSave =  new BindingList<Weapon>(hero.weaponHolder.getWeapons);
-            //listItemSave = new BindingList<Item>(hero.backPack.GetItems);
-            //listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
+            listWeaponSave = new BindingList<Weapon>(hero.weaponHolder.getWeapons);
+            listItemSave = new BindingList<Item>(hero.backPack.GetItems);
+            listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
 
-            //listBoxSpecialItem.ItemsSource = this.listSpecialItemSave;
-            //listBoxSpecialItem.DisplayMemberPath = "DisplayName";
-            //listBoxBackPackItem.ItemsSource = this.listItemSave;
-            //listBoxBackPackItem.DisplayMemberPath = "DisplayName";
-            //listBoxWeapon.ItemsSource = this.listWeaponSave;
-            //listBoxWeapon.DisplayMemberPath = "DisplayName";
+            listBoxSpecialItem.ItemsSource = this.listSpecialItemSave;
+            listBoxSpecialItem.DisplayMemberPath = "DisplayName";
+            listBoxBackPackItem.ItemsSource = this.listItemSave;
+            listBoxBackPackItem.DisplayMemberPath = "DisplayName";
+            listBoxWeapon.ItemsSource = this.listWeaponSave;
+            listBoxWeapon.DisplayMemberPath = "DisplayName";
         }
 
         public void HitPointChanged(Hero hero, int damage)
         {
-            //labelHP.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
+            labelHP.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
         }
         public void MaxHitPointChanged(Hero hero, int damage)
         {
-            //labelHP.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
+            labelHP.Content = hero.ActualHitPoint.ToString() + "/" + hero.MaxHitPoint.ToString();
         }
         public void HungryStateChanged(Hero hero)
         {
-            //labelBellyState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.HungryStatus.ToString());
+            labelBellyState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.HungryStatus.ToString());
         }
         public void AgilityChanged(Hero hero, int damage)
         {
-            //labelAgility.Content = hero.BaseAgility.ToString();
+            labelAgility.Content = hero.BaseAgility.ToString();
         }
         public void WeaponMasteryChanged(Hero hero)
         {
-           // labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.WeaponMastery.ToString());
+            labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.WeaponMastery.ToString());
         }
 
         public void GoldChanged(Hero hero, int goldChange)
         {
-            //labelGold.Content = hero.Gold.ToString();
+            labelGold.Content = hero.Gold.ToString();
         }
 
         public void capacitiesChanged(Hero hero, Capacity capacity)
         {
-            System.Diagnostics.Debug.WriteLine("Something happened to " + hero.Name+ " he learned " + capacity.CapacityKind.ToString());
+            System.Diagnostics.Debug.WriteLine("Something happened to " + hero.Name + " he learned " + capacity.CapacityKind.ToString());
         }
         public void backPackChanged(Hero hero)
         {
-            //listBoxBackPackItem.Items.Refresh();
+            listBoxBackPackItem.Items.Refresh();
         }
         public void backPackChanged(Hero hero, Item item, bool add)
         {
-            //listBoxBackPackItem.Items.Refresh();
+            listBoxBackPackItem.Items.Refresh();
         }
         public void weaponHolderChanged(Hero hero)
         {
-           // listBoxWeapon.Items.Refresh();
+            listBoxWeapon.Items.Refresh();
         }
         public void weaponHolderChanged(Hero hero, Weapon weapon, bool add)
         {
-           // listBoxWeapon.Items.Refresh();
+            listBoxWeapon.Items.Refresh();
         }
         public void specialItemsChanged(Hero hero)
         {
-           // listBoxSpecialItem.Items.Refresh();
+            listBoxSpecialItem.Items.Refresh();
         }
         public void specialItemsChanged(Hero hero, SpecialItem specialItem, bool add)
         {
-           // listBoxSpecialItem.Items.Refresh();
+            listBoxSpecialItem.Items.Refresh();
         }
     }
     class StoryObserver
@@ -196,8 +196,14 @@ namespace LDVELH_WPF
                     Button buttonDecision = new Button();
                     buttonDecision.Content = possibleEvent.TriggerMessage;
                     buttonDecision.Click += delegate {
-                        try {
+                        try
+                        {
                             possibleEvent.resolveEvent(story);
+                            if(possibleEvent is LootEvent)
+                            {
+                                //A LootEvent should only be done once, it is handled by the code but it's more user friendly to disable the button once the action is not possible anymore
+                                buttonDecision.IsEnabled = !(((LootEvent)possibleEvent).Done);
+                            }
                         }
                         catch (YouAreDeadException) {
                             handleDeath(story);

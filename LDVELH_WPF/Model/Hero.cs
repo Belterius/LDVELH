@@ -58,7 +58,7 @@ namespace LDVELH_WPF
         public event weaponHolderHandler weaponHolderChanged;
         public delegate void weaponHolderHandler(Hero m, Weapon weapon, bool add);
 
-        public List<SpecialItem> specialItems { get; set; }
+        public ObservableCollection<SpecialItem> specialItems { get; set; }
         public event specialItemsHandler specialItemsChanged;
         public delegate void specialItemsHandler(Hero m, SpecialItem specialItem, bool add);
 
@@ -154,7 +154,7 @@ namespace LDVELH_WPF
             capacities = new ObservableCollection<Capacity>();
             backPack = new BackPack();
             weaponHolder = new WeaponHolder();
-            specialItems = new List<SpecialItem>();
+            specialItems = new ObservableCollection<SpecialItem>();
             HungryStatus = HungryState.Hungry;
             combatDebuff = 0;
         }
@@ -300,7 +300,7 @@ namespace LDVELH_WPF
             }
         }
 
-        public List<SpecialItem> getSpecialItems
+        public ObservableCollection<SpecialItem> getSpecialItems
         {
             get { return specialItems; }
         }
@@ -602,7 +602,7 @@ namespace LDVELH_WPF
             //This function must ONLY be called when loading a hero from the database, if a hero is saved while his BackPack/WeaponHolder/SpecialItems is empty, then when loading it then be equal to null instead of empty
             //So in order to make sure we don't have any null element, we check for null and incase create a new empty element.
             if (this.specialItems == null)
-                this.specialItems = new List<SpecialItem>();
+                this.specialItems = new ObservableCollection<SpecialItem>();
             if (this.capacities == null)
                 this.capacities = new ObservableCollection<Capacity>();
             if (this.backPack == null)
