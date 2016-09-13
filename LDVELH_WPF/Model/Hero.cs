@@ -76,7 +76,15 @@ namespace LDVELH_WPF
                 {
                     _HungryStatus = value;
                     RaisePropertyChanged("HungryStatus");
+                    RaisePropertyChanged("HungryStatusDisplay");
                 }
+            }
+        }
+        public string HungryStatusDisplay
+        {
+            get
+            {
+                return GlobalTranslator.Instance.translator.ProvideValue(_HungryStatus.ToString());
             }
         }
         public event HungryStateHandler hungryStateChanged;
@@ -116,7 +124,15 @@ namespace LDVELH_WPF
                 {
                     _WeaponMastery = value;
                     RaisePropertyChanged("WeaponMastery");
+                    RaisePropertyChanged("WeaponMasteryDisplay");
                 }
+            }
+        }
+        public string WeaponMasteryDisplay
+        {
+            get
+            {
+                return GlobalTranslator.Instance.translator.ProvideValue(_WeaponMastery.ToString());
             }
         }
         public event WeaponMasteryHandler weaponMasteryChanged;
@@ -605,6 +621,7 @@ namespace LDVELH_WPF
             Hungry,
             Full
         }
+
     }
 
     [Serializable]

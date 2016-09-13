@@ -24,7 +24,15 @@ namespace LDVELH_WPF.ViewModel
                 {
                     _Hero = value;
                     RaisePropertyChanged("Hero");
+                    RaisePropertyChanged("HeroDisplayHP");
                 }
+            }
+        }
+        public String ActualHitPoint
+        {
+            get
+            {
+                return _Hero.ActualHitPoint.ToString() +"/" + _Hero.MaxHitPoint.ToString();
             }
         }
         Weapon _SelectedWeapon;
@@ -73,6 +81,9 @@ namespace LDVELH_WPF.ViewModel
             Hero.addLoot(CreateLoot.CreateWeapon.Baton());
             Hero.addLoot(CreateLoot.CreateConsummable.potionDeLampsur());
             Hero.addLoot(CreateLoot.CreateConsummable.potionDeLampsur());
+            Hero.addLoot(CreateLoot.CreateFood.ration());
+            Hero.addLoot(CreateLoot.CreateSpecialItem.helmet());
+            Hero.addLoot(CreateLoot.CreateSpecialItem.buckler());
             Hero.addCapacity(CapacityType.Healing);
             Hero.addCapacity(CapacityType.Hiding);
             Hero.takeDamage(5);

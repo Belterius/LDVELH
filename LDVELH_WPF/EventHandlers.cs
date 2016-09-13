@@ -38,10 +38,10 @@ namespace LDVELH_WPF
 
             //listWeaponSave =  new BindingList<Weapon>(hero.weaponHolder.getWeapons);
             //listItemSave = new BindingList<Item>(hero.backPack.GetItems);
-            listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
+            //listSpecialItemSave = new BindingList<SpecialItem>(hero.getSpecialItems);
 
-            listBoxSpecialItem.ItemsSource = this.listSpecialItemSave;
-            listBoxSpecialItem.DisplayMemberPath = "DisplayName";
+            //listBoxSpecialItem.ItemsSource = this.listSpecialItemSave;
+            //listBoxSpecialItem.DisplayMemberPath = "DisplayName";
             //listBoxBackPackItem.ItemsSource = this.listItemSave;
             //listBoxBackPackItem.DisplayMemberPath = "DisplayName";
             //listBoxWeapon.ItemsSource = this.listWeaponSave;
@@ -58,20 +58,20 @@ namespace LDVELH_WPF
         }
         public void HungryStateChanged(Hero hero)
         {
-            labelBellyState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.HungryStatus.ToString());
+            //labelBellyState.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.HungryStatus.ToString());
         }
         public void AgilityChanged(Hero hero, int damage)
         {
-            labelAgility.Content = hero.BaseAgility.ToString();
+            //labelAgility.Content = hero.BaseAgility.ToString();
         }
         public void WeaponMasteryChanged(Hero hero)
         {
-            labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.WeaponMastery.ToString());
+           // labelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue(hero.WeaponMastery.ToString());
         }
 
         public void GoldChanged(Hero hero, int goldChange)
         {
-            labelGold.Content = hero.Gold.ToString();
+            //labelGold.Content = hero.Gold.ToString();
         }
 
         public void capacitiesChanged(Hero hero, Capacity capacity)
@@ -96,11 +96,11 @@ namespace LDVELH_WPF
         }
         public void specialItemsChanged(Hero hero)
         {
-            listBoxSpecialItem.Items.Refresh();
+           // listBoxSpecialItem.Items.Refresh();
         }
         public void specialItemsChanged(Hero hero, SpecialItem specialItem, bool add)
         {
-            listBoxSpecialItem.Items.Refresh();
+           // listBoxSpecialItem.Items.Refresh();
         }
     }
     class StoryObserver

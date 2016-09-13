@@ -125,6 +125,7 @@ namespace LDVELH_WPF
                 {
                     _ChargesLeft = value;
                     RaisePropertyChanged("ChargesLeft");
+                    RaisePropertyChanged("DisplayName");
                 }
             }
         }
@@ -208,6 +209,7 @@ namespace LDVELH_WPF
                 if (_ChargesLeft != value)
                 {
                     _ChargesLeft = value;
+                    RaisePropertyChanged("DisplayName");
                     RaisePropertyChanged("ChargesLeft");
                 }
             }
