@@ -85,7 +85,7 @@ namespace LDVELH_WPF.ViewModel
         {
             try
             {
-                MainWindow mainWindow = new MainWindow((Hero)hero);
+                MainWindow mainWindow = new MainWindow { DataContext = new MainWindowViewModel((Hero)hero) };
                 mainWindow.Show();
                 CloseWindow();
             }
@@ -97,12 +97,12 @@ namespace LDVELH_WPF.ViewModel
 
         private void NewGame(object random)
         {
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = new MainWindow { DataContext = new MainWindowViewModel() };
             CloseWindow();
         }
         private void Settings(object random)
         {
-            MenuSettings menuSetting = new MenuSettings();
+            MenuSettings menuSetting = new MenuSettings { DataContext = new MenuSettingsViewModel() };
             menuSetting.Show();
             CloseWindow();
         }

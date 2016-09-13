@@ -68,12 +68,7 @@ namespace LDVELH_WPF.ViewModel
                 }
             }
         }
-        public MainWindowViewModel()
-        {
-            InitHero();
-            ThrowLootCommand = new RelayCommand(ThrowLoot);
-            UseItemCommand = new RelayCommand(UseItem);
-        }
+       
         private void InitHero()
         {
             Hero = new Hero("ViewModel");
@@ -121,5 +116,19 @@ namespace LDVELH_WPF.ViewModel
                 }
             }
         }
+
+        public MainWindowViewModel(Hero hero)
+        {
+            Hero = hero;
+            ThrowLootCommand = new RelayCommand(ThrowLoot);
+            UseItemCommand = new RelayCommand(UseItem);
+        }
+        public MainWindowViewModel()
+        {
+            InitHero();
+            ThrowLootCommand = new RelayCommand(ThrowLoot);
+            UseItemCommand = new RelayCommand(UseItem);
+        }
+        
     }
 }

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Core="clr-namespace:LDVELH_WPF;assembly=" 
         xmlns:helpers="clr-namespace:LDVELH_WPF.Helpers"
+        helpers:DialogCloser.DialogResult="{Binding CloseWindowFlag}"
         xmlns:vm="clr-namespace:LDVELH_WPF.ViewModel" 
         Title="{Core:Translator Text=LoadMenu}" Height="286" Width="290" Loaded="Window_Loaded" ResizeMode="NoResize"
         DataContext="{DynamicResource MenuLoadViewModel}">
