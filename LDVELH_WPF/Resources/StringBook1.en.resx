@@ -494,7 +494,7 @@ Vordak: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 17 Â Â &lt;small&gt;EN
     <value>Try your luck</value>
   </data>
   <data name="Paragraph36" xml:space="preserve">
-    <value />
+    <value>The old watchtower ladder is rotten and several rungs break as you climb.</value>
   </data>
   <data name="Paragraph37To282" xml:space="preserve">
     <value>use the Kai Discipline of Camouflage.</value>
@@ -1343,7 +1343,7 @@ Further along the track you can see a large war party of Giaks running towards y
     <value>Or you may leave and descend the hill .</value>
   </data>
   <data name="Paragraph124" xml:space="preserve">
-    <value />
+    <value>Inside the box you find 15 Gold Crowns and a Silver Key.</value>
   </data>
   <data name="Paragraph125To301" xml:space="preserve">
     <value> have the kai discipline of tracking.</value>
@@ -1575,7 +1575,7 @@ As you pull yourself to your feet, you see a patrol of Drakkarim emerge from the
     <value>return the way you have come.</value>
   </data>
   <data name="Paragraph147" xml:space="preserve">
-    <value />
+    <value>After a few minutes walking, you find a mossy hut set back from the path. If you are hungry and must eat a Meal here or lose 3 ENDURANCE points. As you eat you notice that the path starts to curve towards the east.</value>
   </data>
   <data name="Paragraph148To81" xml:space="preserve">
     <value> want to stay in the farmhouse.</value>
@@ -2006,7 +2006,8 @@ But a shadow follows you. It is a Kraan and it has started to dive. Its target i
     <value>escape into the woods.</value>
   </data>
   <data name="Paragraph193" xml:space="preserve">
-    <value />
+    <value>The beast and its rider lie dead. You notice a Scroll tucked into the Giak’s belt.
+The other Doomwolves are charging along the path towards you.</value>
   </data>
   <data name="Paragraph194To208" xml:space="preserve">
     <value>fight the Giaks.</value>
@@ -2060,7 +2061,7 @@ Grabbing the pole, you steer to the other side of the lake and abandon the ferry
     <value>continue</value>
   </data>
   <data name="Paragraph199" xml:space="preserve">
-    <value />
+    <value>Most of the cupboards and drawers are empty. Whoever lived here took nearly everything they owned with them, but you do manage to scrape together enough fruit in the cellar for one Meal.</value>
   </data>
   <data name="Paragraph200To168" xml:space="preserve">
     <value>use the Kai Discipline of Camouflage to hide in among the packing cases strapped to the roof.</value>
@@ -2989,7 +2990,7 @@ You wade out of the muddy water and continue your journey under cover of the tre
     <value>Try your luck</value>
   </data>
   <data name="Paragraph302" xml:space="preserve">
-    <value />
+    <value>The throw is hard, you have to be carefull about the sorcerer.</value>
   </data>
   <data name="Paragraph303To237" xml:space="preserve">
     <value> have the kai discipline of camouflage.</value>
