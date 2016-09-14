@@ -59,7 +59,7 @@ namespace LDVELH_WPF
                 }
             }
 
-            MainWindow mainWindow = new MainWindow(false) { DataContext = new MainWindowViewModel(Hero) };
+            MainWindow mainWindow = new MainWindow() { DataContext = new MainWindowViewModel(Hero, false) };
             mainWindow.Show();
             this.Close();
         }

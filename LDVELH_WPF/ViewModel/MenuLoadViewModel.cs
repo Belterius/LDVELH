@@ -83,7 +83,7 @@ namespace LDVELH_WPF.ViewModel
         }
         private void LoadHero(object hero)
         {
-                MainWindow mainWindow = new MainWindow(true) { DataContext = new MainWindowViewModel((Hero)hero) };
+                MainWindow mainWindow = new MainWindow() { DataContext = new MainWindowViewModel((Hero)hero, true) };
                 mainWindow.Show();
                 CloseWindow();
         }

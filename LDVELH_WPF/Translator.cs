@@ -79,7 +79,11 @@ namespace LDVELH_WPF
             }
         }
 
-        public string Text { get; set; }
+        public string Text
+        {
+            get;
+            set;
+        }
 
         override public object ProvideValue(IServiceProvider serviceProvider)
         {

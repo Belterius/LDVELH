@@ -7,11 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 
 namespace LDVELH_WPF.ViewModel
 {
     class MainWindowViewModel : ViewModelBase
     {
+        bool loadingHero = false;
+
+        public event GenerateActionButton ActionButtonChanged;
+        public delegate void GenerateActionButton();
+
+        Story _MyStory;
+        public Story MyStory
+        {
+            get
+            {
+                return _MyStory;
+            }
+            set
+            {
+                if (_MyStory != value)
+                {
+                    _MyStory = value;
+                    RaisePropertyChanged("MyStory");
+                }
+            }
+        }
+
         Hero _Hero;
         public Hero Hero
         {
@@ -69,7 +92,26 @@ namespace LDVELH_WPF.ViewModel
                 }
             }
         }
-       
+
+        public String TitleWindow
+        {
+            get
+            {
+                return MyStory.getHero.Name + " : paraph n°" + MyStory.getHero.CurrentParagraph;
+            }
+        }
+        public String StoryText
+        {
+            get
+            {
+                if(MyStory.ActualParagraph != null)
+                {
+                    return MyStory.ActualParagraph.ContentText;
+                }
+                return MyStory.content.Last().ContentText;
+            }
+        }
+
         private void InitHero()
         {
             Hero = new Hero("ViewModel");
@@ -110,12 +152,12 @@ namespace LDVELH_WPF.ViewModel
                 }
                 catch (CantEatException)
                 {
-                   // MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("CantEat"));
+                    MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("CantEat"));
 
                 }
                 catch (CannotUseItemException ex)
                 {
-                   // MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -149,16 +191,13 @@ namespace LDVELH_WPF.ViewModel
             }
         }
 
-        public MainWindowViewModel(Hero hero)
+        public MainWindowViewModel(Hero hero, bool loading)
         {
+            loadingHero = loading;
             InitHero(hero);
+            InitStory(hero);
             Initialize();
         }
-        //public MainWindowViewModel()
-        //{
-        //    InitHero();
-        //    Initialize();
-        //}
         private void Initialize()
         {
             ThrowLootCommand = new RelayCommand(ThrowLoot);
@@ -170,11 +209,111 @@ namespace LDVELH_WPF.ViewModel
         {
             Hero = hero;
             noNullInHero(hero);
+            Hero.PropertyChanged += Hero_PropertyChanged;
+        }
+
+        private void Hero_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "CurrentParagraph")
+            {
+                RaisePropertyChanged("StoryText");
+                RaisePropertyChanged("TitleWindow");
+            }
+        }
+
+        private void InitStory(Hero hero)
+        {
+            MyStory = new Story("RandomName", Hero);
+            MyStory.addParagraph(CreateParagraph.CreateAParagraph(Hero.CurrentParagraph));
+            MyStory.PropertyChanged += MyStory_PropertyChanged;
+            if (!loadingHero)
+                MyStory.start();
+            else
+            {
+                MyStory.start(hero.CurrentParagraph);
+            }
+        }
+
+        private void MyStory_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "ActualParagraph")
+            {
+                ResolveParagraph();
+            }
+        }
+        public void ResolveParagraph()
+        {
+            ////Several step :
+
+            //First : the main event (that WILL happen, no choice, unless we're loading a Hero (so he already resolved the mains event))
+            try
+            {
+                resolveMainEvents(MyStory);
+            }
+            catch (YouAreDeadException)
+            {
+                handleDeath(MyStory);
+                return;
+            }
+
+            //Second, the decisions open to the player, as it is design code that should be generated, and it is not the ViewModel role, I generated an event that indicate the need to generate the actions buttons.
+            //Our view should subscribe to this event and when it fires generate the actions button.
+            //This way our MVVM pattern is respected
+            ActionButtonHasChanged();
+
+            //Third, update the hero actualParagraph in case of exit
+            MyStory.getHero.CurrentParagraph = MyStory.ActualParagraph.ParagraphNumber;
+
+
+        }
+        private void resolveMainEvents(Story story)
+        {
+            if (!loadingHero)
+            {
+                try
+                {
+                    story.resolveActualParagraph();
+                }
+                catch (YouAreDeadException)
+                {
+                    throw;
+                }
+
+            }
+            else
+                loadingHero = false;
+        }
+        public void ActionButtonHasChanged()
+        {
+            GenerateActionButton handler = ActionButtonChanged;
+            if (handler != null)
+            {
+                handler();
+            }
+        }
+        public void handleDeath(Story story)
+        {
+            MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("YouDied"));
+            try
+            {
+                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
+                {
+                    databaseRequest.DeleteHero(story.getHero);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error when deleting hero data : " + ex);
+            }
+            MenuLoad loadMenu = new MenuLoad() { DataContext = new MenuLoadViewModel() };
+            loadMenu.Show();
+            CloseWindow();
         }
 
         private void noNullInHero(Hero hero)
         {
-            //When loading a Hero from our database, if he had no item/backpack/weapon/weaponHolder/capacity then those will be null instead of empty.
+            //When loading a Hero from our database, if he had no item/backpack/weapon/weaponHolder/capacity then those will be null instead of empty, this is the default behavior of SQLite.
             //we fix the possible problem immediately
             hero.noNullInHero();
         }

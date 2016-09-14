@@ -79,14 +79,10 @@ namespace LDVELH_WPF
         public override void add(Hero hero)
         {
             hero.backPack.AddItem(this);
-            hero.backPackItemHasChanged(this, true);
         }
         public override void remove(Hero hero)
         {
-            if (hero.backPack.RemoveItem(this))
-            {
-                hero.backPackItemHasChanged(this, false);
-            }
+            hero.backPack.RemoveItem(this);
         }
     }
 
@@ -160,7 +156,6 @@ namespace LDVELH_WPF
         }
         public override int GetHashCode()
         {
-            //return new { Name, healingPower, chargesLeft }.GetHashCode();
             return new { Name, HealingPower }.GetHashCode();
         }
 
@@ -238,7 +233,6 @@ namespace LDVELH_WPF
         }
         public override int GetHashCode()
         {
-            //return new { Name, chargesLeft }.GetHashCode();
             return new { Name }.GetHashCode();
         }
 

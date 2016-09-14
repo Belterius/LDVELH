@@ -19,12 +19,6 @@ namespace LDVELH_WPF
         [ForeignKey("weaponHolder")]
         public int WeaponHolder_ID { get; set; }
 
-        public event MaxLifeHandler MaxLifeChanged;
-        public delegate void MaxLifeHandler(Hero m, int lifeChange);
-
-        public event AgilityHandler AgilityChanged;
-        public delegate void AgilityHandler(Hero m, int agilityChange);
-
         [Column("Gold")]
         private int _Gold { get; set; }
         public int Gold
@@ -42,25 +36,15 @@ namespace LDVELH_WPF
                 }
             }
         }
-
-        public event GoldHandler GoldChanged;
-        public delegate void GoldHandler(Hero m, int goldChange);
+        
 
         public ObservableCollection<Capacity> capacities { get; set; }
-        public event capacitiesHandler capacitiesChanged;
-        public delegate void capacitiesHandler(Hero m, Capacity capacity);
 
         public BackPack backPack { get; set; }
-        public event backPackHandler backPackChanged;
-        public delegate void backPackHandler(Hero m, Item item, bool add);
 
         public WeaponHolder weaponHolder { get; set; }
-        public event weaponHolderHandler weaponHolderChanged;
-        public delegate void weaponHolderHandler(Hero m, Weapon weapon, bool add);
 
         public ObservableCollection<SpecialItem> specialItems { get; set; }
-        public event specialItemsHandler specialItemsChanged;
-        public delegate void specialItemsHandler(Hero m, SpecialItem specialItem, bool add);
 
         [Column("HungryState")]
         private HungryState _HungryStatus{get;set;}
@@ -87,8 +71,6 @@ namespace LDVELH_WPF
                 return GlobalTranslator.Instance.translator.ProvideValue(_HungryStatus.ToString());
             }
         }
-        public event HungryStateHandler hungryStateChanged;
-        public delegate void HungryStateHandler(Hero m);
 
         private int combatDebuff;
 
@@ -135,8 +117,6 @@ namespace LDVELH_WPF
                 return GlobalTranslator.Instance.translator.ProvideValue(_WeaponMastery.ToString());
             }
         }
-        public event WeaponMasteryHandler weaponMasteryChanged;
-        public delegate void WeaponMasteryHandler(Hero m);
 
         private Hero()
         {
@@ -172,25 +152,14 @@ namespace LDVELH_WPF
         internal void increaseAgility(int bonusAgility)
         {
             this.BaseAgility += bonusAgility;
-            AgilityHasChanged(bonusAgility);
         }
         internal void decreaseAgility(int bonusAgility)
         {
             this.BaseAgility -= bonusAgility;
-            AgilityHasChanged(bonusAgility);
-        }
-        public void AgilityHasChanged(int bonusAgility)
-        {
-            AgilityHandler handler = AgilityChanged;
-            if (handler != null)
-            {
-                handler((Hero)this, bonusAgility);
-            }
         }
         internal void increaseMaxLife(int bonusLife)
         {
             this.MaxHitPoint += bonusLife;
-            MaxLifeHasChanged(bonusLife);
         }
         internal void decreaseMaxLife(int bonusLife)
         {
@@ -198,15 +167,6 @@ namespace LDVELH_WPF
             if (this.ActualHitPoint > this.MaxHitPoint)
             {
                 this.ActualHitPoint = this.MaxHitPoint;
-            }
-            MaxLifeHasChanged(bonusLife);
-        }
-        public void MaxLifeHasChanged(int bonusLife)
-        {
-            MaxLifeHandler handler = MaxLifeChanged;
-            if (handler != null)
-            {
-                handler((Hero)this, bonusLife);
             }
         }
 
@@ -223,7 +183,6 @@ namespace LDVELH_WPF
         public void addGold(int gold)
         {
             this.Gold += gold;
-            GoldHasChanged(gold);
         }
         public void removeGold(int gold)
         {
@@ -231,7 +190,6 @@ namespace LDVELH_WPF
             {
 
                 this.Gold -= gold;
-                GoldHasChanged(-gold);
             }
             else
             {
@@ -243,28 +201,17 @@ namespace LDVELH_WPF
         {
             int tempoGold = this.Gold;
             this.Gold = 0;
-            GoldHasChanged(-tempoGold);
-        }
-        public void GoldHasChanged(int gold)
-        {
-            GoldHandler handler = GoldChanged;
-            if (handler != null)
-            {
-                handler((Hero)this, gold);
-            }
         }
 
 
         public void addCapacity(Capacity capacity)
         {
             capacities.Add(capacity);
-            capacitiesHasChanged(capacity);
             if (capacity.CapacityKind == CapacityType.WeaponMastery)
             {
                 while (this.WeaponMastery == WeaponTypes.None)
                 {
                     this.WeaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
-                    WeaponMasteryHasChanged(this.WeaponMastery);
                 }
             }
         }
@@ -272,31 +219,13 @@ namespace LDVELH_WPF
         {
             Capacity capacity = new Capacity(capacityType);
             capacities.Add(capacity);
-            capacitiesHasChanged(capacity);
 
             if (capacityType == CapacityType.WeaponMastery)
             {
                 while (this.WeaponMastery == WeaponTypes.None)
                 {
                     this.WeaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
-                    WeaponMasteryHasChanged(this.WeaponMastery);
                 }
-            }
-        }
-        private void WeaponMasteryHasChanged(WeaponTypes WeaponType)
-        {
-            WeaponMasteryHandler handler = weaponMasteryChanged;
-            if (handler != null)
-            {
-                handler((Hero)this);
-            }
-        }
-        public void capacitiesHasChanged(Capacity capacity)
-        {
-            capacitiesHandler handler = capacitiesChanged;
-            if (handler != null)
-            {
-                handler((Hero)this, capacity);
             }
         }
 
@@ -315,43 +244,15 @@ namespace LDVELH_WPF
             }
             return null;
         }
-        
-        public void specialItemHasChanged(SpecialItem item, bool add)
-        {
-            specialItemsHandler handler = specialItemsChanged;
-            if (handler != null)
-            {
-                handler((Hero)this, item, add);
-            }
-        }
-        public void weaponHolderHasChanged(Weapon weapon, bool add)
-        {
-            weaponHolderHandler handler = weaponHolderChanged;
-            if (handler != null)
-            {
-                handler((Hero)this, weapon, add);
-            }
-        }
-        public void backPackItemHasChanged(Item item, bool add)
-        {
-            backPackHandler handler = backPackChanged;
-            if (handler != null)
-            {
-                handler((Hero)this, item, add);
-            }
-        }
-
         public void useItem(Item item)
         {
             try
             {
                 item.use(this);
-                backPackItemHasChanged(item, false);
             }
             catch (ItemDestroyedException)
             {
                 item.remove(this);
-                backPackItemHasChanged(item, false);
             }
             catch (CannotUseItemException)
             {
@@ -404,7 +305,6 @@ namespace LDVELH_WPF
             if (this.HungryStatus != HungryState.Full)
             {
                 this.HungryStatus = HungryState.Full;
-                HungryStateHasChanged();
             }
             else
             {
@@ -422,17 +322,8 @@ namespace LDVELH_WPF
                     this.takeDamage(skipMealDamage);
                 }
                 this.HungryStatus = HungryState.Hungry;
-                HungryStateHasChanged();
             }
             
-        }
-        public void HungryStateHasChanged()
-        {
-            HungryStateHandler handler = hungryStateChanged;
-            if (handler != null)
-            {
-                handler(this);
-            }
         }
         
         public bool possesCapacity(CapacityType capacity)

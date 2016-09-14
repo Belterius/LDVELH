@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace LDVELH_WPF
 {
@@ -10,7 +11,7 @@ namespace LDVELH_WPF
         
         Hero playerHero;
         public string title{get;set;}
-        public List<StoryParagraph> content;
+        public ObservableCollection<StoryParagraph> content;
         StoryParagraph _ActualParagraph;
         public StoryParagraph ActualParagraph
         {
@@ -28,9 +29,6 @@ namespace LDVELH_WPF
             }
         }
 
-
-        public event ActualParagraphHandler ParagraphChanged;
-        public delegate void ActualParagraphHandler(Story story, StoryParagraph actualParagraph);
         void RaisePropertyChanged(string prop)
         {
             if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
@@ -41,7 +39,7 @@ namespace LDVELH_WPF
         {
             this.title = title;
             this.playerHero = hero;
-            this.content = new List<StoryParagraph>();
+            this.content = new ObservableCollection<StoryParagraph>();
         }
 
         public void resolveActualParagraph()
@@ -81,7 +79,6 @@ namespace LDVELH_WPF
             try
             {
                 this.ActualParagraph = getParagraph(paragraphNumber);
-                ActualParagraphHasChanged(this.ActualParagraph);
             }
             catch (ParagraphNotFoundException)
             {
@@ -103,18 +100,6 @@ namespace LDVELH_WPF
             }
             throw new ParagraphNotFoundException();
 
-        }
-        public StoryParagraph getActualParagraph
-        {
-            get { return ActualParagraph;}
-        }
-        public void ActualParagraphHasChanged(StoryParagraph paragraph)
-        {
-            ActualParagraphHandler handler = ParagraphChanged;
-            if (handler != null)
-            {
-                handler(this, paragraph);
-            }
         }
         public Hero getHero
         {

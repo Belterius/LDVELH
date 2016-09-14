@@ -127,56 +127,56 @@ namespace LDVELH_WPF
 
         public void ActualParagraphChanged(Story story, StoryParagraph actualParagraph)
         {
-            //Several step :
+            ////Several step :
 
-            //First : the text content and change title
-            setMainTextContent(actualParagraph);
-            SetTitleParagraph(actualParagraph);
+            ////First : the text content and change title
+            //setMainTextContent(actualParagraph);
+            //SetTitleParagraph(actualParagraph);
 
-            //Second : the main event (that WILL happen, no choice, unless we're loading a Hero (so he already resolved the mains event))
-            try
-            {
-                resolveMainEvents(story);
-            }
-            catch (YouAreDeadException)
-            {
-                handleDeath(story);
-                return;
-            }
+            ////Second : the main event (that WILL happen, no choice, unless we're loading a Hero (so he already resolved the mains event))
+            //try
+            //{
+            //    resolveMainEvents(story);
+            //}
+            //catch (YouAreDeadException)
+            //{
+            //    handleDeath(story);
+            //    return;
+            //}
 
             //Third, the decisions open to the player
             generatePlayerPossibleDecision(story);
 
-            //Fourth, update the hero actualParagraph in case of exit
-            story.getHero.CurrentParagraph = actualParagraph.ParagraphNumber;
+            ////Fourth, update the hero actualParagraph in case of exit
+            //story.getHero.CurrentParagraph = actualParagraph.ParagraphNumber;
 
         }
-        private void setMainTextContent(StoryParagraph actualParagraph)
-        {
-            contentText.Document.Blocks.Clear();
-            contentText.Document.Blocks.Add(new Paragraph(new Run(actualParagraph.ContentText)));
-        }
-        private void SetTitleParagraph(StoryParagraph actualParagraph)
-        {
-            window.Title = story.getHero.Name+ " : paraph n°" + actualParagraph.ParagraphNumber;
-        }
-        private void resolveMainEvents(Story story)
-        {
-            if (!this.loadingHero)
-            {
-                try
-                {
-                    story.resolveActualParagraph();
-                }
-                catch(YouAreDeadException)
-                {
-                    throw;
-                }
-                
-            }
-            else
-                this.loadingHero = false;
-        }
+        //private void setMainTextContent(StoryParagraph actualParagraph)
+        //{
+        //    contentText.Document.Blocks.Clear();
+        //    contentText.Document.Blocks.Add(new Paragraph(new Run(actualParagraph.ContentText)));
+        //}
+        //private void SetTitleParagraph(StoryParagraph actualParagraph)
+        //{
+        //    window.Title = story.getHero.Name+ " : paraph n°" + actualParagraph.ParagraphNumber;
+        //}
+        //private void resolveMainEvents(Story story)
+        //{
+        //    if (!this.loadingHero)
+        //    {
+        //        try
+        //        {
+        //            story.resolveActualParagraph();
+        //        }
+        //        catch (YouAreDeadException)
+        //        {
+        //            throw;
+        //        }
+
+        //    }
+        //    else
+        //        this.loadingHero = false;
+        //}
         private void generatePlayerPossibleDecision(Story story)
         {
             clearOldPossibleDecision();
@@ -189,7 +189,7 @@ namespace LDVELH_WPF
         }
         private void generateButtonPossibleDecision(Story story)
         {
-            foreach (Event possibleEvent in story.getActualParagraph.getListDecision)
+            foreach (Event possibleEvent in story.ActualParagraph.getListDecision)
             {
                 if (ShouldGenerateButton(possibleEvent, story))
                 {
@@ -286,8 +286,10 @@ namespace LDVELH_WPF
                 {
                     databaseRequest.DeleteHero(story.getHero);
                 }
-                
-            }catch(Exception ex){
+
+            }
+            catch (Exception ex)
+            {
                 System.Diagnostics.Debug.WriteLine("Error when deleting hero data : " + ex);
             }
             MenuLoad loadMenu = new MenuLoad();

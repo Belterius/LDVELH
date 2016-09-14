@@ -1184,7 +1184,7 @@
                 case 148:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.translator.TranslateBook1("Paragraph148"), paragraphNumber);
-                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre(), GlobalTranslator.Instance.translator.ProvideValue("Paragraph148LootEvent1")));
+                        paragraph.addDecision(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre(), GlobalTranslator.Instance.translator.TranslateBook1("Paragraph148LootEvent1")));
                         paragraph.addDecision(new MoveEvent(81, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph148To81")));
                         paragraph.addDecision(new MoveEvent(320, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph148To320")));
                         paragraph.addDecision(new MoveEvent(199, GlobalTranslator.Instance.translator.TranslateBook1("Paragraph148To199")));

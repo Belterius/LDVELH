@@ -5,7 +5,7 @@
         xmlns:helpers="clr-namespace:LDVELH_WPF.Helpers"
         helpers:DialogCloser.DialogResult="{Binding CloseWindowFlag}"
         xmlns:vm="clr-namespace:LDVELH_WPF.ViewModel" 
-        Title="MainWindow" Height="764" Width="768" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="{Binding TitleWindow}" Height="764" Width="768" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         <GroupBox x:Name="groupBoxHeroStat" Header="{Core:Translator Text=HeroStats}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="541" Margin="10,0,0,0">
             <Grid HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="521" Margin="10,-6,-2,-22">
@@ -49,8 +49,12 @@
             <Grid HorizontalAlignment="Left" Height="143" VerticalAlignment="Top" Width="541" Margin="0,0,-12,-3">
             </Grid>
         </GroupBox>
-        <RichTextBox x:Name="richTextBoxMainContent" HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="541" Margin="10,95,0,0" Focusable="False">
-            <FlowDocument/>
+        <RichTextBox x:Name="richTextBoxMainContent" IsReadOnly="True" HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="541" Margin="10,95,0,0" Focusable="False">
+            <FlowDocument>
+                <Paragraph >
+                    <Run Text="{Binding StoryText, Mode=OneWay}" />
+                </Paragraph>
+            </FlowDocument>
         </RichTextBox>
         <Button x:Name="buttonSave" Content="{Core:Translator Text=Save}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="676,687,0,0" Command="{Binding SaveHeroCommand}"  CommandParameter="{Binding Hero}" IsEnabled="True"/>
         <Button x:Name="buttonLoad" Content="{Core:Translator Text=Load}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="581,687,0,0" Command="{Binding LoadHeroCommand}" IsEnabled="True"/>

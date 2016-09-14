@@ -294,8 +294,8 @@ namespace LDVELH_WPF
             {
                 if (testDialog.DidRanAway)
                 {
-                    story.getActualParagraph.getListDecision.Clear();
-                    story.getActualParagraph.getListDecision.Add(runEvent);
+                    story.ActualParagraph.getListDecision.Clear();
+                    story.ActualParagraph.getListDecision.Add(runEvent);
                 }
                 return true;
             }

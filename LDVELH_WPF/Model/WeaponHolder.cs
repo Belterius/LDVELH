@@ -29,21 +29,18 @@ namespace LDVELH_WPF
                 }
             }
         }
-        //List<Weapon> weapons;
         ObservableCollection<Weapon> weapons;
 
 
         public WeaponHolder()
         {
             this.WeaponHolderSize = basicWeaponHolderSize;
-            //weapons = new List<Weapon>();
             weapons = new ObservableCollection<Weapon>();
         }
 
         public WeaponHolder(int maxWeapon)
         {
             this.WeaponHolderSize = maxWeapon;
-            //weapons = new List<Weapon>();
             weapons = new ObservableCollection<Weapon>();
 
         }

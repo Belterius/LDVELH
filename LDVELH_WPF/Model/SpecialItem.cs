@@ -33,14 +33,10 @@ namespace LDVELH_WPF
         public override void add(Hero hero)
         {
             hero.specialItems.Add(this);
-            hero.specialItemHasChanged(this, true);
         }
         public override void remove(Hero hero)
         {
-            if (hero.specialItems.Remove(this))
-            {
-                hero.specialItemHasChanged(this, false);
-            }
+            hero.specialItems.Remove(this);
         }
     }
 

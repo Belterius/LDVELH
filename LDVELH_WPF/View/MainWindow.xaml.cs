@@ -1,6 +1,7 @@
 ﻿using LDVELH_WPF.ViewModel;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace LDVELH_WPF
@@ -10,33 +11,26 @@ namespace LDVELH_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        Story story;
-        StoryObserver storyObserver;
-        Hero hero;
         MainWindowViewModel vm;
-        bool loadingHero = false;
 
-        public MainWindow(bool loading)
+        public MainWindow()
         {
             InitializeComponent();
             TranslateLabel();
-            loadingHero = loading;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             vm = (MainWindowViewModel) DataContext;
-            hero = vm.Hero;
-            initStory();
-            this.Title = hero.Name;
-            if (!loadingHero)
-                story.start();
-            else
-            {
-                storyObserver.loadingHero = true;
-                story.start(hero.CurrentParagraph);
-            }
+            vm.ActionButtonChanged += Vm_ActionButtonChanged;
+            generatePlayerPossibleDecision(vm.MyStory);
         }
+
+        private void Vm_ActionButtonChanged()
+        {
+            generatePlayerPossibleDecision(vm.MyStory);
+        }
+
         private void TranslateLabel()
         {
             groupBoxHeroStat.Header = GlobalTranslator.Instance.translator.ProvideValue("HeroStats");
@@ -57,26 +51,109 @@ namespace LDVELH_WPF
             buttonSave.Content = GlobalTranslator.Instance.translator.ProvideValue("Save");
             buttonLoad.Content = GlobalTranslator.Instance.translator.ProvideValue("Load");
         }
-        private void initHero(String name)
-        {
-            
-        }
-        private void initHero(Hero savedHero)
-        {
-            hero = savedHero;
-        }
-        private void initStory()
-        {
-            story = new Story("first adventure", hero);
-            story.addParagraph(CreateParagraph.CreateAParagraph(hero.CurrentParagraph));
 
-            initStoryObserver();
-
-        }
-        private void initStoryObserver()
+        /********************************************************/
+        //The following function generate View elements, they REQUIRE to be present in the view, as ViewModel should NOT be aware of the View
+        private void generatePlayerPossibleDecision(Story story)
         {
-            storyObserver = new StoryObserver(story, richTextBoxMainContent, groupBoxChoices, this);
-            story.ParagraphChanged += storyObserver.ActualParagraphChanged;
+            clearOldPossibleDecision();
+            generateButtonPossibleDecision(story);
+            placeButtonPossibleDecision(groupBoxChoices);
+        }
+        private void clearOldPossibleDecision()
+        {
+            ((Grid)(groupBoxChoices.Content)).Children.Clear();
+        }
+        private void generateButtonPossibleDecision(Story story)
+        {
+            foreach (Event possibleEvent in story.ActualParagraph.getListDecision)
+            {
+                if (ShouldGenerateButton(possibleEvent, story))
+                {
+                    Button buttonDecision = new Button();
+                    buttonDecision.Content = possibleEvent.TriggerMessage;
+                    buttonDecision.Click += delegate {
+                        try
+                        {
+                            possibleEvent.resolveEvent(story);
+                            if (possibleEvent is LootEvent)
+                            {
+                                //A LootEvent should only be done once, it is handled by the code but it's more user friendly to disable the button once the action is not possible anymore
+                                buttonDecision.IsEnabled = !(((LootEvent)possibleEvent).Done);
+                            }
+                        }
+                        catch (YouAreDeadException)
+                        {
+                            vm.handleDeath(story);
+                        }
+                    };
+                    ((Grid)(groupBoxChoices.Content)).Children.Add(buttonDecision);
+                    buttonDecision.HorizontalAlignment = HorizontalAlignment.Center;
+                    buttonDecision.VerticalAlignment = VerticalAlignment.Center;
+                }
+            }
+            this.UpdateLayout();
+        }
+        private bool ShouldGenerateButton(Event possibleEvent, Story story)
+        {
+            if (possibleEvent is CapacityEvent)
+            {
+                if (!story.getHero.possesCapacity(((CapacityEvent)possibleEvent).CapacityRequiered))
+                {
+                    return false;
+                }
+            }
+            if (possibleEvent is ItemRequieredEvent)
+            {
+                if (!story.getHero.possesItem(((ItemRequieredEvent)possibleEvent).itemRequiered))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public double setXPosition(Button button, GroupBox groupBox)
+        {
+            double totalX = ((Grid)(groupBox.Content)).ActualWidth;
+            double mySize = button.ActualWidth;
+            return (totalX - mySize) / 2;
+        }
+        int marginBetweenButton = 6;
+        public double calculateYPosition(double totalHeightButton, int numberButton, GroupBox groupBox)
+        {
+            double availableY = ((Grid)(groupBox.Content)).ActualHeight;
+
+            return (availableY - totalHeightButton - marginBetweenButton * numberButton - 1) / 2;
+        }
+        public double totalHeightButton(GroupBox groupBox)
+        {
+            double totalHeight = 0;
+            foreach (Button button in ((Grid)(groupBoxChoices.Content)).Children)
+            {
+                totalHeight += button.ActualHeight;
+            }
+            return totalHeight;
+        }
+        public int totalNumberButton(GroupBox groupBox)
+        {
+            int totalNumberButton = 0;
+            foreach (Button button in ((Grid)(groupBoxChoices.Content)).Children)
+            {
+                totalNumberButton++;
+            }
+            return totalNumberButton;
+        }
+        public void placeButtonPossibleDecision(GroupBox groupBox)
+        {
+            double topMargin = calculateYPosition(totalHeightButton(groupBox), totalNumberButton(groupBox), groupBox);
+            double previousButtonY = topMargin - marginBetweenButton; //we don't need the margin for the first button
+            double previousButtonHeight = 0;
+            foreach (Button button in ((Grid)(groupBoxChoices.Content)).Children)
+            {
+                button.Margin = new Thickness(setXPosition(button, groupBox), previousButtonY, setXPosition(button, groupBox), (((Grid)(groupBox.Content)).ActualHeight - button.ActualHeight - previousButtonY));
+                previousButtonHeight = button.ActualHeight;
+                previousButtonY = (previousButtonY + previousButtonHeight + marginBetweenButton);
+            }
         }
     }
 }
