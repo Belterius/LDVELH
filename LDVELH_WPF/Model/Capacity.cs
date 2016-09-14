@@ -49,7 +49,7 @@ namespace LDVELH_WPF
         public string DisplayName
         {
             get {
-                return GlobalTranslator.Instance.translator.ProvideValue(CapacityKind.ToString());
+                return GlobalTranslator.Instance.Translator.ProvideValue(CapacityKind.ToString());
             }
         }
         
@@ -75,7 +75,7 @@ namespace LDVELH_WPF
 
         public static String GetTranslation(this CapacityType capacity)
         {
-            return GlobalTranslator.Instance.translator.ProvideValue(capacity.ToString());
+            return GlobalTranslator.Instance.Translator.ProvideValue(capacity.ToString());
         }
     }
 }

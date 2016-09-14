@@ -13,7 +13,7 @@ namespace LDVELH_WPF.ViewModel
 {
     class MainWindowViewModel : ViewModelBase
     {
-        bool loadingHero = false;
+        bool LoadingHero = false;
 
         public event GenerateActionButton ActionButtonChanged;
         public delegate void GenerateActionButton();
@@ -152,7 +152,7 @@ namespace LDVELH_WPF.ViewModel
                 }
                 catch (CantEatException)
                 {
-                    MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("CantEat"));
+                    MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("CantEat"));
 
                 }
                 catch (CannotUseItemException ex)
@@ -169,31 +169,31 @@ namespace LDVELH_WPF.ViewModel
                 {
                     databaseRequest.SaveHero((Hero)hero);
                 }
-                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("SuccesSaving"));
+                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("SuccesSaving"));
             }
             catch (Exception ex)
             {
-                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorSaving"));
+                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("ErrorSaving"));
                 System.Diagnostics.Debug.WriteLine("Error saving Hero : " + ex);
             }
         }
         private void LoadHero(object random)
         {
-            if (MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ConfirmExit"), GlobalTranslator.Instance.translator.ProvideValue("GoToLoadingMenu"), MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            if (MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("ConfirmExit"), GlobalTranslator.Instance.Translator.ProvideValue("GoToLoadingMenu"), MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
 
             }
             else
             {
-                MenuLoad loadMenu = new MenuLoad { DataContext = new MenuLoadViewModel() };
-                loadMenu.Show();
+                MenuLoad LoadMenu = new MenuLoad { DataContext = new MenuLoadViewModel() };
+                LoadMenu.Show();
                 CloseWindow();
             }
         }
 
         public MainWindowViewModel(Hero hero, bool loading)
         {
-            loadingHero = loading;
+            LoadingHero = loading;
             InitHero(hero);
             InitStory(hero);
             Initialize();
@@ -208,7 +208,7 @@ namespace LDVELH_WPF.ViewModel
         private void InitHero(Hero hero)
         {
             Hero = hero;
-            noNullInHero(hero);
+            NoNullInHero(hero);
             Hero.PropertyChanged += Hero_PropertyChanged;
         }
 
@@ -226,7 +226,7 @@ namespace LDVELH_WPF.ViewModel
             MyStory = new Story("RandomName", Hero);
             MyStory.AddParagraph(CreateParagraph.CreateAParagraph(Hero.CurrentParagraph));
             MyStory.PropertyChanged += MyStory_PropertyChanged;
-            if (!loadingHero)
+            if (!LoadingHero)
                 MyStory.Start();
             else
             {
@@ -246,11 +246,11 @@ namespace LDVELH_WPF.ViewModel
             //First : the main event (that WILL happen, no choice, unless we're loading a Hero (so he already resolved the mains event))
             try
             {
-                resolveMainEvents(MyStory);
+                ResolveMainEvents(MyStory);
             }
             catch (YouAreDeadException)
             {
-                handleDeath(MyStory);
+                HandleDeath(MyStory);
                 return;
             }
 
@@ -259,9 +259,9 @@ namespace LDVELH_WPF.ViewModel
             //This way our MVVM pattern is respected
             ActionButtonHasChanged();
         }
-        private void resolveMainEvents(Story story)
+        private void ResolveMainEvents(Story story)
         {
-            if (!loadingHero)
+            if (!LoadingHero)
             {
                 try
                 {
@@ -274,24 +274,24 @@ namespace LDVELH_WPF.ViewModel
 
             }
             else
-                loadingHero = false;
+                LoadingHero = false;
         }
         public void ActionButtonHasChanged()
         {
-            GenerateActionButton handler = ActionButtonChanged;
-            if (handler != null)
+            GenerateActionButton Handler = ActionButtonChanged;
+            if (Handler != null)
             {
-                handler();
+                Handler();
             }
         }
-        public void handleDeath(Story story)
+        public void HandleDeath(Story story)
         {
-            MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("YouDied"));
+            MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("YouDied"));
             try
             {
-                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
+                using (SQLiteDatabaseFunction DatabaseRequest = new SQLiteDatabaseFunction())
                 {
-                    databaseRequest.DeleteHero(story.PlayerHero);
+                    DatabaseRequest.DeleteHero(story.PlayerHero);
                 }
 
             }
@@ -299,12 +299,12 @@ namespace LDVELH_WPF.ViewModel
             {
                 System.Diagnostics.Debug.WriteLine("Error when deleting hero data : " + ex);
             }
-            MenuLoad loadMenu = new MenuLoad() { DataContext = new MenuLoadViewModel() };
-            loadMenu.Show();
+            MenuLoad LoadMenu = new MenuLoad() { DataContext = new MenuLoadViewModel() };
+            LoadMenu.Show();
             CloseWindow();
         }
 
-        private void noNullInHero(Hero hero)
+        private void NoNullInHero(Hero hero)
         {
             //When loading a Hero from our database, if he had no item/backpack/weapon/weaponHolder/capacity then those will be null instead of empty, this is the default behavior of SQLite.
             //we fix the possible problem immediately

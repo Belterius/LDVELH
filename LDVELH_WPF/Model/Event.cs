@@ -63,7 +63,7 @@ namespace LDVELH_WPF
         {
             this.DestinationNumber = destinationNumber;
             this.capacityType = capacityType;
-            this.TriggerMessage = GlobalTranslator.Instance.translator.ProvideValue("UseCapacity") + capacityType.GetTranslation();
+            this.TriggerMessage = GlobalTranslator.Instance.Translator.ProvideValue("UseCapacity") + capacityType.GetTranslation();
         }
         public CapacityEvent(int destinationNumber, CapacityType capacityType, string triggerMessage)
         {
@@ -114,11 +114,11 @@ namespace LDVELH_WPF
                     catch (BackPackFullException)
                     {
                         System.Diagnostics.Debug.WriteLine("LootEvent full backpack, propose choice");
-                        MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorInventoryFull"));
+                        MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("ErrorInventoryFull"));
                     }
                     catch (WeaponHolderFullException)
                     {
-                        MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorWeaponHolderFull"));
+                        MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("ErrorWeaponHolderFull"));
                         System.Diagnostics.Debug.WriteLine("LootEvent full weapon holder, propose choice");
                     }
                 }
@@ -140,13 +140,13 @@ namespace LDVELH_WPF
             this.PayableEvent = new List<Event>();
             this.PayableEvent.Add(anEvent);
             this.price = price;
-            this.TriggerMessage = triggerMessage + " (" + price + " "+ GlobalTranslator.Instance.translator.ProvideValue("Gold")+" )";
+            this.TriggerMessage = triggerMessage + " (" + price + " "+ GlobalTranslator.Instance.Translator.ProvideValue("Gold")+" )";
         }
         public BuyEvent(List<Event> listEvent, int price, string triggerMessage)
         {
             this.price = price;
             this.PayableEvent = listEvent;
-            this.TriggerMessage = triggerMessage + " (" + price + " " + GlobalTranslator.Instance.translator.ProvideValue("Gold") + " )";
+            this.TriggerMessage = triggerMessage + " (" + price + " " + GlobalTranslator.Instance.Translator.ProvideValue("Gold") + " )";
         }
         public override void ResolveEvent(Story story)
         {
@@ -160,7 +160,7 @@ namespace LDVELH_WPF
 
             }
             catch(NotEnoughtGoldException){
-                MessageBox.Show( GlobalTranslator.Instance.translator.ProvideValue("ErrorNotEnoughtGold"));
+                MessageBox.Show( GlobalTranslator.Instance.Translator.ProvideValue("ErrorNotEnoughtGold"));
             }
             catch(Exception){
                 throw;
@@ -249,7 +249,7 @@ namespace LDVELH_WPF
             }
             else
             {
-                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorEscape"));
+                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("ErrorEscape"));
                 return false;
             }
             
@@ -301,7 +301,7 @@ namespace LDVELH_WPF
             }
             else
             {
-                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("ErrorEscape"));
+                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("ErrorEscape"));
                 return false;
             }
 
@@ -365,7 +365,7 @@ namespace LDVELH_WPF
         {
             this.DestinationNumber = destinationNumber;
             this.ItemName = itemName;
-            this.TriggerMessage = GlobalTranslator.Instance.translator.ProvideValue("UseItem") + itemName;
+            this.TriggerMessage = GlobalTranslator.Instance.Translator.ProvideValue("UseItem") + itemName;
         }
         public override void ResolveEvent(Story story)
         {
@@ -392,7 +392,7 @@ namespace LDVELH_WPF
         public override void ResolveEvent(Story story)
         {
             story.PlayerHero.Kill();
-            throw new YouAreDeadException(SpecialMessage + GlobalTranslator.Instance.translator.ProvideValue("YouDied"));
+            throw new YouAreDeadException(SpecialMessage + GlobalTranslator.Instance.Translator.ProvideValue("YouDied"));
         }
     }
     public class DammageEvent : Event
@@ -417,7 +417,7 @@ namespace LDVELH_WPF
         public override void ResolveEvent(Story story)
         {
             if (this.SpecialMessage != "")
-                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("TakeDamage")+ " " + SpecialMessage);
+                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("TakeDamage")+ " " + SpecialMessage);
             story.PlayerHero.TakeDamage(DamageAmount);
         }
     }
@@ -443,7 +443,7 @@ namespace LDVELH_WPF
         public override void ResolveEvent(Story story)
         {
             if (this.SpecialMessage != "")
-                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("DebuffAgility") +" " + SpecialMessage);
+                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("DebuffAgility") +" " + SpecialMessage);
             story.PlayerHero.DecreaseAgility(DamageAmount);
         }
     }

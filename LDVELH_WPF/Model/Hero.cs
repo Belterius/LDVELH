@@ -68,7 +68,7 @@ namespace LDVELH_WPF
         {
             get
             {
-                return GlobalTranslator.Instance.translator.ProvideValue(_HungryStatus.ToString());
+                return GlobalTranslator.Instance.Translator.ProvideValue(_HungryStatus.ToString());
             }
         }
 
@@ -114,7 +114,7 @@ namespace LDVELH_WPF
         {
             get
             {
-                return GlobalTranslator.Instance.translator.ProvideValue(_WeaponMastery.ToString());
+                return GlobalTranslator.Instance.Translator.ProvideValue(_WeaponMastery.ToString());
             }
         }
 

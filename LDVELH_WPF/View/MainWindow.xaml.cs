@@ -33,23 +33,23 @@ namespace LDVELH_WPF
 
         private void TranslateLabel()
         {
-            groupBoxHeroStat.Header = GlobalTranslator.Instance.translator.ProvideValue("HeroStats");
-            labelDescriptionHitPoint.Content = GlobalTranslator.Instance.translator.ProvideValue("HitPoints");
-            labelDescriptionAgility.Content = GlobalTranslator.Instance.translator.ProvideValue("Agility");
-            LabelWeaponMastery.Content = GlobalTranslator.Instance.translator.ProvideValue("WeaponMasteryLabel");
-            LabelCapacities.Content = GlobalTranslator.Instance.translator.ProvideValue("CapacitiesLabel");
-            LabelHunger.Content = GlobalTranslator.Instance.translator.ProvideValue("Hunger");
-            groupBoxInventory.Header = GlobalTranslator.Instance.translator.ProvideValue("Inventory");
-            LabelBackPack.Content = GlobalTranslator.Instance.translator.ProvideValue("BackPack");
-            LabelSpecialItems.Content = GlobalTranslator.Instance.translator.ProvideValue("SpecialItems");
-            LabelWeapons.Content = GlobalTranslator.Instance.translator.ProvideValue("Weapon");
-            labelDescriptionGold.Content = GlobalTranslator.Instance.translator.ProvideValue("LabelGold");
-            buttonThrowItem.Content = GlobalTranslator.Instance.translator.ProvideValue("ThrowItem");
-            buttonUseItem.Content = GlobalTranslator.Instance.translator.ProvideValue("UseItem");
-            buttonThrowWeapon.Content = GlobalTranslator.Instance.translator.ProvideValue("ThrowWeapon");
-            groupBoxChoices.Header = GlobalTranslator.Instance.translator.ProvideValue("Choices");
-            buttonSave.Content = GlobalTranslator.Instance.translator.ProvideValue("Save");
-            buttonLoad.Content = GlobalTranslator.Instance.translator.ProvideValue("Load");
+            groupBoxHeroStat.Header = GlobalTranslator.Instance.Translator.ProvideValue("HeroStats");
+            labelDescriptionHitPoint.Content = GlobalTranslator.Instance.Translator.ProvideValue("HitPoints");
+            labelDescriptionAgility.Content = GlobalTranslator.Instance.Translator.ProvideValue("Agility");
+            LabelWeaponMastery.Content = GlobalTranslator.Instance.Translator.ProvideValue("WeaponMasteryLabel");
+            LabelCapacities.Content = GlobalTranslator.Instance.Translator.ProvideValue("CapacitiesLabel");
+            LabelHunger.Content = GlobalTranslator.Instance.Translator.ProvideValue("Hunger");
+            groupBoxInventory.Header = GlobalTranslator.Instance.Translator.ProvideValue("Inventory");
+            LabelBackPack.Content = GlobalTranslator.Instance.Translator.ProvideValue("BackPack");
+            LabelSpecialItems.Content = GlobalTranslator.Instance.Translator.ProvideValue("SpecialItems");
+            LabelWeapons.Content = GlobalTranslator.Instance.Translator.ProvideValue("Weapon");
+            labelDescriptionGold.Content = GlobalTranslator.Instance.Translator.ProvideValue("LabelGold");
+            buttonThrowItem.Content = GlobalTranslator.Instance.Translator.ProvideValue("ThrowItem");
+            buttonUseItem.Content = GlobalTranslator.Instance.Translator.ProvideValue("UseItem");
+            buttonThrowWeapon.Content = GlobalTranslator.Instance.Translator.ProvideValue("ThrowWeapon");
+            groupBoxChoices.Header = GlobalTranslator.Instance.Translator.ProvideValue("Choices");
+            buttonSave.Content = GlobalTranslator.Instance.Translator.ProvideValue("Save");
+            buttonLoad.Content = GlobalTranslator.Instance.Translator.ProvideValue("Load");
         }
 
         /********************************************************/
@@ -84,7 +84,7 @@ namespace LDVELH_WPF
                         }
                         catch (YouAreDeadException)
                         {
-                            DataContextViewModel.handleDeath(story);
+                            DataContextViewModel.HandleDeath(story);
                         }
                     };
                     ((Grid)(groupBoxChoices.Content)).Children.Add(ButtonDecision);

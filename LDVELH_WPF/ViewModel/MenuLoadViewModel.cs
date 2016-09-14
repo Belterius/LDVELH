@@ -42,9 +42,9 @@ namespace LDVELH_WPF.ViewModel
         {
             try
             {
-                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
+                using (SQLiteDatabaseFunction DatabaseRequest = new SQLiteDatabaseFunction())
                 {
-                    ListHeroes = new ObservableCollection<Hero>(databaseRequest.GetAllHeroes());
+                    ListHeroes = new ObservableCollection<Hero>(DatabaseRequest.GetAllHeroes());
                 }
             }
             catch (Exception ex)
@@ -70,9 +70,9 @@ namespace LDVELH_WPF.ViewModel
         {
             try
             {
-                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
+                using (SQLiteDatabaseFunction DatabaseRequest = new SQLiteDatabaseFunction())
                 {
-                    databaseRequest.DeleteHero((Hero)hero);
+                    DatabaseRequest.DeleteHero((Hero)hero);
                 }
                 ListHeroes.Remove((Hero)hero);
             }
@@ -96,29 +96,29 @@ namespace LDVELH_WPF.ViewModel
         }
         private void Settings(object random)
         {
-            MenuSettings menuSetting = new MenuSettings { DataContext = new MenuSettingsViewModel() };
-            menuSetting.Show();
+            MenuSettings MenuSetting = new MenuSettings { DataContext = new MenuSettingsViewModel() };
+            MenuSetting.Show();
             CloseWindow();
         }
         private string ShowMyDialogBox()
         {
-            MessageBoxInput testDialog = new MessageBoxInput();
+            MessageBoxInput TestDialog = new MessageBoxInput();
 
-            if (testDialog.ShowDialog() == true)
+            if (TestDialog.ShowDialog() == true)
             {
-                if (testDialog.getCharacterName != "")
+                if (TestDialog.GetCharacterName != "")
                 {
-                    return testDialog.getCharacterName;
+                    return TestDialog.GetCharacterName;
                 }
                 else
                 {
-                    return GlobalTranslator.Instance.translator.ProvideValue("NoName");
+                    return GlobalTranslator.Instance.Translator.ProvideValue("NoName");
                 }
 
             }
             else
             {
-                return GlobalTranslator.Instance.translator.ProvideValue("NoName");
+                return GlobalTranslator.Instance.Translator.ProvideValue("NoName");
             }
 
         }

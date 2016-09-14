@@ -13,7 +13,7 @@ namespace LDVELH_WPF
             base.OnStartup(e);
             if (languageDefined)
             {
-                GlobalTranslator.Instance.translator = new Translator(LDVELH_WPF.Properties.Settings.Default.Language);
+                GlobalTranslator.Instance.Translator = new Translator(LDVELH_WPF.Properties.Settings.Default.Language);
                 this.StartupUri = new Uri("View/MenuLoad.xaml", UriKind.Relative);
             }
             else

@@ -52,35 +52,35 @@ namespace LDVELH_WPF.ViewModel
         
         private void LoadSupportedLanguage()
         {
-            foreach (SupportedLanguage language in Enum.GetValues(typeof(SupportedLanguage)))
+            foreach (SupportedLanguage Language in Enum.GetValues(typeof(SupportedLanguage)))
             {
-                ListLanguage.Add(language);
+                ListLanguage.Add(Language);
             }
         }
         private void SetDefaultLanguage()
         {
             //We check the settings first, if we have no settings for the language, then we check the system language.
             //If the language is not supported, then we set the language to English
-            bool found = false;
-            string defaultLanguage;
+            bool Found = false;
+            string DefaultLanguage;
 
             if (Properties.Settings.Default.Language != "")
             {
-                defaultLanguage = Properties.Settings.Default.Language;
+                DefaultLanguage = Properties.Settings.Default.Language;
             }
             else
             {
-                defaultLanguage = Thread.CurrentThread.CurrentCulture.DisplayName;
+                DefaultLanguage = Thread.CurrentThread.CurrentCulture.DisplayName;
             }
-            foreach (SupportedLanguage item in ListLanguage)
+            foreach (SupportedLanguage Item in ListLanguage)
             {
-                if (defaultLanguage.Contains(item.ToString()))
+                if (DefaultLanguage.Contains(Item.ToString()))
                 {
-                    found = true;
-                    SelectedLanguage = item;
+                    Found = true;
+                    SelectedLanguage = Item;
                 }
             }
-            if (!found)
+            if (!Found)
             {
                 SelectedLanguage = SupportedLanguage.English;
             }
@@ -89,8 +89,8 @@ namespace LDVELH_WPF.ViewModel
         {
             ChangeLanguageSettings(SelectedLanguage.ToString());
             ChangeTranslatorLanguage((SupportedLanguage)SelectedLanguage);
-            MenuLoad menuLoad = new MenuLoad { DataContext = new MenuLoadViewModel() };
-            menuLoad.Show();
+            MenuLoad MenuLoad = new MenuLoad { DataContext = new MenuLoadViewModel() };
+            MenuLoad.Show();
             WarningMessage();
             CloseWindow();
         }
@@ -101,13 +101,13 @@ namespace LDVELH_WPF.ViewModel
         }
         private void ChangeTranslatorLanguage(SupportedLanguage language)
         {
-            GlobalTranslator.Instance.translator = new Translator(language);
+            GlobalTranslator.Instance.Translator = new Translator(language);
         }
         private void WarningMessage()
         {
             if (!Properties.Settings.Default.Language.Equals("French", StringComparison.InvariantCultureIgnoreCase))
             {
-                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("Disclaimer"));
+                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("Disclaimer"));
             }
         }
     }

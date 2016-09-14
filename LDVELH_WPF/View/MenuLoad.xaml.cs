@@ -17,9 +17,9 @@ namespace LDVELH_WPF
         }
         private void TranslateLabel()
         {
-            this.Title = GlobalTranslator.Instance.translator.ProvideValue("LoadMenu");
-            buttonLoad.Content = GlobalTranslator.Instance.translator.ProvideValue("Load");
-            buttonNew.Content = GlobalTranslator.Instance.translator.ProvideValue("NewGame");
+            this.Title = GlobalTranslator.Instance.Translator.ProvideValue("LoadMenu");
+            buttonLoad.Content = GlobalTranslator.Instance.Translator.ProvideValue("Load");
+            buttonNew.Content = GlobalTranslator.Instance.Translator.ProvideValue("NewGame");
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

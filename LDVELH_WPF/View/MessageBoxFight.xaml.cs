@@ -19,13 +19,13 @@ namespace LDVELH_WPF
         
 
 
-        Hero hero;
-        Enemy ennemy;
-        bool ranAway = false;
-        int roundRunAway=999;
-        bool fightOver = false;
-        int roundNumber = 0;
-        int previousLifeHero, previousLifeEnnemy;
+        Hero Hero;
+        Enemy Ennemy;
+        bool RanAway = false;
+        int RoundRunAway=999;
+        bool FightOver = false;
+        int RoundNumber = 0;
+        int PreviousLifeHero, PreviousLifeEnnemy;
         public MessageBoxFight()
         {
             InitializeComponent();
@@ -33,74 +33,74 @@ namespace LDVELH_WPF
         }
         private void TranslateLabel()
         {
-            this.Title = GlobalTranslator.Instance.translator.ProvideValue("Battling");
-            buttonNextRound.Content = GlobalTranslator.Instance.translator.ProvideValue("StartFight");
-            groupBoxYourHero.Header = GlobalTranslator.Instance.translator.ProvideValue("YourHero");
-            labelHeroHP.Content = GlobalTranslator.Instance.translator.ProvideValue("Life");
-            labelHeroAgility.Content = GlobalTranslator.Instance.translator.ProvideValue("Agility");
-            labelHeroDamageTaken.Content = GlobalTranslator.Instance.translator.ProvideValue("DamageTaken");
-            GroupBoxYourEnemy.Header = GlobalTranslator.Instance.translator.ProvideValue("YourEnemy");
-            labelEnemyAgility.Content = GlobalTranslator.Instance.translator.ProvideValue("Agility");
-            labelEnemyLife.Content = GlobalTranslator.Instance.translator.ProvideValue("Life");
-            labelEnemyDamageTaken.Content = GlobalTranslator.Instance.translator.ProvideValue("DamageTaken");
-            labelRoundNumber.Content = GlobalTranslator.Instance.translator.ProvideValue("YouMustFight");
-            buttonRun.Content = GlobalTranslator.Instance.translator.ProvideValue("Escape");
+            this.Title = GlobalTranslator.Instance.Translator.ProvideValue("Battling");
+            buttonNextRound.Content = GlobalTranslator.Instance.Translator.ProvideValue("StartFight");
+            groupBoxYourHero.Header = GlobalTranslator.Instance.Translator.ProvideValue("YourHero");
+            labelHeroHP.Content = GlobalTranslator.Instance.Translator.ProvideValue("Life");
+            labelHeroAgility.Content = GlobalTranslator.Instance.Translator.ProvideValue("Agility");
+            labelHeroDamageTaken.Content = GlobalTranslator.Instance.Translator.ProvideValue("DamageTaken");
+            GroupBoxYourEnemy.Header = GlobalTranslator.Instance.Translator.ProvideValue("YourEnemy");
+            labelEnemyAgility.Content = GlobalTranslator.Instance.Translator.ProvideValue("Agility");
+            labelEnemyLife.Content = GlobalTranslator.Instance.Translator.ProvideValue("Life");
+            labelEnemyDamageTaken.Content = GlobalTranslator.Instance.Translator.ProvideValue("DamageTaken");
+            labelRoundNumber.Content = GlobalTranslator.Instance.Translator.ProvideValue("YouMustFight");
+            buttonRun.Content = GlobalTranslator.Instance.Translator.ProvideValue("Escape");
         }
         public MessageBoxFight(Hero hero, Enemy ennemy)
         {
             InitializeComponent();
             TranslateLabel();
-            this.hero = hero;
-            this.ennemy = ennemy;
+            this.Hero = hero;
+            this.Ennemy = ennemy;
             buttonRun.Visibility = Visibility.Hidden;
-            setLife();
-            setAgility();
+            SetLife();
+            SetAgility();
             labelDammageTakenEnnemy.Content = "0";
             labelDammageTakenHero.Content = "0";
         }
         public MessageBoxFight(Hero hero, Enemy ennemy, int ranTurn)
         {
             InitializeComponent();
-            this.hero = hero;
-            this.ennemy = ennemy;
-            this.roundRunAway = ranTurn;
+            this.Hero = hero;
+            this.Ennemy = ennemy;
+            this.RoundRunAway = ranTurn;
             buttonRun.Visibility = Visibility.Hidden;
-            setLife();
-            setAgility();
+            SetLife();
+            SetAgility();
             labelDammageTakenEnnemy.Content = "0";
             labelDammageTakenHero.Content = "0";
         }
 
         private void buttonNextRound_Click(object sender, RoutedEventArgs e)
         {
-            buttonNextRound.Content = GlobalTranslator.Instance.translator.ProvideValue("NextRound");
-            previousLifeHero = hero.ActualHitPoint;
-            previousLifeEnnemy = ennemy.ActualHitPoint;
+            buttonNextRound.Content = GlobalTranslator.Instance.Translator.ProvideValue("NextRound");
+            PreviousLifeHero = Hero.ActualHitPoint;
+            PreviousLifeEnnemy = Ennemy.ActualHitPoint;
             try
             {
-                fightOver = hero.Fight(ennemy);
+                FightOver = Hero.Fight(Ennemy);
             }
             catch(YouAreDeadException){
                 DialogResult = true;
                 throw;
             }
-            if (fightOver)
+            if (FightOver)
             {
-                buttonNextRound.Content = GlobalTranslator.Instance.translator.ProvideValue("Victory") + " !";
-                labelRoundNumber.Content = GlobalTranslator.Instance.translator.ProvideValue("Victory").ToUpper() + "!";
-                setLife();
-                setDamageTaken();
+                buttonNextRound.Content = GlobalTranslator.Instance.Translator.ProvideValue("Victory") + " !";
+                labelRoundNumber.Content = GlobalTranslator.Instance.Translator.ProvideValue("Victory").ToUpper() + "!";
+                SetLife();
+                SetDamageTaken();
                 buttonNextRound.Click -= buttonNextRound_Click;
                 buttonNextRound.Click += buttonVictory_Click;
             }
             else
             {
-                roundNumber++;
-                labelRoundNumber.Content = GlobalTranslator.Instance.translator.ProvideValue("RoundNumber") + " " + roundNumber;
-                setLife();
-                setDamageTaken();
+                RoundNumber++;
+                labelRoundNumber.Content = GlobalTranslator.Instance.Translator.ProvideValue("RoundNumber") + " " + RoundNumber;
+                SetLife();
+                SetDamageTaken();
             }
-            if(roundNumber >= roundRunAway)
+            if(RoundNumber >= RoundRunAway)
             {
                 buttonRun.Visibility = Visibility.Visible;
             }
@@ -109,25 +109,25 @@ namespace LDVELH_WPF
         {
             DialogResult = true;
         }
-        private void setLife()
+        private void SetLife()
         {
-            labelLifeEnnemy.Content = ennemy.ActualHitPoint;
-            labelLifeHero.Content = hero.ActualHitPoint;
+            labelLifeEnnemy.Content = Ennemy.ActualHitPoint;
+            labelLifeHero.Content = Hero.ActualHitPoint;
         }
-        private void setAgility()
+        private void SetAgility()
         {
-            labelAgilityEnnemy.Content = ennemy.BaseAgility;
-            labelAgilityHero.Content = hero.GetHeroAgilityInBattle(ennemy);
+            labelAgilityEnnemy.Content = Ennemy.BaseAgility;
+            labelAgilityHero.Content = Hero.GetHeroAgilityInBattle(Ennemy);
         }
-        private void setDamageTaken()
+        private void SetDamageTaken()
         {
-            labelDammageTakenEnnemy.Content = previousLifeEnnemy - ennemy.ActualHitPoint;
-            labelDammageTakenHero.Content = previousLifeHero - hero.ActualHitPoint;
+            labelDammageTakenEnnemy.Content = PreviousLifeEnnemy - Ennemy.ActualHitPoint;
+            labelDammageTakenHero.Content = PreviousLifeHero - Hero.ActualHitPoint;
         }
 
         private void buttonRun_Click(object sender, RoutedEventArgs e)
         {
-            ranAway = true;
+            RanAway = true;
             DialogResult = true;
         }
 
@@ -138,12 +138,15 @@ namespace LDVELH_WPF
         }
         public bool DidRanAway
         {
-            get { return ranAway; }
+            get { return RanAway; }
         }
         
     }
     internal static class NativeMethods
     {
+        //DO NOT TOUTCH, IT'S BLACK MAGIC
+        //It allows to make the exit button disappear from our window (as our user should NOT be able to escape a fight by closing the window ...)
+        //cf http://stackoverflow.com/questions/743906/how-to-hide-close-button-in-wpf-window/867080 for more details
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern int GetWindowLong(IntPtr hWnd, int nIndex);
         [DllImport("user32.dll")]

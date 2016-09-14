@@ -173,11 +173,11 @@ namespace LDVELH_WPF
             {
                 if (ChargesLeft > 1)
                 {
-                    return Name + "(+" + HealingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + ChargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return Name + "(+" + HealingPower + " " + GlobalTranslator.Instance.Translator.ProvideValue("HP") + " " + ChargesLeft + " " + GlobalTranslator.Instance.Translator.ProvideValue("charges") + " )";
                 }
                 else
                 {
-                    return Name + "(+" + HealingPower + " " + GlobalTranslator.Instance.translator.ProvideValue("HP") + " " + ChargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return Name + "(+" + HealingPower + " " + GlobalTranslator.Instance.Translator.ProvideValue("HP") + " " + ChargesLeft + " " + GlobalTranslator.Instance.Translator.ProvideValue("charges") + " )";
                 }
             }
         }
@@ -250,11 +250,11 @@ namespace LDVELH_WPF
             {
                 if (ChargesLeft > 1)
                 {
-                    return Name + "(" + GlobalTranslator.Instance.translator.ProvideValue("food") + ", " + ChargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return Name + "(" + GlobalTranslator.Instance.Translator.ProvideValue("food") + ", " + ChargesLeft + " " + GlobalTranslator.Instance.Translator.ProvideValue("charges") + " )";
                 }
                 else
                 {
-                    return Name + "(" + GlobalTranslator.Instance.translator.ProvideValue("food") + ", " + ChargesLeft + " " + GlobalTranslator.Instance.translator.ProvideValue("charges") + " )";
+                    return Name + "(" + GlobalTranslator.Instance.Translator.ProvideValue("food") + ", " + ChargesLeft + " " + GlobalTranslator.Instance.Translator.ProvideValue("charges") + " )";
                 }
             }
         }
@@ -303,7 +303,7 @@ namespace LDVELH_WPF
 
         public override void Use(Hero hero)
         {
-            throw new CannotUseItemException(GlobalTranslator.Instance.translator.ProvideValue("ErrorUseItem"));
+            throw new CannotUseItemException(GlobalTranslator.Instance.Translator.ProvideValue("ErrorUseItem"));
         }
     }
 

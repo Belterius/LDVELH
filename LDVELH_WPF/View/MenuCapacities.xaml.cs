@@ -20,9 +20,9 @@ namespace LDVELH_WPF
 
         private void TranslateLabel()
         {
-            this.Title = GlobalTranslator.Instance.translator.ProvideValue("MenuCapacities");
-            groupBoxCapacities.Header = GlobalTranslator.Instance.translator.ProvideValue("ListCapacities");
-            ButtonConfirm.Content = GlobalTranslator.Instance.translator.ProvideValue("Confirm");
+            this.Title = GlobalTranslator.Instance.Translator.ProvideValue("MenuCapacities");
+            groupBoxCapacities.Header = GlobalTranslator.Instance.Translator.ProvideValue("ListCapacities");
+            ButtonConfirm.Content = GlobalTranslator.Instance.Translator.ProvideValue("Confirm");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -43,7 +43,7 @@ namespace LDVELH_WPF
             }
             if (NumberOfCapacities != AllowedNumberCapacities)
             {
-                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("YouMustSelect") + " " + AllowedNumberCapacities + " " + GlobalTranslator.Instance.translator.ProvideValue("Capacities") + " !");
+                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("YouMustSelect") + " " + AllowedNumberCapacities + " " + GlobalTranslator.Instance.Translator.ProvideValue("Capacities") + " !");
                 return;
             }
             foreach (var Item in ((Grid)(groupBoxCapacities.Content)).Children)

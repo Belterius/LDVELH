@@ -83,7 +83,7 @@ namespace LDVELH_WPF
         public string DisplayName
         {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
             get {
-                return Name + "(" + GlobalTranslator.Instance.translator.ProvideValue(WeaponType.ToString()) + ")";
+                return Name + "(" + GlobalTranslator.Instance.Translator.ProvideValue(WeaponType.ToString()) + ")";
             }
         }
     }
@@ -105,7 +105,7 @@ namespace LDVELH_WPF
 
         public static String GetTranslation(this WeaponTypes weapon)
         {
-            return GlobalTranslator.Instance.translator.ProvideValue(weapon.ToString());
+            return GlobalTranslator.Instance.Translator.ProvideValue(weapon.ToString());
         }
     }
 }

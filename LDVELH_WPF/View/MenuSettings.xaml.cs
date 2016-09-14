@@ -17,8 +17,8 @@ namespace LDVELH_WPF
         }
         private void TranslateLabel()
         {
-            LabelSelectLanguage.Content = GlobalTranslator.Instance.translator.ProvideValue("SelectLanguage");
-            this.Title = GlobalTranslator.Instance.translator.ProvideValue("Settings");
+            LabelSelectLanguage.Content = GlobalTranslator.Instance.Translator.ProvideValue("SelectLanguage");
+            this.Title = GlobalTranslator.Instance.Translator.ProvideValue("Settings");
         }
         
     }
