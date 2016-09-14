@@ -10,8 +10,8 @@ namespace LDVELH_WPF
         [Key]
         public int CapacityID { get; set; }
 
-        public static readonly int phychicPowerStrenght = 2;
-        public static readonly int weaponMasteryStrenght = 2;
+        public static readonly int PhychicPowerStrenght = 2;
+        public static readonly int WeaponMasteryStrenght = 2;
 
         [Column("Capacity")]
         private CapacityType _CapacityKind{get;set;}

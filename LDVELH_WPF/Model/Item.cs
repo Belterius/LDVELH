@@ -12,32 +12,40 @@ namespace LDVELH_WPF
         public int LootID { get; set; }
 
 
-        public abstract void add(Hero hero);
-        public abstract void remove(Hero hero);
+        public abstract void Add(Hero hero);
+        public abstract void Remove(Hero hero);
 
     }
     public class Gold : Loot
     {
-        int goldAmount;
+        int _GoldAmount;
+        public int GoldAmount
+        {
+            get { return _GoldAmount; }
+            private set
+            {
+                if (_GoldAmount != value)
+                {
+                    _GoldAmount = value;
+                }
+            }
+        }
         private Gold()
         {
 
         }
         public Gold(int amount)
         {
-            this.goldAmount = amount;
+            GoldAmount = amount;
         }
-        public int GoldAmount
+        
+        public override void Add(Hero hero)
         {
-            get { return this.goldAmount; }
+            hero.AddGold(GoldAmount);
         }
-        public override void add(Hero hero)
+        public override void Remove(Hero hero)
         {
-            hero.addGold(this.GoldAmount);
-        }
-        public override void remove(Hero hero)
-        {
-            hero.removeGold(this.GoldAmount);
+            hero.RemoveGold(GoldAmount);
         }
     }
     public abstract class Item : Loot, INotifyPropertyChanged
@@ -74,15 +82,15 @@ namespace LDVELH_WPF
                 return Name;
             }
         }
-        public abstract void use(Hero hero);
+        public abstract void Use(Hero hero);
 
-        public override void add(Hero hero)
+        public override void Add(Hero hero)
         {
-            hero.backPack.AddItem(this);
+            hero.BackPack.AddItem(this);
         }
-        public override void remove(Hero hero)
+        public override void Remove(Hero hero)
         {
-            hero.backPack.RemoveItem(this);
+            hero.BackPack.RemoveItem(this);
         }
     }
 
@@ -144,12 +152,12 @@ namespace LDVELH_WPF
                 return false;
 
 
-            Consummable consummable = (Consummable)obj;
-            if (this.Name != consummable.Name)
+            Consummable Consummable = (Consummable)obj;
+            if (this.Name != Consummable.Name)
                 return false;
-            if (this.ChargesLeft != consummable.ChargesLeft)
+            if (this.ChargesLeft != Consummable.ChargesLeft)
                 return false;
-            if (this.HealingPower != consummable.HealingPower)
+            if (this.HealingPower != Consummable.HealingPower)
                 return false;
 
             return true;
@@ -173,12 +181,12 @@ namespace LDVELH_WPF
                 }
             }
         }
-        public override void use(Hero hero)
+        public override void Use(Hero hero)
         {
             if(this.ChargesLeft >= 1)
             {
                 this.ChargesLeft--;
-                hero.heal(HealingPower);
+                hero.Heal(HealingPower);
             }
             if (ChargesLeft <= 0)
             {
@@ -251,12 +259,12 @@ namespace LDVELH_WPF
             }
         }
 
-        public override void use(Hero hero)
+        public override void Use(Hero hero)
         {
             if(this.ChargesLeft >= 1)
             {
                 this.ChargesLeft--;
-                hero.eat();
+                hero.Eat();
             }
             if (ChargesLeft <= 0)
             {
@@ -293,7 +301,7 @@ namespace LDVELH_WPF
             return new {Name}.GetHashCode();
         }
 
-        public override void use(Hero hero)
+        public override void Use(Hero hero)
         {
             throw new CannotUseItemException(GlobalTranslator.Instance.translator.ProvideValue("ErrorUseItem"));
         }

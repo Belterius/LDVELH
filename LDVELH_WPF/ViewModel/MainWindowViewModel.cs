@@ -97,7 +97,7 @@ namespace LDVELH_WPF.ViewModel
         {
             get
             {
-                return MyStory.getHero.Name + " : paraph n°" + MyStory.getHero.CurrentParagraph;
+                return MyStory.PlayerHero.Name + " : paraph n°" + MyStory.PlayerHero.CurrentParagraph;
             }
         }
         public String StoryText
@@ -115,16 +115,16 @@ namespace LDVELH_WPF.ViewModel
         private void InitHero()
         {
             Hero = new Hero("ViewModel");
-            Hero.addLoot(CreateLoot.CreateWeapon.Glaive());
-            Hero.addLoot(CreateLoot.CreateWeapon.Baton());
-            Hero.addLoot(CreateLoot.CreateConsummable.potionDeLampsur());
-            Hero.addLoot(CreateLoot.CreateConsummable.potionDeLampsur());
-            Hero.addLoot(CreateLoot.CreateFood.ration());
-            Hero.addLoot(CreateLoot.CreateSpecialItem.helmet());
-            Hero.addLoot(CreateLoot.CreateSpecialItem.buckler());
-            Hero.addCapacity(CapacityType.Healing);
-            Hero.addCapacity(CapacityType.Hiding);
-            Hero.takeDamage(5);
+            Hero.AddLoot(CreateLoot.CreateWeapon.Glaive());
+            Hero.AddLoot(CreateLoot.CreateWeapon.Baton());
+            Hero.AddLoot(CreateLoot.CreateConsummable.potionDeLampsur());
+            Hero.AddLoot(CreateLoot.CreateConsummable.potionDeLampsur());
+            Hero.AddLoot(CreateLoot.CreateFood.ration());
+            Hero.AddLoot(CreateLoot.CreateSpecialItem.helmet());
+            Hero.AddLoot(CreateLoot.CreateSpecialItem.buckler());
+            Hero.AddCapacity(CapacityType.Healing);
+            Hero.AddCapacity(CapacityType.Hiding);
+            Hero.TakeDamage(5);
         }
 
         public RelayCommand ThrowLootCommand { get; set; }
@@ -137,7 +137,7 @@ namespace LDVELH_WPF.ViewModel
             //Item itemToThrow = (Item)sender;
             if (item != null)
             {
-                Hero.removeLoot((Loot)item);
+                Hero.RemoveLoot((Loot)item);
             }
         }
 
@@ -148,7 +148,7 @@ namespace LDVELH_WPF.ViewModel
             {
                 try
                 {
-                    Hero.useItem((Item)itemToUse);
+                    Hero.UseItem((Item)itemToUse);
                 }
                 catch (CantEatException)
                 {
@@ -224,13 +224,13 @@ namespace LDVELH_WPF.ViewModel
         private void InitStory(Hero hero)
         {
             MyStory = new Story("RandomName", Hero);
-            MyStory.addParagraph(CreateParagraph.CreateAParagraph(Hero.CurrentParagraph));
+            MyStory.AddParagraph(CreateParagraph.CreateAParagraph(Hero.CurrentParagraph));
             MyStory.PropertyChanged += MyStory_PropertyChanged;
             if (!loadingHero)
-                MyStory.start();
+                MyStory.Start();
             else
             {
-                MyStory.start(hero.CurrentParagraph);
+                MyStory.Start(hero.CurrentParagraph);
             }
         }
 
@@ -243,8 +243,6 @@ namespace LDVELH_WPF.ViewModel
         }
         public void ResolveParagraph()
         {
-            ////Several step :
-
             //First : the main event (that WILL happen, no choice, unless we're loading a Hero (so he already resolved the mains event))
             try
             {
@@ -260,11 +258,6 @@ namespace LDVELH_WPF.ViewModel
             //Our view should subscribe to this event and when it fires generate the actions button.
             //This way our MVVM pattern is respected
             ActionButtonHasChanged();
-
-            //Third, update the hero actualParagraph in case of exit
-            MyStory.getHero.CurrentParagraph = MyStory.ActualParagraph.ParagraphNumber;
-
-
         }
         private void resolveMainEvents(Story story)
         {
@@ -272,7 +265,7 @@ namespace LDVELH_WPF.ViewModel
             {
                 try
                 {
-                    story.resolveActualParagraph();
+                    story.ResolveActualParagraph();
                 }
                 catch (YouAreDeadException)
                 {
@@ -298,7 +291,7 @@ namespace LDVELH_WPF.ViewModel
             {
                 using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
                 {
-                    databaseRequest.DeleteHero(story.getHero);
+                    databaseRequest.DeleteHero(story.PlayerHero);
                 }
 
             }
@@ -315,7 +308,7 @@ namespace LDVELH_WPF.ViewModel
         {
             //When loading a Hero from our database, if he had no item/backpack/weapon/weaponHolder/capacity then those will be null instead of empty, this is the default behavior of SQLite.
             //we fix the possible problem immediately
-            hero.noNullInHero();
+            hero.NoNullInHero();
         }
 
     }

@@ -11,7 +11,7 @@
         <vm:MenuLoadViewModel x:Key="MenuLoadViewModel"/>
     </Window.Resources>
     <Grid>
-        <ListBox x:Name="listBoxHeroes" ItemsSource="{Binding ListHeroes}" DisplayMemberPath="getResume" SelectedValuePath="CharacterID" SelectedItem="{Binding SelectedHero}" HorizontalAlignment="Left" Height="177" VerticalAlignment="Top" Width="168" Margin="62,10,0,0"/>
+        <ListBox x:Name="listBoxHeroes" ItemsSource="{Binding ListHeroes}" DisplayMemberPath="GetResume" SelectedValuePath="CharacterID" SelectedItem="{Binding SelectedHero}" HorizontalAlignment="Left" Height="177" VerticalAlignment="Top" Width="168" Margin="62,10,0,0"/>
         <Button x:Name="buttonLoad" Content="{Core:Translator Text=Load}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="102,199,0,0" Command="{Binding LoadHeroCommand}" CommandParameter="{Binding SelectedHero}" />
         <Button x:Name="buttonNew" Content="{Core:Translator Text=NewGame}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,226,0,0" Command="{Binding NewGameCommand}" />
         <Button x:Name="ButtonDelete" Content="Delete" HorizontalAlignment="Left" Margin="209,199,0,0" VerticalAlignment="Top" Width="75" Command="{Binding DeleteHeroCommand}" CommandParameter="{Binding SelectedHero}" />

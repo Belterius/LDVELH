@@ -38,7 +38,7 @@ namespace LDVELH_WPF
             get { return Items; }
         }
 
-        public static readonly int basicBackPackSize = 8;
+        public static readonly int BasicBackPackSize = 8;
 
         protected void RaisePropertyChanged(string prop)
         {
@@ -48,7 +48,7 @@ namespace LDVELH_WPF
 
         public BackPack()
         {
-            this.BackPackSize = basicBackPackSize;
+            this.BackPackSize = BasicBackPackSize;
             this.Items = new ObservableCollection<Item>();
         }
         public BackPack(int backPackSize)

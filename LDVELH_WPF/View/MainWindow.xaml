@@ -20,7 +20,7 @@
                         <Run Text="{Binding Hero.MaxHitPoint}"/>
                     </TextBlock>
                 </Label>
-                <ListBox x:Name="listBoxCapacities"  ItemsSource="{Binding Hero.capacities}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="209" Margin="309,21,0,0"/>
+                <ListBox x:Name="listBoxCapacities"  ItemsSource="{Binding Hero.Capacities}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="209" Margin="309,21,0,0"/>
                 <Label x:Name="LabelWeaponMastery" Content="{Core:Translator Text=WeaponMasteryLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-3,48,0,0"/>
                 <Label x:Name="HeroWeaponMastery" Content="{Binding Hero.WeaponMasteryDisplay}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="112,48,0,0"/>
                 <Label x:Name="LabelCapacities" Content="{Core:Translator Text=CapacitiesLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="309,0,0,0"/>
@@ -36,9 +36,9 @@
                     <Label x:Name="LabelSpecialItems" Content="{Core:Translator Text=SpecialItems}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,419,0,0"/>
                     <Label x:Name="LabelWeapons" Content="{Core:Translator Text=Weapon}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,95,0,0"/>
                     <Label x:Name="labelDescriptionGold" Content="{Core:Translator Text=LabelGold}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                    <ListBox x:Name="listBoxWeapons" ItemsSource="{Binding Hero.weaponHolder.getWeapons}" SelectedItem="{Binding SelectedWeapon}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="162" Margin="13,121,0,0"/>
-                    <ListBox x:Name="listBoxBackPack"  ItemsSource="{Binding Hero.backPack.GetItems}" SelectedItem="{Binding SelectedItem}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="162" Margin="13,263,0,0"/>
-                    <ListBox x:Name="listBoxSpecialItems" ItemsSource="{Binding Hero.specialItems}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="197" VerticalAlignment="Top" Width="162" Margin="13,445,0,0"/>
+                    <ListBox x:Name="listBoxWeapons" ItemsSource="{Binding Hero.WeaponHolder.GetWeapons}" SelectedItem="{Binding SelectedWeapon}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="162" Margin="13,121,0,0"/>
+                    <ListBox x:Name="listBoxBackPack"  ItemsSource="{Binding Hero.BackPack.GetItems}" SelectedItem="{Binding SelectedItem}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="162" Margin="13,263,0,0"/>
+                    <ListBox x:Name="listBoxSpecialItems" ItemsSource="{Binding Hero.SpecialItems}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="197" VerticalAlignment="Top" Width="162" Margin="13,445,0,0"/>
                     <Button x:Name="buttonThrowItem" Content="{Core:Translator Text=ThrowItem}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="97,368,0,0" FontSize="9" Command="{Binding ThrowLootCommand}" CommandParameter="{Binding SelectedItem}" />
                     <Button x:Name="buttonUseItem" Content="{Core:Translator Text=UseItem}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="17,368,0,0" FontSize="9" Command="{Binding UseItemCommand}" CommandParameter="{Binding SelectedItem}" />
                     <Button x:Name="buttonThrowWeapon" Content="{Core:Translator Text=ThrowWeapon}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="40,180,0,0" FontSize="9" Command="{Binding ThrowLootCommand}" CommandParameter="{Binding SelectedWeapon}" />

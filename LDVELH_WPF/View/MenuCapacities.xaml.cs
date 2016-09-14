@@ -10,7 +10,7 @@ namespace LDVELH_WPF
     /// </summary>
     public partial class MenuCapacities : Window
     {
-        static readonly int allowedNumberCapacities = 5;
+        static readonly int AllowedNumberCapacities = 5;
 
         public MenuCapacities()
         {
@@ -28,61 +28,61 @@ namespace LDVELH_WPF
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Hero Hero = new Hero(labelHeroName.Content.ToString());
-            int numberOfCapacities = 0;
-            foreach (var item in ((Grid)(groupBoxCapacities.Content)).Children)
+            int NumberOfCapacities = 0;
+            foreach (var Item in ((Grid)(groupBoxCapacities.Content)).Children)
             {
-                if (item is CapacityCheckBox)
+                if (Item is CapacityCheckBox)
                 {
-                    CapacityCheckBox checkbox = (CapacityCheckBox)item;
+                    CapacityCheckBox checkbox = (CapacityCheckBox)Item;
                     if ((bool)checkbox.IsChecked)
                     {
-                        numberOfCapacities++;
+                        NumberOfCapacities++;
                     }
 
                 }
             }
-            if (numberOfCapacities != allowedNumberCapacities)
+            if (NumberOfCapacities != AllowedNumberCapacities)
             {
-                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("YouMustSelect") + " " + allowedNumberCapacities + " " + GlobalTranslator.Instance.translator.ProvideValue("Capacities") + " !");
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("YouMustSelect") + " " + AllowedNumberCapacities + " " + GlobalTranslator.Instance.translator.ProvideValue("Capacities") + " !");
                 return;
             }
-            foreach (var item in ((Grid)(groupBoxCapacities.Content)).Children)
+            foreach (var Item in ((Grid)(groupBoxCapacities.Content)).Children)
             {
-                if (item is CapacityCheckBox)
+                if (Item is CapacityCheckBox)
                 {
-                    CapacityCheckBox checkbox = (CapacityCheckBox)item;
+                    CapacityCheckBox checkbox = (CapacityCheckBox)Item;
                     if ((bool)checkbox.IsChecked)
                     {
-                        Hero.addCapacity(checkbox.myCapacity);
+                        Hero.AddCapacity(checkbox.MyCapacity);
                     }
 
                 }
             }
 
-            MainWindow mainWindow = new MainWindow() { DataContext = new MainWindowViewModel(Hero, false) };
-            mainWindow.Show();
+            MainWindow MainWindow = new MainWindow() { DataContext = new MainWindowViewModel(Hero, false) };
+            MainWindow.Show();
             this.Close();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            int top = 0;
-            int bottom = 0;
-            int left = 0;
-            int right = 0;
-            foreach (CapacityType capaType in Enum.GetValues(typeof(CapacityType)))
+            int Top = 0;
+            int Bottom = 0;
+            int Left = 0;
+            int Right = 0;
+            foreach (CapacityType CapaType in Enum.GetValues(typeof(CapacityType)))
             {
-                Capacity myCapacity = new Capacity(capaType);
-                CapacityCheckBox checkbox = new CapacityCheckBox();
-                checkbox.Name = capaType.ToString();
-                checkbox.myCapacity = myCapacity;
-                checkbox.Margin = new Thickness(left, top, right, bottom);
-                Label label = new Label();
-                label.Content = myCapacity.CapacityKind.GetTranslation(); 
-                label.Margin = new Thickness(left+20, top - 5, 0, 0);
-                ((Grid)(groupBoxCapacities.Content)).Children.Add(checkbox);
-                ((Grid)(groupBoxCapacities.Content)).Children.Add(label);
-                top += 20;
+                Capacity myCapacity = new Capacity(CapaType);
+                CapacityCheckBox Checkbox = new CapacityCheckBox();
+                Checkbox.Name = CapaType.ToString();
+                Checkbox.MyCapacity = myCapacity;
+                Checkbox.Margin = new Thickness(Left, Top, Right, Bottom);
+                Label Label = new Label();
+                Label.Content = myCapacity.CapacityKind.GetTranslation(); 
+                Label.Margin = new Thickness(Left+20, Top - 5, 0, 0);
+                ((Grid)(groupBoxCapacities.Content)).Children.Add(Checkbox);
+                ((Grid)(groupBoxCapacities.Content)).Children.Add(Label);
+                Top += 20;
             }
         }
     }
@@ -90,7 +90,7 @@ namespace LDVELH_WPF
     public class CapacityCheckBox : CheckBox
     {
         Capacity _myCapacity;
-        public Capacity myCapacity
+        public Capacity MyCapacity
         {
             get { return _myCapacity; }
             set { _myCapacity = value; }

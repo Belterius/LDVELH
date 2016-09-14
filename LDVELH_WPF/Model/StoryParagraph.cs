@@ -21,7 +21,7 @@ namespace LDVELH_WPF
                 }
             }
         }
-        List<Event> decision;
+        List<Event> Decision;
         int _ParagraphNumber;
         public int ParagraphNumber
         {
@@ -37,42 +37,42 @@ namespace LDVELH_WPF
                 }
             }
         }
-        List<Event> mainEvents;
+        List<Event> MainEvents;
 
         public StoryParagraph(string contentText, int paragraphNumber)
         {
             this.ContentText = contentText;
             this.ParagraphNumber = paragraphNumber;
-            decision = new List<Event>();
-            mainEvents = new List<Event>();
+            Decision = new List<Event>();
+            MainEvents = new List<Event>();
         }
 
-        public void addDecision(Event decision){
-            this.decision.Add(decision);
+        public void AddDecision(Event decision){
+            this.Decision.Add(decision);
         }
-        public void addDecision(List<Event> decision)
+        public void AddDecision(List<Event> decision)
         {
-            foreach (Event eventDecision in decision)
+            foreach (Event EventDecision in decision)
             {
-                this.decision.Add(eventDecision);
+                this.Decision.Add(EventDecision);
             }
         }
-        public void addMainEvent(Event mainEvent)
+        public void AddMainEvent(Event mainEvent)
         {
-            this.mainEvents.Add(mainEvent);
+            this.MainEvents.Add(mainEvent);
         }
         
-        public List<Event> getListDecision
+        public List<Event> GetListDecision
         {
-            get { return decision; }
+            get { return Decision; }
         }
-        public void resolve(Story story)
+        public void Resolve(Story story)
         {
-            foreach (Event mainEvent in mainEvents)
+            foreach (Event MainEvent in MainEvents)
             {
                 try
                 {
-                    mainEvent.resolveEvent(story);
+                    MainEvent.ResolveEvent(story);
                 }
                 catch(YouAreDeadException)
                 {
@@ -87,9 +87,9 @@ namespace LDVELH_WPF
                     throw;
                 }
             }
-            if(!mainEvents.OfType<FightEvent>().Any())
+            if(!MainEvents.OfType<FightEvent>().Any())
             {
-                story.getHero.rest();
+                story.PlayerHero.Rest();
             }
         }
     }

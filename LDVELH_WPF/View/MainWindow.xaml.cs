@@ -11,7 +11,7 @@ namespace LDVELH_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainWindowViewModel vm;
+        MainWindowViewModel DataContextViewModel;
 
         public MainWindow()
         {
@@ -21,14 +21,14 @@ namespace LDVELH_WPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            vm = (MainWindowViewModel) DataContext;
-            vm.ActionButtonChanged += Vm_ActionButtonChanged;
-            generatePlayerPossibleDecision(vm.MyStory);
+            DataContextViewModel = (MainWindowViewModel) DataContext;
+            DataContextViewModel.ActionButtonChanged += Vm_ActionButtonChanged;
+            GeneratePlayerPossibleDecision(DataContextViewModel.MyStory);
         }
 
         private void Vm_ActionButtonChanged()
         {
-            generatePlayerPossibleDecision(vm.MyStory);
+            GeneratePlayerPossibleDecision(DataContextViewModel.MyStory);
         }
 
         private void TranslateLabel()
@@ -53,43 +53,43 @@ namespace LDVELH_WPF
         }
 
         /********************************************************/
-        //The following function generate View elements, they REQUIRE to be present in the view, as ViewModel should NOT be aware of the View
-        private void generatePlayerPossibleDecision(Story story)
+        //The following functions generate View elements, they REQUIRE to be present in the view, as ViewModel should NOT be aware of the View
+        private void GeneratePlayerPossibleDecision(Story story)
         {
-            clearOldPossibleDecision();
-            generateButtonPossibleDecision(story);
-            placeButtonPossibleDecision(groupBoxChoices);
+            ClearOldPossibleDecision();
+            GenerateButtonPossibleDecision(story);
+            PlaceButtonPossibleDecision(groupBoxChoices);
         }
-        private void clearOldPossibleDecision()
+        private void ClearOldPossibleDecision()
         {
             ((Grid)(groupBoxChoices.Content)).Children.Clear();
         }
-        private void generateButtonPossibleDecision(Story story)
+        private void GenerateButtonPossibleDecision(Story story)
         {
-            foreach (Event possibleEvent in story.ActualParagraph.getListDecision)
+            foreach (Event PossibleEvent in story.ActualParagraph.GetListDecision)
             {
-                if (ShouldGenerateButton(possibleEvent, story))
+                if (ShouldGenerateButton(PossibleEvent, story))
                 {
-                    Button buttonDecision = new Button();
-                    buttonDecision.Content = possibleEvent.TriggerMessage;
-                    buttonDecision.Click += delegate {
+                    Button ButtonDecision = new Button();
+                    ButtonDecision.Content = PossibleEvent.TriggerMessage;
+                    ButtonDecision.Click += delegate {
                         try
                         {
-                            possibleEvent.resolveEvent(story);
-                            if (possibleEvent is LootEvent)
+                            PossibleEvent.ResolveEvent(story);
+                            if (PossibleEvent is LootEvent)
                             {
                                 //A LootEvent should only be done once, it is handled by the code but it's more user friendly to disable the button once the action is not possible anymore
-                                buttonDecision.IsEnabled = !(((LootEvent)possibleEvent).Done);
+                                ButtonDecision.IsEnabled = !(((LootEvent)PossibleEvent).Done);
                             }
                         }
                         catch (YouAreDeadException)
                         {
-                            vm.handleDeath(story);
+                            DataContextViewModel.handleDeath(story);
                         }
                     };
-                    ((Grid)(groupBoxChoices.Content)).Children.Add(buttonDecision);
-                    buttonDecision.HorizontalAlignment = HorizontalAlignment.Center;
-                    buttonDecision.VerticalAlignment = VerticalAlignment.Center;
+                    ((Grid)(groupBoxChoices.Content)).Children.Add(ButtonDecision);
+                    ButtonDecision.HorizontalAlignment = HorizontalAlignment.Center;
+                    ButtonDecision.VerticalAlignment = VerticalAlignment.Center;
                 }
             }
             this.UpdateLayout();
@@ -98,61 +98,61 @@ namespace LDVELH_WPF
         {
             if (possibleEvent is CapacityEvent)
             {
-                if (!story.getHero.possesCapacity(((CapacityEvent)possibleEvent).CapacityRequiered))
+                if (!story.PlayerHero.PossesCapacity(((CapacityEvent)possibleEvent).CapacityRequiered))
                 {
                     return false;
                 }
             }
             if (possibleEvent is ItemRequieredEvent)
             {
-                if (!story.getHero.possesItem(((ItemRequieredEvent)possibleEvent).itemRequiered))
+                if (!story.PlayerHero.PossesItem(((ItemRequieredEvent)possibleEvent).ItemName))
                 {
                     return false;
                 }
             }
             return true;
         }
-        public double setXPosition(Button button, GroupBox groupBox)
+        public double SetXPosition(Button button, GroupBox groupBox)
         {
-            double totalX = ((Grid)(groupBox.Content)).ActualWidth;
-            double mySize = button.ActualWidth;
-            return (totalX - mySize) / 2;
+            double TotalX = ((Grid)(groupBox.Content)).ActualWidth;
+            double MySize = button.ActualWidth;
+            return (TotalX - MySize) / 2;
         }
-        int marginBetweenButton = 6;
-        public double calculateYPosition(double totalHeightButton, int numberButton, GroupBox groupBox)
+        int MarginBetweenButton = 6;
+        public double CalculateYPosition(double totalHeightButton, int numberButton, GroupBox groupBox)
         {
             double availableY = ((Grid)(groupBox.Content)).ActualHeight;
 
-            return (availableY - totalHeightButton - marginBetweenButton * numberButton - 1) / 2;
+            return (availableY - totalHeightButton - MarginBetweenButton * numberButton - 1) / 2;
         }
-        public double totalHeightButton(GroupBox groupBox)
+        public double TotalHeightButton(GroupBox groupBox)
         {
-            double totalHeight = 0;
-            foreach (Button button in ((Grid)(groupBoxChoices.Content)).Children)
+            double TotalHeight = 0;
+            foreach (Button Button in ((Grid)(groupBoxChoices.Content)).Children)
             {
-                totalHeight += button.ActualHeight;
+                TotalHeight += Button.ActualHeight;
             }
-            return totalHeight;
+            return TotalHeight;
         }
-        public int totalNumberButton(GroupBox groupBox)
+        public int TotalNumberButton(GroupBox groupBox)
         {
-            int totalNumberButton = 0;
-            foreach (Button button in ((Grid)(groupBoxChoices.Content)).Children)
+            int TotalNumberButton = 0;
+            foreach (Button Button in ((Grid)(groupBoxChoices.Content)).Children)
             {
-                totalNumberButton++;
+                TotalNumberButton++;
             }
-            return totalNumberButton;
+            return TotalNumberButton;
         }
-        public void placeButtonPossibleDecision(GroupBox groupBox)
+        public void PlaceButtonPossibleDecision(GroupBox groupBox)
         {
-            double topMargin = calculateYPosition(totalHeightButton(groupBox), totalNumberButton(groupBox), groupBox);
-            double previousButtonY = topMargin - marginBetweenButton; //we don't need the margin for the first button
-            double previousButtonHeight = 0;
-            foreach (Button button in ((Grid)(groupBoxChoices.Content)).Children)
+            double TopMargin = CalculateYPosition(TotalHeightButton(groupBox), TotalNumberButton(groupBox), groupBox);
+            double PreviousButtonY = TopMargin - MarginBetweenButton; //we don't need the margin for the first button
+            double PreviousButtonHeight = 0;
+            foreach (Button Button in ((Grid)(groupBoxChoices.Content)).Children)
             {
-                button.Margin = new Thickness(setXPosition(button, groupBox), previousButtonY, setXPosition(button, groupBox), (((Grid)(groupBox.Content)).ActualHeight - button.ActualHeight - previousButtonY));
-                previousButtonHeight = button.ActualHeight;
-                previousButtonY = (previousButtonY + previousButtonHeight + marginBetweenButton);
+                Button.Margin = new Thickness(SetXPosition(Button, groupBox), PreviousButtonY, SetXPosition(Button, groupBox), (((Grid)(groupBox.Content)).ActualHeight - Button.ActualHeight - PreviousButtonY));
+                PreviousButtonHeight = Button.ActualHeight;
+                PreviousButtonY = (PreviousButtonY + PreviousButtonHeight + MarginBetweenButton);
             }
         }
     }

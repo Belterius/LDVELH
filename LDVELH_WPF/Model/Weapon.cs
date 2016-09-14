@@ -48,13 +48,13 @@ namespace LDVELH_WPF
             this.Name = name;
             this.WeaponType = weaponType;
         }
-        public override void remove(Hero hero)
+        public override void Remove(Hero hero)
         {
-            hero.weaponHolder.Remove(this);
+            hero.WeaponHolder.Remove(this);
         }
-        public override void add(Hero hero)
+        public override void Add(Hero hero)
         {
-            hero.weaponHolder.Add(this);
+            hero.WeaponHolder.Add(this);
         }
 
         public override bool Equals(object obj)
@@ -63,10 +63,10 @@ namespace LDVELH_WPF
                 return false;
 
 
-            Weapon weapon = (Weapon)obj;
-            if (this.Name != weapon.Name)
+            Weapon Weapon = (Weapon)obj;
+            if (this.Name != Weapon.Name)
                 return false;
-            if (this.WeaponType != weapon.WeaponType)
+            if (this.WeaponType != Weapon.WeaponType)
                 return false;
 
             return true;

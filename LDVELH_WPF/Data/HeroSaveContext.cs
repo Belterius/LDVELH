@@ -11,8 +11,8 @@
         {
             modelBuilder.Conventions.Add(new NonPublicColumnAttributeConvention());
 
-            modelBuilder.Entity<Hero>().HasOptional(p => p.weaponHolder).WithOptionalDependent().WillCascadeOnDelete(true);
-            modelBuilder.Entity<Hero>().HasOptional(p => p.backPack).WithOptionalDependent().WillCascadeOnDelete(true);
+            modelBuilder.Entity<Hero>().HasOptional(p => p.WeaponHolder).WithOptionalDependent().WillCascadeOnDelete(true);
+            modelBuilder.Entity<Hero>().HasOptional(p => p.BackPack).WithOptionalDependent().WillCascadeOnDelete(true);
 
 
         }

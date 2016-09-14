@@ -6,7 +6,7 @@ namespace LDVELH_WPF
 {
     public class Enemy : Character
     {
-        public static readonly List<EnnemyTypes> enemiesWeakToPhychic = new List<EnnemyTypes> { EnnemyTypes.Human, EnnemyTypes.Beast };
+        public static readonly List<EnnemyTypes> EnemiesWeakToPhychic = new List<EnnemyTypes> { EnnemyTypes.Human, EnnemyTypes.Beast };
 
 
         [Column("Type")]
@@ -21,9 +21,9 @@ namespace LDVELH_WPF
             this.ClassType = ennemyType;
         }
 
-        public bool isWeakToPhychic()
+        public bool IsWeakToPhychic()
         {
-            if (enemiesWeakToPhychic.Contains(ClassType))
+            if (EnemiesWeakToPhychic.Contains(ClassType))
             {
                 return true;
             }

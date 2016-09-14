@@ -17,7 +17,7 @@ namespace LDVELH_Tests
 
             basicWeaponHolder.Add(basicSword1);
 
-            Assert.AreEqual(true, basicWeaponHolder.getWeapons.Contains(basicSword1));
+            Assert.AreEqual(true, basicWeaponHolder.GetWeapons.Contains(basicSword1));
 
         }
 
@@ -33,8 +33,8 @@ namespace LDVELH_Tests
             basicWeaponHolder.Add(basicSword1);
             basicWeaponHolder.Add(advancedSword);
 
-            Assert.AreEqual(true, basicWeaponHolder.getWeapons.Contains(basicSword1));
-            Assert.AreEqual(true, basicWeaponHolder.getWeapons.Contains(advancedSword));
+            Assert.AreEqual(true, basicWeaponHolder.GetWeapons.Contains(basicSword1));
+            Assert.AreEqual(true, basicWeaponHolder.GetWeapons.Contains(advancedSword));
 
         }
 
@@ -57,8 +57,8 @@ namespace LDVELH_Tests
             }
             catch (WeaponHolderFullException)
             {
-                Assert.AreEqual(true, basicWeaponHolder.getWeapons.Contains(basicSword1));
-                Assert.AreEqual(true, basicWeaponHolder.getWeapons.Contains(advancedSword));
+                Assert.AreEqual(true, basicWeaponHolder.GetWeapons.Contains(basicSword1));
+                Assert.AreEqual(true, basicWeaponHolder.GetWeapons.Contains(advancedSword));
             }
 
         }

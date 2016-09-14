@@ -49,7 +49,7 @@ namespace LDVELH_WPF
                 return _Done;
             }
         }
-        public abstract void resolveEvent(Story story);
+        public abstract void ResolveEvent(Story story);
         
     }
     public class CapacityEvent : Event
@@ -71,9 +71,9 @@ namespace LDVELH_WPF
             this.capacityType = capacityType;
             this.TriggerMessage = triggerMessage;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
-            story.addParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
+            story.AddParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
             story.Move(this.DestinationNumber);
         }
         public CapacityType CapacityRequiered{
@@ -82,33 +82,33 @@ namespace LDVELH_WPF
     }
     public class LootEvent : Event
     {
-        List<Loot> loot;
+        List<Loot> Loot;
         bool moveAction { get; set; }
 
         private LootEvent()
         {
-            this.loot = new List<Loot>();
+            this.Loot = new List<Loot>();
         }
         public LootEvent(Loot item, string triggerMessage = "")
         {
             this.TriggerMessage = triggerMessage;
-            this.loot = new List<Loot>();
-            this.loot.Add(item);
+            this.Loot = new List<Loot>();
+            this.Loot.Add(item);
         }
         public LootEvent(List<Loot> listItem, string triggerMessage = "")
         {
-            this.loot = listItem;
+            this.Loot = listItem;
             this.TriggerMessage = triggerMessage;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
             if (!_Done)
             {
-                foreach (Loot lootItem in loot)
+                foreach (Loot lootItem in Loot)
                 {
                     try
                     {
-                        story.getHero.addLoot(lootItem);
+                        story.PlayerHero.AddLoot(lootItem);
                         _Done = true;
                     }
                     catch (BackPackFullException)
@@ -129,33 +129,33 @@ namespace LDVELH_WPF
     }
     public class BuyEvent : Event
     {
-        List<Event> payableEvent;
+        List<Event> PayableEvent;
         int price;
         private BuyEvent()
         {
-            this.payableEvent = new List<Event>();
+            this.PayableEvent = new List<Event>();
         }
         public BuyEvent(Event anEvent, int price, string triggerMessage)
         {
-            this.payableEvent = new List<Event>();
-            this.payableEvent.Add(anEvent);
+            this.PayableEvent = new List<Event>();
+            this.PayableEvent.Add(anEvent);
             this.price = price;
             this.TriggerMessage = triggerMessage + " (" + price + " "+ GlobalTranslator.Instance.translator.ProvideValue("Gold")+" )";
         }
         public BuyEvent(List<Event> listEvent, int price, string triggerMessage)
         {
             this.price = price;
-            this.payableEvent = listEvent;
+            this.PayableEvent = listEvent;
             this.TriggerMessage = triggerMessage + " (" + price + " " + GlobalTranslator.Instance.translator.ProvideValue("Gold") + " )";
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
             try
             {
-                story.getHero.removeGold(this.price);
-                foreach (Event payedEvent in payableEvent)
+                story.PlayerHero.RemoveGold(this.price);
+                foreach (Event payedEvent in PayableEvent)
                 {
-                        payedEvent.resolveEvent(story);
+                        payedEvent.ResolveEvent(story);
                 }
 
             }
@@ -170,47 +170,47 @@ namespace LDVELH_WPF
     }
     public class DebuffEvent : Event
     {
-        int debuff;
-        bool alwaysHappen = false;
-        Item requieredItem = null;
-        bool capacityRequiered = false;
-        CapacityType requieredCapacity;
+        int Debuff;
+        bool AlwaysHappen = false;
+        Item RequieredItem = null;
+        bool CapacityRequiered = false;
+        CapacityType RequieredCapacity;
         public DebuffEvent(int debuff)
         {
-            alwaysHappen = true;
+            AlwaysHappen = true;
         }
         public DebuffEvent(Item requieredItem, int debuff)
         {
-            this.requieredItem = requieredItem;
-            this.debuff = debuff;
+            this.RequieredItem = requieredItem;
+            this.Debuff = debuff;
         }
         public DebuffEvent(CapacityType requieredCapacity, int debuff)
         {
-            this.requieredCapacity = requieredCapacity;
-            this.capacityRequiered = true;
-            this.debuff = debuff;
+            this.RequieredCapacity = requieredCapacity;
+            this.CapacityRequiered = true;
+            this.Debuff = debuff;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
-            if(capacityRequiered)
+            if(CapacityRequiered)
             {
-                if (!story.getHero.possesCapacity(requieredCapacity))
+                if (!story.PlayerHero.PossesCapacity(RequieredCapacity))
                 {
-                    story.getHero.addTempDebuff(debuff);
+                    story.PlayerHero.AddTempDebuff(Debuff);
                     return;
                 }
             }
-            if (requieredItem != null)
+            if (RequieredItem != null)
             {
-                if (!story.getHero.possesItem(requieredItem.Name))
+                if (!story.PlayerHero.PossesItem(RequieredItem.Name))
                 {
-                    story.getHero.addTempDebuff(debuff);
+                    story.PlayerHero.AddTempDebuff(Debuff);
                     return;
                 }
             }
-            if (alwaysHappen)
+            if (AlwaysHappen)
             {
-                story.getHero.addTempDebuff(debuff);
+                story.PlayerHero.AddTempDebuff(Debuff);
                 return;
             }
         }
@@ -226,12 +226,12 @@ namespace LDVELH_WPF
         {
             this.ennemy = ennemy;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
             try
             {
                 while (!ShowMyDialogBox(story, ennemy));
-                story.getHero.removeTempDebuff();
+                story.PlayerHero.RemoveTempDebuff();
             }
             catch (YouAreDeadException)
             {
@@ -241,7 +241,7 @@ namespace LDVELH_WPF
         private bool ShowMyDialogBox(Story story, Enemy ennemy)
         {
 
-            MessageBoxFight testDialog = new MessageBoxFight(story.getHero, ennemy);
+            MessageBoxFight testDialog = new MessageBoxFight(story.PlayerHero, ennemy);
 
             if (testDialog.ShowDialog() == true)
             {
@@ -258,27 +258,27 @@ namespace LDVELH_WPF
     }
     public class RunEvent : FightEvent
     {
-        int ranTurn;
-        Event runEvent;
+        int RanTurn;
+        Event RunningEvent;
 
         public RunEvent(Enemy ennemy, int ranTurn, Event runEvent)
         {
             this.ennemy = ennemy;
-            this.runEvent = runEvent;
-            this.ranTurn = ranTurn;
+            this.RunningEvent = runEvent;
+            this.RanTurn = ranTurn;
         }
         public RunEvent(int destinationNumber, Enemy ennemy, int ranTurn, Event runEvent)
         {
             this.ennemy = ennemy;
-            this.runEvent = runEvent;
+            this.RunningEvent = runEvent;
             this.DestinationNumber = destinationNumber;
-            this.ranTurn = ranTurn;
+            this.RanTurn = ranTurn;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
             try
             {
-                while (!ShowMyDialogBox(story, ennemy, ranTurn, runEvent)) ;
+                while (!ShowMyDialogBox(story, ennemy, RanTurn, RunningEvent)) ;
             }
             catch (YouAreDeadException)
             {
@@ -288,14 +288,14 @@ namespace LDVELH_WPF
         private bool ShowMyDialogBox(Story story, Enemy ennemy, int ranTurn, Event runEvent)
         {
 
-            MessageBoxFight testDialog = new MessageBoxFight(story.getHero, ennemy, ranTurn);
+            MessageBoxFight testDialog = new MessageBoxFight(story.PlayerHero, ennemy, ranTurn);
 
             if (testDialog.ShowDialog() == true)
             {
                 if (testDialog.DidRanAway)
                 {
-                    story.ActualParagraph.getListDecision.Clear();
-                    story.ActualParagraph.getListDecision.Add(runEvent);
+                    story.ActualParagraph.GetListDecision.Clear();
+                    story.ActualParagraph.GetListDecision.Add(runEvent);
                 }
                 return true;
             }
@@ -319,9 +319,9 @@ namespace LDVELH_WPF
             this.DestinationNumber = destinationNumber;
             this.TriggerMessage = triggerMessage;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
-            story.addParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
+            story.AddParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
             story.Move(this.DestinationNumber);
         }
     }
@@ -336,16 +336,27 @@ namespace LDVELH_WPF
             this.DestinationNumber = destinationNumber;
             this.TriggerMessage = triggerMessage;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
-            story.getHero.mealTime();
-            story.addParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
+            story.PlayerHero.MealTime();
+            story.AddParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
             story.Move(this.DestinationNumber);
         }
     }
     public class ItemRequieredEvent : Event
     {
-        string itemName;
+        string _ItemName;
+        public string ItemName
+        {
+            get { return _ItemName; }
+            private set
+            {
+                if (_ItemName != value)
+                {
+                    _ItemName = value;
+                }
+            }
+        }
         private ItemRequieredEvent()
         {
 
@@ -353,22 +364,19 @@ namespace LDVELH_WPF
         public ItemRequieredEvent(int destinationNumber, string itemName)
         {
             this.DestinationNumber = destinationNumber;
-            this.itemName = itemName;
+            this.ItemName = itemName;
             this.TriggerMessage = GlobalTranslator.Instance.translator.ProvideValue("UseItem") + itemName;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
-            story.addParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
+            story.AddParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
             story.Move(this.DestinationNumber);
         }
-        public string itemRequiered
-        {
-            get { return itemName; }
-        }
+        
     }
     public class DeathEvent : Event
     {
-        string specialMessage = "";
+        string SpecialMessage = "";
         public DeathEvent()
         {
         }
@@ -379,91 +387,91 @@ namespace LDVELH_WPF
         public DeathEvent(string triggerMessage, string specialMessage)
         {
             this.TriggerMessage = triggerMessage;
-            this.specialMessage = specialMessage;
+            this.SpecialMessage = specialMessage;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
-            story.getHero.kill();
-            throw new YouAreDeadException(specialMessage + GlobalTranslator.Instance.translator.ProvideValue("YouDied"));
+            story.PlayerHero.Kill();
+            throw new YouAreDeadException(SpecialMessage + GlobalTranslator.Instance.translator.ProvideValue("YouDied"));
         }
     }
     public class DammageEvent : Event
     {
-        string specialMessage = "";
-        int damageAmount;
+        string SpecialMessage = "";
+        int DamageAmount;
         public DammageEvent(int damageAmount)
         {
-            this.damageAmount = damageAmount;
+            this.DamageAmount = damageAmount;
         }
         public DammageEvent(string triggerMessage, int damageAmount)
         {
-            this.damageAmount = damageAmount;
+            this.DamageAmount = damageAmount;
             this.TriggerMessage = triggerMessage;
         }
         public DammageEvent(string triggerMessage, string specialMessage, int damageAmount)
         {
-            this.damageAmount = damageAmount;
+            this.DamageAmount = damageAmount;
             this.TriggerMessage = triggerMessage;
-            this.specialMessage = specialMessage;
+            this.SpecialMessage = specialMessage;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
-            if (this.specialMessage != "")
-                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("TakeDamage")+ " " + specialMessage);
-            story.getHero.takeDamage(damageAmount);
+            if (this.SpecialMessage != "")
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("TakeDamage")+ " " + SpecialMessage);
+            story.PlayerHero.TakeDamage(DamageAmount);
         }
     }
     public class DammageAgilityEvent : Event
     {
-        string specialMessage = "";
-        int damageAmount;
+        string SpecialMessage = "";
+        int DamageAmount;
         public DammageAgilityEvent(int damageAmount)
         {
-            this.damageAmount = damageAmount;
+            this.DamageAmount = damageAmount;
         }
         public DammageAgilityEvent(string triggerMessage, int damageAmount)
         {
-            this.damageAmount = damageAmount;
+            this.DamageAmount = damageAmount;
             this.TriggerMessage = triggerMessage;
         }
         public DammageAgilityEvent(string triggerMessage, string specialMessage, int damageAmount)
         {
-            this.damageAmount = damageAmount;
+            this.DamageAmount = damageAmount;
             this.TriggerMessage = triggerMessage;
-            this.specialMessage = specialMessage;
+            this.SpecialMessage = specialMessage;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
-            if (this.specialMessage != "")
-                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("DebuffAgility") +" " + specialMessage);
-            story.getHero.decreaseAgility(damageAmount);
+            if (this.SpecialMessage != "")
+                MessageBox.Show(GlobalTranslator.Instance.translator.ProvideValue("DebuffAgility") +" " + SpecialMessage);
+            story.PlayerHero.DecreaseAgility(DamageAmount);
         }
     }
     public class LinkedEvent : Event
     {
-        List<Event> linkedEvent;
+        List<Event> ListLinkedEvent;
         public LinkedEvent(int destinationNumber)
         {
             this.DestinationNumber = destinationNumber;
-            linkedEvent = new List<Event>();
+            ListLinkedEvent = new List<Event>();
         }
         public LinkedEvent(int destinationNumber, string triggerMessage)
         {
             this.DestinationNumber = destinationNumber;
             this.TriggerMessage = triggerMessage;
-            linkedEvent = new List<Event>();
+            ListLinkedEvent = new List<Event>();
         }
-        public void addEvent(Event newEvent)
+        public void AddEvent(Event newEvent)
         {
-            this.linkedEvent.Add(newEvent);
+            this.ListLinkedEvent.Add(newEvent);
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
-            foreach(Event linkEvent in this.linkedEvent)
+            foreach(Event linkEvent in this.ListLinkedEvent)
             {
-                linkEvent.resolveEvent(story);
+                linkEvent.ResolveEvent(story);
             }
-            story.addParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
+            story.AddParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
             story.Move(this.DestinationNumber);
         }
     }
@@ -476,9 +484,9 @@ namespace LDVELH_WPF
         {
             this.DestinationNumber = destinationNumber;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
-            story.getHero.removeBackPack();
+            story.PlayerHero.RemoveBackPack();
         }
     }
     public class LoseWeaponHolder : Event
@@ -490,9 +498,9 @@ namespace LDVELH_WPF
         {
             this.DestinationNumber = destinationNumber;
         }
-        public override void resolveEvent(Story story)
+        public override void ResolveEvent(Story story)
         {
-            story.getHero.removeWeaponHolder();
+            story.PlayerHero.RemoveWeaponHolder();
         }
     }
 

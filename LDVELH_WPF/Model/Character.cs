@@ -80,25 +80,12 @@ namespace LDVELH_WPF
             }
         }
 
-        public string getName()
+        public void Kill()
         {
-            return Name;
-        }
-        public int getActualHitPoint()
-        {
-            return ActualHitPoint;
-        }
-        public int getBaseAgility()
-        {
-            return BaseAgility;
+            this.TakeDamage(this.ActualHitPoint);
         }
 
-        public void kill()
-        {
-            this.takeDamage(this.ActualHitPoint);
-        }
-
-        public void takeDamage(int damage)
+        public void TakeDamage(int damage)
         {
             this.ActualHitPoint -= damage;
             if (ActualHitPoint <= 0)

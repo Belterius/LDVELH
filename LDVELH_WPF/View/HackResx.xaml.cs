@@ -4,9 +4,13 @@ using System.Resources;
 using HtmlAgilityPack;
 namespace LDVELH_WPF
 {
-    /// <summary>
-    /// Interaction logic for HackResx.xaml
-    /// </summary>
+    /*********************************************************************************************************\
+   
+        This class is only here to do most of the work from generating the resource string file of the Lone Wolf Books from a corresponding PDF or text file.
+        It should NOT be used randomly.
+        As it will replace the resource file, make sur to back it up before trying anything.
+
+    /*********************************************************************************************************/
     public partial class HackResx : Window
     {
         private string frenchBook1 = @"C:\Users\lbailleul\Source\Repos\LDVELH\LDVELH_WPF\Resources\StringBook1.resx";
@@ -31,7 +35,7 @@ namespace LDVELH_WPF
 
                         resx.AddResource("Paragraph" + paragraph, newParag.ContentText);
                         int j = 0;
-                        foreach (Event Decision in newParag.getListDecision)
+                        foreach (Event Decision in newParag.GetListDecision)
                         {
                             if ((Decision is MoveEvent || Decision is CapacityEvent || Decision is RunEvent || Decision is MealEvent || Decision is ItemRequieredEvent || Decision is LinkedEvent || Decision is LoseBackPack || Decision is LoseWeaponHolder) && Decision.DestinationNumber.ToString() != null)
                             {

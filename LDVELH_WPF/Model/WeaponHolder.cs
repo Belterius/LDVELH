@@ -9,7 +9,7 @@ namespace LDVELH_WPF
 {
     public class WeaponHolder
     {
-        private int basicWeaponHolderSize = 2;
+        private int BasicWeaponHolderSize = 2;
 
         [Key]
         public int WeaponHolderID { get; set; }
@@ -29,41 +29,41 @@ namespace LDVELH_WPF
                 }
             }
         }
-        ObservableCollection<Weapon> weapons;
+        ObservableCollection<Weapon> Weapons;
 
 
         public WeaponHolder()
         {
-            this.WeaponHolderSize = basicWeaponHolderSize;
-            weapons = new ObservableCollection<Weapon>();
+            this.WeaponHolderSize = BasicWeaponHolderSize;
+            Weapons = new ObservableCollection<Weapon>();
         }
 
         public WeaponHolder(int maxWeapon)
         {
             this.WeaponHolderSize = maxWeapon;
-            weapons = new ObservableCollection<Weapon>();
+            Weapons = new ObservableCollection<Weapon>();
 
         }
 
         public void Add(Weapon weapon)
         {
-            if (this.weapons.Count >= this.WeaponHolderSize)
+            if (this.Weapons.Count >= this.WeaponHolderSize)
             {
                 throw new WeaponHolderFullException("Your weapon holder is full, throw a weapon to add a new one !");
             }
             else
             {
-                this.weapons.Add(weapon);
+                this.Weapons.Add(weapon);
             }
         }
         public void Remove(Weapon weapon)
         {
-            this.weapons.Remove(weapon);
+            this.Weapons.Remove(weapon);
         }
 
         public bool Contains(WeaponTypes weaponType)
         {
-            foreach (Weapon weapon in this.weapons)
+            foreach (Weapon weapon in this.Weapons)
             {
                 if (weapon.WeaponType == weaponType)
                 {
@@ -73,17 +73,17 @@ namespace LDVELH_WPF
             return false;
         }
 
-        public bool isEmpty()
+        public bool IsEmpty()
         {
-            if (this.weapons.Count == 0)
+            if (this.Weapons.Count == 0)
                 return true;
             else
                 return false;
         }
 
-        public ObservableCollection<Weapon> getWeapons
+        public ObservableCollection<Weapon> GetWeapons
         {
-            get { return weapons;}
+            get { return Weapons;}
         }
 
     }

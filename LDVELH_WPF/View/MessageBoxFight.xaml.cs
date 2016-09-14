@@ -16,10 +16,7 @@ namespace LDVELH_WPF
         //cf http://stackoverflow.com/questions/743906/how-to-hide-close-button-in-wpf-window/867080 for more details
         private const int GWL_STYLE = -16;
         private const int WS_SYSMENU = 0x80000;
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-        [DllImport("user32.dll")]
-        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+        
 
 
         Hero hero;
@@ -120,7 +117,7 @@ namespace LDVELH_WPF
         private void setAgility()
         {
             labelAgilityEnnemy.Content = ennemy.BaseAgility;
-            labelAgilityHero.Content = hero.getHeroAgilityInBattle(ennemy);
+            labelAgilityHero.Content = hero.GetHeroAgilityInBattle(ennemy);
         }
         private void setDamageTaken()
         {
@@ -137,11 +134,20 @@ namespace LDVELH_WPF
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var hwnd = new WindowInteropHelper(this).Handle;
-            SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
+            NativeMethods.SetWindowLong(hwnd, GWL_STYLE, NativeMethods.GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
         }
         public bool DidRanAway
         {
             get { return ranAway; }
         }
+        
     }
+    internal static class NativeMethods
+    {
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+        [DllImport("user32.dll")]
+        internal static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+    }
+
 }

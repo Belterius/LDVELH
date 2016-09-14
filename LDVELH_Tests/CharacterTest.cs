@@ -15,7 +15,7 @@ namespace LDVELH_Tests
 
             try
             {
-                myHero.kill();
+                myHero.Kill();
                 Assert.Fail();
             }
             catch (YouAreDeadException)
@@ -31,7 +31,7 @@ namespace LDVELH_Tests
             int myHealthPoint = myHero.ActualHitPoint;
             int damageTaken = DiceRoll.D10Roll();
 
-            myHero.takeDamage(damageTaken);
+            myHero.TakeDamage(damageTaken);
 
             Assert.AreEqual(myHealthPoint - damageTaken, myHero.ActualHitPoint);
         }

@@ -14,10 +14,10 @@ namespace LDVELH_Tests
             SpecialItem specialItemSame = new SpecialItemCombat("useless item", 1, 0);
             Hero hero = new Hero("hero");
 
-            hero.addLoot(specialItem);
+            hero.AddLoot(specialItem);
 
-            Assert.AreEqual(true, hero.getSpecialItems.Contains(specialItem));
-            Assert.AreEqual(true, hero.getSpecialItems.Contains(specialItemSame));
+            Assert.AreEqual(true, hero.GetSpecialItems.Contains(specialItem));
+            Assert.AreEqual(true, hero.GetSpecialItems.Contains(specialItemSame));
 
         }
 
@@ -26,14 +26,14 @@ namespace LDVELH_Tests
         {
             SpecialItem specialItem = new SpecialItemCombat("useless item", 1, 0);
             Hero hero = new Hero("hero");
-            hero.addLoot(specialItem);
+            hero.AddLoot(specialItem);
 
-            Assert.AreEqual(true, hero.getSpecialItems.Contains(specialItem));
+            Assert.AreEqual(true, hero.GetSpecialItems.Contains(specialItem));
 
             SpecialItem specialItemRemoval = new SpecialItemCombat("useless item", 1, 0);
-            hero.removeLoot(specialItemRemoval);
+            hero.RemoveLoot(specialItemRemoval);
 
-            Assert.AreEqual(false, hero.getSpecialItems.Contains(specialItem));
+            Assert.AreEqual(false, hero.GetSpecialItems.Contains(specialItem));
 
         }
 
@@ -47,7 +47,7 @@ namespace LDVELH_Tests
             int heroAgility = hero.BaseAgility;
             int heroHP = hero.MaxHitPoint;
 
-            hero.addLoot(specialItem);
+            hero.AddLoot(specialItem);
 
             Assert.AreEqual(heroAgility + bonusAgi, hero.BaseAgility);
             Assert.AreEqual(heroHP + bonusHP, hero.MaxHitPoint);
@@ -61,9 +61,9 @@ namespace LDVELH_Tests
             Hero hero = new Hero("hero");
             int heroAgility = hero.BaseAgility;
             int heroHP = hero.MaxHitPoint;
-            hero.addLoot(specialItem);
+            hero.AddLoot(specialItem);
 
-            hero.removeLoot(specialItem);
+            hero.RemoveLoot(specialItem);
 
             Assert.AreEqual(heroAgility, hero.BaseAgility);
             Assert.AreEqual(heroHP, hero.MaxHitPoint);
