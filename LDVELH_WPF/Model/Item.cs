@@ -295,7 +295,7 @@ namespace LDVELH_WPF
 
         public override void use(Hero hero)
         {
-            throw new CannotUseItemException("You can't use this item !");
+            throw new CannotUseItemException(GlobalTranslator.Instance.translator.ProvideValue("ErrorUseItem"));
         }
     }
 

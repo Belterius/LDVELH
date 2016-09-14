@@ -116,7 +116,6 @@
     <Compile Include="DiceRoll.cs" />
     <Compile Include="Model\Ennemy.cs" />
     <Compile Include="Model\Event.cs" />
-    <Compile Include="EventHandlers.cs" />
     <Compile Include="GlobalFunction.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MenuCapacitiesViewModel.cs" />

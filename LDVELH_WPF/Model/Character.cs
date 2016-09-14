@@ -79,8 +79,6 @@ namespace LDVELH_WPF
                 }
             }
         }
-        public event HitPointHandler HitPointChanged;
-        public delegate void HitPointHandler(Hero m, int damage);
 
         public string getName()
         {
@@ -111,22 +109,8 @@ namespace LDVELH_WPF
                     throw new YouAreDeadException("You are dead");
                 }
             }
-
-            if (this is Hero)
-            {
-                lifePointHasChanged((Hero)this, damage);
-            }
-
         }
 
-        public void lifePointHasChanged(Hero hero, int damage)
-        {
-            HitPointHandler handler = HitPointChanged;
-            if (handler != null)
-            {
-                handler(hero, damage);
-            }
-        }
         protected void RaisePropertyChanged(string prop)
         {
             if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }

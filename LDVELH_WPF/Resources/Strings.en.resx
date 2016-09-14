@@ -391,4 +391,7 @@ At the foot of the hill, the path splits into two directions, both leading into 
   <data name="Disclaimer" xml:space="preserve">
     <value>Disclaimer : the content was translated as best as possible, but sadly there is still some formating problem, such as broken special characters, gameplay information still displayed, monster information in the main narration</value>
   </data>
+  <data name="ErrorUseItem" xml:space="preserve">
+    <value>You can't use that item !</value>
+  </data>
 </root>

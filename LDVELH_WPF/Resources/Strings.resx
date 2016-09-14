@@ -389,4 +389,7 @@ Il faut vous hâter, car quelque chose vous dit qu'il serait imprudent de vous a
   <data name="Disclaimer" xml:space="preserve">
     <value>Disclaimer</value>
   </data>
+  <data name="ErrorUseItem" xml:space="preserve">
+    <value>Vous ne pouvez pas utiliser cet objet !</value>
+  </data>
 </root>

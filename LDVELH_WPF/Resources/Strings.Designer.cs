@@ -295,6 +295,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous ne pouvez pas utiliser cet objet !.
+        /// </summary>
+        internal static string ErrorUseItem {
+            get {
+                return ResourceManager.GetString("ErrorUseItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Votre baudrier est plein ! vous devez jeter une arme avant de pouvoir en récupérer une nouvelle.
         /// </summary>
         internal static string ErrorWeaponHolderFull {
