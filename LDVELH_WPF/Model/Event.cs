@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LDVELH_WPF.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
@@ -217,20 +218,20 @@ namespace LDVELH_WPF
     }
     public class FightEvent : Event
     {
-        protected Enemy ennemy;
+        protected Enemy enemy;
 
         public FightEvent()
         {
         }
-        public FightEvent(Enemy ennemy)
+        public FightEvent(Enemy enemy)
         {
-            this.ennemy = ennemy;
+            this.enemy = enemy;
         }
         public override void ResolveEvent(Story story)
         {
             try
             {
-                while (!ShowMyDialogBox(story, ennemy));
+                while (!ShowMyDialogBox(story, enemy));
                 story.PlayerHero.RemoveTempDebuff();
             }
             catch (YouAreDeadException)
@@ -238,10 +239,10 @@ namespace LDVELH_WPF
                 throw;
             }
         }
-        private bool ShowMyDialogBox(Story story, Enemy ennemy)
+        private bool ShowMyDialogBox(Story story, Enemy enemy)
         {
 
-            MessageBoxFight testDialog = new MessageBoxFight(story.PlayerHero, ennemy);
+            MessageBoxFight testDialog = new MessageBoxFight() { DataContext = new FightViewModel(story.PlayerHero, enemy)};
 
             if (testDialog.ShowDialog() == true)
             {
@@ -261,15 +262,15 @@ namespace LDVELH_WPF
         int RanTurn;
         Event RunningEvent;
 
-        public RunEvent(Enemy ennemy, int ranTurn, Event runEvent)
+        public RunEvent(Enemy enemy, int ranTurn, Event runEvent)
         {
-            this.ennemy = ennemy;
+            this.enemy = enemy;
             this.RunningEvent = runEvent;
             this.RanTurn = ranTurn;
         }
-        public RunEvent(int destinationNumber, Enemy ennemy, int ranTurn, Event runEvent)
+        public RunEvent(int destinationNumber, Enemy enemy, int ranTurn, Event runEvent)
         {
-            this.ennemy = ennemy;
+            this.enemy = enemy;
             this.RunningEvent = runEvent;
             this.DestinationNumber = destinationNumber;
             this.RanTurn = ranTurn;
@@ -278,21 +279,21 @@ namespace LDVELH_WPF
         {
             try
             {
-                while (!ShowMyDialogBox(story, ennemy, RanTurn, RunningEvent)) ;
+                while (!ShowMyDialogBox(story, enemy, RanTurn, RunningEvent)) ;
             }
             catch (YouAreDeadException)
             {
                 throw;
             }
         }
-        private bool ShowMyDialogBox(Story story, Enemy ennemy, int ranTurn, Event runEvent)
+        private bool ShowMyDialogBox(Story story, Enemy enemy, int ranTurn, Event runEvent)
         {
 
-            MessageBoxFight testDialog = new MessageBoxFight(story.PlayerHero, ennemy, ranTurn);
+            MessageBoxFight testDialog = new MessageBoxFight() { DataContext = new FightViewModel(story.PlayerHero, enemy, ranTurn) };
 
             if (testDialog.ShowDialog() == true)
             {
-                if (testDialog.DidRanAway)
+                if (((FightViewModel)testDialog.DataContext).RanAway)
                 {
                     story.ActualParagraph.GetListDecision.Clear();
                     story.ActualParagraph.GetListDecision.Add(runEvent);

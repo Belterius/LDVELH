@@ -390,13 +390,13 @@ namespace LDVELH_WPF
             this.CombatDebuff = 0;
         }
 
-        public bool Fight(Enemy ennemy)
+        public bool Fight(Enemy enemy)
         {
-            int StrenghtDifference = FindStrenghtDifference(ennemy);
+            int StrenghtDifference = FindStrenghtDifference(enemy);
             bool BattleOver = false;
             try
             {
-                BattleOver = ResolveDamage(StrenghtDifference, ennemy);
+                BattleOver = ResolveDamage(StrenghtDifference, enemy);
             }
             catch (YouAreDeadException)
             {
@@ -406,23 +406,23 @@ namespace LDVELH_WPF
             return BattleOver;
         }
 
-        public int FindStrenghtDifference(Enemy ennemy)
+        public int FindStrenghtDifference(Enemy enemy)
         {
-            int HeroAgility = GetHeroAgilityInBattle(ennemy);
-            int EnnemyAgility = ennemy.BaseAgility;
-            return (HeroAgility - EnnemyAgility);
+            int HeroAgility = GetHeroAgilityInBattle(enemy);
+            int EnemyAgility = enemy.BaseAgility;
+            return (HeroAgility - EnemyAgility);
         }
 
-        public int GetHeroAgilityInBattle(Enemy ennemy)
+        public int GetHeroAgilityInBattle(Enemy enemy)
         {
-           return this.BaseAgility+ GetBonusAgility(ennemy) - GetMalusAgility();
+           return this.BaseAgility+ GetBonusAgility(enemy) - GetMalusAgility();
         }
 
-        public int GetBonusAgility(Enemy ennemy)
+        public int GetBonusAgility(Enemy enemy)
         {
             int BonusAgility = 0;
             BonusAgility += GetBonusItemAgility();
-            BonusAgility += GetBonusCapacityAgility(ennemy);
+            BonusAgility += GetBonusCapacityAgility(enemy);
             return BonusAgility;
         }
 
@@ -437,7 +437,7 @@ namespace LDVELH_WPF
             return BonusAgility;
         }
 
-        private int GetBonusCapacityAgility(Enemy ennemy)
+        private int GetBonusCapacityAgility(Enemy enemy)
         {
             int BonusAgility = 0;
             if (this.PossesCapacity(CapacityType.WeaponMastery))
@@ -449,7 +449,7 @@ namespace LDVELH_WPF
             }
             if (this.PossesCapacity(CapacityType.PsychicPower))
             {
-                if (ennemy.IsWeakToPhychic())
+                if (enemy.IsWeakToPhychic())
                 {
                     BonusAgility += Capacity.PhychicPowerStrenght;
                 }
@@ -468,10 +468,10 @@ namespace LDVELH_WPF
             return MalusAgility;
         }
 
-        private bool ResolveDamage(int strenghDifference, Enemy ennemy)
+        private bool ResolveDamage(int strenghDifference, Enemy enemy)
         {
             int RandomD10 = DiceRoll.D10Roll();
-            ennemy.TakeDamage(DamageTable.ennemyDamageTaken(strenghDifference, RandomD10));
+            enemy.TakeDamage(DamageTable.enemyDamageTaken(strenghDifference, RandomD10));
             try
             {
                 this.TakeDamage(DamageTable.heroDamageTaken(strenghDifference, RandomD10));
@@ -480,7 +480,7 @@ namespace LDVELH_WPF
             {
                 throw;
             }
-            if (ennemy.ActualHitPoint<= 0)
+            if (enemy.ActualHitPoint<= 0)
             {
                 return true;
             }

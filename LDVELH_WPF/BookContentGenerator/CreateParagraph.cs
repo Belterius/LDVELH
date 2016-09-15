@@ -180,7 +180,7 @@
                 case 17:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph17"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Kraan", 17, 24, EnnemyTypes.Beast)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Kraan", 17, 24, EnemyTypes.Beast)));
                         int rand = DiceRoll.D10Roll();
                         if (rand == 10)
                         {
@@ -313,7 +313,7 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph29"), paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(270, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph29To270")));
                         return paragraph;
                     }
@@ -348,7 +348,7 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph34"), paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(328, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph34To328")));
                         return paragraph;
                     }
@@ -419,7 +419,7 @@
                 case 43:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph43"), paragraphNumber);
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("Ours Noir", 16, 10, EnnemyTypes.Beast), 3, new MoveEvent(106, "vous enfuir en courant au bas de la colline")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("Ours Noir", 16, 10, EnemyTypes.Beast), 3, new MoveEvent(106, "vous enfuir en courant au bas de la colline")));
                         paragraph.AddDecision(new MoveEvent(195, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph43To195")));
                         return paragraph;
                     }
@@ -519,7 +519,7 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph55"), paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(-4));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 9, 9, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 9, 9, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(325, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph55To325")));
                         return paragraph;
                     }
@@ -576,7 +576,7 @@
                 case 63:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph63"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vieil homme fou", 11, 10, EnnemyTypes.Human)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vieil homme fou", 11, 10, EnemyTypes.Human)));
                         paragraph.AddDecision(new MoveEvent(269, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph63To269")));
                         return paragraph;
                     }
@@ -637,7 +637,7 @@
                 case 72:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph72"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok monté", 15, 24, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok monté", 15, 24, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(265, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph72To265")));
                         return paragraph;
                     }
@@ -922,8 +922,8 @@
                 case 112:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph112"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnnemyTypes.Orc)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(33, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph112To33")));
                         paragraph.AddDecision(new MoveEvent(248, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph112To248")));
                         return paragraph;
@@ -1074,7 +1074,7 @@
                 case 133:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph133"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Serpend Ailé", 16, 18, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Serpend Ailé", 16, 18, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(266, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph133To266")));
                         return paragraph;
                     }
@@ -1096,9 +1096,9 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph136"), paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(-1));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnemyTypes.Orc)));
                         paragraph.AddMainEvent(new DebuffEvent(-1));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(313, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph136To313")));
                         return paragraph;
                     }
@@ -1112,8 +1112,8 @@
                 case 138:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph138"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnnemyTypes.Orc)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(291, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph138To291")));
                         return paragraph;
                     }
@@ -1342,7 +1342,7 @@
                 case 169:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph169"), paragraphNumber);
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("Monstres des cryptes", 16, 16, EnnemyTypes.Beast), 1, new MoveEvent(23, "s'enfuir")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("Monstres des cryptes", 16, 16, EnemyTypes.Beast), 1, new MoveEvent(23, "s'enfuir")));
                         paragraph.AddDecision(new MoveEvent(137, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph169To137")));
                         return paragraph;
                     }
@@ -1350,7 +1350,7 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph170"), paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(new Miscellaneous("Torche"), 3));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Gluatre des profondeurs", 17, 7, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Gluatre des profondeurs", 17, 7, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(319, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph170To319")));
                         return paragraph;
                     }
@@ -1421,9 +1421,9 @@
                 case 180:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph180"), paragraphNumber);
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("Chef des soldats", 15, 22, EnnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("soldat", 13, 20, EnnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("soldat", 13, 20, EnnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("Chef des soldats", 15, 22, EnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("soldat", 13, 20, EnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("soldat", 13, 20, EnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
                         paragraph.AddDecision(new MoveEvent(62, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph180To62")));
                         return paragraph;
                     }
@@ -1507,7 +1507,7 @@
                 case 191:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph191"), paragraphNumber);
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("Garde du corps", 11, 21, EnnemyTypes.Human), 1, new MoveEvent(234, "Sauter de la roulotte")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("Garde du corps", 11, 21, EnemyTypes.Human), 1, new MoveEvent(234, "Sauter de la roulotte")));
                         paragraph.AddDecision(new MoveEvent(24, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph191To24")));
                         return paragraph;
                     }
@@ -1632,7 +1632,7 @@
                 case 208:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph208"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Gloks", 15, 13, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Gloks", 15, 13, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(148, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph208To148")));
                         paragraph.AddDecision(new MoveEvent(320, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph208To320")));
                         return paragraph;
@@ -1711,7 +1711,7 @@
                 case 220:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph220"), paragraphNumber);
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("Garde du corps", 11, 20, EnnemyTypes.Human), 1, new MoveEvent(234, "Sauter de la roulotte")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("Garde du corps", 11, 20, EnemyTypes.Human), 1, new MoveEvent(234, "Sauter de la roulotte")));
                         paragraph.AddDecision(new MoveEvent(24, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph220To24")));
                         return paragraph;
                     }
@@ -1766,7 +1766,7 @@
                 case 227:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph227"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vipère des marais", 16, 6, EnnemyTypes.Beast)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vipère des marais", 16, 6, EnemyTypes.Beast)));
                         paragraph.AddDecision(new MoveEvent(348, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph227To348")));
                         return paragraph;
                     }
@@ -1782,7 +1782,7 @@
 
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph229"), paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(-1));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Kraan", 16, 25, EnnemyTypes.Human)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Kraan", 16, 25, EnemyTypes.Human)));
                         paragraph.AddDecision(new MoveEvent(267, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph229To267")));
                         paragraph.AddDecision(new MoveEvent(125, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph229To125")));
                         return paragraph;
@@ -1796,7 +1796,7 @@
                 case 231:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph231"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Voleur au poignard", 13, 20, EnnemyTypes.Human)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Voleur au poignard", 13, 20, EnemyTypes.Human)));
                         paragraph.AddDecision(new MoveEvent(94, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph231To94")));
                         return paragraph;
                     }
@@ -1904,7 +1904,7 @@
                 case 246:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph246"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Drakkarim", 15, 23, EnnemyTypes.Human)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Drakkarim", 15, 23, EnemyTypes.Human)));
                         paragraph.AddDecision(new MoveEvent(197, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph246To197")));
                         return paragraph;
                     }
@@ -1951,10 +1951,10 @@
                 case 253:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph253"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 13, 24, EnnemyTypes.Beast)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 14, 23, EnnemyTypes.Beast)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 14, 22, EnnemyTypes.Beast)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 15, 21, EnnemyTypes.Beast)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 13, 24, EnemyTypes.Beast)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 14, 23, EnemyTypes.Beast)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 14, 22, EnemyTypes.Beast)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 15, 21, EnemyTypes.Beast)));
                         paragraph.AddDecision(new MoveEvent(278, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph253To278")));
                         return paragraph;
                     }
@@ -1968,7 +1968,7 @@
                 case 255:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph255"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Gourgaz", 20, 30, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Gourgaz", 20, 30, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(82, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph255To82")));
                         return paragraph;
                     }
@@ -2009,8 +2009,8 @@
                 case 260:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph261"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 11, 18, EnnemyTypes.Orc)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 17, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 11, 18, EnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 17, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(156, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph260To156")));
                         return paragraph;
                     }
@@ -2173,7 +2173,7 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph283"), paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(123, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph283To123")));
                         return paragraph;
                     }
@@ -2554,8 +2554,8 @@
                 case 336:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph336"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 14, 11, EnnemyTypes.Orc)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 11, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 14, 11, EnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 11, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(117, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph336To117")));
                         return paragraph;
                     }
@@ -2582,14 +2582,14 @@
                 case 339:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph339"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Voleur", 13, 20, EnnemyTypes.Human)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Voleur", 13, 20, EnemyTypes.Human)));
                         paragraph.AddDecision(new MoveEvent(94, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph339To94")));
                         return paragraph;
                     }
                 case 340:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph340"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok monté", 14, 24, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok monté", 14, 24, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(193, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph340To193")));
                         return paragraph;
                     }
@@ -2604,7 +2604,7 @@
                 case 342:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph342"), paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 18, 26, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 18, 26, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(123, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph342To123")));
                         return paragraph;
                     }

@@ -193,7 +193,7 @@
                 case 17:
                     {
                         paragraph = new StoryParagraph("Vous levez votre arme pour frapper la créature, dont la gueule hérissée de crocs tranchants comme des rasoirs vient de se refermer d'un claquement sec à quelques centimètres de votre tête. Gêné par le battement de ses ailes, vous avez du mal à vous tenir debout. \n\nSi vous parvenez à tuer votre adversaire, hâtez-vous de descendre le flanc opposé de la colline afin d'éviter les Gloks.  ", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Kraan", 17, 24, EnnemyTypes.Beast)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Kraan", 17, 24, EnemyTypes.Beast)));
                         int rand = DiceRoll.D10Roll();
                         if (rand == 10)
                         {
@@ -326,7 +326,7 @@
                     {
                         paragraph = new StoryParagraph("Vous vous approchez de la rive du lac en vous préparant à combattre. Le Kraan et la créature qui le chevauche vous aperçoivent aussitôt et foncent vers vous en volant à ras de l'eau. C'est alors que le maître du Kraan lance un cri qui vous glace le sang. Cette créature est un Vordak, un féroce lieutenant des Maîtres des Ténèbres. Il se rue sur vous, et il vous faut le combattre. Votre adversaire vous attaque à l'aide d'une grosse Masse d'Armes, mais il est également doué d'une redoutable Puissance Psychique dont il va faire usage au cours de l'affrontement. Si vous ne maîtrisez pas la Discipline Kaï du Bouclier Psychique, sa force mentale vous fera perdre 2 points d'HABILETÉ pendant toute la durée du combat. ", paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(270, "Continuer"));
                         return paragraph;
                     }
@@ -361,7 +361,7 @@
                     {
                         paragraph = new StoryParagraph("Sans crier gare, une terrifiante apparition fond sur vous. C'est une créature vêtue de longs vêtements rouges et montée sur le dos d'un Kraan. Votre assaillant pousse un cri à vous glacer le sang : il s'agit d'un Vordak, un féroce lieutenant des Maîtres des Ténèbres. Il est juste au-dessus de vous et il vous faut le combattre. Le monstre vous attaque à l'aide d'une grosse Masse d'Armes et il est également doué d'une redoutable Puissance Psychique, dont il va faire usage au cours de l'affrontement. Si vous ne maîtrisez pas la Discipline Kaï du Bouclier Psychique, vous devrez réduire de 2 points votre total d'HABILETÉ pendant toute la durée du combat. ", paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(328, "Continuer"));
                         return paragraph;
                     }
@@ -432,7 +432,7 @@
                 case 43:
                     {
                         paragraph = new StoryParagraph("Un énorme ours noir apparaît derrière le rocher et s'avance lentement vers vous, la gueule ouverte. Vous remarquez aussitôt qu'il a l'air d'avoir mal et que sa douleur le rend furieux. Il est gravement blessé, en effet, et du sang coule sur son cou et dans son dos. Il vous faut le combattre. ", paragraphNumber);
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("Ours Noir", 16, 10, EnnemyTypes.Beast), 3, new MoveEvent(106, "vous enfuir en courant au bas de la colline")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("Ours Noir", 16, 10, EnemyTypes.Beast), 3, new MoveEvent(106, "vous enfuir en courant au bas de la colline")));
                         paragraph.AddDecision(new MoveEvent(195, "Continuer"));
                         return paragraph;
                     }
@@ -532,7 +532,7 @@
                     {
                         paragraph = new StoryParagraph("Au moment où le Glok bondit, vous vous ruez sur lui et vous le frappez de votre arme, l'empêchant ainsi d'atterrir sur le dos du jeune sorcier. Vous profitez de votre avantage pour frapper à nouveau la créature qui se débat et l'effet de surprise de votre attaque vous permet d'ajouter 4 points à votre total d'HABILETÉ pendant toute la durée de ce combat. ", paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(-4));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 9, 9, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 9, 9, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(325, "Continuer"));
                         return paragraph;
                     }
@@ -589,7 +589,7 @@
                 case 63:
                     {
                         paragraph = new StoryParagraph("Le vieil homme vous insulte à grands cris. Il vous rend responsable de la guerre en maudissant les Seigneurs Kaï qui sont, selon lui, les agents des Maîtres des Ténèbres. Impossible de lui faire entendre raison, il va falloir le combattre. ", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vieil homme fou", 11, 10, EnnemyTypes.Human)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vieil homme fou", 11, 10, EnemyTypes.Human)));
                         paragraph.AddDecision(new MoveEvent(269, "Continuer"));
                         return paragraph;
                     }
@@ -650,7 +650,7 @@
                 case 72:
                     {
                         paragraph = new StoryParagraph("Il vous faut affronter un Glok grimaçant chevauchant sa monture à la gueule hérissée de dents pointues. ", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok monté", 15, 24, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok monté", 15, 24, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(265, "Continuer"));
                         return paragraph;
                     }
@@ -935,8 +935,8 @@
                 case 112:
                     {
                         paragraph = new StoryParagraph("Soudain, le gros rocher derrière lequel vous vous êtes caché roule sur lui-même, poussé par deux Gloks hurlants qui vous font face et qui ont visiblement l'intention de vous tuer. L'entrée de la grotte est étroite, et vous ne pouvez combattre qu'un Glok à la fois. Vous devrez donc les affronter à tour de rôle. ", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnnemyTypes.Orc)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(33, "explorer la grotte plus avant"));
                         paragraph.AddDecision(new MoveEvent(248, "descendre le flanc de la colline "));
                         return paragraph;
@@ -1087,7 +1087,7 @@
                 case 133:
                     {
                         paragraph = new StoryParagraph("Quand vous vous approchez de la statue, celle-ci commence à se craqueler et, soudain, elle explose devant vous tandis qu'un véritable serpent ailé, débarrassé de son manteau de pierre vous attaque férocement.", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Serpend Ailé", 16, 18, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Serpend Ailé", 16, 18, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(266, "Continuer"));
                         return paragraph;
                     }
@@ -1109,9 +1109,9 @@
                     {
                         paragraph = new StoryParagraph("Les Gloks se rapprochent puis s'accroupissent, prêts à bondir. Vous apercevez les pointes dentelées de leurs lances et vous entendez les sons gutturaux qu'ils produisent en parlant. « Rob Gaye Oring Ahrr oho key ! Pamark élbhûtt ! » s'écrie la plus grande des deux créatures qui vous attaque aussitôt. Il vous faut combattre les deux Gloks à tour de rôle. Vous ajouterez un point d'HABILETÉ à votre total en raison de l'avantage que vous donne votre position plus élevée sur le terrain. ", paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(-1));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnemyTypes.Orc)));
                         paragraph.AddMainEvent(new DebuffEvent(-1));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(313, "Continuer"));
                         return paragraph;
                     }
@@ -1125,8 +1125,8 @@
                 case 138:
                     {
                         paragraph = new StoryParagraph("Vous dégainez votre arme et vous vous portez à la rencontre de l'ennemi. ", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnnemyTypes.Orc)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(291, "Continuer"));
                         return paragraph;
                     }
@@ -1356,7 +1356,7 @@
                 case 169:
                     {
                         paragraph = new StoryParagraph("Lorsque vous passez devant les crânes, chacun d'eux pivote lentement sur lui-même comme pour suivre le moindre de vos mouvements. Vous vous trouvez à présent au milieu de cette chambre mortuaire et, soudain, vous entendez un bruit d'os qui se brise. Des formes monstrueuses éclosent alors des crânes en déployant des ailes semblables à celles des chauves-souris. Dix de ces créatures à la peau gluante vous attaquent aussitôt", paragraphNumber);
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("Monstres des cryptes", 16, 16, EnnemyTypes.Beast), 1, new MoveEvent(23, "s'enfuir")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("Monstres des cryptes", 16, 16, EnemyTypes.Beast), 1, new MoveEvent(23, "s'enfuir")));
                         paragraph.AddDecision(new MoveEvent(137, "Continuer"));
                         return paragraph;
                     }
@@ -1364,7 +1364,7 @@
                     {
                         paragraph = new StoryParagraph("Le tunnel est sombre et il y fait beaucoup plus froid qu'audehors. Vous avancez prudemment en tâtonnant la paroi et au bout de trois minutes passées dans une obscurité totale, vous sentez soudain une odeur répugnante de viande pourrie. Si vous disposez d'une Torche et d'un Briquet d'Amadou, vous pourrez vous en servir pour vous éclairer. Soudain, une lourde masse tombe du plafond du tunnel et atterrit sur votre dos. Sous le choc, vos jambes fléchissent et vous vous retrouvez à genoux. C'est un Gluâtre des Profondeurs qui vient de vous attaquer en essayant de vous étrangler de ses longs tentacules visqueux. Si vous n'avez pas de Torche pour vous éclairer, vous devrez réduire de 3 points votre total d'HABILETÉ pendant toute la durée du combat. Le Gluâtre est insensible aux Disciplines Kaï de la Puissance Psychique et de la Communication Animale. ", paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(new Miscellaneous("Torche"), 3));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Gluatre des profondeurs", 17, 7, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Gluatre des profondeurs", 17, 7, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(319, "Continuer"));
                         return paragraph;
                     }
@@ -1435,9 +1435,9 @@
                 case 180:
                     {
                         paragraph = new StoryParagraph("Ils vous voient lever votre arme et vous attaquent aussitôt.", paragraphNumber);
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("Chef des soldats", 15, 22, EnnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("soldat", 13, 20, EnnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("soldat", 13, 20, EnnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("Chef des soldats", 15, 22, EnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("soldat", 13, 20, EnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("soldat", 13, 20, EnemyTypes.Human), 1, new MoveEvent(22, "prendre la fuite")));
                         paragraph.AddDecision(new MoveEvent(62, "continuer"));
                         return paragraph;
                     }
@@ -1521,7 +1521,7 @@
                 case 191:
                     {
                         paragraph = new StoryParagraph("Le garde du corps dégaine un long cimeterre et s'apprête à vous attaquer. Si vous souhaitez prendre la fuite au cours du combat, vous pourrez sauter de la roulotte ", paragraphNumber);
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("Garde du corps", 11, 21, EnnemyTypes.Human), 1, new MoveEvent(234, "Sauter de la roulotte")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("Garde du corps", 11, 21, EnemyTypes.Human), 1, new MoveEvent(234, "Sauter de la roulotte")));
                         paragraph.AddDecision(new MoveEvent(24, "continuer"));
                         return paragraph;
                     }
@@ -1646,7 +1646,7 @@
                 case 208:
                     {
                         paragraph = new StoryParagraph("Les répugnantes créatures brandissent leurs lances et vous attaquent.", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Gloks", 15, 13, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Gloks", 15, 13, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(148, "vous réfugier dans la ferme"));
                         paragraph.AddDecision(new MoveEvent(320, "retourner dans la forêt"));
                         return paragraph;
@@ -1725,7 +1725,7 @@
                 case 220:
                     {
                         paragraph = new StoryParagraph("Le Garde du Corps dégaine un long cimeterre et s'apprête à vous en enfoncer la lame dans la poitrine. Si vous souhaitez prendre la fuite au cours du combat, vous pouvez sauter de la roulotte ", paragraphNumber);
-                        paragraph.AddMainEvent(new RunEvent(new Enemy("Garde du corps", 11, 20, EnnemyTypes.Human), 1, new MoveEvent(234, "Sauter de la roulotte")));
+                        paragraph.AddMainEvent(new RunEvent(new Enemy("Garde du corps", 11, 20, EnemyTypes.Human), 1, new MoveEvent(234, "Sauter de la roulotte")));
                         paragraph.AddDecision(new MoveEvent(24, "continuer"));
                         return paragraph;
                     }
@@ -1780,7 +1780,7 @@
                 case 227:
                     {
                         paragraph = new StoryParagraph("Vous avez maintenant de la vase jusqu'à la ceinture, l'air est lourd et de petits insectes vous piquent le visage et vous bouchent le nez. Puis soudain, quelque chose s'enroule autour de vos jambes. C'est une Vipère des Marais qu'il vous faut combattre. ", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vipère des marais", 16, 6, EnnemyTypes.Beast)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vipère des marais", 16, 6, EnemyTypes.Beast)));
                         paragraph.AddDecision(new MoveEvent(348, "continuer"));
                         return paragraph;
                     }
@@ -1795,7 +1795,7 @@
                     {
                         paragraph = new StoryParagraph("Le Kraan vole au-dessus de votre tête en soulevant des nuages de poussière par le seul battement de ses ailes immenses. Bientôt, vous avez le nez et les yeux pleins de poussière et vous vous mettez à tousser et à cligner les paupières. Puis, soudain, le monstre vous attaque", paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(-1));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Kraan", 16, 25, EnnemyTypes.Human)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Kraan", 16, 25, EnemyTypes.Human)));
                         paragraph.AddDecision(new MoveEvent(267, "fouiller la créature"));
                         paragraph.AddDecision(new MoveEvent(125, "poursuivre votre chemin le long du sentier "));
                         return paragraph;
@@ -1809,7 +1809,7 @@
                 case 231:
                     {
                         paragraph = new StoryParagraph("Au moment où vous allez demander le prix des potions, un jeune homme bondit sur vous en renversant le paravent. Votre assaillant tient dans sa main un poignard à la longue lame recourbée. Il vous faut le combattre. ", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Voleur au poignard", 13, 20, EnnemyTypes.Human)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Voleur au poignard", 13, 20, EnemyTypes.Human)));
                         paragraph.AddDecision(new MoveEvent(94, "continuer"));
                         return paragraph;
                     }
@@ -1917,7 +1917,7 @@
                 case 246:
                     {
                         paragraph = new StoryParagraph("Lorsque l'embarcation se trouve au beau milieu du lac, l'homme ramène soudain sa perche et s'avance vers vous en éclatant d'un rire sinistre. Il rejette alors le capuchon qui lui couvre la tête et vous vous apercevez qu'il s'agit là d'un terrible Drakkarim. Il va falloir le combattre. ", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Drakkarim", 15, 23, EnnemyTypes.Human)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Drakkarim", 15, 23, EnemyTypes.Human)));
                         paragraph.AddDecision(new MoveEvent(197, "continuer"));
                         return paragraph;
                     }
@@ -1964,10 +1964,10 @@
                 case 253:
                     {
                         paragraph = new StoryParagraph("Les Loups Maudits sont bientôt sur vous et il vous faut les combattre un par un. ", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 13, 24, EnnemyTypes.Beast)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 14, 23, EnnemyTypes.Beast)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 14, 22, EnnemyTypes.Beast)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 15, 21, EnnemyTypes.Beast)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 13, 24, EnemyTypes.Beast)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 14, 23, EnemyTypes.Beast)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 14, 22, EnemyTypes.Beast)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Loup maudit", 15, 21, EnemyTypes.Beast)));
                         paragraph.AddDecision(new MoveEvent(278, "continuer"));
                         return paragraph;
                     }
@@ -1981,7 +1981,7 @@
                 case 255:
                     {
                         paragraph = new StoryParagraph("La créature qui vous fait face à présent est un Gourgaz, un de ces reptiles monstrueux qui infestent les profondeurs des marais de Maakenmire. Leur nourriture préférée est la chair humaine... L'épée du Prince repose à vos pieds. Vous pouvez la ramasser et vous en servir pour combattre si vous le désirez. Le Gourgaz s'apprête à vous frapper. Il vous faut l'affronter jusqu'à la mort de l'un d'entre vous.", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Gourgaz", 20, 30, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Gourgaz", 20, 30, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(82, "continuer"));
                         return paragraph;
                     }
@@ -2022,8 +2022,8 @@
                 case 260:
                     {
                         paragraph = new StoryParagraph("En nageant vers la rive, vous apercevez la silhouette du soldat étendu sur la berge, les bras en croix. Vous vous approchez de lui, mais il n'y a plus rien à faire : il s'est rompu le cou en tombant et il est déjà mort. Or tandis que vous êtes agenouillé auprès de lui, deux Gloks bondissent soudain sur vous et il vous faut les combattre. Vous n'avez pas d'armes et vous devrez donc vous battre à mains nues. De ce fait, votre total d'HABILETÉ se trouvera diminué de 4 points.", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 11, 18, EnnemyTypes.Orc)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 17, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 11, 18, EnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 17, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(156, "continuer"));
                         return paragraph;
                     }
@@ -2186,7 +2186,7 @@
                     {
                         paragraph = new StoryParagraph("Vous êtes à trois mètres environ de l'étranger lorsque son corbeau se met à croasser pour l'avertir de votre approche. L'homme fait aussitôt volte-face et vous vous immobilisez saisi de terreur : car en fait ce n'est pas un homme que vous avez devant vous, mais un Vordak, l'un des plus redoutables lieutenants des Maîtres des Ténèbres. Cette créature appartient au monde des morts vivants et vous allez devoir la combattre dans un affrontement sans merci. La surprise de votre attaque vous permet d'ajouter 2 points à votre total d'HABILETÉ lors du premier assaut. Dès le deuxième assaut, en revanche, et au cours des suivants, vous devrez réduire de 2 points ce même total d'HABILETÉ à moins que vous ne maîtrisiez la Discipline Kaï du Bouclier Psychique. Le Vordak vous attaque, en effet, en utilisant simultanément deux armes redoutables : une énorme Masse d'Armes et sa formidable Puissance Psychique.", paragraphNumber);
                         paragraph.AddMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(123, "continuer"));
                         return paragraph;
                     }
@@ -2567,8 +2567,8 @@
                 case 336:
                     {
                         paragraph = new StoryParagraph("Vous vous ruez dans la clairière en prenant les Gloks au dépourvu. Sans la moindre seconde d'hésitation, vous frappez celui qui se trouve le plus proche de vous et vous le tuez avant même que son corps se soit écroulé sur le sol. Les autres Gloks dégainent leurs épées à la lame recourbée et vous attaquent, il vous faut les combattre", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 14, 11, EnnemyTypes.Orc)));
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 11, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 14, 11, EnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 11, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(117, "libérer le soldat"));
                         return paragraph;
                     }
@@ -2595,14 +2595,14 @@
                 case 339:
                     {
                         paragraph = new StoryParagraph("Vous faites aussitôt un pas de côté, au moment où un poignard vient fracasser la vitre du comptoir. Un jeune homme vous attaque et il vous faut le combattre.", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Voleur", 13, 20, EnnemyTypes.Human)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Voleur", 13, 20, EnemyTypes.Human)));
                         paragraph.AddDecision(new MoveEvent(94, "continuer"));
                         return paragraph;
                     }
                 case 340:
                     {
                         paragraph = new StoryParagraph("Vous galopez à la rencontre du Loup Maudit et de son cavalier, vore arme prête à frapper. Le Glok vous voit et dégaine aussitôt son cimeterre. Vous combattez le Loup Maudit et le Glok en les considérant comme un seul et même adversaire. ", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok monté", 14, 24, EnnemyTypes.Orc)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Glok monté", 14, 24, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(193, "continuer"));
                         return paragraph;
                     }
@@ -2617,7 +2617,7 @@
                 case 342:
                     {
                         paragraph = new StoryParagraph("Tandis que votre voix se répercute en écho parmi les arbres, l'étranger se tourne lentement vers vous. Votre cœur se met alors à battre à tout rompre et votre sang se glace, car l'être qui vous fait face n'est pas un homme : il s'agit d'un Vordak, l'un des plus redoutables lieutenants des Maîtres des Ténèbres. C'est une créature de l'Au-Delà, un mort vivant. Le monstre pousse un cri perçant puis brandit une énorme Masse d'Armes et se rue sur vous. Paralysé par la terreur, vous sentez également que le Vordak vous attaque avec toute la force de sa Puissance Psychique.Si vous ne maîtrisez pas la Discipline Kaï du Bouclier Psychique, vous devrez réduire de 2 points votre total d'HABILETÉ au cours de ce combat. Il vous faut affronter cette créature qui est elle-même invulnérable à votre propre Puissance Psychique. ", paragraphNumber);
-                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 18, 26, EnnemyTypes.Hero)));
+                        paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 18, 26, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(123, "continuer"));
                         return paragraph;
                     }

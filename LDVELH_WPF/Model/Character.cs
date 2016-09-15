@@ -87,14 +87,17 @@ namespace LDVELH_WPF
 
         public void TakeDamage(int damage)
         {
-            this.ActualHitPoint -= damage;
-            if (ActualHitPoint <= 0)
+            if (damage >= ActualHitPoint)
             {
                 ActualHitPoint = 0;
                 if (this is Hero)
                 {
                     throw new YouAreDeadException("You are dead");
                 }
+            }
+            else
+            {
+                ActualHitPoint -= damage;
             }
         }
 
