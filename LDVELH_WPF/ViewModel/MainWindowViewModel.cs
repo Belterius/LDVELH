@@ -56,7 +56,7 @@ namespace LDVELH_WPF.ViewModel
         {
             get
             {
-                return _Hero.ActualHitPoint.ToString() +"/" + _Hero.MaxHitPoint.ToString();
+                return Hero.ActualHitPoint.ToString() +"/" + Hero.MaxHitPoint.ToString();
             }
         }
         Weapon _SelectedWeapon;
@@ -241,7 +241,7 @@ namespace LDVELH_WPF.ViewModel
                 ResolveParagraph();
             }
         }
-        public void ResolveParagraph()
+        private void ResolveParagraph()
         {
             //First : the main event (that WILL happen, no choice, unless we're loading a Hero (so he already resolved the mains event))
             try
