@@ -17,8 +17,6 @@ namespace LDVELH_WPF
         //cf http://stackoverflow.com/questions/743906/how-to-hide-close-button-in-wpf-window/867080 for more details
         private const int GWL_STYLE = -16;
         private const int WS_SYSMENU = 0x80000;
-        
-
 
         public MessageBoxFight()
         {
@@ -48,7 +46,6 @@ namespace LDVELH_WPF
         {
             DialogResult = true;
         }
-
     }
     internal static class NativeMethods
     {

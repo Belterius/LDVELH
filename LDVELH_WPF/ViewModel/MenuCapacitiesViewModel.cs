@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LDVELH_WPF.ViewModel
 {
-    class MenuCapacitiesViewModel : ViewModelBase
+    public class MenuCapacitiesViewModel : ViewModelBase
     {
         string _HeroName;
         public string HeroName

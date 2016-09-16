@@ -48,7 +48,7 @@ namespace LDVELH_Tests
         public void HeroStrenghtDifference()
         {
             Hero Belterius = new Hero("Belterius");
-            Enemy evilHuman = new Enemy("Common Human", 10, 10, EnnemyTypes.Human);
+            Enemy evilHuman = new Enemy("Common Human", 10, 10, EnemyTypes.Human);
             int heroBaseAgility = Belterius.BaseAgility;
 
             //Base test
@@ -84,7 +84,7 @@ namespace LDVELH_Tests
             //WARNING TEST WILL FAIL IF ORC IS NOT IMMUN TO PSYCHIC ANYMORE, can check in Ennemy isWeakToPsychic
             SpecialItem ring = new SpecialItemCombat("magic ring", 6, 0);
             Belterius.AddLoot(ring);
-            Enemy evilOrc = new Enemy("Common Orc", 15, 10, EnnemyTypes.Orc);
+            Enemy evilOrc = new Enemy("Common Orc", 15, 10, EnemyTypes.Orc);
             expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).AgilityBonus + ((SpecialItemCombat)ring).AgilityBonus + Capacity.WeaponMasteryStrenght) - evilOrc.BaseAgility;
 
             Assert.AreEqual(expectedStrenghtDifference, Belterius.FindStrenghtDifference(evilOrc));
@@ -95,7 +95,7 @@ namespace LDVELH_Tests
         public void HeroFight()
         {
             Hero hero = new Hero("hero");
-            Enemy beast = new Enemy("beast", 22, 20, EnnemyTypes.Beast);
+            Enemy beast = new Enemy("beast", 22, 20, EnemyTypes.Beast);
             bool battleOver = false;
             try
             {

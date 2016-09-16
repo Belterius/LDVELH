@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace LDVELH_WPF.ViewModel
 {
-    class MenuSettingsViewModel : ViewModelBase
+    public class MenuSettingsViewModel : ViewModelBase
     {
         SupportedLanguage _SelectedLanguage;
         public SupportedLanguage SelectedLanguage

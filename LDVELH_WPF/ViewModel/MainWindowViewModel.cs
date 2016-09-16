@@ -11,7 +11,7 @@ using System.Windows.Documents;
 
 namespace LDVELH_WPF.ViewModel
 {
-    class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ViewModelBase
     {
         bool LoadingHero = false;
 

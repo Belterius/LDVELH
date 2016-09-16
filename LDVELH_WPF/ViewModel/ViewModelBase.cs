@@ -8,7 +8,7 @@ using System.Windows.Threading;
 
 namespace LDVELH_WPF.ViewModel
 {
-    class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged
     {
         //basic ViewModelBase
         internal void RaisePropertyChanged(string prop)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LDVELH_WPF.ViewModel
 {
-    class FightViewModel : ViewModelBase
+    public class FightViewModel : ViewModelBase
     {
         public event FightEnded FightEndedChanged;
         public delegate void FightEnded();
@@ -141,6 +141,7 @@ namespace LDVELH_WPF.ViewModel
                 if (_RoundNumber != value)
                 {
                     _RoundNumber = value;
+                    RaisePropertyChanged("RoundNumber");
                 }
             }
         }
@@ -156,6 +157,7 @@ namespace LDVELH_WPF.ViewModel
                 if (_RunRoundNumber != value)
                 {
                     _RunRoundNumber = value;
+                    RaisePropertyChanged("RunRoundNumber");
                 }
             }
         }
@@ -203,6 +205,7 @@ namespace LDVELH_WPF.ViewModel
                 if (_RanAway != value)
                 {
                     _RanAway = value;
+                    RaisePropertyChanged("RanAway");
                 }
             }
         }

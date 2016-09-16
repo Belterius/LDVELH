@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LDVELH_WPF.ViewModel
 {
-    class MenuLoadViewModel : ViewModelBase
+    public class MenuLoadViewModel : ViewModelBase
     {
         Hero _SelectedHero;
         public Hero SelectedHero
