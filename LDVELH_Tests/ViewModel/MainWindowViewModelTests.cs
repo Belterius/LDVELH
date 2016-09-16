@@ -30,7 +30,7 @@ namespace LDVELH_WPF.ViewModel.Tests
                 didFire = true;
                 Assert.AreEqual(Paragraph, ViewModel.MyStory.ActualParagraph);
             };
-            ViewModel.ActionButtonChanged += () =>
+            ViewModel.ActionButtonChanged += (object sender, EventArgs e) =>
             {
                 didEnded = true;
             };

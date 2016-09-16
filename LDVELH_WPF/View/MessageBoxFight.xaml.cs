@@ -42,7 +42,7 @@ namespace LDVELH_WPF
             NativeMethods.SetWindowLong(hwnd, GWL_STYLE, NativeMethods.GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
             ((FightViewModel)DataContext).FightEndedChanged += Vm_FightHasEnded;
         }
-        private void Vm_FightHasEnded()
+        private void Vm_FightHasEnded(object sender, EventArgs e)
         {
             DialogResult = true;
         }

@@ -233,7 +233,7 @@ namespace LDVELH_Tests
                 Assert.AreEqual("RanAway", e.PropertyName);
                 Assert.AreEqual(true, ViewModel.RanAway);
             };
-            ViewModel.FightEndedChanged += () =>
+            ViewModel.FightEndedChanged += (object sender, EventArgs e) =>
             {
                 didEnded = true;
             };

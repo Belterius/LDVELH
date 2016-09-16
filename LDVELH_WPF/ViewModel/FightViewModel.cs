@@ -10,13 +10,13 @@ namespace LDVELH_WPF.ViewModel
     public class FightViewModel : ViewModelBase
     {
         public event FightEnded FightEndedChanged;
-        public delegate void FightEnded();
+        public delegate void FightEnded(object sender, EventArgs e);
         public void FightHasEnded()
         {
             FightEnded Handler = FightEndedChanged;
             if (Handler != null)
             {
-                Handler();
+                Handler(this, null);
             }
         }
         Hero _Hero;

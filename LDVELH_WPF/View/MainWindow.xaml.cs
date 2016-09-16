@@ -26,7 +26,7 @@ namespace LDVELH_WPF
             GeneratePlayerPossibleDecision(DataContextViewModel.MyStory);
         }
 
-        private void Vm_ActionButtonChanged()
+        private void Vm_ActionButtonChanged(object sender, EventArgs e)
         {
             GeneratePlayerPossibleDecision(DataContextViewModel.MyStory);
         }

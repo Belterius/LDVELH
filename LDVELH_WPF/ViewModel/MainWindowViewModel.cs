@@ -16,7 +16,7 @@ namespace LDVELH_WPF.ViewModel
         bool LoadingHero = false;
 
         public event GenerateActionButton ActionButtonChanged;
-        public delegate void GenerateActionButton();
+        public delegate void GenerateActionButton(object sender, EventArgs e);
 
         Story _MyStory;
         public Story MyStory
@@ -280,7 +280,7 @@ namespace LDVELH_WPF.ViewModel
             GenerateActionButton Handler = ActionButtonChanged;
             if (Handler != null)
             {
-                Handler();
+                Handler(this, null);
             }
         }
         public void HandleDeath(Story story)
