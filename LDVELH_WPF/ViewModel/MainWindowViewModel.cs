@@ -134,7 +134,6 @@ namespace LDVELH_WPF.ViewModel
 
         private void ThrowLoot(object item)
         {
-            //Item itemToThrow = (Item)sender;
             if (item != null)
             {
                 Hero.RemoveLoot((Loot)item);

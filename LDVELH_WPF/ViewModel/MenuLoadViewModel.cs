@@ -68,6 +68,7 @@ namespace LDVELH_WPF.ViewModel
 
         private void DeleteHero(object hero)
         {
+            if (hero == null) return;
             try
             {
                 using (SQLiteDatabaseFunction DatabaseRequest = new SQLiteDatabaseFunction())
@@ -83,6 +84,7 @@ namespace LDVELH_WPF.ViewModel
         }
         private void LoadHero(object hero)
         {
+                if (hero == null) return;
                 MainWindow mainWindow = new MainWindow() { DataContext = new MainWindowViewModel((Hero)hero, true) };
                 mainWindow.Show();
                 CloseWindow();
