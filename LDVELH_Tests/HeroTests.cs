@@ -11,12 +11,10 @@ namespace LDVELH_Tests
         public void HeroWeaponMastery()
         {
             Hero heroWeaponMastery = new Hero("Belterius");
-            Capacity weaponMasteryCapacity = new Capacity(CapacityType.WeaponMastery);
             Hero heroNoWeaponMastery = new Hero("Belterius");
-            Capacity hidingCapacity = new Capacity(CapacityType.Hiding);
 
-            heroWeaponMastery.AddCapacity(weaponMasteryCapacity);
-            heroNoWeaponMastery.AddCapacity(hidingCapacity);
+            heroWeaponMastery.AddCapacity(CapacityType.WeaponMastery);
+            heroNoWeaponMastery.AddCapacity(CapacityType.Hiding);
 
             Assert.AreEqual(true, (heroWeaponMastery.WeaponMastery != WeaponTypes.None));
             Assert.AreEqual(true, (heroNoWeaponMastery.WeaponMastery == WeaponTypes.None));
@@ -26,9 +24,8 @@ namespace LDVELH_Tests
         public void HeroPossesCapacity()
         {
             Hero Belterius = new Hero("Belterius");
-            Capacity hidingCapacity = new Capacity(CapacityType.Hiding);
 
-            Belterius.AddCapacity(hidingCapacity);
+            Belterius.AddCapacity(CapacityType.Hiding);
 
             Assert.AreEqual(true, Belterius.PossesCapacity(CapacityType.Hiding));
         }
@@ -37,13 +34,20 @@ namespace LDVELH_Tests
         public void HeroDoesntPossesCapacity()
         {
             Hero Belterius = new Hero("Belterius");
-            Capacity hidingCapacity = new Capacity(CapacityType.Hiding);
 
-            Belterius.AddCapacity(hidingCapacity);
+            Belterius.AddCapacity(CapacityType.Hiding);
 
             Assert.AreEqual(false, Belterius.PossesCapacity(CapacityType.PsychicPower));
         }
+        [TestMethod]
+        public void HeroRemovePossesedCapacity()
+        {
+            Hero Belterius = new Hero("Belterius");
+            Belterius.AddCapacity(CapacityType.Hiding);
+            Assert.AreEqual(true, Belterius.PossesCapacity(CapacityType.Hiding));
 
+            Assert.Fail();
+        }
         [TestMethod]
         public void HeroStrenghtDifference()
         {

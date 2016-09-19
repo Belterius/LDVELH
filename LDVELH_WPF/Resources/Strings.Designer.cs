@@ -765,6 +765,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous avez déjà atteint votre nombre maximum de capacités !.
+        /// </summary>
+        internal static string TooManyCapacities {
+            get {
+                return ResourceManager.GetString("TooManyCapacities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Glaive.
         /// </summary>
         internal static string TwoEdgedSword {

@@ -1,7 +1,11 @@
 ﻿using LDVELH_WPF.ViewModel;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace LDVELH_WPF
 {
@@ -10,8 +14,6 @@ namespace LDVELH_WPF
     /// </summary>
     public partial class MenuCapacities : Window
     {
-        static readonly int AllowedNumberCapacities = 5;
-
         public MenuCapacities()
         {
             InitializeComponent();
@@ -25,45 +27,6 @@ namespace LDVELH_WPF
             ButtonConfirm.Content = GlobalTranslator.Instance.Translator.ProvideValue("Confirm");
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Hero Hero = new Hero(labelHeroName.Content.ToString());
-            int NumberOfCapacities = 0;
-            foreach (var Item in ((Grid)(groupBoxCapacities.Content)).Children)
-            {
-                if (Item is CapacityCheckBox)
-                {
-                    CapacityCheckBox checkbox = (CapacityCheckBox)Item;
-                    if ((bool)checkbox.IsChecked)
-                    {
-                        NumberOfCapacities++;
-                    }
-
-                }
-            }
-            if (NumberOfCapacities != AllowedNumberCapacities)
-            {
-                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("YouMustSelect") + " " + AllowedNumberCapacities + " " + GlobalTranslator.Instance.Translator.ProvideValue("Capacities") + " !");
-                return;
-            }
-            foreach (var Item in ((Grid)(groupBoxCapacities.Content)).Children)
-            {
-                if (Item is CapacityCheckBox)
-                {
-                    CapacityCheckBox checkbox = (CapacityCheckBox)Item;
-                    if ((bool)checkbox.IsChecked)
-                    {
-                        Hero.AddCapacity(checkbox.MyCapacity);
-                    }
-
-                }
-            }
-
-            MainWindow MainWindow = new MainWindow() { DataContext = new MainWindowViewModel(Hero, false) };
-            MainWindow.Show();
-            this.Close();
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             int Top = 0;
@@ -72,30 +35,54 @@ namespace LDVELH_WPF
             int Right = 0;
             foreach (CapacityType CapaType in Enum.GetValues(typeof(CapacityType)))
             {
-                Capacity myCapacity = new Capacity(CapaType);
-                CapacityCheckBox Checkbox = new CapacityCheckBox();
-                Checkbox.Name = CapaType.ToString();
-                Checkbox.MyCapacity = myCapacity;
-                Checkbox.Margin = new Thickness(Left, Top, Right, Bottom);
+                CapacityCheckBox MyCheckbox = new CapacityCheckBox();
+                MyCheckbox.Name = CapaType.ToString();
+                MyCheckbox.MyCapacity = CapaType;
+                MyCheckbox.Margin = new Thickness(Left, Top, Right, Bottom);
+                MyCheckbox.Checked += CheckBox_Checked;
+                MyCheckbox.Unchecked += CheckBox_UnChecked;
+                System.Windows.Forms.CheckBox test = new System.Windows.Forms.CheckBox();
                 Label Label = new Label();
-                Label.Content = myCapacity.CapacityKind.GetTranslation(); 
+                Label.Content = MyCheckbox.MyCapacity.GetTranslation(); 
                 Label.Margin = new Thickness(Left+20, Top - 5, 0, 0);
-                ((Grid)(groupBoxCapacities.Content)).Children.Add(Checkbox);
+                ((Grid)(groupBoxCapacities.Content)).Children.Add(MyCheckbox);
                 ((Grid)(groupBoxCapacities.Content)).Children.Add(Label);
                 Top += 20;
             }
+        }
+        private void CheckBox_Checked(object sender, System.EventArgs e)
+        {
+            if (((MenuCapacitiesViewModel)DataContext).Hero.Capacities.Count >= ((MenuCapacitiesViewModel)DataContext).Hero.MaxNumberOfCapacities)
+            {
+                //Ugly Hack.
+                //I know that if my Hero already has reached his max number of capacities, I won't be able to add a new one.
+                //Problem : I am still ticking the checkbox, for an un-added capacity.
+                //Per MVVM View, my RelayCommand cannot send me back if it managed to add the Capacity or not.
+                //I cannot either bind my IsChecked property on one of my View Model property as it would break the build each time you create a new Capacity.
+                //I am not sure if it is better to keep the Add and Remove Method in the ViewModel and do the hack, or do the Add and Remove Method here without the hack.
+                //I decided that I prefer not to do any operation on my Data in the View.
+
+                //Won't add the capacity so we make sure to uncheck the box, the additional call to CheckBox_Unchecked won't matter
+                ((CapacityCheckBox)sender).IsChecked = false;
+            }
+            ((MenuCapacitiesViewModel)DataContext).AddCapacityCommand.Execute(((CapacityCheckBox)sender).MyCapacity);
+        }
+        private void CheckBox_UnChecked(object sender, System.EventArgs e)
+        {
+            ((MenuCapacitiesViewModel)DataContext).RemoveCapacityCommand.Execute(((CapacityCheckBox)sender).MyCapacity);
         }
     }
 
     public class CapacityCheckBox : CheckBox
     {
-        Capacity _myCapacity;
-        public Capacity MyCapacity
+        CapacityType _myCapacity;
+        
+        public CapacityType MyCapacity
         {
             get { return _myCapacity; }
-            set { _myCapacity = value; }
+            set { _myCapacity = value;}
         }
-
+        
         public CapacityCheckBox()
         {
         }

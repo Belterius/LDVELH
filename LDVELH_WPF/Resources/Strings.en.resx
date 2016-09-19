@@ -394,4 +394,7 @@ At the foot of the hill, the path splits into two directions, both leading into 
   <data name="ErrorUseItem" xml:space="preserve">
     <value>You can't use that item !</value>
   </data>
+  <data name="TooManyCapacities" xml:space="preserve">
+    <value>You have already reached your max number of capacities !</value>
+  </data>
 </root>

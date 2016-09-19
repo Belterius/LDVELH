@@ -45,7 +45,20 @@ namespace LDVELH_WPF
         {
             this.CapacityKind = capacityType;
         }
-        
+
+        public override bool Equals(object obj)
+        {
+            if(!(obj is Capacity))
+            {
+                return false;
+            }
+            if(this.CapacityKind != ((Capacity)obj).CapacityKind)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public string DisplayName
         {
             get {

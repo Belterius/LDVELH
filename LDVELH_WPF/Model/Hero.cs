@@ -12,7 +12,7 @@ namespace LDVELH_WPF
         public static readonly int SkipMealDamage = 3;
         public static readonly int UnharmedCombatDebuff = 4;
         public static readonly int HealingCapacityRegen = 1;
-
+        
         [ForeignKey("BackPack")]
         public int BackPack_ID{get;set;}
 
@@ -36,7 +36,24 @@ namespace LDVELH_WPF
                 }
             }
         }
-        
+
+        [Column("MaxNumberOfCapacities")]
+        private int _MaxNumberOfCapacities = 5; // Can change depending on the number of stories completed
+        public int MaxNumberOfCapacities
+        {
+            get
+            {
+                return _MaxNumberOfCapacities;
+            }
+            private set
+            {
+                if (_MaxNumberOfCapacities != value)
+                {
+                    _MaxNumberOfCapacities = value;
+                    RaisePropertyChanged("MaxNumberOfCapacities");
+                }
+            }
+        }
 
         public ObservableCollection<Capacity> Capacities { get; set; }
 
@@ -202,29 +219,35 @@ namespace LDVELH_WPF
             this.Gold = 0;
         }
 
-
-        public void AddCapacity(Capacity capacity)
-        {
-            Capacities.Add(capacity);
-            if (capacity.CapacityKind == CapacityType.WeaponMastery)
-            {
-                while (this.WeaponMastery == WeaponTypes.None)
-                {
-                    this.WeaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
-                }
-            }
-        }
         public void AddCapacity(CapacityType capacityType)
         {
+            if(this.MaxNumberOfCapacities > this.Capacities.Count)
+            {
+                Capacity capacity = new Capacity(capacityType);
+                Capacities.Add(capacity);
+
+                if (capacityType == CapacityType.WeaponMastery)
+                {
+                    while (this.WeaponMastery == WeaponTypes.None)
+                    {
+                        this.WeaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
+                    }
+                }
+            }
+            else
+            {
+                throw new MaxNumberOfCapacitiesReached(GlobalTranslator.Instance.Translator.ProvideValue("TooManyCapacities") + " (" + MaxNumberOfCapacities + ")");
+            }
+            
+        }
+        public void RemoveCapacity(CapacityType capacityType)
+        {
             Capacity capacity = new Capacity(capacityType);
-            Capacities.Add(capacity);
+            Capacities.Remove(capacity);
 
             if (capacityType == CapacityType.WeaponMastery)
             {
-                while (this.WeaponMastery == WeaponTypes.None)
-                {
-                    this.WeaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
-                }
+                this.WeaponMastery = WeaponTypes.None;
             }
         }
 
@@ -569,6 +592,25 @@ namespace LDVELH_WPF
         { }
 
         protected YouAreDeadException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        { }
+
+    }
+    [Serializable]
+    public class MaxNumberOfCapacitiesReached : Exception
+    {
+        public MaxNumberOfCapacitiesReached()
+        { }
+
+        public MaxNumberOfCapacitiesReached(string message)
+            : base(message)
+        { }
+
+        public MaxNumberOfCapacitiesReached(string message, Exception innerException)
+            : base(message, innerException)
+        { }
+
+        protected MaxNumberOfCapacitiesReached(SerializationInfo info, StreamingContext context)
             : base(info, context)
         { }
 
