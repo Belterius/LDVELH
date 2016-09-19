@@ -46,7 +46,9 @@ namespace LDVELH_Tests
             Belterius.AddCapacity(CapacityType.Hiding);
             Assert.AreEqual(true, Belterius.PossesCapacity(CapacityType.Hiding));
 
-            Assert.Fail();
+            Belterius.RemoveCapacity(CapacityType.Hiding);
+
+            Assert.AreEqual(false, Belterius.PossesCapacity(CapacityType.Hiding));
         }
         [TestMethod]
         public void HeroStrenghtDifference()
