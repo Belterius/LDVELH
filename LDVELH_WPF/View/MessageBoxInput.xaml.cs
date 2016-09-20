@@ -22,15 +22,15 @@ namespace LDVELH_WPF
 
         private void TranslateLabel()
         {
-            this.Title = GlobalTranslator.Instance.translator.ProvideValue("SelectCharacterName");
-            buttonOK.Content = GlobalTranslator.Instance.translator.ProvideValue("OK");
-            labelContent.Content = GlobalTranslator.Instance.translator.ProvideValue("EnterCharacterName");
+            this.Title = GlobalTranslator.Instance.Translator.ProvideValue("SelectCharacterName");
+            buttonOK.Content = GlobalTranslator.Instance.Translator.ProvideValue("OK");
+            labelContent.Content = GlobalTranslator.Instance.Translator.ProvideValue("EnterCharacterName");
         }
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
         }
-        public string getCharacterName
+        public string GetCharacterName
         {
             get { return textBoxCharacterName.Text; }
         }

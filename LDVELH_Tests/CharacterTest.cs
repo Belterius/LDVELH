@@ -11,16 +11,16 @@ namespace LDVELH_Tests
         public void CharacterKillTest()
         {
             Hero myHero = new Hero("TestHero");
-            int myHealthPoint = myHero.getActualHitPoint();
+            int myHealthPoint = myHero.ActualHitPoint;
 
             try
             {
-                myHero.kill();
+                myHero.Kill();
                 Assert.Fail();
             }
             catch (YouAreDeadException)
             {
-                Assert.AreEqual(0, myHero.getActualHitPoint());
+                Assert.AreEqual(0, myHero.ActualHitPoint);
             }
 
         }
@@ -28,12 +28,12 @@ namespace LDVELH_Tests
         public void CharacterTakeDamageTest()
         {
             Hero myHero = new Hero("TestHero");
-            int myHealthPoint = myHero.getActualHitPoint();
+            int myHealthPoint = myHero.ActualHitPoint;
             int damageTaken = DiceRoll.D10Roll();
 
-            myHero.takeDamage(damageTaken);
+            myHero.TakeDamage(damageTaken);
 
-            Assert.AreEqual(myHealthPoint - damageTaken, myHero.getActualHitPoint());
+            Assert.AreEqual(myHealthPoint - damageTaken, myHero.ActualHitPoint);
         }
     }
 }

@@ -6,24 +6,24 @@ namespace LDVELH_WPF
 {
     public class Enemy : Character
     {
-        public static readonly List<EnnemyTypes> enemiesWeakToPhychic = new List<EnnemyTypes> { EnnemyTypes.Human, EnnemyTypes.Beast };
+        public static readonly List<EnemyTypes> EnemiesWeakToPhychic = new List<EnemyTypes> { EnemyTypes.Human, EnemyTypes.Beast };
 
 
         [Column("Type")]
-        public EnnemyTypes ClassType;
+        public EnemyTypes ClassType;
 
-        public Enemy(String name, int agility, int hitPoint, EnnemyTypes ennemyType)
+        public Enemy(String name, int agility, int hitPoint, EnemyTypes enemyType)
         {
-            this.name = name;
-            this.baseAgility = agility;
-            this.actualHitPoint = hitPoint;
-            this.maxHitPoint = hitPoint;
-            this.ClassType = ennemyType;
+            this.Name = name;
+            this.BaseAgility = agility;
+            this.ActualHitPoint = hitPoint;
+            this.MaxHitPoint = hitPoint;
+            this.ClassType = enemyType;
         }
 
-        public bool isWeakToPhychic()
+        public bool IsWeakToPhychic()
         {
-            if (enemiesWeakToPhychic.Contains(ClassType))
+            if (EnemiesWeakToPhychic.Contains(ClassType))
             {
                 return true;
             }
@@ -31,7 +31,7 @@ namespace LDVELH_WPF
         }
     }
 
-    public enum EnnemyTypes
+    public enum EnemyTypes
     {
         Human,
         Beast,

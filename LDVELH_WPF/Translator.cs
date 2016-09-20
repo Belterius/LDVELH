@@ -15,7 +15,7 @@ namespace LDVELH_WPF
 
     public sealed class GlobalTranslator
     {
-        public Translator translator = new Translator();
+        public Translator Translator = new Translator();
 
         static readonly GlobalTranslator INSTANCE = new GlobalTranslator();
 
@@ -41,25 +41,25 @@ namespace LDVELH_WPF
 
     public class Translator : MarkupExtension
     {
-        readonly CultureInfo ci;
+        readonly CultureInfo Ci;
         const string ResourceId = "LDVELH_WPF.Resources.Strings";
 
         public Translator()
         {
-            ci = Thread.CurrentThread.CurrentCulture;
+            Ci = Thread.CurrentThread.CurrentCulture;
         }
         public Translator(String language)
         {
             switch (language.ToLower())
             {
                 case "french":
-                    ci = new CultureInfo("fr-FR");
+                    Ci = new CultureInfo("fr-FR");
                     break;
                 case "english":
-                    ci = new CultureInfo("en-GB");
+                    Ci = new CultureInfo("en-GB");
                     break;
                 default:
-                    ci = new CultureInfo("en-GB");
+                    Ci = new CultureInfo("en-GB");
                     break;
             }
         }
@@ -68,40 +68,44 @@ namespace LDVELH_WPF
             switch (language)
             {
                 case SupportedLanguage.French:
-                    ci = new CultureInfo("fr-FR");
+                    Ci = new CultureInfo("fr-FR");
                     break;
                 case SupportedLanguage.English:
-                    ci = new CultureInfo("en-GB");
+                    Ci = new CultureInfo("en-GB");
                     break;
                 default:
-                    ci = new CultureInfo("en-GB");
+                    Ci = new CultureInfo("en-GB");
                     break;
             }
         }
 
-        public string Text { get; set; }
+        public string Text
+        {
+            get;
+            set;
+        }
 
         override public object ProvideValue(IServiceProvider serviceProvider)
         {
             if (Text == null)
                 return "";
 
-            ResourceManager resmgr = new ResourceManager(ResourceId
+            ResourceManager Resmgr = new ResourceManager(ResourceId
                                 , typeof(Translator).GetTypeInfo().Assembly);
 
-            var translation = resmgr.GetString(Text, ci);
+            var Translation = Resmgr.GetString(Text, Ci);
 
-            if (translation == null)
+            if (Translation == null)
             {
 #if DEBUG
                 throw new ArgumentException(
-                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, ci.Name),
+                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, Ci.Name),
                     "Text");
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif
             }
-            return translation;
+            return Translation;
         }
 
         public string ProvideValue(string stringToTranslate)
@@ -110,22 +114,22 @@ namespace LDVELH_WPF
             if (Text == null)
                 return "";
 
-            ResourceManager resmgr = new ResourceManager(ResourceId
+            ResourceManager Resmgr = new ResourceManager(ResourceId
                                 , typeof(Translator).GetTypeInfo().Assembly);
 
-            var translation = resmgr.GetString(Text, ci);
+            var Translation = Resmgr.GetString(Text, Ci);
 
-            if (translation == null)
+            if (Translation == null)
             {
 #if DEBUG
                 throw new ArgumentException(
-                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, ci.Name),
+                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, Ci.Name),
                     "Text");
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif
             }
-            return translation;
+            return Translation;
         }
         public string TranslateBook1(string stringToTranslate)
         {
@@ -134,22 +138,22 @@ namespace LDVELH_WPF
             if (Text == null)
                 return "";
 
-            ResourceManager resmgr = new ResourceManager(StringLocation
+            ResourceManager Resmgr = new ResourceManager(StringLocation
                                 , typeof(Translator).GetTypeInfo().Assembly);
 
-            var translation = resmgr.GetString(Text, ci);
+            var Translation = Resmgr.GetString(Text, Ci);
 
-            if (translation == null)
+            if (Translation == null)
             {
 #if DEBUG
                 throw new ArgumentException(
-                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, StringLocation, ci.Name),
+                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, StringLocation, Ci.Name),
                     "Text");
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif
             }
-            return translation;
+            return Translation;
         }
     }
 

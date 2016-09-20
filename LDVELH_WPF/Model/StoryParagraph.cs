@@ -6,52 +6,73 @@ namespace LDVELH_WPF
 {
     public class StoryParagraph
     {
-        String contentText;
-        List<Event> decision;
-        int paragraphNumber;
-        List<Event> mainEvents;
+        String _ContentText;
+        public string ContentText
+        {
+            get
+            {
+                return _ContentText;
+            }
+            private set
+            {
+                if (_ContentText != value)
+                {
+                    _ContentText = value;
+                }
+            }
+        }
+        List<Event> Decision;
+        int _ParagraphNumber;
+        public int ParagraphNumber
+        {
+            get
+            {
+                return _ParagraphNumber;
+            }
+            private set
+            {
+                if (_ParagraphNumber != value)
+                {
+                    _ParagraphNumber = value;
+                }
+            }
+        }
+        List<Event> MainEvents;
 
         public StoryParagraph(string contentText, int paragraphNumber)
         {
-            this.contentText = contentText;
-            this.paragraphNumber = paragraphNumber;
-            decision = new List<Event>();
-            mainEvents = new List<Event>();
+            this.ContentText = contentText;
+            this.ParagraphNumber = paragraphNumber;
+            Decision = new List<Event>();
+            MainEvents = new List<Event>();
         }
 
-        public void addDecision(Event decision){
-            this.decision.Add(decision);
+        public void AddDecision(Event decision){
+            this.Decision.Add(decision);
         }
-        public void addDecision(List<Event> decision)
+        public void AddDecision(List<Event> decision)
         {
-            foreach (Event eventDecision in decision)
+            foreach (Event EventDecision in decision)
             {
-                this.decision.Add(eventDecision);
+                this.Decision.Add(EventDecision);
             }
         }
-        public void addMainEvent(Event mainEvent)
+        public void AddMainEvent(Event mainEvent)
         {
-            this.mainEvents.Add(mainEvent);
+            this.MainEvents.Add(mainEvent);
         }
-        public int getParagraphNumber
+        
+        public List<Event> GetListDecision
         {
-            get { return paragraphNumber; }
+            get { return Decision; }
         }
-        public string getContent
+        public void Resolve(Story story)
         {
-            get { return contentText; }
-        }
-        public List<Event> getListDecision
-        {
-            get { return decision; }
-        }
-        public void resolve(Story story)
-        {
-            foreach (Event mainEvent in mainEvents)
+            foreach (Event MainEvent in MainEvents)
             {
                 try
                 {
-                    mainEvent.resolveEvent(story);
+                    MainEvent.ResolveEvent(story);
                 }
                 catch(YouAreDeadException)
                 {
@@ -59,18 +80,16 @@ namespace LDVELH_WPF
                 }
                 catch (WeaponHolderFullException)
                 {
-                    //TODO
                     throw;
                 }
                 catch(BackPackFullException)
                 {
-                    //TODO
                     throw;
                 }
             }
-            if(!mainEvents.OfType<FightEvent>().Any())
+            if(!MainEvents.OfType<FightEvent>().Any())
             {
-                story.getHero.rest();
+                story.PlayerHero.Rest();
             }
         }
     }

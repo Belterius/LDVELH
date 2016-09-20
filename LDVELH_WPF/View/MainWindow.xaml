@@ -2,36 +2,46 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Core="clr-namespace:LDVELH_WPF;assembly=" 
-        Title="MainWindow" Height="764" Width="768" Loaded="Window_Loaded" ResizeMode="NoResize">
+        xmlns:helpers="clr-namespace:LDVELH_WPF.Helpers"
+        helpers:DialogCloser.DialogResult="{Binding CloseWindowFlag}"
+        xmlns:vm="clr-namespace:LDVELH_WPF.ViewModel" 
+        Title="{Binding TitleWindow}" Height="764" Width="768" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         <GroupBox x:Name="groupBoxHeroStat" Header="{Core:Translator Text=HeroStats}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="541" Margin="10,0,0,0">
             <Grid HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="521" Margin="10,-6,-2,-22">
                 <Label x:Name="labelDescriptionHitPoint" Content="{Core:Translator Text=HitPoints}" HorizontalAlignment="Left" Margin="-3,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.06,0.038"/>
-                <Label x:Name="labelAgility" Content="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="159,10,0,0"/>
-                <Label x:Name="labelDescriptionAgility" Content="{Core:Translator Text=Agility}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,10,0,0"/>
-                <Label x:Name="labelHitPoint" Content="20/20" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.053,1.423" Margin="75,10,0,0"/>
-                <ListBox x:Name="listBoxCapacities" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="209" Margin="309,21,0,0"/>
+                <Label x:Name="labelAgility" Content="{Binding Hero.BaseAgility}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="171,10,0,0"/>
+                <Label x:Name="labelDescriptionAgility" Content="{Core:Translator Text=Agility}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="126,10,0,0"/>
+                <!--<Label x:Name="labelHitPoint" Content="{Binding ActualHitPoint}" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.053,1.423" Margin="75,10,0,0"/>-->
+                <Label x:Name="labelHitPoint" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.053,1.423" Margin="75,10,0,0">
+                    <TextBlock>
+                        <Run Text="{Binding Hero.ActualHitPoint}"/>
+                        <Run Text="/"/>
+                        <Run Text="{Binding Hero.MaxHitPoint}"/>
+                    </TextBlock>
+                </Label>
+                <ListBox x:Name="listBoxCapacities"  ItemsSource="{Binding Hero.Capacities}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="209" Margin="309,21,0,0"/>
                 <Label x:Name="LabelWeaponMastery" Content="{Core:Translator Text=WeaponMasteryLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-3,48,0,0"/>
-                <Label x:Name="labelWeaponMastery" Content="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="112,48,0,0"/>
+                <Label x:Name="HeroWeaponMastery" Content="{Binding Hero.WeaponMasteryDisplay}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="112,48,0,0"/>
                 <Label x:Name="LabelCapacities" Content="{Core:Translator Text=CapacitiesLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="309,0,0,0"/>
                 <Label x:Name="LabelHunger" Content="{Core:Translator Text=Hunger}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-3,30,0,0"/>
-                <Label x:Name="labelHungryState" Content="{Core:Translator Text=Hungry}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="55,30,0,0" RenderTransformOrigin="0.163,0.577"/>
+                <Label x:Name="labelHungryState" Content="{Binding Hero.HungryStatusDisplay}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="55,30,0,0" RenderTransformOrigin="0.163,0.577"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBoxInventory" Header="{Core:Translator Text=Inventory}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="556,0,0,0" Height="671" Width="195">
             <Grid HorizontalAlignment="Left" Height="652" VerticalAlignment="Top" Width="185" Margin="0,0,-2,-3">
                 <Grid HorizontalAlignment="Left" Height="652" VerticalAlignment="Top" Width="185">
-                    <Label x:Name="labelGoldAmount" Content="goldAmount" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,36,0,0" RenderTransformOrigin="0.39,0.538"/>
+                    <Label x:Name="labelGoldAmount" Content="{Binding Hero.Gold}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,36,0,0" RenderTransformOrigin="0.39,0.538"/>
                     <Label x:Name="LabelBackPack" Content="{Core:Translator Text=BackPack}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,237,0,0"/>
                     <Label x:Name="LabelSpecialItems" Content="{Core:Translator Text=SpecialItems}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,419,0,0"/>
                     <Label x:Name="LabelWeapons" Content="{Core:Translator Text=Weapon}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,95,0,0"/>
                     <Label x:Name="labelDescriptionGold" Content="{Core:Translator Text=LabelGold}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                    <ListBox x:Name="listBoxWeapons" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="162" Margin="13,121,0,0"/>
-                    <ListBox x:Name="listBoxBackPack" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="162" Margin="13,263,0,0"/>
-                    <ListBox x:Name="listBoxSpecialItems" HorizontalAlignment="Left" Height="197" VerticalAlignment="Top" Width="162" Margin="13,445,0,0"/>
-                    <Button x:Name="buttonThrowItem" Content="{Core:Translator Text=ThrowItem}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="97,368,0,0" FontSize="9" Click="buttonThrowItem_Click"/>
-                    <Button x:Name="buttonUseItem" Content="{Core:Translator Text=UseItem}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="17,368,0,0" FontSize="9" Click="buttonUseItem_Click"/>
-                    <Button x:Name="buttonThrowWeapon" Content="{Core:Translator Text=ThrowWeapon}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="40,180,0,0" FontSize="9" Click="buttonThrowWeapon_Click"/>
+                    <ListBox x:Name="listBoxWeapons" ItemsSource="{Binding Hero.WeaponHolder.GetWeapons}" SelectedItem="{Binding SelectedWeapon}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="162" Margin="13,121,0,0"/>
+                    <ListBox x:Name="listBoxBackPack"  ItemsSource="{Binding Hero.BackPack.GetItems}" SelectedItem="{Binding SelectedItem}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="162" Margin="13,263,0,0"/>
+                    <ListBox x:Name="listBoxSpecialItems" ItemsSource="{Binding Hero.SpecialItems}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Height="197" VerticalAlignment="Top" Width="162" Margin="13,445,0,0"/>
+                    <Button x:Name="buttonThrowItem" Content="{Core:Translator Text=ThrowItem}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="97,368,0,0" FontSize="9" Command="{Binding ThrowLootCommand}" CommandParameter="{Binding SelectedItem}" />
+                    <Button x:Name="buttonUseItem" Content="{Core:Translator Text=UseItem}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="17,368,0,0" FontSize="9" Command="{Binding UseItemCommand}" CommandParameter="{Binding SelectedItem}" />
+                    <Button x:Name="buttonThrowWeapon" Content="{Core:Translator Text=ThrowWeapon}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="40,180,0,0" FontSize="9" Command="{Binding ThrowLootCommand}" CommandParameter="{Binding SelectedWeapon}" />
                 </Grid>
             </Grid>
         </GroupBox>
@@ -39,11 +49,15 @@
             <Grid HorizontalAlignment="Left" Height="143" VerticalAlignment="Top" Width="541" Margin="0,0,-12,-3">
             </Grid>
         </GroupBox>
-        <RichTextBox x:Name="richTextBoxMainContent" HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="541" Margin="10,95,0,0" Focusable="False">
-            <FlowDocument/>
+        <RichTextBox x:Name="richTextBoxMainContent" IsReadOnly="True" HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="541" Margin="10,95,0,0" Focusable="False">
+            <FlowDocument>
+                <Paragraph >
+                    <Run Text="{Binding StoryText, Mode=OneWay}" />
+                </Paragraph>
+            </FlowDocument>
         </RichTextBox>
-        <Button x:Name="buttonSave" Content="{Core:Translator Text=Save}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="676,687,0,0" Click="buttonSave_Click" IsEnabled="True"/>
-        <Button x:Name="buttonLoad" Content="{Core:Translator Text=Load}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="581,687,0,0" Click="buttonTestLoad_Click" IsEnabled="True"/>
+        <Button x:Name="buttonSave" Content="{Core:Translator Text=Save}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="676,687,0,0" Command="{Binding SaveHeroCommand}"  CommandParameter="{Binding Hero}" IsEnabled="True"/>
+        <Button x:Name="buttonLoad" Content="{Core:Translator Text=Load}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="581,687,0,0" Command="{Binding LoadHeroCommand}" IsEnabled="True"/>
 
     </Grid>
 </Window>

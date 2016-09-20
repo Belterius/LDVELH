@@ -1,32 +1,60 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 namespace LDVELH_WPF
 {
     public class Weapon : Loot
     {
 
-        [Column]
-        private string name{get;set;}
-        [Column]
-        private WeaponTypes weaponType { get; set; }
+        [Column("Name")]
+        private string _Name{get;set;}
+        public string Name
+        {
+            get
+            {
+                return _Name;
+            }
+            private set
+            {
+                if (_Name != value)
+                {
+                    _Name = value;
+                }
+            }
+        }
+        [Column("WeaponType")]
+        private WeaponTypes _WeaponType { get; set; }
+        public WeaponTypes WeaponType
+        {
+            get
+            {
+                return _WeaponType;
+            }
+            set
+            {
+                if (_WeaponType != value)
+                {
+                    _WeaponType = value;
+                }
+            }
+        }
 
         private Weapon()
         {
 
         }
         public Weapon(string name, WeaponTypes weaponType){
-            this.name = name;
-            this.weaponType = weaponType;
+            this.Name = name;
+            this.WeaponType = weaponType;
         }
-        public override void remove(Hero hero)
+        public override void Remove(Hero hero)
         {
-            hero.weaponHolder.Remove(this);
-            hero.weaponHolderHasChanged(this, false);
+            hero.WeaponHolder.Remove(this);
         }
-        public override void add(Hero hero)
+        public override void Add(Hero hero)
         {
-            hero.weaponHolder.Add(this);
-            hero.weaponHolderHasChanged(this, true);
+            hero.WeaponHolder.Add(this);
         }
 
         public override bool Equals(object obj)
@@ -35,33 +63,27 @@ namespace LDVELH_WPF
                 return false;
 
 
-            Weapon weapon = (Weapon)obj;
-            if (this.name != weapon.name)
+            Weapon Weapon = (Weapon)obj;
+            if (this.Name != Weapon.Name)
                 return false;
-            if (this.weaponType != weapon.weaponType)
+            if (this.WeaponType != Weapon.WeaponType)
                 return false;
 
             return true;
         }
         public override int GetHashCode()
         {
-            return new { name, weaponType}.GetHashCode();
+            return new { Name, WeaponType}.GetHashCode();
         }
 
-        public WeaponTypes getWeaponType
-        {
-            get { return weaponType; }
-        }
+        
 
-        public string getName
-        {
-            get { return name; }
-        }
+        
 
-        public string getDisplayName
-        {
+        public string DisplayName
+        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
             get {
-                return name + "(" + GlobalTranslator.Instance.translator.ProvideValue(weaponType.ToString()) + ")";
+                return Name + "(" + GlobalTranslator.Instance.Translator.ProvideValue(WeaponType.ToString()) + ")";
             }
         }
     }
@@ -77,5 +99,13 @@ namespace LDVELH_WPF
         Axe,
         Baton,
         TwoEdgedSword
+    }
+    static class WeaponTypesMethods
+    {
+
+        public static String GetTranslation(this WeaponTypes weapon)
+        {
+            return GlobalTranslator.Instance.Translator.ProvideValue(weapon.ToString());
+        }
     }
 }

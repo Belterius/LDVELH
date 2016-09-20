@@ -1,72 +1,110 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace LDVELH_WPF
 {
-    public class Character
+    public class Character : INotifyPropertyChanged
     {
+        //Basics getter and setter are REQUIRED on any property used by SQLite, else it won't be able to properly generate and update the values. 
+
         [Key]
         public int CharacterID { get; set; }
-        [Column("name")]
-        public string name { get; set; }
-        [Column("maxLife")]
-        protected int maxHitPoint { get; set; }
-        [Column("actualLife")]
-        protected int actualHitPoint { get; set; }
-        [Column("baseAgility")]
-        protected int baseAgility { get; set; }
-        public event HitPointHandler HitPointChanged;
-        public delegate void HitPointHandler(Hero m, int damage);
+        [Column("Name")]
+        private string _Name { get; set; }
 
-        public string getName()
+        public string Name
         {
-            return name;
-        }
-        public int getMaxHitPoint()
-        {
-            return maxHitPoint;
-        }
-        public int getActualHitPoint()
-        {
-            return actualHitPoint;
-        }
-        public int getBaseAgility()
-        {
-            return baseAgility;
-        }
-
-        public void kill()
-        {
-            this.takeDamage(this.actualHitPoint);
-        }
-
-        public void takeDamage(int damage)
-        {
-            this.actualHitPoint -= damage;
-            if (actualHitPoint <= 0)
+            get
             {
-                actualHitPoint = 0;
+                return _Name;
+            }
+            set
+            {
+                if (_Name != value)
+                {
+                    _Name = value;
+                    RaisePropertyChanged("Name");
+                }
+            }
+        }
+        [Column("MaxHitPoint")]
+        private int _MaxHitPoint { get; set; }
+        public int MaxHitPoint
+        {
+            get
+            {
+                return _MaxHitPoint;
+            }
+            protected set
+            {
+                if (_MaxHitPoint != value)
+                {
+                    _MaxHitPoint = value;
+                    RaisePropertyChanged("MaxHitPoint");
+                }
+            }
+        }
+        [Column("ActualLife")]
+        int _ActualHitPoint { get; set; }
+        public int ActualHitPoint
+        {
+            get
+            {
+                return _ActualHitPoint;
+            }
+            protected set
+            {
+                if (_ActualHitPoint != value)
+                {
+                    _ActualHitPoint = value;
+                    RaisePropertyChanged("ActualHitPoint");
+                }
+            }
+        }
+        [Column("BaseAgility")]
+        int _BaseAgility { get; set; }
+        public int BaseAgility
+        {
+            get
+            {
+                return _BaseAgility;
+            }
+            protected set
+            {
+                if (_BaseAgility != value)
+                {
+                    _BaseAgility = value;
+                    RaisePropertyChanged("BaseAgility");
+                }
+            }
+        }
+
+        public void Kill()
+        {
+            this.TakeDamage(this.ActualHitPoint);
+        }
+
+        public void TakeDamage(int damage)
+        {
+            if (damage >= ActualHitPoint)
+            {
+                ActualHitPoint = 0;
                 if (this is Hero)
                 {
                     throw new YouAreDeadException("You are dead");
                 }
             }
-
-            if (this is Hero)
+            else
             {
-                lifePointHasChanged((Hero)this, damage);
+                ActualHitPoint -= damage;
             }
-
         }
 
-        public void lifePointHasChanged(Hero hero, int damage)
+        protected void RaisePropertyChanged(string prop)
         {
-            HitPointHandler handler = HitPointChanged;
-            if (handler != null)
-            {
-                handler(hero, damage);
-            }
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
         }
-
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

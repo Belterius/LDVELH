@@ -386,4 +386,13 @@
 TLDR : un objet random et c'est parti 
 Il faut vous hâter, car quelque chose vous dit qu'il serait imprudent de vous attarder parmi les ruines fumantes du monastère détruit. Les monstres volants peuvent, en effet, reparaître à tout moment. Il n'y a d'ailleurs pas de temps à perdre : vous devez au plus vite prendre la route de Holmgard, la capitale du Sommerlund, pour aller annoncer au Roi cette terrible nouvelle : les Guerriers Kaï, l'élite du pays, ont tous été massacrés, à l'exception de vous-même. Or sans l'autorité et le savoir des Seigneurs Kaï pour commander l'armée, le royaume du Sommerlund se trouve à la merci de ses plus anciens ennemis: les Maîtres des Ténèbres. En retenant vos larmes à grand-peine, vous dites adieu à vos compagnons morts et vous faites le serment de les venger. Vous tournez alors le dos aux ruines et vous descendez avec précaution le sentier escarpé qui s'ouvre devant vous. Au pied de la colline, le chemin aboutit à une bifurcation. Là, deux autres sentiers mènent l'un et l'autre à une grande forêt en empruntant deux directions différentes</value>
   </data>
+  <data name="Disclaimer" xml:space="preserve">
+    <value>Disclaimer</value>
+  </data>
+  <data name="ErrorUseItem" xml:space="preserve">
+    <value>Vous ne pouvez pas utiliser cet objet !</value>
+  </data>
+  <data name="TooManyCapacities" xml:space="preserve">
+    <value>Vous avez déjà atteint votre nombre maximum de capacités !</value>
+  </data>
 </root>

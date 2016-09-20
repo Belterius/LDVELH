@@ -1,32 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace LDVELH_WPF
 {
-    public class Story 
+    public class Story : INotifyPropertyChanged
     {
         
-        Hero playerHero;
-        public string title{get;set;}
-        public List<StoryParagraph> content;
-        StoryParagraph actualParagraph;
+        Hero _PlayerHero;
+        public Hero PlayerHero
+        {
+            get
+            {
+                return _PlayerHero;
+            }
+            set
+            {
+                if (_PlayerHero != value)
+                {
+                    _PlayerHero = value;
 
-        public event ActualParagraphHandler ParagraphChanged;
-        public delegate void ActualParagraphHandler(Story story, StoryParagraph actualParagraph);
+                    RaisePropertyChanged("PlayerHero");
+                }
+            }
+        }
+        public string Title{get;set;}
+        public ObservableCollection<StoryParagraph> content;
+        StoryParagraph _ActualParagraph;
+        public StoryParagraph ActualParagraph
+        {
+            get
+            {
+                return _ActualParagraph;
+            }
+            set
+            {
+                if (_ActualParagraph != value)
+                {
+                    _ActualParagraph = value;
+                    PlayerHero.CurrentParagraph = value.ParagraphNumber;
+                    RaisePropertyChanged("ActualParagraph");
+                }
+            }
+        }
+
+        void RaisePropertyChanged(string prop)
+        {
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Story(string title, Hero hero)
         {
-            this.title = title;
-            this.playerHero = hero;
-            this.content = new List<StoryParagraph>();
+            this.Title = title;
+            this.PlayerHero = hero;
+            this.content = new ObservableCollection<StoryParagraph>();
         }
 
-        public void resolveActualParagraph()
+        public void ResolveActualParagraph()
         {
             try
             {
-                this.actualParagraph.resolve(this);
+                this.ActualParagraph.Resolve(this);
             }
             catch(YouAreDeadException){
                 throw;
@@ -41,29 +78,24 @@ namespace LDVELH_WPF
             }
         }
 
-        public void addParagraph(StoryParagraph paragraph)
+        public void AddParagraph(StoryParagraph paragraph)
         {
-            ////acting as in the book where it's possible to exploit loophole, TODO : maybe decide that it's better not to recreate a paragraph
-            //StoryParagraph existingParagraph = this.content.Where(s => s.getParagraphNumber == paragraph.getParagraphNumber).FirstOrDefault();
-            //this.content.Remove(existingParagraph);
-
             this.content.Add(paragraph);
         }
 
-        public void start()
+        public void Start()
         {
-           setActualParagraph(1);
+           SetActualParagraph(1);
         }
-        public void start(int paragraph)
+        public void Start(int paragraph)
         {
-            setActualParagraph(paragraph);
+            SetActualParagraph(paragraph);
         }
-        private void setActualParagraph(int paragraphNumber)
+        private void SetActualParagraph(int paragraphNumber)
         {
             try
             {
-                this.actualParagraph = getParagraph(paragraphNumber);
-                ActualParagraphHasChanged(this.actualParagraph);
+                this.ActualParagraph = GetParagraph(paragraphNumber);
             }
             catch (ParagraphNotFoundException)
             {
@@ -72,13 +104,13 @@ namespace LDVELH_WPF
         }
         public void Move(int paragraphNumber)
         {
-            this.setActualParagraph(paragraphNumber);
+            this.SetActualParagraph(paragraphNumber);
         }
-        public StoryParagraph getParagraph(int paragraphNumber)
+        public StoryParagraph GetParagraph(int paragraphNumber)
         {
             foreach (StoryParagraph paragraph in this.content)
             {
-                if (paragraph.getParagraphNumber == paragraphNumber)
+                if (paragraph.ParagraphNumber == paragraphNumber)
                 {
                     return paragraph;
                 }
@@ -86,22 +118,7 @@ namespace LDVELH_WPF
             throw new ParagraphNotFoundException();
 
         }
-        public StoryParagraph getActualParagraph
-        {
-            get { return actualParagraph;}
-        }
-        public void ActualParagraphHasChanged(StoryParagraph paragraph)
-        {
-            ActualParagraphHandler handler = ParagraphChanged;
-            if (handler != null)
-            {
-                handler(this, paragraph);
-            }
-        }
-        public Hero getHero
-        {
-            get { return playerHero; }
-        }
+        
     }
 
     [Serializable]

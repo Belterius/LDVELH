@@ -1,11 +1,3 @@
 ﻿TODO :
 Look into SRP and OpenClosed breach for addloot and remove loot function.
 
-TOFIX :
-Extremely strange crash, to reproduce have a ration in first item slot, get a second item in second slot (Miscellaneous if possible, I had soap), then use the ration, select the second item, select the ration, when you try to select the second item again, the game will crash with "System.ArgumentException", "An item with the same key has already been added"
-I could not understand WHERE the App is trying to add an item, as I am ONLY selecting and un-selecting my items.
-The crash will ONLY occur if I use the first item, NOT if I use the second item.
-It does not matter if the use of the ration is successful or not (bellyFull/successfully eat) it will crash in BOTH case.
-Just in case, disabling the CantEatException doesn't help
-
-Seems to be a problem with the selected item ? I used a health pot, that broke, and then when trying to use a ration, my selected Item was still my pot.

@@ -102,18 +102,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\Converters.cs" />
+    <Compile Include="Helpers\DialogCloser.cs" />
+    <Compile Include="Helpers\IClosableViewModel.cs" />
+    <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Model\BackPack.cs" />
     <Compile Include="Model\Capacity.cs" />
     <Compile Include="Model\Character.cs" />
-    <Compile Include="CreateLoot.cs" />
-    <Compile Include="CreateParagraphTranslated.cs" />
-    <Compile Include="CreateParagraph.cs" />
-    <Compile Include="DamageTable.cs" />
+    <Compile Include="BookContentGenerator\CreateLoot.cs" />
+    <Compile Include="BookContentGenerator\CreateParagraphTranslated.cs" />
+    <Compile Include="BookContentGenerator\CreateParagraph.cs" />
+    <Compile Include="BookContentGenerator\DamageTable.cs" />
     <Compile Include="DiceRoll.cs" />
     <Compile Include="Model\Ennemy.cs" />
     <Compile Include="Model\Event.cs" />
-    <Compile Include="EventHandlers.cs" />
     <Compile Include="GlobalFunction.cs" />
+    <Compile Include="ViewModel\FightViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\MenuCapacitiesViewModel.cs" />
+    <Compile Include="ViewModel\MenuLoadViewModel.cs" />
+    <Compile Include="ViewModel\MenuSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\HackResx.xaml.cs">
       <DependentUpon>HackResx.xaml</DependentUpon>
     </Compile>
@@ -295,6 +304,7 @@
   <ItemGroup>
     <Resource Include="Resources\settings-gears.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.102.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.102.0\build\net45\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

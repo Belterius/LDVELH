@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
@@ -8,48 +9,63 @@ namespace LDVELH_WPF
 {
     public class WeaponHolder
     {
+        private int BasicWeaponHolderSize = 2;
+
         [Key]
         public int WeaponHolderID { get; set; }
-        [Column]
-        private int weaponHolderSize{get;set;}
-        List<Weapon> weapons;
+        [Column("WeaponHolderSize")]
+        private int _WeaponHolderSize{get;set;}
+        public int WeaponHolderSize
+        {
+            get
+            {
+                return _WeaponHolderSize;
+            }
+            private set
+            {
+                if (_WeaponHolderSize != value)
+                {
+                    _WeaponHolderSize = value;
+                }
+            }
+        }
+        ObservableCollection<Weapon> Weapons;
 
-        private int basicWeaponHolderSize = 2;
 
         public WeaponHolder()
         {
-            this.weaponHolderSize = basicWeaponHolderSize;
-            weapons = new List<Weapon>();
+            this.WeaponHolderSize = BasicWeaponHolderSize;
+            Weapons = new ObservableCollection<Weapon>();
         }
 
         public WeaponHolder(int maxWeapon)
         {
-            this.weaponHolderSize = maxWeapon;
-            weapons = new List<Weapon>();
+            this.WeaponHolderSize = maxWeapon;
+            Weapons = new ObservableCollection<Weapon>();
 
         }
 
         public void Add(Weapon weapon)
         {
-            if (this.weapons.Count >= this.weaponHolderSize)
+            if (this.Weapons.Count >= this.WeaponHolderSize)
             {
                 throw new WeaponHolderFullException("Your weapon holder is full, throw a weapon to add a new one !");
             }
             else
             {
-                this.weapons.Add(weapon);
+                this.Weapons.Add(weapon);
             }
         }
         public void Remove(Weapon weapon)
         {
-            this.weapons.Remove(weapon);
+            this.Weapons.Remove(weapon);
         }
 
         public bool Contains(WeaponTypes weaponType)
         {
-            foreach (Weapon weapon in this.weapons)
+            foreach (Weapon weapon in this.Weapons)
             {
-                if (weapon.getWeaponType == weaponType)
+                if (weapon.WeaponType == weaponType)
                 {
                     return true;
                 }
@@ -57,17 +73,17 @@ namespace LDVELH_WPF
             return false;
         }
 
-        public bool isEmpty()
+        public bool IsEmpty()
         {
-            if (this.weapons.Count == 0)
+            if (this.Weapons.Count == 0)
                 return true;
             else
                 return false;
         }
 
-        public List<Weapon> getWeapons
+        public ObservableCollection<Weapon> GetWeapons
         {
-            get { return weapons;}
+            get { return Weapons;}
         }
 
     }

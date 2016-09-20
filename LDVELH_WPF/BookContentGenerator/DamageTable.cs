@@ -5,10 +5,10 @@ namespace LDVELH_WPF
     class DamageTable
     {
         //Rule of the DamageTable are corresponding to the rule in the CYOA Book Lone Wolf.
-        //While it was possible to deduct some logic from the EnnemyDamageTaken table, it was not possible for the HeroDamageTaken table, hence why it's arbitrary and not determined by an arithmetical function.
+        //While it was possible to deduct some logic from the EnemyDamageTaken table, it was not possible for the HeroDamageTaken table, hence why it's arbitrary and not determined by an arithmetical function.
 
 
-        public static int ennemyDamageTaken(int strenghtDifference, int rollD10)
+        public static int enemyDamageTaken(int strenghtDifference, int rollD10)
         {
             if (strenghtDifference > 0)
             {

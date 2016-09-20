@@ -1,36 +1,68 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace LDVELH_WPF
 {
-    public class Capacity
+    public class Capacity : INotifyPropertyChanged
     {
         [Key]
         public int CapacityID { get; set; }
 
-        public static readonly int phychicPowerStrenght = 2;
-        public static readonly int weaponMasteryStrenght = 2;
+        public static readonly int PhychicPowerStrenght = 2;
+        public static readonly int WeaponMasteryStrenght = 2;
 
         [Column("Capacity")]
-        private CapacityType capacity{get;set;}
+        private CapacityType _CapacityKind{get;set;}
+        public CapacityType CapacityKind
+        {
+            get
+            {
+                return _CapacityKind;
+            }
+            private set
+            {
+                if (_CapacityKind != value)
+                {
+                    _CapacityKind = value;
+                    RaisePropertyChanged("CapacityKind");
+                }
+            }
+        }
+
+        void RaisePropertyChanged(string prop)
+        {
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Capacity()
         {
         }
         public Capacity(CapacityType capacityType)
+
         {
-            this.capacity = capacityType;
+            this.CapacityKind = capacityType;
         }
 
-        public CapacityType getCapacityType{
-            get { return capacity; }
+        public override bool Equals(object obj)
+        {
+            if(!(obj is Capacity))
+            {
+                return false;
+            }
+            if(this.CapacityKind != ((Capacity)obj).CapacityKind)
+            {
+                return false;
+            }
+            return true;
         }
 
-        public string getCapacityDisplayName
+        public string DisplayName
         {
             get {
-                return GlobalTranslator.Instance.translator.ProvideValue(capacity.ToString());
+                return GlobalTranslator.Instance.Translator.ProvideValue(CapacityKind.ToString());
             }
         }
         
@@ -56,7 +88,7 @@ namespace LDVELH_WPF
 
         public static String GetTranslation(this CapacityType capacity)
         {
-            return GlobalTranslator.Instance.translator.ProvideValue(capacity.ToString());
+            return GlobalTranslator.Instance.Translator.ProvideValue(capacity.ToString());
         }
     }
 }

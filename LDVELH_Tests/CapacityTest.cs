@@ -16,9 +16,9 @@ namespace LDVELH_Tests
             hidingCapacity = new Capacity(CapacityType.Hiding);
             phychicCapacity = new Capacity(CapacityType.PsychicPower);
 
-            Assert.AreEqual(true, hidingCapacity.getCapacityType == CapacityType.Hiding);
-            Assert.AreEqual(true, phychicCapacity.getCapacityType == CapacityType.PsychicPower);
-            Assert.AreEqual(false, hidingCapacity.getCapacityType == CapacityType.PsychicPower);
+            Assert.AreEqual(true, hidingCapacity.CapacityKind == CapacityType.Hiding);
+            Assert.AreEqual(true, phychicCapacity.CapacityKind == CapacityType.PsychicPower);
+            Assert.AreEqual(false, hidingCapacity.CapacityKind == CapacityType.PsychicPower);
         }
 
        

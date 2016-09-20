@@ -14,9 +14,9 @@ namespace LDVELH_Tests
             Consummable consummable = CreateLoot.CreateConsummable.minorHealthPotion();
             BackPack basicBackPack = new BackPack();
 
-            basicBackPack.Add(consummable);
+            basicBackPack.AddItem(consummable);
 
-            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable));
+            Assert.AreEqual(true, basicBackPack.GetItems.Contains(consummable));
 
         }
 
@@ -29,12 +29,12 @@ namespace LDVELH_Tests
             Consummable consummable3 = new Consummable("Random Consumable FALSE", 12, 1);
             BackPack basicBackPack = new BackPack();
 
-            basicBackPack.Add(consummable);
-            basicBackPack.Add(consummable2);
+            basicBackPack.AddItem(consummable);
+            basicBackPack.AddItem(consummable2);
 
-            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable));
-            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable4));
-            Assert.AreEqual(false, basicBackPack.getItems.Contains(consummable3));
+            Assert.AreEqual(true, basicBackPack.GetItems.Contains(consummable));
+            Assert.AreEqual(true, basicBackPack.GetItems.Contains(consummable4));
+            Assert.AreEqual(false, basicBackPack.GetItems.Contains(consummable3));
 
         }
 
@@ -47,20 +47,20 @@ namespace LDVELH_Tests
             Consummable consummable4 = new Consummable("Random Consumable three", 12, 1);
             BackPack smallBackPack = new BackPack(3);
 
-            smallBackPack.Add(consummable);
-            smallBackPack.Add(consummable2);
-            smallBackPack.Add(consummable3);
+            smallBackPack.AddItem(consummable);
+            smallBackPack.AddItem(consummable2);
+            smallBackPack.AddItem(consummable3);
 
             try
             {
-                smallBackPack.Add(consummable4);
+                smallBackPack.AddItem(consummable4);
                 Assert.Fail();//we should have thrown an exception and gone in the catch
             }
             catch (BackPackFullException)
             {
-                Assert.AreEqual(true, smallBackPack.getItems.Contains(consummable));
-                Assert.AreEqual(true, smallBackPack.getItems.Contains(consummable2));
-                Assert.AreEqual(true, smallBackPack.getItems.Contains(consummable3));
+                Assert.AreEqual(true, smallBackPack.GetItems.Contains(consummable));
+                Assert.AreEqual(true, smallBackPack.GetItems.Contains(consummable2));
+                Assert.AreEqual(true, smallBackPack.GetItems.Contains(consummable3));
             }
 
         }
@@ -72,16 +72,16 @@ namespace LDVELH_Tests
             Consummable consummable2 = new Consummable("Random Consumable", 12, 1);
             Consummable consummable3 = new Consummable("Random Consumable FALSE", 12, 1);
             BackPack basicBackPack = new BackPack();
-            basicBackPack.Add(consummable);
-            basicBackPack.Add(consummable2);
+            basicBackPack.AddItem(consummable);
+            basicBackPack.AddItem(consummable2);
 
-            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable));
-            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable2));
+            Assert.AreEqual(true, basicBackPack.GetItems.Contains(consummable));
+            Assert.AreEqual(true, basicBackPack.GetItems.Contains(consummable2));
 
-            basicBackPack.Remove(consummable2);
+            basicBackPack.RemoveItem(consummable2);
 
-            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable));
-            Assert.AreEqual(false, basicBackPack.getItems.Contains(consummable2));
+            Assert.AreEqual(true, basicBackPack.GetItems.Contains(consummable));
+            Assert.AreEqual(false, basicBackPack.GetItems.Contains(consummable2));
 
         }
 
@@ -91,9 +91,9 @@ namespace LDVELH_Tests
             Consummable consummable = CreateLoot.CreateConsummable.minorHealthPotion();
             BackPack basicBackPack = new BackPack();
 
-            basicBackPack.Remove(consummable);
+            basicBackPack.RemoveItem(consummable);
 
-            Assert.AreEqual(false, basicBackPack.getItems.Contains(consummable));
+            Assert.AreEqual(false, basicBackPack.GetItems.Contains(consummable));
 
         }
 
@@ -104,11 +104,11 @@ namespace LDVELH_Tests
             Food food = new Food("Meal", 1);
             BackPack basicBackPack = new BackPack();
 
-            basicBackPack.Add(consummable);
-            basicBackPack.Add(food);
+            basicBackPack.AddItem(consummable);
+            basicBackPack.AddItem(food);
 
-            Assert.AreEqual(true, basicBackPack.getItems.Contains(consummable));
-            Assert.AreEqual(true, basicBackPack.getItems.Contains(food));
+            Assert.AreEqual(true, basicBackPack.GetItems.Contains(consummable));
+            Assert.AreEqual(true, basicBackPack.GetItems.Contains(food));
 
         }
 
