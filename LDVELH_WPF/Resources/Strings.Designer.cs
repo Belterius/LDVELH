@@ -765,6 +765,105 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cette compétence vous permet de communiquer avec la majorité des animaux..
+        /// </summary>
+        internal static string ToolTipBeastWhisperer {
+            get {
+                return ResourceManager.GetString("ToolTipBeastWhisperer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cette compétence est utile pour régénérer vos Points de Vie entre les combats.
+        ///Vous pourrez regagner un Point de Vie par paragraphe ne contenant pas de combat..
+        /// </summary>
+        internal static string ToolTipHealing {
+            get {
+                return ResourceManager.GetString("ToolTipHealing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cette discipline vous permet de passer inapercu.
+        ///En campagne, vous pourrew vous dissimuler efficacement derrière des roches, tronc d&apos;arbres ou autres cachettes naturelles. 
+        ///En ville, vous posséderez l&apos;accent des locaux, et trouverez plus facilement un endroit ou vous réfugier..
+        /// </summary>
+        internal static string ToolTipHiding {
+            get {
+                return ResourceManager.GetString("ToolTipHiding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cette compétence vous assure de ne jamais mourir de faim dans la Nature.
+        ///Vous serez toujours capable de chasser pour vous nourir, sauf dans les déserts ou places particulièrement dévastés.
+        ///Cette compétence vous procure également des capacités de filature.
+        /// </summary>
+        internal static string ToolTipHunting {
+            get {
+                return ResourceManager.GetString("ToolTipHunting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cette compétence vous permet de ne jamais perdre votre chemin,
+        /// de découvrir la location d&apos;une personne ou d&apos;un objet et de pouvoir suivre des traces et empreintes de pas..
+        /// </summary>
+        internal static string ToolTipOrientation {
+            get {
+                return ResourceManager.GetString("ToolTipOrientation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cette compétence vous permet de faire usage de pouvoir psychiques pour attaquer vos ennemis.
+        ///Si ils y sont vulnérables vous bénéficirez d&apos;un bonus de +2 Agilité..
+        /// </summary>
+        internal static string ToolTipPsychicPower {
+            get {
+                return ResourceManager.GetString("ToolTipPsychicPower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cette compétence vous protège de toute attaque mentale au cours de votre aventure..
+        /// </summary>
+        internal static string ToolTipPsychicShield {
+            get {
+                return ResourceManager.GetString("ToolTipPsychicShield", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cette compétence vous préviens de tout danger immédiat.
+        ///Vous pourrez aussi parfois deviner la véritable nature d&apos;un objet ou individu..
+        /// </summary>
+        internal static string ToolTipSixthSense {
+            get {
+                return ResourceManager.GetString("ToolTipSixthSense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cette compétence vous permet de bouger de petits objets à l&apos;aide de votre esprit..
+        /// </summary>
+        internal static string ToolTipTelekinesis {
+            get {
+                return ResourceManager.GetString("ToolTipTelekinesis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous etes particulièrement compétent à l&apos;usage d&apos;un type d&apos;arme.
+        ///Si vous combattez à l&apos;aide de ce type d&apos;arme, vous posséderez un bonus de +2 Agilité..
+        /// </summary>
+        internal static string ToolTipWeaponMastery {
+            get {
+                return ResourceManager.GetString("ToolTipWeaponMastery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vous avez déjà atteint votre nombre maximum de capacités !.
         /// </summary>
         internal static string TooManyCapacities {

@@ -395,4 +395,43 @@ Il faut vous hâter, car quelque chose vous dit qu'il serait imprudent de vous a
   <data name="TooManyCapacities" xml:space="preserve">
     <value>Vous avez déjà atteint votre nombre maximum de capacités !</value>
   </data>
+  <data name="ToolTipBeastWhisperer" xml:space="preserve">
+    <value>Cette compétence vous permet de communiquer avec la majorité des animaux.</value>
+  </data>
+  <data name="ToolTipHealing" xml:space="preserve">
+    <value>Cette compétence est utile pour régénérer vos Points de Vie entre les combats.
+Vous pourrez regagner un Point de Vie par paragraphe ne contenant pas de combat.</value>
+  </data>
+  <data name="ToolTipHiding" xml:space="preserve">
+    <value>Cette discipline vous permet de passer inapercu.
+En campagne, vous pourrew vous dissimuler efficacement derrière des roches, tronc d'arbres ou autres cachettes naturelles. 
+En ville, vous posséderez l'accent des locaux, et trouverez plus facilement un endroit ou vous réfugier.</value>
+  </data>
+  <data name="ToolTipHunting" xml:space="preserve">
+    <value>Cette compétence vous assure de ne jamais mourir de faim dans la Nature.
+Vous serez toujours capable de chasser pour vous nourir, sauf dans les déserts ou places particulièrement dévastés.
+Cette compétence vous procure également des capacités de filature</value>
+  </data>
+  <data name="ToolTipOrientation" xml:space="preserve">
+    <value>Cette compétence vous permet de ne jamais perdre votre chemin,
+ de découvrir la location d'une personne ou d'un objet et de pouvoir suivre des traces et empreintes de pas.</value>
+  </data>
+  <data name="ToolTipPsychicPower" xml:space="preserve">
+    <value>Cette compétence vous permet de faire usage de pouvoir psychiques pour attaquer vos ennemis.
+Si ils y sont vulnérables vous bénéficirez d'un bonus de +2 Agilité.</value>
+  </data>
+  <data name="ToolTipPsychicShield" xml:space="preserve">
+    <value>Cette compétence vous protège de toute attaque mentale au cours de votre aventure.</value>
+  </data>
+  <data name="ToolTipSixthSense" xml:space="preserve">
+    <value>Cette compétence vous préviens de tout danger immédiat.
+Vous pourrez aussi parfois deviner la véritable nature d'un objet ou individu.</value>
+  </data>
+  <data name="ToolTipTelekinesis" xml:space="preserve">
+    <value>Cette compétence vous permet de bouger de petits objets à l'aide de votre esprit.</value>
+  </data>
+  <data name="ToolTipWeaponMastery" xml:space="preserve">
+    <value>Vous etes particulièrement compétent à l'usage d'un type d'arme.
+Si vous combattez à l'aide de ce type d'arme, vous posséderez un bonus de +2 Agilité.</value>
+  </data>
 </root>

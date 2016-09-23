@@ -13,6 +13,16 @@ namespace LDVELH_WPF.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        public Translator MyTranslator
+        {
+            get { return GlobalTranslator.Instance.Translator; }
+        }
+
+        public string Test
+        {
+            get { return "HitPoints"; }
+        }
+
         bool LoadingHero = false;
 
         public event GenerateActionButton ActionButtonChanged;

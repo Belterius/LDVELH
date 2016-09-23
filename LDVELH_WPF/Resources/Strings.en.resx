@@ -397,4 +397,47 @@ At the foot of the hill, the path splits into two directions, both leading into 
   <data name="TooManyCapacities" xml:space="preserve">
     <value>You have already reached your max number of capacities !</value>
   </data>
+  <data name="ToolTipBeastWhisperer" xml:space="preserve">
+    <value>This skill enables a Kai Lord to communicate with some animals and to be able to guess the intentions of others.</value>
+  </data>
+  <data name="ToolTipHealing" xml:space="preserve">
+    <value>This Discipline can be used to restore ENDURANCE points lost in combat. 
+If you possess this skill you may restore 1 ENDURANCE point to your total for every numbered section of the book you pass through in which you are not involved in combat.
+(This is only to be used after your ENDURANCE has fallen below its original level.) 
+Remember that your ENDURANCE cannot rise above its original level.</value>
+  </data>
+  <data name="ToolTipHiding" xml:space="preserve">
+    <value>This Discipline enables a Kai Lord to blend in with his surroundings.
+In the countryside, he can hide undetected among trees and rocks and pass close to an enemy without being seen.
+In a town or city, it enables him to look and sound like a native of that area, and can help him to find shelter or a safe hiding place.</value>
+  </data>
+  <data name="ToolTipHunting" xml:space="preserve">
+    <value>This skill ensures that a Kai Lord will never starve in the wild. 
+He will always be able to hunt for food for himself except in areas of wasteland and desert. 
+The skill also enables a Kai Lord to be able to move stealthily when stalking his prey.</value>
+  </data>
+  <data name="ToolTipOrientation" xml:space="preserve">
+    <value>This skill enables a Kai Lord to make the correct choice of a path in the wild,
+to discover the location of a person or object in a town or city and to read the secrets of footprints or tracks.</value>
+  </data>
+  <data name="ToolTipPsychicPower" xml:space="preserve">
+    <value>This enables a Kai Lord to attack an enemy using the force of his mind. 
+It can be used at the same time as normal combat weapons and adds two extra points to your COMBAT SKILL. 
+Not all the creatures encountered on this adventure will be harmed by Mindblast.</value>
+  </data>
+  <data name="ToolTipPsychicShield" xml:space="preserve">
+    <value>The Darklords and many of the evil creatures in their command have the ability to attack you using their Mindforce. 
+The Kai Discipline of Mindshield prevents you from losing any ENDURANCE points when subjected to this form of attack.</value>
+  </data>
+  <data name="ToolTipSixthSense" xml:space="preserve">
+    <value>This skill may warn a Kai Lord of imminent danger. 
+It may also reveal the true purpose of a stranger or strange object encountered in your adventure.</value>
+  </data>
+  <data name="ToolTipTelekinesis" xml:space="preserve">
+    <value>Mastery of this Discipline enables a Kai Lord to move small objects with his powers of concentration.</value>
+  </data>
+  <data name="ToolTipWeaponMastery" xml:space="preserve">
+    <value>You will have a weapon in which you have skill. 
+When you enter combat carrying this weapon, you add 2 points to your COMBAT SKILL.</value>
+  </data>
 </root>

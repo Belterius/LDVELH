@@ -43,7 +43,8 @@ namespace LDVELH_WPF
                 MyCheckbox.Unchecked += CheckBox_UnChecked;
                 System.Windows.Forms.CheckBox test = new System.Windows.Forms.CheckBox();
                 Label Label = new Label();
-                Label.Content = MyCheckbox.MyCapacity.GetTranslation(); 
+                Label.Content = MyCheckbox.MyCapacity.GetTranslation();
+                Label.ToolTip = GlobalTranslator.Instance.Translator.ProvideValue("ToolTip" + MyCheckbox.MyCapacity.ToString());
                 Label.Margin = new Thickness(Left+20, Top - 5, 0, 0);
                 ((Grid)(groupBoxCapacities.Content)).Children.Add(MyCheckbox);
                 ((Grid)(groupBoxCapacities.Content)).Children.Add(Label);

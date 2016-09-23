@@ -33,8 +33,8 @@ namespace LDVELH_WPF
 
         private void TranslateLabel()
         {
-            groupBoxHeroStat.Header = GlobalTranslator.Instance.Translator.ProvideValue("HeroStats");
-            labelDescriptionHitPoint.Content = GlobalTranslator.Instance.Translator.ProvideValue("HitPoints");
+            //groupBoxHeroStat.Header = GlobalTranslator.Instance.Translator.ProvideValue("HeroStats");
+            //labelDescriptionHitPoint.Content = GlobalTranslator.Instance.Translator.ProvideValue("HitPoints");
             labelDescriptionAgility.Content = GlobalTranslator.Instance.Translator.ProvideValue("Agility");
             LabelWeaponMastery.Content = GlobalTranslator.Instance.Translator.ProvideValue("WeaponMasteryLabel");
             LabelCapacities.Content = GlobalTranslator.Instance.Translator.ProvideValue("CapacitiesLabel");
