@@ -27,11 +27,12 @@ namespace LDVELH_WPF
                         throw new ArgumentException(
                             String.Format("Language '{0}' is not yet present in the options, if you added the corresponding ressource please add a corresponding case.", LDVELH_WPF.Properties.Settings.Default.Language.ToLower()),
                             "Text");
+
 #else
                 GlobalCulture.Instance.Ci = new CultureInfo("en-GB");
-#endif
-                        
                         break;
+#endif
+
                 }
                 this.StartupUri = new Uri("View/MenuLoad.xaml", UriKind.Relative);
             }

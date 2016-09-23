@@ -117,9 +117,9 @@ namespace LDVELH_WPF.ViewModel
                         "Text");
 #else
                 GlobalCulture.Instance.Ci = new CultureInfo("en-GB");
+                    break;
 #endif
 
-                    break;
             }
         }
         private void WarningMessage()

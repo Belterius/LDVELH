@@ -58,7 +58,12 @@ namespace LDVELH_WPF
             }
             return true;
         }
-
+        public override int GetHashCode()
+        {
+            int hash = 17;
+            hash = hash * 23 + this.CapacityKind.GetHashCode();
+            return hash;
+        }
         public string DisplayName
         {
             get {

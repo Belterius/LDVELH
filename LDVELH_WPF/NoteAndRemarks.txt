@@ -1,3 +1,1 @@
-﻿TODO :
-Look into SRP and OpenClosed breach for addloot and remove loot function.
-
+﻿Should maybe rework capacity into a HashSet of CapacityType
