@@ -232,6 +232,15 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supprimer.
+        /// </summary>
+        internal static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disclaimer.
         /// </summary>
         internal static string Disclaimer {

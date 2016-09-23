@@ -12,7 +12,6 @@
                 <Label x:Name="labelDescriptionHitPoint" Content="{Core:Translator Text=HitPoints}" HorizontalAlignment="Left" Margin="-3,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.06,0.038"/>
                 <Label x:Name="labelAgility" Content="{Binding Hero.BaseAgility}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="171,10,0,0"/>
                 <Label x:Name="labelDescriptionAgility" Content="{Core:Translator Text=Agility}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="126,10,0,0"/>
-                <!--<Label x:Name="labelHitPoint" Content="{Binding ActualHitPoint}" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.053,1.423" Margin="75,10,0,0"/>-->
                 <Label x:Name="labelHitPoint" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.053,1.423" Margin="75,10,0,0">
                     <TextBlock>
                         <Run Text="{Binding Hero.ActualHitPoint}"/>

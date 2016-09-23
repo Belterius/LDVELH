@@ -17,14 +17,6 @@ namespace LDVELH_WPF
         public MenuCapacities()
         {
             InitializeComponent();
-            TranslateLabel();
-        }
-
-        private void TranslateLabel()
-        {
-            this.Title = GlobalTranslator.Instance.Translator.ProvideValue("MenuCapacities");
-            groupBoxCapacities.Header = GlobalTranslator.Instance.Translator.ProvideValue("ListCapacities");
-            ButtonConfirm.Content = GlobalTranslator.Instance.Translator.ProvideValue("Confirm");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

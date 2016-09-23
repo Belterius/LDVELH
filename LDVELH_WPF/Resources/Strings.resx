@@ -434,4 +434,7 @@ Vous pourrez aussi parfois deviner la véritable nature d'un objet ou individu.<
     <value>Vous etes particulièrement compétent à l'usage d'un type d'arme.
 Si vous combattez à l'aide de ce type d'arme, vous posséderez un bonus de +2 Agilité.</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
 </root>

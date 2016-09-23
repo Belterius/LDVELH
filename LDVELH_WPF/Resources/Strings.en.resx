@@ -440,4 +440,7 @@ It may also reveal the true purpose of a stranger or strange object encountered 
     <value>You will have a weapon in which you have skill. 
 When you enter combat carrying this weapon, you add 2 points to your COMBAT SKILL.</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
 </root>
