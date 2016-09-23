@@ -223,16 +223,20 @@ namespace LDVELH_WPF
         {
             if(this.MaxNumberOfCapacities > this.Capacities.Count)
             {
-                Capacity capacity = new Capacity(capacityType);
-                Capacities.Add(capacity);
-
-                if (capacityType == CapacityType.WeaponMastery)
+                if (!PossesCapacity(capacityType))
                 {
-                    while (this.WeaponMastery == WeaponTypes.None)
+                    Capacity capacity = new Capacity(capacityType);
+                    Capacities.Add(capacity);
+
+                    if (capacityType == CapacityType.WeaponMastery)
                     {
-                        this.WeaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
+                        while (this.WeaponMastery == WeaponTypes.None)
+                        {
+                            this.WeaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
+                        }
                     }
                 }
+                
             }
             else
             {

@@ -1655,7 +1655,7 @@
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph211"), paragraphNumber);
                         paragraph.AddDecision(new MoveEvent(173, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph211To173")));
                         paragraph.AddDecision(new MoveEvent(106, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph211To106")));
-                        paragraph.AddDecision(new CapacityEvent(106, CapacityType.SixthSense));
+                        paragraph.AddDecision(new CapacityEvent(244, CapacityType.SixthSense));
                         return paragraph;
                     }
                 case 212:
