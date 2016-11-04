@@ -9,8 +9,17 @@ namespace LDVELH_WPF
 {
     public class Hero : Character, INotifyPropertyChanged
     {
+        /// <summary>
+        /// The damage the Hero will take by not having eaten before a MealEvent
+        /// </summary>
         public static readonly int SkipMealDamage = 3;
+        /// <summary>
+        /// The Agility Debuff the Hero will have by figthing with no weapon
+        /// </summary>
         public static readonly int UnharmedCombatDebuff = 4;
+        /// <summary>
+        /// The amount of Health the Hero will gain at each Paragraph if he has the Healing Capacity
+        /// </summary>
         public static readonly int HealingCapacityRegen = 1;
         
         [ForeignKey("BackPack")]
@@ -39,6 +48,9 @@ namespace LDVELH_WPF
 
         [Column("MaxNumberOfCapacities")]
         private int _MaxNumberOfCapacities = 5; // Can change depending on the number of stories completed
+        /// <summary>
+        /// The Max number of capacities the Hero can posses
+        /// </summary>
         public int MaxNumberOfCapacities
         {
             get
@@ -54,17 +66,29 @@ namespace LDVELH_WPF
                 }
             }
         }
-
+        /// <summary>
+        /// All the Hero known Capacities
+        /// </summary>
         public ObservableCollection<Capacity> Capacities { get; set; }
-
+        /// <summary>
+        /// Contains all the Hero Items
+        /// </summary>
         public BackPack BackPack { get; set; }
 
+        /// <summary>
+        /// Contain all the Hero Weapons
+        /// </summary>
         public WeaponHolder WeaponHolder { get; set; }
-
+        /// <summary>
+        /// Contains all the Hero SpecialItems
+        /// </summary>
         public ObservableCollection<SpecialItem> SpecialItems { get; set; }
 
         [Column("HungryState")]
         private HungryState _HungryStatus{get;set;}
+        /// <summary>
+        /// The current Hungry Status of the Hero
+        /// </summary>
         public HungryState HungryStatus
         {
             get
@@ -138,7 +162,10 @@ namespace LDVELH_WPF
         private Hero()
         {
         }
-
+        /// <summary>
+        /// Create a Hero
+        /// </summary>
+        /// <param name="name">The Hero Name</param>
         public Hero(string name)
         {
             this.Name = name;
@@ -186,7 +213,10 @@ namespace LDVELH_WPF
                 this.ActualHitPoint = this.MaxHitPoint;
             }
         }
-
+        /// <summary>
+        /// Heal the Hero for a specified amount of Health
+        /// </summary>
+        /// <param name="healAmount">The amount of Health gained back by the Hero</param>
         public void Heal(int healAmount)
         {
             this.ActualHitPoint += healAmount;
@@ -318,7 +348,9 @@ namespace LDVELH_WPF
         {
             this.WeaponHolder.GetWeapons.Clear();
         }
-
+        /// <summary>
+        /// Called on every Paragraph that does not contain a fight, Heal if the Hero posses the Healing Capacity
+        /// </summary>
         public void Rest()
         {
             if (this.PossesCapacity(CapacityType.Healing))//Healing capacity allow you to regen when not fighting, see resolve of StoryParagraph
@@ -326,6 +358,9 @@ namespace LDVELH_WPF
                 this.Heal(HealingCapacityRegen);
             }
         }
+        /// <summary>
+        /// Change the Hungry State of the Hero to Full
+        /// </summary>
         public void Eat()
         {
             if (this.HungryStatus != HungryState.Full)
@@ -338,7 +373,9 @@ namespace LDVELH_WPF
             }
             
         }
-
+        /// <summary>
+        /// Check if the Hero is not Hungry, and either make him Hungry or make him take damage
+        /// </summary>
         public void MealTime()
         {
             if (!this.PossesCapacity(CapacityType.Hunting))//Hunting capacity allow you to never have to eat when required.
@@ -351,7 +388,11 @@ namespace LDVELH_WPF
             }
             
         }
-        
+        /// <summary>
+        /// Check if the Hero posses a Capacity
+        /// </summary>
+        /// <param name="capacity"></param>
+        /// <returns>True if he does, False else</returns>
         public bool PossesCapacity(CapacityType capacity)
         {
             foreach (Capacity Capa in this.Capacities)
@@ -363,6 +404,11 @@ namespace LDVELH_WPF
             }
             return false;
         }
+        /// <summary>
+        /// Check if the Hero posses an Item
+        /// </summary>
+        /// <param name="itemName"></param>
+        /// <returns>True if he does, False else</returns>
         public bool PossesItem(String itemName)
         {
             if (PossesBackPackItem(itemName) || PossesSpecialItem(itemName) || PossesWeapon(itemName))
@@ -374,6 +420,11 @@ namespace LDVELH_WPF
                 return false;
             }
         }
+        /// <summary>
+        /// Check if the Hero posses a particular Weapon 
+        /// </summary>
+        /// <param name="itemName"></param>
+        /// <returns>True if he does, False else</returns>
         private bool PossesWeapon(String itemName)
         {
             foreach (Weapon Weapon in this.WeaponHolder.GetWeapons)
@@ -385,6 +436,11 @@ namespace LDVELH_WPF
             }
             return false;
         }
+        /// <summary>
+        /// Check if the Hero posses a particular BackPack Item 
+        /// </summary>
+        /// <param name="itemName"></param>
+        /// <returns>True if he does, False else</returns>
         private bool PossesBackPackItem(String itemName)
         {
             foreach (Item Item in this.BackPack.GetItems)
@@ -396,6 +452,11 @@ namespace LDVELH_WPF
             }
             return false;
         }
+        /// <summary>
+        /// Check if the Hero posses a particular Special Item 
+        /// </summary>
+        /// <param name="itemName"></param>
+        /// <returns>True if he does, False else</returns>
         private bool PossesSpecialItem(String itemName)
         {
             foreach (SpecialItem SpecialItem in this.GetSpecialItems)
@@ -417,6 +478,11 @@ namespace LDVELH_WPF
             this.CombatDebuff = 0;
         }
 
+        /// <summary>
+        /// A round of fighting between the Hero and an Enemy
+        /// </summary>
+        /// <param name="enemy"></param>
+        /// <returns>True if the Enemy is dead, False if not, YouAreDeadException if the Hero is dead</returns>
         public bool Fight(Enemy enemy)
         {
             int StrenghtDifference = FindStrenghtDifference(enemy);
@@ -494,7 +560,12 @@ namespace LDVELH_WPF
             MalusAgility += CombatDebuff;
             return MalusAgility;
         }
-
+        /// <summary>
+        /// Inflict damage to both the Hero and Enemy depending on the result of the DamageTable
+        /// </summary>
+        /// <param name="strenghDifference"></param>
+        /// <param name="enemy"></param>
+        /// <returns></returns>
         private bool ResolveDamage(int strenghDifference, Enemy enemy)
         {
             int RandomD10 = DiceRoll.D10Roll();
@@ -513,11 +584,13 @@ namespace LDVELH_WPF
             }
             return false;
         }
-
+        /// <summary>
+        ///This function must ONLY be called when loading a hero from the database, if a hero is saved while his BackPack/WeaponHolder/SpecialItems is empty, then when loading it then be equal to null instead of empty
+        ///So in order to make sure we don't have any null element, we check for null and incase create a new empty element.
+        /// </summary>
         public void NoNullInHero()
         {
-            //This function must ONLY be called when loading a hero from the database, if a hero is saved while his BackPack/WeaponHolder/SpecialItems is empty, then when loading it then be equal to null instead of empty
-            //So in order to make sure we don't have any null element, we check for null and incase create a new empty element.
+            
             if (this.SpecialItems == null)
                 this.SpecialItems = new ObservableCollection<SpecialItem>();
             if (this.Capacities == null)
@@ -540,7 +613,9 @@ namespace LDVELH_WPF
         }
 
     }
-
+    /// <summary>
+    /// Thrown when the Player doesn't have enought gold to perform an action
+    /// </summary>
     [Serializable]
     public class NotEnoughtGoldException : Exception
     {
@@ -561,6 +636,9 @@ namespace LDVELH_WPF
 
     }
 
+    /// <summary>
+    /// Thrown when the Hero cannot eat (usually because he has already eaten before and is still Full)
+    /// </summary>
     [Serializable]
     public class CantEatException : Exception
     {
@@ -581,6 +659,9 @@ namespace LDVELH_WPF
 
     }
 
+    /// <summary>
+    /// Thrown when the Hero's HP reach 0
+    /// </summary>
     [Serializable]
     public class YouAreDeadException : Exception
     {
@@ -600,6 +681,9 @@ namespace LDVELH_WPF
         { }
 
     }
+    /// <summary>
+    /// Thrown when the Hero try to add a new Capacity while he has already reached the max allowed
+    /// </summary>
     [Serializable]
     public class MaxNumberOfCapacitiesReached : Exception
     {

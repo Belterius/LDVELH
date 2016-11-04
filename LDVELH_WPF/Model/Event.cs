@@ -576,19 +576,37 @@ namespace LDVELH_WPF
             throw new YouAreDeadException(SpecialMessage + GlobalTranslator.Instance.Translator.ProvideValue("YouDied"));
         }
     }
+    /// <summary>
+    /// An Event that lead the Hero to take damages
+    /// </summary>
     public class DamageEvent : Event
     {
         string SpecialMessage = "";
         int DamageAmount;
+        /// <summary>
+        /// An Event that lead the Hero to take damages
+        /// </summary>
+        /// <param name="damageAmount">The amount of damage the Hero will take</param>
         public DamageEvent(int damageAmount)
         {
             this.DamageAmount = damageAmount;
         }
+        /// <summary>
+        /// An Event that lead the Hero to take damages
+        /// </summary>
+        /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
+        /// <param name="damageAmount">The amount of damage the Hero will take</param>
         public DamageEvent(string triggerMessage, int damageAmount)
         {
             this.DamageAmount = damageAmount;
             this.TriggerMessage = triggerMessage;
         }
+        /// <summary>
+        /// An Event that lead the Hero to take damages
+        /// </summary>
+        /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
+        /// <param name="specialMessage">A custom message displayed that should explain to the Player why he took some damage</param>
+        /// <param name="damageAmount">The amount of damage the Hero will take</param>
         public DamageEvent(string triggerMessage, string specialMessage, int damageAmount)
         {
             this.DamageAmount = damageAmount;
@@ -602,20 +620,38 @@ namespace LDVELH_WPF
             story.PlayerHero.TakeDamage(DamageAmount);
         }
     }
-    public class DammageAgilityEvent : Event
+    /// <summary>
+    /// An Event that permanently decrease the Agility of the Hero
+    /// </summary>
+    public class DamageAgilityEvent : Event
     {
         string SpecialMessage = "";
         int DamageAmount;
-        public DammageAgilityEvent(int damageAmount)
+        /// <summary>
+        /// Permanently decrease the Agility of the Hero
+        /// </summary>
+        /// <param name="damageAmount">The ammount of Agility that will be retracted from the Hero total</param>
+        public DamageAgilityEvent(int damageAmount)
         {
             this.DamageAmount = damageAmount;
         }
-        public DammageAgilityEvent(string triggerMessage, int damageAmount)
+        /// <summary>
+        /// Permanently decrease the Agility of the Hero
+        /// </summary>
+        /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
+        /// <param name="damageAmount">The ammount of Agility that will be retracted from the Hero total</param>
+        public DamageAgilityEvent(string triggerMessage, int damageAmount)
         {
             this.DamageAmount = damageAmount;
             this.TriggerMessage = triggerMessage;
         }
-        public DammageAgilityEvent(string triggerMessage, string specialMessage, int damageAmount)
+        /// <summary>
+        /// Permanently decrease the Agility of the Hero
+        /// </summary>
+        /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
+        /// <param name="specialMessage">A custom message displayed that should explain to the Player why he took some damage</param>
+        /// <param name="damageAmount">The ammount of Agility that will be retracted from the Hero total</param>
+        public DamageAgilityEvent(string triggerMessage, string specialMessage, int damageAmount)
         {
             this.DamageAmount = damageAmount;
             this.TriggerMessage = triggerMessage;
@@ -628,24 +664,35 @@ namespace LDVELH_WPF
             story.PlayerHero.DecreaseAgility(DamageAmount);
         }
     }
+    /// <summary>
+    /// Allow to resolve multiples events with one decision
+    /// </summary>
     public class LinkedEvent : Event
     {
         List<Event> ListLinkedEvent;
-        public LinkedEvent(int destinationNumber)
-        {
-            this.DestinationNumber = destinationNumber;
-            ListLinkedEvent = new List<Event>();
-        }
+        /// <summary>
+        /// Resolve multiples events
+        /// </summary>
+        /// <param name="destinationNumber">The Paragraph Number of the Destination</param>
+        /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
         public LinkedEvent(int destinationNumber, string triggerMessage)
         {
             this.DestinationNumber = destinationNumber;
             this.TriggerMessage = triggerMessage;
             ListLinkedEvent = new List<Event>();
         }
+        /// <summary>
+        /// Add a new Event that will be resolved on execution
+        /// </summary>
+        /// <param name="newEvent"></param>
         public void AddEvent(Event newEvent)
         {
             this.ListLinkedEvent.Add(newEvent);
         }
+        /// <summary>
+        /// Resolve ALL linked event, then move to the DestinationNumber
+        /// </summary>
+        /// <param name="story"></param>
         public override void ResolveEvent(Story story)
         {
             foreach(Event linkEvent in this.ListLinkedEvent)
@@ -656,11 +703,20 @@ namespace LDVELH_WPF
             story.Move(this.DestinationNumber);
         }
     }
+    /// <summary>
+    /// An event in which the Hero lose his BackPack and its content
+    /// </summary>
     public class LoseBackPack : Event
     {
+        /// <summary>
+        /// An event in which the Hero lose his BackPack and its content
+        /// </summary>
         public LoseBackPack()
         {
         }
+        /// <summary>
+        /// An event in which the Hero lose his BackPack and its content
+        /// </summary>
         public LoseBackPack(int destinationNumber)
         {
             this.DestinationNumber = destinationNumber;
@@ -670,11 +726,20 @@ namespace LDVELH_WPF
             story.PlayerHero.RemoveBackPack();
         }
     }
+    /// <summary>
+    /// An Event in which the Hero lose his WeaponHolder and its content
+    /// </summary>
     public class LoseWeaponHolder : Event
     {
+        /// <summary>
+        /// An Event in which the Hero lose his WeaponHolder and its content
+        /// </summary>
         public LoseWeaponHolder()
         {
         }
+        /// <summary>
+        /// An Event in which the Hero lose his WeaponHolder and its content
+        /// </summary>
         public LoseWeaponHolder(int destinationNumber)
         {
             this.DestinationNumber = destinationNumber;

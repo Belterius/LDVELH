@@ -1831,7 +1831,7 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph236"), paragraphNumber);
                         paragraph.AddMainEvent(new DamageEvent(6));
-                        paragraph.AddMainEvent(new DammageAgilityEvent(1));
+                        paragraph.AddMainEvent(new DamageAgilityEvent(1));
                         paragraph.AddDecision(new MoveEvent(104, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph236To104")));
                         return paragraph;
                     }

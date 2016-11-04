@@ -1844,7 +1844,7 @@
                     {
                         paragraph = new StoryParagraph("La Pierre Précieuse reste suspendue au-dessus de la bouche du squelette en diffusant une lueur rouge vif. \n Puis soudain, en une violente explosion, des flammes écarlates jaillissent du sarcophage, détruisant complètement la Pierre de Vordak.Vous êtes projeté contre le mur et assommé par le choc.Lorsque vous reprenez connaissance, la chambre mortuaire est complètement vide: le sarcophage et le squelette du roi ont tous deux disparu.Quant à vous, les nouvelles ne sont pas bonnes: vous avez, en effet, perdu 6 points d'ENDURANCE et votre total d'HABILETÉ se trouve réduit de 1 point pour le reste de vos jours.Vous vous relevez précautionneusement et vous vous dirigez vers le tunnel en titubant.", paragraphNumber);
                         paragraph.AddMainEvent(new DamageEvent(6));
-                        paragraph.AddMainEvent(new DammageAgilityEvent(1));
+                        paragraph.AddMainEvent(new DamageAgilityEvent(1));
                         paragraph.AddDecision(new MoveEvent(104, "continuer"));
                         return paragraph;
                     }
