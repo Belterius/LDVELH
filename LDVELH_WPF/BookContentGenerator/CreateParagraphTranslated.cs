@@ -325,7 +325,7 @@
                 case 29:
                     {
                         paragraph = new StoryParagraph("Vous vous approchez de la rive du lac en vous préparant à combattre. Le Kraan et la créature qui le chevauche vous aperçoivent aussitôt et foncent vers vous en volant à ras de l'eau. C'est alors que le maître du Kraan lance un cri qui vous glace le sang. Cette créature est un Vordak, un féroce lieutenant des Maîtres des Ténèbres. Il se rue sur vous, et il vous faut le combattre. Votre adversaire vous attaque à l'aide d'une grosse Masse d'Armes, mais il est également doué d'une redoutable Puissance Psychique dont il va faire usage au cours de l'affrontement. Si vous ne maîtrisez pas la Discipline Kaï du Bouclier Psychique, sa force mentale vous fera perdre 2 points d'HABILETÉ pendant toute la durée du combat. ", paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(CapacityType.PsychicShield, 2));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(270, "Continuer"));
                         return paragraph;
@@ -360,7 +360,7 @@
                 case 34:
                     {
                         paragraph = new StoryParagraph("Sans crier gare, une terrifiante apparition fond sur vous. C'est une créature vêtue de longs vêtements rouges et montée sur le dos d'un Kraan. Votre assaillant pousse un cri à vous glacer le sang : il s'agit d'un Vordak, un féroce lieutenant des Maîtres des Ténèbres. Il est juste au-dessus de vous et il vous faut le combattre. Le monstre vous attaque à l'aide d'une grosse Masse d'Armes et il est également doué d'une redoutable Puissance Psychique, dont il va faire usage au cours de l'affrontement. Si vous ne maîtrisez pas la Discipline Kaï du Bouclier Psychique, vous devrez réduire de 2 points votre total d'HABILETÉ pendant toute la durée du combat. ", paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(CapacityType.PsychicShield, 2));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(328, "Continuer"));
                         return paragraph;
@@ -378,7 +378,7 @@
                         if (rand < 5)
                         {
                             LinkedEvent linkedEvent = new LinkedEvent(140, "Tenter votre chance");
-                            linkedEvent.AddEvent(new DammageEvent("Tenter votre chance", "vous tombez", 2));
+                            linkedEvent.AddEvent(new DamageEvent("Tenter votre chance", "vous tombez", 2));
                             paragraph.AddDecision(linkedEvent);
                         }
                         else
@@ -531,7 +531,7 @@
                 case 55:
                     {
                         paragraph = new StoryParagraph("Au moment où le Glok bondit, vous vous ruez sur lui et vous le frappez de votre arme, l'empêchant ainsi d'atterrir sur le dos du jeune sorcier. Vous profitez de votre avantage pour frapper à nouveau la créature qui se débat et l'effet de surprise de votre attaque vous permet d'ajouter 4 points à votre total d'HABILETÉ pendant toute la durée de ce combat. ", paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(-4));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(-4));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 9, 9, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(325, "Continuer"));
                         return paragraph;
@@ -677,7 +677,7 @@
                 case 76:
                     {
                         paragraph = new StoryParagraph("La Pierre dégage une intense chaleur et vous brûle la main. Vous perdez 2 points d'ENDURANCE. Vous enveloppez alors la Pierre dans un pan de votre cape et vous la laissez tomber dans une poche de votre tunique. Une Pierre Précieuse de cette taille doit valoir des centaines de Couronnes ! Vous vous réjouissez de votre bonne fortune et vous remontez sur votre cheval que vous lancez au galop sur le chemin orienté au sud. ", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(2));
+                        paragraph.AddMainEvent(new DamageEvent(2));
                         paragraph.AddDecision(new MoveEvent(118, "Continuer"));
                         return paragraph;
                     }
@@ -984,7 +984,7 @@
                 case 119:
                     {
                         paragraph = new StoryParagraph("Les Brosses à Potence déchirent votre cape et vous écorchent bras et jambes tandis que vous vous frayez un chemin dans leur enchevêtrement d'épines. Un quart d'heure plus tard, vous sortez enfin des buissons et vous poursuivez votre route d'un pas chancelant, mais parmi les arbres cette fois. Les plaies occasionnées par les Brosses à Potence vous coûtent 2 points d'ENDURANCE, à déduire de votre total actuel. Alors que vous continuez d'avancer, vous vous sentez pris de vertiges et vos paupières vous semblent lourdes. Bientôt, vous arrivez au bord d'une pente escarpée et couverte d'arbres.", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(2));
+                        paragraph.AddMainEvent(new DamageEvent(2));
                         paragraph.AddDecision(new MoveEvent(226, "vous laisser glisser le long de cette pente "));
                         paragraph.AddDecision(new MoveEvent(38, "marcher le long du bord "));
                         return paragraph;
@@ -1108,9 +1108,9 @@
                 case 136:
                     {
                         paragraph = new StoryParagraph("Les Gloks se rapprochent puis s'accroupissent, prêts à bondir. Vous apercevez les pointes dentelées de leurs lances et vous entendez les sons gutturaux qu'ils produisent en parlant. « Rob Gaye Oring Ahrr oho key ! Pamark élbhûtt ! » s'écrie la plus grande des deux créatures qui vous attaque aussitôt. Il vous faut combattre les deux Gloks à tour de rôle. Vous ajouterez un point d'HABILETÉ à votre total en raison de l'avantage que vous donne votre position plus élevée sur le terrain. ", paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(-1));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(-1));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnemyTypes.Orc)));
-                        paragraph.AddMainEvent(new DebuffEvent(-1));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(-1));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(313, "Continuer"));
                         return paragraph;
@@ -1170,7 +1170,7 @@
                 case 144:
                     {
                         paragraph = new StoryParagraph("Vous vous frayez un chemin à coups de coude dans la foule qui se presse sur la grand-rue. Vous apercevez un peu plus loin la silhouette massive de la citadelle qui abrite le Palais du Roi. Les habitants de Holmgard, saisis de panique, courent en tous sens, tandis que retentissent les cris des Kraans qui tournoient dans le ciel de la ville. Dans la bousculade, quelqu'un vous vole l'un des objets contenus dans votre Sac à Dos. Si vous n'avez plus de Sac à Dos, c'est une arme qu'on vous dérobe. Rayez l'objet ou l'arme perdue de votre Feuille d'Aventure (c'est vous qui choisissez ce qu'on vous a volé). Un cheval emballé, qui tire une charrette, passe devant vous à toute allure et vous heurte en vous projetant contre une porte cochère. Vous êtes à moitié assommé et vous perdez 2 points D'ENDURANCE. Vous vous relevez en titubant, mais, au même moment, la porte s'ouvre à la volée et un vieil homme décrépit se précipite sur vous en brandissant un couteau à viande. Il est fou à lier et il vous faut le combattre ou tenter de fuir.", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(2));
+                        paragraph.AddMainEvent(new DamageEvent(2));
                         paragraph.AddDecision(new MoveEvent(63, "le combattre"));
                         paragraph.AddDecision(new MoveEvent(217, "éviter l'affrontement"));
                         return paragraph;
@@ -1184,7 +1184,7 @@
                 case 146:
                     {
                         paragraph = new StoryParagraph("Vous avez parcouru deux kilomètres à cheval lorsque vous êtes soudain jeté à bas de votre monture par une flèche qui vient de vous écorcher le front. Vous perdez 3 points d'ENDURANCE. Tandis que vous vous relevez, vous voyez surgir de la forêt, des deux côtés de la route, une bande de Drakkarims qui vous ont tendu une embuscade. Il vous faut prendre la fuite au plus vite en courant vous cacher parmi les arbres.", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(3));
+                        paragraph.AddMainEvent(new DamageEvent(3));
                         paragraph.AddDecision(new MoveEvent(154, "Continuer"));
                         return paragraph;
                     }
@@ -1266,11 +1266,11 @@
                 case 158:
                     {
                         paragraph = new StoryParagraph("La clé s'adapte parfaitement à la serrure que vous n'avez aucun mal à ouvrir. Vous faites pivoter la porte sur ses gonds et vous vous retrouvez face à face avec un vieillard étrange qui porte un bâton à la main droite. Soudain, un éclair jaillit du bâton et vous frappe en pleine poitrine. Vous perdez 6 points d'ENDURANCE. Haletant de douleur, vous avez malgré tout (si vous n'êtes pas mort sur le coup) la force de bousculer le vieil homme d'un coup d'épaule et de monter quatre à quatre un escalier plutôt raide qui mène à la lumière du jour. Vous avez grimpé la moitié des marches lorsque le vieillard fait jaillir un nouvel éclair de son bâton.Si vous avez survécu, vous émergez à la lumière du jour en maudissant votre mauvaise fortune. Vous avez découvert, par malchance, le temple secret d'une secte de druides malfaisants et vous auriez pu tout aussi bien y laisser votre peau. Vous vous hâtez à présent de rejoindre le sentier qui redescend de l'autre côté de la colline.", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(6));
+                        paragraph.AddMainEvent(new DamageEvent(6));
                         int rand = DiceRoll.D10Roll0();
                         if (rand > 5)
                         {
-                            paragraph.AddMainEvent(new DammageEvent("", "l'éclair vous frappe dans le dos", 4));
+                            paragraph.AddMainEvent(new DamageEvent("", "l'éclair vous frappe dans le dos", 4));
                         }
                         paragraph.AddDecision(new MoveEvent(106, "Continuer"));
                         return paragraph;
@@ -1335,7 +1335,7 @@
                 case 166:
                     {
                         paragraph = new StoryParagraph("Vous êtes en présence d'une force hautement maléfique. Un être puissant et invisible essaie de soumettre votre esprit, et il vous faut rassembler toute votre énergie pour vous défendre. Cette lutte intense vous met en grand danger de perdre la raison. Vous traversez une longue et pénible épreuve au cours de laquelle toutes sortes d'apparitions terrifiantes, surnaturelles, fantasmagoriques essaient de vous attirer dans leur monde de folie. La tentation et l'horreur se mélangent dans votre tête et ce n'est qu'à grand-peine que vous parvenez à sortir vainqueur de ce véritable calvaire. Vous perdez 4 points d'ENDURANCE et vous entrez dans le tunnel d'un pas chancelant.", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(4));
+                        paragraph.AddMainEvent(new DamageEvent(4));
                         paragraph.AddDecision(new MoveEvent(104, "Continuer"));
                         return paragraph;
                     }
@@ -1363,7 +1363,7 @@
                 case 170:
                     {
                         paragraph = new StoryParagraph("Le tunnel est sombre et il y fait beaucoup plus froid qu'audehors. Vous avancez prudemment en tâtonnant la paroi et au bout de trois minutes passées dans une obscurité totale, vous sentez soudain une odeur répugnante de viande pourrie. Si vous disposez d'une Torche et d'un Briquet d'Amadou, vous pourrez vous en servir pour vous éclairer. Soudain, une lourde masse tombe du plafond du tunnel et atterrit sur votre dos. Sous le choc, vos jambes fléchissent et vous vous retrouvez à genoux. C'est un Gluâtre des Profondeurs qui vient de vous attaquer en essayant de vous étrangler de ses longs tentacules visqueux. Si vous n'avez pas de Torche pour vous éclairer, vous devrez réduire de 3 points votre total d'HABILETÉ pendant toute la durée du combat. Le Gluâtre est insensible aux Disciplines Kaï de la Puissance Psychique et de la Communication Animale. ", paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(new Miscellaneous("Torche"), 3));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(new Miscellaneous("Torche"), 3));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Gluatre des profondeurs", 17, 7, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(319, "Continuer"));
                         return paragraph;
@@ -1500,7 +1500,7 @@
                         }
                         else
                         {
-                            paragraph.AddMainEvent(new DammageEvent("", "vous avez été blessé aux deux bras ", 3));
+                            paragraph.AddMainEvent(new DamageEvent("", "vous avez été blessé aux deux bras ", 3));
                         }
                         paragraph.AddDecision(new MoveEvent(303, "continuer"));
                         return paragraph;
@@ -1607,7 +1607,7 @@
                 case 203:
                     {
                         paragraph = new StoryParagraph("Une douleur fulgurante vous traverse la poitrine alors que quelque chose vient d'exploser tout contre vous dans une gerbe d'étincelles rouges. Vous perdez 10 points d'ENDURANCE et, si vous n'êtes pas déjà mort, vous voyez à travers la fumée le Sage s'apprêter à vous lancer une nouvelle charge explosive. ", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(10));
+                        paragraph.AddMainEvent(new DamageEvent(10));
                         paragraph.AddDecision(new MoveEvent(80, "continuer"));
                         return paragraph;
                     }
@@ -1794,7 +1794,7 @@
                 case 229:
                     {
                         paragraph = new StoryParagraph("Le Kraan vole au-dessus de votre tête en soulevant des nuages de poussière par le seul battement de ses ailes immenses. Bientôt, vous avez le nez et les yeux pleins de poussière et vous vous mettez à tousser et à cligner les paupières. Puis, soudain, le monstre vous attaque", paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(-1));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(-1));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Kraan", 16, 25, EnemyTypes.Human)));
                         paragraph.AddDecision(new MoveEvent(267, "fouiller la créature"));
                         paragraph.AddDecision(new MoveEvent(125, "poursuivre votre chemin le long du sentier "));
@@ -1843,7 +1843,7 @@
                 case 236:
                     {
                         paragraph = new StoryParagraph("La Pierre Précieuse reste suspendue au-dessus de la bouche du squelette en diffusant une lueur rouge vif. \n Puis soudain, en une violente explosion, des flammes écarlates jaillissent du sarcophage, détruisant complètement la Pierre de Vordak.Vous êtes projeté contre le mur et assommé par le choc.Lorsque vous reprenez connaissance, la chambre mortuaire est complètement vide: le sarcophage et le squelette du roi ont tous deux disparu.Quant à vous, les nouvelles ne sont pas bonnes: vous avez, en effet, perdu 6 points d'ENDURANCE et votre total d'HABILETÉ se trouve réduit de 1 point pour le reste de vos jours.Vous vous relevez précautionneusement et vous vous dirigez vers le tunnel en titubant.", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(6));
+                        paragraph.AddMainEvent(new DamageEvent(6));
                         paragraph.AddMainEvent(new DammageAgilityEvent(1));
                         paragraph.AddDecision(new MoveEvent(104, "continuer"));
                         return paragraph;
@@ -2132,7 +2132,7 @@
                 case 276:
                     {
                         paragraph = new StoryParagraph("Vous empoignez votre Hache et vous vous frayez un chemin dans l'enchevêtrement de racines et de branches noueuses qui obstrue le chemin. Bientôt, votre cape est déchirée en plusieurs endroits et votre jambe droite douloureusement meurtrie, juste au-dessus du genou. Vous perdez 1 point d'ENDURANCE. ", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(1));
+                        paragraph.AddMainEvent(new DamageEvent(1));
                         paragraph.AddDecision(new MoveEvent(213, "continuer"));
                         return paragraph;
                     }
@@ -2185,7 +2185,7 @@
                 case 283:
                     {
                         paragraph = new StoryParagraph("Vous êtes à trois mètres environ de l'étranger lorsque son corbeau se met à croasser pour l'avertir de votre approche. L'homme fait aussitôt volte-face et vous vous immobilisez saisi de terreur : car en fait ce n'est pas un homme que vous avez devant vous, mais un Vordak, l'un des plus redoutables lieutenants des Maîtres des Ténèbres. Cette créature appartient au monde des morts vivants et vous allez devoir la combattre dans un affrontement sans merci. La surprise de votre attaque vous permet d'ajouter 2 points à votre total d'HABILETÉ lors du premier assaut. Dès le deuxième assaut, en revanche, et au cours des suivants, vous devrez réduire de 2 points ce même total d'HABILETÉ à moins que vous ne maîtrisiez la Discipline Kaï du Bouclier Psychique. Le Vordak vous attaque, en effet, en utilisant simultanément deux armes redoutables : une énorme Masse d'Armes et sa formidable Puissance Psychique.", paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(CapacityType.PsychicShield, 2));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(123, "continuer"));
                         return paragraph;
@@ -2373,7 +2373,7 @@
                 case 308:
                     {
                         paragraph = new StoryParagraph("La porte de l'écurie est ouverte et vous entendez à l'intérieur la respiration d'un cheval. Or, soudain, le cheval sent votre présence et, pris de peur, se précipite au-dehors en vous projetant à terre au passage. Vous perdez 1 point d'ENDURANCE", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(1));
+                        paragraph.AddMainEvent(new DamageEvent(1));
                         paragraph.AddDecision(new CapacityEvent(122, CapacityType.BeastWhisperer));
                         paragraph.AddDecision(new MoveEvent(233, "vous lancer à la poursuite du cheval "));
                         return paragraph;
@@ -2407,7 +2407,7 @@
                 case 313:
                     {
                         paragraph = new StoryParagraph("Vous essuyez votre Arme du sang fétide qui la souille et vous vous hâtez de descendre le flanc de la colline avant que le Kraan aperçoive les cadavres de ses cavaliers. A plusieurs reprises, vous perdez l'équilibre, dégringolant de plusieurs mètres à la fois. Ces chutes répétées occasionnent des écorchures et des contusions qui vous coûtent 1 point d'ENDURANCE. ", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(1));
+                        paragraph.AddMainEvent(new DamageEvent(1));
                         paragraph.AddDecision(new MoveEvent(248, "continuer"));
                         return paragraph;
                     }
@@ -2462,7 +2462,7 @@
                 case 320:
                     {
                         paragraph = new StoryParagraph("Tandis que vous courez à terrain découvert en direction de la forêt, un Kraan fond sur vous et vous agrippe le bras. Avant même que vous ayez pu esquisser un geste pour vous défendre, il s'envole à nouveau et s'éloigne à tire-d'aile en lançant un cri à vous glacer le sang. Vous parvenez à pénétrer dans la forêt, mais vous avez perdu 2 points d'ENDURANCE. ", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(2));
+                        paragraph.AddMainEvent(new DamageEvent(2));
                         paragraph.AddDecision(new MoveEvent(264, "continuer"));
                         return paragraph;
                     }
@@ -2624,7 +2624,7 @@
                 case 343:
                     {
                         paragraph = new StoryParagraph("Vous êtes prisonnier des branches et des racines, mais vous parvenez finalement à dégager votre main droite, à empoigner votre Hache et à vous tailler un chemin à travers l'épaisse végétation. Un peu plus loin, la forêt s'éclaircit et vous avancez dans cette direction. Votre cape est déchirée en plusieurs endroits et votre bras gauche écorché au-dessus du coude. Vous perdez 2 points d'ENDURANCE ", paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(2));
+                        paragraph.AddMainEvent(new DamageEvent(2));
                         paragraph.AddDecision(new MoveEvent(213, "continuer"));
                         return paragraph;
                     }

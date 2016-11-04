@@ -16,6 +16,9 @@ namespace LDVELH_WPF
 
         [Column("BackPackSize")]
         private int _BackPackSize{get;set;}
+        /// <summary>
+        /// The number of Items the BackPack can contain
+        /// </summary>
         public int BackPackSize
         {
             get
@@ -33,6 +36,9 @@ namespace LDVELH_WPF
         }
 
         ObservableCollection<Item> Items;
+        /// <summary>
+        /// An ObservableCollection of the BackPack's Items
+        /// </summary>
         public ObservableCollection<Item> GetItems
         {
             get { return Items; }
@@ -45,18 +51,29 @@ namespace LDVELH_WPF
             if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
         }
         public event PropertyChangedEventHandler PropertyChanged;
-
+        /// <summary>
+        /// Create a BackPack
+        /// </summary>
         public BackPack()
         {
             this.BackPackSize = BasicBackPackSize;
             this.Items = new ObservableCollection<Item>();
         }
+        /// <summary>
+        /// Create a BackPack of a specified size
+        /// </summary>
+        /// <param name="backPackSize">The size of the BackPack</param>
         public BackPack(int backPackSize)
         {
             this.BackPackSize = backPackSize;
             this.Items = new ObservableCollection<Item>();
         }
 
+        /// <summary>
+        /// Add an item to the BackPack.
+        /// <para /> Throw a BackPackFullException if the BackPack is already full
+        /// </summary>
+        /// <param name="backPackItem">The item to add to the BackPack</param>
         public void AddItem(Item backPackItem)
         {
             if (this.Items.Count >= this.BackPackSize)
@@ -69,6 +86,11 @@ namespace LDVELH_WPF
             }
         }
 
+        /// <summary>
+        /// Remove an item from the BackPack
+        /// </summary>
+        /// <param name="backPackItem">The item to remove from the BackPack</param>
+        /// <returns>True if correct, false if the item wasn't present</returns>
         public bool RemoveItem(Item backPackItem)
         {
             return this.Items.Remove(backPackItem);

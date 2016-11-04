@@ -15,6 +15,9 @@ namespace LDVELH_WPF
 
         [Column("Capacity")]
         private CapacityType _CapacityKind{get;set;}
+        /// <summary>
+        /// The Type of the Capacity
+        /// </summary>
         public CapacityType CapacityKind
         {
             get
@@ -40,12 +43,20 @@ namespace LDVELH_WPF
         public Capacity()
         {
         }
+        /// <summary>
+        /// Create a Capacity
+        /// </summary>
+        /// <param name="capacityType">The type of the Capacity</param>
         public Capacity(CapacityType capacityType)
 
         {
             this.CapacityKind = capacityType;
         }
-
+        /// <summary>
+        /// Compare 2 Capacities, return true if they have the same CapacityType
+        /// </summary>
+        /// <param name="obj">The Capacity to compare to</param>
+        /// <returns>True if they are equals, false else</returns>
         public override bool Equals(object obj)
         {
             if(!(obj is Capacity))
@@ -90,7 +101,11 @@ namespace LDVELH_WPF
     }
     static class CapacityTypeMethods
     {
-
+        /// <summary>
+        /// Get the Name of the CapacityType in the adequate language
+        /// </summary>
+        /// <param name="capacity">The CapacityType</param>
+        /// <returns>the Name of the CapacityType in the adequate language</returns>
         public static String GetTranslation(this CapacityType capacity)
         {
             return GlobalTranslator.Instance.Translator.ProvideValue(capacity.ToString());

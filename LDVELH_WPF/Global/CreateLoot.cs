@@ -4,6 +4,11 @@
     {
         public static class CreateGold
         {
+            /// <summary>
+            /// Create Golds.
+            /// </summary>
+            /// <param name="amount">The amount of Gold created</param>
+            /// <returns></returns>
             public static Gold Gold(int amount)
             {
                 return new Gold(amount);

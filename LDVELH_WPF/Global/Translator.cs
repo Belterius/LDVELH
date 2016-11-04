@@ -70,7 +70,12 @@ namespace LDVELH_WPF
             get;
             set;
         }
-
+        /// <summary>
+        /// Retrieve the corresponding string from resource depending on the settings Selected Language.
+        /// Called from xaml
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <returns></returns>
         override public object ProvideValue(IServiceProvider serviceProvider)
         {
             if (Text == null)
@@ -93,7 +98,11 @@ namespace LDVELH_WPF
             }
             return Translation;
         }
-
+        /// <summary>
+        /// Retrieve the corresponding string from resource depending on the settings Selected Language.
+        /// </summary>
+        /// <param name="stringToTranslate">The resource string code</param>
+        /// <returns>The corresponding string, in the correct language</returns>
         public string ProvideValue(string stringToTranslate)
         {
             Text = stringToTranslate;
@@ -117,6 +126,11 @@ namespace LDVELH_WPF
             }
             return Translation;
         }
+        /// <summary>
+        /// Retrieve the corresponding string from the Book1 resource depending on the settings Selected Language.
+        /// </summary>
+        /// <param name="stringToTranslate">The resource string code</param>
+        /// <returns>The corresponding string, in the correct language</returns>
         public string TranslateBook1(string stringToTranslate)
         {
             string StringLocation = "LDVELH_WPF.Resources.StringBook1";

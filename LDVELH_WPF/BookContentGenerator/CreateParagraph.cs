@@ -312,7 +312,7 @@
                 case 29:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph29"), paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(CapacityType.PsychicShield, 2));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(270, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph29To270")));
                         return paragraph;
@@ -347,7 +347,7 @@
                 case 34:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph34"), paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(CapacityType.PsychicShield, 2));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(328, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph34To328")));
                         return paragraph;
@@ -365,7 +365,7 @@
                         if (rand < 5)
                         {
                             LinkedEvent linkedEvent = new LinkedEvent(140, "Tenter votre chance");
-                            linkedEvent.AddEvent(new DammageEvent("Tenter votre chance", "vous tombez", 2));
+                            linkedEvent.AddEvent(new DamageEvent("Tenter votre chance", "vous tombez", 2));
                             paragraph.AddDecision(linkedEvent);
                         }
                         else
@@ -518,7 +518,7 @@
                 case 55:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph55"), paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(-4));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(-4));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 9, 9, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(325, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph55To325")));
                         return paragraph;
@@ -664,7 +664,7 @@
                 case 76:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph76"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(2));
+                        paragraph.AddMainEvent(new DamageEvent(2));
                         paragraph.AddDecision(new MoveEvent(118, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph76To118")));
                         return paragraph;
                     }
@@ -971,7 +971,7 @@
                 case 119:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph119"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(2));
+                        paragraph.AddMainEvent(new DamageEvent(2));
                         paragraph.AddDecision(new MoveEvent(226, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph119To226")));
                         paragraph.AddDecision(new MoveEvent(38, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph119To38")));
                         return paragraph;
@@ -1095,9 +1095,9 @@
                 case 136:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph136"), paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(-1));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(-1));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 13, 10, EnemyTypes.Orc)));
-                        paragraph.AddMainEvent(new DebuffEvent(-1));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(-1));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Glok", 12, 10, EnemyTypes.Orc)));
                         paragraph.AddDecision(new MoveEvent(313, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph136To313")));
                         return paragraph;
@@ -1156,7 +1156,7 @@
                 case 144:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph144"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(2));
+                        paragraph.AddMainEvent(new DamageEvent(2));
                         paragraph.AddDecision(new MoveEvent(63, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph144To63")));
                         paragraph.AddDecision(new MoveEvent(217, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph144To217")));
                         return paragraph;
@@ -1170,7 +1170,7 @@
                 case 146:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph146"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(3));
+                        paragraph.AddMainEvent(new DamageEvent(3));
                         paragraph.AddDecision(new MoveEvent(154, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph146To154")));
                         return paragraph;
                     }
@@ -1252,11 +1252,11 @@
                 case 158:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph158"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(6));
+                        paragraph.AddMainEvent(new DamageEvent(6));
                         int rand = DiceRoll.D10Roll0();
                         if (rand > 5)
                         {
-                            paragraph.AddMainEvent(new DammageEvent("", "l'éclair vous frappe dans le dos", 4));
+                            paragraph.AddMainEvent(new DamageEvent("", "l'éclair vous frappe dans le dos", 4));
                         }
                         paragraph.AddDecision(new MoveEvent(106, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph158To106")));
                         return paragraph;
@@ -1321,7 +1321,7 @@
                 case 166:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph166"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(4));
+                        paragraph.AddMainEvent(new DamageEvent(4));
                         paragraph.AddDecision(new MoveEvent(104, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph166To104")));
                         return paragraph;
                     }
@@ -1349,7 +1349,7 @@
                 case 170:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph170"), paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(new Miscellaneous("Torche"), 3));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(new Miscellaneous("Torche"), 3));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Gluatre des profondeurs", 17, 7, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(319, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph170To319")));
                         return paragraph;
@@ -1486,7 +1486,7 @@
                         }
                         else
                         {
-                            paragraph.AddMainEvent(new DammageEvent("", "vous avez été blessé aux deux bras ", 3));
+                            paragraph.AddMainEvent(new DamageEvent("", "vous avez été blessé aux deux bras ", 3));
                         }
                         paragraph.AddDecision(new MoveEvent(303, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph188To303")));
                         return paragraph;
@@ -1593,7 +1593,7 @@
                 case 203:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph203"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(10));
+                        paragraph.AddMainEvent(new DamageEvent(10));
                         paragraph.AddDecision(new MoveEvent(80, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph203To80")));
                         return paragraph;
                     }
@@ -1781,7 +1781,7 @@
                     {
 
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph229"), paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(-1));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(-1));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Kraan", 16, 25, EnemyTypes.Human)));
                         paragraph.AddDecision(new MoveEvent(267, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph229To267")));
                         paragraph.AddDecision(new MoveEvent(125, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph229To125")));
@@ -1830,7 +1830,7 @@
                 case 236:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph236"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(6));
+                        paragraph.AddMainEvent(new DamageEvent(6));
                         paragraph.AddMainEvent(new DammageAgilityEvent(1));
                         paragraph.AddDecision(new MoveEvent(104, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph236To104")));
                         return paragraph;
@@ -2119,7 +2119,7 @@
                 case 276:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph276"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(1));
+                        paragraph.AddMainEvent(new DamageEvent(1));
                         paragraph.AddDecision(new MoveEvent(213, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph276To213")));
                         return paragraph;
                     }
@@ -2172,7 +2172,7 @@
                 case 283:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph283"), paragraphNumber);
-                        paragraph.AddMainEvent(new DebuffEvent(CapacityType.PsychicShield, 2));
+                        paragraph.AddMainEvent(new BuffOrDebuffEvent(CapacityType.PsychicShield, 2));
                         paragraph.AddMainEvent(new FightEvent(new Enemy("Vordak", 17, 25, EnemyTypes.Hero)));
                         paragraph.AddDecision(new MoveEvent(123, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph283To123")));
                         return paragraph;
@@ -2360,7 +2360,7 @@
                 case 308:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph308"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(1));
+                        paragraph.AddMainEvent(new DamageEvent(1));
                         paragraph.AddDecision(new CapacityEvent(122, CapacityType.BeastWhisperer));
                         paragraph.AddDecision(new MoveEvent(233, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph308To233")));
                         return paragraph;
@@ -2394,7 +2394,7 @@
                 case 313:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph313"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(1));
+                        paragraph.AddMainEvent(new DamageEvent(1));
                         paragraph.AddDecision(new MoveEvent(248, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph313To248")));
                         return paragraph;
                     }
@@ -2449,7 +2449,7 @@
                 case 320:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph320"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(2));
+                        paragraph.AddMainEvent(new DamageEvent(2));
                         paragraph.AddDecision(new MoveEvent(264, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph320To264")));
                         return paragraph;
                     }
@@ -2611,7 +2611,7 @@
                 case 343:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph343"), paragraphNumber);
-                        paragraph.AddMainEvent(new DammageEvent(2));
+                        paragraph.AddMainEvent(new DamageEvent(2));
                         paragraph.AddDecision(new MoveEvent(213, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph343To213")));
                         return paragraph;
                     }
