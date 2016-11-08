@@ -8,6 +8,7 @@ namespace LDVELH_WPF
    
         This class is only here to do most of the work from generating the resource string file of the Lone Wolf Books from a corresponding PDF or text file.
         It should NOT be used randomly.
+
         As it will replace the resource file, make sur to back it up before trying anything.
 
     /*********************************************************************************************************/
@@ -74,7 +75,7 @@ namespace LDVELH_WPF
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             /*
-             * WARNING REMEMBER TO MANUALLY HAD THE STRINGS FROM SAVEOFMANUALENGLISH.RESX TO STRINGBOOK1.EN.RESX
+             * WARNING REMEMBER TO MANUALLY ADD THE STRINGS FROM SAVEOFMANUALENGLISH.RESX TO STRINGBOOK1.EN.RESX
              * ELSE IT WILL TAKE THE FRENCH PART !
              */
             string filePath = projectAOEBook1;
@@ -169,6 +170,7 @@ namespace LDVELH_WPF
                 decision = decision.Replace("If you would rather", "").Trim();
                 decision = decision.Replace(", .", ".").Trim();
                 decision = decision.Replace("by .", ".").Trim();
+                decision = decision.Replace("by ?", ".").Trim();
                 decision = decision.Trim();
                 if (decision.ToLower().StartsWith("if you win the"))
                 {

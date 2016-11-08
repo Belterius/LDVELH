@@ -3195,7 +3195,7 @@ namespace LDVELH_WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Utiliser votre capacité Sixième Sens.
+        ///   Looks up a localized string similar to Retourner à la surface..
         /// </summary>
         internal static string Paragraph211To106 {
             get {

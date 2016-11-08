@@ -7,6 +7,9 @@ using System.Runtime.Serialization;
 
 namespace LDVELH_WPF
 {
+    /// <summary>
+    /// A Weapon Holder can only contain Weapons, and only as much as it's WeaponHolderSize
+    /// </summary>
     public class WeaponHolder
     {
         private int BasicWeaponHolderSize = 2;
@@ -38,6 +41,10 @@ namespace LDVELH_WPF
             Weapons = new ObservableCollection<Weapon>();
         }
 
+        /// <summary>
+        /// Create a Weapon Holder of a specified Size
+        /// </summary>
+        /// <param name="maxWeapon">The max number of Weapon the WeaponHolder can contain</param>
         public WeaponHolder(int maxWeapon)
         {
             this.WeaponHolderSize = maxWeapon;

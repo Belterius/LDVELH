@@ -12,7 +12,9 @@ namespace LDVELH_WPF
         public int CharacterID { get; set; }
         [Column("Name")]
         private string _Name { get; set; }
-
+        /// <summary>
+        /// The Name of the character
+        /// </summary>
         public string Name
         {
             get
@@ -30,6 +32,9 @@ namespace LDVELH_WPF
         }
         [Column("MaxHitPoint")]
         private int _MaxHitPoint { get; set; }
+        /// <summary>
+        /// The Max Number of Health Point the character can have
+        /// </summary>
         public int MaxHitPoint
         {
             get
@@ -47,6 +52,9 @@ namespace LDVELH_WPF
         }
         [Column("ActualLife")]
         int _ActualHitPoint { get; set; }
+        /// <summary>
+        /// The current number of HealthPoint the character have
+        /// </summary>
         public int ActualHitPoint
         {
             get
@@ -64,6 +72,9 @@ namespace LDVELH_WPF
         }
         [Column("BaseAgility")]
         int _BaseAgility { get; set; }
+        /// <summary>
+        /// The Agility the character have, before factoring in bonuses
+        /// </summary>
         public int BaseAgility
         {
             get
@@ -79,12 +90,18 @@ namespace LDVELH_WPF
                 }
             }
         }
-
+        /// <summary>
+        /// Kill the character
+        /// </summary>
         public void Kill()
         {
             this.TakeDamage(this.ActualHitPoint);
         }
 
+        /// <summary>
+        /// Inflict an amount of damage to the character
+        /// </summary>
+        /// <param name="damage">The amount of damage inflicted</param>
         public void TakeDamage(int damage)
         {
             if (damage >= ActualHitPoint)

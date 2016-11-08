@@ -8,6 +8,12 @@ namespace LDVELH_WPF
         //While it was possible to deduct some logic from the EnemyDamageTaken table, it was not possible for the HeroDamageTaken table, hence why it's arbitrary and not determined by an arithmetical function.
 
 
+        /// <summary>
+        /// Calculate the amount of damage the ennemy should take, corresponding to the CYOA Lone Wolf rule book
+        /// </summary>
+        /// <param name="strenghtDifference">The strength of the Enemy minus the Hero's</param>
+        /// <param name="rollD10">The value of a D10 roll</param>
+        /// <returns>the amount of damage the Enemy should take</returns>
         public static int enemyDamageTaken(int strenghtDifference, int rollD10)
         {
             if (strenghtDifference > 0)
@@ -50,7 +56,12 @@ namespace LDVELH_WPF
             }
             throw new Exception("Error in damage table");
         }
-
+        /// <summary>
+        /// Calculate the amount of damage the Hero should take, corresponding to the CYOA Lone Wolf rule book
+        /// </summary>
+        /// <param name="strenghtDifference">The strength of the Hero minus the Enemy's</param>
+        /// <param name="rollD10">The value of a D10 roll</param>
+        /// <returns>the amount of damage the Hero should take</returns>
         public static int heroDamageTaken(int strenghtDifference, int rollD10)
         {
             if(strenghtDifference >= 11){

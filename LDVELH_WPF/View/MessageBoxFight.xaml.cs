@@ -21,20 +21,7 @@ namespace LDVELH_WPF
         public MessageBoxFight()
         {
             InitializeComponent();
-            TranslateLabel();
 
-        }
-        private void TranslateLabel()
-        {
-            this.Title = GlobalTranslator.Instance.Translator.ProvideValue("Battling");
-            groupBoxYourHero.Header = GlobalTranslator.Instance.Translator.ProvideValue("YourHero");
-            labelHeroHP.Content = GlobalTranslator.Instance.Translator.ProvideValue("Life");
-            labelHeroAgility.Content = GlobalTranslator.Instance.Translator.ProvideValue("Agility");
-            labelHeroDamageTaken.Content = GlobalTranslator.Instance.Translator.ProvideValue("DamageTaken");
-            GroupBoxYourEnemy.Header = GlobalTranslator.Instance.Translator.ProvideValue("YourEnemy");
-            labelEnemyAgility.Content = GlobalTranslator.Instance.Translator.ProvideValue("Agility");
-            labelEnemyLife.Content = GlobalTranslator.Instance.Translator.ProvideValue("Life");
-            labelEnemyDamageTaken.Content = GlobalTranslator.Instance.Translator.ProvideValue("DamageTaken");
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

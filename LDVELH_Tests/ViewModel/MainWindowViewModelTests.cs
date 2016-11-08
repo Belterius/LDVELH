@@ -56,7 +56,7 @@ namespace LDVELH_WPF.ViewModel.Tests
         [TestMethod()]
         public void UseItemCommandTest()
         {
-            Item SelectedItem = new Consummable("SelectedItem", 1, 2);
+            Item SelectedItem = new Consumable("SelectedItem", 1, 2);
             bool didFire = false;
             bool didChangeCharges = false;
 
@@ -83,7 +83,7 @@ namespace LDVELH_WPF.ViewModel.Tests
         [TestMethod()]
         public void ThrowLootCommandTest()
         {
-            Item SelectedItem = new Consummable("SelectedItem", 1, 1);
+            Item SelectedItem = new Consumable("SelectedItem", 1, 1);
 
             ViewModel.Hero.AddLoot(SelectedItem);
             Assert.IsTrue(ViewModel.Hero.PossesItem(SelectedItem.Name));
@@ -96,7 +96,7 @@ namespace LDVELH_WPF.ViewModel.Tests
         [TestMethod()]
         public void SelectedItemTest()
         {
-            Item SelectedItem = new Consummable("SelectedItem", 1, 1);
+            Item SelectedItem = new Consumable("SelectedItem", 1, 1);
             bool didFire = false;
             ViewModel.PropertyChanged += (s, e) =>
             {

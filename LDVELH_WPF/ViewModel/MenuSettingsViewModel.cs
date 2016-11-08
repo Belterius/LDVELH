@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -101,7 +102,25 @@ namespace LDVELH_WPF.ViewModel
         }
         private void ChangeTranslatorLanguage(SupportedLanguage language)
         {
-            GlobalTranslator.Instance.Translator = new Translator(language);
+            switch (language.ToString().ToLower())
+            {
+                case "french":
+                    GlobalCulture.Instance.Ci = new CultureInfo("fr-FR");
+                    break;
+                case "english":
+                    GlobalCulture.Instance.Ci = new CultureInfo("en-GB");
+                    break;
+                default:
+#if DEBUG
+                    throw new ArgumentException(
+                        String.Format("Language '{0}' is not yet present in the options, if you added the corresponding ressource please add a corresponding case.", LDVELH_WPF.Properties.Settings.Default.Language.ToLower()),
+                        "Text");
+#else
+                GlobalCulture.Instance.Ci = new CultureInfo("en-GB");
+                    break;
+#endif
+
+            }
         }
         private void WarningMessage()
         {

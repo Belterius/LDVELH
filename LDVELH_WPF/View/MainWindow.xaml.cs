@@ -16,7 +16,6 @@ namespace LDVELH_WPF
         public MainWindow()
         {
             InitializeComponent();
-            TranslateLabel();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -29,27 +28,6 @@ namespace LDVELH_WPF
         private void Vm_ActionButtonChanged(object sender, EventArgs e)
         {
             GeneratePlayerPossibleDecision(DataContextViewModel.MyStory);
-        }
-
-        private void TranslateLabel()
-        {
-            groupBoxHeroStat.Header = GlobalTranslator.Instance.Translator.ProvideValue("HeroStats");
-            labelDescriptionHitPoint.Content = GlobalTranslator.Instance.Translator.ProvideValue("HitPoints");
-            labelDescriptionAgility.Content = GlobalTranslator.Instance.Translator.ProvideValue("Agility");
-            LabelWeaponMastery.Content = GlobalTranslator.Instance.Translator.ProvideValue("WeaponMasteryLabel");
-            LabelCapacities.Content = GlobalTranslator.Instance.Translator.ProvideValue("CapacitiesLabel");
-            LabelHunger.Content = GlobalTranslator.Instance.Translator.ProvideValue("Hunger");
-            groupBoxInventory.Header = GlobalTranslator.Instance.Translator.ProvideValue("Inventory");
-            LabelBackPack.Content = GlobalTranslator.Instance.Translator.ProvideValue("BackPack");
-            LabelSpecialItems.Content = GlobalTranslator.Instance.Translator.ProvideValue("SpecialItems");
-            LabelWeapons.Content = GlobalTranslator.Instance.Translator.ProvideValue("Weapon");
-            labelDescriptionGold.Content = GlobalTranslator.Instance.Translator.ProvideValue("LabelGold");
-            buttonThrowItem.Content = GlobalTranslator.Instance.Translator.ProvideValue("ThrowItem");
-            buttonUseItem.Content = GlobalTranslator.Instance.Translator.ProvideValue("UseItem");
-            buttonThrowWeapon.Content = GlobalTranslator.Instance.Translator.ProvideValue("ThrowWeapon");
-            groupBoxChoices.Header = GlobalTranslator.Instance.Translator.ProvideValue("Choices");
-            buttonSave.Content = GlobalTranslator.Instance.Translator.ProvideValue("Save");
-            buttonLoad.Content = GlobalTranslator.Instance.Translator.ProvideValue("Load");
         }
 
         /********************************************************/

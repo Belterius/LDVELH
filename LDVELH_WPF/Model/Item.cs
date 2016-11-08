@@ -6,6 +6,9 @@ using System.Runtime.Serialization;
 
 namespace LDVELH_WPF
 {
+    /// <summary>
+    /// Any kind of stuff the Hero can get
+    /// </summary>
     public abstract class Loot 
     {
         [Key]
@@ -16,6 +19,9 @@ namespace LDVELH_WPF
         public abstract void Remove(Hero hero);
 
     }
+    /// <summary>
+    /// Single currency, used to buy stuff/pay for some special action or event
+    /// </summary>
     public class Gold : Loot
     {
         int _GoldAmount;
@@ -39,15 +45,27 @@ namespace LDVELH_WPF
             GoldAmount = amount;
         }
         
+        /// <summary>
+        /// Add the Gold amount to the Hero
+        /// </summary>
+        /// <param name="hero">The Hero that will receive the gold</param>
         public override void Add(Hero hero)
         {
             hero.AddGold(GoldAmount);
         }
+        /// <summary>
+        /// Remove the Gold amount from the Hero
+        /// </summary>
+        /// <param name="hero">The Hero that will lose the gold</param>
         public override void Remove(Hero hero)
         {
             hero.RemoveGold(GoldAmount);
         }
     }
+    /// <summary>
+    /// An Item can only go into the Hero BackPack and take a spot.
+    /// <para />Posses a name, base class for every kind of loot appart from Gold
+    /// </summary>
     public abstract class Item : Loot, INotifyPropertyChanged
     {
         
@@ -76,7 +94,7 @@ namespace LDVELH_WPF
         }
 
         public virtual string DisplayName
-        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
+        {
             get
             {
                 return Name;
@@ -94,7 +112,10 @@ namespace LDVELH_WPF
         }
     }
 
-    public class Consummable : Item
+    /// <summary>
+    /// An Item than can be used, posses a number of charge left, and an effect, for now only healing effect but could implements more sub-class
+    /// </summary>
+    public class Consumable : Item
     {
 
         [Column("HealingPower")]
@@ -135,29 +156,40 @@ namespace LDVELH_WPF
         }
 
         
-        private Consummable()
+        private Consumable()
         {
 
         }
-        public Consummable(string name, int healingPower, int charges)
+        /// <summary>
+        /// Create a Consumable
+        /// </summary>
+        /// <param name="name">The name of the Consumable</param>
+        /// <param name="healingPower">The amount of Health that will be restored on use</param>
+        /// <param name="charges">The number of time the Item can be used before destruction</param>
+        public Consumable(string name, int healingPower, int charges)
         {
             this.HealingPower = healingPower;
             this.Name = name;
             this.ChargesLeft = charges;
         }
 
+        /// <summary>
+        /// For two Consumables to be equal they need to have the same Name, ChargesLeft and HealingPower
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (!(obj is Consummable))
+            if (!(obj is Consumable))
                 return false;
 
 
-            Consummable Consummable = (Consummable)obj;
-            if (this.Name != Consummable.Name)
+            Consumable Consumable = (Consumable)obj;
+            if (this.Name != Consumable.Name)
                 return false;
-            if (this.ChargesLeft != Consummable.ChargesLeft)
+            if (this.ChargesLeft != Consumable.ChargesLeft)
                 return false;
-            if (this.HealingPower != Consummable.HealingPower)
+            if (this.HealingPower != Consumable.HealingPower)
                 return false;
 
             return true;
@@ -181,6 +213,11 @@ namespace LDVELH_WPF
                 }
             }
         }
+        /// <summary>
+        /// Remove a Charge from the Consumable in order to restaure Health
+        /// <para />If the number of Charge reach 0, the Item is destroyed
+        /// </summary>
+        /// <param name="hero"></param>
         public override void Use(Hero hero)
         {
             if(this.ChargesLeft >= 1)
@@ -195,7 +232,10 @@ namespace LDVELH_WPF
         }
 
     }
-
+    /// <summary>
+    /// Item that's used to change the Satiety level from Hungry to Full
+    /// It can be used as many time as it's ChargesLeft number, before being destroyed
+    /// </summary>
     public class Food : Item
     {
 
@@ -221,6 +261,11 @@ namespace LDVELH_WPF
         {
 
         }
+        /// <summary>
+        /// Create a Food item, used to set the Satiety level to Full
+        /// </summary>
+        /// <param name="name">The Name of the item</param>
+        /// <param name="charges">The number of time it can be used before destruction</param>
         public Food(string name, int charges)
         {
             this.Name = name;
@@ -258,7 +303,11 @@ namespace LDVELH_WPF
                 }
             }
         }
-
+        /// <summary>
+        /// Remove a Charge from the Food in order to increase the Satiety status to Full
+        /// <para />If the number of Charge reach 0, the Item is destroyed
+        /// </summary>
+        /// <param name="hero"></param>
         public override void Use(Hero hero)
         {
             if(this.ChargesLeft >= 1)
@@ -274,6 +323,10 @@ namespace LDVELH_WPF
 
     }
 
+    /// <summary>
+    /// Any random Item that still take a spot in the Hero BackPack.
+    /// Cannot be used unless there's a specific Event checking for it
+    /// </summary>
     public class Miscellaneous : Item
     {
 
@@ -307,6 +360,9 @@ namespace LDVELH_WPF
         }
     }
 
+    /// <summary>
+    /// Thrown when the Player try to use an Item in the wrong conditions
+    /// </summary>
     [Serializable]
     public class CannotUseItemException : Exception
     {
@@ -327,6 +383,9 @@ namespace LDVELH_WPF
 
     }
 
+    /// <summary>
+    /// Thrown when an Item number of ChargesLeft reach 0
+    /// </summary>
     [Serializable]
     public class ItemDestroyedException : Exception
     {

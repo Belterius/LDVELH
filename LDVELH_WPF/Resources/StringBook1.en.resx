@@ -2172,7 +2172,7 @@ A distinguished old man in deep purple robes turns to greet you and listens to y
     <value>walk across to the door.</value>
   </data>
   <data name="Paragraph211To106" xml:space="preserve">
-    <value> would prefer to return to the surface and continue your journey.</value>
+    <value>Return to the surface and continue your journey.</value>
   </data>
   <data name="Paragraph211" xml:space="preserve">
     <value>You walk along a dimly lit corridor which opens out into a large square room, with an oak door in the far wall.
@@ -2336,10 +2336,10 @@ Marshviper: &lt;small&gt;COMBATÂ SKILL&lt;/small&gt;Â 16 Â Â &lt;small&g
 </value>
   </data>
   <data name="Paragraph229To267" xml:space="preserve">
-    <value>Will you search the body by ?</value>
+    <value>Will you search the body</value>
   </data>
   <data name="Paragraph229To125" xml:space="preserve">
-    <value>Or will you continue along the east path by ?</value>
+    <value>Or will you continue along the east path</value>
   </data>
   <data name="Paragraph229" xml:space="preserve">
     <value>The Kraan hovers above you, raising dust with the beat of its huge black wings. The dust gets into your eyes and nose, and you start to cough. Now the beast attacks.

@@ -13,12 +13,6 @@ namespace LDVELH_WPF
         public MenuSettings()
         {
             InitializeComponent();
-            TranslateLabel();
-        }
-        private void TranslateLabel()
-        {
-            LabelSelectLanguage.Content = GlobalTranslator.Instance.Translator.ProvideValue("SelectLanguage");
-            this.Title = GlobalTranslator.Instance.Translator.ProvideValue("Settings");
         }
         
     }

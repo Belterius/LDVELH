@@ -32,6 +32,25 @@ namespace LDVELH_WPF
             }
         }
     }
+    public sealed class GlobalCulture
+    {
+        public CultureInfo Ci = new CultureInfo("en-GB");
+
+        static readonly GlobalCulture INSTANCE = new GlobalCulture();
+
+        private GlobalCulture()
+        {
+
+        }
+
+        public static GlobalCulture Instance
+        {
+            get
+            {
+                return INSTANCE;
+            }
+        }
+    }
 
     public enum SupportedLanguage
     {
@@ -41,50 +60,22 @@ namespace LDVELH_WPF
 
     public class Translator : MarkupExtension
     {
-        readonly CultureInfo Ci;
         const string ResourceId = "LDVELH_WPF.Resources.Strings";
 
         public Translator()
         {
-            Ci = Thread.CurrentThread.CurrentCulture;
         }
-        public Translator(String language)
-        {
-            switch (language.ToLower())
-            {
-                case "french":
-                    Ci = new CultureInfo("fr-FR");
-                    break;
-                case "english":
-                    Ci = new CultureInfo("en-GB");
-                    break;
-                default:
-                    Ci = new CultureInfo("en-GB");
-                    break;
-            }
-        }
-        public Translator(SupportedLanguage language)
-        {
-            switch (language)
-            {
-                case SupportedLanguage.French:
-                    Ci = new CultureInfo("fr-FR");
-                    break;
-                case SupportedLanguage.English:
-                    Ci = new CultureInfo("en-GB");
-                    break;
-                default:
-                    Ci = new CultureInfo("en-GB");
-                    break;
-            }
-        }
-
         public string Text
         {
             get;
             set;
         }
-
+        /// <summary>
+        /// Retrieve the corresponding string from resource depending on the settings Selected Language.
+        /// Called from xaml
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <returns></returns>
         override public object ProvideValue(IServiceProvider serviceProvider)
         {
             if (Text == null)
@@ -93,13 +84,13 @@ namespace LDVELH_WPF
             ResourceManager Resmgr = new ResourceManager(ResourceId
                                 , typeof(Translator).GetTypeInfo().Assembly);
 
-            var Translation = Resmgr.GetString(Text, Ci);
+            var Translation = Resmgr.GetString(Text, GlobalCulture.Instance.Ci);
 
             if (Translation == null)
             {
 #if DEBUG
                 throw new ArgumentException(
-                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, Ci.Name),
+                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, GlobalCulture.Instance.Ci.Name),
                     "Text");
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
@@ -107,7 +98,11 @@ namespace LDVELH_WPF
             }
             return Translation;
         }
-
+        /// <summary>
+        /// Retrieve the corresponding string from resource depending on the settings Selected Language.
+        /// </summary>
+        /// <param name="stringToTranslate">The resource string code</param>
+        /// <returns>The corresponding string, in the correct language</returns>
         public string ProvideValue(string stringToTranslate)
         {
             Text = stringToTranslate;
@@ -117,13 +112,13 @@ namespace LDVELH_WPF
             ResourceManager Resmgr = new ResourceManager(ResourceId
                                 , typeof(Translator).GetTypeInfo().Assembly);
 
-            var Translation = Resmgr.GetString(Text, Ci);
+            var Translation = Resmgr.GetString(Text, GlobalCulture.Instance.Ci);
 
             if (Translation == null)
             {
 #if DEBUG
                 throw new ArgumentException(
-                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, Ci.Name),
+                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, GlobalCulture.Instance.Ci.Name),
                     "Text");
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
@@ -131,6 +126,11 @@ namespace LDVELH_WPF
             }
             return Translation;
         }
+        /// <summary>
+        /// Retrieve the corresponding string from the Book1 resource depending on the settings Selected Language.
+        /// </summary>
+        /// <param name="stringToTranslate">The resource string code</param>
+        /// <returns>The corresponding string, in the correct language</returns>
         public string TranslateBook1(string stringToTranslate)
         {
             string StringLocation = "LDVELH_WPF.Resources.StringBook1";
@@ -141,13 +141,13 @@ namespace LDVELH_WPF
             ResourceManager Resmgr = new ResourceManager(StringLocation
                                 , typeof(Translator).GetTypeInfo().Assembly);
 
-            var Translation = Resmgr.GetString(Text, Ci);
+            var Translation = Resmgr.GetString(Text, GlobalCulture.Instance.Ci);
 
             if (Translation == null)
             {
 #if DEBUG
                 throw new ArgumentException(
-                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, StringLocation, Ci.Name),
+                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, StringLocation, GlobalCulture.Instance.Ci.Name),
                     "Text");
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER

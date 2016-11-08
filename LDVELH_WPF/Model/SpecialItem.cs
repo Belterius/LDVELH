@@ -3,6 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LDVELH_WPF
 {
+    /// <summary>
+    /// All Items that don't take any spot in the Hero BackPack.
+    /// <para /> A Hero can carry an Unlimited number of Special Item
+    /// <para /> A Special Item is a proof that the player took a certain choice/path, and prevent the player from unintentionnaly being blocked by throwing a required Item to progress through the game
+    /// <para /> It is also used for Items providing permanents bonuses
+    /// </summary>
     public abstract class SpecialItem : Loot
     {
         [Column]
@@ -40,11 +46,17 @@ namespace LDVELH_WPF
         }
     }
 
+    /// <summary>
+    /// A SpecialItemCombat provide a bonus to the Hero during every fight
+    /// <para /> It won't provide its bonus if the Hero is not in a fight (for example for an event requiring an Agility test)
+    /// </summary>
     public class SpecialItemCombat : SpecialItem
     {
-        //Has an effect only during combat (Example : +2 agility shield)
         [Column("AgilityBonus")]
         int _AgilityBonus{get;set;}
+        /// <summary>        
+        ///Has an effect only during combat (Example : +2 agility shield)
+        /// </summary>
         public int AgilityBonus
         {
             get { return _AgilityBonus; }
@@ -82,6 +94,12 @@ namespace LDVELH_WPF
         {
 
         }
+        /// <summary>
+        /// Create an Item that doesn't take any BackPack space and provide a bonus during every fight
+        /// </summary>
+        /// <param name="name">The Name of the Item</param>
+        /// <param name="agilityBonus">The Agility bonus it provides during a fight</param>
+        /// <param name="hitPointBonus">The Health bonus it provides during a fight</param>
         public SpecialItemCombat(String name, int agilityBonus, int hitPointBonus)
         {
             this.AgilityBonus = agilityBonus;
@@ -112,12 +130,17 @@ namespace LDVELH_WPF
 
         
     }
-
+    /// <summary>
+    /// A SpecialItemAlways provide a permanent bonus to the Hero at any moment
+    /// </summary>
     public class SpecialItemAlways : SpecialItem
     {
-        //Has a permanent effect (Example : +4 HitPoint chain mail)
         [Column("AgilityBonus")]
         int _AgilityBonus { get; set; }
+
+        /// <summary>
+        //Has a permanent effect (Example : +4 HitPoint chain mail)
+        /// </summary>
         public int AgilityBonus
         {
             get { return _AgilityBonus; }
@@ -146,6 +169,13 @@ namespace LDVELH_WPF
         {
 
         }
+
+        /// <summary>
+        /// Create an Item that doesn't take any BackPack space and provide a bonus all the time
+        /// </summary>
+        /// <param name="name">The Name of the Item</param>
+        /// <param name="agilityBonus">The Agility bonus it provides</param>
+        /// <param name="hitPointBonus">The Health bonus it provides</param>
         public SpecialItemAlways(String name, int agilityBonus, int hitPointBonus)
         {
             AgilityBonus = agilityBonus;
@@ -225,6 +255,9 @@ namespace LDVELH_WPF
 
     }
 
+    /// <summary>
+    /// A SpecialItem that doesn't provide any bonus, it will only be usefull when an Event require the Item.
+    /// </summary>
     public class QuestItem : SpecialItem
     {
         //Has an effect on usage (Example : a key that you can use to unlock a cell)
