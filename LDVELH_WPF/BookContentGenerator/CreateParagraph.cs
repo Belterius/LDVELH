@@ -15,8 +15,8 @@
                         //D10 Gold + Axe
                         paragraph.AddMainEvent(new LootEvent(new Gold(DiceRoll.D10Roll())));
                         paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateWeapon.Hache()));
-                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsummable.potionDeLampsur(5)));
-                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsummable.potionDeLampsur(5)));
+                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.potionDeLampsur(5)));
+                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.potionDeLampsur(5)));
                         paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateFood.ration(3)));
                         //Random loot
                         switch (DiceRoll.D10Roll())
@@ -37,7 +37,7 @@
                                 paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateWeapon.masseDArme()));
                                 break;
                             case 6:
-                                paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsummable.potionDeGuerison()));
+                                paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.potionDeGuerison()));
                                 break;
                             case 7:
                                 paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateWeapon.Baton()));
@@ -931,7 +931,7 @@
                 case 113:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph113"), paragraphNumber);
-                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsummable.potionDeLampsur()));
+                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.potionDeLampsur()));
                         paragraph.AddDecision(new MoveEvent(347, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph113To347")));
                         paragraph.AddDecision(new MoveEvent(295, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph113To295")));
                         return paragraph;

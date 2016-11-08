@@ -40,7 +40,7 @@
                                 paragraph.AddMainEvent(lootEvent5);
                                 break;
                             case 6:
-                                LootEvent lootEvent6 = new LootEvent(CreateLoot.CreateConsummable.potionDeGuerison());
+                                LootEvent lootEvent6 = new LootEvent(CreateLoot.CreateConsumable.potionDeGuerison());
                                 paragraph.AddMainEvent(lootEvent6);
                                 break;
                             case 7:
@@ -944,7 +944,7 @@
                 case 113:
                     {
                         paragraph = new StoryParagraph("Vous avez marché pendant plus d'une demi-heure lorsque vous apercevez des fleurs d'un rouge vif qui poussent sur un monticule. Vous reconnaissez aussitôt cette plante : c'est du Laumspur, une herbe rare très recherchée pour ses vertus curatives. Vous cueillez alors une bonne poignée de cette herbe que vous rangez dans votre Sac à Dos. Elle vous servira à récupérer des points d'ENDURANCE lorsque vous en mangerez. Chaque dose de Laumspur vous rendra 3 points d'ENDURANCE et vous avez cueilli là l'équivalent de 2 doses. Vous refermez votre Sac à Dos et vous poursuivez votre route. ", paragraphNumber);
-                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsummable.potionDeLampsur()));
+                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.potionDeLampsur()));
                         paragraph.AddDecision(new MoveEvent(347, "vous diriger vers le nord-est"));
                         paragraph.AddDecision(new MoveEvent(295, "aller à l'est"));
                         return paragraph;

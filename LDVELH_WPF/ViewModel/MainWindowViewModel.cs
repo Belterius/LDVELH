@@ -127,8 +127,8 @@ namespace LDVELH_WPF.ViewModel
             Hero = new Hero("ViewModel");
             Hero.AddLoot(CreateLoot.CreateWeapon.Glaive());
             Hero.AddLoot(CreateLoot.CreateWeapon.Baton());
-            Hero.AddLoot(CreateLoot.CreateConsummable.potionDeLampsur());
-            Hero.AddLoot(CreateLoot.CreateConsummable.potionDeLampsur());
+            Hero.AddLoot(CreateLoot.CreateConsumable.potionDeLampsur());
+            Hero.AddLoot(CreateLoot.CreateConsumable.potionDeLampsur());
             Hero.AddLoot(CreateLoot.CreateFood.ration());
             Hero.AddLoot(CreateLoot.CreateSpecialItem.helmet());
             Hero.AddLoot(CreateLoot.CreateSpecialItem.buckler());

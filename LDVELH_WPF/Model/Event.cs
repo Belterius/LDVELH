@@ -6,6 +6,9 @@ using System.Windows;
 
 namespace LDVELH_WPF
 {
+    /// <summary>
+    /// Something that will happen to the Hero
+    /// </summary>
     public abstract class Event
     {
         [Key]

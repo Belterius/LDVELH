@@ -122,10 +122,10 @@ namespace LDVELH_Tests
         public void Hero_RemoveAllItems_Tests()
         {
             Hero myHero = new Hero("Belterius");
-            Consummable consummable = CreateLoot.CreateConsummable.minorHealthPotion();
-            Consummable consummable2 = new Consummable("Random Consumable", 12, 1);
-            Consummable consummable4 = new Consummable("Random Consumable", 12, 1);//Allow to check if the override Equal works on Contains()
-            Consummable consummable3 = new Consummable("Random Consumable FALSE", 12, 1);
+            Consumable consummable = CreateLoot.CreateConsumable.minorHealthPotion();
+            Consumable consummable2 = new Consumable("Random Consumable", 12, 1);
+            Consumable consummable4 = new Consumable("Random Consumable", 12, 1);//Allow to check if the override Equal works on Contains()
+            Consumable consummable3 = new Consumable("Random Consumable FALSE", 12, 1);
             myHero.AddLoot(consummable);
             myHero.AddLoot(consummable2);
             myHero.AddLoot(consummable4);

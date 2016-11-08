@@ -4,6 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 namespace LDVELH_WPF
 {
+    /// <summary>
+    /// A Weapon that will take a spot in the Hero WeaponHolder
+    /// <para /> It posses a Name and a Type
+    /// </summary>
     public class Weapon : Loot
     {
 

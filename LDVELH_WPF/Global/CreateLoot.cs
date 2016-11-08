@@ -14,19 +14,19 @@
                 return new Gold(amount);
             }
         }
-        public static class CreateConsummable
+        public static class CreateConsumable
         {
-            public static Consummable minorHealthPotion()
+            public static Consumable minorHealthPotion()
             {
-                return new Consummable("minor health potion", 4, 3);
+                return new Consumable("minor health potion", 4, 3);
             }
-            public static Consummable potionDeGuerison()
+            public static Consumable potionDeGuerison()
             {
-                return new Consummable("minor health potion", 4, 1);
+                return new Consumable("minor health potion", 4, 1);
             }
-            public static Consummable potionDeLampsur(int healingPower = 3, int charges = 2)
+            public static Consumable potionDeLampsur(int healingPower = 3, int charges = 2)
             {
-                return new Consummable("potion De Lampsur", healingPower, charges);
+                return new Consumable("potion De Lampsur", healingPower, charges);
             }
         }
         public static class CreateFood

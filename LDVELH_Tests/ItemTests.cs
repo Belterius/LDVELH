@@ -11,11 +11,11 @@ namespace LDVELH_Tests
         [TestMethod]
         public void Item_Compare_GenericConsummable()
         {
-            Consummable consummableActual;
-            Consummable consummableExpected;
+            Consumable consummableActual;
+            Consumable consummableExpected;
 
-            consummableActual = CreateLoot.CreateConsummable.minorHealthPotion();
-            consummableExpected = new Consummable("minor health potion", 4, 3);
+            consummableActual = CreateLoot.CreateConsumable.minorHealthPotion();
+            consummableExpected = new Consumable("minor health potion", 4, 3);
 
             Assert.AreEqual(true, consummableActual.Equals(consummableExpected));
         }
@@ -23,11 +23,11 @@ namespace LDVELH_Tests
         [TestMethod]
         public void Item_Create_MinorHealthPotion()
         {
-            Consummable minorHealthPotionActual;
-            Consummable minorHealthPotionExpected;
+            Consumable minorHealthPotionActual;
+            Consumable minorHealthPotionExpected;
 
-            minorHealthPotionActual = CreateLoot.CreateConsummable.minorHealthPotion();
-            minorHealthPotionExpected = new Consummable("minor health potion", 4, 3);
+            minorHealthPotionActual = CreateLoot.CreateConsumable.minorHealthPotion();
+            minorHealthPotionExpected = new Consumable("minor health potion", 4, 3);
 
             Assert.AreEqual(minorHealthPotionExpected, minorHealthPotionActual);
         }
