@@ -1,10 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LDVELH_WPF.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LDVELH_WPF.ViewModel.Tests
 {
@@ -13,28 +8,28 @@ namespace LDVELH_WPF.ViewModel.Tests
     {
         public MainWindowViewModelTests()
         {
-            Hero Hero = new Hero("NoName");
-            ViewModel = new MainWindowViewModel(Hero, false);
+            Hero hero = new Hero("NoName");
+            _viewModel = new MainWindowViewModel(hero, false);
         }
 
-        private MainWindowViewModel ViewModel;
+        private readonly MainWindowViewModel _viewModel;
 
         [TestMethod()]
         public void ActionButtonHasChangedTest()
         {
-            StoryParagraph Paragraph = new StoryParagraph("AParagraph", 100);
+            StoryParagraph paragraph = new StoryParagraph("AParagraph", 100);
             bool didFire = false;
             bool didEnded = false;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
-                Assert.AreEqual(Paragraph, ViewModel.MyStory.ActualParagraph);
+                Assert.AreEqual(paragraph, _viewModel.MyStory.ActualParagraph);
             };
-            ViewModel.ActionButtonChanged += (object sender, EventArgs e) =>
+            _viewModel.ActionButtonChanged += (object sender, EventArgs e) =>
             {
                 didEnded = true;
             };
-            ViewModel.MyStory.ActualParagraph = Paragraph;
+            _viewModel.MyStory.ActualParagraph = paragraph;
             Assert.IsTrue(didFire);
             Assert.IsTrue(didEnded);
         }
@@ -42,40 +37,40 @@ namespace LDVELH_WPF.ViewModel.Tests
         [TestMethod()]
         public void HeroTest()
         {
-            Hero Hero = new Hero("NoName");
+            Hero hero = new Hero("NoName");
             bool didFire = false;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
-                Assert.AreEqual(Hero, ViewModel.Hero);
+                Assert.AreEqual(hero, _viewModel.Hero);
             };
-            ViewModel.Hero = Hero;
+            _viewModel.Hero = hero;
             Assert.IsTrue(didFire);
         }
 
         [TestMethod()]
         public void UseItemCommandTest()
         {
-            Item SelectedItem = new Consumable("SelectedItem", 1, 2);
+            Item selectedItem = new Consumable("SelectedItem", 1, 2);
             bool didFire = false;
             bool didChangeCharges = false;
 
-            ViewModel.Hero.AddLoot(SelectedItem);
-            ViewModel.SelectedItem = SelectedItem;
-            Assert.IsTrue(ViewModel.Hero.PossesItem(SelectedItem.Name));
+            _viewModel.Hero.AddLoot(selectedItem);
+            _viewModel.SelectedItem = selectedItem;
+            Assert.IsTrue(_viewModel.Hero.PossesItem(selectedItem.Name));
 
-            SelectedItem.PropertyChanged += (s, e) =>
+            selectedItem.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 if (e.PropertyName.Equals("ChargesLeft"))
                 {
                     didChangeCharges = true;
                 }
-                Assert.AreEqual(SelectedItem, ViewModel.SelectedItem);
+                Assert.AreEqual(selectedItem, _viewModel.SelectedItem);
             };
 
-            ViewModel.UseItemCommand.Execute(SelectedItem);
-            Assert.IsTrue((ViewModel.Hero.PossesItem(SelectedItem.Name)));
+            _viewModel.UseItemCommand.Execute(selectedItem);
+            Assert.IsTrue((_viewModel.Hero.PossesItem(selectedItem.Name)));
             Assert.IsTrue(didFire);
             Assert.IsTrue(didChangeCharges);
         }
@@ -83,58 +78,58 @@ namespace LDVELH_WPF.ViewModel.Tests
         [TestMethod()]
         public void ThrowLootCommandTest()
         {
-            Item SelectedItem = new Consumable("SelectedItem", 1, 1);
+            Item selectedItem = new Consumable("SelectedItem", 1, 1);
 
-            ViewModel.Hero.AddLoot(SelectedItem);
-            Assert.IsTrue(ViewModel.Hero.PossesItem(SelectedItem.Name));
+            _viewModel.Hero.AddLoot(selectedItem);
+            Assert.IsTrue(_viewModel.Hero.PossesItem(selectedItem.Name));
 
 
-            ViewModel.ThrowLootCommand.Execute(SelectedItem);
-            Assert.IsTrue(!(ViewModel.Hero.PossesItem(SelectedItem.Name)));
+            _viewModel.ThrowLootCommand.Execute(selectedItem);
+            Assert.IsTrue(!(_viewModel.Hero.PossesItem(selectedItem.Name)));
         }
 
         [TestMethod()]
         public void SelectedItemTest()
         {
-            Item SelectedItem = new Consumable("SelectedItem", 1, 1);
+            Item selectedItem = new Consumable("SelectedItem", 1, 1);
             bool didFire = false;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("SelectedItem", e.PropertyName);
-                Assert.AreEqual(SelectedItem, ViewModel.SelectedItem);
+                Assert.AreEqual(selectedItem, _viewModel.SelectedItem);
             };
-            ViewModel.SelectedItem = SelectedItem;
+            _viewModel.SelectedItem = selectedItem;
             Assert.IsTrue(didFire);
         }
 
         [TestMethod()]
         public void SelectedWeaponTest()
         {
-            Weapon SelectedWeapon = new Weapon("SelectedWeapon", WeaponTypes.Axe);
+            Weapon selectedWeapon = new Weapon("SelectedWeapon", WeaponTypes.Axe);
             bool didFire = false;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("SelectedWeapon", e.PropertyName);
-                Assert.AreEqual(SelectedWeapon, ViewModel.SelectedWeapon);
+                Assert.AreEqual(selectedWeapon, _viewModel.SelectedWeapon);
             };
-            ViewModel.SelectedWeapon = SelectedWeapon;
+            _viewModel.SelectedWeapon = selectedWeapon;
             Assert.IsTrue(didFire);
         }
 
         [TestMethod()]
         public void MyStoryTest()
         {
-            Story MyStory = new Story("myTitle", ViewModel.Hero);
+            Story myStory = new Story("myTitle", _viewModel.Hero);
             bool didFire = false;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("MyStory", e.PropertyName);
-                Assert.AreEqual(MyStory, ViewModel.MyStory);
+                Assert.AreEqual(myStory, _viewModel.MyStory);
             };
-            ViewModel.MyStory = MyStory;
+            _viewModel.MyStory = myStory;
             Assert.IsTrue(didFire);
         }
     }

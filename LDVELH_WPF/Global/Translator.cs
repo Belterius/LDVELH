@@ -4,7 +4,6 @@ using System.Resources;
 using System.Globalization;
 using System.Reflection;
 using System.Windows.Markup;
-using System.Threading;
 
 namespace LDVELH_WPF
 {
@@ -17,39 +16,23 @@ namespace LDVELH_WPF
     {
         public Translator Translator = new Translator();
 
-        static readonly GlobalTranslator INSTANCE = new GlobalTranslator();
-
         private GlobalTranslator()
         {
 
         }
 
-        public static GlobalTranslator Instance
-        {
-            get
-            {
-                return INSTANCE;
-            }
-        }
+        public static GlobalTranslator Instance { get; } = new GlobalTranslator();
     }
     public sealed class GlobalCulture
     {
         public CultureInfo Ci = new CultureInfo("en-GB");
-
-        static readonly GlobalCulture INSTANCE = new GlobalCulture();
 
         private GlobalCulture()
         {
 
         }
 
-        public static GlobalCulture Instance
-        {
-            get
-            {
-                return INSTANCE;
-            }
-        }
+        public static GlobalCulture Instance { get; } = new GlobalCulture();
     }
 
     public enum SupportedLanguage
@@ -70,23 +53,24 @@ namespace LDVELH_WPF
             get;
             set;
         }
+        /// <inheritdoc />
         /// <summary>
         /// Retrieve the corresponding string from resource depending on the settings Selected Language.
         /// Called from xaml
         /// </summary>
         /// <param name="serviceProvider"></param>
         /// <returns></returns>
-        override public object ProvideValue(IServiceProvider serviceProvider)
+        public override object ProvideValue(IServiceProvider serviceProvider)
         {
             if (Text == null)
                 return "";
 
-            ResourceManager Resmgr = new ResourceManager(ResourceId
+            ResourceManager resmgr = new ResourceManager(ResourceId
                                 , typeof(Translator).GetTypeInfo().Assembly);
 
-            var Translation = Resmgr.GetString(Text, GlobalCulture.Instance.Ci);
+            var translation = resmgr.GetString(Text, GlobalCulture.Instance.Ci);
 
-            if (Translation == null)
+            if (translation == null)
             {
 #if DEBUG
                 throw new ArgumentException(
@@ -96,7 +80,7 @@ namespace LDVELH_WPF
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif
             }
-            return Translation;
+            return translation;
         }
         /// <summary>
         /// Retrieve the corresponding string from resource depending on the settings Selected Language.
@@ -109,12 +93,12 @@ namespace LDVELH_WPF
             if (Text == null)
                 return "";
 
-            ResourceManager Resmgr = new ResourceManager(ResourceId
+            ResourceManager resmgr = new ResourceManager(ResourceId
                                 , typeof(Translator).GetTypeInfo().Assembly);
 
-            var Translation = Resmgr.GetString(Text, GlobalCulture.Instance.Ci);
+            var translation = resmgr.GetString(Text, GlobalCulture.Instance.Ci);
 
-            if (Translation == null)
+            if (translation == null)
             {
 #if DEBUG
                 throw new ArgumentException(
@@ -124,7 +108,7 @@ namespace LDVELH_WPF
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif
             }
-            return Translation;
+            return translation;
         }
         /// <summary>
         /// Retrieve the corresponding string from the Book1 resource depending on the settings Selected Language.
@@ -138,22 +122,22 @@ namespace LDVELH_WPF
             if (Text == null)
                 return "";
 
-            ResourceManager Resmgr = new ResourceManager(StringLocation
+            ResourceManager resmgr = new ResourceManager(StringLocation
                                 , typeof(Translator).GetTypeInfo().Assembly);
 
-            var Translation = Resmgr.GetString(Text, GlobalCulture.Instance.Ci);
+            var translation = resmgr.GetString(Text, GlobalCulture.Instance.Ci);
 
-            if (Translation == null)
+            if (translation == null)
             {
 #if DEBUG
                 throw new ArgumentException(
-                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, StringLocation, GlobalCulture.Instance.Ci.Name),
+                    $"Key '{Text}' was not found in resources '{StringLocation}' for culture '{GlobalCulture.Instance.Ci.Name}'.",
                     "Text");
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif
             }
-            return Translation;
+            return translation;
         }
     }
 

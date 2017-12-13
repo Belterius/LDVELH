@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LDVELH_WPF;
 
 namespace LDVELH_Tests
@@ -12,10 +11,10 @@ namespace LDVELH_Tests
         {
             Enemy evilHuman = new Enemy("Tagazoc", 13, 10, EnemyTypes.Human);
             Enemy evilOrc = new Enemy("GroDur", 10, 20, EnemyTypes.Orc);
-            Enemy Beast = new Enemy("BigBear", 16, 20, EnemyTypes.Beast);
+            Enemy beast = new Enemy("BigBear", 16, 20, EnemyTypes.Beast);
 
             Assert.AreEqual(Enemy.EnemiesWeakToPhychic.Contains(evilHuman.ClassType), evilHuman.IsWeakToPhychic());
-            Assert.AreEqual(Enemy.EnemiesWeakToPhychic.Contains(Beast.ClassType), Beast.IsWeakToPhychic());
+            Assert.AreEqual(Enemy.EnemiesWeakToPhychic.Contains(beast.ClassType), beast.IsWeakToPhychic());
             Assert.AreEqual(Enemy.EnemiesWeakToPhychic.Contains(evilOrc.ClassType), evilOrc.IsWeakToPhychic());
         }
     }

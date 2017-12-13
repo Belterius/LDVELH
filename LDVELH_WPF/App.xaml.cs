@@ -4,6 +4,7 @@ using System.Windows;
 
 namespace LDVELH_WPF
 {
+    /// <inheritdoc />
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -12,7 +13,7 @@ namespace LDVELH_WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            if (languageDefined)
+            if (LanguageDefined)
             {
                 switch (LDVELH_WPF.Properties.Settings.Default.Language.ToLower())
                 {
@@ -25,7 +26,7 @@ namespace LDVELH_WPF
                     default:
 #if DEBUG
                         throw new ArgumentException(
-                            String.Format("Language '{0}' is not yet present in the options, if you added the corresponding ressource please add a corresponding case.", LDVELH_WPF.Properties.Settings.Default.Language.ToLower()),
+                            $@"Language '{LDVELH_WPF.Properties.Settings.Default.Language.ToLower()}' is not yet present in the options, if you added the corresponding ressource please add a corresponding case.",
                             "Text");
 
 #else
@@ -34,27 +35,14 @@ namespace LDVELH_WPF
 #endif
 
                 }
-                this.StartupUri = new Uri("View/MenuLoad.xaml", UriKind.Relative);
+                StartupUri = new Uri("View/MenuLoad.xaml", UriKind.Relative);
             }
             else
             {
-                this.StartupUri = new Uri("View/MenuSettings.xaml", UriKind.Relative);
+                StartupUri = new Uri("View/MenuSettings.xaml", UriKind.Relative);
             }
         }
 
-        private bool languageDefined
-        {
-            get
-            {
-                if (LDVELH_WPF.Properties.Settings.Default.Language != "")
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
+        private static bool LanguageDefined => LDVELH_WPF.Properties.Settings.Default.Language != "";
     }
 }

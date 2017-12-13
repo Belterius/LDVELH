@@ -15,32 +15,32 @@
                         //D10 Gold + Axe
                         paragraph.AddMainEvent(new LootEvent(new Gold(DiceRoll.D10Roll())));
                         paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateWeapon.Hache()));
-                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateFood.ration(3)));
+                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateFood.Ration(3)));
                         //Random loot
                         switch (DiceRoll.D10Roll())
                         {
                             case 1:
-                                LootEvent lootEvent1 = new LootEvent(CreateLoot.CreateWeapon.sword());
+                                LootEvent lootEvent1 = new LootEvent(CreateLoot.CreateWeapon.Sword());
                                 paragraph.AddMainEvent(lootEvent1);
                                 break;
                             case 2:
-                                LootEvent lootEvent2 = new LootEvent(CreateLoot.CreateSpecialItem.helmet());
+                                LootEvent lootEvent2 = new LootEvent(CreateLoot.CreateSpecialItem.Helmet());
                                 paragraph.AddMainEvent(lootEvent2);
                                 break;
                             case 3:
-                                LootEvent lootEvent3 = new LootEvent(CreateLoot.CreateFood.ration(2));
+                                LootEvent lootEvent3 = new LootEvent(CreateLoot.CreateFood.Ration(2));
                                 paragraph.AddMainEvent(lootEvent3);
                                 break;
                             case 4:
-                                LootEvent lootEvent4 = new LootEvent(CreateLoot.CreateSpecialItem.chainMail());
+                                LootEvent lootEvent4 = new LootEvent(CreateLoot.CreateSpecialItem.ChainMail());
                                 paragraph.AddMainEvent(lootEvent4);
                                 break;
                             case 5:
-                                LootEvent lootEvent5 = new LootEvent(CreateLoot.CreateWeapon.masseDArme());
+                                LootEvent lootEvent5 = new LootEvent(CreateLoot.CreateWeapon.MasseDArme());
                                 paragraph.AddMainEvent(lootEvent5);
                                 break;
                             case 6:
-                                LootEvent lootEvent6 = new LootEvent(CreateLoot.CreateConsumable.potionDeGuerison());
+                                LootEvent lootEvent6 = new LootEvent(CreateLoot.CreateConsumable.PotionDeGuerison());
                                 paragraph.AddMainEvent(lootEvent6);
                                 break;
                             case 7:
@@ -231,7 +231,7 @@
                     {
                         paragraph = new StoryParagraph("Il semble que le ou les occupants de la péniche soient partis en toute hâte il y a peu de temps. Les restes d'un repas à moitié mangé traînent sur la table ainsi qu'une tasse de Jala encore chaud. En fouillant un coffre et un petit placard, vous trouvez un Sac à Dos, de la Nourriture (l'équivalent de 2 Repas) et un poignard.", paragraphNumber);
                         paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), "Prendre le poignard"));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.ration(2), "Prendre les rations"));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(2), "Prendre les rations"));
                         paragraph.AddDecision(new MoveEvent(273, "Continuer"));
                         return paragraph;
                     }
@@ -581,8 +581,8 @@
                     {
                         paragraph = new StoryParagraph("Les « soldats » sont étendus raides morts à vos pieds. C'étaient des brigands qui détroussaient les réfugiés de Toran et pillaient les maisons et les fermes abandonnées de la région. \nEn fouillant leurs cadavres, vous trouvez 28 Pièces d'Or et deux Sacs à Dos qui contiennent des provisions équivalant à trois Repas. Ils étaient armés d'une Arbalète et de Trois Epées.L'Arbalète a été endommagée au cours du combat, mais les trois Epées sont intactes, et vous pouvez en emporter une si vous le souhaitez. Vous modifiez, en conséquence, votre Feuille d'Aventure, vous rangez soigneusement vos nouvelles acquisitions et vous jetez un coup d'œil en direction de l'ouest pour voir si la voie est libre.Enfin, vous vous remettez en route vers le camp fortifié, dressé à l'extérieur de la ville.", paragraphNumber);
                         paragraph.AddMainEvent(new LootEvent(new Gold(28)));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.ration(3), "prendre les rations"));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.sword(), "prendre une épée"));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(3), "prendre les rations"));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.Sword(), "prendre une épée"));
                         paragraph.AddDecision(new MoveEvent(288, "Continuer"));
                         return paragraph;
                     }
@@ -944,7 +944,7 @@
                 case 113:
                     {
                         paragraph = new StoryParagraph("Vous avez marché pendant plus d'une demi-heure lorsque vous apercevez des fleurs d'un rouge vif qui poussent sur un monticule. Vous reconnaissez aussitôt cette plante : c'est du Laumspur, une herbe rare très recherchée pour ses vertus curatives. Vous cueillez alors une bonne poignée de cette herbe que vous rangez dans votre Sac à Dos. Elle vous servira à récupérer des points d'ENDURANCE lorsque vous en mangerez. Chaque dose de Laumspur vous rendra 3 points d'ENDURANCE et vous avez cueilli là l'équivalent de 2 doses. Vous refermez votre Sac à Dos et vous poursuivez votre route. ", paragraphNumber);
-                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.potionDeLampsur()));
+                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.PotionDeLampsur()));
                         paragraph.AddDecision(new MoveEvent(347, "vous diriger vers le nord-est"));
                         paragraph.AddDecision(new MoveEvent(295, "aller à l'est"));
                         return paragraph;
@@ -1465,8 +1465,8 @@
                     {
                         paragraph = new StoryParagraph("La roulotte a échappé à tout contrôle et cahote dangereusement sur le bas-côté de la route, parmi les pierres et les nids-de-poule. Vous parvenez cependant, au prix de bien des efforts, à ramener sur la chaussée les chevaux saisis de panique et à arrêter l'attelage. En fouillant rapidement le véhicule, vous découvrez 40 Pièces d'Or, une Epée et une quantité de nourriture équivalant à 4 Repas. Si vous pouvez conserver l'une ou l'autre de ces trouvailles. Les épreuves que vous avez subies vous ont épuisé, et il vous faut prendre un Repas. Vous plongerez ensuite dans un sommeil profond. ", paragraphNumber);
                         paragraph.AddDecision(new LootEvent(new Gold(40), "Prendre l'or"));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.sword(), "Prendre l'épée"));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.ration(4), "Prendre les repas"));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.Sword(), "Prendre l'épée"));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(4), "Prendre les repas"));
                         paragraph.AddDecision(new MoveEvent(64, "continuer"));
 
                         return paragraph;
@@ -1579,7 +1579,7 @@
                 case 199:
                     {
                         paragraph = new StoryParagraph("La plupart des placards et des tiroirs sont vides. Les habitants de cette maison ont presque tout emporté avec eux ; vous parvenez cependant à trouver dans la cave suffisamment de fruits pour vous faire un Repas.", paragraphNumber);
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.ration(1), "Prendre le repas"));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(1), "Prendre le repas"));
                         paragraph.AddDecision(new MoveEvent(81, "continuer"));
                         return paragraph;
                     }
@@ -1898,7 +1898,7 @@
                 case 243:
                     {
                         paragraph = new StoryParagraph("En courant dans la forêt, vous trébuchez bientôt contre une racine et vous dévalez une pente escarpée en roulant sur vousmême. Vous atterrissez sur un petit chemin caché sous les arbres et vous y découvrez un cadavre étendu parmi les broussailles. C'est celui d'un Glok, une de ces créatures monstrueuses et répugnantes que les Maîtres des Ténèbres emploient à leurs services. Il y a bien longtemps, les ancêtres des Gloks servaient d'esclaves aux Maîtres des Ténèbres et ceux-ci leur firent bâtir la ville infernale d'Helgedad située dans les déserts volcaniques qui s'étendent au-delà des monts Durncrag. La construction de cette cité représenta un long et douloureux cauchemar pour ces créatures, dont seules les plus fortes survécurent à la terrible épreuve. La chaleur et les vapeurs empoisonnées qui se dégageaient des terrains alentour se révélaient, en effet, mortelles pour la plupart d'entre elles. Le monstre mort qui gît à vos pieds est, comme tous ses congénères, un descendant de ces anciens esclaves Gloks. Il a été tué par un coup d'épée en pleine tête et une Masse d'Armes est posée à côté de lui. Vous pouvez prendre cette arme si vous le souhaitez", paragraphNumber);
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.masseDArme(), "Prendre la masse"));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.MasseDArme(), "Prendre la masse"));
                         paragraph.AddDecision(new MoveEvent(97, "continuer"));
                         return paragraph;
                     }
@@ -2366,7 +2366,7 @@
                     {
                         paragraph = new StoryParagraph("Vous n'avez aucune difficulté à atteindre la cabane et, tandis que vous escaladez l'arbre, des souvenirs d'enfance vous reviennent en mémoire : vous vous rappelez le temps où, tout jeune garçon, vous montiez également aux arbres, non loin de la ville de Toran, pour aller cueillir des fruits ou admirer la campagne environnante. Vous ouvrez la porte de la cabane et vous tombez nez à nez avec un vieil ermite recroquevillé dans un coin de la pièce. Une expression d'intense soulagement apparaît sur son visage lorsqu'il reconnaît votre cape de Seigneur Kaï. Il vous raconte alors que toute la région est envahie par des Gloks et qu'il a dénombré plus de quarante Kraans volant au-dessus de sa maison dans les trois heures qui ont précédé. Ils se dirigeaient tous vers l'est. Il s'approche ensuite d'un buffet et vous apporte une assiette de fruits.Vous le remerciez et vous rangez les fruits dans votre Sac à Dos.Ils représentent l'équivalent d'un Repas, notez - le sur votre Feuille d'Aventure. L'ermite vous montre également un magnifique Marteau de Guerre qu'il pose sur une table, près de la porte. « Vous en avez plus besoin que moi, Seigneur Kaï, dit-il. Prenez ce Marteau si vous le désirez, c'est une Arme à laquelle vous pourrez vous fier. » Vous n'aurez le droit de prendre ce Marteau de Guerre qu'à la condition de l'échanger contre une autre Arme que vous possédez déjà, car vous ne pouvez laisser l'ermite sans aucune défense contre l'ennemi.", paragraphNumber);
                         paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre(), "Prendre le marteau"));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.ration(1), "Prendre le repas"));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(1), "Prendre le repas"));
                         paragraph.AddDecision(new MoveEvent(213, "continuer"));
                         return paragraph;
                     }

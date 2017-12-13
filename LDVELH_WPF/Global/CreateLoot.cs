@@ -16,22 +16,22 @@
         }
         public static class CreateConsumable
         {
-            public static Consumable minorHealthPotion()
+            public static Consumable MinorHealthPotion()
             {
                 return new Consumable("minor health potion", 4, 3);
             }
-            public static Consumable potionDeGuerison()
+            public static Consumable PotionDeGuerison()
             {
                 return new Consumable("minor health potion", 4, 1);
             }
-            public static Consumable potionDeLampsur(int healingPower = 3, int charges = 2)
+            public static Consumable PotionDeLampsur(int healingPower = 3, int charges = 2)
             {
                 return new Consumable("potion De Lampsur", healingPower, charges);
             }
         }
         public static class CreateFood
         {
-            public static Food ration(int charges = 1)
+            public static Food Ration(int charges = 1)
             {
                 return new Food("ration", charges);
             }
@@ -42,7 +42,7 @@
         }
         public static class CreateWeapon
         {
-            public static Weapon sword(){
+            public static Weapon Sword(){
                 return new Weapon("Sword", WeaponTypes.Sword);
 
             }
@@ -54,11 +54,11 @@
             {
                 return new Weapon("WarHammer", WeaponTypes.WarHammer);
             }
-            public static Weapon spear()
+            public static Weapon Spear()
             {
                 return new Weapon("Spear", WeaponTypes.Spear);
             }
-            public static Weapon masseDArme()
+            public static Weapon MasseDArme()
             {
                 return new Weapon("Mace", WeaponTypes.Mace);
             }
@@ -85,15 +85,15 @@
         }
         public static class CreateSpecialItem
         {
-            public static SpecialItem buckler()
+            public static SpecialItem Buckler()
             {
                 return new SpecialItemCombat("Buckler", 2, 0);
             }
-            public static SpecialItem chainMail()
+            public static SpecialItem ChainMail()
             {
                 return new SpecialItemAlways("ChainMail", 0, 4);
             }
-            public static SpecialItem helmet()
+            public static SpecialItem Helmet()
             {
                 return new SpecialItemAlways("ChainMail", 0, 2);
             }

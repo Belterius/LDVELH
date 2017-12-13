@@ -128,14 +128,14 @@ namespace LDVELH_WPF
         }
         private string getAncre(String innerHTML)
         {
-            int startAncre = innerHTML.IndexOf("<a href=");
-            int endAncre = innerHTML.IndexOf("</a>") + 4;
+            int startAncre = innerHTML.IndexOf("<a href=", StringComparison.Ordinal);
+            int endAncre = innerHTML.IndexOf("</a>", StringComparison.Ordinal) + 4;
             return innerHTML.Substring(startAncre, endAncre - startAncre);
         }
         private string getAncreContent(string ancre)
         {
-            int startContent = ancre.IndexOf("\">") + 2;
-            int endContent = ancre.IndexOf("</a>");
+            int startContent = ancre.IndexOf("\">", StringComparison.Ordinal) + 2;
+            int endContent = ancre.IndexOf("</a>", StringComparison.Ordinal);
             return ancre.Substring(startContent, endContent - startContent);
         }
         private string getNumberDestinationFromAncreContent(string ancreContent)
@@ -145,19 +145,19 @@ namespace LDVELH_WPF
             numberDestination = numberDestination.Replace("go to", "").Trim();
             return numberDestination;
         }
-        private string getParagraphDestination(String innerHTML)
+        private string GetParagraphDestination(string innerHtml)
         {
-            string ancreContent = getAncreContent(getAncre(innerHTML));
+            string ancreContent = getAncreContent(getAncre(innerHtml));
             string destinationNumber = getNumberDestinationFromAncreContent(ancreContent);
             return destinationNumber;
         }
-        private string deleteAncre(String innerHTML)
+        private static string DeleteAncre(string innerHtml)
         {
-            int startAncre = innerHTML.IndexOf("<a href=");
-            int endAncre = innerHTML.IndexOf("</a>") + 4;
-            return innerHTML.Remove(startAncre, endAncre - startAncre);
+            int startAncre = innerHtml.IndexOf("<a href=", StringComparison.Ordinal);
+            int endAncre = innerHtml.IndexOf("</a>", StringComparison.Ordinal) + 4;
+            return innerHtml.Remove(startAncre, endAncre - startAncre);
         }
-        private string cleanDecision(String decisionContent)
+        private static string CleanDecision(string decisionContent)
         {
             string decision = decisionContent;
             if (decision.Contains("If you have picked a number"))
@@ -217,14 +217,14 @@ namespace LDVELH_WPF
         }
         private string getDecisionContent(String innerHTML)
         {
-            string myContent = deleteAncre(innerHTML);
-            return cleanDecision(myContent);
+            string myContent = DeleteAncre(innerHTML);
+            return CleanDecision(myContent);
 
         }
         private string GenerateResxName(HtmlNode paragraph, int index)
         {
 
-            string myDestination = getParagraphDestination(paragraph.InnerHtml);
+            string myDestination = GetParagraphDestination(paragraph.InnerHtml);
             string myDecisionContent = getDecisionContent(paragraph.InnerHtml);
             return "Paragraph" + (index + 1) + "To" + myDestination;
         }

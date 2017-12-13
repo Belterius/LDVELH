@@ -1,9 +1,5 @@
 ﻿using LDVELH_WPF.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LDVELH_WPF.ViewModel
 {
@@ -210,14 +206,8 @@ namespace LDVELH_WPF.ViewModel
             }
         }
         
-        public string HeroFightAgility
-        {
-            get
-            {
-                return Hero.GetHeroAgilityInBattle(Enemy).ToString();
-            }
-        }
-       
+        public string HeroFightAgility => Hero.GetHeroAgilityInBattle(Enemy).ToString();
+
         public FightViewModel(Hero hero, Enemy enemy)
         {
             Hero = hero;

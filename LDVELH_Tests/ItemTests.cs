@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LDVELH_WPF;
 
 namespace LDVELH_Tests
@@ -11,11 +10,8 @@ namespace LDVELH_Tests
         [TestMethod]
         public void Item_Compare_GenericConsummable()
         {
-            Consumable consummableActual;
-            Consumable consummableExpected;
-
-            consummableActual = CreateLoot.CreateConsumable.minorHealthPotion();
-            consummableExpected = new Consumable("minor health potion", 4, 3);
+            Consumable consummableActual = CreateLoot.CreateConsumable.MinorHealthPotion();
+            Consumable consummableExpected = new Consumable("minor health potion", 4, 3);
 
             Assert.AreEqual(true, consummableActual.Equals(consummableExpected));
         }
@@ -23,11 +19,8 @@ namespace LDVELH_Tests
         [TestMethod]
         public void Item_Create_MinorHealthPotion()
         {
-            Consumable minorHealthPotionActual;
-            Consumable minorHealthPotionExpected;
-
-            minorHealthPotionActual = CreateLoot.CreateConsumable.minorHealthPotion();
-            minorHealthPotionExpected = new Consumable("minor health potion", 4, 3);
+            Consumable minorHealthPotionActual = CreateLoot.CreateConsumable.MinorHealthPotion();
+            Consumable minorHealthPotionExpected = new Consumable("minor health potion", 4, 3);
 
             Assert.AreEqual(minorHealthPotionExpected, minorHealthPotionActual);
         }

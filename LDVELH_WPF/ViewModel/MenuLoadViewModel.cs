@@ -1,10 +1,6 @@
 ﻿using LDVELH_WPF.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LDVELH_WPF.ViewModel
 {
@@ -42,7 +38,7 @@ namespace LDVELH_WPF.ViewModel
         {
             try
             {
-                using (SQLiteDatabaseFunction DatabaseRequest = new SQLiteDatabaseFunction())
+                using (SqLiteDatabaseFunction DatabaseRequest = new SqLiteDatabaseFunction())
                 {
                     ListHeroes = new ObservableCollection<Hero>(DatabaseRequest.GetAllHeroes());
                 }
@@ -71,7 +67,7 @@ namespace LDVELH_WPF.ViewModel
             if (hero == null) return;
             try
             {
-                using (SQLiteDatabaseFunction DatabaseRequest = new SQLiteDatabaseFunction())
+                using (SqLiteDatabaseFunction DatabaseRequest = new SqLiteDatabaseFunction())
                 {
                     DatabaseRequest.DeleteHero((Hero)hero);
                 }

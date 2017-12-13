@@ -1,11 +1,7 @@
 ﻿using LDVELH_WPF.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace LDVELH_WPF
 {
@@ -43,7 +39,7 @@ namespace LDVELH_WPF
                 Top += 20;
             }
         }
-        private void CheckBox_Checked(object sender, System.EventArgs e)
+        private void CheckBox_Checked(object sender, EventArgs e)
         {
             if (((MenuCapacitiesViewModel)DataContext).Hero.Capacities.Count >= ((MenuCapacitiesViewModel)DataContext).Hero.MaxNumberOfCapacities)
             {
@@ -60,7 +56,7 @@ namespace LDVELH_WPF
             }
             ((MenuCapacitiesViewModel)DataContext).AddCapacityCommand.Execute(((CapacityCheckBox)sender).MyCapacity);
         }
-        private void CheckBox_UnChecked(object sender, System.EventArgs e)
+        private void CheckBox_UnChecked(object sender, EventArgs e)
         {
             ((MenuCapacitiesViewModel)DataContext).RemoveCapacityCommand.Execute(((CapacityCheckBox)sender).MyCapacity);
         }

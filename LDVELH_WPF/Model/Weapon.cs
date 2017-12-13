@@ -1,7 +1,6 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel;
+
 namespace LDVELH_WPF
 {
     /// <summary>
@@ -49,8 +48,8 @@ namespace LDVELH_WPF
 
         }
         public Weapon(string name, WeaponTypes weaponType){
-            this.Name = name;
-            this.WeaponType = weaponType;
+            Name = name;
+            WeaponType = weaponType;
         }
         public override void Remove(Hero hero)
         {
@@ -68,9 +67,9 @@ namespace LDVELH_WPF
 
 
             Weapon Weapon = (Weapon)obj;
-            if (this.Name != Weapon.Name)
+            if (Name != Weapon.Name)
                 return false;
-            if (this.WeaponType != Weapon.WeaponType)
+            if (WeaponType != Weapon.WeaponType)
                 return false;
 
             return true;
@@ -84,12 +83,7 @@ namespace LDVELH_WPF
 
         
 
-        public string DisplayName
-        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
-            get {
-                return Name + "(" + GlobalTranslator.Instance.Translator.ProvideValue(WeaponType.ToString()) + ")";
-            }
-        }
+        public string DisplayName => Name + "(" + GlobalTranslator.Instance.Translator.ProvideValue(WeaponType.ToString()) + ")";
     }
     public enum WeaponTypes
     {

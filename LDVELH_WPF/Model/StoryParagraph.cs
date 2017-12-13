@@ -30,26 +30,23 @@ namespace LDVELH_WPF
         /// <summary>
         /// A List of Events that the Player can choose to Resolve
         /// </summary>
-        List<Event> Decision;
-        int _ParagraphNumber;
+        private readonly List<Event> _decision;
+        private int _paragraphNumber;
         public int ParagraphNumber
         {
             get
             {
-                return _ParagraphNumber;
+                return _paragraphNumber;
             }
             private set
             {
-                if (_ParagraphNumber != value)
-                {
-                    _ParagraphNumber = value;
-                }
+                    _paragraphNumber = value;
             }
         }
         /// <summary>
         /// A List of Events that will happen as soon as the Hero reach the Paragraph
         /// </summary>
-        List<Event> MainEvents;
+        private readonly List<Event> _mainEvents;
 
         /// <summary>
         /// Create a new Paragraph
@@ -58,10 +55,10 @@ namespace LDVELH_WPF
         /// <param name="paragraphNumber">The number that will correspond to the Paragraph</param>
         public StoryParagraph(string contentText, int paragraphNumber)
         {
-            this.ContentText = contentText;
-            this.ParagraphNumber = paragraphNumber;
-            Decision = new List<Event>();
-            MainEvents = new List<Event>();
+            ContentText = contentText;
+            ParagraphNumber = paragraphNumber;
+            _decision = new List<Event>();
+            _mainEvents = new List<Event>();
         }
 
         /// <summary>
@@ -69,7 +66,7 @@ namespace LDVELH_WPF
         /// </summary>
         /// <param name="decision"></param>
         public void AddDecision(Event decision){
-            this.Decision.Add(decision);
+            _decision.Add(decision);
         }
         /// <summary>
         /// Add an Event to the Paragraph that will be resolved as soon as the Player reaches the Paragraph
@@ -77,24 +74,22 @@ namespace LDVELH_WPF
         /// <param name="mainEvent"></param>
         public void AddMainEvent(Event mainEvent)
         {
-            this.MainEvents.Add(mainEvent);
+            _mainEvents.Add(mainEvent);
         }
         
-        public List<Event> GetListDecision
-        {
-            get { return Decision; }
-        }
+        public List<Event> GetListDecision => _decision;
+
         /// <summary>
         /// Resolve all the Paragraph Mains Events
         /// </summary>
         /// <param name="story"></param>
         public void Resolve(Story story)
         {
-            foreach (Event MainEvent in MainEvents)
+            foreach (Event mainEvent in _mainEvents)
             {
                 try
                 {
-                    MainEvent.ResolveEvent(story);
+                    mainEvent.ResolveEvent(story);
                 }
                 catch(YouAreDeadException)
                 {
@@ -109,7 +104,7 @@ namespace LDVELH_WPF
                     throw;
                 }
             }
-            if(!MainEvents.OfType<FightEvent>().Any())
+            if(!_mainEvents.OfType<FightEvent>().Any())
             {
                 story.PlayerHero.Rest();
             }

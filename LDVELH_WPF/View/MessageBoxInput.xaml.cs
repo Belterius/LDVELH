@@ -14,16 +14,13 @@ namespace LDVELH_WPF
         public MessageBoxInput(string title, string content)
         {
             InitializeComponent();
-            this.Title = title;
+            Title = title;
             labelContent.Content = content;
         }
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
         }
-        public string GetCharacterName
-        {
-            get { return textBoxCharacterName.Text; }
-        }
+        public string GetCharacterName => textBoxCharacterName.Text;
     }
 }

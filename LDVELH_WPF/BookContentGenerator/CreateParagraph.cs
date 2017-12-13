@@ -15,29 +15,29 @@
                         //D10 Gold + Axe
                         paragraph.AddMainEvent(new LootEvent(new Gold(DiceRoll.D10Roll())));
                         paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateWeapon.Hache()));
-                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.potionDeLampsur(5)));
-                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.potionDeLampsur(5)));
-                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateFood.ration(3)));
+                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.PotionDeLampsur(5)));
+                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.PotionDeLampsur(5)));
+                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateFood.Ration(3)));
                         //Random loot
                         switch (DiceRoll.D10Roll())
                         {
                             case 1:
-                                paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateWeapon.sword()));
+                                paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateWeapon.Sword()));
                                 break;
                             case 2:
-                                paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateSpecialItem.helmet()));
+                                paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateSpecialItem.Helmet()));
                                 break;
                             case 3:
-                                paragraph.AddMainEvent( new LootEvent(CreateLoot.CreateFood.ration(2)));
+                                paragraph.AddMainEvent( new LootEvent(CreateLoot.CreateFood.Ration(2)));
                                 break;
                             case 4:
-                                paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateSpecialItem.chainMail()));
+                                paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateSpecialItem.ChainMail()));
                                 break;
                             case 5:
-                                paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateWeapon.masseDArme()));
+                                paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateWeapon.MasseDArme()));
                                 break;
                             case 6:
-                                paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.potionDeGuerison()));
+                                paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.PotionDeGuerison()));
                                 break;
                             case 7:
                                 paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateWeapon.Baton()));
@@ -218,7 +218,7 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph20"), paragraphNumber);
                         paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.Poignard(), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph20LootEvent1")));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.ration(2), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph20LootEvent2")));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(2), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph20LootEvent2")));
                         paragraph.AddDecision(new MoveEvent(273, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph20To273")));
                         return paragraph;
                     }
@@ -568,8 +568,8 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph62"), paragraphNumber);
                         paragraph.AddMainEvent(new LootEvent(new Gold(28)));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.ration(3), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph62LootEvent1")));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.sword(), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph62LootEvent2")));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(3), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph62LootEvent1")));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.Sword(), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph62LootEvent2")));
                         paragraph.AddDecision(new MoveEvent(288, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph62To288")));
                         return paragraph;
                     }
@@ -931,7 +931,7 @@
                 case 113:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph113"), paragraphNumber);
-                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.potionDeLampsur()));
+                        paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateConsumable.PotionDeLampsur()));
                         paragraph.AddDecision(new MoveEvent(347, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph113To347")));
                         paragraph.AddDecision(new MoveEvent(295, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph113To295")));
                         return paragraph;
@@ -1451,8 +1451,8 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph184"), paragraphNumber);
                         paragraph.AddDecision(new LootEvent(new Gold(40), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph184LootEvent1")));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.sword(), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph184LootEvent2")));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.ration(4), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph184LootEvent3")));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.Sword(), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph184LootEvent2")));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(4), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph184LootEvent3")));
                         paragraph.AddDecision(new MoveEvent(64, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph184To64")));
 
                         return paragraph;
@@ -1565,7 +1565,7 @@
                 case 199:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph199"), paragraphNumber);
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.ration(1), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph199LootEvent1")));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(1), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph199LootEvent1")));
                         paragraph.AddDecision(new MoveEvent(81, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph199To81")));
                         return paragraph;
                     }
@@ -1885,7 +1885,7 @@
                 case 243:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph243"), paragraphNumber);
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.masseDArme(), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph243LootEvent1")));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.MasseDArme(), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph243LootEvent1")));
                         paragraph.AddDecision(new MoveEvent(97, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph243To97")));
                         return paragraph;
                     }
@@ -2353,7 +2353,7 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph307"), paragraphNumber);
                         paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre(), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph307LootEvent1")));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.ration(1), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph307LootEvent2")));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(1), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph307LootEvent2")));
                         paragraph.AddDecision(new MoveEvent(213, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph307To213")));
                         return paragraph;
                     }

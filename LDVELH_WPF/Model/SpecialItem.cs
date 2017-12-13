@@ -29,13 +29,8 @@ namespace LDVELH_WPF
             }
         }
 
-        public virtual string DisplayName
-        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
-            get
-            {
-                return Name;
-            }
-        }
+        public virtual string DisplayName => Name;
+
         public override void Add(Hero hero)
         {
             hero.SpecialItems.Add(this);
@@ -69,7 +64,8 @@ namespace LDVELH_WPF
             }
         }
         [Column("HitPointBonus")]
-        int HitPointBonus { get; set; }
+        // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Local : Requiered because of the Database that will need to be able to set
+        private int HitPointBonus { get; set; }
 
         public override string DisplayName
         {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
@@ -102,9 +98,9 @@ namespace LDVELH_WPF
         /// <param name="hitPointBonus">The Health bonus it provides during a fight</param>
         public SpecialItemCombat(String name, int agilityBonus, int hitPointBonus)
         {
-            this.AgilityBonus = agilityBonus;
-            this.HitPointBonus = hitPointBonus;
-            this.Name = name;
+            AgilityBonus = agilityBonus;
+            HitPointBonus = hitPointBonus;
+            Name = name;
         }
 
         public override bool Equals(object obj)
@@ -114,11 +110,11 @@ namespace LDVELH_WPF
 
 
             SpecialItemCombat SpecialItemCombat = (SpecialItemCombat)obj;
-            if (this.Name != SpecialItemCombat.Name)
+            if (Name != SpecialItemCombat.Name)
                 return false;
             if (AgilityBonus != SpecialItemCombat.AgilityBonus)
                 return false;
-            if (this.HitPointBonus != SpecialItemCombat.HitPointBonus)
+            if (HitPointBonus != SpecialItemCombat.HitPointBonus)
                 return false;
 
             return true;
@@ -189,27 +185,27 @@ namespace LDVELH_WPF
         {
             base.Add(hero);
 
-            if (this.HitPointBonus > 0)
+            if (HitPointBonus > 0)
             {
-                hero.IncreaseMaxLife(this.HitPointBonus);
-                hero.Heal(this.HitPointBonus);
+                hero.IncreaseMaxLife(HitPointBonus);
+                hero.Heal(HitPointBonus);
             }
-            if (this.AgilityBonus > 0)
+            if (AgilityBonus > 0)
             {
-                hero.IncreaseAgility(this.AgilityBonus);
+                hero.IncreaseAgility(AgilityBonus);
             }
         }
         public override void Remove(Hero hero)
         {
             base.Remove(hero);
 
-            if (this.HitPointBonus > 0)
+            if (HitPointBonus > 0)
             {
-                hero.DecreaseMaxLife(this.HitPointBonus);
+                hero.DecreaseMaxLife(HitPointBonus);
             }
-            if (this.AgilityBonus > 0)
+            if (AgilityBonus > 0)
             {
-                hero.DecreaseAgility(this.AgilityBonus);
+                hero.DecreaseAgility(AgilityBonus);
             }
         
         }
@@ -220,11 +216,11 @@ namespace LDVELH_WPF
 
 
             SpecialItemAlways SpecialItemCombat = (SpecialItemAlways)obj;
-            if (this.Name != SpecialItemCombat.Name)
+            if (Name != SpecialItemCombat.Name)
                 return false;
-            if (this.AgilityBonus != SpecialItemCombat.AgilityBonus)
+            if (AgilityBonus != SpecialItemCombat.AgilityBonus)
                 return false;
-            if (this.HitPointBonus != SpecialItemCombat.HitPointBonus)
+            if (HitPointBonus != SpecialItemCombat.HitPointBonus)
                 return false;
 
             return true;
@@ -255,6 +251,7 @@ namespace LDVELH_WPF
 
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// A SpecialItem that doesn't provide any bonus, it will only be usefull when an Event require the Item.
     /// </summary>
@@ -265,9 +262,9 @@ namespace LDVELH_WPF
         {
 
         }
-        public QuestItem(String name)
+        public QuestItem(string name)
         {
-            this.Name = name;
+            Name = name;
         }
         public override bool Equals(object obj)
         {
@@ -275,23 +272,14 @@ namespace LDVELH_WPF
                 return false;
 
 
-            QuestItem SpecialItemCombat = (QuestItem)obj;
-            if (this.Name != SpecialItemCombat.Name)
-                return false;
-
-            return true;
+            QuestItem specialItemCombat = (QuestItem)obj;
+            return Name == specialItemCombat.Name;
         }
         public override int GetHashCode()
         {
             return new { Name }.GetHashCode();
         }
-        public override string DisplayName
-        {//If changing the name make sure to change the string too as the ItemSources must be passed by a string
-            get
-            {
-               return Name;
-            }
-        }
+        public override string DisplayName => Name;
     }
 
 }

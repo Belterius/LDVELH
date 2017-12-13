@@ -5,33 +5,33 @@ using System.Data.Entity;
 
 namespace LDVELH_WPF
 {
-    public class SQLiteDatabaseFunction : IDisposable
+    public class SqLiteDatabaseFunction : IDisposable
     {
-        static MySQLiteDBContext HeroSaveContext;
+        static MySqLiteDbContext _heroSaveContext;
 
-        public SQLiteDatabaseFunction()
+        public SqLiteDatabaseFunction()
         {
-            HeroSaveContext = new MySQLiteDBContext();
-            HeroSaveContext.MyBackPack.Load();
-            HeroSaveContext.MyItems.Load();
-            HeroSaveContext.MySpecialItem.Load();
-            HeroSaveContext.MyWeaponHolders.Load();
-            HeroSaveContext.MyWeapons.Load();
-            HeroSaveContext.MyCapacities.Load();
-            HeroSaveContext.MyHero.Load();
+            _heroSaveContext = new MySqLiteDbContext();
+            _heroSaveContext.MyBackPack.Load();
+            _heroSaveContext.MyItems.Load();
+            _heroSaveContext.MySpecialItem.Load();
+            _heroSaveContext.MyWeaponHolders.Load();
+            _heroSaveContext.MyWeapons.Load();
+            _heroSaveContext.MyCapacities.Load();
+            _heroSaveContext.MyHero.Load();
         }
 
         public void SaveHero(Hero hero)
         {
             try
             {
-                Hero SavedHero = SelectHeroFromID(hero.CharacterID);
+                Hero savedHero = SelectHeroFromId(hero.CharacterID);
 
-                if (SavedHero != null)
+                if (savedHero != null)
                 {
-                    DeleteHero(SavedHero);
+                    DeleteHero(savedHero);
                 }
-                HeroSaveContext.MyHero.Add(hero);
+                _heroSaveContext.MyHero.Add(hero);
             }
             catch (Exception)
             {
@@ -43,8 +43,8 @@ namespace LDVELH_WPF
         {
             try
             {
-                Hero SavedHero = SelectHeroFromID(hero.CharacterID);
-                HeroSaveContext.MyHero.Remove(SavedHero);
+                Hero savedHero = SelectHeroFromId(hero.CharacterID);
+                _heroSaveContext.MyHero.Remove(savedHero);
             }
             catch (Exception)
             {
@@ -53,11 +53,11 @@ namespace LDVELH_WPF
             
         }
 
-        public Hero SelectHeroFromID(int heroID)
+        public Hero SelectHeroFromId(int heroId)
         {
                 try
                 {
-                    return HeroSaveContext.MyHero.Where(x => x.CharacterID == heroID).FirstOrDefault();
+                    return _heroSaveContext.MyHero.FirstOrDefault(x => x.CharacterID == heroId);
                 }
                 catch (Exception)
                 {
@@ -69,7 +69,7 @@ namespace LDVELH_WPF
         {
             try
             {
-                return (from hero in HeroSaveContext.MyHero select hero).ToList();
+                return (from hero in _heroSaveContext.MyHero select hero).ToList();
             }
             catch (Exception)
             {
@@ -81,7 +81,7 @@ namespace LDVELH_WPF
         {
             try
             {
-                HeroSaveContext.SaveChanges();
+                _heroSaveContext.SaveChanges();
             }
             catch (Exception)
             {
@@ -89,19 +89,19 @@ namespace LDVELH_WPF
             }
         }
 
-        private bool Disposed = false;
+        private bool _disposed = false;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.Disposed)
+            if (!_disposed)
             {
                 if (disposing)
                 {
                     SaveChanges();
-                    HeroSaveContext.Dispose();
+                    _heroSaveContext.Dispose();
                 }
             }
-            this.Disposed = true;
+            _disposed = true;
         }
 
         public void Dispose()

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LDVELH_WPF;
 
 namespace LDVELH_Tests
@@ -10,11 +9,8 @@ namespace LDVELH_Tests
         [TestMethod]
         public void TypeCapacity()
         {
-            Capacity hidingCapacity;
-            Capacity phychicCapacity;
-
-            hidingCapacity = new Capacity(CapacityType.Hiding);
-            phychicCapacity = new Capacity(CapacityType.PsychicPower);
+            Capacity hidingCapacity = new Capacity(CapacityType.Hiding);
+            Capacity phychicCapacity = new Capacity(CapacityType.PsychicPower);
 
             Assert.AreEqual(true, hidingCapacity.CapacityKind == CapacityType.Hiding);
             Assert.AreEqual(true, phychicCapacity.CapacityKind == CapacityType.PsychicPower);

@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace LDVELH_WPF
 {
@@ -29,6 +29,7 @@ namespace LDVELH_WPF
         public int WeaponHolder_ID { get; set; }
 
         [Column("Gold")]
+        // ReSharper disable once InconsistentNaming
         private int _Gold { get; set; }
         public int Gold
         {
@@ -105,17 +106,12 @@ namespace LDVELH_WPF
                 }
             }
         }
-        public string HungryStatusDisplay
-        {
-            get
-            {
-                return GlobalTranslator.Instance.Translator.ProvideValue(_HungryStatus.ToString());
-            }
-        }
+        public string HungryStatusDisplay => GlobalTranslator.Instance.Translator.ProvideValue(_HungryStatus.ToString());
 
-        private int CombatDebuff;
+        private int _combatDebuff;
 
         [Column("Paragraph")]
+        // ReSharper disable once InconsistentNaming : Requiered for Database
         private int _CurrentParagraph { get; set; }
         public int CurrentParagraph
         {
@@ -134,6 +130,7 @@ namespace LDVELH_WPF
         }
 
         [Column("WeaponMastery")]
+        // ReSharper disable once InconsistentNaming : Requiered for Database
         private WeaponTypes _WeaponMastery { get; set; }
         public WeaponTypes WeaponMastery
         {
@@ -151,13 +148,7 @@ namespace LDVELH_WPF
                 }
             }
         }
-        public string WeaponMasteryDisplay
-        {
-            get
-            {
-                return GlobalTranslator.Instance.Translator.ProvideValue(_WeaponMastery.ToString());
-            }
-        }
+        public string WeaponMasteryDisplay => GlobalTranslator.Instance.Translator.ProvideValue(_WeaponMastery.ToString());
 
         private Hero()
         {
@@ -168,19 +159,19 @@ namespace LDVELH_WPF
         /// <param name="name">The Hero Name</param>
         public Hero(string name)
         {
-            this.Name = name;
-            this.MaxHitPoint = RandMaxHitPoint();
-            this.ActualHitPoint = this.MaxHitPoint;
-            this.BaseAgility = RandBaseAgility();
-            this.Gold = 0;
-            this.CurrentParagraph = 1;
+            Name = name;
+            MaxHitPoint = RandMaxHitPoint();
+            ActualHitPoint = MaxHitPoint;
+            BaseAgility = RandBaseAgility();
+            Gold = 0;
+            CurrentParagraph = 1;
             WeaponMastery = WeaponTypes.None;
             Capacities = new ObservableCollection<Capacity>();
             BackPack = new BackPack();
             WeaponHolder = new WeaponHolder();
             SpecialItems = new ObservableCollection<SpecialItem>();
             HungryStatus = HungryState.Hungry;
-            CombatDebuff = 0;
+            _combatDebuff = 0;
         }
 
         private int RandMaxHitPoint()
@@ -195,22 +186,22 @@ namespace LDVELH_WPF
         }
         internal void IncreaseAgility(int bonusAgility)
         {
-            this.BaseAgility += bonusAgility;
+            BaseAgility += bonusAgility;
         }
         internal void DecreaseAgility(int bonusAgility)
         {
-            this.BaseAgility -= bonusAgility;
+            BaseAgility -= bonusAgility;
         }
         internal void IncreaseMaxLife(int bonusLife)
         {
-            this.MaxHitPoint += bonusLife;
+            MaxHitPoint += bonusLife;
         }
         internal void DecreaseMaxLife(int bonusLife)
         {
-            this.MaxHitPoint -= bonusLife;
-            if (this.ActualHitPoint > this.MaxHitPoint)
+            MaxHitPoint -= bonusLife;
+            if (ActualHitPoint > MaxHitPoint)
             {
-                this.ActualHitPoint = this.MaxHitPoint;
+                ActualHitPoint = MaxHitPoint;
             }
         }
         /// <summary>
@@ -219,23 +210,23 @@ namespace LDVELH_WPF
         /// <param name="healAmount">The amount of Health gained back by the Hero</param>
         public void Heal(int healAmount)
         {
-            this.ActualHitPoint += healAmount;
-            if (this.ActualHitPoint > this.MaxHitPoint)
+            ActualHitPoint += healAmount;
+            if (ActualHitPoint > MaxHitPoint)
             {
-                this.ActualHitPoint = this.MaxHitPoint;
+                ActualHitPoint = MaxHitPoint;
             }
         }
         
         public void AddGold(int gold)
         {
-            this.Gold += gold;
+            Gold += gold;
         }
         public void RemoveGold(int gold)
         {
-            if ((this.Gold - gold) >= 0)
+            if ((Gold - gold) >= 0)
             {
 
-                this.Gold -= gold;
+                Gold -= gold;
             }
             else
             {
@@ -245,13 +236,13 @@ namespace LDVELH_WPF
         }
         public void EmptyGold()
         {
-            int tempoGold = this.Gold;
-            this.Gold = 0;
+            int tempoGold = Gold;
+            Gold = 0;
         }
 
         public void AddCapacity(CapacityType capacityType)
         {
-            if(this.MaxNumberOfCapacities > this.Capacities.Count)
+            if(MaxNumberOfCapacities > Capacities.Count)
             {
                 if (!PossesCapacity(capacityType))
                 {
@@ -260,9 +251,9 @@ namespace LDVELH_WPF
 
                     if (capacityType == CapacityType.WeaponMastery)
                     {
-                        while (this.WeaponMastery == WeaponTypes.None)
+                        while (WeaponMastery == WeaponTypes.None)
                         {
-                            this.WeaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
+                            WeaponMastery = GlobalFunction.RandomEnumValue<WeaponTypes>();
                         }
                     }
                 }
@@ -281,24 +272,15 @@ namespace LDVELH_WPF
 
             if (capacityType == CapacityType.WeaponMastery)
             {
-                this.WeaponMastery = WeaponTypes.None;
+                WeaponMastery = WeaponTypes.None;
             }
         }
 
-        public ObservableCollection<SpecialItem> GetSpecialItems
-        {
-            get { return SpecialItems; }
-        }
+        public ObservableCollection<SpecialItem> GetSpecialItems => SpecialItems;
+
         public SpecialItem GetSpecialItem(SpecialItem specialItem)
         {
-            foreach (SpecialItem SpItem in SpecialItems)
-            {
-                if (SpItem == specialItem)
-                {
-                    return SpItem;
-                }
-            }
-            return null;
+            return SpecialItems.FirstOrDefault(spItem => spItem == specialItem);
         }
         public void UseItem(Item item)
         {
@@ -342,20 +324,20 @@ namespace LDVELH_WPF
         }
         public void RemoveBackPack()
         {
-            this.BackPack.GetItems.Clear();
+            BackPack.GetItems.Clear();
         }
         public void RemoveWeaponHolder()
         {
-            this.WeaponHolder.GetWeapons.Clear();
+            WeaponHolder.GetWeapons.Clear();
         }
         /// <summary>
         /// Called on every Paragraph that does not contain a fight, Heal if the Hero posses the Healing Capacity
         /// </summary>
         public void Rest()
         {
-            if (this.PossesCapacity(CapacityType.Healing))//Healing capacity allow you to regen when not fighting, see resolve of StoryParagraph
+            if (PossesCapacity(CapacityType.Healing))//Healing capacity allow you to regen when not fighting, see resolve of StoryParagraph
             {
-                this.Heal(HealingCapacityRegen);
+                Heal(HealingCapacityRegen);
             }
         }
         /// <summary>
@@ -363,9 +345,9 @@ namespace LDVELH_WPF
         /// </summary>
         public void Eat()
         {
-            if (this.HungryStatus != HungryState.Full)
+            if (HungryStatus != HungryState.Full)
             {
-                this.HungryStatus = HungryState.Full;
+                HungryStatus = HungryState.Full;
             }
             else
             {
@@ -378,13 +360,13 @@ namespace LDVELH_WPF
         /// </summary>
         public void MealTime()
         {
-            if (!this.PossesCapacity(CapacityType.Hunting))//Hunting capacity allow you to never have to eat when required.
+            if (!PossesCapacity(CapacityType.Hunting))//Hunting capacity allow you to never have to eat when required.
             {
-                if (this.HungryStatus == HungryState.Hungry)
+                if (HungryStatus == HungryState.Hungry)
                 {
-                    this.TakeDamage(SkipMealDamage);
+                    TakeDamage(SkipMealDamage);
                 }
-                this.HungryStatus = HungryState.Hungry;
+                HungryStatus = HungryState.Hungry;
             }
             
         }
@@ -395,14 +377,7 @@ namespace LDVELH_WPF
         /// <returns>True if he does, False else</returns>
         public bool PossesCapacity(CapacityType capacity)
         {
-            foreach (Capacity Capa in this.Capacities)
-            {
-                if (Capa.CapacityKind == capacity)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return Capacities.Any(capa => capa.CapacityKind == capacity);
         }
         /// <summary>
         /// Check if the Hero posses an Item
@@ -425,57 +400,36 @@ namespace LDVELH_WPF
         /// </summary>
         /// <param name="itemName"></param>
         /// <returns>True if he does, False else</returns>
-        private bool PossesWeapon(String itemName)
+        private bool PossesWeapon(string itemName)
         {
-            foreach (Weapon Weapon in this.WeaponHolder.GetWeapons)
-            {
-                if (Weapon.Name == itemName)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return WeaponHolder.GetWeapons.Any(weapon => weapon.Name == itemName);
         }
         /// <summary>
         /// Check if the Hero posses a particular BackPack Item 
         /// </summary>
         /// <param name="itemName"></param>
         /// <returns>True if he does, False else</returns>
-        private bool PossesBackPackItem(String itemName)
+        private bool PossesBackPackItem(string itemName)
         {
-            foreach (Item Item in this.BackPack.GetItems)
-            {
-                if (Item.Name == itemName)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return BackPack.GetItems.Any(item => item.Name == itemName);
         }
         /// <summary>
         /// Check if the Hero posses a particular Special Item 
         /// </summary>
         /// <param name="itemName"></param>
         /// <returns>True if he does, False else</returns>
-        private bool PossesSpecialItem(String itemName)
+        private bool PossesSpecialItem(string itemName)
         {
-            foreach (SpecialItem SpecialItem in this.GetSpecialItems)
-            {
-                if (SpecialItem.Name == itemName)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return GetSpecialItems.Any(specialItem => specialItem.Name == itemName);
         }
 
         public void AddTempDebuff(int debuff)
         {
-            this.CombatDebuff += debuff;
+            _combatDebuff += debuff;
         }
         public void RemoveTempDebuff()
         {
-            this.CombatDebuff = 0;
+            _combatDebuff = 0;
         }
 
         /// <summary>
@@ -485,80 +439,74 @@ namespace LDVELH_WPF
         /// <returns>True if the Enemy is dead, False if not, YouAreDeadException if the Hero is dead</returns>
         public bool Fight(Enemy enemy)
         {
-            int StrenghtDifference = FindStrenghtDifference(enemy);
-            bool BattleOver = false;
+            int strenghtDifference = FindStrenghtDifference(enemy);
+            bool battleOver = false;
             try
             {
-                BattleOver = ResolveDamage(StrenghtDifference, enemy);
+                battleOver = ResolveDamage(strenghtDifference, enemy);
             }
             catch (YouAreDeadException)
             {
                 throw;
             }
 
-            return BattleOver;
+            return battleOver;
         }
 
         public int FindStrenghtDifference(Enemy enemy)
         {
-            int HeroAgility = GetHeroAgilityInBattle(enemy);
-            int EnemyAgility = enemy.BaseAgility;
-            return (HeroAgility - EnemyAgility);
+            int heroAgility = GetHeroAgilityInBattle(enemy);
+            int enemyAgility = enemy.BaseAgility;
+            return (heroAgility - enemyAgility);
         }
 
         public int GetHeroAgilityInBattle(Enemy enemy)
         {
-           return this.BaseAgility+ GetBonusAgility(enemy) - GetMalusAgility();
+           return BaseAgility+ GetBonusAgility(enemy) - GetMalusAgility();
         }
 
         public int GetBonusAgility(Enemy enemy)
         {
-            int BonusAgility = 0;
-            BonusAgility += GetBonusItemAgility();
-            BonusAgility += GetBonusCapacityAgility(enemy);
-            return BonusAgility;
+            int bonusAgility = 0;
+            bonusAgility += GetBonusItemAgility();
+            bonusAgility += GetBonusCapacityAgility(enemy);
+            return bonusAgility;
         }
 
         private int GetBonusItemAgility()
         {
-            int BonusAgility = 0;
-            foreach (SpecialItem CombatItem in SpecialItems)
-            {
-                if (CombatItem is SpecialItemCombat)
-                    BonusAgility += ((SpecialItemCombat)CombatItem).AgilityBonus;
-            }
-            return BonusAgility;
+            return SpecialItems.OfType<SpecialItemCombat>().Sum(combatItem => (combatItem).AgilityBonus);
         }
 
         private int GetBonusCapacityAgility(Enemy enemy)
         {
-            int BonusAgility = 0;
-            if (this.PossesCapacity(CapacityType.WeaponMastery))
+            int bonusAgility = 0;
+            if (PossesCapacity(CapacityType.WeaponMastery))
             {
-                if (this.WeaponHolder.Contains(this.WeaponMastery))
+                if (WeaponHolder.Contains(WeaponMastery))
                 {
-                    BonusAgility += Capacity.WeaponMasteryStrenght;
+                    bonusAgility += Capacity.WeaponMasteryStrenght;
                 }
             }
-            if (this.PossesCapacity(CapacityType.PsychicPower))
+
+            if (!PossesCapacity(CapacityType.PsychicPower)) return bonusAgility;
+
+            if (enemy.IsWeakToPhychic())
             {
-                if (enemy.IsWeakToPhychic())
-                {
-                    BonusAgility += Capacity.PhychicPowerStrenght;
-                }
+                bonusAgility += Capacity.PhychicPowerStrenght;
             }
-            return BonusAgility;
+            return bonusAgility;
         }
 
         private int GetMalusAgility()
         {
-            int MalusAgility = 0;
-            if (this.WeaponHolder.IsEmpty())
+            int malusAgility = 0;
+            if (WeaponHolder.IsEmpty())
             {
-                MalusAgility += UnharmedCombatDebuff;
+                malusAgility += UnharmedCombatDebuff;
             }
-            MalusAgility += CombatDebuff;
-            return MalusAgility;
+            malusAgility += _combatDebuff;
+            return malusAgility;
         }
         /// <summary>
         /// Inflict damage to both the Hero and Enemy depending on the result of the DamageTable
@@ -568,21 +516,17 @@ namespace LDVELH_WPF
         /// <returns></returns>
         private bool ResolveDamage(int strenghDifference, Enemy enemy)
         {
-            int RandomD10 = DiceRoll.D10Roll();
-            enemy.TakeDamage(DamageTable.enemyDamageTaken(strenghDifference, RandomD10));
+            int randomD10 = DiceRoll.D10Roll();
+            enemy.TakeDamage(DamageTable.EnemyDamageTaken(strenghDifference, randomD10));
             try
             {
-                this.TakeDamage(DamageTable.heroDamageTaken(strenghDifference, RandomD10));
+                TakeDamage(DamageTable.HeroDamageTaken(strenghDifference, randomD10));
             }
             catch (YouAreDeadException)
             {
                 throw;
             }
-            if (enemy.ActualHitPoint<= 0)
-            {
-                return true;
-            }
-            return false;
+            return enemy.ActualHitPoint<= 0;
         }
         /// <summary>
         ///This function must ONLY be called when loading a hero from the database, if a hero is saved while his BackPack/WeaponHolder/SpecialItems is empty, then when loading it then be equal to null instead of empty
@@ -591,20 +535,17 @@ namespace LDVELH_WPF
         public void NoNullInHero()
         {
             
-            if (this.SpecialItems == null)
-                this.SpecialItems = new ObservableCollection<SpecialItem>();
-            if (this.Capacities == null)
-                this.Capacities = new ObservableCollection<Capacity>();
-            if (this.BackPack == null)
-                this.BackPack = new BackPack();
-            if (this.WeaponHolder == null)
-                this.WeaponHolder = new WeaponHolder();
+            if (SpecialItems == null)
+                SpecialItems = new ObservableCollection<SpecialItem>();
+            if (Capacities == null)
+                Capacities = new ObservableCollection<Capacity>();
+            if (BackPack == null)
+                BackPack = new BackPack();
+            if (WeaponHolder == null)
+                WeaponHolder = new WeaponHolder();
         }
         
-        public string GetResume
-        {
-            get { return this.Name + " ( Paragraph : " + this.CurrentParagraph + " )"; }
-        }
+        public string GetResume => Name + " ( Paragraph : " + CurrentParagraph + " )";
 
         public enum HungryState
         {

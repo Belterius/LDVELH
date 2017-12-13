@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LDVELH_WPF;
 
 namespace LDVELH_Tests
@@ -23,77 +22,77 @@ namespace LDVELH_Tests
         [TestMethod]
         public void HeroPossesCapacity()
         {
-            Hero Belterius = new Hero("Belterius");
+            Hero belterius = new Hero("Belterius");
 
-            Belterius.AddCapacity(CapacityType.Hiding);
+            belterius.AddCapacity(CapacityType.Hiding);
 
-            Assert.AreEqual(true, Belterius.PossesCapacity(CapacityType.Hiding));
+            Assert.AreEqual(true, belterius.PossesCapacity(CapacityType.Hiding));
         }
 
         [TestMethod]
         public void HeroDoesntPossesCapacity()
         {
-            Hero Belterius = new Hero("Belterius");
+            Hero belterius = new Hero("Belterius");
 
-            Belterius.AddCapacity(CapacityType.Hiding);
+            belterius.AddCapacity(CapacityType.Hiding);
 
-            Assert.AreEqual(false, Belterius.PossesCapacity(CapacityType.PsychicPower));
+            Assert.AreEqual(false, belterius.PossesCapacity(CapacityType.PsychicPower));
         }
         [TestMethod]
         public void HeroRemovePossesedCapacity()
         {
-            Hero Belterius = new Hero("Belterius");
-            Belterius.AddCapacity(CapacityType.Hiding);
-            Assert.AreEqual(true, Belterius.PossesCapacity(CapacityType.Hiding));
+            Hero belterius = new Hero("Belterius");
+            belterius.AddCapacity(CapacityType.Hiding);
+            Assert.AreEqual(true, belterius.PossesCapacity(CapacityType.Hiding));
 
-            Belterius.RemoveCapacity(CapacityType.Hiding);
+            belterius.RemoveCapacity(CapacityType.Hiding);
 
-            Assert.AreEqual(false, Belterius.PossesCapacity(CapacityType.Hiding));
+            Assert.AreEqual(false, belterius.PossesCapacity(CapacityType.Hiding));
         }
         [TestMethod]
         public void HeroStrenghtDifference()
         {
-            Hero Belterius = new Hero("Belterius");
+            Hero belterius = new Hero("Belterius");
             Enemy evilHuman = new Enemy("Common Human", 10, 10, EnemyTypes.Human);
-            int heroBaseAgility = Belterius.BaseAgility;
+            int heroBaseAgility = belterius.BaseAgility;
 
             //Base test
-            int expectedStrenghtDifference = heroBaseAgility - LDVELH_WPF.Hero.UnharmedCombatDebuff - evilHuman.BaseAgility;
-            Assert.AreEqual(expectedStrenghtDifference, Belterius.FindStrenghtDifference(evilHuman));
+            int expectedStrenghtDifference = heroBaseAgility - Hero.UnharmedCombatDebuff - evilHuman.BaseAgility;
+            Assert.AreEqual(expectedStrenghtDifference, belterius.FindStrenghtDifference(evilHuman));
 
             //Item test
             SpecialItem shield = new SpecialItemCombat("iron shield", 4, 0);
-            Belterius.AddLoot(shield);
-            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).AgilityBonus - LDVELH_WPF.Hero.UnharmedCombatDebuff) - evilHuman.BaseAgility;
+            belterius.AddLoot(shield);
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).AgilityBonus - Hero.UnharmedCombatDebuff) - evilHuman.BaseAgility;
 
-            Assert.AreEqual(expectedStrenghtDifference, Belterius.FindStrenghtDifference(evilHuman));
+            Assert.AreEqual(expectedStrenghtDifference, belterius.FindStrenghtDifference(evilHuman));
 
             //PsychicPower test
-            Belterius.AddCapacity(CapacityType.PsychicPower);
-            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).AgilityBonus + Capacity.PhychicPowerStrenght - LDVELH_WPF.Hero.UnharmedCombatDebuff) - evilHuman.BaseAgility;
+            belterius.AddCapacity(CapacityType.PsychicPower);
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).AgilityBonus + Capacity.PhychicPowerStrenght - Hero.UnharmedCombatDebuff) - evilHuman.BaseAgility;
 
-            Assert.AreEqual(expectedStrenghtDifference, Belterius.FindStrenghtDifference(evilHuman));
+            Assert.AreEqual(expectedStrenghtDifference, belterius.FindStrenghtDifference(evilHuman));
 
             //Weapon Mastery (with and without weapon) test
-            Belterius.AddCapacity(CapacityType.WeaponMastery);
-            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).AgilityBonus + Capacity.PhychicPowerStrenght - LDVELH_WPF.Hero.UnharmedCombatDebuff) - evilHuman.BaseAgility; //No weapon related to the Weapon mastery so no bonus
+            belterius.AddCapacity(CapacityType.WeaponMastery);
+            expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).AgilityBonus + Capacity.PhychicPowerStrenght - Hero.UnharmedCombatDebuff) - evilHuman.BaseAgility; //No weapon related to the Weapon mastery so no bonus
 
-            Assert.AreEqual(expectedStrenghtDifference, Belterius.FindStrenghtDifference(evilHuman));
+            Assert.AreEqual(expectedStrenghtDifference, belterius.FindStrenghtDifference(evilHuman));
 
-            Weapon wmWeapon = new Weapon("perfect weapon", Belterius.WeaponMastery);
-            Belterius.WeaponHolder.Add(wmWeapon);
+            Weapon wmWeapon = new Weapon("perfect weapon", belterius.WeaponMastery);
+            belterius.WeaponHolder.Add(wmWeapon);
             expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).AgilityBonus + Capacity.PhychicPowerStrenght + Capacity.WeaponMasteryStrenght) - evilHuman.BaseAgility;
 
-            Assert.AreEqual(expectedStrenghtDifference, Belterius.FindStrenghtDifference(evilHuman));
+            Assert.AreEqual(expectedStrenghtDifference, belterius.FindStrenghtDifference(evilHuman));
 
             //Multiples Items, Weapon Mastery, and psychic immune
             //WARNING TEST WILL FAIL IF ORC IS NOT IMMUN TO PSYCHIC ANYMORE, can check in Ennemy isWeakToPsychic
             SpecialItem ring = new SpecialItemCombat("magic ring", 6, 0);
-            Belterius.AddLoot(ring);
+            belterius.AddLoot(ring);
             Enemy evilOrc = new Enemy("Common Orc", 15, 10, EnemyTypes.Orc);
             expectedStrenghtDifference = (heroBaseAgility + ((SpecialItemCombat)shield).AgilityBonus + ((SpecialItemCombat)ring).AgilityBonus + Capacity.WeaponMasteryStrenght) - evilOrc.BaseAgility;
 
-            Assert.AreEqual(expectedStrenghtDifference, Belterius.FindStrenghtDifference(evilOrc));
+            Assert.AreEqual(expectedStrenghtDifference, belterius.FindStrenghtDifference(evilOrc));
 
         }
 
@@ -102,9 +101,9 @@ namespace LDVELH_Tests
         {
             Hero hero = new Hero("hero");
             Enemy beast = new Enemy("beast", 22, 20, EnemyTypes.Beast);
-            bool battleOver = false;
             try
             {
+                bool battleOver = false;
                 do
                 {
                     battleOver = hero.Fight(beast);
@@ -122,7 +121,7 @@ namespace LDVELH_Tests
         public void Hero_RemoveAllItems_Tests()
         {
             Hero myHero = new Hero("Belterius");
-            Consumable consummable = CreateLoot.CreateConsumable.minorHealthPotion();
+            Consumable consummable = CreateLoot.CreateConsumable.MinorHealthPotion();
             Consumable consummable2 = new Consumable("Random Consumable", 12, 1);
             Consumable consummable4 = new Consumable("Random Consumable", 12, 1);//Allow to check if the override Equal works on Contains()
             Consumable consummable3 = new Consumable("Random Consumable FALSE", 12, 1);

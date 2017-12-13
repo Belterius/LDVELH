@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LDVELH_WPF;
 using LDVELH_WPF.ViewModel;
@@ -15,30 +13,18 @@ namespace LDVELH_Tests
     {
         public FightViewModelTest()
         {
-            Hero Hero = new Hero("NoName");
-            Enemy Enemy = new Enemy("AnEnemy", 10, 15, EnemyTypes.Human);
-            ViewModel = new FightViewModel(Hero, Enemy);
+            Hero hero = new Hero("NoName");
+            Enemy enemy = new Enemy("AnEnemy", 10, 15, EnemyTypes.Human);
+            _viewModel = new FightViewModel(hero, enemy);
         }
 
-        private TestContext testContextInstance;
-
-        private FightViewModel ViewModel;
+        private readonly FightViewModel _viewModel;
 
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.
         ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
+        public TestContext TestContext { get; set; }
 
         #region Additional test attributes
         //
@@ -73,29 +59,29 @@ namespace LDVELH_Tests
         [TestMethod]
         public void HeroTest()
         {
-            Hero Hero = new Hero("NoName");
+            Hero hero = new Hero("NoName");
             bool didFire = false;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("Hero", e.PropertyName);
-                Assert.AreEqual(Hero, ViewModel.Hero);
+                Assert.AreEqual(hero, _viewModel.Hero);
             };
-            ViewModel.Hero = Hero;
+            _viewModel.Hero = hero;
             Assert.IsTrue(didFire);
         }
         [TestMethod]
         public void EnemyTest()
         {
-            Enemy Enemy = new Enemy("AnEnemy", 10, 15, EnemyTypes.Human);
+            Enemy enemy = new Enemy("AnEnemy", 10, 15, EnemyTypes.Human);
             bool didFire = false;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("Enemy", e.PropertyName);
-                Assert.AreEqual(Enemy, ViewModel.Enemy);
+                Assert.AreEqual(enemy, _viewModel.Enemy);
             };
-            ViewModel.Enemy = Enemy;
+            _viewModel.Enemy = enemy;
             Assert.IsTrue(didFire);
         }
         [TestMethod]
@@ -103,12 +89,12 @@ namespace LDVELH_Tests
         {
             bool didFire = false;
             int Damage = 5;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("HeroDamageTaken", e.PropertyName);
             };
-            ViewModel.HeroDamageTaken = Damage;
+            _viewModel.HeroDamageTaken = Damage;
             Assert.IsTrue(didFire);
         }
         [TestMethod]
@@ -116,13 +102,13 @@ namespace LDVELH_Tests
         {
             bool didFire = false;
             string EscapeText = "Escaped!";
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("EscapeText", e.PropertyName);
-                Assert.AreEqual(EscapeText, ViewModel.EscapeText);
+                Assert.AreEqual(EscapeText, _viewModel.EscapeText);
             };
-            ViewModel.EscapeText = EscapeText;
+            _viewModel.EscapeText = EscapeText;
             Assert.IsTrue(didFire);
         }
         [TestMethod]
@@ -130,12 +116,12 @@ namespace LDVELH_Tests
         {
             bool didFire = false;
             int Damage = 5;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("EnemyDamageTaken", e.PropertyName);
             };
-            ViewModel.EnemyDamageTaken = Damage;
+            _viewModel.EnemyDamageTaken = Damage;
             Assert.IsTrue(didFire);
         }
         [TestMethod]
@@ -143,13 +129,13 @@ namespace LDVELH_Tests
         {
             bool didFire = false;
             string NextRoundText = "Next Round";
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("NextRoundText", e.PropertyName);
-                Assert.AreEqual(NextRoundText, ViewModel.NextRoundText);
+                Assert.AreEqual(NextRoundText, _viewModel.NextRoundText);
             };
-            ViewModel.NextRoundText = NextRoundText;
+            _viewModel.NextRoundText = NextRoundText;
             Assert.IsTrue(didFire);
         }
         [TestMethod]
@@ -157,13 +143,13 @@ namespace LDVELH_Tests
         {
             bool didFire = false;
             int RoundNumber = 5;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("RoundNumber", e.PropertyName);
-                Assert.AreEqual(RoundNumber, ViewModel.RoundNumber);
+                Assert.AreEqual(RoundNumber, _viewModel.RoundNumber);
             };
-            ViewModel.RoundNumber = RoundNumber;
+            _viewModel.RoundNumber = RoundNumber;
             Assert.IsTrue(didFire);
         }
         [TestMethod]
@@ -171,13 +157,13 @@ namespace LDVELH_Tests
         {
             bool didFire = false;
             int RunRoundNumber = 5;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("RunRoundNumber", e.PropertyName);
-                Assert.AreEqual(RunRoundNumber, ViewModel.RunRoundNumber);
+                Assert.AreEqual(RunRoundNumber, _viewModel.RunRoundNumber);
             };
-            ViewModel.RunRoundNumber = RunRoundNumber;
+            _viewModel.RunRoundNumber = RunRoundNumber;
             Assert.IsTrue(didFire);
         }
         [TestMethod]
@@ -185,13 +171,13 @@ namespace LDVELH_Tests
         {
             bool didFire = false;
             string RoundNumberText = "You can run";
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("RoundNumberText", e.PropertyName);
-                Assert.AreEqual(RoundNumberText, ViewModel.RoundNumberText);
+                Assert.AreEqual(RoundNumberText, _viewModel.RoundNumberText);
             };
-            ViewModel.RoundNumberText = RoundNumberText;
+            _viewModel.RoundNumberText = RoundNumberText;
             Assert.IsTrue(didFire);
         }
         [TestMethod]
@@ -199,13 +185,13 @@ namespace LDVELH_Tests
         {
             bool didFire = false;
             System.Windows.Visibility CanRun = System.Windows.Visibility.Visible;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("CanRun", e.PropertyName);
-                Assert.AreEqual(CanRun, ViewModel.CanRun);
+                Assert.AreEqual(CanRun, _viewModel.CanRun);
             };
-            ViewModel.CanRun = CanRun;
+            _viewModel.CanRun = CanRun;
             Assert.IsTrue(didFire);
         }
         [TestMethod]
@@ -213,13 +199,13 @@ namespace LDVELH_Tests
         {
             bool didFire = false;
             bool RanAway = true;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("RanAway", e.PropertyName);
-                Assert.AreEqual(RanAway, ViewModel.RanAway);
+                Assert.AreEqual(RanAway, _viewModel.RanAway);
             };
-            ViewModel.RanAway = RanAway;
+            _viewModel.RanAway = RanAway;
             Assert.IsTrue(didFire);
         }
         [TestMethod]
@@ -227,17 +213,17 @@ namespace LDVELH_Tests
         {
             bool didFire = false;
             bool didEnded = false;
-            ViewModel.PropertyChanged += (s, e) =>
+            _viewModel.PropertyChanged += (s, e) =>
             {
                 didFire = true;
                 Assert.AreEqual("RanAway", e.PropertyName);
-                Assert.AreEqual(true, ViewModel.RanAway);
+                Assert.AreEqual(true, _viewModel.RanAway);
             };
-            ViewModel.FightEndedChanged += (object sender, EventArgs e) =>
+            _viewModel.FightEndedChanged += (object sender, EventArgs e) =>
             {
                 didEnded = true;
             };
-            ViewModel.RunCommand.Execute(null);
+            _viewModel.RunCommand.Execute(null);
             Assert.IsTrue(didFire);
             Assert.IsTrue(didEnded);
         }

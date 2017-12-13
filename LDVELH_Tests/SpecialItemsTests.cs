@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LDVELH_WPF;
 
 namespace LDVELH_Tests
@@ -41,32 +40,32 @@ namespace LDVELH_Tests
         public void SpecialItem_AddSpecialItemAlways()
         {
             int bonusAgi = 5;
-            int bonusHP = 3;
-            SpecialItem specialItem = new SpecialItemAlways("amazing item", bonusAgi, bonusHP);
+            int bonusHp = 3;
+            SpecialItem specialItem = new SpecialItemAlways("amazing item", bonusAgi, bonusHp);
             Hero hero = new Hero("hero");
             int heroAgility = hero.BaseAgility;
-            int heroHP = hero.MaxHitPoint;
+            int heroHp = hero.MaxHitPoint;
 
             hero.AddLoot(specialItem);
 
             Assert.AreEqual(heroAgility + bonusAgi, hero.BaseAgility);
-            Assert.AreEqual(heroHP + bonusHP, hero.MaxHitPoint);
+            Assert.AreEqual(heroHp + bonusHp, hero.MaxHitPoint);
         }
         [TestMethod]
         public void SpecialItem_RemoveSpecialItemAlways()
         {
             int bonusAgi = 5;
-            int bonusHP = 3;
-            SpecialItem specialItem = new SpecialItemAlways("amazing item", bonusAgi, bonusHP);
+            int bonusHp = 3;
+            SpecialItem specialItem = new SpecialItemAlways("amazing item", bonusAgi, bonusHp);
             Hero hero = new Hero("hero");
             int heroAgility = hero.BaseAgility;
-            int heroHP = hero.MaxHitPoint;
+            int heroHp = hero.MaxHitPoint;
             hero.AddLoot(specialItem);
 
             hero.RemoveLoot(specialItem);
 
             Assert.AreEqual(heroAgility, hero.BaseAgility);
-            Assert.AreEqual(heroHP, hero.MaxHitPoint);
+            Assert.AreEqual(heroHp, hero.MaxHitPoint);
         }
     }
 }

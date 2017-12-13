@@ -23,11 +23,11 @@ namespace LDVELH_WPF
         /// <param name="enemyType">The Type of the Enemy</param>
         public Enemy(String name, int agility, int hitPoint, EnemyTypes enemyType)
         {
-            this.Name = name;
-            this.BaseAgility = agility;
-            this.ActualHitPoint = hitPoint;
-            this.MaxHitPoint = hitPoint;
-            this.ClassType = enemyType;
+            Name = name;
+            BaseAgility = agility;
+            ActualHitPoint = hitPoint;
+            MaxHitPoint = hitPoint;
+            ClassType = enemyType;
         }
         /// <summary>
         /// Return if an Enemy will be considered as weak against Phychic Power

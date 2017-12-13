@@ -1,12 +1,8 @@
 ﻿using LDVELH_WPF.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace LDVELH_WPF.ViewModel
@@ -113,7 +109,7 @@ namespace LDVELH_WPF.ViewModel
                 default:
 #if DEBUG
                     throw new ArgumentException(
-                        String.Format("Language '{0}' is not yet present in the options, if you added the corresponding ressource please add a corresponding case.", LDVELH_WPF.Properties.Settings.Default.Language.ToLower()),
+                        String.Format("Language '{0}' is not yet present in the options, if you added the corresponding ressource please add a corresponding case.", Properties.Settings.Default.Language.ToLower()),
                         "Text");
 #else
                 GlobalCulture.Instance.Ci = new CultureInfo("en-GB");

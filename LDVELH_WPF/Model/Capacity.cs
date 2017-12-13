@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 
@@ -14,6 +13,7 @@ namespace LDVELH_WPF
         public static readonly int WeaponMasteryStrenght = 2;
 
         [Column("Capacity")]
+        // ReSharper disable once InconsistentNaming : Requiered for Database
         private CapacityType _CapacityKind{get;set;}
         /// <summary>
         /// The Type of the Capacity
@@ -26,17 +26,15 @@ namespace LDVELH_WPF
             }
             private set
             {
-                if (_CapacityKind != value)
-                {
-                    _CapacityKind = value;
-                    RaisePropertyChanged("CapacityKind");
-                }
+                if (_CapacityKind == value) return;
+                _CapacityKind = value;
+                RaisePropertyChanged("CapacityKind");
             }
         }
 
-        void RaisePropertyChanged(string prop)
+        private void RaisePropertyChanged(string prop)
         {
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -50,7 +48,7 @@ namespace LDVELH_WPF
         public Capacity(CapacityType capacityType)
 
         {
-            this.CapacityKind = capacityType;
+            CapacityKind = capacityType;
         }
         /// <summary>
         /// Compare 2 Capacities, return true if they have the same CapacityType
@@ -59,30 +57,16 @@ namespace LDVELH_WPF
         /// <returns>True if they are equals, false else</returns>
         public override bool Equals(object obj)
         {
-            if(!(obj is Capacity))
-            {
-                return false;
-            }
-            if(this.CapacityKind != ((Capacity)obj).CapacityKind)
-            {
-                return false;
-            }
-            return true;
+            return CapacityKind == (obj as Capacity)?.CapacityKind;
+            
         }
         public override int GetHashCode()
         {
             int hash = 17;
-            hash = hash * 23 + this.CapacityKind.GetHashCode();
+            hash = hash * 23 + CapacityKind.GetHashCode();
             return hash;
         }
-        public string DisplayName
-        {
-            get {
-                return GlobalTranslator.Instance.Translator.ProvideValue(CapacityKind.ToString());
-            }
-        }
-        
-
+        public string DisplayName => GlobalTranslator.Instance.Translator.ProvideValue(CapacityKind.ToString());
     }
 
     public enum CapacityType
@@ -99,14 +83,15 @@ namespace LDVELH_WPF
         Telekinesis,
 
     }
-    static class CapacityTypeMethods
+
+    internal static class CapacityTypeMethods
     {
         /// <summary>
         /// Get the Name of the CapacityType in the adequate language
         /// </summary>
         /// <param name="capacity">The CapacityType</param>
         /// <returns>the Name of the CapacityType in the adequate language</returns>
-        public static String GetTranslation(this CapacityType capacity)
+        public static string GetTranslation(this CapacityType capacity)
         {
             return GlobalTranslator.Instance.Translator.ProvideValue(capacity.ToString());
         }

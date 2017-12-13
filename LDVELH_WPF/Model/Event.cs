@@ -12,8 +12,9 @@ namespace LDVELH_WPF
     public abstract class Event
     {
         [Key]
-        int EventID { get; set; }
+        private int EventID { get; set; }
 
+        // ReSharper disable once InconsistentNaming : Requiered for the Database
         protected string _TriggerMessage;
         /// <summary>
         /// The message that will be displayed to the Player to start the event
@@ -33,6 +34,7 @@ namespace LDVELH_WPF
             }
         }
 
+        // ReSharper disable once InconsistentNaming
         protected int _DestinationNumber;
         /// <summary>
         /// The Paragraph Number the Player will be send to
@@ -51,17 +53,13 @@ namespace LDVELH_WPF
                 }
             }
         }
+        // ReSharper disable once InconsistentNaming
         protected bool _Done = false;
         /// <summary>
         /// If the action has already executed
         /// </summary>
-        public bool Done
-        {
-            get
-            {
-                return _Done;
-            }
-        }
+        public bool Done => _Done;
+
         /// <summary>
         /// Execute the Event.
         /// </summary>
@@ -69,12 +67,13 @@ namespace LDVELH_WPF
         public abstract void ResolveEvent(Story story);
         
     }
+    /// <inheritdoc />
     /// <summary>
     /// An Event that require a Capacity to be available
     /// </summary>
     public class CapacityEvent : Event
     {
-        CapacityType capacityType;
+        private readonly CapacityType _capacityType;
         private CapacityEvent()
         {
 
@@ -86,9 +85,9 @@ namespace LDVELH_WPF
         /// <param name="capacityType">The required CapacityType in order to see the Event</param>
         public CapacityEvent(int destinationNumber, CapacityType capacityType)
         {
-            this.DestinationNumber = destinationNumber;
-            this.capacityType = capacityType;
-            this.TriggerMessage = GlobalTranslator.Instance.Translator.ProvideValue("UseCapacity") + capacityType.GetTranslation();
+            DestinationNumber = destinationNumber;
+            _capacityType = capacityType;
+            TriggerMessage = GlobalTranslator.Instance.Translator.ProvideValue("UseCapacity") + capacityType.GetTranslation();
         }
         /// <summary>
         /// Create a CapacityEvent
@@ -98,40 +97,36 @@ namespace LDVELH_WPF
         /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
         public CapacityEvent(int destinationNumber, CapacityType capacityType, string triggerMessage)
         {
-            this.DestinationNumber = destinationNumber;
-            this.capacityType = capacityType;
-            this.TriggerMessage = triggerMessage;
+            DestinationNumber = destinationNumber;
+            _capacityType = capacityType;
+            TriggerMessage = triggerMessage;
         }
+        /// <inheritdoc />
         /// <summary>
         /// Send the Player to the Destination Number.
         /// </summary>
         /// <param name="story">The Story to which the Event belongs to</param>
         public override void ResolveEvent(Story story)
         {
-            story.AddParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
-            story.Move(this.DestinationNumber);
+            story.AddParagraph(CreateParagraph.CreateAParagraph(DestinationNumber));
+            story.Move(DestinationNumber);
         }
         /// <summary>
         /// The Capacity Type required to execute the Event
         /// </summary>
-        public CapacityType CapacityRequiered{
-            get { return capacityType; }
-        }
+        public CapacityType CapacityRequiered => _capacityType;
     }
+    /// <inheritdoc />
     /// <summary>
     /// An Event where the player get Item(s)
     /// </summary>
     public class LootEvent : Event
     {
-        List<Loot> Loot;
-        /// <summary>
-        /// If the action will end the Paragraph (send the player to a new Paragraph) or not
-        /// </summary>
-        bool moveAction { get; set; }
+        private readonly List<Loot> _loot;
 
         private LootEvent()
         {
-            this.Loot = new List<Loot>();
+            _loot = new List<Loot>();
         }
         /// <summary>
         /// Create an Event that allow the Player to get a Loot
@@ -140,61 +135,60 @@ namespace LDVELH_WPF
         /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
         public LootEvent(Loot item, string triggerMessage = "")
         {
-            this.TriggerMessage = triggerMessage;
-            this.Loot = new List<Loot>();
-            this.Loot.Add(item);
+            TriggerMessage = triggerMessage;
+            _loot = new List<Loot> {item};
         }
+
         /// <summary>
         /// Create an Event that allow the Player to get multiples Loots
         /// </summary>
-        /// <param name="item">The Items the Player get</param>
+        /// <param name="listItem"></param>
         /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
         public LootEvent(List<Loot> listItem, string triggerMessage = "")
         {
-            this.Loot = listItem;
-            this.TriggerMessage = triggerMessage;
+            _loot = listItem;
+            TriggerMessage = triggerMessage;
         }
+        /// <inheritdoc />
         /// <summary>
         /// Give the item(s) to the players if he has enougth room
         /// </summary>
         /// <param name="story">The Story to which the Event belongs to</param>
         public override void ResolveEvent(Story story)
         {
-            if (!_Done)
+            if (_Done) return;
+            foreach (Loot lootItem in _loot)
             {
-                foreach (Loot lootItem in Loot)
+                try
                 {
-                    try
-                    {
-                        story.PlayerHero.AddLoot(lootItem);
-                        _Done = true;
-                    }
-                    catch (BackPackFullException)
-                    {
-                        System.Diagnostics.Debug.WriteLine("LootEvent full backpack");
-                        MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("ErrorInventoryFull"));
-                    }
-                    catch (WeaponHolderFullException)
-                    {
-                        MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("ErrorWeaponHolderFull"));
-                        System.Diagnostics.Debug.WriteLine("LootEvent full weapon holder");
-                    }
+                    story.PlayerHero.AddLoot(lootItem);
+                    _Done = true;
+                }
+                catch (BackPackFullException)
+                {
+                    System.Diagnostics.Debug.WriteLine("LootEvent full backpack");
+                    MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("ErrorInventoryFull"));
+                }
+                catch (WeaponHolderFullException)
+                {
+                    MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("ErrorWeaponHolderFull"));
+                    System.Diagnostics.Debug.WriteLine("LootEvent full weapon holder");
                 }
             }
-            
         }
 
     }
+    /// <inheritdoc />
     /// <summary>
     /// An Event that require to pay to execute it
     /// </summary>
     public class BuyEvent : Event
     {
-        List<Event> PayableEvent;
-        int price;
+        private readonly List<Event> _payableEvent;
+        private readonly int _price;
         private BuyEvent()
         {
-            this.PayableEvent = new List<Event>();
+            _payableEvent = new List<Event>();
         }
         /// <summary>
         /// Create a Buy Event
@@ -204,23 +198,25 @@ namespace LDVELH_WPF
         /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
         public BuyEvent(Event anEvent, int price, string triggerMessage)
         {
-            this.PayableEvent = new List<Event>();
-            this.PayableEvent.Add(anEvent);
-            this.price = price;
-            this.TriggerMessage = triggerMessage + " (" + price + " "+ GlobalTranslator.Instance.Translator.ProvideValue("Gold")+" )";
+            _payableEvent = new List<Event>();
+            _payableEvent.Add(anEvent);
+            _price = price;
+            TriggerMessage = triggerMessage + " (" + price + " "+ GlobalTranslator.Instance.Translator.ProvideValue("Gold")+" )";
         }
+
         /// <summary>
         /// Create a Buy Event
         /// </summary>
-        /// <param name="anEvent">The Events that will be executed by paying</param>
+        /// <param name="listEvent"></param>
         /// <param name="price">The price to execute the Events</param>
         /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
         public BuyEvent(List<Event> listEvent, int price, string triggerMessage)
         {
-            this.price = price;
-            this.PayableEvent = listEvent;
-            this.TriggerMessage = triggerMessage + " (" + price + " " + GlobalTranslator.Instance.Translator.ProvideValue("Gold") + " )";
+            _price = price;
+            _payableEvent = listEvent;
+            TriggerMessage = triggerMessage + " (" + price + " " + GlobalTranslator.Instance.Translator.ProvideValue("Gold") + " )";
         }
+        /// <inheritdoc />
         /// <summary>
         /// Pay the price required to execute all linked Events
         /// </summary>
@@ -229,8 +225,8 @@ namespace LDVELH_WPF
         {
             try
             {
-                story.PlayerHero.RemoveGold(this.price);
-                foreach (Event payedEvent in PayableEvent)
+                story.PlayerHero.RemoveGold(_price);
+                foreach (Event payedEvent in _payableEvent)
                 {
                         payedEvent.ResolveEvent(story);
                 }
@@ -245,23 +241,24 @@ namespace LDVELH_WPF
         }
 
     }
+    /// <inheritdoc />
     /// <summary>
     /// Can add a temporary Bonus or Malus to the player Agility depending on the conditions
     /// </summary>
     public class BuffOrDebuffEvent : Event
     {
-        int Debuff;
-        bool AlwaysHappen = false;
-        Item RequieredItem = null;
-        bool CapacityRequiered = false;
-        CapacityType RequieredCapacity;
+        private readonly int _debuff;
+        private readonly bool _alwaysHappen = false;
+        private readonly Item _requieredItem = null;
+        private readonly bool _capacityRequiered = false;
+        private readonly CapacityType _requieredCapacity;
         /// <summary>
         /// A BuffEvent that will always Happen
         /// </summary>
         /// <param name="debuff">The amount of Agility added (minus than 0 for a malus)</param>
         public BuffOrDebuffEvent(int debuff)
         {
-            AlwaysHappen = true;
+            _alwaysHappen = true;
         }
         /// <summary>
         /// A BuffEvent that happen if the player posses an Item
@@ -270,55 +267,56 @@ namespace LDVELH_WPF
         /// <param name="debuff">The amount of Agility added (minus than 0 for a malus)</param>
         public BuffOrDebuffEvent(Item requieredItem, int debuff)
         {
-            this.RequieredItem = requieredItem;
-            this.Debuff = debuff;
+            _requieredItem = requieredItem;
+            _debuff = debuff;
         }
+
         /// <summary>
         /// A BuffEvent that happen if the player posses an Item
         /// </summary>
-        /// <param name="requieredItem">The item required to have the buff</param>
+        /// <param name="requieredCapacity"></param>
         /// <param name="debuff">The amount of Agility added (minus than 0 for a malus)</param>
         public BuffOrDebuffEvent(CapacityType requieredCapacity, int debuff)
         {
-            this.RequieredCapacity = requieredCapacity;
-            this.CapacityRequiered = true;
-            this.Debuff = debuff;
+            _requieredCapacity = requieredCapacity;
+            _capacityRequiered = true;
+            _debuff = debuff;
         }
+        /// <inheritdoc />
         /// <summary>
         /// Add the bonus or malus to the Player if it meets the conditions
         /// </summary>
         /// <param name="story"></param>
         public override void ResolveEvent(Story story)
         {
-            if(CapacityRequiered)
+            if(_capacityRequiered)
             {
-                if (!story.PlayerHero.PossesCapacity(RequieredCapacity))
+                if (!story.PlayerHero.PossesCapacity(_requieredCapacity))
                 {
-                    story.PlayerHero.AddTempDebuff(Debuff);
+                    story.PlayerHero.AddTempDebuff(_debuff);
                     return;
                 }
             }
-            if (RequieredItem != null)
+            if (_requieredItem != null)
             {
-                if (!story.PlayerHero.PossesItem(RequieredItem.Name))
+                if (!story.PlayerHero.PossesItem(_requieredItem.Name))
                 {
-                    story.PlayerHero.AddTempDebuff(Debuff);
+                    story.PlayerHero.AddTempDebuff(_debuff);
                     return;
                 }
             }
-            if (AlwaysHappen)
-            {
-                story.PlayerHero.AddTempDebuff(Debuff);
-                return;
-            }
+            if (!_alwaysHappen) return;
+            story.PlayerHero.AddTempDebuff(_debuff);
+            return;
         }
     }
+    /// <inheritdoc />
     /// <summary>
     /// An Event that start a Fight between the Hero and an Enemy
     /// </summary>
     public class FightEvent : Event
     {
-        protected Enemy enemy;
+        protected Enemy Enemy;
 
         /// <summary>
         /// FightEvent Constructor
@@ -332,8 +330,9 @@ namespace LDVELH_WPF
         /// <param name="enemy">The Enemy the Hero will fight</param>
         public FightEvent(Enemy enemy)
         {
-            this.enemy = enemy;
+            Enemy = enemy;
         }
+        /// <inheritdoc />
         /// <summary>
         /// Start a MessageBoxFight between the Hero and an Enemy
         /// </summary>
@@ -342,7 +341,9 @@ namespace LDVELH_WPF
         {
             try
             {
-                while (!ShowMyDialogBox(story, enemy));
+                while (!ShowMyDialogBox(story, Enemy))
+                {
+                }
                 story.PlayerHero.RemoveTempDebuff();
             }
             catch (YouAreDeadException)
@@ -356,7 +357,7 @@ namespace LDVELH_WPF
         /// <param name="story"></param>
         /// <param name="enemy"></param>
         /// <returns></returns>
-        private bool ShowMyDialogBox(Story story, Enemy enemy)
+        private static bool ShowMyDialogBox(Story story, Enemy enemy)
         {
 
             MessageBoxFight testDialog = new MessageBoxFight() { DataContext = new FightViewModel(story.PlayerHero, enemy)};
@@ -379,9 +380,10 @@ namespace LDVELH_WPF
     /// </summary>
     public class RunEvent : FightEvent
     {
-        int RanTurn;
-        Event RunningEvent;
+        private readonly int _ranTurn;
+        private readonly Event _runningEvent;
 
+        /// <inheritdoc />
         /// <summary>
         /// A FightEvent from which the player can Run from after a number of turn, instead of fighting to death
         /// </summary>
@@ -390,10 +392,11 @@ namespace LDVELH_WPF
         /// <param name="runEvent">The Event that will happen if the player Run</param>
         public RunEvent(Enemy enemy, int ranTurn, Event runEvent)
         {
-            this.enemy = enemy;
-            this.RunningEvent = runEvent;
-            this.RanTurn = ranTurn;
+            Enemy = enemy;
+            _runningEvent = runEvent;
+            _ranTurn = ranTurn;
         }
+        /// <inheritdoc />
         /// <summary>
         /// Start a MessageBoxFight between the Hero and an Enemy
         /// </summary>
@@ -402,7 +405,9 @@ namespace LDVELH_WPF
         {
             try
             {
-                while (!ShowMyDialogBox(story, enemy, RanTurn, RunningEvent)) ;
+                while (!ShowMyDialogBox(story, Enemy, _ranTurn, _runningEvent))
+                {
+                }
             }
             catch (YouAreDeadException)
             {
@@ -417,7 +422,7 @@ namespace LDVELH_WPF
         /// <param name="ranTurn">The earliest turn the Hero can decide to Run from the fight</param>
         /// <param name="runEvent">The Event that will happen if the player Run</param>
         /// <returns></returns>
-        private bool ShowMyDialogBox(Story story, Enemy enemy, int ranTurn, Event runEvent)
+        private static bool ShowMyDialogBox(Story story, Enemy enemy, int ranTurn, Event runEvent)
         {
 
             MessageBoxFight testDialog = new MessageBoxFight() { DataContext = new FightViewModel(story.PlayerHero, enemy, ranTurn) };
@@ -440,6 +445,7 @@ namespace LDVELH_WPF
 
         }
     }
+    /// <inheritdoc />
     /// <summary>
     /// Send the Player to another Paragraph
     /// </summary>
@@ -451,7 +457,7 @@ namespace LDVELH_WPF
         /// <param name="destinationNumber">The Destination Paragraph Number</param>
         public MoveEvent(int destinationNumber)
         {
-            this.DestinationNumber = destinationNumber;
+            DestinationNumber = destinationNumber;
         }
         /// <summary>
         /// Send the Player to another Paragraph
@@ -460,19 +466,21 @@ namespace LDVELH_WPF
         /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
         public MoveEvent(int destinationNumber, string triggerMessage)
         {
-            this.DestinationNumber = destinationNumber;
-            this.TriggerMessage = triggerMessage;
+            DestinationNumber = destinationNumber;
+            TriggerMessage = triggerMessage;
         }
+        /// <inheritdoc />
         /// <summary>
         /// Send the Player to another Paragraph
         /// </summary>
         /// <param name="story"></param>
         public override void ResolveEvent(Story story)
         {
-            story.AddParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
-            story.Move(this.DestinationNumber);
+            story.AddParagraph(CreateParagraph.CreateAParagraph(DestinationNumber));
+            story.Move(DestinationNumber);
         }
     }
+    /// <inheritdoc />
     /// <summary>
     /// An Event that require the Hero to eat to not take damage
     /// </summary>
@@ -484,7 +492,7 @@ namespace LDVELH_WPF
         /// <param name="destinationNumber">The Destination Paragraph Number</param>
         public MealEvent(int destinationNumber)
         {
-            this.DestinationNumber = destinationNumber;
+            DestinationNumber = destinationNumber;
         }
         /// <summary>
         /// An Event that require the Hero to eat to not take damage
@@ -493,34 +501,36 @@ namespace LDVELH_WPF
         /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
         public MealEvent(int destinationNumber, string triggerMessage)
         {
-            this.DestinationNumber = destinationNumber;
-            this.TriggerMessage = triggerMessage;
+            DestinationNumber = destinationNumber;
+            TriggerMessage = triggerMessage;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// If the Hero hasn't eaten he takes damage
         /// </summary>
         public override void ResolveEvent(Story story)
         {
             story.PlayerHero.MealTime();
-            story.AddParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
-            story.Move(this.DestinationNumber);
+            story.AddParagraph(CreateParagraph.CreateAParagraph(DestinationNumber));
+            story.Move(DestinationNumber);
         }
     }
+    /// <inheritdoc />
     /// <summary>
     /// An Event that require an Item to be available/executed
     /// </summary>
     public class ItemRequieredEvent : Event
     {
-        string _ItemName;
+        private string _itemName;
         public string ItemName
         {
-            get { return _ItemName; }
+            get { return _itemName; }
             private set
             {
-                if (_ItemName != value)
+                if (_itemName != null && _itemName != value)
                 {
-                    _ItemName = value;
+                    _itemName = value;
                 }
             }
         }
@@ -535,23 +545,24 @@ namespace LDVELH_WPF
         /// <param name="itemName">The Name of the item required for the Event</param>
         public ItemRequieredEvent(int destinationNumber, string itemName)
         {
-            this.DestinationNumber = destinationNumber;
-            this.ItemName = itemName;
-            this.TriggerMessage = GlobalTranslator.Instance.Translator.ProvideValue("UseItem") + itemName;
+            DestinationNumber = destinationNumber;
+            ItemName = itemName;
+            TriggerMessage = GlobalTranslator.Instance.Translator.ProvideValue("UseItem") + itemName;
         }
         public override void ResolveEvent(Story story)
         {
-            story.AddParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
-            story.Move(this.DestinationNumber);
+            story.AddParagraph(CreateParagraph.CreateAParagraph(DestinationNumber));
+            story.Move(DestinationNumber);
         }
         
     }
+    /// <inheritdoc />
     /// <summary>
     /// An Event that lead to the death of the Hero
     /// </summary>
     public class DeathEvent : Event
     {
-        string SpecialMessage = "";
+        private readonly string _specialMessage = "";
         public DeathEvent()
         {
         }
@@ -561,7 +572,7 @@ namespace LDVELH_WPF
         /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
         public DeathEvent(string triggerMessage)
         {
-            this.TriggerMessage = triggerMessage;
+            TriggerMessage = triggerMessage;
         }
         /// <summary>
         /// An Event that lead to the death of the Hero
@@ -570,29 +581,30 @@ namespace LDVELH_WPF
         /// <param name="specialMessage">A custom message displayed on death that should explain to the Hero why he died</param>
         public DeathEvent(string triggerMessage, string specialMessage)
         {
-            this.TriggerMessage = triggerMessage;
-            this.SpecialMessage = specialMessage;
+            TriggerMessage = triggerMessage;
+            _specialMessage = specialMessage;
         }
         public override void ResolveEvent(Story story)
         {
             story.PlayerHero.Kill();
-            throw new YouAreDeadException(SpecialMessage + GlobalTranslator.Instance.Translator.ProvideValue("YouDied"));
+            throw new YouAreDeadException(_specialMessage + GlobalTranslator.Instance.Translator.ProvideValue("YouDied"));
         }
     }
+    /// <inheritdoc />
     /// <summary>
     /// An Event that lead the Hero to take damages
     /// </summary>
     public class DamageEvent : Event
     {
-        string SpecialMessage = "";
-        int DamageAmount;
+        private readonly string _specialMessage = "";
+        private readonly int _damageAmount;
         /// <summary>
         /// An Event that lead the Hero to take damages
         /// </summary>
         /// <param name="damageAmount">The amount of damage the Hero will take</param>
         public DamageEvent(int damageAmount)
         {
-            this.DamageAmount = damageAmount;
+            _damageAmount = damageAmount;
         }
         /// <summary>
         /// An Event that lead the Hero to take damages
@@ -601,8 +613,8 @@ namespace LDVELH_WPF
         /// <param name="damageAmount">The amount of damage the Hero will take</param>
         public DamageEvent(string triggerMessage, int damageAmount)
         {
-            this.DamageAmount = damageAmount;
-            this.TriggerMessage = triggerMessage;
+            _damageAmount = damageAmount;
+            TriggerMessage = triggerMessage;
         }
         /// <summary>
         /// An Event that lead the Hero to take damages
@@ -612,31 +624,32 @@ namespace LDVELH_WPF
         /// <param name="damageAmount">The amount of damage the Hero will take</param>
         public DamageEvent(string triggerMessage, string specialMessage, int damageAmount)
         {
-            this.DamageAmount = damageAmount;
-            this.TriggerMessage = triggerMessage;
-            this.SpecialMessage = specialMessage;
+            _damageAmount = damageAmount;
+            TriggerMessage = triggerMessage;
+            _specialMessage = specialMessage;
         }
         public override void ResolveEvent(Story story)
         {
-            if (this.SpecialMessage != "")
-                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("TakeDamage")+ " " + SpecialMessage);
-            story.PlayerHero.TakeDamage(DamageAmount);
+            if (_specialMessage != "")
+                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("TakeDamage")+ " " + _specialMessage);
+            story.PlayerHero.TakeDamage(_damageAmount);
         }
     }
+    /// <inheritdoc />
     /// <summary>
     /// An Event that permanently decrease the Agility of the Hero
     /// </summary>
     public class DamageAgilityEvent : Event
     {
-        string SpecialMessage = "";
-        int DamageAmount;
+        private readonly string _specialMessage = "";
+        private readonly int _damageAmount;
         /// <summary>
         /// Permanently decrease the Agility of the Hero
         /// </summary>
         /// <param name="damageAmount">The ammount of Agility that will be retracted from the Hero total</param>
         public DamageAgilityEvent(int damageAmount)
         {
-            this.DamageAmount = damageAmount;
+            _damageAmount = damageAmount;
         }
         /// <summary>
         /// Permanently decrease the Agility of the Hero
@@ -645,8 +658,8 @@ namespace LDVELH_WPF
         /// <param name="damageAmount">The ammount of Agility that will be retracted from the Hero total</param>
         public DamageAgilityEvent(string triggerMessage, int damageAmount)
         {
-            this.DamageAmount = damageAmount;
-            this.TriggerMessage = triggerMessage;
+            _damageAmount = damageAmount;
+            TriggerMessage = triggerMessage;
         }
         /// <summary>
         /// Permanently decrease the Agility of the Hero
@@ -656,23 +669,24 @@ namespace LDVELH_WPF
         /// <param name="damageAmount">The ammount of Agility that will be retracted from the Hero total</param>
         public DamageAgilityEvent(string triggerMessage, string specialMessage, int damageAmount)
         {
-            this.DamageAmount = damageAmount;
-            this.TriggerMessage = triggerMessage;
-            this.SpecialMessage = specialMessage;
+            _damageAmount = damageAmount;
+            TriggerMessage = triggerMessage;
+            _specialMessage = specialMessage;
         }
         public override void ResolveEvent(Story story)
         {
-            if (this.SpecialMessage != "")
-                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("DebuffAgility") +" " + SpecialMessage);
-            story.PlayerHero.DecreaseAgility(DamageAmount);
+            if (_specialMessage != "")
+                MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("DebuffAgility") +" " + _specialMessage);
+            story.PlayerHero.DecreaseAgility(_damageAmount);
         }
     }
+    /// <inheritdoc />
     /// <summary>
     /// Allow to resolve multiples events with one decision
     /// </summary>
     public class LinkedEvent : Event
     {
-        List<Event> ListLinkedEvent;
+        private readonly List<Event> _listLinkedEvent;
         /// <summary>
         /// Resolve multiples events
         /// </summary>
@@ -680,9 +694,9 @@ namespace LDVELH_WPF
         /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
         public LinkedEvent(int destinationNumber, string triggerMessage)
         {
-            this.DestinationNumber = destinationNumber;
-            this.TriggerMessage = triggerMessage;
-            ListLinkedEvent = new List<Event>();
+            DestinationNumber = destinationNumber;
+            TriggerMessage = triggerMessage;
+            _listLinkedEvent = new List<Event>();
         }
         /// <summary>
         /// Add a new Event that will be resolved on execution
@@ -690,7 +704,7 @@ namespace LDVELH_WPF
         /// <param name="newEvent"></param>
         public void AddEvent(Event newEvent)
         {
-            this.ListLinkedEvent.Add(newEvent);
+            _listLinkedEvent.Add(newEvent);
         }
         /// <summary>
         /// Resolve ALL linked event, then move to the DestinationNumber
@@ -698,12 +712,12 @@ namespace LDVELH_WPF
         /// <param name="story"></param>
         public override void ResolveEvent(Story story)
         {
-            foreach(Event linkEvent in this.ListLinkedEvent)
+            foreach(Event linkEvent in _listLinkedEvent)
             {
                 linkEvent.ResolveEvent(story);
             }
-            story.AddParagraph(CreateParagraph.CreateAParagraph(this.DestinationNumber));
-            story.Move(this.DestinationNumber);
+            story.AddParagraph(CreateParagraph.CreateAParagraph(DestinationNumber));
+            story.Move(DestinationNumber);
         }
     }
     /// <summary>
@@ -722,7 +736,7 @@ namespace LDVELH_WPF
         /// </summary>
         public LoseBackPack(int destinationNumber)
         {
-            this.DestinationNumber = destinationNumber;
+            DestinationNumber = destinationNumber;
         }
         public override void ResolveEvent(Story story)
         {
@@ -745,7 +759,7 @@ namespace LDVELH_WPF
         /// </summary>
         public LoseWeaponHolder(int destinationNumber)
         {
-            this.DestinationNumber = destinationNumber;
+            DestinationNumber = destinationNumber;
         }
         public override void ResolveEvent(Story story)
         {

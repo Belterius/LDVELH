@@ -1,27 +1,16 @@
 ﻿using LDVELH_WPF.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Documents;
 
 namespace LDVELH_WPF.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public Translator MyTranslator
-        {
-            get { return GlobalTranslator.Instance.Translator; }
-        }
+        public Translator MyTranslator => GlobalTranslator.Instance.Translator;
 
-        public string Test
-        {
-            get { return "HitPoints"; }
-        }
+        public string Test => "HitPoints";
 
         bool LoadingHero = false;
 
@@ -62,13 +51,7 @@ namespace LDVELH_WPF.ViewModel
                 }
             }
         }
-        public String ActualHitPoint
-        {
-            get
-            {
-                return Hero.ActualHitPoint.ToString() +"/" + Hero.MaxHitPoint.ToString();
-            }
-        }
+        public String ActualHitPoint => Hero.ActualHitPoint.ToString() +"/" + Hero.MaxHitPoint.ToString();
         Weapon _SelectedWeapon;
         public Weapon SelectedWeapon
         {
@@ -103,35 +86,20 @@ namespace LDVELH_WPF.ViewModel
             }
         }
 
-        public String TitleWindow
-        {
-            get
-            {
-                return MyStory.PlayerHero.Name + " : paraph n°" + MyStory.PlayerHero.CurrentParagraph;
-            }
-        }
-        public String StoryText
-        {
-            get
-            {
-                if(MyStory.ActualParagraph != null)
-                {
-                    return MyStory.ActualParagraph.ContentText;
-                }
-                return MyStory.content.Last().ContentText;
-            }
-        }
+        public string TitleWindow => MyStory.PlayerHero.Name + " : paraph n°" + MyStory.PlayerHero.CurrentParagraph;
+
+        public string StoryText => MyStory.ActualParagraph != null ? MyStory.ActualParagraph.ContentText : MyStory.content.Last().ContentText;
 
         private void InitHero()
         {
             Hero = new Hero("ViewModel");
             Hero.AddLoot(CreateLoot.CreateWeapon.Glaive());
             Hero.AddLoot(CreateLoot.CreateWeapon.Baton());
-            Hero.AddLoot(CreateLoot.CreateConsumable.potionDeLampsur());
-            Hero.AddLoot(CreateLoot.CreateConsumable.potionDeLampsur());
-            Hero.AddLoot(CreateLoot.CreateFood.ration());
-            Hero.AddLoot(CreateLoot.CreateSpecialItem.helmet());
-            Hero.AddLoot(CreateLoot.CreateSpecialItem.buckler());
+            Hero.AddLoot(CreateLoot.CreateConsumable.PotionDeLampsur());
+            Hero.AddLoot(CreateLoot.CreateConsumable.PotionDeLampsur());
+            Hero.AddLoot(CreateLoot.CreateFood.Ration());
+            Hero.AddLoot(CreateLoot.CreateSpecialItem.Helmet());
+            Hero.AddLoot(CreateLoot.CreateSpecialItem.Buckler());
             Hero.AddCapacity(CapacityType.Healing);
             Hero.AddCapacity(CapacityType.Hiding);
             Hero.TakeDamage(5);
@@ -174,7 +142,7 @@ namespace LDVELH_WPF.ViewModel
         {
             try
             {
-                using (SQLiteDatabaseFunction databaseRequest = new SQLiteDatabaseFunction())
+                using (SqLiteDatabaseFunction databaseRequest = new SqLiteDatabaseFunction())
                 {
                     databaseRequest.SaveHero((Hero)hero);
                 }
@@ -298,7 +266,7 @@ namespace LDVELH_WPF.ViewModel
             MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("YouDied"));
             try
             {
-                using (SQLiteDatabaseFunction DatabaseRequest = new SQLiteDatabaseFunction())
+                using (SqLiteDatabaseFunction DatabaseRequest = new SqLiteDatabaseFunction())
                 {
                     DatabaseRequest.DeleteHero(story.PlayerHero);
                 }

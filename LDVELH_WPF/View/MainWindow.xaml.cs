@@ -1,8 +1,8 @@
 ﻿using LDVELH_WPF.ViewModel;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace LDVELH_WPF
 {
@@ -70,7 +70,7 @@ namespace LDVELH_WPF
                     ButtonDecision.VerticalAlignment = VerticalAlignment.Center;
                 }
             }
-            this.UpdateLayout();
+            UpdateLayout();
         }
         private bool ShouldGenerateButton(Event possibleEvent, Story story)
         {
@@ -105,32 +105,21 @@ namespace LDVELH_WPF
         }
         public double TotalHeightButton(GroupBox groupBox)
         {
-            double TotalHeight = 0;
-            foreach (Button Button in ((Grid)(groupBoxChoices.Content)).Children)
-            {
-                TotalHeight += Button.ActualHeight;
-            }
-            return TotalHeight;
+            return ((Grid) (groupBoxChoices.Content)).Children.Cast<Button>().Sum(button => button.ActualHeight);
         }
         public int TotalNumberButton(GroupBox groupBox)
         {
-            int TotalNumberButton = 0;
-            foreach (Button Button in ((Grid)(groupBoxChoices.Content)).Children)
-            {
-                TotalNumberButton++;
-            }
-            return TotalNumberButton;
+            return ((Grid) (groupBoxChoices.Content)).Children.Cast<Button>().Count();
         }
         public void PlaceButtonPossibleDecision(GroupBox groupBox)
         {
-            double TopMargin = CalculateYPosition(TotalHeightButton(groupBox), TotalNumberButton(groupBox), groupBox);
-            double PreviousButtonY = TopMargin - MarginBetweenButton; //we don't need the margin for the first button
-            double PreviousButtonHeight = 0;
-            foreach (Button Button in ((Grid)(groupBoxChoices.Content)).Children)
+            double topMargin = CalculateYPosition(TotalHeightButton(groupBox), TotalNumberButton(groupBox), groupBox);
+            double previousButtonY = topMargin - MarginBetweenButton; //we don't need the margin for the first button
+            foreach (Button button in ((Grid)(groupBoxChoices.Content)).Children)
             {
-                Button.Margin = new Thickness(SetXPosition(Button, groupBox), PreviousButtonY, SetXPosition(Button, groupBox), (((Grid)(groupBox.Content)).ActualHeight - Button.ActualHeight - PreviousButtonY));
-                PreviousButtonHeight = Button.ActualHeight;
-                PreviousButtonY = (PreviousButtonY + PreviousButtonHeight + MarginBetweenButton);
+                button.Margin = new Thickness(SetXPosition(button, groupBox), previousButtonY, SetXPosition(button, groupBox), (((Grid)(groupBox.Content)).ActualHeight - button.ActualHeight - previousButtonY));
+                double previousButtonHeight = button.ActualHeight;
+                previousButtonY = (previousButtonY + previousButtonHeight + MarginBetweenButton);
             }
         }
     }

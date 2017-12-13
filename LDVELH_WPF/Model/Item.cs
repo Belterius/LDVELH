@@ -90,16 +90,10 @@ namespace LDVELH_WPF
         public event PropertyChangedEventHandler PropertyChanged;
         protected void RaisePropertyChanged(string prop)
         {
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
 
-        public virtual string DisplayName
-        {
-            get
-            {
-                return Name;
-            }
-        }
+        public virtual string DisplayName => Name;
         public abstract void Use(Hero hero);
 
         public override void Add(Hero hero)
@@ -112,6 +106,7 @@ namespace LDVELH_WPF
         }
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// An Item than can be used, posses a number of charge left, and an effect, for now only healing effect but could implements more sub-class
     /// </summary>
@@ -168,9 +163,9 @@ namespace LDVELH_WPF
         /// <param name="charges">The number of time the Item can be used before destruction</param>
         public Consumable(string name, int healingPower, int charges)
         {
-            this.HealingPower = healingPower;
-            this.Name = name;
-            this.ChargesLeft = charges;
+            HealingPower = healingPower;
+            Name = name;
+            ChargesLeft = charges;
         }
 
         /// <summary>
@@ -185,11 +180,11 @@ namespace LDVELH_WPF
 
 
             Consumable Consumable = (Consumable)obj;
-            if (this.Name != Consumable.Name)
+            if (Name != Consumable.Name)
                 return false;
-            if (this.ChargesLeft != Consumable.ChargesLeft)
+            if (ChargesLeft != Consumable.ChargesLeft)
                 return false;
-            if (this.HealingPower != Consumable.HealingPower)
+            if (HealingPower != Consumable.HealingPower)
                 return false;
 
             return true;
@@ -220,9 +215,9 @@ namespace LDVELH_WPF
         /// <param name="hero"></param>
         public override void Use(Hero hero)
         {
-            if(this.ChargesLeft >= 1)
+            if(ChargesLeft >= 1)
             {
-                this.ChargesLeft--;
+                ChargesLeft--;
                 hero.Heal(HealingPower);
             }
             if (ChargesLeft <= 0)
@@ -268,8 +263,8 @@ namespace LDVELH_WPF
         /// <param name="charges">The number of time it can be used before destruction</param>
         public Food(string name, int charges)
         {
-            this.Name = name;
-            this.ChargesLeft = charges;
+            Name = name;
+            ChargesLeft = charges;
         }
 
         public override bool Equals(object obj)
@@ -278,9 +273,9 @@ namespace LDVELH_WPF
                 return false;
 
             Food food = (Food)obj;
-            if (this.Name != food.Name)
+            if (Name != food.Name)
                 return false;
-            if (this.ChargesLeft != food.ChargesLeft)
+            if (ChargesLeft != food.ChargesLeft)
                 return false;
             return true;
         }
@@ -310,9 +305,9 @@ namespace LDVELH_WPF
         /// <param name="hero"></param>
         public override void Use(Hero hero)
         {
-            if(this.ChargesLeft >= 1)
+            if(ChargesLeft >= 1)
             {
-                this.ChargesLeft--;
+                ChargesLeft--;
                 hero.Eat();
             }
             if (ChargesLeft <= 0)
@@ -336,7 +331,7 @@ namespace LDVELH_WPF
         }
         public Miscellaneous(string name)
         {
-            this.Name = name;
+            Name = name;
         }
 
         public override bool Equals(object obj)
@@ -345,7 +340,7 @@ namespace LDVELH_WPF
                 return false;
 
             Miscellaneous food = (Miscellaneous)obj;
-            if (this.Name != food.Name)
+            if (Name != food.Name)
                 return false;
             return true;
         }

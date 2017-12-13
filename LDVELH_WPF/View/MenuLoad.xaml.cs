@@ -1,7 +1,4 @@
-﻿using LDVELH_WPF.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 
 namespace LDVELH_WPF
 {

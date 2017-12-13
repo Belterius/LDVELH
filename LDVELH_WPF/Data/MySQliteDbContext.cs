@@ -3,16 +3,16 @@
     using SQLite.CodeFirst;
     using System.Data.Entity;
 
-    public class MySQLiteDBContext : DbContext
+    public class MySqLiteDbContext : DbContext
     {
-        public MySQLiteDBContext()
+        public MySqLiteDbContext()
             : base("HeroSQLiteContext")
         {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Add(new NonPublicColumnAttributeConvention());
-            var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<MySQLiteDBContext>(modelBuilder);
+            var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<MySqLiteDbContext>(modelBuilder);
             Database.SetInitializer(sqliteConnectionInitializer);
 
 

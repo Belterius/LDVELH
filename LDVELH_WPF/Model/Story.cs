@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
@@ -69,9 +68,9 @@ namespace LDVELH_WPF
         /// <param name="hero">The Player Hero</param>
         public Story(string title, Hero hero)
         {
-            this.Title = title;
-            this.PlayerHero = hero;
-            this.content = new ObservableCollection<StoryParagraph>();
+            Title = title;
+            PlayerHero = hero;
+            content = new ObservableCollection<StoryParagraph>();
         }
 
         /// <summary>
@@ -81,7 +80,7 @@ namespace LDVELH_WPF
         {
             try
             {
-                this.ActualParagraph.Resolve(this);
+                ActualParagraph.Resolve(this);
             }
             catch(YouAreDeadException){
                 throw;
@@ -101,7 +100,7 @@ namespace LDVELH_WPF
         /// <param name="paragraph"></param>
         public void AddParagraph(StoryParagraph paragraph)
         {
-            this.content.Add(paragraph);
+            content.Add(paragraph);
         }
 
         /// <summary>
@@ -127,7 +126,7 @@ namespace LDVELH_WPF
         {
             try
             {
-                this.ActualParagraph = GetParagraph(paragraphNumber);
+                ActualParagraph = GetParagraph(paragraphNumber);
             }
             catch (ParagraphNotFoundException)
             {
@@ -140,11 +139,11 @@ namespace LDVELH_WPF
         /// <param name="paragraphNumber">The Paragraph number</param>
         public void Move(int paragraphNumber)
         {
-            this.SetActualParagraph(paragraphNumber);
+            SetActualParagraph(paragraphNumber);
         }
         public StoryParagraph GetParagraph(int paragraphNumber)
         {
-            foreach (StoryParagraph paragraph in this.content)
+            foreach (StoryParagraph paragraph in content)
             {
                 if (paragraph.ParagraphNumber == paragraphNumber)
                 {

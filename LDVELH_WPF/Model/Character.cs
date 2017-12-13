@@ -11,6 +11,7 @@ namespace LDVELH_WPF
         [Key]
         public int CharacterID { get; set; }
         [Column("Name")]
+        // ReSharper disable once InconsistentNaming : Requiered for Database
         private string _Name { get; set; }
         /// <summary>
         /// The Name of the character
@@ -31,6 +32,7 @@ namespace LDVELH_WPF
             }
         }
         [Column("MaxHitPoint")]
+        // ReSharper disable once InconsistentNaming : Requiered for Database
         private int _MaxHitPoint { get; set; }
         /// <summary>
         /// The Max Number of Health Point the character can have
@@ -51,6 +53,7 @@ namespace LDVELH_WPF
             }
         }
         [Column("ActualLife")]
+        // ReSharper disable once InconsistentNaming : Requiered for Database
         int _ActualHitPoint { get; set; }
         /// <summary>
         /// The current number of HealthPoint the character have
@@ -71,6 +74,7 @@ namespace LDVELH_WPF
             }
         }
         [Column("BaseAgility")]
+        // ReSharper disable once InconsistentNaming : Requiered for Database
         int _BaseAgility { get; set; }
         /// <summary>
         /// The Agility the character have, before factoring in bonuses
@@ -95,7 +99,7 @@ namespace LDVELH_WPF
         /// </summary>
         public void Kill()
         {
-            this.TakeDamage(this.ActualHitPoint);
+            TakeDamage(ActualHitPoint);
         }
 
         /// <summary>

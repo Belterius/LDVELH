@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LDVELH_WPF;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LDVELH_Tests
 {

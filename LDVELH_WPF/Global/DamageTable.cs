@@ -14,7 +14,7 @@ namespace LDVELH_WPF
         /// <param name="strenghtDifference">The strength of the Enemy minus the Hero's</param>
         /// <param name="rollD10">The value of a D10 roll</param>
         /// <returns>the amount of damage the Enemy should take</returns>
-        public static int enemyDamageTaken(int strenghtDifference, int rollD10)
+        public static int EnemyDamageTaken(int strenghtDifference, int rollD10)
         {
             if (strenghtDifference > 0)
             {
@@ -62,7 +62,7 @@ namespace LDVELH_WPF
         /// <param name="strenghtDifference">The strength of the Hero minus the Enemy's</param>
         /// <param name="rollD10">The value of a D10 roll</param>
         /// <returns>the amount of damage the Hero should take</returns>
-        public static int heroDamageTaken(int strenghtDifference, int rollD10)
+        public static int HeroDamageTaken(int strenghtDifference, int rollD10)
         {
             if(strenghtDifference >= 11){
                 switch (rollD10)

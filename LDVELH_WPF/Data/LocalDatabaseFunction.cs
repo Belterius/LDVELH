@@ -9,20 +9,20 @@ namespace LDVELH_WPF
     [Obsolete("Replaced with SQLite", true)]
     public static class LocalDatabaseFunction
     {
-        public static Hero SelectHeroFromID(String heroID){
-            using (HeroSaveContext HeroSaveContext = new HeroSaveContext())
+        public static Hero SelectHeroFromId(string heroId){
+            using (HeroSaveContext heroSaveContext = new HeroSaveContext())
             {
                 try
                 {
                     
-                    HeroSaveContext.MyItems.Load();
-                    HeroSaveContext.MyWeapons.Load();
-                    HeroSaveContext.MySpecialItem.Load();
-                    HeroSaveContext.MyCapacities.Load();
-                    HeroSaveContext.MyWeaponHolders.Load();
-                    HeroSaveContext.MyBackPack.Load();
-                    HeroSaveContext.MyHero.Load();
-                    return HeroSaveContext.MyHero.Where(x => x.CharacterID.ToString() == heroID).FirstOrDefault();
+                    heroSaveContext.MyItems.Load();
+                    heroSaveContext.MyWeapons.Load();
+                    heroSaveContext.MySpecialItem.Load();
+                    heroSaveContext.MyCapacities.Load();
+                    heroSaveContext.MyWeaponHolders.Load();
+                    heroSaveContext.MyBackPack.Load();
+                    heroSaveContext.MyHero.Load();
+                    return heroSaveContext.MyHero.FirstOrDefault(x => x.CharacterID.ToString() == heroId);
                 }
                 catch (Exception)
                 {
@@ -33,29 +33,27 @@ namespace LDVELH_WPF
 
         public static void DeleteHero(Hero hero)
         {
-            using (HeroSaveContext HeroSaveContext = new HeroSaveContext())
+            using (HeroSaveContext heroSaveContext = new HeroSaveContext())
             {
-                HeroSaveContext.MyItems.Load();
-                HeroSaveContext.MyWeapons.Load();
-                HeroSaveContext.MyWeaponHolders.Load();
-                HeroSaveContext.MyBackPack.Load();
-                HeroSaveContext.MySpecialItem.Load();
-                HeroSaveContext.MyCapacities.Load();
-                HeroSaveContext.MyHero.Load();
-                Hero savedHero = HeroSaveContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
-                if (savedHero != null)
+                heroSaveContext.MyItems.Load();
+                heroSaveContext.MyWeapons.Load();
+                heroSaveContext.MyWeaponHolders.Load();
+                heroSaveContext.MyBackPack.Load();
+                heroSaveContext.MySpecialItem.Load();
+                heroSaveContext.MyCapacities.Load();
+                heroSaveContext.MyHero.Load();
+                Hero savedHero = heroSaveContext.MyHero.FirstOrDefault(x => x.CharacterID == hero.CharacterID);
+                if (savedHero == null) return;
+                if (savedHero.GetSpecialItems != null)
                 {
-                    if (savedHero.GetSpecialItems != null)
-                    {
-                        HeroSaveContext.MySpecialItem.RemoveRange(savedHero.GetSpecialItems);
-                    }
-                    if (savedHero.Capacities != null)
-                    {
-                        HeroSaveContext.MyCapacities.RemoveRange(savedHero.Capacities);
-                    }
-                    HeroSaveContext.MyHero.Remove(savedHero);
-                    HeroSaveContext.SaveChanges();
+                    heroSaveContext.MySpecialItem.RemoveRange(savedHero.GetSpecialItems);
                 }
+                if (savedHero.Capacities != null)
+                {
+                    heroSaveContext.MyCapacities.RemoveRange(savedHero.Capacities);
+                }
+                heroSaveContext.MyHero.Remove(savedHero);
+                heroSaveContext.SaveChanges();
             }
         }
 
@@ -63,25 +61,25 @@ namespace LDVELH_WPF
         {
             try
             {
-                using (HeroSaveContext HeroSaveContext = new HeroSaveContext())
+                using (HeroSaveContext heroSaveContext = new HeroSaveContext())
                 {
-                    HeroSaveContext.MyBackPack.Load();
-                    HeroSaveContext.MyHero.Load();
-                    HeroSaveContext.MyItems.Load();
-                    HeroSaveContext.MySpecialItem.Load();
-                    HeroSaveContext.MyWeaponHolders.Load();
-                    HeroSaveContext.MyWeapons.Load();
-                    HeroSaveContext.MyCapacities.Load();
-                    Hero savedHero = HeroSaveContext.MyHero.Where(x => x.CharacterID == hero.CharacterID).FirstOrDefault();
+                    heroSaveContext.MyBackPack.Load();
+                    heroSaveContext.MyHero.Load();
+                    heroSaveContext.MyItems.Load();
+                    heroSaveContext.MySpecialItem.Load();
+                    heroSaveContext.MyWeaponHolders.Load();
+                    heroSaveContext.MyWeapons.Load();
+                    heroSaveContext.MyCapacities.Load();
+                    Hero savedHero = heroSaveContext.MyHero.FirstOrDefault(x => x.CharacterID == hero.CharacterID);
                     if (savedHero == null)
                     {
-                        HeroSaveContext.MyHero.Add(hero);
+                        heroSaveContext.MyHero.Add(hero);
                     }
                     else
                     {
-                        HeroSaveContext.Entry(savedHero).CurrentValues.SetValues(hero);//May not work, did not have the time for intensive testing before switching to SQLite
+                        heroSaveContext.Entry(savedHero).CurrentValues.SetValues(hero);//May not work, did not have the time for intensive testing before switching to SQLite
                     }
-                    HeroSaveContext.SaveChanges();
+                    heroSaveContext.SaveChanges();
                 }
             }
             catch (Exception ex)
@@ -94,9 +92,9 @@ namespace LDVELH_WPF
         {
             try
             {
-                using (HeroSaveContext HeroSaveContext = new HeroSaveContext())
+                using (HeroSaveContext heroSaveContext = new HeroSaveContext())
                 {
-                    return (from hero in HeroSaveContext.MyHero select hero).ToList();
+                    return (from hero in heroSaveContext.MyHero select hero).ToList();
                 }
             }
             catch (Exception)
