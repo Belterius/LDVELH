@@ -6,41 +6,32 @@ namespace LDVELH_WPF.ViewModel
 {
     public class MenuLoadViewModel : ViewModelBase
     {
-        Hero _SelectedHero;
+        private Hero _selectedHero;
         public Hero SelectedHero
         {
             get
             {
-                return _SelectedHero;
+                return _selectedHero;
             }
             set
             {
-                if (_SelectedHero != value)
+                if (_selectedHero != value)
                 {
-                    _SelectedHero = value;
+                    _selectedHero = value;
                     RaisePropertyChanged("SelectedHero");
                 }
             }
         }
-        ObservableCollection<Hero> _ListHeroes;
-        public ObservableCollection<Hero> ListHeroes
-        {
-            get
-            {
-                return _ListHeroes;
-            }
-            set
-            {
-                _ListHeroes = value;
-            }
-        }
+
+        public ObservableCollection<Hero> ListHeroes { get; set; }
+
         private void LoadHeroes()
         {
             try
             {
-                using (SqLiteDatabaseFunction DatabaseRequest = new SqLiteDatabaseFunction())
+                using (SqLiteDatabaseFunction databaseRequest = new SqLiteDatabaseFunction())
                 {
-                    ListHeroes = new ObservableCollection<Hero>(DatabaseRequest.GetAllHeroes());
+                    ListHeroes = new ObservableCollection<Hero>(SqLiteDatabaseFunction.GetAllHeroes());
                 }
             }
             catch (Exception ex)
@@ -67,9 +58,9 @@ namespace LDVELH_WPF.ViewModel
             if (hero == null) return;
             try
             {
-                using (SqLiteDatabaseFunction DatabaseRequest = new SqLiteDatabaseFunction())
+                using (SqLiteDatabaseFunction databaseRequest = new SqLiteDatabaseFunction())
                 {
-                    DatabaseRequest.DeleteHero((Hero)hero);
+                    SqLiteDatabaseFunction.DeleteHero((Hero)hero);
                 }
                 ListHeroes.Remove((Hero)hero);
             }
@@ -88,25 +79,25 @@ namespace LDVELH_WPF.ViewModel
 
         private void NewGame(object random)
         {
-            MenuCapacities MenuCapacities = new MenuCapacities { DataContext = new MenuCapacitiesViewModel( ShowMyDialogBox()) };
-            MenuCapacities.Show();
+            MenuCapacities menuCapacities = new MenuCapacities { DataContext = new MenuCapacitiesViewModel( ShowMyDialogBox()) };
+            menuCapacities.Show();
             CloseWindow();
         }
         private void Settings(object random)
         {
-            MenuSettings MenuSetting = new MenuSettings { DataContext = new MenuSettingsViewModel() };
-            MenuSetting.Show();
+            MenuSettings menuSetting = new MenuSettings { DataContext = new MenuSettingsViewModel() };
+            menuSetting.Show();
             CloseWindow();
         }
         private string ShowMyDialogBox()
         {
-            MessageBoxInput TestDialog = new MessageBoxInput();
+            MessageBoxInput testDialog = new MessageBoxInput();
 
-            if (TestDialog.ShowDialog() == true)
+            if (testDialog.ShowDialog() == true)
             {
-                if (TestDialog.GetCharacterName != "")
+                if (testDialog.GetCharacterName != "")
                 {
-                    return TestDialog.GetCharacterName;
+                    return testDialog.GetCharacterName;
                 }
                 else
                 {

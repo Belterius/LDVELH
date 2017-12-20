@@ -15,8 +15,8 @@ namespace LDVELH_WPF
         //DO NOT TOUTCH, IT'S BLACK MAGIC
         //It allows to make the exit button disappear from our window (as our user should NOT be able to escape a fight by closing the window ...)
         //cf http://stackoverflow.com/questions/743906/how-to-hide-close-button-in-wpf-window/867080 for more details
-        private const int GWL_STYLE = -16;
-        private const int WS_SYSMENU = 0x80000;
+        private const int GwlStyle = -16;
+        private const int WsSysmenu = 0x80000;
 
         public MessageBoxFight()
         {
@@ -26,7 +26,7 @@ namespace LDVELH_WPF
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var hwnd = new WindowInteropHelper(this).Handle;
-            NativeMethods.SetWindowLong(hwnd, GWL_STYLE, NativeMethods.GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
+            NativeMethods.SetWindowLong(hwnd, GwlStyle, NativeMethods.GetWindowLong(hwnd, GwlStyle) & ~WsSysmenu);
             ((FightViewModel)DataContext).FightEndedChanged += Vm_FightHasEnded;
         }
         private void Vm_FightHasEnded(object sender, EventArgs e)

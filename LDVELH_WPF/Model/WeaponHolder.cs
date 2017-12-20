@@ -14,8 +14,10 @@ namespace LDVELH_WPF
         private int BasicWeaponHolderSize = 2;
 
         [Key]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         public int WeaponHolderID { get; set; }
         [Column("WeaponHolderSize")]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         private int _WeaponHolderSize{get;set;}
         public int WeaponHolderSize
         {

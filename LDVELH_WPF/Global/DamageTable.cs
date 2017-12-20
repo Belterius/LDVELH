@@ -2,7 +2,7 @@
 
 namespace LDVELH_WPF
 {
-    class DamageTable
+    internal static class DamageTable
     {
         //Rule of the DamageTable are corresponding to the rule in the CYOA Book Lone Wolf.
         //While it was possible to deduct some logic from the EnemyDamageTaken table, it was not possible for the HeroDamageTaken table, hence why it's arbitrary and not determined by an arithmetical function.
@@ -18,23 +18,13 @@ namespace LDVELH_WPF
         {
             if (strenghtDifference > 0)
             {
-                int damage = ((int)((strenghtDifference - 1) / 2) + 3) + rollD10;
-
+                int damage = ((strenghtDifference - 1) / 2) + 3 + rollD10;
                 if (damage <= 12){
                     return damage;
                 }
-                else
-                {
-                    int bonusDamage = damage - 12;
-                    int totalDamage = 12 + bonusDamage * 2;
-                    if (totalDamage <= 18){
-                        return totalDamage;
-                    }
-                    else
-                    {
-                        return 9999;//instant kill
-                    }
-                }
+                int bonusDamage = damage - 12;
+                int totalDamage = 12 + bonusDamage * 2;
+                return totalDamage <= 18 ? totalDamage : 9999;
 
             }
             if (strenghtDifference == 0)
@@ -43,18 +33,11 @@ namespace LDVELH_WPF
                 return damage;
 
             }
-            if (strenghtDifference < 0)
+            if (strenghtDifference >= 0) throw new Exception("Error in damage table");
             {
                 int damage = ((int)((strenghtDifference +1) / 2) + 1 ) + rollD10;
-                if (damage <= 0){
-                    return 0;
-                }
-                else
-                {
-                    return damage;
-                }
+                return damage <= 0 ? 0 : damage;
             }
-            throw new Exception("Error in damage table");
         }
         /// <summary>
         /// Calculate the amount of damage the Hero should take, corresponding to the CYOA Lone Wolf rule book

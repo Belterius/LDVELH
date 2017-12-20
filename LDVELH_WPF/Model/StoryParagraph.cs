@@ -9,40 +9,18 @@ namespace LDVELH_WPF
     /// </summary>
     public class StoryParagraph
     {
-        String _ContentText;
         /// <summary>
         /// The text that will describe what's happening to the Hero
         /// </summary>
-        public string ContentText
-        {
-            get
-            {
-                return _ContentText;
-            }
-            private set
-            {
-                if (_ContentText != value)
-                {
-                    _ContentText = value;
-                }
-            }
-        }
+        public string ContentText { get; private set; }
+
         /// <summary>
         /// A List of Events that the Player can choose to Resolve
         /// </summary>
         private readonly List<Event> _decision;
-        private int _paragraphNumber;
-        public int ParagraphNumber
-        {
-            get
-            {
-                return _paragraphNumber;
-            }
-            private set
-            {
-                    _paragraphNumber = value;
-            }
-        }
+
+        public int ParagraphNumber { get; private set; }
+
         /// <summary>
         /// A List of Events that will happen as soon as the Hero reach the Paragraph
         /// </summary>

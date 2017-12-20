@@ -10,6 +10,7 @@ namespace LDVELH_WPF
     public class BackPack : INotifyPropertyChanged
     {
         [Key]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE, required for Database
         public int BackPackID { get; set; }
 
 
@@ -19,6 +20,7 @@ namespace LDVELH_WPF
         /// <summary>
         /// The number of Items the BackPack can contain
         /// </summary>
+        // ReSharper disable once MemberCanBePrivate.Global : Required for Database init
         public int BackPackSize
         {
             get
@@ -27,23 +29,20 @@ namespace LDVELH_WPF
             }
             private set
             {
-                if (_BackPackSize != value)
-                {
-                    _BackPackSize = value;
-                    RaisePropertyChanged("BackPackSize");
-                }
+                if (_BackPackSize == value) return;
+                _BackPackSize = value;
+                RaisePropertyChanged("BackPackSize");
             }
         }
 
-        private readonly ObservableCollection<Item> _items;
         /// <summary>
         /// An ObservableCollection of the BackPack's Items
         /// </summary>
-        public ObservableCollection<Item> GetItems => _items;
+        public ObservableCollection<Item> GetItems { get; }
 
-        public static readonly int BasicBackPackSize = 8;
+        private static readonly int BasicBackPackSize = 8;
 
-        protected void RaisePropertyChanged(string prop)
+        private void RaisePropertyChanged(string prop)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
@@ -54,7 +53,7 @@ namespace LDVELH_WPF
         public BackPack()
         {
             BackPackSize = BasicBackPackSize;
-            _items = new ObservableCollection<Item>();
+            GetItems = new ObservableCollection<Item>();
         }
         /// <summary>
         /// Create a BackPack of a specified size
@@ -63,7 +62,7 @@ namespace LDVELH_WPF
         public BackPack(int backPackSize)
         {
             BackPackSize = backPackSize;
-            _items = new ObservableCollection<Item>();
+            GetItems = new ObservableCollection<Item>();
         }
 
         /// <summary>
@@ -73,13 +72,13 @@ namespace LDVELH_WPF
         /// <param name="backPackItem">The item to add to the BackPack</param>
         public void AddItem(Item backPackItem)
         {
-            if (_items.Count >= BackPackSize)
+            if (GetItems.Count >= BackPackSize)
             {
                 throw new BackPackFullException("Error BackBack Full !");
             }
             else
             {
-                _items.Add(backPackItem);
+                GetItems.Add(backPackItem);
             }
         }
 
@@ -90,7 +89,7 @@ namespace LDVELH_WPF
         /// <returns>True if correct, false if the item wasn't present</returns>
         public bool RemoveItem(Item backPackItem)
         {
-            return _items.Remove(backPackItem);
+            return GetItems.Remove(backPackItem);
         }
 
         

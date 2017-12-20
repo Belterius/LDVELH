@@ -12,6 +12,7 @@ namespace LDVELH_WPF
         /// The Type of Enemy
         /// </summary>
         [Column("Type")]
+        // ReSharper disable once FieldCanBeMadeReadOnly.Global
         public EnemyTypes ClassType;
 
         /// <summary>

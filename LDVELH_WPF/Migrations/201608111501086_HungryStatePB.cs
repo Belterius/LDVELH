@@ -3,7 +3,7 @@ namespace LDVELH_WPF.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class HungryStatePB : DbMigration
+    public partial class HungryStatePb : DbMigration
     {
         public override void Up()
         {

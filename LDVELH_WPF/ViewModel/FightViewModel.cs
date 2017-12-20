@@ -9,198 +9,199 @@ namespace LDVELH_WPF.ViewModel
         public delegate void FightEnded(object sender, EventArgs e);
         public void FightHasEnded()
         {
-            FightEnded Handler = FightEndedChanged;
-            if (Handler != null)
-            {
-                Handler(this, null);
-            }
+            FightEnded handler = FightEndedChanged;
+            handler?.Invoke(this, null);
         }
-        Hero _Hero;
+
+        private Hero _hero;
         public Hero Hero
         {
             get
             {
-                return _Hero;
+                return _hero;
             }
             set
             {
-                if (_Hero != value)
+                if (_hero != value)
                 {
-                    _Hero = value;
+                    _hero = value;
                     RaisePropertyChanged("Hero");
                 }
             }
         }
-        Enemy _Enemy;
+
+        private Enemy _enemy;
         public Enemy Enemy
         {
             get
             {
-                return _Enemy;
+                return _enemy;
             }
             set
             {
-                if (_Enemy != value)
+                if (_enemy != value)
                 {
-                    _Enemy = value;
+                    _enemy = value;
                     RaisePropertyChanged("Enemy");
                 }
             }
         }
-        int _HeroDamageTaken=0;
-        int _HeroOldHP = -1;
+        int _heroDamageTaken=0;
+        int _heroOldHp = -1;
         public int HeroDamageTaken
         {
             get
             {
-                return _HeroDamageTaken;
+                return _heroDamageTaken;
             }
             set
             {
-                if (_HeroOldHP == -1)
+                if (_heroOldHp == -1)
                 {
-                    _HeroOldHP = value;
+                    _heroOldHp = value;
                 }
                 else
                 {
-                    _HeroDamageTaken = _HeroOldHP - value;
-                    _HeroOldHP = value;
+                    _heroDamageTaken = _heroOldHp - value;
+                    _heroOldHp = value;
                 }
                 RaisePropertyChanged("HeroDamageTaken");
             }
         }
-        int _EnemyDamageTaken = 0;
-        int _EnemyOldHP = -1;
+
+        private int _enemyDamageTaken = 0;
+        private int _enemyOldHp = -1;
         public int EnemyDamageTaken
         {
             get
             {
-                return _EnemyDamageTaken;
+                return _enemyDamageTaken;
             }
             set
             {
-                if (_EnemyOldHP == -1)
+                if (_enemyOldHp == -1)
                 {
-                    _EnemyOldHP = value;
+                    _enemyOldHp = value;
                 }
                 else
                 {
-                    _EnemyDamageTaken = _EnemyOldHP - value;
-                    _EnemyOldHP = value;
+                    _enemyDamageTaken = _enemyOldHp - value;
+                    _enemyOldHp = value;
                 }
                 RaisePropertyChanged("EnemyDamageTaken");
             }
         }
 
-        string _EscapeText = GlobalTranslator.Instance.Translator.ProvideValue("Escape");
+        string _escapeText = GlobalTranslator.Instance.Translator.ProvideValue("Escape");
         public string EscapeText
         {
             get
             {
-                return _EscapeText;
+                return _escapeText;
             }
             set
             {
-                if (_EscapeText != value)
+                if (_escapeText != value)
                 {
-                    _EscapeText = value;
+                    _escapeText = value;
                     RaisePropertyChanged("EscapeText");
                 }
             }
         }
-        string _NextRoundText = GlobalTranslator.Instance.Translator.ProvideValue("StartFight");
+        string _nextRoundText = GlobalTranslator.Instance.Translator.ProvideValue("StartFight");
         public string NextRoundText
         {
             get
             {
-                return _NextRoundText;
+                return _nextRoundText;
             }
             set
             {
-                if(_NextRoundText != value)
+                if(_nextRoundText != value)
                 {
-                    _NextRoundText = value;
+                    _nextRoundText = value;
                     RaisePropertyChanged("NextRoundText");
                 }
             }
         }
-        bool FightOver = false;
-        int _RoundNumber = 0;
+
+        private bool _fightOver = false;
+        private int _roundNumber = 0;
         public int RoundNumber
         {
             get
             {
-                return _RoundNumber;
+                return _roundNumber;
             }
             set
             {
-                if (_RoundNumber != value)
+                if (_roundNumber != value)
                 {
-                    _RoundNumber = value;
+                    _roundNumber = value;
                     RaisePropertyChanged("RoundNumber");
                 }
             }
         }
-        int _RunRoundNumber = 9999;
+        int _runRoundNumber = 9999;
         public int RunRoundNumber
         {
             get
             {
-                return _RunRoundNumber;
+                return _runRoundNumber;
             }
             set
             {
-                if (_RunRoundNumber != value)
+                if (_runRoundNumber != value)
                 {
-                    _RunRoundNumber = value;
+                    _runRoundNumber = value;
                     RaisePropertyChanged("RunRoundNumber");
                 }
             }
         }
-        string _RoundNumberText = GlobalTranslator.Instance.Translator.ProvideValue("YouMustFight");
+        string _roundNumberText = GlobalTranslator.Instance.Translator.ProvideValue("YouMustFight");
         public string RoundNumberText
         {
             get
             {
-                return _RoundNumberText;
+                return _roundNumberText;
             }
             set
             {
-                if (_RoundNumberText != value)
+                if (_roundNumberText != value)
                 {
-                    _RoundNumberText = value;
+                    _roundNumberText = value;
                     RaisePropertyChanged("RoundNumberText");
                 }
             }
         }
-        System.Windows.Visibility _CanRun = System.Windows.Visibility.Hidden;
+        System.Windows.Visibility _canRun = System.Windows.Visibility.Hidden;
         public System.Windows.Visibility CanRun
         {
             get
             {
-                return _CanRun;
+                return _canRun;
             }
             set
             {
-                if (_CanRun != value)
+                if (_canRun != value)
                 {
-                    _CanRun = value;
+                    _canRun = value;
                     RaisePropertyChanged("CanRun");
                 }
             }
         }
-        bool _RanAway = false;
+        bool _ranAway = false;
         public bool RanAway
         {
             get
             {
-                return _RanAway;
+                return _ranAway;
             }
             set
             {
-                if (_RanAway != value)
+                if (_ranAway != value)
                 {
-                    _RanAway = value;
+                    _ranAway = value;
                     RaisePropertyChanged("RanAway");
                 }
             }
@@ -252,21 +253,21 @@ namespace LDVELH_WPF.ViewModel
 
         private void NextRound(object e)
         {
-            if (FightOver)
+            if (_fightOver)
             {
                 FightHasEnded();
             }
             NextRoundText = GlobalTranslator.Instance.Translator.ProvideValue("NextRound");
             try
             {
-                FightOver = Hero.Fight(Enemy);
+                _fightOver = Hero.Fight(Enemy);
             }
             catch (YouAreDeadException)
             {
                 FightHasEnded();
                 throw;
             }
-            if (FightOver)
+            if (_fightOver)
             {
                 NextRoundText = GlobalTranslator.Instance.Translator.ProvideValue("Victory") + " !";
                 RoundNumberText = GlobalTranslator.Instance.Translator.ProvideValue("Victory").ToUpper() + "!";

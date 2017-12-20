@@ -16,8 +16,7 @@ namespace LDVELH_WPF.Helpers
         DependencyPropertyChangedEventArgs e)
         {
             var window = d as Window;
-            if (window != null)
-                window.Close();
+            window?.Close();
         }
         public static void SetDialogResult(Window target, bool? value)
         {

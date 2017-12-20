@@ -3,10 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace LDVELH_WPF
 {
+    [SuppressMessage("ReSharper", "ConvertToConstant.Local")]
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public class Hero : Character, INotifyPropertyChanged
     {
         /// <summary>
@@ -23,14 +26,17 @@ namespace LDVELH_WPF
         public static readonly int HealingCapacityRegen = 1;
         
         [ForeignKey("BackPack")]
+        // ReSharper disable once InconsistentNaming : Requiered for Database
         public int BackPack_ID{get;set;}
 
         [ForeignKey("WeaponHolder")]
+        // ReSharper disable once InconsistentNaming : Requiered for Database
         public int WeaponHolder_ID { get; set; }
 
         [Column("Gold")]
         // ReSharper disable once InconsistentNaming
         private int _Gold { get; set; }
+        // ReSharper disable once MemberCanBePrivate.Global
         public int Gold
         {
             get
@@ -48,6 +54,7 @@ namespace LDVELH_WPF
         }
 
         [Column("MaxNumberOfCapacities")]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         private int _MaxNumberOfCapacities = 5; // Can change depending on the number of stories completed
         /// <summary>
         /// The Max number of capacities the Hero can posses
@@ -86,6 +93,7 @@ namespace LDVELH_WPF
         public ObservableCollection<SpecialItem> SpecialItems { get; set; }
 
         [Column("HungryState")]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         private HungryState _HungryStatus{get;set;}
         /// <summary>
         /// The current Hungry Status of the Hero

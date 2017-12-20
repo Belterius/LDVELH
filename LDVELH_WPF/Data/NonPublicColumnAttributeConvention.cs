@@ -22,7 +22,7 @@ namespace LDVELH_WPF
                    });
         }
 
-        private IEnumerable<PropertyInfo> NonPublicProperties(Type type)
+        private static IEnumerable<PropertyInfo> NonPublicProperties(Type type)
         {
             var matchingProperties = type.GetProperties(BindingFlags.SetProperty | BindingFlags.GetProperty | BindingFlags.NonPublic | BindingFlags.Instance)
                                          .Where(propInfo => propInfo.GetCustomAttributes(typeof(ColumnAttribute), true).Length > 0)

@@ -7,6 +7,7 @@ namespace LDVELH_WPF
     public class Capacity : INotifyPropertyChanged
     {
         [Key]
+        // ReSharper disable once InconsistentNaming DO NOT CHANGE Requiered for Database
         public int CapacityID { get; set; }
 
         public static readonly int PhychicPowerStrenght = 2;

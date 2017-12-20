@@ -12,6 +12,7 @@ namespace LDVELH_WPF
     public abstract class Loot 
     {
         [Key]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         public int LootID { get; set; }
 
 
@@ -19,23 +20,14 @@ namespace LDVELH_WPF
         public abstract void Remove(Hero hero);
 
     }
+    /// <inheritdoc />
     /// <summary>
     /// Single currency, used to buy stuff/pay for some special action or event
     /// </summary>
     public class Gold : Loot
     {
-        int _GoldAmount;
-        public int GoldAmount
-        {
-            get { return _GoldAmount; }
-            private set
-            {
-                if (_GoldAmount != value)
-                {
-                    _GoldAmount = value;
-                }
-            }
-        }
+        public int GoldAmount { get; private set; }
+
         private Gold()
         {
 
@@ -71,6 +63,7 @@ namespace LDVELH_WPF
         
 
         [Column("Name")]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         private string _Name{get;set;}
 
         public string Name
@@ -114,7 +107,9 @@ namespace LDVELH_WPF
     {
 
         [Column("HealingPower")]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         int _HealingPower { get; set; }
+        // ReSharper disable once MemberCanBePrivate.Global
         public int HealingPower
         {
             get
@@ -132,7 +127,9 @@ namespace LDVELH_WPF
         }
 
         [Column("ChargesLeft")]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         int _ChargesLeft { get; set; }
+        // ReSharper disable once MemberCanBePrivate.Global
         public int ChargesLeft
         {
             get
@@ -179,15 +176,12 @@ namespace LDVELH_WPF
                 return false;
 
 
-            Consumable Consumable = (Consumable)obj;
-            if (Name != Consumable.Name)
+            Consumable consumable = (Consumable)obj;
+            if (Name != consumable.Name)
                 return false;
-            if (ChargesLeft != Consumable.ChargesLeft)
+            if (ChargesLeft != consumable.ChargesLeft)
                 return false;
-            if (HealingPower != Consumable.HealingPower)
-                return false;
-
-            return true;
+            return HealingPower == consumable.HealingPower;
         }
         public override int GetHashCode()
         {
@@ -235,7 +229,9 @@ namespace LDVELH_WPF
     {
 
         [Column("ChargesLeft")]
-        int _ChargesLeft { get; set; }
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
+        private int _ChargesLeft { get; set; }
+        // ReSharper disable once MemberCanBePrivate.Global
         public int ChargesLeft
         {
             get

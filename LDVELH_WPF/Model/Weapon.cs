@@ -11,6 +11,7 @@ namespace LDVELH_WPF
     {
 
         [Column("Name")]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         private string _Name{get;set;}
         public string Name
         {
@@ -27,6 +28,7 @@ namespace LDVELH_WPF
             }
         }
         [Column("WeaponType")]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         private WeaponTypes _WeaponType { get; set; }
         public WeaponTypes WeaponType
         {
@@ -66,13 +68,10 @@ namespace LDVELH_WPF
                 return false;
 
 
-            Weapon Weapon = (Weapon)obj;
-            if (Name != Weapon.Name)
+            Weapon weapon = (Weapon)obj;
+            if (Name != weapon.Name)
                 return false;
-            if (WeaponType != Weapon.WeaponType)
-                return false;
-
-            return true;
+            return WeaponType == weapon.WeaponType;
         }
         public override int GetHashCode()
         {
@@ -98,10 +97,11 @@ namespace LDVELH_WPF
         Baton,
         TwoEdgedSword
     }
-    static class WeaponTypesMethods
+
+    internal static class WeaponTypesMethods
     {
 
-        public static String GetTranslation(this WeaponTypes weapon)
+        public static string GetTranslation(this WeaponTypes weapon)
         {
             return GlobalTranslator.Instance.Translator.ProvideValue(weapon.ToString());
         }

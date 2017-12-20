@@ -11,7 +11,7 @@ namespace LDVELH_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainWindowViewModel DataContextViewModel;
+        private MainWindowViewModel _dataContextViewModel;
 
         public MainWindow()
         {
@@ -20,14 +20,14 @@ namespace LDVELH_WPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContextViewModel = (MainWindowViewModel) DataContext;
-            DataContextViewModel.ActionButtonChanged += Vm_ActionButtonChanged;
-            GeneratePlayerPossibleDecision(DataContextViewModel.MyStory);
+            _dataContextViewModel = (MainWindowViewModel) DataContext;
+            _dataContextViewModel.ActionButtonChanged += Vm_ActionButtonChanged;
+            GeneratePlayerPossibleDecision(_dataContextViewModel.MyStory);
         }
 
         private void Vm_ActionButtonChanged(object sender, EventArgs e)
         {
-            GeneratePlayerPossibleDecision(DataContextViewModel.MyStory);
+            GeneratePlayerPossibleDecision(_dataContextViewModel.MyStory);
         }
 
         /********************************************************/
@@ -44,30 +44,29 @@ namespace LDVELH_WPF
         }
         private void GenerateButtonPossibleDecision(Story story)
         {
-            foreach (Event PossibleEvent in story.ActualParagraph.GetListDecision)
+            foreach (Event possibleEvent in story.ActualParagraph.GetListDecision)
             {
-                if (ShouldGenerateButton(PossibleEvent, story))
+                if (ShouldGenerateButton(possibleEvent, story))
                 {
-                    Button ButtonDecision = new Button();
-                    ButtonDecision.Content = PossibleEvent.TriggerMessage;
-                    ButtonDecision.Click += delegate {
+                    Button buttonDecision = new Button {Content = possibleEvent.TriggerMessage};
+                    buttonDecision.Click += delegate {
                         try
                         {
-                            PossibleEvent.ResolveEvent(story);
-                            if (PossibleEvent is LootEvent)
+                            possibleEvent.ResolveEvent(story);
+                            if (possibleEvent is LootEvent)
                             {
                                 //A LootEvent should only be done once, it is handled by the code but it's more user friendly to disable the button once the action is not possible anymore
-                                ButtonDecision.IsEnabled = !(((LootEvent)PossibleEvent).Done);
+                                buttonDecision.IsEnabled = !(((LootEvent)possibleEvent).Done);
                             }
                         }
                         catch (YouAreDeadException)
                         {
-                            DataContextViewModel.HandleDeath(story);
+                            _dataContextViewModel.HandleDeath(story);
                         }
                     };
-                    ((Grid)(groupBoxChoices.Content)).Children.Add(ButtonDecision);
-                    ButtonDecision.HorizontalAlignment = HorizontalAlignment.Center;
-                    ButtonDecision.VerticalAlignment = VerticalAlignment.Center;
+                    ((Grid)(groupBoxChoices.Content)).Children.Add(buttonDecision);
+                    buttonDecision.HorizontalAlignment = HorizontalAlignment.Center;
+                    buttonDecision.VerticalAlignment = VerticalAlignment.Center;
                 }
             }
             UpdateLayout();
@@ -81,9 +80,9 @@ namespace LDVELH_WPF
                     return false;
                 }
             }
-            if (possibleEvent is ItemRequieredEvent)
+            if (possibleEvent is ItemRequiredEvent)
             {
-                if (!story.PlayerHero.PossesItem(((ItemRequieredEvent)possibleEvent).ItemName))
+                if (!story.PlayerHero.PossesItem(((ItemRequiredEvent)possibleEvent).ItemName))
                 {
                     return false;
                 }
@@ -92,9 +91,9 @@ namespace LDVELH_WPF
         }
         public double SetXPosition(Button button, GroupBox groupBox)
         {
-            double TotalX = ((Grid)(groupBox.Content)).ActualWidth;
-            double MySize = button.ActualWidth;
-            return (TotalX - MySize) / 2;
+            double totalX = ((Grid)(groupBox.Content)).ActualWidth;
+            double mySize = button.ActualWidth;
+            return (totalX - mySize) / 2;
         }
         int MarginBetweenButton = 6;
         public double CalculateYPosition(double totalHeightButton, int numberButton, GroupBox groupBox)

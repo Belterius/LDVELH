@@ -1,7 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
+using LDVELH_WPF;
+using LDVELH_WPF.ViewModel;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LDVELH_WPF.ViewModel.Tests
+namespace LDVELH_Tests
 {
     [TestClass()]
     public class MainWindowViewModelTests

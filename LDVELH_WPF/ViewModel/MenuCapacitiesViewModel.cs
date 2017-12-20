@@ -5,34 +5,36 @@ namespace LDVELH_WPF.ViewModel
 {
     public class MenuCapacitiesViewModel : ViewModelBase
     {
-        string _HeroName;
+        private string _heroName;
         public string HeroName
         {
             get
             {
-                return _HeroName;
+                return _heroName;
             }
             set
             {
-                if (_HeroName != value)
+                if (_heroName != value)
                 {
-                    _HeroName = value;
+                    _heroName = value;
                     RaisePropertyChanged("HeroName");
                 }
             }
         }
-        Hero _Hero;
+        public string CapacityTitle => $"{GlobalTranslator.Instance.Translator.ProvideValue("ListCapacities")} {Hero.Capacities.Count}/{Hero.MaxNumberOfCapacities}";
+
+        private Hero _hero;
         public Hero Hero
         {
             get
             {
-                return _Hero;
+                return _hero;
             }
             set
             {
-                if (_Hero != value)
+                if (_hero != value)
                 {
-                    _Hero = value;
+                    _hero = value;
                     RaisePropertyChanged("Hero");
                 }
             }
@@ -67,8 +69,8 @@ namespace LDVELH_WPF.ViewModel
                 MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("YouMustSelect") + " " + Hero.MaxNumberOfCapacities + " " + GlobalTranslator.Instance.Translator.ProvideValue("Capacities") + " !");
                 return;
             }
-            MainWindow MainWindow = new MainWindow() { DataContext = new MainWindowViewModel(Hero, false) };
-            MainWindow.Show();
+            MainWindow mainWindow = new MainWindow() { DataContext = new MainWindowViewModel(Hero, false) };
+            mainWindow.Show();
             CloseWindow();
 
         }
@@ -77,6 +79,7 @@ namespace LDVELH_WPF.ViewModel
             try
             {
                 Hero.AddCapacity((CapacityType)capacity);
+                RaisePropertyChanged("CapacityTitle");
 
             }
             catch (MaxNumberOfCapacitiesReached ex)
@@ -87,7 +90,8 @@ namespace LDVELH_WPF.ViewModel
         }
         private void RemoveCapacity(object capacity)
         {
-                Hero.RemoveCapacity((CapacityType)capacity);
+            Hero.RemoveCapacity((CapacityType)capacity);
+            RaisePropertyChanged("CapacityTitle");
         }
     }
 }

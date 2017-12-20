@@ -2,39 +2,40 @@
 using System.Runtime.Serialization;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace LDVELH_WPF
 {
     /// <summary>
     /// Contain all the Paragraphs the Hero has taken
     /// </summary>
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public class Story : INotifyPropertyChanged
     {
         
-        Hero _PlayerHero;
+        Hero _playerHero;
 
         public Hero PlayerHero
         {
             get
             {
-                return _PlayerHero;
+                return _playerHero;
             }
             set
             {
-                if (_PlayerHero != value)
-                {
-                    _PlayerHero = value;
+                if (_playerHero == value) return;
+                _playerHero = value;
 
-                    RaisePropertyChanged("PlayerHero");
-                }
+                RaisePropertyChanged("PlayerHero");
             }
         }
+        // ReSharper disable once UnusedAutoPropertyAccessor.Global
         public string Title{get;set;}
         /// <summary>
         /// all the Paragraphs the Hero has taken
         /// </summary>
-        public ObservableCollection<StoryParagraph> content;
-        StoryParagraph _ActualParagraph;
+        public ObservableCollection<StoryParagraph> Content;
+        StoryParagraph _actualParagraph;
         /// <summary>
         /// The current Paragraph the Hero is at
         /// </summary>
@@ -42,22 +43,22 @@ namespace LDVELH_WPF
         {
             get
             {
-                return _ActualParagraph;
+                return _actualParagraph;
             }
             set
             {
-                if (_ActualParagraph != value)
+                if (_actualParagraph != value)
                 {
-                    _ActualParagraph = value;
+                    _actualParagraph = value;
                     PlayerHero.CurrentParagraph = value.ParagraphNumber;
                     RaisePropertyChanged("ActualParagraph");
                 }
             }
         }
 
-        void RaisePropertyChanged(string prop)
+        private void RaisePropertyChanged(string prop)
         {
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -70,7 +71,7 @@ namespace LDVELH_WPF
         {
             Title = title;
             PlayerHero = hero;
-            content = new ObservableCollection<StoryParagraph>();
+            Content = new ObservableCollection<StoryParagraph>();
         }
 
         /// <summary>
@@ -100,7 +101,7 @@ namespace LDVELH_WPF
         /// <param name="paragraph"></param>
         public void AddParagraph(StoryParagraph paragraph)
         {
-            content.Add(paragraph);
+            Content.Add(paragraph);
         }
 
         /// <summary>
@@ -143,7 +144,7 @@ namespace LDVELH_WPF
         }
         public StoryParagraph GetParagraph(int paragraphNumber)
         {
-            foreach (StoryParagraph paragraph in content)
+            foreach (StoryParagraph paragraph in Content)
             {
                 if (paragraph.ParagraphNumber == paragraphNumber)
                 {

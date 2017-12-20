@@ -12,9 +12,11 @@ namespace LDVELH_WPF
     public abstract class Event
     {
         [Key]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         private int EventID { get; set; }
 
         // ReSharper disable once InconsistentNaming : Requiered for the Database
+        // ReSharper disable once MemberCanBePrivate.Global
         protected string _TriggerMessage;
         /// <summary>
         /// The message that will be displayed to the Player to start the event
@@ -35,6 +37,7 @@ namespace LDVELH_WPF
         }
 
         // ReSharper disable once InconsistentNaming
+        // ReSharper disable once MemberCanBePrivate.Global
         protected int _DestinationNumber;
         /// <summary>
         /// The Paragraph Number the Player will be send to
@@ -198,8 +201,7 @@ namespace LDVELH_WPF
         /// <param name="triggerMessage">The message that will be displayed to the Player to start the event</param>
         public BuyEvent(Event anEvent, int price, string triggerMessage)
         {
-            _payableEvent = new List<Event>();
-            _payableEvent.Add(anEvent);
+            _payableEvent = new List<Event> {anEvent};
             _price = price;
             TriggerMessage = triggerMessage + " (" + price + " "+ GlobalTranslator.Instance.Translator.ProvideValue("Gold")+" )";
         }
@@ -249,9 +251,9 @@ namespace LDVELH_WPF
     {
         private readonly int _debuff;
         private readonly bool _alwaysHappen = false;
-        private readonly Item _requieredItem = null;
+        private readonly Item _requiredItem = null;
         private readonly bool _capacityRequiered = false;
-        private readonly CapacityType _requieredCapacity;
+        private readonly CapacityType _requiredCapacity;
         /// <summary>
         /// A BuffEvent that will always Happen
         /// </summary>
@@ -263,22 +265,22 @@ namespace LDVELH_WPF
         /// <summary>
         /// A BuffEvent that happen if the player posses an Item
         /// </summary>
-        /// <param name="requieredItem">The item required to have the buff</param>
+        /// <param name="requiredItem">The item required to have the buff</param>
         /// <param name="debuff">The amount of Agility added (minus than 0 for a malus)</param>
-        public BuffOrDebuffEvent(Item requieredItem, int debuff)
+        public BuffOrDebuffEvent(Item requiredItem, int debuff)
         {
-            _requieredItem = requieredItem;
+            _requiredItem = requiredItem;
             _debuff = debuff;
         }
 
         /// <summary>
         /// A BuffEvent that happen if the player posses an Item
         /// </summary>
-        /// <param name="requieredCapacity"></param>
+        /// <param name="requiredCapacity"></param>
         /// <param name="debuff">The amount of Agility added (minus than 0 for a malus)</param>
-        public BuffOrDebuffEvent(CapacityType requieredCapacity, int debuff)
+        public BuffOrDebuffEvent(CapacityType requiredCapacity, int debuff)
         {
-            _requieredCapacity = requieredCapacity;
+            _requiredCapacity = requiredCapacity;
             _capacityRequiered = true;
             _debuff = debuff;
         }
@@ -291,15 +293,15 @@ namespace LDVELH_WPF
         {
             if(_capacityRequiered)
             {
-                if (!story.PlayerHero.PossesCapacity(_requieredCapacity))
+                if (!story.PlayerHero.PossesCapacity(_requiredCapacity))
                 {
                     story.PlayerHero.AddTempDebuff(_debuff);
                     return;
                 }
             }
-            if (_requieredItem != null)
+            if (_requiredItem != null)
             {
-                if (!story.PlayerHero.PossesItem(_requieredItem.Name))
+                if (!story.PlayerHero.PossesItem(_requiredItem.Name))
                 {
                     story.PlayerHero.AddTempDebuff(_debuff);
                     return;
@@ -321,6 +323,7 @@ namespace LDVELH_WPF
         /// <summary>
         /// FightEvent Constructor
         /// </summary>
+        // ReSharper disable once MemberCanBeProtected.Global
         public FightEvent()
         {
         }
@@ -520,7 +523,7 @@ namespace LDVELH_WPF
     /// <summary>
     /// An Event that require an Item to be available/executed
     /// </summary>
-    public class ItemRequieredEvent : Event
+    public class ItemRequiredEvent : Event
     {
         private string _itemName;
         public string ItemName
@@ -534,7 +537,7 @@ namespace LDVELH_WPF
                 }
             }
         }
-        private ItemRequieredEvent()
+        private ItemRequiredEvent()
         {
 
         }
@@ -543,7 +546,7 @@ namespace LDVELH_WPF
         /// </summary>
         /// <param name="destinationNumber">The Destination Paragraph Number</param>
         /// <param name="itemName">The Name of the item required for the Event</param>
-        public ItemRequieredEvent(int destinationNumber, string itemName)
+        public ItemRequiredEvent(int destinationNumber, string itemName)
         {
             DestinationNumber = destinationNumber;
             ItemName = itemName;

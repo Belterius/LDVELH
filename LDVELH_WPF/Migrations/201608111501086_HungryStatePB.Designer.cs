@@ -7,9 +7,9 @@ namespace LDVELH_WPF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class HungryStatePB : IMigrationMetadata
+    public sealed partial class HungryStatePb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(HungryStatePB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(HungryStatePb));
         
         string IMigrationMetadata.Id
         {

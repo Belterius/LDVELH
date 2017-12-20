@@ -8,8 +8,8 @@ namespace LDVELH_WPF.Helpers
     {
         #region Fields
 
-        readonly Action<object> _execute;
-        readonly Predicate<object> _canExecute;
+        private readonly Action<object> _execute;
+        private readonly Predicate<object> _canExecute;
 
         #endregion // Fields
 
@@ -20,10 +20,10 @@ namespace LDVELH_WPF.Helpers
         {
         }
 
-        public RelayCommand(Action<object> execute, Predicate<object> canExecute)
+        private RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
             if (execute == null)
-                throw new ArgumentNullException("execute");
+                throw new ArgumentNullException(nameof(execute));
 
             _execute = execute;
             _canExecute = canExecute;

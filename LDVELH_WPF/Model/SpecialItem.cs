@@ -12,6 +12,7 @@ namespace LDVELH_WPF
     public abstract class SpecialItem : Loot
     {
         [Column]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         private string _Name{get;set;}
 
         public string Name
@@ -48,6 +49,7 @@ namespace LDVELH_WPF
     public class SpecialItemCombat : SpecialItem
     {
         [Column("AgilityBonus")]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         int _AgilityBonus{get;set;}
         /// <summary>        
         ///Has an effect only during combat (Example : +2 agility shield)
@@ -109,12 +111,12 @@ namespace LDVELH_WPF
                 return false;
 
 
-            SpecialItemCombat SpecialItemCombat = (SpecialItemCombat)obj;
-            if (Name != SpecialItemCombat.Name)
+            SpecialItemCombat specialItemCombat = (SpecialItemCombat)obj;
+            if (Name != specialItemCombat.Name)
                 return false;
-            if (AgilityBonus != SpecialItemCombat.AgilityBonus)
+            if (AgilityBonus != specialItemCombat.AgilityBonus)
                 return false;
-            if (HitPointBonus != SpecialItemCombat.HitPointBonus)
+            if (HitPointBonus != specialItemCombat.HitPointBonus)
                 return false;
 
             return true;
@@ -132,11 +134,13 @@ namespace LDVELH_WPF
     public class SpecialItemAlways : SpecialItem
     {
         [Column("AgilityBonus")]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         int _AgilityBonus { get; set; }
 
         /// <summary>
         //Has a permanent effect (Example : +4 HitPoint chain mail)
         /// </summary>
+        // ReSharper disable once MemberCanBePrivate.Global
         public int AgilityBonus
         {
             get { return _AgilityBonus; }
@@ -149,7 +153,9 @@ namespace LDVELH_WPF
             }
         }
         [Column("HitPointBonus")]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         int _HitPointBonus { get; set; }
+        // ReSharper disable once MemberCanBePrivate.Global
         public int HitPointBonus
         {
             get { return _HitPointBonus; }
@@ -215,12 +221,12 @@ namespace LDVELH_WPF
                 return false;
 
 
-            SpecialItemAlways SpecialItemCombat = (SpecialItemAlways)obj;
-            if (Name != SpecialItemCombat.Name)
+            SpecialItemAlways specialItemCombat = (SpecialItemAlways)obj;
+            if (Name != specialItemCombat.Name)
                 return false;
-            if (AgilityBonus != SpecialItemCombat.AgilityBonus)
+            if (AgilityBonus != specialItemCombat.AgilityBonus)
                 return false;
-            if (HitPointBonus != SpecialItemCombat.HitPointBonus)
+            if (HitPointBonus != specialItemCombat.HitPointBonus)
                 return false;
 
             return true;

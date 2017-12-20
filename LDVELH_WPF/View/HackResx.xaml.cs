@@ -14,9 +14,9 @@ namespace LDVELH_WPF
     /*********************************************************************************************************/
     public partial class HackResx : Window
     {
-        private string frenchBook1 = @"C:\Users\lbailleul\Source\Repos\LDVELH\LDVELH_WPF\Resources\StringBook1.resx";
-        private string englishBook1 = @"C:\Users\lbailleul\Source\Repos\LDVELH\LDVELH_WPF\Resources\StringBook1.en.resx";
-        private string projectAOEBook1 = @"C:\Users\lbailleul\Desktop\t1\en\xhtml-simple\lw\01fftd.htm";
+        private readonly string _frenchBook1 = @"C:\Users\lbailleul\Source\Repos\LDVELH\LDVELH_WPF\Resources\StringBook1.resx";
+        private readonly string _englishBook1 = @"C:\Users\lbailleul\Source\Repos\LDVELH\LDVELH_WPF\Resources\StringBook1.en.resx";
+        private readonly string _projectAoeBook1 = @"C:\Users\lbailleul\Desktop\t1\en\xhtml-simple\lw\01fftd.htm";
 
         public HackResx()
         {
@@ -25,7 +25,7 @@ namespace LDVELH_WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            using (ResXResourceWriter resx = new ResXResourceWriter(frenchBook1))
+            using (ResXResourceWriter resx = new ResXResourceWriter(_frenchBook1))
             {
                 for (int k = 0; k <= 49; k++)
                 {
@@ -36,17 +36,17 @@ namespace LDVELH_WPF
 
                         resx.AddResource("Paragraph" + paragraph, newParag.ContentText);
                         int j = 0;
-                        foreach (Event Decision in newParag.GetListDecision)
+                        foreach (Event decision in newParag.GetListDecision)
                         {
-                            if ((Decision is MoveEvent || Decision is CapacityEvent || Decision is RunEvent || Decision is MealEvent || Decision is ItemRequieredEvent || Decision is LinkedEvent || Decision is LoseBackPack || Decision is LoseWeaponHolder) && Decision.DestinationNumber.ToString() != null)
+                            if ((decision is MoveEvent || decision is CapacityEvent || decision is RunEvent || decision is MealEvent || decision is ItemRequiredEvent || decision is LinkedEvent || decision is LoseBackPack || decision is LoseWeaponHolder) && decision.DestinationNumber.ToString() != null)
                             {
-                                resx.AddResource("Paragraph" + paragraph + "To" + Decision.DestinationNumber.ToString(), Decision.TriggerMessage);
+                                resx.AddResource("Paragraph" + paragraph + "To" + decision.DestinationNumber.ToString(), decision.TriggerMessage);
 
                             }
                             else
                             {
                                 j++;
-                                resx.AddResource("Paragraph" + paragraph + Decision.GetType().Name + j, Decision.TriggerMessage);
+                                resx.AddResource("Paragraph" + paragraph + decision.GetType().Name + j, decision.TriggerMessage);
                             }
                         }
 
@@ -78,8 +78,8 @@ namespace LDVELH_WPF
              * WARNING REMEMBER TO MANUALLY ADD THE STRINGS FROM SAVEOFMANUALENGLISH.RESX TO STRINGBOOK1.EN.RESX
              * ELSE IT WILL TAKE THE FRENCH PART !
              */
-            string filePath = projectAOEBook1;
-            string resxPath = englishBook1;
+            string filePath = _projectAoeBook1;
+            string resxPath = _englishBook1;
             HtmlDocument doc = getHTMLDoc(filePath);
             HtmlNodeCollection paragraphs = getAllParagraphTitleNode(doc);
             GenerateResxFile(resxPath, paragraphs);
@@ -101,7 +101,8 @@ namespace LDVELH_WPF
             var isLast = (index == paragraphsNode.Count - 1);
             var xpath = ".//following-sibling::p";
             if (!isLast)
-                xpath += string.Format("[following-sibling::h3[1][a/@name = '{0}']]", paragraphsNode[index + 1].SelectSingleNode("./a").Attributes["name"].Value);
+                xpath +=
+                    $"[following-sibling::h3[1][a/@name = '{paragraphsNode[index + 1].SelectSingleNode("./a").Attributes["name"].Value}']]";
             return paragraphsNode[index].SelectNodes(xpath);
         }
         private bool isMainContent(HtmlNode smallParagraph)
@@ -126,11 +127,11 @@ namespace LDVELH_WPF
                 return false;
             }
         }
-        private string getAncre(String innerHTML)
+        private string getAncre(String innerHtml)
         {
-            int startAncre = innerHTML.IndexOf("<a href=", StringComparison.Ordinal);
-            int endAncre = innerHTML.IndexOf("</a>", StringComparison.Ordinal) + 4;
-            return innerHTML.Substring(startAncre, endAncre - startAncre);
+            int startAncre = innerHtml.IndexOf("<a href=", StringComparison.Ordinal);
+            int endAncre = innerHtml.IndexOf("</a>", StringComparison.Ordinal) + 4;
+            return innerHtml.Substring(startAncre, endAncre - startAncre);
         }
         private string getAncreContent(string ancre)
         {
@@ -215,9 +216,9 @@ namespace LDVELH_WPF
             }
             return decision;
         }
-        private string getDecisionContent(String innerHTML)
+        private string getDecisionContent(String innerHtml)
         {
-            string myContent = DeleteAncre(innerHTML);
+            string myContent = DeleteAncre(innerHtml);
             return CleanDecision(myContent);
 
         }

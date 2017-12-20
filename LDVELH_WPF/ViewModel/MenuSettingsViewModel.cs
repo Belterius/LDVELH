@@ -9,34 +9,24 @@ namespace LDVELH_WPF.ViewModel
 {
     public class MenuSettingsViewModel : ViewModelBase
     {
-        SupportedLanguage _SelectedLanguage;
+        private SupportedLanguage _selectedLanguage;
         public SupportedLanguage SelectedLanguage
         {
             get
             {
-                return _SelectedLanguage;
+                return _selectedLanguage;
             }
             set
             {
-                if (_SelectedLanguage != value)
+                if (_selectedLanguage != value)
                 {
-                    _SelectedLanguage = value;
+                    _selectedLanguage = value;
                     RaisePropertyChanged("SelectedLanguage");
                 }
             }
         }
-        ObservableCollection<SupportedLanguage> _ListLanguage = new ObservableCollection<SupportedLanguage>();
-        public ObservableCollection<SupportedLanguage> ListLanguage
-        {
-            get
-            {
-                return _ListLanguage;
-            }
-            set
-            {
-                _ListLanguage = value;
-            }
-        }
+
+        public ObservableCollection<SupportedLanguage> ListLanguage { get; set; } = new ObservableCollection<SupportedLanguage>();
 
         public MenuSettingsViewModel()
         {
@@ -49,35 +39,26 @@ namespace LDVELH_WPF.ViewModel
         
         private void LoadSupportedLanguage()
         {
-            foreach (SupportedLanguage Language in Enum.GetValues(typeof(SupportedLanguage)))
+            foreach (SupportedLanguage language in Enum.GetValues(typeof(SupportedLanguage)))
             {
-                ListLanguage.Add(Language);
+                ListLanguage.Add(language);
             }
         }
         private void SetDefaultLanguage()
         {
             //We check the settings first, if we have no settings for the language, then we check the system language.
             //If the language is not supported, then we set the language to English
-            bool Found = false;
-            string DefaultLanguage;
-
-            if (Properties.Settings.Default.Language != "")
+            bool found = false;
+            string defaultLanguage = Properties.Settings.Default.Language != "" ? Properties.Settings.Default.Language : Thread.CurrentThread.CurrentCulture.DisplayName;
+            foreach (SupportedLanguage item in ListLanguage)
             {
-                DefaultLanguage = Properties.Settings.Default.Language;
-            }
-            else
-            {
-                DefaultLanguage = Thread.CurrentThread.CurrentCulture.DisplayName;
-            }
-            foreach (SupportedLanguage Item in ListLanguage)
-            {
-                if (DefaultLanguage.Contains(Item.ToString()))
+                if (defaultLanguage.Contains(item.ToString()))
                 {
-                    Found = true;
-                    SelectedLanguage = Item;
+                    found = true;
+                    SelectedLanguage = item;
                 }
             }
-            if (!Found)
+            if (!found)
             {
                 SelectedLanguage = SupportedLanguage.English;
             }
@@ -86,8 +67,8 @@ namespace LDVELH_WPF.ViewModel
         {
             ChangeLanguageSettings(SelectedLanguage.ToString());
             ChangeTranslatorLanguage((SupportedLanguage)SelectedLanguage);
-            MenuLoad MenuLoad = new MenuLoad { DataContext = new MenuLoadViewModel() };
-            MenuLoad.Show();
+            MenuLoad menuLoad = new MenuLoad { DataContext = new MenuLoadViewModel() };
+            menuLoad.Show();
             WarningMessage();
             CloseWindow();
         }
@@ -109,7 +90,7 @@ namespace LDVELH_WPF.ViewModel
                 default:
 #if DEBUG
                     throw new ArgumentException(
-                        String.Format("Language '{0}' is not yet present in the options, if you added the corresponding ressource please add a corresponding case.", Properties.Settings.Default.Language.ToLower()),
+                        $"Language '{Properties.Settings.Default.Language.ToLower()}' is not yet present in the options, if you added the corresponding ressource please add a corresponding case.",
                         "Text");
 #else
                 GlobalCulture.Instance.Ci = new CultureInfo("en-GB");

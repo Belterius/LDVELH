@@ -17,26 +17,31 @@ namespace LDVELH_WPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            int Top = 0;
-            int Bottom = 0;
-            int Left = 0;
-            int Right = 0;
-            foreach (CapacityType CapaType in Enum.GetValues(typeof(CapacityType)))
+            int top = 0;
+            int bottom = 0;
+            int left = 0;
+            int right = 0;
+            foreach (CapacityType capaType in Enum.GetValues(typeof(CapacityType)))
             {
-                CapacityCheckBox MyCheckbox = new CapacityCheckBox();
-                MyCheckbox.Name = CapaType.ToString();
-                MyCheckbox.MyCapacity = CapaType;
-                MyCheckbox.Margin = new Thickness(Left, Top, Right, Bottom);
-                MyCheckbox.Checked += CheckBox_Checked;
-                MyCheckbox.Unchecked += CheckBox_UnChecked;
+                CapacityCheckBox myCheckbox = new CapacityCheckBox
+                {
+                    Name = capaType.ToString(),
+                    MyCapacity = capaType,
+                    Margin = new Thickness(left, top, right, bottom)
+                };
+                myCheckbox.Checked += CheckBox_Checked;
+                myCheckbox.Unchecked += CheckBox_UnChecked;
                 System.Windows.Forms.CheckBox test = new System.Windows.Forms.CheckBox();
-                Label Label = new Label();
-                Label.Content = MyCheckbox.MyCapacity.GetTranslation();
-                Label.ToolTip = GlobalTranslator.Instance.Translator.ProvideValue("ToolTip" + MyCheckbox.MyCapacity.ToString());
-                Label.Margin = new Thickness(Left+20, Top - 5, 0, 0);
-                ((Grid)(groupBoxCapacities.Content)).Children.Add(MyCheckbox);
-                ((Grid)(groupBoxCapacities.Content)).Children.Add(Label);
-                Top += 20;
+                Label label = new Label
+                {
+                    Content = myCheckbox.MyCapacity.GetTranslation(),
+                    ToolTip = GlobalTranslator.Instance.Translator.ProvideValue(
+                        "ToolTip" + myCheckbox.MyCapacity.ToString()),
+                    Margin = new Thickness(left + 20, top - 5, 0, 0)
+                };
+                ((Grid)(groupBoxCapacities.Content)).Children.Add(myCheckbox);
+                ((Grid)(groupBoxCapacities.Content)).Children.Add(label);
+                top += 20;
             }
         }
         private void CheckBox_Checked(object sender, EventArgs e)
@@ -64,14 +69,8 @@ namespace LDVELH_WPF
 
     public class CapacityCheckBox : CheckBox
     {
-        CapacityType _myCapacity;
-        
-        public CapacityType MyCapacity
-        {
-            get { return _myCapacity; }
-            set { _myCapacity = value;}
-        }
-        
+        public CapacityType MyCapacity { get; set; }
+
         public CapacityCheckBox()
         {
         }

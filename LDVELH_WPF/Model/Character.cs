@@ -9,6 +9,7 @@ namespace LDVELH_WPF
         //Basics getter and setter are REQUIRED on any property used by SQLite, else it won't be able to properly generate and update the values. 
 
         [Key]
+        // ReSharper disable once InconsistentNaming : DO NOT CHANGE required for Database
         public int CharacterID { get; set; }
         [Column("Name")]
         // ReSharper disable once InconsistentNaming : Requiered for Database
@@ -22,13 +23,12 @@ namespace LDVELH_WPF
             {
                 return _Name;
             }
+            // ReSharper disable once MemberCanBeProtected.Global
             set
             {
-                if (_Name != value)
-                {
-                    _Name = value;
-                    RaisePropertyChanged("Name");
-                }
+                if (_Name == value) return;
+                _Name = value;
+                RaisePropertyChanged("Name");
             }
         }
         [Column("MaxHitPoint")]
@@ -124,7 +124,7 @@ namespace LDVELH_WPF
 
         protected void RaisePropertyChanged(string prop)
         {
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
         public event PropertyChangedEventHandler PropertyChanged;
     }

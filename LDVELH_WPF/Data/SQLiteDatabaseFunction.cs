@@ -5,9 +5,9 @@ using System.Data.Entity;
 
 namespace LDVELH_WPF
 {
-    public class SqLiteDatabaseFunction : IDisposable
+    public sealed class SqLiteDatabaseFunction : IDisposable
     {
-        static MySqLiteDbContext _heroSaveContext;
+        private static MySqLiteDbContext _heroSaveContext;
 
         public SqLiteDatabaseFunction()
         {
@@ -39,7 +39,7 @@ namespace LDVELH_WPF
             }
 
         }
-        public void DeleteHero(Hero hero)
+        public static void DeleteHero(Hero hero)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace LDVELH_WPF
             
         }
 
-        public Hero SelectHeroFromId(int heroId)
+        private static Hero SelectHeroFromId(int heroId)
         {
                 try
                 {
@@ -65,7 +65,7 @@ namespace LDVELH_WPF
                 }
         }
 
-        public List<Hero> GetAllHeroes()
+        public static List<Hero> GetAllHeroes()
         {
             try
             {
@@ -77,7 +77,7 @@ namespace LDVELH_WPF
             }
         }
 
-        public void SaveChanges()
+        private static void SaveChanges()
         {
             try
             {
@@ -89,9 +89,9 @@ namespace LDVELH_WPF
             }
         }
 
-        private bool _disposed = false;
+        private bool _disposed;
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
             if (!_disposed)
             {

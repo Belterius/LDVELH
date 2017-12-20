@@ -12,75 +12,75 @@ namespace LDVELH_WPF.ViewModel
 
         public string Test => "HitPoints";
 
-        bool LoadingHero = false;
+        private bool _loadingHero = false;
 
         public event GenerateActionButton ActionButtonChanged;
         public delegate void GenerateActionButton(object sender, EventArgs e);
 
-        Story _MyStory;
+        private Story _myStory;
         public Story MyStory
         {
             get
             {
-                return _MyStory;
+                return _myStory;
             }
             set
             {
-                if (_MyStory != value)
+                if (_myStory != value)
                 {
-                    _MyStory = value;
+                    _myStory = value;
                     RaisePropertyChanged("MyStory");
                 }
             }
         }
 
-        Hero _Hero;
+        private Hero _hero;
         public Hero Hero
         {
             get
             {
-                return _Hero;
+                return _hero;
             }
             set
             {
-                if (_Hero != value)
+                if (_hero != value)
                 {
-                    _Hero = value;
+                    _hero = value;
                     RaisePropertyChanged("Hero");
                     RaisePropertyChanged("HeroDisplayHP");
                 }
             }
         }
-        public String ActualHitPoint => Hero.ActualHitPoint.ToString() +"/" + Hero.MaxHitPoint.ToString();
-        Weapon _SelectedWeapon;
+        public string ActualHitPoint => Hero.ActualHitPoint.ToString() +"/" + Hero.MaxHitPoint.ToString();
+        private Weapon _selectedWeapon;
         public Weapon SelectedWeapon
         {
             get
             {
-                return _SelectedWeapon;
+                return _selectedWeapon;
             }
             set
             {
-                if (_SelectedWeapon != value)
+                if (_selectedWeapon != value)
                 {
-                    _SelectedWeapon = value;
+                    _selectedWeapon = value;
                     RaisePropertyChanged("SelectedWeapon");
                 }
             }
         }
 
-        Item _SelectedItem;
+        private Item _selectedItem;
         public Item SelectedItem
         {
             get
             {
-                return _SelectedItem;
+                return _selectedItem;
             }
             set
             {
-                if (_SelectedItem != value)
+                if (_selectedItem != value)
                 {
-                    _SelectedItem = value;
+                    _selectedItem = value;
                     RaisePropertyChanged("SelectedItem");
                 }
             }
@@ -88,7 +88,7 @@ namespace LDVELH_WPF.ViewModel
 
         public string TitleWindow => MyStory.PlayerHero.Name + " : paraph n°" + MyStory.PlayerHero.CurrentParagraph;
 
-        public string StoryText => MyStory.ActualParagraph != null ? MyStory.ActualParagraph.ContentText : MyStory.content.Last().ContentText;
+        public string StoryText => MyStory.ActualParagraph != null ? MyStory.ActualParagraph.ContentText : MyStory.Content.Last().ContentText;
 
         private void InitHero()
         {
@@ -162,15 +162,15 @@ namespace LDVELH_WPF.ViewModel
             }
             else
             {
-                MenuLoad LoadMenu = new MenuLoad { DataContext = new MenuLoadViewModel() };
-                LoadMenu.Show();
+                MenuLoad loadMenu = new MenuLoad { DataContext = new MenuLoadViewModel() };
+                loadMenu.Show();
                 CloseWindow();
             }
         }
 
         public MainWindowViewModel(Hero hero, bool loading)
         {
-            LoadingHero = loading;
+            _loadingHero = loading;
             InitHero(hero);
             InitStory(hero);
             Initialize();
@@ -203,7 +203,7 @@ namespace LDVELH_WPF.ViewModel
             MyStory = new Story("RandomName", Hero);
             MyStory.AddParagraph(CreateParagraph.CreateAParagraph(Hero.CurrentParagraph));
             MyStory.PropertyChanged += MyStory_PropertyChanged;
-            if (!LoadingHero)
+            if (!_loadingHero)
                 MyStory.Start();
             else
             {
@@ -238,7 +238,7 @@ namespace LDVELH_WPF.ViewModel
         }
         private void ResolveMainEvents(Story story)
         {
-            if (!LoadingHero)
+            if (!_loadingHero)
             {
                 try
                 {
@@ -251,24 +251,21 @@ namespace LDVELH_WPF.ViewModel
 
             }
             else
-                LoadingHero = false;
+                _loadingHero = false;
         }
         public void ActionButtonHasChanged()
         {
-            GenerateActionButton Handler = ActionButtonChanged;
-            if (Handler != null)
-            {
-                Handler(this, null);
-            }
+            GenerateActionButton handler = ActionButtonChanged;
+            handler?.Invoke(this, null);
         }
         public void HandleDeath(Story story)
         {
             MessageBox.Show(GlobalTranslator.Instance.Translator.ProvideValue("YouDied"));
             try
             {
-                using (SqLiteDatabaseFunction DatabaseRequest = new SqLiteDatabaseFunction())
+                using (SqLiteDatabaseFunction databaseRequest = new SqLiteDatabaseFunction())
                 {
-                    DatabaseRequest.DeleteHero(story.PlayerHero);
+                    SqLiteDatabaseFunction.DeleteHero(story.PlayerHero);
                 }
 
             }
@@ -276,12 +273,12 @@ namespace LDVELH_WPF.ViewModel
             {
                 System.Diagnostics.Debug.WriteLine("Error when deleting hero data : " + ex);
             }
-            MenuLoad LoadMenu = new MenuLoad() { DataContext = new MenuLoadViewModel() };
-            LoadMenu.Show();
+            MenuLoad loadMenu = new MenuLoad() { DataContext = new MenuLoadViewModel() };
+            loadMenu.Show();
             CloseWindow();
         }
 
-        private void NoNullInHero(Hero hero)
+        private static void NoNullInHero(Hero hero)
         {
             //When loading a Hero from our database, if he had no item/backpack/weapon/weaponHolder/capacity then those will be null instead of empty, this is the default behavior of SQLite.
             //we fix the possible problem immediately

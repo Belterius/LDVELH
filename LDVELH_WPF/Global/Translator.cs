@@ -14,7 +14,7 @@ namespace LDVELH_WPF
 
     public sealed class GlobalTranslator
     {
-        public Translator Translator = new Translator();
+        public readonly Translator Translator = new Translator();
 
         private GlobalTranslator()
         {
@@ -43,14 +43,14 @@ namespace LDVELH_WPF
 
     public class Translator : MarkupExtension
     {
-        const string ResourceId = "LDVELH_WPF.Resources.Strings";
+        private const string ResourceId = "LDVELH_WPF.Resources.Strings";
 
         public Translator()
         {
         }
         public string Text
         {
-            get;
+            private get;
             set;
         }
         /// <inheritdoc />
@@ -74,7 +74,7 @@ namespace LDVELH_WPF
             {
 #if DEBUG
                 throw new ArgumentException(
-                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, GlobalCulture.Instance.Ci.Name),
+                    $"Key '{Text}' was not found in resources '{ResourceId}' for culture '{GlobalCulture.Instance.Ci.Name}'.",
                     "Text");
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
@@ -102,7 +102,7 @@ namespace LDVELH_WPF
             {
 #if DEBUG
                 throw new ArgumentException(
-                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, GlobalCulture.Instance.Ci.Name),
+                    $"Key '{Text}' was not found in resources '{ResourceId}' for culture '{GlobalCulture.Instance.Ci.Name}'.",
                     "Text");
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
@@ -117,12 +117,12 @@ namespace LDVELH_WPF
         /// <returns>The corresponding string, in the correct language</returns>
         public string TranslateBook1(string stringToTranslate)
         {
-            string StringLocation = "LDVELH_WPF.Resources.StringBook1";
+            const string stringLocation = "LDVELH_WPF.Resources.StringBook1";
             Text = stringToTranslate;
             if (Text == null)
                 return "";
 
-            ResourceManager resmgr = new ResourceManager(StringLocation
+            ResourceManager resmgr = new ResourceManager(stringLocation
                                 , typeof(Translator).GetTypeInfo().Assembly);
 
             var translation = resmgr.GetString(Text, GlobalCulture.Instance.Ci);
@@ -131,7 +131,7 @@ namespace LDVELH_WPF
             {
 #if DEBUG
                 throw new ArgumentException(
-                    $"Key '{Text}' was not found in resources '{StringLocation}' for culture '{GlobalCulture.Instance.Ci.Name}'.",
+                    $"Key '{Text}' was not found in resources '{stringLocation}' for culture '{GlobalCulture.Instance.Ci.Name}'.",
                     "Text");
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER

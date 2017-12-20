@@ -10,18 +10,18 @@ namespace LDVELH_WPF.ViewModel
         //basic ViewModelBase
         internal void RaisePropertyChanged(string prop)
         {
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
         //Extra Stuff, shows why a base ViewModel is useful
-        bool? _CloseWindowFlag;
+        bool? _closeWindowFlag;
         public bool? CloseWindowFlag
         {
-            get { return _CloseWindowFlag; }
+            get { return _closeWindowFlag; }
             set
             {
-                _CloseWindowFlag = value;
+                _closeWindowFlag = value;
                 RaisePropertyChanged("CloseWindowFlag");
             }
         }

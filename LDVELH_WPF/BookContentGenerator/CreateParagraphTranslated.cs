@@ -1,4 +1,6 @@
-﻿namespace LDVELH_WPF
+﻿using System;
+
+namespace LDVELH_WPF
 {
     public static class CreateParagraphTranslated
     {
@@ -59,6 +61,8 @@
                                 LootEvent lootEvent10 = new LootEvent(CreateLoot.CreateWeapon.Glaive());
                                 paragraph.AddMainEvent(lootEvent10);
                                 break;
+                            default:
+                                throw new NotSupportedException();
                         }
                         MoveEvent goRight = new MoveEvent(85, "Prendre le sentier de droite");
                         MoveEvent goLeft = new MoveEvent(275, "Prendre le sentier de gauche");
@@ -137,7 +141,7 @@
                     {
                         paragraph = new StoryParagraph("Vous ne pouvez plus bouger : une force mystérieuse vous immobilise et vos yeux sont attirés par la bouche du squelette. Montant des profondeurs de la terre, vous entendez alors un bourdonnement grave, comme si des millions d'abeilles en fureur étaient rassemblées là. Puis une lueur rougeâtre s'allume dans les orbites vides du roi mort et le bourdonnement augmente d'intensité jusqu'à devenir assourdissant. Vous êtes en présence d'une force maléfique plus ancienne et plus puissante encore que celle des Maîtres des Ténèbres.", paragraphNumber);
                         paragraph.AddDecision(new MoveEvent(292, "Ne rien faire"));
-                        paragraph.AddDecision(new ItemRequieredEvent(236, "PierreDeVordak"));
+                        paragraph.AddDecision(new ItemRequiredEvent(236, "PierreDeVordak"));
                         return paragraph;
                     }
                 case 10:
@@ -284,7 +288,7 @@
                     {
                         paragraph = new StoryParagraph("Le couloir aboutit bientôt à une vaste chambre mortuaire dont les murs sont gravés de motifs anciens. Dans le coin opposé, un escalier de pierre mène à une porte immense. De chaque côté des marches, deux chandelles noires diffusent une faible clarté. Vous remarquez alors qu'aucune cire ne coule le long des chandelles, et tandis que vous vous approchez, vous constatez que leurs flammes ne diffusent aucune chaleur. Soucieux de quitter au plus vite cet endroit sinistre, vous examinez la serrure de la porte. Une broche sculptée semble fermer le panneau, mais un trou de serrure apparaît également. ", paragraphNumber);
                         paragraph.AddDecision(new MoveEvent(337, "Retirer la broche"));
-                        paragraph.AddDecision(new ItemRequieredEvent(326, "CleDOr"));
+                        paragraph.AddDecision(new ItemRequiredEvent(326, "CleDOr"));
                         paragraph.AddDecision(new CapacityEvent(151, CapacityType.Telekinesis));
                         return paragraph;
                     }
@@ -440,16 +444,9 @@
                     {
                         paragraph = new StoryParagraph("Le sentier aboutit brusquement à une pente en à-pic. Le sol, très instable à cet endroit, se dérobe sous vos pas : vous perdez l'équilibre et vous tombez tête la première au bas de la pente. ", paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-
-                            paragraph.AddDecision(new MoveEvent(277, "Tenter votre chance"));
-                        }
-                        else
-                        {
-
-                            paragraph.AddDecision(new MoveEvent(338, "Tenter votre chance"));
-                        }
+                        paragraph.AddDecision(rand >= 5
+                            ? new MoveEvent(338, "Tenter votre chance")
+                            : new MoveEvent(277, "Tenter votre chance"));
                         return paragraph;
                     }
                 case 45:
@@ -483,16 +480,9 @@
                     {
                         paragraph = new StoryParagraph("Tandis que vous lisez l'inscription, une ombre se dessine derrière le paravent", paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-
-                            paragraph.AddDecision(new MoveEvent(339, "Tenter votre chance"));
-                        }
-                        else
-                        {
-
-                            paragraph.AddDecision(new MoveEvent(60, "Tenter votre chance"));
-                        }
+                        paragraph.AddDecision(rand >= 5
+                            ? new MoveEvent(60, "Tenter votre chance")
+                            : new MoveEvent(339, "Tenter votre chance"));
                         return paragraph;
                     }
                 case 50:
@@ -1385,7 +1375,7 @@
                 case 173:
                     {
                         paragraph = new StoryParagraph("Lorsque vous atteignez la porte, un énorme bloc de pierre tombant du plafond s'écrase au sol, juste derrière vous. Vous faites volte-face et vous constatez que la sortie est à présent entièrement obstruée. Si vous possédez une Clé d'Argent, vous pouvez vous en servir pour essayer d'ouvrir la porte.", paragraphNumber);
-                        paragraph.AddDecision(new ItemRequieredEvent(158, "CleDArgent"));
+                        paragraph.AddDecision(new ItemRequiredEvent(158, "CleDArgent"));
                         paragraph.AddDecision(new MoveEvent(259, "continuer"));
                         return paragraph;
                     }
@@ -1579,7 +1569,7 @@
                 case 199:
                     {
                         paragraph = new StoryParagraph("La plupart des placards et des tiroirs sont vides. Les habitants de cette maison ont presque tout emporté avec eux ; vous parvenez cependant à trouver dans la cave suffisamment de fruits pour vous faire un Repas.", paragraphNumber);
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(1), "Prendre le repas"));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(), "Prendre le repas"));
                         paragraph.AddDecision(new MoveEvent(81, "continuer"));
                         return paragraph;
                     }
@@ -1621,14 +1611,9 @@
                     {
                         paragraph = new StoryParagraph("Leur chef ramasse votre Équipement et vous fait signe d'avancer le long du chemin. Les deux autres ont alors un sourire mauvais et vous vous rendez soudain compte qu'il ne s'agit pas du tout de soldats : ce sont des brigands déguisés. Vous prenez aussitôt la fuite en courant à toutes jambes vers la capitale. Mais au même instant, un frisson vous parcourt l'échiné : vous venez en effet d'entendre derrière vous le déclic d'une arbalète que l'on arme. ", paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-                            paragraph.AddDecision(new MoveEvent(181, "Tenter votre chance"));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(145, "Tenter votre chance"));
-                        }
+                        paragraph.AddDecision(rand >= 5
+                            ? new MoveEvent(145, "Tenter votre chance")
+                            : new MoveEvent(181, "Tenter votre chance"));
                         return paragraph;
                     }
                 case 206:
@@ -1767,14 +1752,9 @@
                     {
                         paragraph = new StoryParagraph("Tout d'abord, la descente vous paraît facile mais, bientôt, votre vue se brouille et vous sentez vos jambes faiblir. Les Dents de Sommeil commencent à produire leur effet et, soudain, vous trébuchez et vous perdez connaissance en tombant tête la première. ", paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-                            paragraph.AddDecision(new MoveEvent(277, "Tentez votre chance"));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(338, "Tentez votre chance"));
-                        }
+                        paragraph.AddDecision(rand >= 5
+                            ? new MoveEvent(338, "Tentez votre chance")
+                            : new MoveEvent(277, "Tentez votre chance"));
                         return paragraph;
                     }
                 case 227:
@@ -1852,14 +1832,9 @@
                     {
                         paragraph = new StoryParagraph("Déployant pleinement vos talents de Seigneur Kaï en matière de Camouflage, vous vous enfouissez dans le sol meuble du flanc de la colline. Puis vous vous couvrez de votre cape et vous disposez quelques branches d'arbre sur cet abri improvisé pour mieux le dissimuler aux regards. ", paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-                            paragraph.AddDecision(new MoveEvent(265, "Tentez votre chance"));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(72, "Tentez votre chance"));
-                        }
+                        paragraph.AddDecision(rand >= 5
+                            ? new MoveEvent(72, "Tentez votre chance")
+                            : new MoveEvent(265, "Tentez votre chance"));
                         return paragraph;
                     }
                 case 238:
@@ -2119,14 +2094,9 @@
                     {
                         paragraph = new StoryParagraph("Vous avez suivi ce sentier sinueux pendant environ dix minutes lorsque vous entendez soudain des battements d'ailes au-dessus de vous. Vous levez les yeux et vous apercevez alors un immense Kraan qui s'approche de l'endroit où vous êtes. La créature vient du nord et, bientôt, ses grandes ailes noires projettent une ombre gigantesque sur le feuillage des arbres. Deux êtres armés de longues lances chevauchent le monstre : ce sont des Gloks, de petites créatures d'une grande laideur, animées de haine et vouées à la malfaisance. Autrefois, il y a de cela plusieurs siècles, les Gloks servaient d'esclaves aux Maîtres des Ténèbres, et ceuxci leur firent bâtir la cité infernale d'Helgedad, située dans les déserts volcaniques qui s'étendent au-delà des monts Durncrag. La construction de cette ville représenta une longue et douloureuse épreuve pour ces créatures, dont seules les plus fortes survécurent aux vapeurs empoisonnées qui se dégageaient des terrains alentour. Les deux monstres portés par le Kraan sont des descendants de ces anciens esclaves. Lorsque le Kraan passe au-dessus de votre tête, vous vous cachez sous un arbre, le cœur battant, en priant le ciel que le redoutable trio ne vous ait pas repéré.", paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-                            paragraph.AddDecision(new MoveEvent(345, "Tentez votre chance"));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(74, "Tentez votre chance"));
-                        }
+                        paragraph.AddDecision(rand >= 5
+                            ? new MoveEvent(74, "Tentez votre chance")
+                            : new MoveEvent(345, "Tentez votre chance"));
                         return paragraph;
                     }
                 case 276:
@@ -2152,14 +2122,9 @@
                     {
                         paragraph = new StoryParagraph("Vous grimpez sur l'amas de pierrailles qui s'entasse devant la grotte à l'intérieur de laquelle vous vous engouffrez en prenant soin d'en boucher l'entrée derrière vous à l'aide d'un gros rocher. Quelques minutes plus tard, vous apercevez les Gloks qui s'approchent de la grotte, leurs petits yeux jaunes et cruels scrutant chaque fissure s'ouvrant au flanc de la colline. Ils sont si près de vous que vous vous attendez à être découvert d'une minute à l'autre.", paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 7)
-                        {
-                            paragraph.AddDecision(new MoveEvent(112, "Tentez votre chance"));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(96, "Tentez votre chance"));
-                        }
+                        paragraph.AddDecision(rand >= 7
+                            ? new MoveEvent(96, "Tentez votre chance")
+                            : new MoveEvent(112, "Tentez votre chance"));
                         return paragraph;
                     }
                 case 280:
@@ -2325,14 +2290,9 @@
                     {
                         paragraph = new StoryParagraph("Vous tentez votre chance", paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 3)
-                        {
-                            paragraph.AddDecision(new MoveEvent(110, "continuer"));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(285, "continuer"));
-                        }
+                        paragraph.AddDecision(rand >= 3
+                            ? new MoveEvent(285, "continuer")
+                            : new MoveEvent(110, "continuer"));
                         return paragraph;
                     }
                 case 303:
@@ -2366,7 +2326,7 @@
                     {
                         paragraph = new StoryParagraph("Vous n'avez aucune difficulté à atteindre la cabane et, tandis que vous escaladez l'arbre, des souvenirs d'enfance vous reviennent en mémoire : vous vous rappelez le temps où, tout jeune garçon, vous montiez également aux arbres, non loin de la ville de Toran, pour aller cueillir des fruits ou admirer la campagne environnante. Vous ouvrez la porte de la cabane et vous tombez nez à nez avec un vieil ermite recroquevillé dans un coin de la pièce. Une expression d'intense soulagement apparaît sur son visage lorsqu'il reconnaît votre cape de Seigneur Kaï. Il vous raconte alors que toute la région est envahie par des Gloks et qu'il a dénombré plus de quarante Kraans volant au-dessus de sa maison dans les trois heures qui ont précédé. Ils se dirigeaient tous vers l'est. Il s'approche ensuite d'un buffet et vous apporte une assiette de fruits.Vous le remerciez et vous rangez les fruits dans votre Sac à Dos.Ils représentent l'équivalent d'un Repas, notez - le sur votre Feuille d'Aventure. L'ermite vous montre également un magnifique Marteau de Guerre qu'il pose sur une table, près de la porte. « Vous en avez plus besoin que moi, Seigneur Kaï, dit-il. Prenez ce Marteau si vous le désirez, c'est une Arme à laquelle vous pourrez vous fier. » Vous n'aurez le droit de prendre ce Marteau de Guerre qu'à la condition de l'échanger contre une autre Arme que vous possédez déjà, car vous ne pouvez laisser l'ermite sans aucune défense contre l'ennemi.", paragraphNumber);
                         paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre(), "Prendre le marteau"));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(1), "Prendre le repas"));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(), "Prendre le repas"));
                         paragraph.AddDecision(new MoveEvent(213, "continuer"));
                         return paragraph;
                     }
@@ -2415,14 +2375,9 @@
                     {
                         paragraph = new StoryParagraph("Il vous faut presque une heure pour atteindre la citadelle. Lorsque vous arrivez, vous constatez qu'il règne dans les rues de la ville panique et confusion. Le soldat qui vous escorte s'approche des gardes à l'entrée principale de la citadelle et leur explique que vous devez à tout prix voir le Roi. ", paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 7)
-                        {
-                            paragraph.AddDecision(new MoveEvent(341, "Tentez votre chance"));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(98, "Tentez votre chance"));
-                        }
+                        paragraph.AddDecision(rand >= 7
+                            ? new MoveEvent(98, "Tentez votre chance")
+                            : new MoveEvent(341, "Tentez votre chance"));
                         return paragraph;
                     }
                 case 315:
@@ -2576,14 +2531,9 @@
                     {
                         paragraph = new StoryParagraph("Au moment où vous ôtez la broche, un craquement assourdissant retentit. ", paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-                            paragraph.AddDecision(new MoveEvent(219, "Tentez votre chance"));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(317, "Tentez votre chance"));
-                        }
+                        paragraph.AddDecision(rand >= 5
+                            ? new MoveEvent(317, "Tentez votre chance")
+                            : new MoveEvent(219, "Tentez votre chance"));
                         return paragraph;
                     }
                 case 338:

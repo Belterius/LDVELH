@@ -1,4 +1,6 @@
-﻿namespace LDVELH_WPF
+﻿using System;
+
+namespace LDVELH_WPF
 {
     public static class CreateParagraph
     {
@@ -51,6 +53,8 @@
                             case 10:
                                 paragraph.AddMainEvent(new LootEvent(CreateLoot.CreateWeapon.Glaive()));
                                 break;
+                            default:
+                                throw new NotSupportedException();
                         }
                         paragraph.AddDecision(new MoveEvent(85, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph1To85")));
                         paragraph.AddDecision(new MoveEvent(275, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph1To275")));
@@ -124,7 +128,7 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph9"), paragraphNumber);
                         paragraph.AddDecision(new MoveEvent(292, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph9To292")));
-                        paragraph.AddDecision(new ItemRequieredEvent(236, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph9To236")));
+                        paragraph.AddDecision(new ItemRequiredEvent(236, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph9To236")));
                         return paragraph;
                     }
                 case 10:
@@ -271,7 +275,7 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph23"), paragraphNumber);
                         paragraph.AddDecision(new MoveEvent(337, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph23To337")));
-                        paragraph.AddDecision(new ItemRequieredEvent(326, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph23To326")));
+                        paragraph.AddDecision(new ItemRequiredEvent(326, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph23To326")));
                         paragraph.AddDecision(new CapacityEvent(151, CapacityType.Telekinesis));
                         return paragraph;
                     }
@@ -427,16 +431,11 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph44"), paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-
-                            paragraph.AddDecision(new MoveEvent(277, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph44To277")));
-                        }
-                        else
-                        {
-
-                            paragraph.AddDecision(new MoveEvent(338, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph44To338")));
-                        }
+                        paragraph.AddDecision(rand < 5
+                            ? new MoveEvent(277,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph44To277"))
+                            : new MoveEvent(338,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph44To338")));
                         return paragraph;
                     }
                 case 45:
@@ -470,16 +469,11 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph49"), paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-
-                            paragraph.AddDecision(new MoveEvent(339, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph49To339")));
-                        }
-                        else
-                        {
-
-                            paragraph.AddDecision(new MoveEvent(60, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph49To60")));
-                        }
+                        paragraph.AddDecision(rand < 5
+                            ? new MoveEvent(339,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph49To339"))
+                            : new MoveEvent(60,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph49To60")));
                         return paragraph;
                     }
                 case 50:
@@ -1371,7 +1365,7 @@
                 case 173:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph173"), paragraphNumber);
-                        paragraph.AddDecision(new ItemRequieredEvent(158, "CleDArgent"));
+                        paragraph.AddDecision(new ItemRequiredEvent(158, "CleDArgent"));
                         paragraph.AddDecision(new MoveEvent(259, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph173To259")));
                         return paragraph;
                     }
@@ -1565,7 +1559,7 @@
                 case 199:
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph199"), paragraphNumber);
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(1), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph199LootEvent1")));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph199LootEvent1")));
                         paragraph.AddDecision(new MoveEvent(81, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph199To81")));
                         return paragraph;
                     }
@@ -1607,14 +1601,11 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph205"), paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-                            paragraph.AddDecision(new MoveEvent(181, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph205To181")));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(145, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph205To145")));
-                        }
+                        paragraph.AddDecision(rand < 5
+                            ? new MoveEvent(181,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph205To181"))
+                            : new MoveEvent(145,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph205To145")));
                         return paragraph;
                     }
                 case 206:
@@ -1753,14 +1744,11 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph226"), paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-                            paragraph.AddDecision(new MoveEvent(277, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph226To277")));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(338, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph226To338")));
-                        }
+                        paragraph.AddDecision(rand < 5
+                            ? new MoveEvent(277,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph226To277"))
+                            : new MoveEvent(338,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph226To338")));
                         return paragraph;
                     }
                 case 227:
@@ -1839,14 +1827,11 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph237"), paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-                            paragraph.AddDecision(new MoveEvent(265, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph237To265")));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(72, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph237To72")));
-                        }
+                        paragraph.AddDecision(rand < 5
+                            ? new MoveEvent(265,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph237To265"))
+                            : new MoveEvent(72,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph237To72")));
                         return paragraph;
                     }
                 case 238:
@@ -2106,14 +2091,11 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph275"), paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-                            paragraph.AddDecision(new MoveEvent(345, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph275To345")));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(74, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph275To74")));
-                        }
+                        paragraph.AddDecision(rand < 5
+                            ? new MoveEvent(345,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph275To345"))
+                            : new MoveEvent(74,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph275To74")));
                         return paragraph;
                     }
                 case 276:
@@ -2139,14 +2121,11 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph279"), paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 7)
-                        {
-                            paragraph.AddDecision(new MoveEvent(112, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph279To112")));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(96, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph279To96")));
-                        }
+                        paragraph.AddDecision(rand < 7
+                            ? new MoveEvent(112,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph279To112"))
+                            : new MoveEvent(96,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph279To96")));
                         return paragraph;
                     }
                 case 280:
@@ -2312,14 +2291,11 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph302"), paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 3)
-                        {
-                            paragraph.AddDecision(new MoveEvent(110, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph302To110")));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(285, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph302To285")));
-                        }
+                        paragraph.AddDecision(rand < 3
+                            ? new MoveEvent(110,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph302To110"))
+                            : new MoveEvent(285,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph302To285")));
                         return paragraph;
                     }
                 case 303:
@@ -2353,7 +2329,7 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph307"), paragraphNumber);
                         paragraph.AddDecision(new LootEvent(CreateLoot.CreateWeapon.MarteauDeGuerre(), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph307LootEvent1")));
-                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(1), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph307LootEvent2")));
+                        paragraph.AddDecision(new LootEvent(CreateLoot.CreateFood.Ration(), GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph307LootEvent2")));
                         paragraph.AddDecision(new MoveEvent(213, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph307To213")));
                         return paragraph;
                     }
@@ -2402,14 +2378,11 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph314"), paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 7)
-                        {
-                            paragraph.AddDecision(new MoveEvent(341, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph314To341")));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(98, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph314To98")));
-                        }
+                        paragraph.AddDecision(rand < 7
+                            ? new MoveEvent(341,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph314To341"))
+                            : new MoveEvent(98,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph314To98")));
                         return paragraph;
                     }
                 case 315:
@@ -2563,14 +2536,11 @@
                     {
                         paragraph = new StoryParagraph(GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph337"), paragraphNumber);
                         int rand = DiceRoll.D10Roll0();
-                        if (rand < 5)
-                        {
-                            paragraph.AddDecision(new MoveEvent(219, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph337To219")));
-                        }
-                        else
-                        {
-                            paragraph.AddDecision(new MoveEvent(317, GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph337To317")));
-                        }
+                        paragraph.AddDecision(rand < 5
+                            ? new MoveEvent(219,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph337To219"))
+                            : new MoveEvent(317,
+                                GlobalTranslator.Instance.Translator.TranslateBook1("Paragraph337To317")));
                         return paragraph;
                     }
                 case 338:
